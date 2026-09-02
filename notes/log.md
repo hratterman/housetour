@@ -128,3 +128,15 @@ Timings (Phase 2, CPU 4 threads):
 - main_floor: 96 frames, mean 29.9 s/frame, 47.9 min. basement: 64 frames, mean 27.0 s/frame, 28.8 min.
 - 6 stills at 48 samples: 58 to 67 s each. Total wall time 83 min. Output 156 frames, 19.5 s at 8 fps with the
   12-frame dissolve. Both camera paths clear against the staged scene.
+
+## Second Phase 2 preview pass (after reviewing the first video)
+
+21. Kitchen west wall under the clerestory was blank in the t=9 frame: added a 6.6 ft walnut pantry run
+    (Y 17-28.5) and a plant in the corner.
+22. Basement shot lengthened 8 s -> 9 s. The last segment panned about 40 deg/s and smeared into motion blur;
+    the t=6.8 waypoint now already looks toward the bar so the final swing is about half as fast.
+23. Ceiling fills moved from 2700K to 3000K so the practicals (still 2700K) read warmer than the ambient
+    instead of everything being one orange. Lounge screen dimmed again (emission 0.35, darker palette).
+24. Bar wallpaper rewritten as a two-layer voronoi leaf scatter on a dark teal ground; the wave-ring version read
+    as stripes.
+Both camera paths clear (288 + 216 frames). Full pipeline re-run in progress.
