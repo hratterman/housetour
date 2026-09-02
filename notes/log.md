@@ -163,3 +163,12 @@ the 24 fps final is Jamie's run on the Mac Mini (README).
     about half the framed pieces now have a cream mat.
 29. Plaster cooled slightly ([0.90,0.88,0.84]); lawn tint greener; roof black with specular level 0.12 because a
     rough dark roof at a grazing angle was mirroring the sky and reading light gray.
+
+## Look-pass preview
+
+- The harness container restarted mid-render but the render.sh process survived; my resumed launch then ran alongside
+  it, so both shared the four cores. Per-frame numbers from that run (basement 58.6 s, stills 125-143 s) are doubled
+  by contention and not representative. Main floor rendered before the overlap: 96 frames, mean 32.2 s (was 30.7
+  before the plantings, so the tree models cost under 2 s a frame on the main-floor shot and about 9 s on views that
+  look straight at them).
+- Output renders/walkthrough_preview.mp4: 164 frames, 20.5 s at 8 fps. Committed with the contact sheet and stills.

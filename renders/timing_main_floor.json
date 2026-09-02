@@ -3,9 +3,9 @@
   "res": "640x360",
   "samples": 32,
   "frame_step": 3,
-  "frames": 96,
-  "mean_s": 32.19363227238258,
-  "total_s": 3091.4119968414307,
+  "frames": 0,
+  "mean_s": null,
+  "total_s": 1.5754387378692627,
   "device": "CPU",
   "stage": "phase2"
 }

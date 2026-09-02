@@ -1,11 +1,11 @@
 {
   "shot": "basement",
-  "res": "1280x720",
-  "samples": 128,
-  "frame_step": 1,
-  "frames": 0,
-  "mean_s": null,
-  "total_s": 3.814697265625e-06,
+  "res": "640x360",
+  "samples": 32,
+  "frame_step": 3,
+  "frames": 72,
+  "mean_s": 49.559242288271584,
+  "total_s": 3568.924684524536,
   "device": "CPU",
   "stage": "phase2"
 }
