@@ -62,6 +62,21 @@ noise drift on the target for a faint handheld feel. The camera path is sampled 
 mesh; the build refuses to render silently if the camera is within 0.3 ft of geometry (it logs a warning
 with the first frame and object).
 
+## Walk through it yourself (web viewer)
+
+`web/` holds a first-person version of the staged house: WASD and mouse look, wall collision, gravity and stairs,
+a minimap with the room you are in, teleport buttons, the lamps as real point lights. It runs in any desktop browser.
+
+```sh
+blender -b -P export_web.py -- --out web     # rebuilds web/house.glb from the same plan.json and staging.json
+cd web && python3 -m http.server 8000        # then open http://localhost:8000
+```
+
+`export_web.py` bakes every procedural material to a tile at its physical size, generates matching box-projected
+UVs, replaces the heavy tree models with light ones, decimates anything over 30k triangles and writes a glTF
+binary plus `lights.json` and `plan_web.json`. The viewer loads three.js from jsDelivr, so it needs the internet
+once; the house itself is local. Screenshot check: `python3 tools/web_screenshots.py` (needs `pip install playwright`).
+
 ## Repository layout
 
 ```
@@ -78,6 +93,9 @@ render.sh           orchestration: shots, ffmpeg stitch with a 12-frame cross-di
 tools/stills.py     renders the named stills (camera-path frames) or the free-pose room views
 tools/contact_sheet.py     tiles PNGs into one labeled sheet
 tools/fetch_assets.py      downloads and records the CC0 assets listed in assets/wanted.json
+export_web.py       bakes materials, builds UVs, exports web/house.glb for the first-person viewer
+web/index.html      the three.js walkthrough viewer (serve the folder over http)
+tools/web_screenshots.py   headless Chromium check of the viewer, one screenshot per teleport spot
 notes/log.md        running log: every plan edit, every bug, every measured timing
 ```
 
