@@ -1,0 +1,10 @@
+renders/*
+!renders/walkthrough.mp4
+!renders/walkthrough_preview.mp4
+!renders/contact_sheet.png
+!renders/contact_sheet_preview.png
+!renders/stills_preview/
+assets/*
+!assets/manifest.json
+__pycache__/
+*.blend1
