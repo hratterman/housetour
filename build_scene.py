@@ -17,7 +17,6 @@ import time
 import bpy
 from mathutils import Vector
 
-FT = 0.3048
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
@@ -48,9 +47,8 @@ def parse_args():
 
 # ----------------------------------------------------------------------------- helpers
 
-
-def log(*a):
-    print("[build]", *a, flush=True)
+from geom import (FT, m, log, box_ft, bounds_of, overlap, get_collection, boolean_cut,  # noqa: E402
+                  kelvin_rgb, cut_with_box)
 
 
 def clear_scene():
@@ -59,86 +57,6 @@ def clear_scene():
                        bpy.data.cameras, bpy.data.images, bpy.data.node_groups):
         for b in list(block_list):
             block_list.remove(b)
-
-
-def m(v):
-    return v * FT
-
-
-def box_ft(name, x0, y0, x1, y1, z0, z1, mat=None, collection=None, props=None):
-    """Axis-aligned box from feet bounds. Returns the object."""
-    if x1 < x0:
-        x0, x1 = x1, x0
-    if y1 < y0:
-        y0, y1 = y1, y0
-    if z1 < z0:
-        z0, z1 = z1, z0
-    sx, sy, sz = m(x1 - x0), m(y1 - y0), m(z1 - z0)
-    cx, cy, cz = m((x0 + x1) / 2), m((y0 + y1) / 2), m((z0 + z1) / 2)
-    mesh = bpy.data.meshes.new(name)
-    verts = [(-0.5, -0.5, -0.5), (0.5, -0.5, -0.5), (0.5, 0.5, -0.5), (-0.5, 0.5, -0.5),
-             (-0.5, -0.5, 0.5), (0.5, -0.5, 0.5), (0.5, 0.5, 0.5), (-0.5, 0.5, 0.5)]
-    faces = [(0, 3, 2, 1), (4, 5, 6, 7), (0, 1, 5, 4), (1, 2, 6, 5), (2, 3, 7, 6), (3, 0, 4, 7)]
-    verts = [(vx * sx, vy * sy, vz * sz) for vx, vy, vz in verts]
-    mesh.from_pydata(verts, [], faces)
-    mesh.update()
-    ob = bpy.data.objects.new(name, mesh)
-    ob.location = (cx, cy, cz)
-    (collection or bpy.context.scene.collection).objects.link(ob)
-    if mat is not None:
-        ob.data.materials.append(mat)
-    ob["bounds_ft"] = [x0, y0, x1, y1, z0, z1]
-    if props:
-        for k, v in props.items():
-            ob[k] = v
-    return ob
-
-
-def bounds_of(ob):
-    return list(ob["bounds_ft"])
-
-
-def overlap(a, b, eps=1e-4):
-    """True if two feet-bounds boxes overlap with positive volume."""
-    return (min(a[2], b[2]) - max(a[0], b[0]) > eps and
-            min(a[3], b[3]) - max(a[1], b[1]) > eps and
-            min(a[5], b[5]) - max(a[4], b[4]) > eps)
-
-
-def get_collection(name):
-    c = bpy.data.collections.get(name)
-    if c is None:
-        c = bpy.data.collections.new(name)
-        bpy.context.scene.collection.children.link(c)
-    return c
-
-
-def boolean_cut(target, cutter, solver="EXACT"):
-    mod = target.modifiers.new("cut", "BOOLEAN")
-    mod.operation = "DIFFERENCE"
-    mod.solver = solver
-    mod.object = cutter
-    bpy.context.view_layer.objects.active = target
-    for o in bpy.context.selected_objects:
-        o.select_set(False)
-    target.select_set(True)
-    bpy.ops.object.modifier_apply(modifier=mod.name)
-    target.select_set(False)
-
-
-def kelvin_rgb(k):
-    """Rough blackbody to linear RGB. Good enough for 2700K to 6500K lamps."""
-    t = k / 100.0
-    if t <= 66:
-        r = 255
-        g = 99.4708025861 * math.log(t) - 161.1195681661
-        b = 0 if t <= 19 else 138.5177312231 * math.log(t - 10) - 305.0447927307
-    else:
-        r = 329.698727446 * ((t - 60) ** -0.1332047592)
-        g = 288.1221695283 * ((t - 60) ** -0.0755148492)
-        b = 255
-    c = [max(0, min(255, v)) / 255.0 for v in (r, g, b)]
-    return tuple(v ** 2.2 for v in c)
 
 
 # ----------------------------------------------------------------------------- materials
@@ -434,8 +352,14 @@ def setup_camera(plan):
     return cam, tgt
 
 
-def key_shot(scene, cam, tgt, shot, fps):
+def key_shot(scene, cam, tgt, shot, fps, base_exposure=None, override=None):
     """Keyframe camera and target along the shot path. Returns (frame_start, frame_end)."""
+    if override is not None:
+        scene.view_settings.exposure = override
+    elif "exposure" in shot:
+        scene.view_settings.exposure = shot["exposure"]
+    elif base_exposure is not None:
+        scene.view_settings.exposure = base_exposure
     cam.animation_data_clear()
     tgt.animation_data_clear()
     n = int(round(shot["seconds"] * fps))
@@ -632,6 +556,7 @@ def main():
 
     mats = Materials(plan, stage)
     house = House(plan, mats)
+    house.root = HERE
     house.build_rooms()
     house.build_openings()
     house.build_pits()
@@ -666,7 +591,7 @@ def main():
         shot = shot_by_name(plan, parts[0])
         t = float(parts[1])
         name = parts[2] if len(parts) > 2 else "%s_t%s" % (shot["name"], parts[1].replace(".", "p"))
-        key_shot(scene, cam, tgt, shot, fps)
+        key_shot(scene, cam, tgt, shot, fps, plan.get("camera", {}).get("exposure", 0.0), args.exposure)
         check_path(scene, cam, shot)
         frame = 1 + int(round(t * fps))
         scene.frame_set(frame)
@@ -682,8 +607,9 @@ def main():
         return
     shots = plan["shots"] if args.shot == "all" else [shot_by_name(plan, args.shot)]
     for shot in shots:
-        s, e = key_shot(scene, cam, tgt, shot, fps)
+        s, e = key_shot(scene, cam, tgt, shot, fps, plan.get("camera", {}).get("exposure", 0.0), args.exposure)
         check_path(scene, cam, shot)
+        log("shot", shot["name"], "exposure", scene.view_settings.exposure)
         if args.frame_start:
             s = max(s, args.frame_start)
         if args.frame_end:

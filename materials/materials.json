@@ -5,7 +5,12 @@
    0.89,
    0.82
   ],
-  "rough": 0.9
+  "rough": 0.9,
+  "tex": "plaster",
+  "paint": true,
+  "size_ft": 6,
+  "bump": 0.35,
+  "rough_add": 0.15
  },
  "oak": {
   "rgb": [
@@ -13,7 +18,17 @@
    0.56,
    0.36
   ],
-  "rough": 0.5
+  "rough": 0.5,
+  "tex": "oak_floor",
+  "size_ft": 6,
+  "rot": 90,
+  "tint": [
+   1.0,
+   0.93,
+   0.82
+  ],
+  "bump": 0.5,
+  "rough_add": 0.1
  },
  "walnut": {
   "rgb": [
@@ -21,7 +36,17 @@
    0.14,
    0.08
   ],
-  "rough": 0.45
+  "rough": 0.4,
+  "tex": "walnut",
+  "size_ft": 6,
+  "rot": 90,
+  "tint": [
+   0.85,
+   0.78,
+   0.72
+  ],
+  "bump": 0.4,
+  "coat": 0.15
  },
  "cedar": {
   "rgb": [
@@ -29,7 +54,10 @@
    0.4,
    0.22
   ],
-  "rough": 0.7
+  "rough": 0.7,
+  "tex": "cedar",
+  "size_ft": 4,
+  "bump": 0.5
  },
  "brick": {
   "rgb": [
@@ -37,7 +65,15 @@
    0.38,
    0.28
   ],
-  "rough": 0.95
+  "rough": 0.95,
+  "tex": "brick",
+  "size_ft": 5,
+  "tint": [
+   0.95,
+   0.85,
+   0.78
+  ],
+  "bump": 0.8
  },
  "terrazzo": {
   "rgb": [
@@ -45,7 +81,25 @@
    0.78,
    0.74
   ],
-  "rough": 0.3
+  "rough": 0.25,
+  "tex": "terrazzo_fine",
+  "size_ft": 2.5,
+  "tint": [
+   1.0,
+   0.97,
+   0.92
+  ],
+  "bump": 0.2,
+  "overlay": {
+   "type": "stripes",
+   "size_ft": 4,
+   "width": 0.01,
+   "rgb": [
+    0.85,
+    0.62,
+    0.3
+   ]
+  }
  },
  "concrete": {
   "rgb": [
@@ -53,7 +107,10 @@
    0.55,
    0.53
   ],
-  "rough": 0.8
+  "rough": 0.8,
+  "tex": "concrete",
+  "size_ft": 6,
+  "bump": 0.4
  },
  "rubber": {
   "rgb": [
@@ -61,7 +118,15 @@
    0.12,
    0.12
   ],
-  "rough": 0.9
+  "rough": 0.9,
+  "tex": "rubber",
+  "size_ft": 2,
+  "tint": [
+   0.6,
+   0.6,
+   0.6
+  ],
+  "bump": 0.5
  },
  "oxblood": {
   "rgb": [
@@ -69,7 +134,11 @@
    0.08,
    0.09
   ],
-  "rough": 0.85
+  "rough": 0.85,
+  "tex": "plaster",
+  "paint": true,
+  "size_ft": 6,
+  "bump": 0.3
  },
  "olive": {
   "rgb": [
@@ -77,7 +146,11 @@
    0.36,
    0.2
   ],
-  "rough": 0.8
+  "rough": 0.8,
+  "tex": "plaster",
+  "paint": true,
+  "size_ft": 6,
+  "bump": 0.3
  },
  "teal": {
   "rgb": [
@@ -85,7 +158,12 @@
    0.32,
    0.36
   ],
-  "rough": 0.7
+  "rough": 0.9,
+  "tex": "velvet",
+  "paint": true,
+  "size_ft": 2,
+  "bump": 0.6,
+  "sheen": 0.5
  },
  "orange": {
   "rgb": [
@@ -93,7 +171,12 @@
    0.3,
    0.1
   ],
-  "rough": 0.7
+  "rough": 0.9,
+  "tex": "boucle",
+  "paint": true,
+  "size_ft": 1.5,
+  "bump": 0.8,
+  "sheen": 0.4
  },
  "mustard": {
   "rgb": [
@@ -101,7 +184,12 @@
    0.58,
    0.16
   ],
-  "rough": 0.7
+  "rough": 0.9,
+  "tex": "boucle",
+  "paint": true,
+  "size_ft": 1.5,
+  "bump": 0.8,
+  "sheen": 0.4
  },
  "dark": {
   "rgb": [
@@ -109,7 +197,11 @@
    0.1,
    0.1
   ],
-  "rough": 0.5
+  "rough": 0.6,
+  "tex": "plaster",
+  "paint": true,
+  "size_ft": 6,
+  "bump": 0.3
  },
  "stone": {
   "rgb": [
@@ -117,7 +209,16 @@
    0.35,
    0.33
   ],
-  "rough": 0.4
+  "rough": 0.35,
+  "tex": "marble",
+  "size_ft": 5,
+  "tint": [
+   0.55,
+   0.55,
+   0.52
+  ],
+  "bump": 0.2,
+  "coat": 0.3
  },
  "wool": {
   "rgb": [
@@ -125,7 +226,16 @@
    0.72,
    0.62
   ],
-  "rough": 1.0
+  "rough": 1.0,
+  "tex": "herringbone",
+  "size_ft": 2,
+  "tint": [
+   1.0,
+   0.95,
+   0.85
+  ],
+  "bump": 0.7,
+  "sheen": 0.3
  },
  "black": {
   "rgb": [
@@ -133,7 +243,7 @@
    0.02,
    0.02
   ],
-  "rough": 0.2
+  "rough": 0.25
  },
  "lamp": {
   "rgb": [
@@ -150,7 +260,15 @@
    0.22,
    0.09
   ],
-  "rough": 1.0
+  "rough": 1.0,
+  "tex": "grass",
+  "size_ft": 8,
+  "tint": [
+   0.7,
+   0.8,
+   0.5
+  ],
+  "bump": 0.6
  },
  "glass": {
   "rgb": [
@@ -180,5 +298,482 @@
   ],
   "rough": 0.4,
   "metallic": 0.8
+ },
+ "oak_deck": {
+  "rgb": [
+   0.72,
+   0.56,
+   0.36
+  ],
+  "rough": 0.55,
+  "tex": "oak_deck",
+  "size_ft": 4,
+  "rot": 90,
+  "tint": [
+   0.95,
+   0.85,
+   0.72
+  ],
+  "bump": 0.4
+ },
+ "walnut_h": {
+  "rgb": [
+   0.24,
+   0.14,
+   0.08
+  ],
+  "rough": 0.4,
+  "tex": "walnut",
+  "size_ft": 6,
+  "rot": 0,
+  "tint": [
+   0.85,
+   0.78,
+   0.72
+  ],
+  "bump": 0.4,
+  "coat": 0.15
+ },
+ "concrete_pavers": {
+  "rgb": [
+   0.45,
+   0.43,
+   0.4
+  ],
+  "rough": 0.9,
+  "tex": "concrete",
+  "size_ft": 2,
+  "tint": [
+   0.55,
+   0.52,
+   0.48
+  ],
+  "bump": 0.5,
+  "overlay": {
+   "type": "stripes",
+   "size_ft": 2,
+   "width": 0.02,
+   "rgb": [
+    0.25,
+    0.24,
+    0.22
+   ]
+  }
+ },
+ "linen": {
+  "rgb": [
+   0.85,
+   0.8,
+   0.7
+  ],
+  "rough": 1.0,
+  "tex": "linen",
+  "size_ft": 1.5,
+  "bump": 0.6,
+  "sheen": 0.3
+ },
+ "leather": {
+  "rgb": [
+   0.35,
+   0.18,
+   0.1
+  ],
+  "rough": 0.45,
+  "tex": "leather",
+  "size_ft": 2,
+  "tint": [
+   0.9,
+   0.75,
+   0.6
+  ],
+  "bump": 0.6,
+  "coat": 0.2
+ },
+ "roof": {
+  "rgb": [
+   0.18,
+   0.17,
+   0.16
+  ],
+  "rough": 0.9
+ },
+ "lamp_shade": {
+  "rgb": [
+   0.95,
+   0.85,
+   0.65
+  ],
+  "rough": 0.9,
+  "emit": 3.0,
+  "emit_rgb": [
+   1.0,
+   0.75,
+   0.45
+  ]
+ },
+ "lamp_glow": {
+  "rgb": [
+   1.0,
+   0.72,
+   0.42
+  ],
+  "rough": 0.5,
+  "emit": 30.0
+ },
+ "fire": {
+  "rgb": [
+   1.0,
+   0.35,
+   0.06
+  ],
+  "rough": 0.5,
+  "emit": 3.0,
+  "emit_rgb": [
+   1.0,
+   0.36,
+   0.06
+  ]
+ },
+ "screen": {
+  "rgb": [
+   0.05,
+   0.05,
+   0.06
+  ],
+  "rough": 0.1,
+  "coat": 0.8
+ },
+ "mirror": {
+  "rgb": [
+   0.95,
+   0.95,
+   0.95
+  ],
+  "rough": 0.0,
+  "metallic": 1.0
+ },
+ "chrome": {
+  "rgb": [
+   0.9,
+   0.9,
+   0.9
+  ],
+  "rough": 0.15,
+  "metallic": 1.0
+ },
+ "wallpaper_geo": {
+  "rgb": [
+   0.32,
+   0.36,
+   0.2
+  ],
+  "rough": 0.85,
+  "overlay": {
+   "type": "geo_wallpaper",
+   "size_ft": 1.0,
+   "rgb_a": [
+    0.3,
+    0.34,
+    0.18
+   ],
+   "rgb_b": [
+    0.9,
+    0.85,
+    0.7
+   ]
+  }
+ },
+ "wallpaper_botanical": {
+  "rgb": [
+   0.1,
+   0.22,
+   0.2
+  ],
+  "rough": 0.85,
+  "overlay": {
+   "type": "botanical_wallpaper",
+   "size_ft": 3.0
+  }
+ },
+ "wallpaper_bedroom": {
+  "rgb": [
+   0.75,
+   0.58,
+   0.16
+  ],
+  "rough": 0.85,
+  "overlay": {
+   "type": "geo_wallpaper",
+   "size_ft": 0.8,
+   "rgb_a": [
+    0.7,
+    0.52,
+    0.14
+   ],
+   "rgb_b": [
+    0.92,
+    0.86,
+    0.72
+   ],
+   "split": 0.3
+  }
+ },
+ "backsplash": {
+  "rgb": [
+   0.72,
+   0.3,
+   0.1
+  ],
+  "rough": 0.2,
+  "overlay": {
+   "type": "tile_backsplash",
+   "size_ft": 0.33,
+   "grout": 0.04
+  }
+ },
+ "runner": {
+  "rgb": [
+   0.32,
+   0.08,
+   0.09
+  ],
+  "rough": 1.0,
+  "tex": "herringbone",
+  "size_ft": 2,
+  "bump": 0.6,
+  "overlay": {
+   "type": "runner",
+   "size_ft": 3.0,
+   "along": "y"
+  }
+ },
+ "rug_teal": {
+  "rgb": [
+   0.1,
+   0.3,
+   0.32
+  ],
+  "rough": 1.0,
+  "tex": "herringbone",
+  "size_ft": 2,
+  "paint": true,
+  "bump": 0.7,
+  "sheen": 0.3
+ },
+ "rug_oxblood": {
+  "rgb": [
+   0.38,
+   0.12,
+   0.12
+  ],
+  "rough": 1.0,
+  "tex": "herringbone",
+  "size_ft": 2,
+  "paint": true,
+  "bump": 0.7,
+  "sheen": 0.3
+ },
+ "rug_cream": {
+  "rgb": [
+   0.82,
+   0.76,
+   0.64
+  ],
+  "rough": 1.0,
+  "tex": "boucle",
+  "size_ft": 1.5,
+  "paint": true,
+  "bump": 0.8,
+  "sheen": 0.4
+ },
+ "rug_mustard": {
+  "rgb": [
+   0.7,
+   0.52,
+   0.16
+  ],
+  "rough": 1.0,
+  "tex": "herringbone",
+  "size_ft": 2,
+  "paint": true,
+  "bump": 0.7,
+  "sheen": 0.3
+ },
+ "paper": {
+  "rgb": [
+   0.9,
+   0.87,
+   0.8
+  ],
+  "rough": 0.9
+ },
+ "ceramic_white": {
+  "rgb": [
+   0.9,
+   0.9,
+   0.88
+  ],
+  "rough": 0.15,
+  "coat": 0.5
+ },
+ "sauna_glow": {
+  "rgb": [
+   1.0,
+   0.7,
+   0.4
+  ],
+  "rough": 0.1,
+  "transmission": 1.0,
+  "ior": 1.45,
+  "thin": true
+ },
+ "towel_white": {
+  "rgb": [
+   0.92,
+   0.9,
+   0.86
+  ],
+  "rough": 1.0,
+  "tex": "boucle",
+  "paint": true,
+  "size_ft": 1,
+  "bump": 0.8
+ },
+ "cream_paint": {
+  "rgb": [
+   0.9,
+   0.86,
+   0.76
+  ],
+  "rough": 0.85,
+  "tex": "plaster",
+  "paint": true,
+  "size_ft": 6,
+  "bump": 0.3
+ },
+ "steel": {
+  "rgb": [
+   0.35,
+   0.35,
+   0.36
+  ],
+  "rough": 0.4,
+  "metallic": 1.0
+ },
+ "iron_plate": {
+  "rgb": [
+   0.08,
+   0.08,
+   0.08
+  ],
+  "rough": 0.6
+ },
+ "book_a": {
+  "rgb": [
+   0.55,
+   0.15,
+   0.12
+  ],
+  "rough": 0.7
+ },
+ "book_b": {
+  "rgb": [
+   0.16,
+   0.3,
+   0.22
+  ],
+  "rough": 0.7
+ },
+ "book_c": {
+  "rgb": [
+   0.75,
+   0.55,
+   0.2
+  ],
+  "rough": 0.7
+ },
+ "book_d": {
+  "rgb": [
+   0.15,
+   0.22,
+   0.4
+  ],
+  "rough": 0.7
+ },
+ "book_e": {
+  "rgb": [
+   0.08,
+   0.08,
+   0.08
+  ],
+  "rough": 0.6
+ },
+ "book_f": {
+  "rgb": [
+   0.88,
+   0.84,
+   0.74
+  ],
+  "rough": 0.8
+ },
+ "book_g": {
+  "rgb": [
+   0.6,
+   0.3,
+   0.12
+  ],
+  "rough": 0.7
+ },
+ "book_h": {
+  "rgb": [
+   0.35,
+   0.12,
+   0.3
+  ],
+  "rough": 0.7
+ },
+ "book_i": {
+  "rgb": [
+   0.2,
+   0.45,
+   0.45
+  ],
+  "rough": 0.7
+ },
+ "book_j": {
+  "rgb": [
+   0.8,
+   0.35,
+   0.15
+  ],
+  "rough": 0.7
+ },
+ "fire_core": {
+  "rgb": [
+   1.0,
+   0.7,
+   0.2
+  ],
+  "rough": 0.5,
+  "emit": 5.0,
+  "emit_rgb": [
+   1.0,
+   0.72,
+   0.25
+  ]
+ },
+ "embers": {
+  "rgb": [
+   0.6,
+   0.12,
+   0.02
+  ],
+  "rough": 0.9,
+  "emit": 2.0,
+  "emit_rgb": [
+   1.0,
+   0.3,
+   0.05
+  ]
  }
 }

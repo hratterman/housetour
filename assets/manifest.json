@@ -1,0 +1,2973 @@
+{
+ "files": {
+  "assets/hdris/sky.hdr": {
+   "asset": "qwantani_late_afternoon_puresky",
+   "author": "Greg Zaal, Jarod Guest",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/qwantani_late_afternoon_puresky_2k.hdr"
+  },
+  "assets/models/alarm_clock_01/alarm_clock_01.bin": {
+   "asset": "alarm_clock_01",
+   "author": "Yann Kervran, James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/alarm_clock_01/alarm_clock_01.bin"
+  },
+  "assets/models/alarm_clock_01/alarm_clock_01.gltf": {
+   "asset": "alarm_clock_01",
+   "author": "Yann Kervran, James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/alarm_clock_01/alarm_clock_01_1k.gltf"
+  },
+  "assets/models/alarm_clock_01/textures/alarm_clock_01_arm_1k.jpg": {
+   "asset": "alarm_clock_01",
+   "author": "Yann Kervran, James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/alarm_clock_01/alarm_clock_01_arm_1k.jpg"
+  },
+  "assets/models/alarm_clock_01/textures/alarm_clock_01_diff_1k.jpg": {
+   "asset": "alarm_clock_01",
+   "author": "Yann Kervran, James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/alarm_clock_01/alarm_clock_01_diff_1k.jpg"
+  },
+  "assets/models/alarm_clock_01/textures/alarm_clock_01_nor_gl_1k.jpg": {
+   "asset": "alarm_clock_01",
+   "author": "Yann Kervran, James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/alarm_clock_01/alarm_clock_01_nor_gl_1k.jpg"
+  },
+  "assets/models/armchair_01/ArmChair_01.bin": {
+   "asset": "ArmChair_01",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/ArmChair_01/ArmChair_01.bin"
+  },
+  "assets/models/armchair_01/ArmChair_01.gltf": {
+   "asset": "ArmChair_01",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/ArmChair_01/ArmChair_01_1k.gltf"
+  },
+  "assets/models/armchair_01/textures/Armchair_01_arm_1k.jpg": {
+   "asset": "ArmChair_01",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ArmChair_01/Armchair_01_arm_1k.jpg"
+  },
+  "assets/models/armchair_01/textures/Armchair_01_diff_1k.jpg": {
+   "asset": "ArmChair_01",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ArmChair_01/Armchair_01_diff_1k.jpg"
+  },
+  "assets/models/armchair_01/textures/Armchair_01_nor_gl_1k.jpg": {
+   "asset": "ArmChair_01",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ArmChair_01/Armchair_01_nor_gl_1k.jpg"
+  },
+  "assets/models/bananas/bananas.bin": {
+   "asset": "bananas",
+   "author": "Alexander Shulha",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/bananas/bananas.bin"
+  },
+  "assets/models/bananas/bananas.gltf": {
+   "asset": "bananas",
+   "author": "Alexander Shulha",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/bananas/bananas_1k.gltf"
+  },
+  "assets/models/bananas/textures/bananas_arm_1k.jpg": {
+   "asset": "bananas",
+   "author": "Alexander Shulha",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/bananas/bananas_arm_1k.jpg"
+  },
+  "assets/models/bananas/textures/bananas_diff_1k.jpg": {
+   "asset": "bananas",
+   "author": "Alexander Shulha",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/bananas/bananas_diff_1k.jpg"
+  },
+  "assets/models/bananas/textures/bananas_nor_gl_1k.jpg": {
+   "asset": "bananas",
+   "author": "Alexander Shulha",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/bananas/bananas_nor_gl_1k.jpg"
+  },
+  "assets/models/bar_chair_round_01/bar_chair_round_01.bin": {
+   "asset": "bar_chair_round_01",
+   "author": "Dairon Sanchez",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/bar_chair_round_01/bar_chair_round_01.bin"
+  },
+  "assets/models/bar_chair_round_01/bar_chair_round_01.gltf": {
+   "asset": "bar_chair_round_01",
+   "author": "Dairon Sanchez",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/bar_chair_round_01/bar_chair_round_01_1k.gltf"
+  },
+  "assets/models/bar_chair_round_01/textures/bar_chair_round_01_arm_1k.jpg": {
+   "asset": "bar_chair_round_01",
+   "author": "Dairon Sanchez",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/bar_chair_round_01/bar_chair_round_01_arm_1k.jpg"
+  },
+  "assets/models/bar_chair_round_01/textures/bar_chair_round_01_diff_1k.jpg": {
+   "asset": "bar_chair_round_01",
+   "author": "Dairon Sanchez",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/bar_chair_round_01/bar_chair_round_01_diff_1k.jpg"
+  },
+  "assets/models/bar_chair_round_01/textures/bar_chair_round_01_nor_gl_1k.jpg": {
+   "asset": "bar_chair_round_01",
+   "author": "Dairon Sanchez",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/bar_chair_round_01/bar_chair_round_01_nor_gl_1k.jpg"
+  },
+  "assets/models/book_encyclopedia_set_01/book_encyclopedia_set_01.bin": {
+   "asset": "book_encyclopedia_set_01",
+   "author": "John Malcolm",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/book_encyclopedia_set_01/book_encyclopedia_set_01.bin"
+  },
+  "assets/models/book_encyclopedia_set_01/book_encyclopedia_set_01.gltf": {
+   "asset": "book_encyclopedia_set_01",
+   "author": "John Malcolm",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/book_encyclopedia_set_01/book_encyclopedia_set_01_1k.gltf"
+  },
+  "assets/models/book_encyclopedia_set_01/textures/book_encyclopedia_set_01_cover_arm_1k.jpg": {
+   "asset": "book_encyclopedia_set_01",
+   "author": "John Malcolm",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/book_encyclopedia_set_01/book_encyclopedia_set_01_cover_arm_1k.jpg"
+  },
+  "assets/models/book_encyclopedia_set_01/textures/book_encyclopedia_set_01_cover_diff_1k.jpg": {
+   "asset": "book_encyclopedia_set_01",
+   "author": "John Malcolm",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/book_encyclopedia_set_01/book_encyclopedia_set_01_cover_diff_1k.jpg"
+  },
+  "assets/models/book_encyclopedia_set_01/textures/book_encyclopedia_set_01_cover_nor_gl_1k.jpg": {
+   "asset": "book_encyclopedia_set_01",
+   "author": "John Malcolm",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/book_encyclopedia_set_01/book_encyclopedia_set_01_cover_nor_gl_1k.jpg"
+  },
+  "assets/models/book_encyclopedia_set_01/textures/book_encyclopedia_set_01_paper_diff_1k.jpg": {
+   "asset": "book_encyclopedia_set_01",
+   "author": "John Malcolm",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/book_encyclopedia_set_01/book_encyclopedia_set_01_paper_diff_1k.jpg"
+  },
+  "assets/models/book_encyclopedia_set_01/textures/book_encyclopedia_set_01_paper_nor_gl_1k.jpg": {
+   "asset": "book_encyclopedia_set_01",
+   "author": "John Malcolm",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/book_encyclopedia_set_01/book_encyclopedia_set_01_paper_nor_gl_1k.jpg"
+  },
+  "assets/models/book_encyclopedia_set_01/textures/book_encyclopedia_set_01_paper_roughness_1k.jpg": {
+   "asset": "book_encyclopedia_set_01",
+   "author": "John Malcolm",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/book_encyclopedia_set_01/book_encyclopedia_set_01_paper_roughness_1k.jpg"
+  },
+  "assets/models/boombox/boombox.bin": {
+   "asset": "boombox",
+   "author": "Thomas Paul Mouilleron",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/boombox/boombox.bin"
+  },
+  "assets/models/boombox/boombox.gltf": {
+   "asset": "boombox",
+   "author": "Thomas Paul Mouilleron",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/boombox/boombox_1k.gltf"
+  },
+  "assets/models/boombox/textures/boombox_arm_1k.jpg": {
+   "asset": "boombox",
+   "author": "Thomas Paul Mouilleron",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/boombox/boombox_arm_1k.jpg"
+  },
+  "assets/models/boombox/textures/boombox_diff_1k.jpg": {
+   "asset": "boombox",
+   "author": "Thomas Paul Mouilleron",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/boombox/boombox_diff_1k.jpg"
+  },
+  "assets/models/boombox/textures/boombox_nor_gl_1k.jpg": {
+   "asset": "boombox",
+   "author": "Thomas Paul Mouilleron",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/boombox/boombox_nor_gl_1k.jpg"
+  },
+  "assets/models/boombox/textures/boombox_speakers_arm_1k.jpg": {
+   "asset": "boombox",
+   "author": "Thomas Paul Mouilleron",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/boombox/boombox_speakers_arm_1k.jpg"
+  },
+  "assets/models/boombox/textures/boombox_speakers_diff_1k.jpg": {
+   "asset": "boombox",
+   "author": "Thomas Paul Mouilleron",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/boombox/boombox_speakers_diff_1k.jpg"
+  },
+  "assets/models/brass_candleholders/brass_candleholders.bin": {
+   "asset": "brass_candleholders",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/brass_candleholders/brass_candleholders.bin"
+  },
+  "assets/models/brass_candleholders/brass_candleholders.gltf": {
+   "asset": "brass_candleholders",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/brass_candleholders/brass_candleholders_1k.gltf"
+  },
+  "assets/models/brass_candleholders/textures/brass_candleholders_01_arm_1k.jpg": {
+   "asset": "brass_candleholders",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_candleholders/brass_candleholders_01_arm_1k.jpg"
+  },
+  "assets/models/brass_candleholders/textures/brass_candleholders_01_diff_1k.jpg": {
+   "asset": "brass_candleholders",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_candleholders/brass_candleholders_01_diff_1k.jpg"
+  },
+  "assets/models/brass_candleholders/textures/brass_candleholders_01_nor_gl_1k.jpg": {
+   "asset": "brass_candleholders",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_candleholders/brass_candleholders_01_nor_gl_1k.jpg"
+  },
+  "assets/models/brass_candleholders/textures/brass_candleholders_02_arm_1k.jpg": {
+   "asset": "brass_candleholders",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_candleholders/brass_candleholders_02_arm_1k.jpg"
+  },
+  "assets/models/brass_candleholders/textures/brass_candleholders_02_diff_1k.jpg": {
+   "asset": "brass_candleholders",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_candleholders/brass_candleholders_02_diff_1k.jpg"
+  },
+  "assets/models/brass_candleholders/textures/brass_candleholders_02_nor_gl_1k.jpg": {
+   "asset": "brass_candleholders",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_candleholders/brass_candleholders_02_nor_gl_1k.jpg"
+  },
+  "assets/models/brass_candleholders/textures/brass_candleholders_03_arm_1k.jpg": {
+   "asset": "brass_candleholders",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_candleholders/brass_candleholders_03_arm_1k.jpg"
+  },
+  "assets/models/brass_candleholders/textures/brass_candleholders_03_diff_1k.jpg": {
+   "asset": "brass_candleholders",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_candleholders/brass_candleholders_03_diff_1k.jpg"
+  },
+  "assets/models/brass_candleholders/textures/brass_candleholders_03_nor_gl_1k.jpg": {
+   "asset": "brass_candleholders",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_candleholders/brass_candleholders_03_nor_gl_1k.jpg"
+  },
+  "assets/models/brass_candleholders/textures/brass_candleholders_candles_arm_1k.jpg": {
+   "asset": "brass_candleholders",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_candleholders/brass_candleholders_candles_arm_1k.jpg"
+  },
+  "assets/models/brass_candleholders/textures/brass_candleholders_candles_diff_1k.jpg": {
+   "asset": "brass_candleholders",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_candleholders/brass_candleholders_candles_diff_1k.jpg"
+  },
+  "assets/models/brass_candleholders/textures/brass_candleholders_candles_nor_gl_1k.jpg": {
+   "asset": "brass_candleholders",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_candleholders/brass_candleholders_candles_nor_gl_1k.jpg"
+  },
+  "assets/models/brass_candleholders/textures/brass_candleholders_flame_diff_1k.jpg": {
+   "asset": "brass_candleholders",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_candleholders/brass_candleholders_flame_diff_1k.jpg"
+  },
+  "assets/models/brass_goblets/brass_goblets.bin": {
+   "asset": "brass_goblets",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/brass_goblets/brass_goblets.bin"
+  },
+  "assets/models/brass_goblets/brass_goblets.gltf": {
+   "asset": "brass_goblets",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/brass_goblets/brass_goblets_1k.gltf"
+  },
+  "assets/models/brass_goblets/textures/brass_goblet_01_arm_1k.jpg": {
+   "asset": "brass_goblets",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_goblets/brass_goblet_01_arm_1k.jpg"
+  },
+  "assets/models/brass_goblets/textures/brass_goblet_01_diff_1k.jpg": {
+   "asset": "brass_goblets",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_goblets/brass_goblet_01_diff_1k.jpg"
+  },
+  "assets/models/brass_goblets/textures/brass_goblet_01_nor_gl_1k.jpg": {
+   "asset": "brass_goblets",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_goblets/brass_goblet_01_nor_gl_1k.jpg"
+  },
+  "assets/models/brass_goblets/textures/brass_goblet_02_arm_1k.jpg": {
+   "asset": "brass_goblets",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_goblets/brass_goblet_02_arm_1k.jpg"
+  },
+  "assets/models/brass_goblets/textures/brass_goblet_02_diff_1k.jpg": {
+   "asset": "brass_goblets",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_goblets/brass_goblet_02_diff_1k.jpg"
+  },
+  "assets/models/brass_goblets/textures/brass_goblet_02_nor_gl_1k.jpg": {
+   "asset": "brass_goblets",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_goblets/brass_goblet_02_nor_gl_1k.jpg"
+  },
+  "assets/models/brass_goblets/textures/brass_goblet_03_arm_1k.jpg": {
+   "asset": "brass_goblets",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_goblets/brass_goblet_03_arm_1k.jpg"
+  },
+  "assets/models/brass_goblets/textures/brass_goblet_03_diff_1k.jpg": {
+   "asset": "brass_goblets",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_goblets/brass_goblet_03_diff_1k.jpg"
+  },
+  "assets/models/brass_goblets/textures/brass_goblet_03_nor_gl_1k.jpg": {
+   "asset": "brass_goblets",
+   "author": "Tina",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_goblets/brass_goblet_03_nor_gl_1k.jpg"
+  },
+  "assets/models/brass_pot_01/brass_pot_01.bin": {
+   "asset": "brass_pot_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/brass_pot_01/brass_pot_01.bin"
+  },
+  "assets/models/brass_pot_01/brass_pot_01.gltf": {
+   "asset": "brass_pot_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/brass_pot_01/brass_pot_01_1k.gltf"
+  },
+  "assets/models/brass_pot_01/textures/brass_pot_01_arm_1k.jpg": {
+   "asset": "brass_pot_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_pot_01/brass_pot_01_arm_1k.jpg"
+  },
+  "assets/models/brass_pot_01/textures/brass_pot_01_diff_1k.jpg": {
+   "asset": "brass_pot_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_pot_01/brass_pot_01_diff_1k.jpg"
+  },
+  "assets/models/brass_pot_01/textures/brass_pot_01_nor_gl_1k.jpg": {
+   "asset": "brass_pot_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_pot_01/brass_pot_01_nor_gl_1k.jpg"
+  },
+  "assets/models/brass_vase_01/brass_vase_01.bin": {
+   "asset": "brass_vase_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/brass_vase_01/brass_vase_01.bin"
+  },
+  "assets/models/brass_vase_01/brass_vase_01.gltf": {
+   "asset": "brass_vase_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/brass_vase_01/brass_vase_01_1k.gltf"
+  },
+  "assets/models/brass_vase_01/textures/brass_vase_01_arm_1k.jpg": {
+   "asset": "brass_vase_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_vase_01/brass_vase_01_arm_1k.jpg"
+  },
+  "assets/models/brass_vase_01/textures/brass_vase_01_diff_1k.jpg": {
+   "asset": "brass_vase_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_vase_01/brass_vase_01_diff_1k.jpg"
+  },
+  "assets/models/brass_vase_01/textures/brass_vase_01_nor_gl_1k.jpg": {
+   "asset": "brass_vase_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_vase_01/brass_vase_01_nor_gl_1k.jpg"
+  },
+  "assets/models/brass_vase_03/brass_vase_03.bin": {
+   "asset": "brass_vase_03",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/brass_vase_03/brass_vase_03.bin"
+  },
+  "assets/models/brass_vase_03/brass_vase_03.gltf": {
+   "asset": "brass_vase_03",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/brass_vase_03/brass_vase_03_1k.gltf"
+  },
+  "assets/models/brass_vase_03/textures/brass_vase_03_arm_1k.jpg": {
+   "asset": "brass_vase_03",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_vase_03/brass_vase_03_arm_1k.jpg"
+  },
+  "assets/models/brass_vase_03/textures/brass_vase_03_diff_1k.jpg": {
+   "asset": "brass_vase_03",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_vase_03/brass_vase_03_diff_1k.jpg"
+  },
+  "assets/models/brass_vase_03/textures/brass_vase_03_nor_gl_1k.jpg": {
+   "asset": "brass_vase_03",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/brass_vase_03/brass_vase_03_nor_gl_1k.jpg"
+  },
+  "assets/models/calathea_orbifolia_01/calathea_orbifolia_01.bin": {
+   "asset": "calathea_orbifolia_01",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/calathea_orbifolia_01/calathea_orbifolia_01.bin"
+  },
+  "assets/models/calathea_orbifolia_01/calathea_orbifolia_01.gltf": {
+   "asset": "calathea_orbifolia_01",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/calathea_orbifolia_01/calathea_orbifolia_01_1k.gltf"
+  },
+  "assets/models/calathea_orbifolia_01/textures/calathea_orbifolia_01_arm_1k.jpg": {
+   "asset": "calathea_orbifolia_01",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/calathea_orbifolia_01/calathea_orbifolia_01_arm_1k.jpg"
+  },
+  "assets/models/calathea_orbifolia_01/textures/calathea_orbifolia_01_diff_1k.jpg": {
+   "asset": "calathea_orbifolia_01",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/calathea_orbifolia_01/calathea_orbifolia_01_diff_1k.jpg"
+  },
+  "assets/models/calathea_orbifolia_01/textures/calathea_orbifolia_01_nor_gl_1k.jpg": {
+   "asset": "calathea_orbifolia_01",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/calathea_orbifolia_01/calathea_orbifolia_01_nor_gl_1k.jpg"
+  },
+  "assets/models/carrot_cake/carrot_cake.bin": {
+   "asset": "carrot_cake",
+   "author": "Greg Zaal, James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/carrot_cake/carrot_cake.bin"
+  },
+  "assets/models/carrot_cake/carrot_cake.gltf": {
+   "asset": "carrot_cake",
+   "author": "Greg Zaal, James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/carrot_cake/carrot_cake_1k.gltf"
+  },
+  "assets/models/carrot_cake/textures/carrot_cake_arm_1k.jpg": {
+   "asset": "carrot_cake",
+   "author": "Greg Zaal, James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/carrot_cake/carrot_cake_arm_1k.jpg"
+  },
+  "assets/models/carrot_cake/textures/carrot_cake_diff_1k.jpg": {
+   "asset": "carrot_cake",
+   "author": "Greg Zaal, James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/carrot_cake/carrot_cake_diff_1k.jpg"
+  },
+  "assets/models/carrot_cake/textures/carrot_cake_nor_gl_1k.jpg": {
+   "asset": "carrot_cake",
+   "author": "Greg Zaal, James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/carrot_cake/carrot_cake_nor_gl_1k.jpg"
+  },
+  "assets/models/ceramic_vase_01/ceramic_vase_01.bin": {
+   "asset": "ceramic_vase_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/ceramic_vase_01/ceramic_vase_01.bin"
+  },
+  "assets/models/ceramic_vase_01/ceramic_vase_01.gltf": {
+   "asset": "ceramic_vase_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/ceramic_vase_01/ceramic_vase_01_1k.gltf"
+  },
+  "assets/models/ceramic_vase_01/textures/ceramic_vase_01_arm_1k.jpg": {
+   "asset": "ceramic_vase_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ceramic_vase_01/ceramic_vase_01_arm_1k.jpg"
+  },
+  "assets/models/ceramic_vase_01/textures/ceramic_vase_01_diff_1k.jpg": {
+   "asset": "ceramic_vase_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ceramic_vase_01/ceramic_vase_01_diff_1k.jpg"
+  },
+  "assets/models/ceramic_vase_01/textures/ceramic_vase_01_nor_gl_1k.jpg": {
+   "asset": "ceramic_vase_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ceramic_vase_01/ceramic_vase_01_nor_gl_1k.jpg"
+  },
+  "assets/models/ceramic_vase_02/ceramic_vase_02.bin": {
+   "asset": "ceramic_vase_02",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/ceramic_vase_02/ceramic_vase_02.bin"
+  },
+  "assets/models/ceramic_vase_02/ceramic_vase_02.gltf": {
+   "asset": "ceramic_vase_02",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/ceramic_vase_02/ceramic_vase_02_1k.gltf"
+  },
+  "assets/models/ceramic_vase_02/textures/ceramic_vase_02_diff_1k.jpg": {
+   "asset": "ceramic_vase_02",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ceramic_vase_02/ceramic_vase_02_diff_1k.jpg"
+  },
+  "assets/models/ceramic_vase_02/textures/ceramic_vase_02_nor_gl_1k.jpg": {
+   "asset": "ceramic_vase_02",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ceramic_vase_02/ceramic_vase_02_nor_gl_1k.jpg"
+  },
+  "assets/models/ceramic_vase_02/textures/ceramic_vase_02_rough_1k.jpg": {
+   "asset": "ceramic_vase_02",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ceramic_vase_02/ceramic_vase_02_rough_1k.jpg"
+  },
+  "assets/models/ceramic_vase_03/ceramic_vase_03.bin": {
+   "asset": "ceramic_vase_03",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/ceramic_vase_03/ceramic_vase_03.bin"
+  },
+  "assets/models/ceramic_vase_03/ceramic_vase_03.gltf": {
+   "asset": "ceramic_vase_03",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/ceramic_vase_03/ceramic_vase_03_1k.gltf"
+  },
+  "assets/models/ceramic_vase_03/textures/ceramic_vase_03_diff_1k.jpg": {
+   "asset": "ceramic_vase_03",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ceramic_vase_03/ceramic_vase_03_diff_1k.jpg"
+  },
+  "assets/models/ceramic_vase_03/textures/ceramic_vase_03_nor_gl_1k.jpg": {
+   "asset": "ceramic_vase_03",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ceramic_vase_03/ceramic_vase_03_nor_gl_1k.jpg"
+  },
+  "assets/models/ceramic_vase_03/textures/ceramic_vase_03_rough_1k.jpg": {
+   "asset": "ceramic_vase_03",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ceramic_vase_03/ceramic_vase_03_rough_1k.jpg"
+  },
+  "assets/models/chess_set/chess_set.bin": {
+   "asset": "chess_set",
+   "author": "Riley Queen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/chess_set/chess_set.bin"
+  },
+  "assets/models/chess_set/chess_set.gltf": {
+   "asset": "chess_set",
+   "author": "Riley Queen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/chess_set/chess_set_1k.gltf"
+  },
+  "assets/models/chess_set/textures/chess_set_board_arm_1k.jpg": {
+   "asset": "chess_set",
+   "author": "Riley Queen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/chess_set/chess_set_board_arm_1k.jpg"
+  },
+  "assets/models/chess_set/textures/chess_set_board_diff_1k.jpg": {
+   "asset": "chess_set",
+   "author": "Riley Queen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/chess_set/chess_set_board_diff_1k.jpg"
+  },
+  "assets/models/chess_set/textures/chess_set_board_nor_gl_1k.jpg": {
+   "asset": "chess_set",
+   "author": "Riley Queen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/chess_set/chess_set_board_nor_gl_1k.jpg"
+  },
+  "assets/models/chess_set/textures/chess_set_pieces_black_arm_1k.jpg": {
+   "asset": "chess_set",
+   "author": "Riley Queen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/chess_set/chess_set_pieces_black_arm_1k.jpg"
+  },
+  "assets/models/chess_set/textures/chess_set_pieces_black_diff_1k.jpg": {
+   "asset": "chess_set",
+   "author": "Riley Queen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/chess_set/chess_set_pieces_black_diff_1k.jpg"
+  },
+  "assets/models/chess_set/textures/chess_set_pieces_black_nor_gl_1k.jpg": {
+   "asset": "chess_set",
+   "author": "Riley Queen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/chess_set/chess_set_pieces_black_nor_gl_1k.jpg"
+  },
+  "assets/models/chess_set/textures/chess_set_pieces_white_arm_1k.jpg": {
+   "asset": "chess_set",
+   "author": "Riley Queen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/chess_set/chess_set_pieces_white_arm_1k.jpg"
+  },
+  "assets/models/chess_set/textures/chess_set_pieces_white_diff_1k.jpg": {
+   "asset": "chess_set",
+   "author": "Riley Queen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/chess_set/chess_set_pieces_white_diff_1k.jpg"
+  },
+  "assets/models/chess_set/textures/chess_set_pieces_white_nor_gl_1k.jpg": {
+   "asset": "chess_set",
+   "author": "Riley Queen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/chess_set/chess_set_pieces_white_nor_gl_1k.jpg"
+  },
+  "assets/models/classic_nightstand_01/ClassicNightstand_01.bin": {
+   "asset": "ClassicNightstand_01",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/ClassicNightstand_01/ClassicNightstand_01.bin"
+  },
+  "assets/models/classic_nightstand_01/ClassicNightstand_01.gltf": {
+   "asset": "ClassicNightstand_01",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/ClassicNightstand_01/ClassicNightstand_01_1k.gltf"
+  },
+  "assets/models/classic_nightstand_01/textures/ClassicNightstand_01_arm_1k.jpg": {
+   "asset": "ClassicNightstand_01",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ClassicNightstand_01/ClassicNightstand_01_arm_1k.jpg"
+  },
+  "assets/models/classic_nightstand_01/textures/ClassicNightstand_01_diff_1k.jpg": {
+   "asset": "ClassicNightstand_01",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ClassicNightstand_01/ClassicNightstand_01_diff_1k.jpg"
+  },
+  "assets/models/classic_nightstand_01/textures/ClassicNightstand_01_nor_gl_1k.jpg": {
+   "asset": "ClassicNightstand_01",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/ClassicNightstand_01/ClassicNightstand_01_nor_gl_1k.jpg"
+  },
+  "assets/models/coffee_table_round_01/coffee_table_round_01.bin": {
+   "asset": "coffee_table_round_01",
+   "author": "Ulan Cabanilla",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/coffee_table_round_01/coffee_table_round_01.bin"
+  },
+  "assets/models/coffee_table_round_01/coffee_table_round_01.gltf": {
+   "asset": "coffee_table_round_01",
+   "author": "Ulan Cabanilla",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/coffee_table_round_01/coffee_table_round_01_1k.gltf"
+  },
+  "assets/models/coffee_table_round_01/textures/coffee_table_round_01_arm_1k.jpg": {
+   "asset": "coffee_table_round_01",
+   "author": "Ulan Cabanilla",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/coffee_table_round_01/coffee_table_round_01_arm_1k.jpg"
+  },
+  "assets/models/coffee_table_round_01/textures/coffee_table_round_01_diff_1k.jpg": {
+   "asset": "coffee_table_round_01",
+   "author": "Ulan Cabanilla",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/coffee_table_round_01/coffee_table_round_01_diff_1k.jpg"
+  },
+  "assets/models/coffee_table_round_01/textures/coffee_table_round_01_nor_gl_1k.jpg": {
+   "asset": "coffee_table_round_01",
+   "author": "Ulan Cabanilla",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/coffee_table_round_01/coffee_table_round_01_nor_gl_1k.jpg"
+  },
+  "assets/models/concrete_cat_statue/concrete_cat_statue.bin": {
+   "asset": "concrete_cat_statue",
+   "author": "Rico Cilliers, Riley Queen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/concrete_cat_statue/concrete_cat_statue.bin"
+  },
+  "assets/models/concrete_cat_statue/concrete_cat_statue.gltf": {
+   "asset": "concrete_cat_statue",
+   "author": "Rico Cilliers, Riley Queen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/concrete_cat_statue/concrete_cat_statue_1k.gltf"
+  },
+  "assets/models/concrete_cat_statue/textures/concrete_cat_statue_arm_1k.jpg": {
+   "asset": "concrete_cat_statue",
+   "author": "Rico Cilliers, Riley Queen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/concrete_cat_statue/concrete_cat_statue_arm_1k.jpg"
+  },
+  "assets/models/concrete_cat_statue/textures/concrete_cat_statue_diff_1k.jpg": {
+   "asset": "concrete_cat_statue",
+   "author": "Rico Cilliers, Riley Queen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/concrete_cat_statue/concrete_cat_statue_diff_1k.jpg"
+  },
+  "assets/models/concrete_cat_statue/textures/concrete_cat_statue_nor_gl_1k.jpg": {
+   "asset": "concrete_cat_statue",
+   "author": "Rico Cilliers, Riley Queen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/concrete_cat_statue/concrete_cat_statue_nor_gl_1k.jpg"
+  },
+  "assets/models/desk_lamp_arm_01/desk_lamp_arm_01.bin": {
+   "asset": "desk_lamp_arm_01",
+   "author": "Yann Kervran, Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/desk_lamp_arm_01/desk_lamp_arm_01.bin"
+  },
+  "assets/models/desk_lamp_arm_01/desk_lamp_arm_01.gltf": {
+   "asset": "desk_lamp_arm_01",
+   "author": "Yann Kervran, Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/desk_lamp_arm_01/desk_lamp_arm_01_1k.gltf"
+  },
+  "assets/models/desk_lamp_arm_01/textures/desk_lamp_arm_01_arm_1k.jpg": {
+   "asset": "desk_lamp_arm_01",
+   "author": "Yann Kervran, Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/desk_lamp_arm_01/desk_lamp_arm_01_arm_1k.jpg"
+  },
+  "assets/models/desk_lamp_arm_01/textures/desk_lamp_arm_01_diff_1k.jpg": {
+   "asset": "desk_lamp_arm_01",
+   "author": "Yann Kervran, Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/desk_lamp_arm_01/desk_lamp_arm_01_diff_1k.jpg"
+  },
+  "assets/models/desk_lamp_arm_01/textures/desk_lamp_arm_01_nor_gl_1k.jpg": {
+   "asset": "desk_lamp_arm_01",
+   "author": "Yann Kervran, Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/desk_lamp_arm_01/desk_lamp_arm_01_nor_gl_1k.jpg"
+  },
+  "assets/models/dining_chair_02/dining_chair_02.bin": {
+   "asset": "dining_chair_02",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/dining_chair_02/dining_chair_02.bin"
+  },
+  "assets/models/dining_chair_02/dining_chair_02.gltf": {
+   "asset": "dining_chair_02",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/dining_chair_02/dining_chair_02_1k.gltf"
+  },
+  "assets/models/dining_chair_02/textures/dining_chair_02_arm_1k.jpg": {
+   "asset": "dining_chair_02",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/dining_chair_02/dining_chair_02_arm_1k.jpg"
+  },
+  "assets/models/dining_chair_02/textures/dining_chair_02_diff_1k.jpg": {
+   "asset": "dining_chair_02",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/dining_chair_02/dining_chair_02_diff_1k.jpg"
+  },
+  "assets/models/dining_chair_02/textures/dining_chair_02_nor_gl_1k.jpg": {
+   "asset": "dining_chair_02",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/dining_chair_02/dining_chair_02_nor_gl_1k.jpg"
+  },
+  "assets/models/drawer_cabinet/drawer_cabinet.bin": {
+   "asset": "drawer_cabinet",
+   "author": "Ulan Cabanilla",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/drawer_cabinet/drawer_cabinet.bin"
+  },
+  "assets/models/drawer_cabinet/drawer_cabinet.gltf": {
+   "asset": "drawer_cabinet",
+   "author": "Ulan Cabanilla",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/drawer_cabinet/drawer_cabinet_1k.gltf"
+  },
+  "assets/models/drawer_cabinet/textures/drawer_cabinet_arm_1k.jpg": {
+   "asset": "drawer_cabinet",
+   "author": "Ulan Cabanilla",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/drawer_cabinet/drawer_cabinet_arm_1k.jpg"
+  },
+  "assets/models/drawer_cabinet/textures/drawer_cabinet_diff_1k.jpg": {
+   "asset": "drawer_cabinet",
+   "author": "Ulan Cabanilla",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/drawer_cabinet/drawer_cabinet_diff_1k.jpg"
+  },
+  "assets/models/drawer_cabinet/textures/drawer_cabinet_nor_gl_1k.jpg": {
+   "asset": "drawer_cabinet",
+   "author": "Ulan Cabanilla",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/drawer_cabinet/drawer_cabinet_nor_gl_1k.jpg"
+  },
+  "assets/models/fern_02/fern_02.bin": {
+   "asset": "fern_02",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/fern_02/fern_02.bin"
+  },
+  "assets/models/fern_02/fern_02.gltf": {
+   "asset": "fern_02",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/fern_02/fern_02_1k.gltf"
+  },
+  "assets/models/fern_02/textures/fern_02_arm_1k.jpg": {
+   "asset": "fern_02",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/fern_02/fern_02_arm_1k.jpg"
+  },
+  "assets/models/fern_02/textures/fern_02_diff_1k.jpg": {
+   "asset": "fern_02",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/fern_02/fern_02_diff_1k.jpg"
+  },
+  "assets/models/fern_02/textures/fern_02_nor_gl_1k.jpg": {
+   "asset": "fern_02",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/fern_02/fern_02_nor_gl_1k.jpg"
+  },
+  "assets/models/food_apple_01/food_apple_01.bin": {
+   "asset": "food_apple_01",
+   "author": "Oliver Harries",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/food_apple_01/food_apple_01.bin"
+  },
+  "assets/models/food_apple_01/food_apple_01.gltf": {
+   "asset": "food_apple_01",
+   "author": "Oliver Harries",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/food_apple_01/food_apple_01_1k.gltf"
+  },
+  "assets/models/food_apple_01/textures/food_apple_01_diff_1k.jpg": {
+   "asset": "food_apple_01",
+   "author": "Oliver Harries",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/food_apple_01/food_apple_01_diff_1k.jpg"
+  },
+  "assets/models/food_apple_01/textures/food_apple_01_nor_gl_1k.jpg": {
+   "asset": "food_apple_01",
+   "author": "Oliver Harries",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/food_apple_01/food_apple_01_nor_gl_1k.jpg"
+  },
+  "assets/models/food_apple_01/textures/food_apple_01_rough_1k.jpg": {
+   "asset": "food_apple_01",
+   "author": "Oliver Harries",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/food_apple_01/food_apple_01_rough_1k.jpg"
+  },
+  "assets/models/food_pears_asian_01/food_pears_asian_01.bin": {
+   "asset": "food_pears_asian_01",
+   "author": "Amal Kumar",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/food_pears_asian_01/food_pears_asian_01.bin"
+  },
+  "assets/models/food_pears_asian_01/food_pears_asian_01.gltf": {
+   "asset": "food_pears_asian_01",
+   "author": "Amal Kumar",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/food_pears_asian_01/food_pears_asian_01_1k.gltf"
+  },
+  "assets/models/food_pears_asian_01/textures/food_pears_asian_01_arm_1k.jpg": {
+   "asset": "food_pears_asian_01",
+   "author": "Amal Kumar",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/food_pears_asian_01/food_pears_asian_01_arm_1k.jpg"
+  },
+  "assets/models/food_pears_asian_01/textures/food_pears_asian_01_diff_1k.jpg": {
+   "asset": "food_pears_asian_01",
+   "author": "Amal Kumar",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/food_pears_asian_01/food_pears_asian_01_diff_1k.jpg"
+  },
+  "assets/models/food_pears_asian_01/textures/food_pears_asian_01_nor_gl_1k.jpg": {
+   "asset": "food_pears_asian_01",
+   "author": "Amal Kumar",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/food_pears_asian_01/food_pears_asian_01_nor_gl_1k.jpg"
+  },
+  "assets/models/green_chair_01/GreenChair_01.bin": {
+   "asset": "GreenChair_01",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/GreenChair_01/GreenChair_01.bin"
+  },
+  "assets/models/green_chair_01/GreenChair_01.gltf": {
+   "asset": "GreenChair_01",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/GreenChair_01/GreenChair_01_1k.gltf"
+  },
+  "assets/models/green_chair_01/textures/GreenChair_01_arm_1k.jpg": {
+   "asset": "GreenChair_01",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/GreenChair_01/GreenChair_01_arm_1k.jpg"
+  },
+  "assets/models/green_chair_01/textures/GreenChair_01_diff_1k.jpg": {
+   "asset": "GreenChair_01",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/GreenChair_01/GreenChair_01_diff_1k.jpg"
+  },
+  "assets/models/green_chair_01/textures/GreenChair_01_nor_gl_1k.jpg": {
+   "asset": "GreenChair_01",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/GreenChair_01/GreenChair_01_nor_gl_1k.jpg"
+  },
+  "assets/models/hanging_picture_frame_01/hanging_picture_frame_01.bin": {
+   "asset": "hanging_picture_frame_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/hanging_picture_frame_01/hanging_picture_frame_01.bin"
+  },
+  "assets/models/hanging_picture_frame_01/hanging_picture_frame_01.gltf": {
+   "asset": "hanging_picture_frame_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/hanging_picture_frame_01/hanging_picture_frame_01_1k.gltf"
+  },
+  "assets/models/hanging_picture_frame_01/textures/hanging_picture_frame_01_arm_1k.jpg": {
+   "asset": "hanging_picture_frame_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/hanging_picture_frame_01/hanging_picture_frame_01_arm_1k.jpg"
+  },
+  "assets/models/hanging_picture_frame_01/textures/hanging_picture_frame_01_artwork_diff_1k.jpg": {
+   "asset": "hanging_picture_frame_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/hanging_picture_frame_01/hanging_picture_frame_01_artwork_diff_1k.jpg"
+  },
+  "assets/models/hanging_picture_frame_01/textures/hanging_picture_frame_01_artwork_nor_gl_1k.jpg": {
+   "asset": "hanging_picture_frame_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/hanging_picture_frame_01/hanging_picture_frame_01_artwork_nor_gl_1k.jpg"
+  },
+  "assets/models/hanging_picture_frame_01/textures/hanging_picture_frame_01_artwork_roughness_1k.jpg": {
+   "asset": "hanging_picture_frame_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/hanging_picture_frame_01/hanging_picture_frame_01_artwork_roughness_1k.jpg"
+  },
+  "assets/models/hanging_picture_frame_01/textures/hanging_picture_frame_01_diff_1k.jpg": {
+   "asset": "hanging_picture_frame_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/hanging_picture_frame_01/hanging_picture_frame_01_diff_1k.jpg"
+  },
+  "assets/models/hanging_picture_frame_01/textures/hanging_picture_frame_01_nor_gl_1k.jpg": {
+   "asset": "hanging_picture_frame_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/hanging_picture_frame_01/hanging_picture_frame_01_nor_gl_1k.jpg"
+  },
+  "assets/models/jug_01/jug_01.bin": {
+   "asset": "jug_01",
+   "author": "Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/jug_01/jug_01.bin"
+  },
+  "assets/models/jug_01/jug_01.gltf": {
+   "asset": "jug_01",
+   "author": "Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/jug_01/jug_01_1k.gltf"
+  },
+  "assets/models/jug_01/textures/jug_01_arm_1k.jpg": {
+   "asset": "jug_01",
+   "author": "Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/jug_01/jug_01_arm_1k.jpg"
+  },
+  "assets/models/jug_01/textures/jug_01_diff_1k.jpg": {
+   "asset": "jug_01",
+   "author": "Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/jug_01/jug_01_diff_1k.jpg"
+  },
+  "assets/models/jug_01/textures/jug_01_nor_gl_1k.jpg": {
+   "asset": "jug_01",
+   "author": "Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/jug_01/jug_01_nor_gl_1k.jpg"
+  },
+  "assets/models/lemon/lemon.bin": {
+   "asset": "lemon",
+   "author": "Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/lemon/lemon.bin"
+  },
+  "assets/models/lemon/lemon.gltf": {
+   "asset": "lemon",
+   "author": "Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/lemon/lemon_1k.gltf"
+  },
+  "assets/models/lemon/textures/lemon_arm_1k.jpg": {
+   "asset": "lemon",
+   "author": "Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/lemon/lemon_arm_1k.jpg"
+  },
+  "assets/models/lemon/textures/lemon_diff_1k.jpg": {
+   "asset": "lemon",
+   "author": "Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/lemon/lemon_diff_1k.jpg"
+  },
+  "assets/models/lemon/textures/lemon_nor_gl_1k.jpg": {
+   "asset": "lemon",
+   "author": "Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/lemon/lemon_nor_gl_1k.jpg"
+  },
+  "assets/models/mantel_clock_01/mantel_clock_01.bin": {
+   "asset": "mantel_clock_01",
+   "author": "Yann Kervran, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/mantel_clock_01/mantel_clock_01.bin"
+  },
+  "assets/models/mantel_clock_01/mantel_clock_01.gltf": {
+   "asset": "mantel_clock_01",
+   "author": "Yann Kervran, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/mantel_clock_01/mantel_clock_01_1k.gltf"
+  },
+  "assets/models/mantel_clock_01/textures/mantel_clock_01_arm_1k.jpg": {
+   "asset": "mantel_clock_01",
+   "author": "Yann Kervran, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/mantel_clock_01/mantel_clock_01_arm_1k.jpg"
+  },
+  "assets/models/mantel_clock_01/textures/mantel_clock_01_diff_1k.jpg": {
+   "asset": "mantel_clock_01",
+   "author": "Yann Kervran, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/mantel_clock_01/mantel_clock_01_diff_1k.jpg"
+  },
+  "assets/models/mantel_clock_01/textures/mantel_clock_01_nor_gl_1k.jpg": {
+   "asset": "mantel_clock_01",
+   "author": "Yann Kervran, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/mantel_clock_01/mantel_clock_01_nor_gl_1k.jpg"
+  },
+  "assets/models/marble_bust_01/marble_bust_01.bin": {
+   "asset": "marble_bust_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/marble_bust_01/marble_bust_01.bin"
+  },
+  "assets/models/marble_bust_01/marble_bust_01.gltf": {
+   "asset": "marble_bust_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/marble_bust_01/marble_bust_01_1k.gltf"
+  },
+  "assets/models/marble_bust_01/textures/marble_bust_01_diff_1k.jpg": {
+   "asset": "marble_bust_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/marble_bust_01/marble_bust_01_diff_1k.jpg"
+  },
+  "assets/models/marble_bust_01/textures/marble_bust_01_nor_gl_1k.jpg": {
+   "asset": "marble_bust_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/marble_bust_01/marble_bust_01_nor_gl_1k.jpg"
+  },
+  "assets/models/marble_bust_01/textures/marble_bust_01_rough_1k.jpg": {
+   "asset": "marble_bust_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/marble_bust_01/marble_bust_01_rough_1k.jpg"
+  },
+  "assets/models/metal_stool_01/metal_stool_01.bin": {
+   "asset": "metal_stool_01",
+   "author": "Ulan Cabanilla",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/metal_stool_01/metal_stool_01.bin"
+  },
+  "assets/models/metal_stool_01/metal_stool_01.gltf": {
+   "asset": "metal_stool_01",
+   "author": "Ulan Cabanilla",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/metal_stool_01/metal_stool_01_1k.gltf"
+  },
+  "assets/models/metal_stool_01/textures/metal_stool_01_arm_1k.jpg": {
+   "asset": "metal_stool_01",
+   "author": "Ulan Cabanilla",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/metal_stool_01/metal_stool_01_arm_1k.jpg"
+  },
+  "assets/models/metal_stool_01/textures/metal_stool_01_diff_1k.jpg": {
+   "asset": "metal_stool_01",
+   "author": "Ulan Cabanilla",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/metal_stool_01/metal_stool_01_diff_1k.jpg"
+  },
+  "assets/models/metal_stool_01/textures/metal_stool_01_nor_gl_1k.jpg": {
+   "asset": "metal_stool_01",
+   "author": "Ulan Cabanilla",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/metal_stool_01/metal_stool_01_nor_gl_1k.jpg"
+  },
+  "assets/models/mid_century_lounge_chair/mid_century_lounge_chair.bin": {
+   "asset": "mid_century_lounge_chair",
+   "author": "Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/mid_century_lounge_chair/mid_century_lounge_chair.bin"
+  },
+  "assets/models/mid_century_lounge_chair/mid_century_lounge_chair.gltf": {
+   "asset": "mid_century_lounge_chair",
+   "author": "Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/mid_century_lounge_chair/mid_century_lounge_chair_1k.gltf"
+  },
+  "assets/models/mid_century_lounge_chair/textures/mid_century_lounge_chair_arm_1k.jpg": {
+   "asset": "mid_century_lounge_chair",
+   "author": "Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/mid_century_lounge_chair/mid_century_lounge_chair_arm_1k.jpg"
+  },
+  "assets/models/mid_century_lounge_chair/textures/mid_century_lounge_chair_diff_1k.jpg": {
+   "asset": "mid_century_lounge_chair",
+   "author": "Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/mid_century_lounge_chair/mid_century_lounge_chair_diff_1k.jpg"
+  },
+  "assets/models/mid_century_lounge_chair/textures/mid_century_lounge_chair_nor_gl_1k.jpg": {
+   "asset": "mid_century_lounge_chair",
+   "author": "Kuutti Siitonen",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/mid_century_lounge_chair/mid_century_lounge_chair_nor_gl_1k.jpg"
+  },
+  "assets/models/modern_arm_chair_01/modern_arm_chair_01.bin": {
+   "asset": "modern_arm_chair_01",
+   "author": "Vibrant Nordic",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/modern_arm_chair_01/modern_arm_chair_01.bin"
+  },
+  "assets/models/modern_arm_chair_01/modern_arm_chair_01.gltf": {
+   "asset": "modern_arm_chair_01",
+   "author": "Vibrant Nordic",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/modern_arm_chair_01/modern_arm_chair_01_1k.gltf"
+  },
+  "assets/models/modern_arm_chair_01/textures/modern_arm_chair_01_legs_arm_1k.jpg": {
+   "asset": "modern_arm_chair_01",
+   "author": "Vibrant Nordic",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_arm_chair_01/modern_arm_chair_01_legs_arm_1k.jpg"
+  },
+  "assets/models/modern_arm_chair_01/textures/modern_arm_chair_01_legs_diff_1k.jpg": {
+   "asset": "modern_arm_chair_01",
+   "author": "Vibrant Nordic",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_arm_chair_01/modern_arm_chair_01_legs_diff_1k.jpg"
+  },
+  "assets/models/modern_arm_chair_01/textures/modern_arm_chair_01_legs_nor_gl_1k.jpg": {
+   "asset": "modern_arm_chair_01",
+   "author": "Vibrant Nordic",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_arm_chair_01/modern_arm_chair_01_legs_nor_gl_1k.jpg"
+  },
+  "assets/models/modern_arm_chair_01/textures/modern_arm_chair_01_pillow_arm_1k.jpg": {
+   "asset": "modern_arm_chair_01",
+   "author": "Vibrant Nordic",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_arm_chair_01/modern_arm_chair_01_pillow_arm_1k.jpg"
+  },
+  "assets/models/modern_arm_chair_01/textures/modern_arm_chair_01_pillow_diff_1k.jpg": {
+   "asset": "modern_arm_chair_01",
+   "author": "Vibrant Nordic",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_arm_chair_01/modern_arm_chair_01_pillow_diff_1k.jpg"
+  },
+  "assets/models/modern_arm_chair_01/textures/modern_arm_chair_01_pillow_nor_gl_1k.jpg": {
+   "asset": "modern_arm_chair_01",
+   "author": "Vibrant Nordic",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_arm_chair_01/modern_arm_chair_01_pillow_nor_gl_1k.jpg"
+  },
+  "assets/models/modern_ceiling_lamp_01/modern_ceiling_lamp_01.bin": {
+   "asset": "modern_ceiling_lamp_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/modern_ceiling_lamp_01/modern_ceiling_lamp_01.bin"
+  },
+  "assets/models/modern_ceiling_lamp_01/modern_ceiling_lamp_01.gltf": {
+   "asset": "modern_ceiling_lamp_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/modern_ceiling_lamp_01/modern_ceiling_lamp_01_1k.gltf"
+  },
+  "assets/models/modern_ceiling_lamp_01/textures/modern_ceiling_lamp_01_arm_1k.jpg": {
+   "asset": "modern_ceiling_lamp_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_ceiling_lamp_01/modern_ceiling_lamp_01_arm_1k.jpg"
+  },
+  "assets/models/modern_ceiling_lamp_01/textures/modern_ceiling_lamp_01_diff_1k.jpg": {
+   "asset": "modern_ceiling_lamp_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_ceiling_lamp_01/modern_ceiling_lamp_01_diff_1k.jpg"
+  },
+  "assets/models/modern_ceiling_lamp_01/textures/modern_ceiling_lamp_01_nor_gl_1k.jpg": {
+   "asset": "modern_ceiling_lamp_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_ceiling_lamp_01/modern_ceiling_lamp_01_nor_gl_1k.jpg"
+  },
+  "assets/models/modern_coffee_table_01/modern_coffee_table_01.bin": {
+   "asset": "modern_coffee_table_01",
+   "author": "Amin",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/modern_coffee_table_01/modern_coffee_table_01.bin"
+  },
+  "assets/models/modern_coffee_table_01/modern_coffee_table_01.gltf": {
+   "asset": "modern_coffee_table_01",
+   "author": "Amin",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/modern_coffee_table_01/modern_coffee_table_01_1k.gltf"
+  },
+  "assets/models/modern_coffee_table_01/textures/modern_coffee_table_01_diff_1k.jpg": {
+   "asset": "modern_coffee_table_01",
+   "author": "Amin",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_coffee_table_01/modern_coffee_table_01_diff_1k.jpg"
+  },
+  "assets/models/modern_coffee_table_01/textures/modern_coffee_table_01_nor_gl_1k.jpg": {
+   "asset": "modern_coffee_table_01",
+   "author": "Amin",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_coffee_table_01/modern_coffee_table_01_nor_gl_1k.jpg"
+  },
+  "assets/models/modern_coffee_table_01/textures/modern_coffee_table_01_rough_1k.jpg": {
+   "asset": "modern_coffee_table_01",
+   "author": "Amin",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_coffee_table_01/modern_coffee_table_01_rough_1k.jpg"
+  },
+  "assets/models/modern_coffee_table_02/modern_coffee_table_02.bin": {
+   "asset": "modern_coffee_table_02",
+   "author": "Amin",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/modern_coffee_table_02/modern_coffee_table_02.bin"
+  },
+  "assets/models/modern_coffee_table_02/modern_coffee_table_02.gltf": {
+   "asset": "modern_coffee_table_02",
+   "author": "Amin",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/modern_coffee_table_02/modern_coffee_table_02_1k.gltf"
+  },
+  "assets/models/modern_coffee_table_02/textures/modern_coffee_table_02_base_diff_1k.jpg": {
+   "asset": "modern_coffee_table_02",
+   "author": "Amin",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_coffee_table_02/modern_coffee_table_02_base_diff_1k.jpg"
+  },
+  "assets/models/modern_coffee_table_02/textures/modern_coffee_table_02_base_nor_gl_1k.jpg": {
+   "asset": "modern_coffee_table_02",
+   "author": "Amin",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_coffee_table_02/modern_coffee_table_02_base_nor_gl_1k.jpg"
+  },
+  "assets/models/modern_coffee_table_02/textures/modern_coffee_table_02_base_rough_1k.jpg": {
+   "asset": "modern_coffee_table_02",
+   "author": "Amin",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_coffee_table_02/modern_coffee_table_02_base_rough_1k.jpg"
+  },
+  "assets/models/modern_coffee_table_02/textures/modern_coffee_table_02_wood_diff_1k.jpg": {
+   "asset": "modern_coffee_table_02",
+   "author": "Amin",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_coffee_table_02/modern_coffee_table_02_wood_diff_1k.jpg"
+  },
+  "assets/models/modern_coffee_table_02/textures/modern_coffee_table_02_wood_nor_gl_1k.jpg": {
+   "asset": "modern_coffee_table_02",
+   "author": "Amin",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_coffee_table_02/modern_coffee_table_02_wood_nor_gl_1k.jpg"
+  },
+  "assets/models/modern_coffee_table_02/textures/modern_coffee_table_02_wood_rough_1k.jpg": {
+   "asset": "modern_coffee_table_02",
+   "author": "Amin",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_coffee_table_02/modern_coffee_table_02_wood_rough_1k.jpg"
+  },
+  "assets/models/modern_wooden_cabinet/modern_wooden_cabinet.bin": {
+   "asset": "modern_wooden_cabinet",
+   "author": "Patrik Pangerl",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/modern_wooden_cabinet/modern_wooden_cabinet.bin"
+  },
+  "assets/models/modern_wooden_cabinet/modern_wooden_cabinet.gltf": {
+   "asset": "modern_wooden_cabinet",
+   "author": "Patrik Pangerl",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/modern_wooden_cabinet/modern_wooden_cabinet_1k.gltf"
+  },
+  "assets/models/modern_wooden_cabinet/textures/modern_wooden_cabinet_arm_1k.jpg": {
+   "asset": "modern_wooden_cabinet",
+   "author": "Patrik Pangerl",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_wooden_cabinet/modern_wooden_cabinet_arm_1k.jpg"
+  },
+  "assets/models/modern_wooden_cabinet/textures/modern_wooden_cabinet_diff_1k.jpg": {
+   "asset": "modern_wooden_cabinet",
+   "author": "Patrik Pangerl",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_wooden_cabinet/modern_wooden_cabinet_diff_1k.jpg"
+  },
+  "assets/models/modern_wooden_cabinet/textures/modern_wooden_cabinet_nor_gl_1k.jpg": {
+   "asset": "modern_wooden_cabinet",
+   "author": "Patrik Pangerl",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/modern_wooden_cabinet/modern_wooden_cabinet_nor_gl_1k.jpg"
+  },
+  "assets/models/ottoman_01/Ottoman_01.bin": {
+   "asset": "Ottoman_01",
+   "author": "Caspian Fortune",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/Ottoman_01/Ottoman_01.bin"
+  },
+  "assets/models/ottoman_01/Ottoman_01.gltf": {
+   "asset": "Ottoman_01",
+   "author": "Caspian Fortune",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/Ottoman_01/Ottoman_01_1k.gltf"
+  },
+  "assets/models/ottoman_01/textures/Ottoman_01_arm_1k.jpg": {
+   "asset": "Ottoman_01",
+   "author": "Caspian Fortune",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Ottoman_01/Ottoman_01_arm_1k.jpg"
+  },
+  "assets/models/ottoman_01/textures/Ottoman_01_diff_1k.jpg": {
+   "asset": "Ottoman_01",
+   "author": "Caspian Fortune",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Ottoman_01/Ottoman_01_diff_1k.jpg"
+  },
+  "assets/models/ottoman_01/textures/Ottoman_01_nor_gl_1k.jpg": {
+   "asset": "Ottoman_01",
+   "author": "Caspian Fortune",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/Ottoman_01/Ottoman_01_nor_gl_1k.jpg"
+  },
+  "assets/models/pachira_aquatica_01/pachira_aquatica_01.bin": {
+   "asset": "pachira_aquatica_01",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/pachira_aquatica_01/pachira_aquatica_01.bin"
+  },
+  "assets/models/pachira_aquatica_01/pachira_aquatica_01.gltf": {
+   "asset": "pachira_aquatica_01",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/pachira_aquatica_01/pachira_aquatica_01_1k.gltf"
+  },
+  "assets/models/pachira_aquatica_01/textures/pachira_aquatica_01_bark_arm_1k.jpg": {
+   "asset": "pachira_aquatica_01",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/pachira_aquatica_01/pachira_aquatica_01_bark_arm_1k.jpg"
+  },
+  "assets/models/pachira_aquatica_01/textures/pachira_aquatica_01_bark_diff_1k.jpg": {
+   "asset": "pachira_aquatica_01",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/pachira_aquatica_01/pachira_aquatica_01_bark_diff_1k.jpg"
+  },
+  "assets/models/pachira_aquatica_01/textures/pachira_aquatica_01_bark_nor_gl_1k.jpg": {
+   "asset": "pachira_aquatica_01",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/pachira_aquatica_01/pachira_aquatica_01_bark_nor_gl_1k.jpg"
+  },
+  "assets/models/pachira_aquatica_01/textures/pachira_aquatica_01_leaves_arm_1k.jpg": {
+   "asset": "pachira_aquatica_01",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/pachira_aquatica_01/pachira_aquatica_01_leaves_arm_1k.jpg"
+  },
+  "assets/models/pachira_aquatica_01/textures/pachira_aquatica_01_leaves_diff_1k.jpg": {
+   "asset": "pachira_aquatica_01",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/pachira_aquatica_01/pachira_aquatica_01_leaves_diff_1k.jpg"
+  },
+  "assets/models/pachira_aquatica_01/textures/pachira_aquatica_01_leaves_nor_gl_1k.jpg": {
+   "asset": "pachira_aquatica_01",
+   "author": "Rob Tuytel, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/pachira_aquatica_01/pachira_aquatica_01_leaves_nor_gl_1k.jpg"
+  },
+  "assets/models/painted_wooden_bench/painted_wooden_bench.bin": {
+   "asset": "painted_wooden_bench",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/painted_wooden_bench/painted_wooden_bench.bin"
+  },
+  "assets/models/painted_wooden_bench/painted_wooden_bench.gltf": {
+   "asset": "painted_wooden_bench",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/painted_wooden_bench/painted_wooden_bench_1k.gltf"
+  },
+  "assets/models/painted_wooden_bench/textures/painted_wooden_bench_arm_1k.jpg": {
+   "asset": "painted_wooden_bench",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_bench/painted_wooden_bench_arm_1k.jpg"
+  },
+  "assets/models/painted_wooden_bench/textures/painted_wooden_bench_diff_1k.jpg": {
+   "asset": "painted_wooden_bench",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_bench/painted_wooden_bench_diff_1k.jpg"
+  },
+  "assets/models/painted_wooden_bench/textures/painted_wooden_bench_nor_gl_1k.jpg": {
+   "asset": "painted_wooden_bench",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_bench/painted_wooden_bench_nor_gl_1k.jpg"
+  },
+  "assets/models/painted_wooden_nightstand/painted_wooden_nightstand.bin": {
+   "asset": "painted_wooden_nightstand",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/painted_wooden_nightstand/painted_wooden_nightstand.bin"
+  },
+  "assets/models/painted_wooden_nightstand/painted_wooden_nightstand.gltf": {
+   "asset": "painted_wooden_nightstand",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/painted_wooden_nightstand/painted_wooden_nightstand_1k.gltf"
+  },
+  "assets/models/painted_wooden_nightstand/textures/painted_wooden_nightstand_arm_1k.jpg": {
+   "asset": "painted_wooden_nightstand",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_nightstand/painted_wooden_nightstand_arm_1k.jpg"
+  },
+  "assets/models/painted_wooden_nightstand/textures/painted_wooden_nightstand_diff_1k.jpg": {
+   "asset": "painted_wooden_nightstand",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_nightstand/painted_wooden_nightstand_diff_1k.jpg"
+  },
+  "assets/models/painted_wooden_nightstand/textures/painted_wooden_nightstand_nor_gl_1k.jpg": {
+   "asset": "painted_wooden_nightstand",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_nightstand/painted_wooden_nightstand_nor_gl_1k.jpg"
+  },
+  "assets/models/potted_plant_01/potted_plant_01.bin": {
+   "asset": "potted_plant_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/potted_plant_01/potted_plant_01.bin"
+  },
+  "assets/models/potted_plant_01/potted_plant_01.gltf": {
+   "asset": "potted_plant_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/potted_plant_01/potted_plant_01_1k.gltf"
+  },
+  "assets/models/potted_plant_01/textures/potted_plant_01_leaves_diff_1k.jpg": {
+   "asset": "potted_plant_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_01/potted_plant_01_leaves_diff_1k.jpg"
+  },
+  "assets/models/potted_plant_01/textures/potted_plant_01_leaves_nor_gl_1k.jpg": {
+   "asset": "potted_plant_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_01/potted_plant_01_leaves_nor_gl_1k.jpg"
+  },
+  "assets/models/potted_plant_01/textures/potted_plant_01_leaves_rough_1k.jpg": {
+   "asset": "potted_plant_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_01/potted_plant_01_leaves_rough_1k.jpg"
+  },
+  "assets/models/potted_plant_01/textures/potted_plant_01_pot_diff_1k.jpg": {
+   "asset": "potted_plant_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_01/potted_plant_01_pot_diff_1k.jpg"
+  },
+  "assets/models/potted_plant_01/textures/potted_plant_01_pot_nor_gl_1k.jpg": {
+   "asset": "potted_plant_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_01/potted_plant_01_pot_nor_gl_1k.jpg"
+  },
+  "assets/models/potted_plant_01/textures/potted_plant_01_pot_rough_1k.jpg": {
+   "asset": "potted_plant_01",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_01/potted_plant_01_pot_rough_1k.jpg"
+  },
+  "assets/models/potted_plant_02/potted_plant_02.bin": {
+   "asset": "potted_plant_02",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/potted_plant_02/potted_plant_02.bin"
+  },
+  "assets/models/potted_plant_02/potted_plant_02.gltf": {
+   "asset": "potted_plant_02",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/potted_plant_02/potted_plant_02_1k.gltf"
+  },
+  "assets/models/potted_plant_02/textures/potted_plant_02_leaves_diff_1k.jpg": {
+   "asset": "potted_plant_02",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_02/potted_plant_02_leaves_diff_1k.jpg"
+  },
+  "assets/models/potted_plant_02/textures/potted_plant_02_leaves_nor_gl_1k.jpg": {
+   "asset": "potted_plant_02",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_02/potted_plant_02_leaves_nor_gl_1k.jpg"
+  },
+  "assets/models/potted_plant_02/textures/potted_plant_02_leaves_rough_1k.jpg": {
+   "asset": "potted_plant_02",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_02/potted_plant_02_leaves_rough_1k.jpg"
+  },
+  "assets/models/potted_plant_02/textures/potted_plant_02_pot_diff_1k.jpg": {
+   "asset": "potted_plant_02",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_02/potted_plant_02_pot_diff_1k.jpg"
+  },
+  "assets/models/potted_plant_02/textures/potted_plant_02_pot_nor_gl_1k.jpg": {
+   "asset": "potted_plant_02",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_02/potted_plant_02_pot_nor_gl_1k.jpg"
+  },
+  "assets/models/potted_plant_02/textures/potted_plant_02_pot_rough_1k.jpg": {
+   "asset": "potted_plant_02",
+   "author": "Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_02/potted_plant_02_pot_rough_1k.jpg"
+  },
+  "assets/models/potted_plant_04/potted_plant_04.bin": {
+   "asset": "potted_plant_04",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/potted_plant_04/potted_plant_04.bin"
+  },
+  "assets/models/potted_plant_04/potted_plant_04.gltf": {
+   "asset": "potted_plant_04",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/potted_plant_04/potted_plant_04_1k.gltf"
+  },
+  "assets/models/potted_plant_04/textures/potted_plant_04_arm_1k.jpg": {
+   "asset": "potted_plant_04",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_04/potted_plant_04_arm_1k.jpg"
+  },
+  "assets/models/potted_plant_04/textures/potted_plant_04_diff_1k.jpg": {
+   "asset": "potted_plant_04",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_04/potted_plant_04_diff_1k.jpg"
+  },
+  "assets/models/potted_plant_04/textures/potted_plant_04_nor_gl_1k.jpg": {
+   "asset": "potted_plant_04",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/potted_plant_04/potted_plant_04_nor_gl_1k.jpg"
+  },
+  "assets/models/rubber_boots/rubber_boots.bin": {
+   "asset": "rubber_boots",
+   "author": "L",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/rubber_boots/rubber_boots.bin"
+  },
+  "assets/models/rubber_boots/rubber_boots.gltf": {
+   "asset": "rubber_boots",
+   "author": "L",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/rubber_boots/rubber_boots_1k.gltf"
+  },
+  "assets/models/rubber_boots/textures/rubber_boots_arm_1k.jpg": {
+   "asset": "rubber_boots",
+   "author": "L",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rubber_boots/rubber_boots_arm_1k.jpg"
+  },
+  "assets/models/rubber_boots/textures/rubber_boots_diff_1k.jpg": {
+   "asset": "rubber_boots",
+   "author": "L",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rubber_boots/rubber_boots_diff_1k.jpg"
+  },
+  "assets/models/rubber_boots/textures/rubber_boots_dirty_arm_1k.jpg": {
+   "asset": "rubber_boots",
+   "author": "L",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rubber_boots/rubber_boots_dirty_arm_1k.jpg"
+  },
+  "assets/models/rubber_boots/textures/rubber_boots_dirty_diff_1k.jpg": {
+   "asset": "rubber_boots",
+   "author": "L",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rubber_boots/rubber_boots_dirty_diff_1k.jpg"
+  },
+  "assets/models/rubber_boots/textures/rubber_boots_dirty_nor_gl_1k.jpg": {
+   "asset": "rubber_boots",
+   "author": "L",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rubber_boots/rubber_boots_dirty_nor_gl_1k.jpg"
+  },
+  "assets/models/rubber_boots/textures/rubber_boots_nor_gl_1k.jpg": {
+   "asset": "rubber_boots",
+   "author": "L",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rubber_boots/rubber_boots_nor_gl_1k.jpg"
+  },
+  "assets/models/side_table_01/side_table_01.bin": {
+   "asset": "side_table_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/side_table_01/side_table_01.bin"
+  },
+  "assets/models/side_table_01/side_table_01.gltf": {
+   "asset": "side_table_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/side_table_01/side_table_01_1k.gltf"
+  },
+  "assets/models/side_table_01/textures/side_table_01_arm_1k.jpg": {
+   "asset": "side_table_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/side_table_01/side_table_01_arm_1k.jpg"
+  },
+  "assets/models/side_table_01/textures/side_table_01_diff_1k.jpg": {
+   "asset": "side_table_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/side_table_01/side_table_01_diff_1k.jpg"
+  },
+  "assets/models/side_table_01/textures/side_table_01_nor_gl_1k.jpg": {
+   "asset": "side_table_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/side_table_01/side_table_01_nor_gl_1k.jpg"
+  },
+  "assets/models/side_table_tall_01/side_table_tall_01.bin": {
+   "asset": "side_table_tall_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/side_table_tall_01/side_table_tall_01.bin"
+  },
+  "assets/models/side_table_tall_01/side_table_tall_01.gltf": {
+   "asset": "side_table_tall_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/side_table_tall_01/side_table_tall_01_1k.gltf"
+  },
+  "assets/models/side_table_tall_01/textures/side_table_tall_01_arm_1k.jpg": {
+   "asset": "side_table_tall_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/side_table_tall_01/side_table_tall_01_arm_1k.jpg"
+  },
+  "assets/models/side_table_tall_01/textures/side_table_tall_01_diff_1k.jpg": {
+   "asset": "side_table_tall_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/side_table_tall_01/side_table_tall_01_diff_1k.jpg"
+  },
+  "assets/models/side_table_tall_01/textures/side_table_tall_01_nor_gl_1k.jpg": {
+   "asset": "side_table_tall_01",
+   "author": "James Ray Cock",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/side_table_tall_01/side_table_tall_01_nor_gl_1k.jpg"
+  },
+  "assets/models/sofa_02/sofa_02.bin": {
+   "asset": "sofa_02",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/sofa_02/sofa_02.bin"
+  },
+  "assets/models/sofa_02/sofa_02.gltf": {
+   "asset": "sofa_02",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/sofa_02/sofa_02_1k.gltf"
+  },
+  "assets/models/sofa_02/textures/sofa_02_arm_1k.jpg": {
+   "asset": "sofa_02",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/sofa_02/sofa_02_arm_1k.jpg"
+  },
+  "assets/models/sofa_02/textures/sofa_02_diff_1k.jpg": {
+   "asset": "sofa_02",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/sofa_02/sofa_02_diff_1k.jpg"
+  },
+  "assets/models/sofa_02/textures/sofa_02_nor_gl_1k.jpg": {
+   "asset": "sofa_02",
+   "author": "Kirill Sannikov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/sofa_02/sofa_02_nor_gl_1k.jpg"
+  },
+  "assets/models/sofa_03/sofa_03.bin": {
+   "asset": "sofa_03",
+   "author": "Fran Calvente",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/sofa_03/sofa_03.bin"
+  },
+  "assets/models/sofa_03/sofa_03.gltf": {
+   "asset": "sofa_03",
+   "author": "Fran Calvente",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/sofa_03/sofa_03_1k.gltf"
+  },
+  "assets/models/sofa_03/textures/sofa_03_diff_1k.jpg": {
+   "asset": "sofa_03",
+   "author": "Fran Calvente",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/sofa_03/sofa_03_diff_1k.jpg"
+  },
+  "assets/models/sofa_03/textures/sofa_03_nor_gl_1k.jpg": {
+   "asset": "sofa_03",
+   "author": "Fran Calvente",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/sofa_03/sofa_03_nor_gl_1k.jpg"
+  },
+  "assets/models/sofa_03/textures/sofa_03_rough_1k.jpg": {
+   "asset": "sofa_03",
+   "author": "Fran Calvente",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/sofa_03/sofa_03_rough_1k.jpg"
+  },
+  "assets/models/tea_set_01/tea_set_01.bin": {
+   "asset": "tea_set_01",
+   "author": "James Ray Cock, Rico Cilliers, Jurita Burger",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/tea_set_01/tea_set_01.bin"
+  },
+  "assets/models/tea_set_01/tea_set_01.gltf": {
+   "asset": "tea_set_01",
+   "author": "James Ray Cock, Rico Cilliers, Jurita Burger",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/tea_set_01/tea_set_01_1k.gltf"
+  },
+  "assets/models/tea_set_01/textures/tea_set_01_arm_1k.jpg": {
+   "asset": "tea_set_01",
+   "author": "James Ray Cock, Rico Cilliers, Jurita Burger",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tea_set_01/tea_set_01_arm_1k.jpg"
+  },
+  "assets/models/tea_set_01/textures/tea_set_01_diff_1k.jpg": {
+   "asset": "tea_set_01",
+   "author": "James Ray Cock, Rico Cilliers, Jurita Burger",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tea_set_01/tea_set_01_diff_1k.jpg"
+  },
+  "assets/models/tea_set_01/textures/tea_set_01_nor_gl_1k.jpg": {
+   "asset": "tea_set_01",
+   "author": "James Ray Cock, Rico Cilliers, Jurita Burger",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tea_set_01/tea_set_01_nor_gl_1k.jpg"
+  },
+  "assets/models/throw_pillows_01/textures/throw_pillows_01_diff_1k.jpg": {
+   "asset": "throw_pillows_01",
+   "author": "Serhii Khromov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/throw_pillows_01/throw_pillows_01_diff_1k.jpg"
+  },
+  "assets/models/throw_pillows_01/textures/throw_pillows_01_nor_gl_1k.jpg": {
+   "asset": "throw_pillows_01",
+   "author": "Serhii Khromov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/throw_pillows_01/throw_pillows_01_nor_gl_1k.jpg"
+  },
+  "assets/models/throw_pillows_01/textures/throw_pillows_01_rough_1k.jpg": {
+   "asset": "throw_pillows_01",
+   "author": "Serhii Khromov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/throw_pillows_01/throw_pillows_01_rough_1k.jpg"
+  },
+  "assets/models/throw_pillows_01/throw_pillows_01.bin": {
+   "asset": "throw_pillows_01",
+   "author": "Serhii Khromov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/throw_pillows_01/throw_pillows_01.bin"
+  },
+  "assets/models/throw_pillows_01/throw_pillows_01.gltf": {
+   "asset": "throw_pillows_01",
+   "author": "Serhii Khromov",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/throw_pillows_01/throw_pillows_01_1k.gltf"
+  },
+  "assets/models/vintage_electric_kettle/textures/vintage_electric_kettle_arm_1k.jpg": {
+   "asset": "vintage_electric_kettle",
+   "author": "SV Garip",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/vintage_electric_kettle/vintage_electric_kettle_arm_1k.jpg"
+  },
+  "assets/models/vintage_electric_kettle/textures/vintage_electric_kettle_diff_1k.jpg": {
+   "asset": "vintage_electric_kettle",
+   "author": "SV Garip",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/vintage_electric_kettle/vintage_electric_kettle_diff_1k.jpg"
+  },
+  "assets/models/vintage_electric_kettle/textures/vintage_electric_kettle_nor_gl_1k.jpg": {
+   "asset": "vintage_electric_kettle",
+   "author": "SV Garip",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/vintage_electric_kettle/vintage_electric_kettle_nor_gl_1k.jpg"
+  },
+  "assets/models/vintage_electric_kettle/vintage_electric_kettle.bin": {
+   "asset": "vintage_electric_kettle",
+   "author": "SV Garip",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/vintage_electric_kettle/vintage_electric_kettle.bin"
+  },
+  "assets/models/vintage_electric_kettle/vintage_electric_kettle.gltf": {
+   "asset": "vintage_electric_kettle",
+   "author": "SV Garip",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/vintage_electric_kettle/vintage_electric_kettle_1k.gltf"
+  },
+  "assets/textures/boucle/ao.jpg": {
+   "asset": "wool_boucle",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wool_boucle/wool_boucle_ao_2k.jpg"
+  },
+  "assets/textures/boucle/diffuse.jpg": {
+   "asset": "wool_boucle",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wool_boucle/wool_boucle_diff_2k.jpg"
+  },
+  "assets/textures/boucle/disp.jpg": {
+   "asset": "wool_boucle",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wool_boucle/wool_boucle_disp_2k.jpg"
+  },
+  "assets/textures/boucle/metal.jpg": {
+   "asset": "wool_boucle",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wool_boucle/wool_boucle_metal_2k.jpg"
+  },
+  "assets/textures/boucle/normal.jpg": {
+   "asset": "wool_boucle",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wool_boucle/wool_boucle_nor_gl_2k.jpg"
+  },
+  "assets/textures/boucle/rough.jpg": {
+   "asset": "wool_boucle",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wool_boucle/wool_boucle_rough_2k.jpg"
+  },
+  "assets/textures/brick/ao.jpg": {
+   "asset": "brick_wall_02",
+   "author": "Dimitrios Savva",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brick_wall_02/brick_wall_02_ao_2k.jpg"
+  },
+  "assets/textures/brick/diffuse.jpg": {
+   "asset": "brick_wall_02",
+   "author": "Dimitrios Savva",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brick_wall_02/brick_wall_02_diff_2k.jpg"
+  },
+  "assets/textures/brick/disp.jpg": {
+   "asset": "brick_wall_02",
+   "author": "Dimitrios Savva",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brick_wall_02/brick_wall_02_disp_2k.jpg"
+  },
+  "assets/textures/brick/normal.jpg": {
+   "asset": "brick_wall_02",
+   "author": "Dimitrios Savva",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brick_wall_02/brick_wall_02_nor_gl_2k.jpg"
+  },
+  "assets/textures/brick/rough.jpg": {
+   "asset": "brick_wall_02",
+   "author": "Dimitrios Savva",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brick_wall_02/brick_wall_02_rough_2k.jpg"
+  },
+  "assets/textures/cedar/ao.jpg": {
+   "asset": "japanese_cedar_planks",
+   "author": "Charlotte Baglioni, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/japanese_cedar_planks/japanese_cedar_planks_ao_2k.jpg"
+  },
+  "assets/textures/cedar/diffuse.jpg": {
+   "asset": "japanese_cedar_planks",
+   "author": "Charlotte Baglioni, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/japanese_cedar_planks/japanese_cedar_planks_diff_2k.jpg"
+  },
+  "assets/textures/cedar/disp.jpg": {
+   "asset": "japanese_cedar_planks",
+   "author": "Charlotte Baglioni, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/japanese_cedar_planks/japanese_cedar_planks_disp_2k.jpg"
+  },
+  "assets/textures/cedar/normal.jpg": {
+   "asset": "japanese_cedar_planks",
+   "author": "Charlotte Baglioni, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/japanese_cedar_planks/japanese_cedar_planks_nor_gl_2k.jpg"
+  },
+  "assets/textures/cedar/rough.jpg": {
+   "asset": "japanese_cedar_planks",
+   "author": "Charlotte Baglioni, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/japanese_cedar_planks/japanese_cedar_planks_rough_2k.jpg"
+  },
+  "assets/textures/concrete/ao.jpg": {
+   "asset": "concrete_floor_02",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_floor_02/concrete_floor_02_ao_2k.jpg"
+  },
+  "assets/textures/concrete/diffuse.jpg": {
+   "asset": "concrete_floor_02",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_floor_02/concrete_floor_02_diff_2k.jpg"
+  },
+  "assets/textures/concrete/disp.jpg": {
+   "asset": "concrete_floor_02",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_floor_02/concrete_floor_02_disp_2k.jpg"
+  },
+  "assets/textures/concrete/normal.jpg": {
+   "asset": "concrete_floor_02",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_floor_02/concrete_floor_02_nor_gl_2k.jpg"
+  },
+  "assets/textures/concrete/rough.jpg": {
+   "asset": "concrete_floor_02",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_floor_02/concrete_floor_02_rough_2k.jpg"
+  },
+  "assets/textures/concrete_wall/ao.jpg": {
+   "asset": "concrete_wall_008",
+   "author": "Dario Barresi, Charlotte Baglioni",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_wall_008/concrete_wall_008_ao_2k.jpg"
+  },
+  "assets/textures/concrete_wall/diffuse.jpg": {
+   "asset": "concrete_wall_008",
+   "author": "Dario Barresi, Charlotte Baglioni",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_wall_008/concrete_wall_008_diff_2k.jpg"
+  },
+  "assets/textures/concrete_wall/disp.jpg": {
+   "asset": "concrete_wall_008",
+   "author": "Dario Barresi, Charlotte Baglioni",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_wall_008/concrete_wall_008_disp_2k.jpg"
+  },
+  "assets/textures/concrete_wall/normal.jpg": {
+   "asset": "concrete_wall_008",
+   "author": "Dario Barresi, Charlotte Baglioni",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_wall_008/concrete_wall_008_nor_gl_2k.jpg"
+  },
+  "assets/textures/concrete_wall/rough.jpg": {
+   "asset": "concrete_wall_008",
+   "author": "Dario Barresi, Charlotte Baglioni",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_wall_008/concrete_wall_008_rough_2k.jpg"
+  },
+  "assets/textures/fabric_pattern/ao.jpg": {
+   "asset": "fabric_pattern_05",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/fabric_pattern_05/fabric_pattern_05_ao_2k.jpg"
+  },
+  "assets/textures/fabric_pattern/normal.jpg": {
+   "asset": "fabric_pattern_05",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/fabric_pattern_05/fabric_pattern_05_nor_gl_2k.jpg"
+  },
+  "assets/textures/fabric_pattern/rough.jpg": {
+   "asset": "fabric_pattern_05",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/fabric_pattern_05/fabric_pattern_05_rough_2k.jpg"
+  },
+  "assets/textures/grass/ao.jpg": {
+   "asset": "forest_floor",
+   "author": "eye-candy.xyz",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_floor/forest_floor_ao_2k.jpg"
+  },
+  "assets/textures/grass/diffuse.jpg": {
+   "asset": "forest_floor",
+   "author": "eye-candy.xyz",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_floor/forest_floor_diff_2k.jpg"
+  },
+  "assets/textures/grass/disp.jpg": {
+   "asset": "forest_floor",
+   "author": "eye-candy.xyz",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_floor/forest_floor_disp_2k.jpg"
+  },
+  "assets/textures/grass/normal.jpg": {
+   "asset": "forest_floor",
+   "author": "eye-candy.xyz",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_floor/forest_floor_nor_gl_2k.jpg"
+  },
+  "assets/textures/grass/rough.jpg": {
+   "asset": "forest_floor",
+   "author": "eye-candy.xyz",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/forest_floor/forest_floor_rough_2k.jpg"
+  },
+  "assets/textures/herringbone/ao.jpg": {
+   "asset": "poly_wool_herringbone",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/poly_wool_herringbone/poly_wool_herringbone_ao_2k.jpg"
+  },
+  "assets/textures/herringbone/diffuse.jpg": {
+   "asset": "poly_wool_herringbone",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/poly_wool_herringbone/poly_wool_herringbone_diff_2k.jpg"
+  },
+  "assets/textures/herringbone/disp.jpg": {
+   "asset": "poly_wool_herringbone",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/poly_wool_herringbone/poly_wool_herringbone_disp_2k.jpg"
+  },
+  "assets/textures/herringbone/metal.jpg": {
+   "asset": "poly_wool_herringbone",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/poly_wool_herringbone/poly_wool_herringbone_metal_2k.jpg"
+  },
+  "assets/textures/herringbone/normal.jpg": {
+   "asset": "poly_wool_herringbone",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/poly_wool_herringbone/poly_wool_herringbone_nor_gl_2k.jpg"
+  },
+  "assets/textures/herringbone/rough.jpg": {
+   "asset": "poly_wool_herringbone",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/poly_wool_herringbone/poly_wool_herringbone_rough_2k.jpg"
+  },
+  "assets/textures/leather/ao.jpg": {
+   "asset": "brown_leather",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brown_leather/brown_leather_ao_2k.jpg"
+  },
+  "assets/textures/leather/diffuse.jpg": {
+   "asset": "brown_leather",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brown_leather/brown_leather_albedo_2k.jpg"
+  },
+  "assets/textures/leather/disp.jpg": {
+   "asset": "brown_leather",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brown_leather/brown_leather_disp_2k.jpg"
+  },
+  "assets/textures/leather/normal.jpg": {
+   "asset": "brown_leather",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brown_leather/brown_leather_nor_gl_2k.jpg"
+  },
+  "assets/textures/leather/rough.jpg": {
+   "asset": "brown_leather",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/brown_leather/brown_leather_rough_2k.jpg"
+  },
+  "assets/textures/linen/ao.jpg": {
+   "asset": "rough_linen",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rough_linen/rough_linen_ao_2k.jpg"
+  },
+  "assets/textures/linen/diffuse.jpg": {
+   "asset": "rough_linen",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rough_linen/rough_linen_diff_2k.jpg"
+  },
+  "assets/textures/linen/disp.jpg": {
+   "asset": "rough_linen",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rough_linen/rough_linen_disp_2k.jpg"
+  },
+  "assets/textures/linen/metal.jpg": {
+   "asset": "rough_linen",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rough_linen/rough_linen_metal_2k.jpg"
+  },
+  "assets/textures/linen/normal.jpg": {
+   "asset": "rough_linen",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rough_linen/rough_linen_nor_gl_2k.jpg"
+  },
+  "assets/textures/linen/rough.jpg": {
+   "asset": "rough_linen",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rough_linen/rough_linen_rough_2k.jpg"
+  },
+  "assets/textures/marble/ao.jpg": {
+   "asset": "marble_01",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/marble_01/marble_01_ao_2k.jpg"
+  },
+  "assets/textures/marble/diffuse.jpg": {
+   "asset": "marble_01",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/marble_01/marble_01_diff_2k.jpg"
+  },
+  "assets/textures/marble/disp.jpg": {
+   "asset": "marble_01",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/marble_01/marble_01_disp_2k.jpg"
+  },
+  "assets/textures/marble/normal.jpg": {
+   "asset": "marble_01",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/marble_01/marble_01_nor_gl_2k.jpg"
+  },
+  "assets/textures/marble/rough.jpg": {
+   "asset": "marble_01",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/marble_01/marble_01_rough_2k.jpg"
+  },
+  "assets/textures/oak_deck/ao.jpg": {
+   "asset": "oak_veneer_01",
+   "author": "Jenelle van Heerden",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/oak_veneer_01/oak_veneer_01_ao_2k.jpg"
+  },
+  "assets/textures/oak_deck/diffuse.jpg": {
+   "asset": "oak_veneer_01",
+   "author": "Jenelle van Heerden",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/oak_veneer_01/oak_veneer_01_diff_2k.jpg"
+  },
+  "assets/textures/oak_deck/disp.jpg": {
+   "asset": "oak_veneer_01",
+   "author": "Jenelle van Heerden",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/oak_veneer_01/oak_veneer_01_disp_2k.jpg"
+  },
+  "assets/textures/oak_deck/normal.jpg": {
+   "asset": "oak_veneer_01",
+   "author": "Jenelle van Heerden",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/oak_veneer_01/oak_veneer_01_nor_gl_2k.jpg"
+  },
+  "assets/textures/oak_deck/rough.jpg": {
+   "asset": "oak_veneer_01",
+   "author": "Jenelle van Heerden",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/oak_veneer_01/oak_veneer_01_rough_2k.jpg"
+  },
+  "assets/textures/oak_floor/ao.jpg": {
+   "asset": "plank_flooring_02",
+   "author": "Dario Barresi, Dimitrios Savva",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/plank_flooring_02/plank_flooring_02_ao_2k.jpg"
+  },
+  "assets/textures/oak_floor/diffuse.jpg": {
+   "asset": "plank_flooring_02",
+   "author": "Dario Barresi, Dimitrios Savva",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/plank_flooring_02/plank_flooring_02_diff_2k.jpg"
+  },
+  "assets/textures/oak_floor/disp.jpg": {
+   "asset": "plank_flooring_02",
+   "author": "Dario Barresi, Dimitrios Savva",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/plank_flooring_02/plank_flooring_02_disp_2k.jpg"
+  },
+  "assets/textures/oak_floor/normal.jpg": {
+   "asset": "plank_flooring_02",
+   "author": "Dario Barresi, Dimitrios Savva",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/plank_flooring_02/plank_flooring_02_nor_gl_2k.jpg"
+  },
+  "assets/textures/oak_floor/rough.jpg": {
+   "asset": "plank_flooring_02",
+   "author": "Dario Barresi, Dimitrios Savva",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/plank_flooring_02/plank_flooring_02_rough_2k.jpg"
+  },
+  "assets/textures/plaster/ao.jpg": {
+   "asset": "white_plaster_02",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/white_plaster_02/white_plaster_02_ao_2k.jpg"
+  },
+  "assets/textures/plaster/diffuse.jpg": {
+   "asset": "white_plaster_02",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/white_plaster_02/white_plaster_02_diff_2k.jpg"
+  },
+  "assets/textures/plaster/disp.jpg": {
+   "asset": "white_plaster_02",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/white_plaster_02/white_plaster_02_disp_2k.jpg"
+  },
+  "assets/textures/plaster/normal.jpg": {
+   "asset": "white_plaster_02",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/white_plaster_02/white_plaster_02_nor_gl_2k.jpg"
+  },
+  "assets/textures/plaster/rough.jpg": {
+   "asset": "white_plaster_02",
+   "author": "Rob Tuytel",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/white_plaster_02/white_plaster_02_rough_2k.jpg"
+  },
+  "assets/textures/plaster_rough/ao.jpg": {
+   "asset": "plastered_wall_02",
+   "author": "Charlotte Baglioni",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/plastered_wall_02/plastered_wall_02_ao_2k.jpg"
+  },
+  "assets/textures/plaster_rough/diffuse.jpg": {
+   "asset": "plastered_wall_02",
+   "author": "Charlotte Baglioni",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/plastered_wall_02/plastered_wall_02_diff_2k.jpg"
+  },
+  "assets/textures/plaster_rough/disp.jpg": {
+   "asset": "plastered_wall_02",
+   "author": "Charlotte Baglioni",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/plastered_wall_02/plastered_wall_02_disp_2k.jpg"
+  },
+  "assets/textures/plaster_rough/normal.jpg": {
+   "asset": "plastered_wall_02",
+   "author": "Charlotte Baglioni",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/plastered_wall_02/plastered_wall_02_nor_gl_2k.jpg"
+  },
+  "assets/textures/plaster_rough/rough.jpg": {
+   "asset": "plastered_wall_02",
+   "author": "Charlotte Baglioni",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/plastered_wall_02/plastered_wall_02_rough_2k.jpg"
+  },
+  "assets/textures/rubber/ao.jpg": {
+   "asset": "rubber_tiles",
+   "author": "Amal Kumar",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rubber_tiles/rubber_tiles_ao_2k.jpg"
+  },
+  "assets/textures/rubber/diffuse.jpg": {
+   "asset": "rubber_tiles",
+   "author": "Amal Kumar",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rubber_tiles/rubber_tiles_diff_2k.jpg"
+  },
+  "assets/textures/rubber/disp.jpg": {
+   "asset": "rubber_tiles",
+   "author": "Amal Kumar",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rubber_tiles/rubber_tiles_disp_2k.jpg"
+  },
+  "assets/textures/rubber/normal.jpg": {
+   "asset": "rubber_tiles",
+   "author": "Amal Kumar",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rubber_tiles/rubber_tiles_nor_gl_2k.jpg"
+  },
+  "assets/textures/rubber/rough.jpg": {
+   "asset": "rubber_tiles",
+   "author": "Amal Kumar",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rubber_tiles/rubber_tiles_rough_2k.jpg"
+  },
+  "assets/textures/terrazzo/diffuse.jpg": {
+   "asset": "Terrazzo018",
+   "author": "",
+   "license": "CC0-1.0",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Terrazzo018_2K-JPG.zip"
+  },
+  "assets/textures/terrazzo/disp.jpg": {
+   "asset": "Terrazzo018",
+   "author": "",
+   "license": "CC0-1.0",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Terrazzo018_2K-JPG.zip"
+  },
+  "assets/textures/terrazzo/normal.jpg": {
+   "asset": "Terrazzo018",
+   "author": "",
+   "license": "CC0-1.0",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Terrazzo018_2K-JPG.zip"
+  },
+  "assets/textures/terrazzo/rough.jpg": {
+   "asset": "Terrazzo018",
+   "author": "",
+   "license": "CC0-1.0",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Terrazzo018_2K-JPG.zip"
+  },
+  "assets/textures/terrazzo_fine/diffuse.jpg": {
+   "asset": "Terrazzo013",
+   "author": "",
+   "license": "CC0-1.0",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Terrazzo013_2K-JPG.zip"
+  },
+  "assets/textures/terrazzo_fine/disp.jpg": {
+   "asset": "Terrazzo013",
+   "author": "",
+   "license": "CC0-1.0",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Terrazzo013_2K-JPG.zip"
+  },
+  "assets/textures/terrazzo_fine/normal.jpg": {
+   "asset": "Terrazzo013",
+   "author": "",
+   "license": "CC0-1.0",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Terrazzo013_2K-JPG.zip"
+  },
+  "assets/textures/terrazzo_fine/rough.jpg": {
+   "asset": "Terrazzo013",
+   "author": "",
+   "license": "CC0-1.0",
+   "source": "ambientcg",
+   "url": "https://ambientcg.com/get?file=Terrazzo013_2K-JPG.zip"
+  },
+  "assets/textures/velvet/ao.jpg": {
+   "asset": "velour_velvet",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/velour_velvet/velour_velvet_ao_2k.jpg"
+  },
+  "assets/textures/velvet/diffuse.jpg": {
+   "asset": "velour_velvet",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/velour_velvet/velour_velvet_diff_2k.jpg"
+  },
+  "assets/textures/velvet/disp.jpg": {
+   "asset": "velour_velvet",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/velour_velvet/velour_velvet_disp_2k.jpg"
+  },
+  "assets/textures/velvet/metal.jpg": {
+   "asset": "velour_velvet",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/velour_velvet/velour_velvet_metal_2k.jpg"
+  },
+  "assets/textures/velvet/normal.jpg": {
+   "asset": "velour_velvet",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/velour_velvet/velour_velvet_nor_gl_2k.jpg"
+  },
+  "assets/textures/velvet/rough.jpg": {
+   "asset": "velour_velvet",
+   "author": "colormass, Rico Cilliers",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/velour_velvet/velour_velvet_rough_2k.jpg"
+  },
+  "assets/textures/walnut/ao.jpg": {
+   "asset": "american_walnut_veneer",
+   "author": "Jenelle van Heerden",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/american_walnut_veneer/american_walnut_veneer_ao_2k.jpg"
+  },
+  "assets/textures/walnut/diffuse.jpg": {
+   "asset": "american_walnut_veneer",
+   "author": "Jenelle van Heerden",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/american_walnut_veneer/american_walnut_veneer_diff_2k.jpg"
+  },
+  "assets/textures/walnut/disp.jpg": {
+   "asset": "american_walnut_veneer",
+   "author": "Jenelle van Heerden",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/american_walnut_veneer/american_walnut_veneer_disp_2k.jpg"
+  },
+  "assets/textures/walnut/normal.jpg": {
+   "asset": "american_walnut_veneer",
+   "author": "Jenelle van Heerden",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/american_walnut_veneer/american_walnut_veneer_nor_gl_2k.jpg"
+  },
+  "assets/textures/walnut/rough.jpg": {
+   "asset": "american_walnut_veneer",
+   "author": "Jenelle van Heerden",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/american_walnut_veneer/american_walnut_veneer_rough_2k.jpg"
+  },
+  "assets/textures/walnut_dark/ao.jpg": {
+   "asset": "black_walnut_veneer_01",
+   "author": "Jenelle van Heerden",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/black_walnut_veneer_01/black_walnut_veneer_01_ao_2k.jpg"
+  },
+  "assets/textures/walnut_dark/diffuse.jpg": {
+   "asset": "black_walnut_veneer_01",
+   "author": "Jenelle van Heerden",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/black_walnut_veneer_01/black_walnut_veneer_01_diff_2k.jpg"
+  },
+  "assets/textures/walnut_dark/disp.jpg": {
+   "asset": "black_walnut_veneer_01",
+   "author": "Jenelle van Heerden",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/black_walnut_veneer_01/black_walnut_veneer_01_disp_2k.jpg"
+  },
+  "assets/textures/walnut_dark/normal.jpg": {
+   "asset": "black_walnut_veneer_01",
+   "author": "Jenelle van Heerden",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/black_walnut_veneer_01/black_walnut_veneer_01_nor_gl_2k.jpg"
+  },
+  "assets/textures/walnut_dark/rough.jpg": {
+   "asset": "black_walnut_veneer_01",
+   "author": "Jenelle van Heerden",
+   "license": "CC0-1.0",
+   "source": "polyhaven",
+   "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/black_walnut_veneer_01/black_walnut_veneer_01_rough_2k.jpg"
+  }
+ },
+ "license_note": "All entries are CC0 1.0 unless stated. Sources: polyhaven.com, ambientcg.com."
+}

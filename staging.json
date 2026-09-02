@@ -1,0 +1,1671 @@
+[
+ {
+  "note": "== LIVING =="
+ },
+ {
+  "asset": "proc:bookwall",
+  "room": "living",
+  "b": [
+   16.4,
+   39.2,
+   17.5,
+   45.5,
+   0,
+   9.3
+  ],
+  "face": "-x",
+  "seed": 3,
+  "density": 0.85,
+  "replace_feature": "living bookwall"
+ },
+ {
+  "asset": "proc:rug",
+  "room": "living",
+  "b": [
+   3.0,
+   32.5,
+   13.5,
+   45.0
+  ],
+  "m": "rug_cream",
+  "replace_feature": "living rug"
+ },
+ {
+  "asset": "proc:rug",
+  "room": "living",
+  "b": [
+   4.5,
+   35.0,
+   12.5,
+   43.5
+  ],
+  "m": "rug_oxblood",
+  "thick": 0.08
+ },
+ {
+  "asset": "proc:sofa",
+  "room": "living",
+  "pos": [
+   10.0,
+   39.5,
+   0
+  ],
+  "rot_z": -90,
+  "length": 8.0,
+  "depth": 3.1,
+  "m": "orange",
+  "replace_feature": "living sofa"
+ },
+ {
+  "asset": "proc:cushions",
+  "room": "living",
+  "b": [
+   9.0,
+   36.2,
+   11.0,
+   42.8
+  ],
+  "z": 1.77,
+  "count": 4,
+  "seed": 12,
+  "mats": [
+   "teal",
+   "mustard",
+   "rug_cream",
+   "oxblood"
+  ]
+ },
+ {
+  "asset": "proc:coffee_table",
+  "room": "living",
+  "pos": [
+   6.3,
+   39.5,
+   0
+  ],
+  "rot_z": 90,
+  "length": 4.4,
+  "depth": 2.0
+ },
+ {
+  "asset": "mid_century_lounge_chair",
+  "room": "living",
+  "pos": [
+   6.0,
+   34.3,
+   0
+  ],
+  "rot_z": 160,
+  "note": "mustard lounge chair, kitchen side",
+  "recolor": [
+   0.72,
+   0.52,
+   0.14
+  ]
+ },
+ {
+  "asset": "mid_century_lounge_chair",
+  "room": "living",
+  "pos": [
+   6.0,
+   44.5,
+   0
+  ],
+  "rot_z": 20,
+  "note": "mustard lounge chair, glass side",
+  "recolor": [
+   0.72,
+   0.52,
+   0.14
+  ]
+ },
+ {
+  "asset": "proc:credenza",
+  "room": "living",
+  "pos": [
+   16.9,
+   36.3,
+   0
+  ],
+  "rot_z": 90,
+  "length": 5.2,
+  "depth": 1.5,
+  "height": 2.2,
+  "turntable": true
+ },
+ {
+  "asset": "proc:tv_wall",
+  "room": "living",
+  "wall": {
+   "axis": "y",
+   "at": 17.75,
+   "face": "-x"
+  },
+  "u": 36.3,
+  "zc": 5.1,
+  "w": 5.4,
+  "h": 3.1
+ },
+ {
+  "asset": "proc:frames",
+  "room": "living",
+  "wall": {
+   "axis": "y",
+   "at": 17.75,
+   "face": "-x"
+  },
+  "span": [
+   33.9,
+   38.7
+  ],
+  "zc": 8.1,
+  "count": 3,
+  "seed": 41
+ },
+ {
+  "asset": "proc:arc_lamp",
+  "room": "living",
+  "pos": [
+   13.8,
+   44.6,
+   0
+  ],
+  "rot_z": -125,
+  "reach": 5.2,
+  "height": 7.4
+ },
+ {
+  "asset": "proc:side_table",
+  "room": "living",
+  "pos": [
+   3.3,
+   44.2,
+   0
+  ]
+ },
+ {
+  "asset": "proc:table_lamp",
+  "room": "living",
+  "pos": [
+   3.3,
+   44.2,
+   1.88
+  ],
+  "height": 1.7,
+  "base_r": 0.22,
+  "shade_r": 0.5,
+  "watts": 25
+ },
+ {
+  "asset": "proc:table_lamp",
+  "room": "living",
+  "pos": [
+   16.9,
+   38.3,
+   2.2
+  ],
+  "height": 1.6,
+  "base_r": 0.2,
+  "shade_r": 0.45,
+  "watts": 20,
+  "base_m": "teal"
+ },
+ {
+  "asset": "potted_plant_02",
+  "room": "living",
+  "pos": [
+   15.2,
+   44.8,
+   0
+  ],
+  "rot_z": 30
+ },
+ {
+  "asset": "potted_plant_01",
+  "room": "living",
+  "pos": [
+   3.4,
+   31.5,
+   0
+  ],
+  "rot_z": -40,
+  "fallback": "proc:plant",
+  "height": 3.5
+ },
+ {
+  "asset": "proc:plant",
+  "room": "living",
+  "pos": [
+   2.2,
+   44.9,
+   0
+  ],
+  "height": 4.5,
+  "seed": 8
+ },
+ {
+  "asset": "proc:fire",
+  "room": "living",
+  "b": [
+   1.2,
+   36.4,
+   1.9,
+   39.6,
+   1.4,
+   3.0
+  ],
+  "replace_feature": "fire glow",
+  "watts": 60
+ },
+ {
+  "asset": "mantel_clock_01",
+  "room": "living",
+  "pos": [
+   2.0,
+   34.0,
+   1.4
+  ],
+  "rot_z": 90,
+  "fallback": null
+ },
+ {
+  "asset": "ceramic_vase_02",
+  "room": "living",
+  "pos": [
+   1.8,
+   42.2,
+   1.4
+  ],
+  "rot_z": 0
+ },
+ {
+  "asset": "brass_vase_01",
+  "room": "living",
+  "pos": [
+   16.9,
+   34.6,
+   2.2
+  ],
+  "rot_z": 0
+ },
+ {
+  "asset": "book_encyclopedia_set_01",
+  "room": "living",
+  "pos": [
+   16.9,
+   36.0,
+   2.2
+  ],
+  "rot_z": 90,
+  "fallback": null
+ },
+ {
+  "note": "== KITCHEN =="
+ },
+ {
+  "asset": "proc:kitchen",
+  "room": "kitchen"
+ },
+ {
+  "asset": "proc:island_table",
+  "room": "kitchen",
+  "x": [
+   10.2,
+   15.0
+  ],
+  "y": [
+   19.0,
+   22.5
+  ],
+  "height": 2.5
+ },
+ {
+  "asset": "dining_chair_02",
+  "room": "kitchen",
+  "pos": [
+   11.1,
+   18.2,
+   0
+  ],
+  "rot_z": 180
+ },
+ {
+  "asset": "dining_chair_02",
+  "room": "kitchen",
+  "pos": [
+   12.7,
+   18.2,
+   0
+  ],
+  "rot_z": 175
+ },
+ {
+  "asset": "dining_chair_02",
+  "room": "kitchen",
+  "pos": [
+   14.3,
+   18.2,
+   0
+  ],
+  "rot_z": 183
+ },
+ {
+  "asset": "dining_chair_02",
+  "room": "kitchen",
+  "pos": [
+   11.1,
+   23.3,
+   0
+  ],
+  "rot_z": 4
+ },
+ {
+  "asset": "dining_chair_02",
+  "room": "kitchen",
+  "pos": [
+   12.7,
+   23.3,
+   0
+  ],
+  "rot_z": -6
+ },
+ {
+  "asset": "dining_chair_02",
+  "room": "kitchen",
+  "pos": [
+   14.3,
+   23.3,
+   0
+  ],
+  "rot_z": 2
+ },
+ {
+  "asset": "proc:sputnik",
+  "room": "kitchen",
+  "pos": [
+   12.6,
+   20.75,
+   7.0
+  ],
+  "ceil_z": 9.5,
+  "arms": 16,
+  "radius": 1.5,
+  "watts": 110
+ },
+ {
+  "asset": "bananas",
+  "room": "kitchen",
+  "pos": [
+   11.6,
+   20.3,
+   2.5
+  ],
+  "rot_z": 30
+ },
+ {
+  "asset": "food_pears_asian_01",
+  "room": "kitchen",
+  "pos": [
+   13.6,
+   21.3,
+   2.5
+  ],
+  "rot_z": 0,
+  "fallback": null
+ },
+ {
+  "asset": "vintage_electric_kettle",
+  "room": "kitchen",
+  "pos": [
+   4.6,
+   15.4,
+   3.12
+  ],
+  "rot_z": 20
+ },
+ {
+  "asset": "tea_set_01",
+  "room": "kitchen",
+  "pos": [
+   12.2,
+   15.3,
+   3.12
+  ],
+  "rot_z": 0
+ },
+ {
+  "asset": "carrot_cake",
+  "room": "kitchen",
+  "pos": [
+   5.2,
+   20.9,
+   3.15
+  ],
+  "rot_z": 0,
+  "fallback": null
+ },
+ {
+  "asset": "jug_01",
+  "room": "kitchen",
+  "pos": [
+   8.6,
+   21.6,
+   3.15
+  ],
+  "rot_z": 0,
+  "fallback": null
+ },
+ {
+  "note": "== SPINE =="
+ },
+ {
+  "asset": "proc:runner",
+  "room": "spine",
+  "b": [
+   19.6,
+   2.5,
+   22.4,
+   32.5
+  ],
+  "m": "runner"
+ },
+ {
+  "asset": "proc:frames",
+  "room": "spine",
+  "wall": {
+   "axis": "y",
+   "at": 23.75,
+   "face": "-x"
+  },
+  "span": [
+   14.5,
+   18.0
+  ],
+  "zc": 5.3,
+  "count": 3,
+  "seed": 1
+ },
+ {
+  "asset": "proc:frames",
+  "room": "spine",
+  "wall": {
+   "axis": "y",
+   "at": 23.75,
+   "face": "-x"
+  },
+  "span": [
+   22.2,
+   31.0
+  ],
+  "zc": 5.3,
+  "count": 7,
+  "seed": 2
+ },
+ {
+  "asset": "proc:frames",
+  "room": "spine",
+  "wall": {
+   "axis": "y",
+   "at": 23.75,
+   "face": "-x"
+  },
+  "span": [
+   40.3,
+   45.5
+  ],
+  "zc": 5.3,
+  "count": 4,
+  "seed": 3
+ },
+ {
+  "asset": "proc:frames",
+  "room": "spine",
+  "wall": {
+   "axis": "y",
+   "at": 18.25,
+   "face": "+x"
+  },
+  "span": [
+   10.0,
+   17.6
+  ],
+  "zc": 5.3,
+  "count": 5,
+  "seed": 4
+ },
+ {
+  "asset": "proc:frames",
+  "room": "spine",
+  "wall": {
+   "axis": "y",
+   "at": 18.25,
+   "face": "+x"
+  },
+  "span": [
+   26.4,
+   30.2
+  ],
+  "zc": 5.3,
+  "count": 2,
+  "seed": 5
+ },
+ {
+  "asset": "proc:frames",
+  "room": "spine",
+  "wall": {
+   "axis": "y",
+   "at": 18.25,
+   "face": "+x"
+  },
+  "span": [
+   34.0,
+   45.4
+  ],
+  "zc": 5.3,
+  "count": 6,
+  "seed": 6
+ },
+ {
+  "asset": "proc:bench",
+  "room": "spine",
+  "pos": [
+   21.0,
+   1.1,
+   0
+  ],
+  "rot_z": 0,
+  "length": 3.4,
+  "depth": 1.3,
+  "height": 1.5,
+  "cushion_m": "oxblood"
+ },
+ {
+  "note": "== FOYER / MUDROOM =="
+ },
+ {
+  "asset": "proc:globe_pendant",
+  "room": "foyer",
+  "pos": [
+   14.0,
+   7.0,
+   9.35
+  ],
+  "radius": 0.65,
+  "drop": 2.0,
+  "watts": 45
+ },
+ {
+  "asset": "proc:rug",
+  "room": "foyer",
+  "b": [
+   12.0,
+   0.7,
+   16.0,
+   4.7
+  ],
+  "m": "rug_teal"
+ },
+ {
+  "asset": "painted_wooden_bench",
+  "room": "foyer",
+  "pos": [
+   14.0,
+   13.0,
+   0
+  ],
+  "rot_z": 0,
+  "fallback": "proc:bench"
+ },
+ {
+  "asset": "proc:hooks",
+  "room": "foyer",
+  "wall": {
+   "axis": "y",
+   "at": 10.25,
+   "face": "+x"
+  },
+  "span": [
+   10.0,
+   13.4
+  ],
+  "z": 5.4,
+  "count": 4
+ },
+ {
+  "asset": "proc:lockers",
+  "room": "mudroom",
+  "b": [
+   0.5,
+   12.2,
+   8.5,
+   13.75,
+   0,
+   8.0
+  ],
+  "bays": 4
+ },
+ {
+  "asset": "proc:cat_station",
+  "room": "mudroom",
+  "pos": [
+   8.6,
+   2.2,
+   0
+  ]
+ },
+ {
+  "asset": "rubber_boots",
+  "room": "mudroom",
+  "pos": [
+   1.6,
+   11.6,
+   0
+  ],
+  "rot_z": 10,
+  "fallback": null
+ },
+ {
+  "asset": "proc:rug",
+  "room": "mudroom",
+  "b": [
+   2.0,
+   4.0,
+   8.0,
+   10.0
+  ],
+  "m": "rug_oxblood"
+ },
+ {
+  "note": "== POWDER / LAUNDRY / AWAY HALL =="
+ },
+ {
+  "asset": "proc:cabinet",
+  "room": "powder",
+  "b": [
+   24.5,
+   0.3,
+   27.0,
+   2.0,
+   1.4,
+   2.6
+  ],
+  "doors": 2,
+  "face": "+y"
+ },
+ {
+  "asset": "proc:wall_panel",
+  "room": "powder",
+  "b": [
+   24.7,
+   0.26,
+   26.8,
+   0.3,
+   3.4,
+   6.4
+  ],
+  "m": "mirror"
+ },
+ {
+  "asset": "proc:cabinet",
+  "room": "laundry",
+  "b": [
+   27.0,
+   5.3,
+   29.75,
+   7.8,
+   0,
+   3.0
+  ],
+  "doors": 2,
+  "face": "-x",
+  "m": "cream_paint"
+ },
+ {
+  "asset": "proc:cabinet",
+  "room": "laundry",
+  "b": [
+   27.0,
+   7.8,
+   29.75,
+   10.2,
+   0,
+   3.0
+  ],
+  "doors": 2,
+  "face": "-x",
+  "m": "cream_paint"
+ },
+ {
+  "asset": "proc:rug",
+  "room": "awayhall",
+  "b": [
+   24.8,
+   11.0,
+   29.2,
+   13.5
+  ],
+  "m": "rug_mustard"
+ },
+ {
+  "note": "== AWAY ROOM =="
+ },
+ {
+  "asset": "proc:bookwall",
+  "room": "away",
+  "b": [
+   40.6,
+   0.5,
+   41.75,
+   13.5,
+   0,
+   9.3
+  ],
+  "face": "-x",
+  "seed": 9,
+  "density": 0.9,
+  "replace_feature": "away bookwall"
+ },
+ {
+  "asset": "proc:rug",
+  "room": "away",
+  "b": [
+   31.5,
+   2.0,
+   40.0,
+   12.5
+  ],
+  "m": "rug_cream"
+ },
+ {
+  "asset": "proc:rug",
+  "room": "away",
+  "b": [
+   33.0,
+   3.5,
+   38.5,
+   10.5
+  ],
+  "m": "rug_teal",
+  "thick": 0.08
+ },
+ {
+  "asset": "mid_century_lounge_chair",
+  "room": "away",
+  "pos": [
+   35.5,
+   7.0,
+   0
+  ],
+  "rot_z": 180,
+  "tint": [
+   0.75,
+   0.55,
+   0.38
+  ],
+  "replace_feature": "away lounge chair",
+  "note": "Eames-style in worn leather"
+ },
+ {
+  "asset": "ottoman_01",
+  "room": "away",
+  "pos": [
+   35.5,
+   3.8,
+   0
+  ],
+  "rot_z": 0,
+  "tint": [
+   0.75,
+   0.55,
+   0.38
+  ]
+ },
+ {
+  "asset": "proc:mushroom_lamp",
+  "room": "away",
+  "pos": [
+   38.9,
+   10.2,
+   0
+  ],
+  "height": 4.6,
+  "m": "orange"
+ },
+ {
+  "asset": "proc:side_table",
+  "room": "away",
+  "pos": [
+   38.2,
+   6.8,
+   0
+  ]
+ },
+ {
+  "asset": "proc:table_lamp",
+  "room": "away",
+  "pos": [
+   32.0,
+   12.5,
+   0
+  ],
+  "height": 1.9,
+  "base_m": "teal",
+  "watts": 20
+ },
+ {
+  "note": "== BEDROOM =="
+ },
+ {
+  "asset": "proc:wall_panel",
+  "room": "bedroom",
+  "b": [
+   41.7,
+   30.3,
+   41.76,
+   45.7,
+   0,
+   9.4
+  ],
+  "m": "wallpaper_bedroom"
+ },
+ {
+  "asset": "proc:rug",
+  "room": "bedroom",
+  "b": [
+   29.5,
+   33.0,
+   41.5,
+   45.5
+  ],
+  "m": "rug_oxblood"
+ },
+ {
+  "asset": "proc:bed",
+  "room": "bedroom",
+  "pos": [
+   37.5,
+   39.5,
+   0
+  ],
+  "rot_z": -90,
+  "width": 6.5,
+  "length": 7.0,
+  "replace_feature": [
+   "bed",
+   "headboard"
+  ]
+ },
+ {
+  "asset": "proc:nightstand",
+  "room": "bedroom",
+  "pos": [
+   40.5,
+   34.6,
+   0
+  ]
+ },
+ {
+  "asset": "proc:nightstand",
+  "room": "bedroom",
+  "pos": [
+   40.5,
+   44.4,
+   0
+  ]
+ },
+ {
+  "asset": "modern_arm_chair_01",
+  "room": "bedroom",
+  "pos": [
+   27.5,
+   43.0,
+   0
+  ],
+  "rot_z": -140,
+  "tint": [
+   0.45,
+   0.55,
+   0.35
+  ]
+ },
+ {
+  "asset": "proc:roller_shade",
+  "room": "bedroom",
+  "span": [
+   28.0,
+   38.0
+  ],
+  "at": 45.5,
+  "inward": -1,
+  "top": 8.15,
+  "drop": 2.2
+ },
+ {
+  "asset": "proc:frames",
+  "room": "bedroom",
+  "wall": {
+   "axis": "y",
+   "at": 24.25,
+   "face": "+x"
+  },
+  "span": [
+   30.8,
+   35.5
+  ],
+  "zc": 5.4,
+  "count": 3,
+  "seed": 21
+ },
+ {
+  "asset": "alarm_clock_01",
+  "room": "bedroom",
+  "pos": [
+   40.3,
+   34.2,
+   2.0
+  ],
+  "rot_z": -90,
+  "fallback": null
+ },
+ {
+  "note": "== BATH / CLOSET =="
+ },
+ {
+  "asset": "proc:vanity",
+  "room": "bath",
+  "x": [
+   33.0,
+   41.0
+  ],
+  "at": 14.25,
+  "z": 0
+ },
+ {
+  "asset": "proc:shower",
+  "room": "bath",
+  "b": [
+   32.25,
+   24.5,
+   35.3,
+   29.75
+  ],
+  "z": 0,
+  "glass_sides": [
+   "+x",
+   "-y"
+  ],
+  "head_wall": "-x",
+  "heads": 2
+ },
+ {
+  "asset": "proc:towel_warmer",
+  "room": "bath",
+  "wall": {
+   "axis": "y",
+   "at": 41.5,
+   "face": "-x"
+  },
+  "u": 27.0,
+  "z": 2.5
+ },
+ {
+  "asset": "proc:closet",
+  "room": "closet",
+  "b": [
+   24.3,
+   14.3,
+   31.7,
+   29.7
+  ],
+  "z": 0
+ },
+ {
+  "note": "== BASEMENT: GYM =="
+ },
+ {
+  "asset": "proc:ceiling_panels",
+  "room": "gym",
+  "b": [
+   1,
+   1,
+   21,
+   29
+  ],
+  "z": -0.55,
+  "cols": 2,
+  "rows": 3,
+  "size": [
+   2,
+   4
+  ],
+  "watts": 45,
+  "kelvin": 3000
+ },
+ {
+  "set_material": {
+   "object": "feat_gym_mirror_wall",
+   "m": "mirror"
+  }
+ },
+ {
+  "asset": "proc:power_rack",
+  "room": "gym",
+  "pos": [
+   7.0,
+   7.0,
+   -10
+  ],
+  "width": 4.0,
+  "depth": 4.5,
+  "height": 7.5,
+  "replace_feature": "gym rack"
+ },
+ {
+  "asset": "proc:gym_bench",
+  "room": "gym",
+  "pos": [
+   14.0,
+   8.0,
+   -10
+  ],
+  "rot_z": 0
+ },
+ {
+  "asset": "proc:dumbbell_rack",
+  "room": "gym",
+  "pos": [
+   16.5,
+   28.9,
+   -10
+  ],
+  "length": 6.0,
+  "rot_z": 0
+ },
+ {
+  "asset": "proc:functional_trainer",
+  "room": "gym",
+  "pos": [
+   20.9,
+   20.0,
+   -10
+  ],
+  "rot_z": 90
+ },
+ {
+  "asset": "proc:rower",
+  "room": "gym",
+  "pos": [
+   3.2,
+   21.0,
+   -10
+  ],
+  "rot_z": 90
+ },
+ {
+  "asset": "proc:wall_screen",
+  "room": "gym",
+  "b": [
+   21.7,
+   9.5,
+   21.74,
+   14.5,
+   -6.6,
+   -3.8
+  ]
+ },
+ {
+  "asset": "proc:shelving_unit",
+  "room": "gym",
+  "pos": [
+   19.8,
+   26.5,
+   -10
+  ],
+  "length": 2.5,
+  "depth": 1.4,
+  "height": 3.0,
+  "rot_z": 0,
+  "seed": 4
+ },
+ {
+  "asset": "proc:towels",
+  "room": "gym",
+  "pos": [
+   19.8,
+   25.9,
+   -7.0
+  ],
+  "count": 3
+ },
+ {
+  "note": "== BASEMENT: RECOVERY =="
+ },
+ {
+  "asset": "proc:sauna",
+  "room": "recovery",
+  "replace_feature": "sauna glass front",
+  "watts": 45
+ },
+ {
+  "asset": "proc:shower",
+  "room": "recovery",
+  "b": [
+   26.0,
+   0.5,
+   29.5,
+   6.0
+  ],
+  "z": -10,
+  "glass_sides": [
+   "-x"
+  ],
+  "head_wall": "+x",
+  "heads": 2
+ },
+ {
+  "asset": "proc:towel_warmer",
+  "room": "recovery",
+  "wall": {
+   "axis": "y",
+   "at": 22.25,
+   "face": "+x"
+  },
+  "u": 5.0,
+  "z": -7.5
+ },
+ {
+  "asset": "proc:hooks",
+  "room": "recovery",
+  "wall": {
+   "axis": "y",
+   "at": 22.25,
+   "face": "+x"
+  },
+  "span": [
+   1.0,
+   3.5
+  ],
+  "z": -4.5,
+  "count": 3,
+  "jacket": false
+ },
+ {
+  "note": "== BASEMENT: BAR =="
+ },
+ {
+  "set_material": {
+   "object": "feat_bar_back_wall",
+   "m": "wallpaper_botanical"
+  }
+ },
+ {
+  "asset": "proc:bar",
+  "room": "bar"
+ },
+ {
+  "asset": "bar_chair_round_01",
+  "room": "bar",
+  "pos": [
+   24.0,
+   27.2,
+   -10
+  ],
+  "rot_z": 0
+ },
+ {
+  "asset": "bar_chair_round_01",
+  "room": "bar",
+  "pos": [
+   26.0,
+   27.2,
+   -10
+  ],
+  "rot_z": 25
+ },
+ {
+  "asset": "bar_chair_round_01",
+  "room": "bar",
+  "pos": [
+   28.0,
+   27.2,
+   -10
+  ],
+  "rot_z": -15
+ },
+ {
+  "asset": "proc:globe_pendant",
+  "room": "bar",
+  "pos": [
+   24.5,
+   25.0,
+   -0.5
+  ],
+  "radius": 0.4,
+  "drop": 2.4,
+  "watts": 25
+ },
+ {
+  "asset": "proc:globe_pendant",
+  "room": "bar",
+  "pos": [
+   27.5,
+   25.0,
+   -0.5
+  ],
+  "radius": 0.4,
+  "drop": 2.4,
+  "watts": 25
+ },
+ {
+  "asset": "brass_goblets",
+  "room": "bar",
+  "pos": [
+   25.0,
+   24.8,
+   -6.38
+  ],
+  "rot_z": 0,
+  "fallback": null
+ },
+ {
+  "note": "== BASEMENT: LOUNGE =="
+ },
+ {
+  "asset": "proc:cove",
+  "room": "lounge",
+  "b": [
+   4,
+   34,
+   18,
+   44
+  ],
+  "z": -10.0,
+  "watts": 6,
+  "note": "LED strip under the pit lip"
+ },
+ {
+  "asset": "proc:cushions",
+  "room": "lounge",
+  "b": [
+   4.6,
+   34.4,
+   17.4,
+   36.6
+  ],
+  "z": -10.1,
+  "count": 5,
+  "seed": 31,
+  "mats": [
+   "mustard",
+   "orange",
+   "rug_cream",
+   "oxblood",
+   "teal"
+  ]
+ },
+ {
+  "asset": "proc:cushions",
+  "room": "lounge",
+  "b": [
+   4.4,
+   37.0,
+   6.6,
+   43.6
+  ],
+  "z": -10.1,
+  "count": 3,
+  "seed": 32
+ },
+ {
+  "asset": "proc:cushions",
+  "room": "lounge",
+  "b": [
+   15.4,
+   37.0,
+   17.6,
+   43.6
+  ],
+  "z": -10.1,
+  "count": 3,
+  "seed": 33
+ },
+ {
+  "asset": "throw_pillows_01",
+  "room": "lounge",
+  "pos": [
+   8.0,
+   35.4,
+   -10.1
+  ],
+  "rot_z": 0,
+  "fallback": null
+ },
+ {
+  "asset": "proc:globe_pendant",
+  "room": "lounge",
+  "pos": [
+   8.0,
+   39.0,
+   -0.5
+  ],
+  "radius": 0.55,
+  "drop": 2.4,
+  "watts": 30
+ },
+ {
+  "asset": "proc:globe_pendant",
+  "room": "lounge",
+  "pos": [
+   11.0,
+   39.0,
+   -0.5
+  ],
+  "radius": 0.45,
+  "drop": 3.0,
+  "watts": 30
+ },
+ {
+  "asset": "proc:globe_pendant",
+  "room": "lounge",
+  "pos": [
+   14.0,
+   39.0,
+   -0.5
+  ],
+  "radius": 0.5,
+  "drop": 2.6,
+  "watts": 30
+ },
+ {
+  "asset": "proc:tv_wall",
+  "room": "lounge",
+  "wall": {
+   "axis": "x",
+   "at": 45.5,
+   "face": "-y"
+  },
+  "u": 11.0,
+  "zc": -6.0,
+  "w": 9.0,
+  "h": 5.0,
+  "replace_feature": "lounge tv panel",
+  "on": true,
+  "watts": 6
+ },
+ {
+  "asset": "proc:credenza",
+  "room": "lounge",
+  "pos": [
+   11.0,
+   44.6,
+   -10
+  ],
+  "rot_z": 0,
+  "length": 8.5,
+  "depth": 1.6,
+  "height": 2.0,
+  "turntable": false
+ },
+ {
+  "asset": "proc:cabinet",
+  "room": "lounge",
+  "b": [
+   0.5,
+   31.0,
+   1.7,
+   33.6,
+   -10,
+   -6.5
+  ],
+  "doors": 2,
+  "face": "+x"
+ },
+ {
+  "asset": "proc:rug",
+  "room": "lounge",
+  "b": [
+   19.5,
+   31.5,
+   29.5,
+   39.5
+  ],
+  "m": "rug_oxblood"
+ },
+ {
+  "asset": "proc:rug",
+  "room": "lounge",
+  "b": [
+   1.0,
+   34.0,
+   3.6,
+   44.0
+  ],
+  "m": "rug_mustard"
+ },
+ {
+  "asset": "proc:puzzle",
+  "room": "lounge",
+  "b": [
+   23.6,
+   40.6,
+   26.3,
+   42.4
+  ],
+  "z": -7.5,
+  "seed": 77
+ },
+ {
+  "asset": "chess_set",
+  "room": "lounge",
+  "pos": [
+   24.2,
+   42.6,
+   -7.5
+  ],
+  "rot_z": 15,
+  "scale": 0.7,
+  "fallback": null
+ },
+ {
+  "asset": "dining_chair_02",
+  "room": "lounge",
+  "pos": [
+   25.0,
+   39.1,
+   -10
+  ],
+  "rot_z": 180
+ },
+ {
+  "asset": "dining_chair_02",
+  "room": "lounge",
+  "pos": [
+   25.0,
+   43.9,
+   -10
+  ],
+  "rot_z": 0
+ },
+ {
+  "asset": "proc:frames",
+  "room": "lounge",
+  "wall": {
+   "axis": "y",
+   "at": 29.75,
+   "face": "-x"
+  },
+  "span": [
+   31.0,
+   37.5
+  ],
+  "zc": -5.0,
+  "count": 4,
+  "seed": 51
+ },
+ {
+  "asset": "proc:table_lamp",
+  "room": "lounge",
+  "pos": [
+   1.1,
+   32.3,
+   -6.5
+  ],
+  "height": 1.6,
+  "base_m": "brass",
+  "watts": 20
+ },
+ {
+  "asset": "boombox",
+  "room": "lounge",
+  "pos": [
+   7.0,
+   44.6,
+   -8.0
+  ],
+  "rot_z": 0,
+  "fallback": null
+ },
+ {
+  "asset": "ceramic_vase_03",
+  "room": "lounge",
+  "pos": [
+   14.5,
+   44.6,
+   -8.0
+  ],
+  "rot_z": 0,
+  "fallback": null
+ },
+ {
+  "note": "== BASEMENT: STAIR HALL / STORAGE / MECHANICAL =="
+ },
+ {
+  "asset": "proc:rug",
+  "room": "stair",
+  "b": [
+   31.5,
+   32.0,
+   40.5,
+   44.0
+  ],
+  "m": "rug_teal"
+ },
+ {
+  "asset": "proc:bench",
+  "room": "stair",
+  "pos": [
+   36.0,
+   45.0,
+   -10
+  ],
+  "rot_z": 0,
+  "length": 4.0,
+  "cushion_m": "mustard"
+ },
+ {
+  "asset": "proc:frames",
+  "room": "stair",
+  "wall": {
+   "axis": "y",
+   "at": 41.5,
+   "face": "-x"
+  },
+  "span": [
+   32.0,
+   44.0
+  ],
+  "zc": -5.0,
+  "count": 5,
+  "seed": 61
+ },
+ {
+  "asset": "proc:shelving_unit",
+  "room": "storage",
+  "pos": [
+   36.0,
+   21.6,
+   -10
+  ],
+  "length": 9.0,
+  "depth": 2.0,
+  "height": 6.5,
+  "rot_z": 0,
+  "seed": 2
+ },
+ {
+  "asset": "proc:shelving_unit",
+  "room": "storage",
+  "pos": [
+   36.0,
+   28.4,
+   -10
+  ],
+  "length": 9.0,
+  "depth": 2.0,
+  "height": 6.5,
+  "rot_z": 0,
+  "seed": 3
+ },
+ {
+  "asset": "proc:water_heater",
+  "room": "mechanical",
+  "pos": [
+   33.0,
+   3.5,
+   -10
+  ]
+ },
+ {
+  "asset": "proc:shelving_unit",
+  "room": "mechanical",
+  "pos": [
+   38.0,
+   17.5,
+   -10
+  ],
+  "length": 6.0,
+  "depth": 2.0,
+  "height": 6.5,
+  "rot_z": 0,
+  "seed": 5
+ },
+ {
+  "note": "== EXTERIOR =="
+ },
+ {
+  "asset": "concrete_cat_statue",
+  "room": "exterior",
+  "pos": [
+   8.0,
+   49.0,
+   -0.05
+  ],
+  "rot_z": 200,
+  "fallback": null
+ },
+ {
+  "asset": "potted_plant_02",
+  "room": "exterior",
+  "pos": [
+   18.0,
+   48.0,
+   -0.05
+  ],
+  "rot_z": 0
+ },
+ {
+  "asset": "proc:bench",
+  "room": "exterior",
+  "pos": [
+   12.0,
+   52.0,
+   -0.05
+  ],
+  "rot_z": 0,
+  "length": 6.0,
+  "depth": 1.6,
+  "height": 1.4,
+  "cushion": false,
+  "m": "cedar"
+ }
+]
