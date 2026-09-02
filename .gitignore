@@ -17,3 +17,4 @@ __pycache__/
 web/export.log
 web/_tiles/
 web/_*.json
+web/mem.log
