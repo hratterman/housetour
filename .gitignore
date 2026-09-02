@@ -4,7 +4,13 @@ renders/*
 !renders/contact_sheet.png
 !renders/contact_sheet_preview.png
 !renders/stills_preview/
+!renders/timing_*.json
+!renders/preview/
+renders/preview/*
+!renders/preview/*_phase1.mp4
 assets/*
 !assets/manifest.json
+!assets/wanted.json
+!assets/catalog/
 __pycache__/
 *.blend1

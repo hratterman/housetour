@@ -116,3 +116,9 @@ Timings (Phase 2, CPU 4 threads):
 - room views 480x270 / 24: 38 to 54 s each
 - render.sh smoke test (STEP=24, 320x180, 8 samples) showed the xfade collapsing to the first clip at 1 fps because
   the 0.5 s dissolve was shorter than one output frame. The dissolve now floors at two output frames.
+
+## M3: basement preview (Phase 1 boxes)
+
+- 64 frames (every 3rd of 192) at 640x360 / 32 samples: mean 25.0 s/frame, 26.7 min total (rendered alongside
+  other jobs, so per-frame is inflated versus the main floor's 19.8 s).
+- Stitched at 8 fps: renders/preview/basement_preview_phase1.mp4 (8 s).
