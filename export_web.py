@@ -172,18 +172,21 @@ _SCALED = {}
 
 
 def scaled_copy(path, size, out_dir, quality=85):
-    """Downscale an image file with Pillow into out_dir (cached by source path). Returns the new path."""
+    """Downscale an image file into out_dir with Blender's image API (cached by source path). Returns the new path."""
     key = (os.path.abspath(path), size)
     if key in _SCALED:
         return _SCALED[key]
-    from PIL import Image
-    im = Image.open(path).convert("RGB")
-    if max(im.size) > size:
-        im = im.resize((size, size), Image.LANCZOS)
     base = os.path.splitext(os.path.basename(path))[0]
     tag = os.path.basename(os.path.dirname(path))
     out = os.path.join(out_dir, "%s_%s_%d.jpg" % (tag, base, size))
-    im.save(out, quality=quality)
+    img = bpy.data.images.load(path)
+    if img.size[0] > size or img.size[1] > size:
+        img.scale(size, size)
+    img.filepath_raw = out
+    img.file_format = "JPEG"
+    bpy.context.scene.render.image_settings.quality = quality
+    img.save()
+    bpy.data.images.remove(img)
     _SCALED[key] = out
     return out
 
