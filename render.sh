@@ -82,7 +82,7 @@ FINAL="$OUT/walkthrough${TAG}.mp4"
 if [ "${#CLIPS[@]}" -ge 2 ]; then
   # cross-dissolve: XFADE_FRAMES of the animation, scaled to the output fps
   DUR1=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "${CLIPS[0]}")
-  XD=$(python3 -c "print(min(0.5, $XFADE_FRAMES/24.0))")
+  XD=$(python3 -c "print(max($XFADE_FRAMES/$FPS, 2.0/$OUT_FPS))")
   OFF=$(python3 -c "print(max(0.0, $DUR1 - $XD))")
   ffmpeg -y -loglevel error -i "${CLIPS[0]}" -i "${CLIPS[1]}" \
       -filter_complex "[0:v][1:v]xfade=transition=fade:duration=${XD}:offset=${OFF},format=yuv420p" \

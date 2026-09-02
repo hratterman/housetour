@@ -114,3 +114,5 @@ Timings (Phase 2, CPU 4 threads):
 - scene build 13.5 s, 1939 objects (38 model instances, 91 procedural placements, 56 lights incl. 5 portals)
 - review stills 640x360 / 32: 41 to 79 s each
 - room views 480x270 / 24: 38 to 54 s each
+- render.sh smoke test (STEP=24, 320x180, 8 samples) showed the xfade collapsing to the first clip at 1 fps because
+  the 0.5 s dissolve was shorter than one output frame. The dissolve now floors at two output frames.
