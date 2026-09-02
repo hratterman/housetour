@@ -18,6 +18,7 @@ WEB = os.path.join(ROOT, "web")
 def serve(port):
     handler = http.server.SimpleHTTPRequestHandler
     os.chdir(WEB)
+    socketserver.TCPServer.allow_reuse_address = True
     httpd = socketserver.TCPServer(("127.0.0.1", port), handler)
     t = threading.Thread(target=httpd.serve_forever, daemon=True)
     t.start()
@@ -35,10 +36,12 @@ def find_chromium():
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=os.path.join(ROOT, "renders", "web_shots"))
-    ap.add_argument("--width", type=int, default=960)
-    ap.add_argument("--height", type=int, default=540)
+    ap.add_argument("--width", type=int, default=640)
+    ap.add_argument("--height", type=int, default=360)
     ap.add_argument("--port", type=int, default=8765)
+    ap.add_argument("--spots", default=None, help="comma-separated 1-based spot numbers")
     args = ap.parse_args()
+    args.out = os.path.abspath(args.out)
     os.makedirs(args.out, exist_ok=True)
     from playwright.sync_api import sync_playwright
     httpd = serve(args.port)
@@ -52,16 +55,20 @@ def main():
         pg = b.new_page(viewport={"width": args.width, "height": args.height})
         pg.on("console", lambda m: errors.append(m.text) if m.type in ("error",) else None)
         pg.on("pageerror", lambda e: errors.append(str(e)))
-        pg.goto("http://127.0.0.1:%d/index.html" % args.port)
+        pg.goto("http://127.0.0.1:%d/index.html?lite" % args.port)
         pg.wait_for_function("window.__ready === true", timeout=240000)
         pg.wait_for_timeout(1500)
+        pg.evaluate("document.getElementById('help').style.display='none'")
+        wanted = set(int(x) for x in args.spots.split(",")) if args.spots else None
         n = pg.evaluate("window.__spots ? window.__spots.length : 0")
         spots = pg.evaluate("window.__spots || []")
         for i, s in enumerate(spots):
+            if wanted and (i + 1) not in wanted:
+                continue
             pg.evaluate("window.__teleport(%d)" % i)
             pg.wait_for_timeout(900)
             path = os.path.join(args.out, "%02d_%s.png" % (i + 1, s["name"].lower()))
-            pg.screenshot(path=path)
+            pg.screenshot(path=path, timeout=240000)
             print("shot", path, flush=True)
         b.close()
     httpd.shutdown()

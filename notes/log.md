@@ -172,3 +172,18 @@ the 24 fps final is Jamie's run on the Mac Mini (README).
   before the plantings, so the tree models cost under 2 s a frame on the main-floor shot and about 9 s on views that
   look straight at them).
 - Output renders/walkthrough_preview.mp4: 164 frames, 20.5 s at 8 fps. Committed with the contact sheet and stills.
+
+## Web walkthrough (Henry: "a model I can walk through, like a video game house")
+
+- export_web.py bakes all 87 world-space materials to tiles (Cycles diffuse-color bake on a one-tile plane),
+  writes matching box-projected UVs on 1939 procedural meshes, swaps the 12.8 M-triangle tree models for
+  procedural ones, decimates 7 models over 30k triangles, downscales every texture to 512 and exports glTF.
+  Bugs on the way: Blender's bundled Python has no Pillow; the glTF importer packs textures so reload() after
+  a downscale restored the 1K pixels (fixed by loading the scaled copy as a new image); recolored chairs held
+  duplicated materials that still pointed at the originals. 80 MB -> 34.4 MB. Export takes about 4 min.
+- web/index.html: three.js 0.160 (vendored, no CDN), pointer-lock first person, raycast collision at knee and
+  chest height with wall sliding, floor snap with a 0.32 m step so the stair works, gravity, fly mode, minimap
+  from plan_web.json with openings and the pit, room label, ten teleport spots, nearest-14 point lights from
+  lights.json, ?lite mode without shadows.
+- tools/web_screenshots.py drives it in headless Chromium (swiftshader) and screenshots every spot; all ten
+  render, only console error is the missing favicon.

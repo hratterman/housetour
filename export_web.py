@@ -171,19 +171,24 @@ def web_material(name, spec, base_img, normal_img, tile_m):
 _SCALED = {}
 
 
-def scaled_copy(path, size, out_dir, quality=85):
-    """Downscale an image file into out_dir with Blender's image API (cached by source path). Returns the new path."""
-    key = (os.path.abspath(path), size)
+def scaled_copy(path, size, out_dir, quality=85, src_image=None):
+    """Downscale an image into out_dir with Blender's image API (cached by source path). Returns the new path.
+    Keeps PNG when the source carries alpha (leaf cut-outs), JPEG otherwise. src_image may be a packed image."""
+    key = (os.path.abspath(path) if path else src_image.name, size)
     if key in _SCALED:
         return _SCALED[key]
-    base = os.path.splitext(os.path.basename(path))[0]
-    tag = os.path.basename(os.path.dirname(path))
-    out = os.path.join(out_dir, "%s_%s_%d.jpg" % (tag, base, size))
-    img = bpy.data.images.load(path)
+    if src_image is not None:
+        img = src_image.copy()
+    else:
+        img = bpy.data.images.load(path)
     if img.size[0] > size or img.size[1] > size:
         img.scale(size, size)
+    has_alpha = (img.channels == 4 and img.file_format == "PNG")
+    base = os.path.splitext(os.path.basename(path or src_image.name))[0]
+    tag = os.path.basename(os.path.dirname(path)) if path else "packed"
+    out = os.path.join(out_dir, "%s_%s_%d.%s" % (tag, base, size, "png" if has_alpha else "jpg"))
     img.filepath_raw = out
-    img.file_format = "JPEG"
+    img.file_format = "PNG" if has_alpha else "JPEG"
     bpy.context.scene.render.image_settings.quality = quality
     img.save()
     bpy.data.images.remove(img)
@@ -319,15 +324,21 @@ def main():
                     mod.ratio = ratio
                     mod.use_collapse_triangulate = True
             n_dec += 1
-        for m in me.materials:
-            if m is None or not m.use_nodes:
-                continue
+    for m in bpy.data.materials:
+        if m is None or not m.use_nodes or m.name.startswith("web_"):
+            continue
+        if True:
             for n in m.node_tree.nodes:
                 if n.type == "TEX_IMAGE" and n.image is not None and n.image.size[0] > args.model_tex:
-                    src = bpy.path.abspath(n.image.filepath)
-                    if os.path.exists(src):
-                        n.image.filepath = scaled_copy(src, args.model_tex, tiles_dir)
-                        n.image.reload()
+                    if n.image.name in _LOADED:
+                        n.image = _LOADED[n.image.name]
+                        continue
+                    src = bpy.path.abspath(n.image.filepath) if n.image.filepath else ""
+                    out = scaled_copy(src if os.path.exists(src) else None, args.model_tex, tiles_dir, src_image=n.image)
+                    new = bpy.data.images.load(out)
+                    new.colorspace_settings.name = n.image.colorspace_settings.name
+                    _LOADED[n.image.name] = new
+                    n.image = new
     log("decimated %d heavy model meshes" % n_dec)
 
     # 4. lights and plan for the viewer
