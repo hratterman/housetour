@@ -32,6 +32,7 @@ def parse_args():
     p.add_argument("--samples", type=int, default=128)
     p.add_argument("--frame-step", type=int, default=1)
     p.add_argument("--still", default=None, help="shot:t[:name]  render one frame and exit")
+    p.add_argument("--view", default=None, help="name:px,py,pz,lx,ly,lz  render one frame from a free pose (feet) and exit")
     p.add_argument("--out", default=os.path.join(HERE, "renders"))
     p.add_argument("--device", default="CPU", help="CPU, METAL, CUDA, OPTIX, HIP, ONEAPI")
     p.add_argument("--exposure", type=float, default=None, help="override plan camera.exposure")
@@ -281,8 +282,20 @@ class House:
         if not g:
             return
         half = g.get("size", 400) / 2
-        box_ft("ground", -half + 21, -half + 23, half + 21, half + 23, g["z"] - 0.5, g["z"],
-               self.mats.get(g.get("m", "grass")), self.col_shell, {"kind": "ground"})
+        rooms = [r for r in self.rooms if r["floor"] == "main"]
+        skin = self.plan.get("exterior", {}).get("skin_t", 0.0)
+        X0 = min(r["b"][0] for r in rooms) - skin
+        Y0 = min(r["b"][1] for r in rooms) - skin
+        X1 = max(r["b"][2] for r in rooms) + skin
+        Y1 = max(r["b"][3] for r in rooms) + skin
+        z0, z1 = g["z"] - 0.5, g["z"]
+        mat = self.mats.get(g.get("m", "grass"))
+        cx, cy = (X0 + X1) / 2, (Y0 + Y1) / 2
+        # four boxes around the house footprint so nothing intrudes into the basement
+        box_ft("ground_s", cx - half, cy - half, cx + half, Y0, z0, z1, mat, self.col_shell, {"kind": "ground"})
+        box_ft("ground_n", cx - half, Y1, cx + half, cy + half, z0, z1, mat, self.col_shell, {"kind": "ground"})
+        box_ft("ground_w", cx - half, Y0, X0, Y1, z0, z1, mat, self.col_shell, {"kind": "ground"})
+        box_ft("ground_e", X1, Y0, cx + half, Y1, z0, z1, mat, self.col_shell, {"kind": "ground"})
 
     def build_features(self):
         n = 0
@@ -352,6 +365,9 @@ def setup_camera(plan):
     return cam, tgt
 
 
+_PLAN_CAMERA = {}
+
+
 def key_shot(scene, cam, tgt, shot, fps, base_exposure=None, override=None):
     """Keyframe camera and target along the shot path. Returns (frame_start, frame_end)."""
     if override is not None:
@@ -375,6 +391,16 @@ def key_shot(scene, cam, tgt, shot, fps, base_exposure=None, override=None):
                 kp.interpolation = "BEZIER"
                 kp.handle_left_type = "AUTO_CLAMPED"
                 kp.handle_right_type = "AUTO_CLAMPED"
+    # subtle handheld drift: slow noise on the look target so the move is not rail-perfect
+    hh = shot.get("handheld_ft", _PLAN_CAMERA.get("handheld_ft", 0.0))
+    if hh > 0:
+        for i, fc in enumerate(tgt.animation_data.action.fcurves):
+            mod = fc.modifiers.new("NOISE")
+            mod.scale = 45.0
+            mod.strength = m(hh) * 2
+            mod.phase = 7.0 * i + 1
+            mod.blend_in = 6
+            mod.blend_out = 6
     scene.frame_start = 1
     scene.frame_end = n
     return 1, n
@@ -382,17 +408,22 @@ def key_shot(scene, cam, tgt, shot, fps, base_exposure=None, override=None):
 
 def check_path(scene, cam, shot, radius_ft=0.3):
     """Sample every frame; report any frame where the camera is within radius of shell/feature geometry."""
-    obs = [o for o in bpy.data.objects
-           if o.type == "MESH" and "bounds_ft" in o and o.get("kind") != "ground"]
+    from geom import world_bounds
+    obs = []
+    for o in bpy.data.objects:
+        if o.type != "MESH" or o.get("kind") == "ground" or o.hide_render or o.name.startswith("proto_"):
+            continue
+        if o.users_collection and o.users_collection[0].name == "asset_lib":
+            continue
+        mn, mx = world_bounds(o)
+        obs.append((o, mn, mx))
     hits = []
     r = m(radius_ft)
     for f in range(scene.frame_start, scene.frame_end + 1):
         scene.frame_set(f)
         p = cam.matrix_world.translation
-        for o in obs:
-            b = o["bounds_ft"]
-            if not (m(b[0]) - r <= p.x <= m(b[2]) + r and m(b[1]) - r <= p.y <= m(b[3]) + r
-                    and m(b[4]) - r <= p.z <= m(b[5]) + r):
+        for o, mn, mx in obs:
+            if not (mn.x - r <= p.x <= mx.x + r and mn.y - r <= p.y <= mx.y + r and mn.z - r <= p.z <= mx.z + r):
                 continue
             lp = o.matrix_world.inverted() @ p
             ok, loc, nrm, idx = o.closest_point_on_mesh(lp)
@@ -554,6 +585,7 @@ def main():
     scene.unit_settings.system = "METRIC"
     scene.unit_settings.scale_length = 1.0
 
+    _PLAN_CAMERA.update(plan.get("camera", {}))
     mats = Materials(plan, stage)
     house = House(plan, mats)
     house.root = HERE
@@ -585,6 +617,24 @@ def main():
         blend_path = os.path.join(args.out, "scene.blend")
         bpy.ops.wm.save_as_mainfile(filepath=blend_path, compress=True)
         log("saved", blend_path)
+
+    if args.view:
+        name, coords = args.view.split(":")
+        v = [float(x) for x in coords.split(",")]
+        cam.animation_data_clear()
+        tgt.animation_data_clear()
+        cam.location = tuple(m(x) for x in v[:3])
+        tgt.location = tuple(m(x) for x in v[3:6])
+        if args.exposure is None:
+            scene.view_settings.exposure = plan.get("camera", {}).get("exposure", 0.0) + (0.8 if v[2] < -1 else 0.0)
+        scene.frame_set(1)
+        still_dir = os.path.join(args.out, "stills")
+        os.makedirs(still_dir, exist_ok=True)
+        scene.render.filepath = os.path.join(still_dir, name + ".png")
+        t0 = time.time()
+        bpy.ops.render.render(write_still=True)
+        log("view", name, "%.1fs" % (time.time() - t0))
+        return
 
     if args.still:
         parts = args.still.split(":")

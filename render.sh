@@ -40,12 +40,14 @@ SHOTS="${SHOTS:-main_floor basement}"
 FPS=$(python3 -c "import json;print(json.load(open('plan.json')).get('fps',24))")
 
 if [ "${PREVIEW:-0}" = "1" ]; then
-  RES="${RES:-640x360}"; SAMPLES="${SAMPLES:-32}"; STEP=3; OUT_FPS=8; TAG="_preview"
+  RES="${RES:-640x360}"; SAMPLES="${SAMPLES:-32}"; STEP="${STEP:-3}"; TAG="_preview"
   STILL_SAMPLES=${STILL_SAMPLES:-48}
 else
-  RES="${RES:-1280x720}"; SAMPLES="${SAMPLES:-128}"; STEP=1; OUT_FPS=$FPS; TAG=""
+  RES="${RES:-1280x720}"; SAMPLES="${SAMPLES:-128}"; STEP="${STEP:-1}"; TAG=""
   STILL_SAMPLES=${STILL_SAMPLES:-$((SAMPLES * 2))}
 fi
+# strided frames play back at fps/step so the move keeps real-time pacing
+OUT_FPS=$(python3 -c "print(max(1, round($FPS / $STEP)))")
 
 echo "== blender: $BLENDER"
 echo "== device: $DEVICE   res: $RES   samples: $SAMPLES   step: $STEP   stage: $STAGE   out: $OUT"

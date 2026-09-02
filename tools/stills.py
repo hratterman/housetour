@@ -39,9 +39,10 @@ def main():
     ap.add_argument("--out", default=os.path.join(ROOT, "renders", "stills"))
     ap.add_argument("--only", default=None, help="comma-separated still names")
     ap.add_argument("--exposure", type=float, default=None)
+    ap.add_argument("--views", action="store_true", help="render plan['views'] (free poses off the camera path) instead")
     args = ap.parse_args()
     plan = json.load(open(args.plan))
-    stills = plan.get("stills", [])
+    stills = plan.get("views", []) if args.views else plan.get("stills", [])
     if args.only:
         keep = set(args.only.split(","))
         stills = [s for s in stills if s["name"] in keep]
@@ -53,8 +54,12 @@ def main():
     timings = {}
     for s in stills:
         t0 = time.time()
+        if "pos" in s:
+            sel = ["--view", "%s:%s" % (s["name"], ",".join(str(x) for x in list(s["pos"]) + list(s["look"])))]
+        else:
+            sel = ["--still", "%s:%s:%s" % (s["shot"], s["t"], s["name"])]
         cmd = [blender, "-b", "-P", os.path.join(ROOT, "build_scene.py"), "--",
-               "--plan", args.plan, "--still", "%s:%s:%s" % (s["shot"], s["t"], s["name"]),
+               "--plan", args.plan] + sel + [
                "--res", args.res, "--samples", str(args.samples), "--device", device,
                "--stage", args.stage, "--out", tmp_out, "--no-blend", "--motion-blur", "off"]
         if args.exposure is not None:

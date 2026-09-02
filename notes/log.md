@@ -62,3 +62,55 @@ Timings (640x360, 32 samples, denoised, CPU 4 threads):
 - living still: 12.0 s
 - gym still: 17.8 s
 - pit still: 15.8 s
+
+## M2: main floor preview
+
+- 96 frames (every 3rd of 288) at 640x360 / 32 samples: mean 19.8 s/frame, 31.6 min total.
+- Camera path check reports clear for both shots (ray-parity inside test plus 0.3 ft clearance, every frame).
+- Stitched at 8 fps: renders/preview/main_floor_preview_phase1.mp4 (12 s). Camera move is a slow walk; no wall clips.
+
+## Phase 2 build (M6 to M10 collapsed into one iteration loop)
+
+Henry asked me to keep working rather than stop for the M3/M8 approvals, so those gates are review stills committed
+in renders/stills_preview and the contact sheet instead of a pause.
+
+Assets: 21 texture sets (20 Poly Haven, 2 ambientCG terrazzo), 54 glTF models, 1 HDRI. All CC0, recorded with URLs in
+assets/manifest.json. decorative_book_set_01 has no glTF export and was dropped (books are procedural anyway).
+pachira_aquatica_01 and calathea_orbifolia_01 are multi-plant sets (22 ft and 8 ft wide) and are not placed.
+
+Plan edits during Phase 2:
+12. Stair: the basement "stair" room sits under the bedroom, not the spine, so a stair "from the spine" had nowhere
+    to land. The stair now descends from the north end of the spine (X 18.5-23.5, from Y 33.5) into the lounge,
+    14 risers at 8.57 in, through a well cut in both slabs. The basement "stair" room is a landing hall serving
+    storage. To clear the run, the pit moved 2 ft west to X 4-18 and the lounge TV panel to X 7-15.
+13. Living-to-spine opening moved to Y 30.5-33.5 (3 ft) so it does not open onto the stair well.
+14. Island split into a 6 ft stone work end (3 ft high) and a 5 ft walnut table end (2.5 ft high) with six chairs,
+    per the spec's "stone work end and a table end".
+15. Kitchen back counter pulled to the wall face (Y 14.25) so the backsplash and uppers sit on the wall.
+16. Away room walls are the geometric olive/cream wallpaper (spec 11.5). Bedroom has one wallpapered wall behind the
+    headboard; the bed head faces east (X=42) because the north wall is the garden window.
+17. Beams and oak decking in both the living room and kitchen (spec 11.4 names both).
+18. Both glass walls are lift-and-slides with one panel slid open over its neighbour (gym-to-lounge panel 1, rear
+    glass panel 3); the basement camera walks through the open bay.
+19. Room fill wattages raised for the closet, bath, away, recovery, bedroom, mudroom and foyer after the room views
+    came back too dark; the basement fill multiplier is 1.3 versus 0.35 on the main floor because it has no daylight.
+20. Sun 4.0 -> 2.0 and sky 0.45 so the terrace outside the rear glass is bright but not clipped against interiors at 0 EV.
+    Basement shot renders at +0.8 EV (per-shot exposure in plan.json).
+
+Bugs found from stills:
+- The 400 ft ground slab sat at Z -0.8 to -0.3, inside the basement rooms, and swallowed every basement ceiling
+  light. The gym and recovery suite rendered black. Ground is now four boxes around the footprint.
+- Mapping node was in Texture mode, which applies the inverse transform: a 1 ft wallpaper pattern rendered at 10 ft
+  and plank textures repeated every 1.8 ft instead of 6 ft. Switched to Point mode.
+- Tile backsplash evaluated its brick pattern in XY on an XZ wall (one flat row). Remapped into the wall plane.
+- Blender's glTF importer left stale object references after the first import (StructRNA removed). Import bookkeeping
+  now uses names.
+- Fire at emission 25 to 40 clipped to white cards under AgX; now layered ellipsoids at 3 to 5 with an ember bed.
+- The dark leather of the mid-century chair could not be tinted to mustard by multiplication; the two living-room
+  chairs use a flat recolor instead. The away-room one keeps its leather.
+- The lounge TV "on" and the pit LED cove were both several times too bright; halved and warmed to 2200K.
+
+Timings (Phase 2, CPU 4 threads):
+- scene build 13.5 s, 1939 objects (38 model instances, 91 procedural placements, 56 lights incl. 5 portals)
+- review stills 640x360 / 32: 41 to 79 s each
+- room views 480x270 / 24: 38 to 54 s each

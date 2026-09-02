@@ -7,7 +7,7 @@ import math
 import bpy
 from mathutils import Vector
 
-from geom import (FT, IN, m, log, box_ft, box_local, beam_between, cylinder_ft, prism_yz, prism_xz,
+from geom import (FT, IN, m, log, box_ft, box_local, beam_between, cylinder_ft, sphere_ft, prism_yz, prism_xz,
                   plane_ft, get_collection, boolean_cut, cut_with_box, overlap, bounds_of, set_face_material,
                   area_light)
 
@@ -192,9 +192,24 @@ class Details:
             # transom bar on tall glass walls at door height
             if kind == "glasswall" and op["h"] > 8.0:
                 fbox("wt_%s" % tag, a0, a1, z0 + 7.5, z0 + 7.5 + MULLION_W)
-            # glass pane
-            fbox("glass_%s" % tag, a0 + FRAME_W, a1 - FRAME_W, z0 + FRAME_W, z1 - FRAME_W,
-                 mid - GLASS_T / 2, mid + GLASS_T / 2, glass, self.col_glass)
+            # glass panes, one per panel; a lift-and-slide "door_panel" is slid open over its neighbour
+            door_panel = op.get("door_panel")
+            for i in range(npan):
+                u0 = a0 + i * pw + (FRAME_W if i == 0 else MULLION_W / 2)
+                u1 = a0 + (i + 1) * pw - (FRAME_W if i == npan - 1 else MULLION_W / 2)
+                if door_panel is not None and i == door_panel:
+                    # draw this panel slid over the adjacent one, offset in depth, leaving its bay open
+                    j = i - 1 if i > 0 else i + 1
+                    v0 = a0 + j * pw + (FRAME_W if j == 0 else MULLION_W / 2)
+                    v1 = a0 + (j + 1) * pw - (FRAME_W if j == npan - 1 else MULLION_W / 2)
+                    off = FRAME_D * 0.9
+                    fbox("glass_%s_%d" % (tag, i), v0, v1, z0 + FRAME_W, z1 - FRAME_W,
+                         mid + off - GLASS_T / 2, mid + off + GLASS_T / 2, glass, self.col_glass)
+                    fbox("wm_%s_slid_a" % tag, v0 - MULLION_W, v0, z0, z1, mid + off - FRAME_D / 2, mid + off + FRAME_D / 2)
+                    fbox("wm_%s_slid_b" % tag, v1, v1 + MULLION_W, z0, z1, mid + off - FRAME_D / 2, mid + off + FRAME_D / 2)
+                    continue
+                fbox("glass_%s_%d" % (tag, i), u0, u1, z0 + FRAME_W, z1 - FRAME_W,
+                     mid - GLASS_T / 2, mid + GLASS_T / 2, glass, self.col_glass)
             # interior sill for windows above the floor
             if op.get("z0", 0) > 0:
                 neg, pos = self.rooms_either_side(op)
@@ -468,20 +483,23 @@ class Details:
 
     def build_trees(self):
         trunk = self.mats.get("walnut")
-        leaf = self.mats.get("olive")
+        leaf = self.mats.get("leaf")
         import random
         rnd = random.Random(7)
-        spots = [(-6, 62, 26), (10, 70, 30), (30, 66, 24), (50, 20, 28), (48, 56, 22), (-10, 30, 26), (20, -22, 24), (-4, -18, 22)]
+        gz = self.plan.get("ground", {}).get("z", -0.3)
+        spots = [(-8, 64, 26), (12, 72, 30), (32, 66, 24), (52, 22, 28), (50, 56, 22), (-12, 30, 26), (-16, -26, 24), (-6, -20, 22), (60, -14, 26)]
         for i, (x, y, h) in enumerate(spots):
-            gz = self.plan.get("ground", {}).get("z", -0.3)
-            cylinder_ft("tree_trunk_%d" % i, (x, y, gz), 0.6, h * 0.45, trunk, self.col, segments=10)
-            for j in range(3):
-                r = h * (0.32 - 0.06 * j)
-                zc = gz + h * 0.45 + j * h * 0.16 + r * 0.6
-                s = cylinder_ft("tree_crown_%d_%d" % (i, j), (x + rnd.uniform(-1, 1), y + rnd.uniform(-1, 1), zc - r * 0.5), r, r, leaf, self.col, segments=14)
-                s.scale = (1.0, 1.0, 0.6)
-        # low hedge along the terrace edge
-        box_ft("hedge_n", -2, 60.5, 28, 62, -0.3, 2.2, leaf, self.col)
+            cylinder_ft("tree_trunk_%d" % i, (x, y, gz), 0.55, h * 0.5, trunk, self.col, segments=10)
+            for j in range(4):
+                r = h * rnd.uniform(0.22, 0.30)
+                ox, oy = rnd.uniform(-h * 0.12, h * 0.12), rnd.uniform(-h * 0.12, h * 0.12)
+                zc = gz + h * 0.5 + j * h * 0.12 + r * 0.4
+                s = sphere_ft("tree_crown_%d_%d" % (i, j), (x + ox, y + oy, zc), r, leaf, self.col, 12, 8)
+                s.scale = (1.0, 1.0, 0.8)
+        # low hedges along the terrace edge and the street
+        box_ft("hedge_n", -2, 60.5, 28, 62, gz, gz + 2.5, leaf, self.col)
+        box_ft("hedge_s", -3, -16, 9, -14.5, gz, gz + 2.0, leaf, self.col)
+        box_ft("hedge_s2", 19, -16, 45, -14.5, gz, gz + 2.0, leaf, self.col)
 
     # ------------------------------------------------------------------ run
     def build_all(self):

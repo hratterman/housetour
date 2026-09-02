@@ -111,7 +111,7 @@ class PBRLibrary:
         tc = nodes.new("ShaderNodeTexCoord")
         tc.object = world_empty()
         mp = nodes.new("ShaderNodeMapping")
-        mp.vector_type = "TEXTURE"
+        mp.vector_type = "POINT"
         size = spec.get("size_ft", 4.0) * FT
         mp.inputs["Scale"].default_value = (1.0 / size, 1.0 / size, 1.0 / size)
         import math
@@ -200,7 +200,7 @@ class PBRLibrary:
         tc = nodes.new("ShaderNodeTexCoord")
         tc.object = world_empty()
         mp = nodes.new("ShaderNodeMapping")
-        mp.vector_type = "TEXTURE"
+        mp.vector_type = "POINT"
         size = ov.get("size_ft", 2.0) * FT
         mp.inputs["Scale"].default_value = (1.0 / size, 1.0 / size, 1.0 / size)
         links.new(tc.outputs["Object"], mp.inputs["Vector"])
@@ -304,7 +304,14 @@ class PBRLibrary:
             links.new(ramp.outputs["Color"], bsdf.inputs["Base Color"])
 
         elif kind == "tile_backsplash":
-            # square tiles with grout: brick node gives tile mask + per-tile color variation
+            # square tiles with grout: brick node gives tile mask + per-tile color variation.
+            # Remap coordinates so the pattern lies in the wall plane (xz for walls along X, yz along Y).
+            sep = nodes.new("ShaderNodeSeparateXYZ")
+            links.new(mp.outputs["Vector"], sep.inputs[0])
+            comb = nodes.new("ShaderNodeCombineXYZ")
+            plane = ov.get("plane", "xz")
+            links.new(sep.outputs[0 if plane[0] == "x" else 1], comb.inputs[0])
+            links.new(sep.outputs[2 if plane[1] == "z" else 1], comb.inputs[1])
             br = nodes.new("ShaderNodeTexBrick")
             br.offset = 0.0
             br.inputs["Scale"].default_value = 1.0
@@ -317,7 +324,8 @@ class PBRLibrary:
             br.inputs["Color1"].default_value = (ca[0], ca[1], ca[2], 1)
             br.inputs["Color2"].default_value = (cb[0], cb[1], cb[2], 1)
             br.inputs["Mortar"].default_value = (0.85, 0.82, 0.76, 1)
-            links.new(mp.outputs["Vector"], br.inputs["Vector"])
+            br.inputs["Mortar Smooth"].default_value = 0.1
+            links.new(comb.outputs[0], br.inputs["Vector"])
             links.new(br.outputs["Color"], bsdf.inputs["Base Color"])
             rr = nodes.new("ShaderNodeMath")
             rr.operation = "MULTIPLY_ADD"

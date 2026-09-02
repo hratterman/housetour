@@ -17,7 +17,7 @@
    "wall": "plaster",
    "floorm": "terrazzo",
    "ceil": "plaster",
-   "light": 60
+   "light": 80
   },
   {
    "name": "foyer",
@@ -31,7 +31,7 @@
    "wall": "plaster",
    "floorm": "terrazzo",
    "ceil": "plaster",
-   "light": 60
+   "light": 80
   },
   {
    "name": "spine",
@@ -59,7 +59,7 @@
    "wall": "olive",
    "floorm": "terrazzo",
    "ceil": "olive",
-   "light": 25
+   "light": 40
   },
   {
    "name": "laundry",
@@ -73,7 +73,7 @@
    "wall": "plaster",
    "floorm": "terrazzo",
    "ceil": "plaster",
-   "light": 40
+   "light": 60
   },
   {
    "name": "awayhall",
@@ -101,7 +101,7 @@
    "wall": "wallpaper_geo",
    "floorm": "oak",
    "ceil": "olive",
-   "light": 50
+   "light": 90
   },
   {
    "name": "kitchen",
@@ -129,7 +129,7 @@
    "wall": "plaster",
    "floorm": "wool",
    "ceil": "plaster",
-   "light": 50
+   "light": 100
   },
   {
    "name": "bath",
@@ -143,7 +143,7 @@
    "wall": "terrazzo",
    "floorm": "terrazzo",
    "ceil": "plaster",
-   "light": 70
+   "light": 90
   },
   {
    "name": "living",
@@ -171,7 +171,7 @@
    "wall": "plaster",
    "floorm": "wool",
    "ceil": "plaster",
-   "light": 60
+   "light": 90
   },
   {
    "name": "gym",
@@ -199,7 +199,7 @@
    "wall": "terrazzo",
    "floorm": "terrazzo",
    "ceil": "plaster",
-   "light": 70
+   "light": 110
   },
   {
    "name": "bar",
@@ -227,7 +227,7 @@
    "wall": "concrete",
    "floorm": "concrete",
    "ceil": "concrete",
-   "light": 80
+   "light": 90
   },
   {
    "name": "storage",
@@ -241,7 +241,7 @@
    "wall": "concrete",
    "floorm": "concrete",
    "ceil": "concrete",
-   "light": 40
+   "light": 60
   },
   {
    "name": "lounge",
@@ -269,7 +269,7 @@
    "wall": "plaster",
    "floorm": "oak",
    "ceil": "plaster",
-   "light": 40
+   "light": 70
   }
  ],
  "floors": {
@@ -413,7 +413,8 @@
    "w": 15,
    "z0": 0,
    "h": 8.5,
-   "kind": "glasswall"
+   "kind": "glasswall",
+   "door_panel": 3
   },
   {
    "note": "closet door",
@@ -490,7 +491,8 @@
    "w": 8,
    "z0": 0,
    "h": 8.5,
-   "kind": "glasswall"
+   "kind": "glasswall",
+   "door_panel": 1
   },
   {
    "note": "gym to recovery",
@@ -885,7 +887,8 @@
   "focal_mm": 24,
   "sensor_mm": 36,
   "exposure": 0.0,
-  "fstop": 4.0
+  "fstop": 4.0,
+  "handheld_ft": 0.06
  },
  "shots": [
   {
@@ -1209,5 +1212,163 @@
   "hdri_rot_deg": 0,
   "sun_kelvin": 4800,
   "sun_angle_deg": 1.0
- }
+ },
+ "views": [
+  {
+   "name": "v01_gym_south",
+   "pos": [
+    11,
+    26,
+    -4.5
+   ],
+   "look": [
+    8,
+    6,
+    -6.5
+   ]
+  },
+  {
+   "name": "v02_bar",
+   "pos": [
+    26,
+    34,
+    -4.5
+   ],
+   "look": [
+    26.5,
+    22,
+    -6.5
+   ]
+  },
+  {
+   "name": "v03_recovery",
+   "pos": [
+    25.0,
+    1.5,
+    -4.5
+   ],
+   "look": [
+    26,
+    12,
+    -6.5
+   ]
+  },
+  {
+   "name": "v04_lounge_from_stair",
+   "pos": [
+    21,
+    44,
+    -4.5
+   ],
+   "look": [
+    8,
+    36,
+    -7.5
+   ]
+  },
+  {
+   "name": "v05_mudroom",
+   "pos": [
+    9,
+    2,
+    5.5
+   ],
+   "look": [
+    3,
+    12,
+    4
+   ]
+  },
+  {
+   "name": "v06_away",
+   "pos": [
+    31.5,
+    12.5,
+    5.5
+   ],
+   "look": [
+    38,
+    4,
+    4
+   ]
+  },
+  {
+   "name": "v07_bedroom",
+   "pos": [
+    26,
+    32,
+    5.5
+   ],
+   "look": [
+    38,
+    41,
+    4
+   ]
+  },
+  {
+   "name": "v08_bath",
+   "pos": [
+    33.5,
+    29,
+    5.5
+   ],
+   "look": [
+    38,
+    16,
+    4
+   ]
+  },
+  {
+   "name": "v09_closet",
+   "pos": [
+    25.5,
+    17.6,
+    5.5
+   ],
+   "look": [
+    30,
+    28,
+    4
+   ]
+  },
+  {
+   "name": "v10_living_wide",
+   "pos": [
+    15,
+    31.5,
+    5.5
+   ],
+   "look": [
+    4,
+    42,
+    4
+   ]
+  },
+  {
+   "name": "v11_exterior_rear",
+   "pos": [
+    14,
+    62,
+    7
+   ],
+   "look": [
+    9,
+    44,
+    5
+   ]
+  },
+  {
+   "name": "v12_exterior_front",
+   "pos": [
+    38,
+    -30,
+    6
+   ],
+   "look": [
+    16,
+    4,
+    6
+   ]
+  }
+ ]
 }
