@@ -39,6 +39,8 @@ def parse_args():
     p.add_argument("--stage", default="auto",
                    help="phase1 (boxes only), phase2 (textures, details, staging), or auto")
     p.add_argument("--no-blend", action="store_true", help="do not save renders/scene.blend")
+    p.add_argument("--staging", default=None, help="alternate staging json (default staging.json)")
+    p.add_argument("--no-bevel", action="store_true", help="skip the edge bevel pass (faster builds)")
     p.add_argument("--frame-start", type=int, default=None)
     p.add_argument("--frame-end", type=int, default=None)
     p.add_argument("--motion-blur", default=None, help="on/off override")
@@ -344,6 +346,69 @@ class House:
 # ----------------------------------------------------------------------------- camera / shots
 
 
+def bevel_pass(plan):
+    """Soften every hard edge: a small unapplied Bevel modifier on procedural boxes and shell walls.
+    Imported models keep their own geometry. Width in inches from plan['bevel'] (default 0.4 in)."""
+    spec = plan.get("bevel", {})
+    w_detail = spec.get("detail_in", 0.4) / 12.0 * FT
+    w_shell = spec.get("shell_in", 0.25) / 12.0 * FT
+    w_soft = spec.get("soft_in", 1.2) / 12.0 * FT
+    n = 0
+    soft_tags = ("sofa_cushion", "sofa_back", "pillow", "bed_mattress", "bed_duvet", "bed_pillow", "bed_throw",
+                 "bench_cush", "pit_seat", "pit_back", "fold", "towel", "jacket", "bag")
+    skip_tags = ("glass", "canvas", "flame", "embers", "rug", "runner", "puzzle", "piece", "panel", "cove",
+                 "reveal", "sput_rod", "stem", "leaf", "arc_seg", "tree_", "ground", "hedge")
+    for ob in bpy.data.objects:
+        if ob.type != "MESH" or ob.hide_render or ob.name.startswith("proto_"):
+            continue
+        if ob.users_collection and ob.users_collection[0].name == "asset_lib":
+            continue
+        if ob.data.users > 1 and "size_m" in (ob.data.get("_proto") or {}):
+            continue
+        nm = ob.name
+        if any(tag in nm for tag in skip_tags):
+            continue
+        if ob.get("kind") == "ground":
+            continue
+        # imported model instances share a mesh with the prototype; leave them alone
+        if ob.data.users > 1 and not nm.startswith(("wall_", "floor_", "ceil_")):
+            continue
+        if any(tag in nm for tag in soft_tags):
+            w, seg = w_soft, 3
+        elif nm.startswith(("wall_", "floor_", "ceil_", "skin_", "roof", "gable", "chimney", "terrace", "walk")):
+            w, seg = w_shell, 1
+        else:
+            w, seg = w_detail, 2
+        # do not bevel wider than a third of the smallest dimension
+        d = [abs(v) for v in ob.dimensions]
+        d = [v for v in d if v > 1e-5]
+        if not d:
+            continue
+        w = min(w, min(d) / 3.0)
+        if w < 0.0005:
+            continue
+        mod = ob.modifiers.new("bevel", "BEVEL")
+        mod.width = w
+        mod.segments = seg
+        mod.limit_method = "ANGLE"
+        mod.angle_limit = math.radians(40)
+        mod.use_clamp_overlap = True
+        mod.harden_normals = False
+        n += 1
+    # smooth shading plus hardened normals on the bevel so the chamfers catch highlights cleanly
+    for ob in bpy.data.objects:
+        if ob.type == "MESH" and any(md.type == "BEVEL" for md in ob.modifiers):
+            try:
+                ob.data.shade_smooth()
+            except Exception:
+                for pg in ob.data.polygons:
+                    pg.use_smooth = True
+            for md in ob.modifiers:
+                if md.type == "BEVEL":
+                    md.harden_normals = True
+    log("bevel pass: %d objects" % n)
+
+
 def setup_camera(plan):
     cam_spec = plan.get("camera", {})
     cd = bpy.data.cameras.new("cam")
@@ -598,9 +663,11 @@ def main():
         import details
         import staging
         details.build(plan, house, mats)
-        staging.build(plan, house, mats)
+        staging.build(plan, house, mats, args.staging)
         import lighting
         lighting.build(plan, house, mats)
+        if not args.no_bevel:
+            bevel_pass(plan)
     else:
         house.build_lights()
 

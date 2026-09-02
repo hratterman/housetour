@@ -24,7 +24,7 @@ BOOK_MATS = ["book_a", "book_b", "book_c", "book_d", "book_e", "book_f", "book_g
 
 
 class Stager:
-    def __init__(self, plan, house, mats, root):
+    def __init__(self, plan, house, mats, root, staging_path=None):
         self.plan = plan
         self.house = house
         self.mats = mats
@@ -37,7 +37,9 @@ class Stager:
         self.practicals = []
         house.practicals = self.practicals
         self.counts = {"models": 0, "procedural": 0, "missing": 0}
-        path = os.path.join(root, "staging.json")
+        path = staging_path or os.path.join(root, "staging.json")
+        if not os.path.isabs(path):
+            path = os.path.join(root, path)
         self.entries = json.load(open(path)) if os.path.exists(path) else []
         self.serial = 0
 
@@ -390,17 +392,28 @@ class Stager:
             fd = 0.12
             face = wall["face"]
             at = wall["at"]
+            # about half the pieces get a cream mat with a smaller image; the rest are full-bleed canvases
+            matted = rng.random() < 0.55 and w >= 1.3
+            mw = min(0.22, w * 0.14) if matted else 0.0
+            paper = self.mat("paper")
             if wall["axis"] == "y":
                 d0, d1 = (at - fd, at) if face == "-x" else (at, at + fd)
                 frame = box_ft(self.uid("frame"), d0, cu - w / 2, d1, cu + w / 2, cz - h / 2, cz + h / 2, fm, self.col)
                 c0, c1 = (d0 - 0.005, d0) if face == "-x" else (d1, d1 + 0.005)
-                canvas = box_ft(self.uid("canvas"), c0, cu - w / 2 + ft, c1, cu + w / 2 - ft, cz - h / 2 + ft, cz + h / 2 - ft, art, self.col)
+                objs.append(frame)
+                if matted:
+                    objs.append(box_ft(self.uid("canvas_mat"), c0, cu - w / 2 + ft, c1, cu + w / 2 - ft, cz - h / 2 + ft, cz + h / 2 - ft, paper, self.col))
+                    c0, c1 = (c0 - 0.003, c0) if face == "-x" else (c1, c1 + 0.003)
+                objs.append(box_ft(self.uid("canvas"), c0, cu - w / 2 + ft + mw, c1, cu + w / 2 - ft - mw, cz - h / 2 + ft + mw, cz + h / 2 - ft - mw, art, self.col))
             else:
                 d0, d1 = (at - fd, at) if face == "-y" else (at, at + fd)
                 frame = box_ft(self.uid("frame"), cu - w / 2, d0, cu + w / 2, d1, cz - h / 2, cz + h / 2, fm, self.col)
                 c0, c1 = (d0 - 0.005, d0) if face == "-y" else (d1, d1 + 0.005)
-                canvas = box_ft(self.uid("canvas"), cu - w / 2 + ft, c0, cu + w / 2 - ft, c1, cz - h / 2 + ft, cz + h / 2 - ft, art, self.col)
-            objs += [frame, canvas]
+                objs.append(frame)
+                if matted:
+                    objs.append(box_ft(self.uid("canvas_mat"), cu - w / 2 + ft, c0, cu + w / 2 - ft, c1, cz - h / 2 + ft, cz + h / 2 - ft, paper, self.col))
+                    c0, c1 = (c0 - 0.003, c0) if face == "-y" else (c1, c1 + 0.003)
+                objs.append(box_ft(self.uid("canvas"), cu - w / 2 + ft + mw, c0, cu + w / 2 - ft - mw, c1, cz - h / 2 + ft + mw, cz + h / 2 - ft - mw, art, self.col))
         return objs
 
     def art_material(self, seed, emit=0.0):
@@ -1244,6 +1257,50 @@ class Stager:
         return [box_ft(self.uid("wscreen"), *e["b"], mat=self.mat("screen"), collection=self.col),
                 box_ft(self.uid("wscreen_frame"), e["b"][0] - 0.05, e["b"][1] - 0.01, e["b"][2] + 0.05, e["b"][3] + 0.01, e["b"][4] - 0.05, e["b"][5] + 0.05, mat=self.mat("black"), collection=self.col)][::-1]
 
+    def gen_curtain(self, e):
+        """Stacked linen drape: alternating half-round pleats along a wall segment. wall axis x at y=at (inside face),
+        span [u0,u1], z0..z1, face -y|+y (side of the wall the curtain hangs on)."""
+        u0, u1 = e["span"]
+        at = e["at"]
+        z0, z1 = e.get("z", [0.05, 8.6])
+        face = e.get("face", "-y")
+        r = e.get("pleat_r", 0.14)
+        lin = self.mat(e.get("m", "linen"))
+        objs = []
+        u = u0 + r
+        k = 0
+        d = at + (-(r + 0.05) if face == "-y" else (r + 0.05))
+        while u < u1 - r:
+            off = r * 0.55 * (1 if k % 2 == 0 else -1)
+            c = cylinder_ft(self.uid("pleat"), (u, d + off, z0), r, z1 - z0, lin, self.col, 14)
+            c.scale = (1.0, 0.75, 1.0)
+            objs.append(c)
+            u += r * 1.35
+            k += 1
+        # track
+        objs.append(box_ft(self.uid("track"), u0 - 0.1, min(at, d) - 0.05, u1 + 0.1, max(at, d) + 0.05, z1, z1 + 0.08, self.mat("bronze"), self.col))
+        return objs
+
+    def gen_panel_grooves(self, e):
+        """Vertical slat grooves on a paneled wall face: thin dark strips every 'pitch' feet.
+        b = [x0,y0,x1,y1,z0,z1] of a thin box on the wall face (its thin axis is the depth)."""
+        x0, y0, x1, y1, z0, z1 = e["b"]
+        pitch = e.get("pitch", 0.5)
+        gw = e.get("width", 0.03)
+        dark = self.mat("black")
+        objs = []
+        if (x1 - x0) < (y1 - y0):
+            u = y0 + pitch
+            while u < y1 - 0.05:
+                objs.append(box_ft(self.uid("groove"), x0, u - gw / 2, x1, u + gw / 2, z0, z1, dark, self.col))
+                u += pitch
+        else:
+            u = x0 + pitch
+            while u < x1 - 0.05:
+                objs.append(box_ft(self.uid("groove"), u - gw / 2, y0, u + gw / 2, y1, z0, z1, dark, self.col))
+                u += pitch
+        return objs
+
     def gen_side_table(self, e):
         p = e["pos"]
         wood = self.mat(e.get("m", "walnut_h"))
@@ -1255,9 +1312,9 @@ class Stager:
         return objs
 
 
-def build(plan, house, mats):
+def build(plan, house, mats, staging_path=None):
     root = house.root
-    s = Stager(plan, house, mats, root)
+    s = Stager(plan, house, mats, root, staging_path)
     s.build_all()
     house.stager = s
     return s

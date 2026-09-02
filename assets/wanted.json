@@ -243,6 +243,27 @@
     },
     "concrete_cat_statue": {
       "id": "concrete_cat_statue"
+    },
+    "shrub_02": {
+      "id": "shrub_02"
+    },
+    "shrub_03": {
+      "id": "shrub_03"
+    },
+    "shrub_04": {
+      "id": "shrub_04"
+    },
+    "island_tree_01": {
+      "id": "island_tree_01"
+    },
+    "outdoor_table_chair_set_01": {
+      "id": "outdoor_table_chair_set_01"
+    },
+    "planter_box_01": {
+      "id": "planter_box_01"
+    },
+    "planter_pot_clay": {
+      "id": "planter_pot_clay"
     }
   },
   "hdris": {

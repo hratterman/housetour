@@ -488,6 +488,8 @@ class Details:
         rnd = random.Random(7)
         gz = self.plan.get("ground", {}).get("z", -0.3)
         spots = [(-8, 64, 26), (12, 72, 30), (32, 66, 24), (52, 22, 28), (50, 56, 22), (-12, 30, 26), (-16, -26, 24), (-6, -20, 22), (60, -14, 26)]
+        if not self.plan.get("exterior", {}).get("procedural_trees", True):
+            spots = []
         for i, (x, y, h) in enumerate(spots):
             cylinder_ft("tree_trunk_%d" % i, (x, y, gz), 0.55, h * 0.5, trunk, self.col, segments=10)
             for j in range(4):
@@ -496,10 +498,11 @@ class Details:
                 zc = gz + h * 0.5 + j * h * 0.12 + r * 0.4
                 s = sphere_ft("tree_crown_%d_%d" % (i, j), (x + ox, y + oy, zc), r, leaf, self.col, 12, 8)
                 s.scale = (1.0, 1.0, 0.8)
-        # low hedges along the terrace edge and the street
-        box_ft("hedge_n", -2, 60.5, 28, 62, gz, gz + 2.5, leaf, self.col)
-        box_ft("hedge_s", -3, -16, 9, -14.5, gz, gz + 2.0, leaf, self.col)
-        box_ft("hedge_s2", 19, -16, 45, -14.5, gz, gz + 2.0, leaf, self.col)
+        if self.plan.get("exterior", {}).get("procedural_trees", True):
+            # low hedges along the terrace edge and the street
+            box_ft("hedge_n", -2, 60.5, 28, 62, gz, gz + 2.5, leaf, self.col)
+            box_ft("hedge_s", -3, -16, 9, -14.5, gz, gz + 2.0, leaf, self.col)
+            box_ft("hedge_s2", 19, -16, 45, -14.5, gz, gz + 2.0, leaf, self.col)
 
     # ------------------------------------------------------------------ run
     def build_all(self):
