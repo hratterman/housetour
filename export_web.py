@@ -168,12 +168,38 @@ def web_material(name, spec, base_img, normal_img, tile_m):
     return mat
 
 
-def load_scaled(path, size, name):
-    img = bpy.data.images.load(path)
+_SCALED = {}
+
+
+def scaled_copy(path, size, out_dir, quality=85):
+    """Downscale an image file with Pillow into out_dir (cached by source path). Returns the new path."""
+    key = (os.path.abspath(path), size)
+    if key in _SCALED:
+        return _SCALED[key]
+    from PIL import Image
+    im = Image.open(path).convert("RGB")
+    if max(im.size) > size:
+        im = im.resize((size, size), Image.LANCZOS)
+    base = os.path.splitext(os.path.basename(path))[0]
+    tag = os.path.basename(os.path.dirname(path))
+    out = os.path.join(out_dir, "%s_%s_%d.jpg" % (tag, base, size))
+    im.save(out, quality=quality)
+    _SCALED[key] = out
+    return out
+
+
+_LOADED = {}
+
+
+def load_scaled(path, size, name, out_dir):
+    """Load a downscaled copy of an image, shared across materials that use the same source."""
+    p = scaled_copy(path, size, out_dir)
+    if p in _LOADED:
+        return _LOADED[p]
+    img = bpy.data.images.load(p)
     img.name = name
-    if img.size[0] > size:
-        img.scale(size, size)
     img.colorspace_settings.name = "Non-Color"
+    _LOADED[p] = img
     return img
 
 
@@ -251,7 +277,7 @@ def main():
                     # the normal tile period is size_ft; when the bake tile is larger, the UV still maps
                     # world coords / tile, so scale the normal image lookup by repeating it: bake tile is an
                     # integer multiple of size_ft in the common cases, otherwise accept the mismatch
-                    normal_img = load_scaled(npath, min(args.tex, 512), "nrm_" + name)
+                    normal_img = load_scaled(npath, min(args.tex, 512), "nrm_" + spec["tex"], tiles_dir)
         web_mats[name] = web_material(name, spec, base_img, normal_img, tile_m)
     scene.render.engine = old_engine
     log("baked %d material tiles" % n_baked)
@@ -295,7 +321,10 @@ def main():
                 continue
             for n in m.node_tree.nodes:
                 if n.type == "TEX_IMAGE" and n.image is not None and n.image.size[0] > args.model_tex:
-                    n.image.scale(args.model_tex, args.model_tex)
+                    src = bpy.path.abspath(n.image.filepath)
+                    if os.path.exists(src):
+                        n.image.filepath = scaled_copy(src, args.model_tex, tiles_dir)
+                        n.image.reload()
     log("decimated %d heavy model meshes" % n_dec)
 
     # 4. lights and plan for the viewer
