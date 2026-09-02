@@ -31,7 +31,7 @@ def build(plan, house, mats):
         w = room.get("light", 50) * fill_scale.get(room["floor"], 0.35)
         size = min(4.0, max(1.5, min(x1 - x0, y1 - y0) * 0.35))
         ob = area_light("fill_%s" % room["name"], ((x0 + x1) / 2, (y0 + y1) / 2, fl["z"] + fl["h"] - 0.12),
-                        size, w, 2700, col)
+                        size, w, L.get("fill_kelvin", 2700), col)
         ob.data.spread = math.radians(150)
         n += 1
 

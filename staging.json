@@ -307,6 +307,32 @@
   "room": "kitchen"
  },
  {
+  "asset": "proc:cabinet",
+  "room": "kitchen",
+  "b": [
+   0.25,
+   17.0,
+   1.55,
+   28.5,
+   0,
+   6.6
+  ],
+  "doors": 5,
+  "face": "+x",
+  "hreveal": 4.4,
+  "note": "pantry run under the clerestory"
+ },
+ {
+  "asset": "potted_plant_02",
+  "room": "kitchen",
+  "pos": [
+   1.2,
+   28.9,
+   0
+  ],
+  "rot_z": 70
+ },
+ {
   "asset": "proc:island_table",
   "room": "kitchen",
   "x": [
@@ -1390,7 +1416,8 @@
   "h": 5.0,
   "replace_feature": "lounge tv panel",
   "on": true,
-  "watts": 6
+  "watts": 4,
+  "seed": 89
  },
  {
   "asset": "proc:credenza",

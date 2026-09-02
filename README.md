@@ -20,7 +20,7 @@ walkthrough video. Everything is regenerated from JSON; nothing is hand-modeled 
 
 ```sh
 python3 tools/fetch_assets.py          # one time: downloads textures, models and the sky HDRI into assets/
-PREVIEW=1 ./render.sh                  # fast check: both shots, stills, contact sheet (about 2.5 h on a 4-core CPU)
+PREVIEW=1 ./render.sh                  # fast check: both shots, stills, contact sheet (83 min on a 4-core CPU)
 ./render.sh                            # final: 1280x720, 128 samples, every frame
 ```
 
@@ -55,7 +55,7 @@ carries it. Frames that already exist are skipped, so a killed render resumes wh
 | shot | length | path |
 | --- | --- | --- |
 | `main_floor` | 12 s | street, through the front door, foyer, down the oxblood spine, into the kitchen past the island, into the living room ending on the fireplace wall and the rear glass |
-| `basement` | 8 s | gym looking through the glass wall, into the lounge, along the rim of the sunken pit, ending on the bar |
+| `basement` | 9 s | gym looking through the glass wall, into the lounge, along the rim of the sunken pit, ending on the bar |
 
 Both are keyframed from `plan.json` (`shots`), Bezier with clamped handles, a Track To target with a slow
 noise drift on the target for a faint handheld feel. The camera path is sampled every frame against every

@@ -274,34 +274,40 @@ class PBRLibrary:
             links.new(ramp.outputs["Color"], bsdf.inputs["Base Color"])
 
         elif kind == "botanical_wallpaper":
-            # leafy noise pattern: two-tone thresholded noise with a stretched second octave
-            n1 = nodes.new("ShaderNodeTexNoise")
-            n1.inputs["Scale"].default_value = 2.5
-            n1.inputs["Detail"].default_value = 6.0
-            n1.inputs["Roughness"].default_value = 0.55
-            links.new(mp.outputs["Vector"], n1.inputs["Vector"])
-            wave = nodes.new("ShaderNodeTexWave")
-            wave.wave_type = "RINGS"
-            wave.inputs["Scale"].default_value = 1.2
-            wave.inputs["Distortion"].default_value = 6.0
-            wave.inputs["Detail"].default_value = 3.0
-            links.new(mp.outputs["Vector"], wave.inputs["Vector"])
-            mixf = nodes.new("ShaderNodeMath")
-            mixf.operation = "MULTIPLY"
-            links.new(n1.outputs["Fac"], mixf.inputs[0])
-            links.new(wave.outputs["Fac"], mixf.inputs[1])
-            ramp = nodes.new("ShaderNodeValToRGB")
-            c0 = ov.get("rgb_a", [0.10, 0.22, 0.20])
-            c1 = ov.get("rgb_b", [0.30, 0.45, 0.30])
-            c2 = ov.get("rgb_c", [0.75, 0.55, 0.25])
-            ramp.color_ramp.elements[0].position = 0.15
-            ramp.color_ramp.elements[0].color = (c0[0], c0[1], c0[2], 1)
-            ramp.color_ramp.elements[1].position = 0.45
-            ramp.color_ramp.elements[1].color = (c1[0], c1[1], c1[2], 1)
-            e = ramp.color_ramp.elements.new(0.7)
-            e.color = (c2[0], c2[1], c2[2], 1)
-            links.new(mixf.outputs[0], ramp.inputs["Fac"])
-            links.new(ramp.outputs["Color"], bsdf.inputs["Base Color"])
+            # leaves: a voronoi cell field warped by noise, thresholded on distance so each cell reads as a
+            # rounded leaf on a dark ground, with a second smaller layer in a lighter tone
+            warp = nodes.new("ShaderNodeTexNoise")
+            warp.inputs["Scale"].default_value = 1.5
+            warp.inputs["Detail"].default_value = 2.0
+            links.new(mp.outputs["Vector"], warp.inputs["Vector"])
+            add = nodes.new("ShaderNodeVectorMath")
+            add.operation = "MULTIPLY_ADD"
+            add.inputs[1].default_value = (0.35, 0.35, 0.35)
+            links.new(warp.outputs["Color"], add.inputs[0])
+            links.new(mp.outputs["Vector"], add.inputs[2])
+            c0 = ov.get("rgb_a", [0.08, 0.20, 0.18])
+            c1 = ov.get("rgb_b", [0.25, 0.42, 0.28])
+            c2 = ov.get("rgb_c", [0.72, 0.55, 0.22])
+            base_col = const_color(c0)
+            prev = base_col
+            for layer, (scale, thr, col) in enumerate(((3.0, 0.30, c1), (5.5, 0.22, c2))):
+                vor = nodes.new("ShaderNodeTexVoronoi")
+                vor.feature = "F1"
+                vor.inputs["Scale"].default_value = scale
+                vor.inputs["Randomness"].default_value = 1.0
+                links.new(add.outputs[0], vor.inputs["Vector"])
+                # stretch cells into leaves by scaling Y before the voronoi
+                lt = nodes.new("ShaderNodeMath")
+                lt.operation = "LESS_THAN"
+                lt.inputs[1].default_value = thr
+                links.new(vor.outputs["Distance"], lt.inputs[0])
+                mix = nodes.new("ShaderNodeMix")
+                mix.data_type = "RGBA"
+                links.new(lt.outputs[0], mix.inputs["Factor"])
+                links.new(prev, mix.inputs[6])
+                links.new(const_color(col), mix.inputs[7])
+                prev = mix.outputs[2]
+            links.new(prev, bsdf.inputs["Base Color"])
 
         elif kind == "tile_backsplash":
             # square tiles with grout: brick node gives tile mask + per-tile color variation.
