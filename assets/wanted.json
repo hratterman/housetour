@@ -1,85 +1,254 @@
 {
   "textures": {
-    "oak_floor":      {"source": "polyhaven", "id": "plank_flooring_02"},
-    "walnut":         {"source": "polyhaven", "id": "american_walnut_veneer"},
-    "walnut_dark":    {"source": "polyhaven", "id": "black_walnut_veneer_01"},
-    "oak_deck":       {"source": "polyhaven", "id": "oak_veneer_01"},
-    "cedar":          {"source": "polyhaven", "id": "japanese_cedar_planks"},
-    "plaster":        {"source": "polyhaven", "id": "white_plaster_02"},
-    "plaster_rough":  {"source": "polyhaven", "id": "plastered_wall_02"},
-    "concrete":       {"source": "polyhaven", "id": "concrete_floor_02"},
-    "concrete_wall":  {"source": "polyhaven", "id": "concrete_wall_008"},
-    "rubber":         {"source": "polyhaven", "id": "rubber_tiles"},
-    "brick":          {"source": "polyhaven", "id": "brick_wall_02"},
-    "terrazzo":       {"source": "ambientcg", "id": "Terrazzo018"},
-    "terrazzo_fine":  {"source": "ambientcg", "id": "Terrazzo013"},
-    "boucle":         {"source": "polyhaven", "id": "wool_boucle"},
-    "velvet":         {"source": "polyhaven", "id": "velour_velvet"},
-    "linen":          {"source": "polyhaven", "id": "rough_linen"},
-    "herringbone":    {"source": "polyhaven", "id": "poly_wool_herringbone"},
-    "leather":        {"source": "polyhaven", "id": "brown_leather"},
-    "fabric_pattern": {"source": "polyhaven", "id": "fabric_pattern_05"},
-    "marble":         {"source": "polyhaven", "id": "marble_01"},
-    "grass":          {"source": "polyhaven", "id": "forest_floor"}
+    "oak_floor": {
+      "source": "polyhaven",
+      "id": "plank_flooring_02"
+    },
+    "walnut": {
+      "source": "polyhaven",
+      "id": "american_walnut_veneer"
+    },
+    "walnut_dark": {
+      "source": "polyhaven",
+      "id": "black_walnut_veneer_01"
+    },
+    "oak_deck": {
+      "source": "polyhaven",
+      "id": "oak_veneer_01"
+    },
+    "cedar": {
+      "source": "polyhaven",
+      "id": "japanese_cedar_planks"
+    },
+    "plaster": {
+      "source": "polyhaven",
+      "id": "white_plaster_02"
+    },
+    "plaster_rough": {
+      "source": "polyhaven",
+      "id": "plastered_wall_02"
+    },
+    "concrete": {
+      "source": "polyhaven",
+      "id": "concrete_floor_02"
+    },
+    "concrete_wall": {
+      "source": "polyhaven",
+      "id": "concrete_wall_008"
+    },
+    "rubber": {
+      "source": "polyhaven",
+      "id": "rubber_tiles"
+    },
+    "brick": {
+      "source": "polyhaven",
+      "id": "brick_wall_02"
+    },
+    "terrazzo": {
+      "source": "ambientcg",
+      "id": "Terrazzo018"
+    },
+    "terrazzo_fine": {
+      "source": "ambientcg",
+      "id": "Terrazzo013"
+    },
+    "boucle": {
+      "source": "polyhaven",
+      "id": "wool_boucle"
+    },
+    "velvet": {
+      "source": "polyhaven",
+      "id": "velour_velvet"
+    },
+    "linen": {
+      "source": "polyhaven",
+      "id": "rough_linen"
+    },
+    "herringbone": {
+      "source": "polyhaven",
+      "id": "poly_wool_herringbone"
+    },
+    "leather": {
+      "source": "polyhaven",
+      "id": "brown_leather"
+    },
+    "marble": {
+      "source": "polyhaven",
+      "id": "marble_01"
+    },
+    "grass": {
+      "source": "polyhaven",
+      "id": "forest_floor"
+    }
   },
   "models": {
-    "sofa_03":                  {"id": "sofa_03"},
-    "sofa_02":                  {"id": "sofa_02"},
-    "mid_century_lounge_chair": {"id": "mid_century_lounge_chair"},
-    "modern_arm_chair_01":      {"id": "modern_arm_chair_01"},
-    "armchair_01":              {"id": "ArmChair_01"},
-    "green_chair_01":           {"id": "GreenChair_01"},
-    "ottoman_01":               {"id": "Ottoman_01"},
-    "modern_coffee_table_01":   {"id": "modern_coffee_table_01"},
-    "modern_coffee_table_02":   {"id": "modern_coffee_table_02"},
-    "coffee_table_round_01":    {"id": "coffee_table_round_01"},
-    "side_table_01":            {"id": "side_table_01"},
-    "side_table_tall_01":       {"id": "side_table_tall_01"},
-    "dining_chair_02":          {"id": "dining_chair_02"},
-    "bar_chair_round_01":       {"id": "bar_chair_round_01"},
-    "metal_stool_01":           {"id": "metal_stool_01"},
-    "classic_nightstand_01":    {"id": "ClassicNightstand_01"},
-    "painted_wooden_nightstand":{"id": "painted_wooden_nightstand"},
-    "painted_wooden_bench":     {"id": "painted_wooden_bench"},
-    "modern_wooden_cabinet":    {"id": "modern_wooden_cabinet"},
-    "drawer_cabinet":           {"id": "drawer_cabinet"},
-    "desk_lamp_arm_01":         {"id": "desk_lamp_arm_01"},
-    "modern_ceiling_lamp_01":   {"id": "modern_ceiling_lamp_01"},
-    "potted_plant_01":          {"id": "potted_plant_01"},
-    "potted_plant_02":          {"id": "potted_plant_02"},
-    "potted_plant_04":          {"id": "potted_plant_04"},
-    "calathea_orbifolia_01":    {"id": "calathea_orbifolia_01"},
-    "pachira_aquatica_01":      {"id": "pachira_aquatica_01"},
-    "fern_02":                  {"id": "fern_02"},
-    "decorative_book_set_01":   {"id": "decorative_book_set_01"},
-    "book_encyclopedia_set_01": {"id": "book_encyclopedia_set_01"},
-    "ceramic_vase_01":          {"id": "ceramic_vase_01"},
-    "ceramic_vase_02":          {"id": "ceramic_vase_02"},
-    "ceramic_vase_03":          {"id": "ceramic_vase_03"},
-    "brass_vase_01":            {"id": "brass_vase_01"},
-    "brass_vase_03":            {"id": "brass_vase_03"},
-    "brass_candleholders":      {"id": "brass_candleholders"},
-    "brass_goblets":            {"id": "brass_goblets"},
-    "tea_set_01":               {"id": "tea_set_01"},
-    "jug_01":                   {"id": "jug_01"},
-    "brass_pot_01":             {"id": "brass_pot_01"},
-    "vintage_electric_kettle":  {"id": "vintage_electric_kettle"},
-    "carrot_cake":              {"id": "carrot_cake"},
-    "bananas":                  {"id": "bananas"},
-    "food_apple_01":            {"id": "food_apple_01"},
-    "lemon":                    {"id": "lemon"},
-    "food_pears_asian_01":      {"id": "food_pears_asian_01"},
-    "throw_pillows_01":         {"id": "throw_pillows_01"},
-    "chess_set":                {"id": "chess_set"},
-    "mantel_clock_01":          {"id": "mantel_clock_01"},
-    "marble_bust_01":           {"id": "marble_bust_01"},
-    "boombox":                  {"id": "boombox"},
-    "alarm_clock_01":           {"id": "alarm_clock_01"},
-    "rubber_boots":             {"id": "rubber_boots"},
-    "hanging_picture_frame_01": {"id": "hanging_picture_frame_01"},
-    "concrete_cat_statue":      {"id": "concrete_cat_statue"}
+    "sofa_03": {
+      "id": "sofa_03"
+    },
+    "sofa_02": {
+      "id": "sofa_02"
+    },
+    "mid_century_lounge_chair": {
+      "id": "mid_century_lounge_chair"
+    },
+    "modern_arm_chair_01": {
+      "id": "modern_arm_chair_01"
+    },
+    "armchair_01": {
+      "id": "ArmChair_01"
+    },
+    "green_chair_01": {
+      "id": "GreenChair_01"
+    },
+    "ottoman_01": {
+      "id": "Ottoman_01"
+    },
+    "modern_coffee_table_01": {
+      "id": "modern_coffee_table_01"
+    },
+    "modern_coffee_table_02": {
+      "id": "modern_coffee_table_02"
+    },
+    "coffee_table_round_01": {
+      "id": "coffee_table_round_01"
+    },
+    "side_table_01": {
+      "id": "side_table_01"
+    },
+    "side_table_tall_01": {
+      "id": "side_table_tall_01"
+    },
+    "dining_chair_02": {
+      "id": "dining_chair_02"
+    },
+    "bar_chair_round_01": {
+      "id": "bar_chair_round_01"
+    },
+    "metal_stool_01": {
+      "id": "metal_stool_01"
+    },
+    "classic_nightstand_01": {
+      "id": "ClassicNightstand_01"
+    },
+    "painted_wooden_nightstand": {
+      "id": "painted_wooden_nightstand"
+    },
+    "painted_wooden_bench": {
+      "id": "painted_wooden_bench"
+    },
+    "modern_wooden_cabinet": {
+      "id": "modern_wooden_cabinet"
+    },
+    "drawer_cabinet": {
+      "id": "drawer_cabinet"
+    },
+    "desk_lamp_arm_01": {
+      "id": "desk_lamp_arm_01"
+    },
+    "modern_ceiling_lamp_01": {
+      "id": "modern_ceiling_lamp_01"
+    },
+    "potted_plant_01": {
+      "id": "potted_plant_01"
+    },
+    "potted_plant_02": {
+      "id": "potted_plant_02"
+    },
+    "potted_plant_04": {
+      "id": "potted_plant_04"
+    },
+    "calathea_orbifolia_01": {
+      "id": "calathea_orbifolia_01"
+    },
+    "pachira_aquatica_01": {
+      "id": "pachira_aquatica_01"
+    },
+    "fern_02": {
+      "id": "fern_02"
+    },
+    "book_encyclopedia_set_01": {
+      "id": "book_encyclopedia_set_01"
+    },
+    "ceramic_vase_01": {
+      "id": "ceramic_vase_01"
+    },
+    "ceramic_vase_02": {
+      "id": "ceramic_vase_02"
+    },
+    "ceramic_vase_03": {
+      "id": "ceramic_vase_03"
+    },
+    "brass_vase_01": {
+      "id": "brass_vase_01"
+    },
+    "brass_vase_03": {
+      "id": "brass_vase_03"
+    },
+    "brass_candleholders": {
+      "id": "brass_candleholders"
+    },
+    "brass_goblets": {
+      "id": "brass_goblets"
+    },
+    "tea_set_01": {
+      "id": "tea_set_01"
+    },
+    "jug_01": {
+      "id": "jug_01"
+    },
+    "brass_pot_01": {
+      "id": "brass_pot_01"
+    },
+    "vintage_electric_kettle": {
+      "id": "vintage_electric_kettle"
+    },
+    "carrot_cake": {
+      "id": "carrot_cake"
+    },
+    "bananas": {
+      "id": "bananas"
+    },
+    "food_apple_01": {
+      "id": "food_apple_01"
+    },
+    "lemon": {
+      "id": "lemon"
+    },
+    "food_pears_asian_01": {
+      "id": "food_pears_asian_01"
+    },
+    "throw_pillows_01": {
+      "id": "throw_pillows_01"
+    },
+    "chess_set": {
+      "id": "chess_set"
+    },
+    "mantel_clock_01": {
+      "id": "mantel_clock_01"
+    },
+    "marble_bust_01": {
+      "id": "marble_bust_01"
+    },
+    "boombox": {
+      "id": "boombox"
+    },
+    "alarm_clock_01": {
+      "id": "alarm_clock_01"
+    },
+    "rubber_boots": {
+      "id": "rubber_boots"
+    },
+    "hanging_picture_frame_01": {
+      "id": "hanging_picture_frame_01"
+    },
+    "concrete_cat_statue": {
+      "id": "concrete_cat_statue"
+    }
   },
   "hdris": {
-    "sky": {"id": "qwantani_late_afternoon_puresky", "res": "2k"}
+    "sky": {
+      "id": "qwantani_late_afternoon_puresky",
+      "res": "2k"
+    }
   }
 }

@@ -143,3 +143,7 @@ Both camera paths clear (288 + 216 frames). Full pipeline re-run in progress.
 Second full preview: main_floor 96 frames at 30.7 s, basement 72 frames at 27.0 s, stills 60-68 s, 88 min wall.
 Output renders/walkthrough_preview.mp4: 164 frames, 20.5 s at 8 fps. This is the committed deliverable from the VM;
 the 24 fps final is Jamie's run on the Mac Mini (README).
+- Dropped fabric_pattern_05 (no diffuse map on Poly Haven, unused) and decorative_book_set_01 (no glTF) from
+  assets/wanted.json; fetch_assets.py now only exits non-zero if nothing at all could be fetched, so a flaky
+  mirror cannot stop Jamie's render. Clean-clone test: build_scene.py --shot none builds the staged scene
+  (39 model instances, 94 procedural placements, 62 lights) from a fresh clone plus the asset cache.

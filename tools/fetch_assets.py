@@ -206,7 +206,10 @@ def main():
             print("%-9s %-28s %s" % (kind, name, r), flush=True)
     bad = [k for k, v in status.items() if v.startswith("FAILED") or v == "missing"]
     print("\n%d assets, %d problems" % (len(status), len(bad)))
-    if bad and not args.check:
+    if bad:
+        print("missing assets fall back to flat materials / procedural stand-ins; re-run to retry downloads")
+    # only a total failure (nothing fetched at all) is fatal, so a flaky mirror does not stop the render
+    if bad and len(bad) == len(status):
         sys.exit(1)
 
 
