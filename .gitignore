@@ -19,3 +19,4 @@ web/_tiles/
 web/_*.json
 web/mem.log
 !renders/web_shots/
+!renders/floorplan.png
