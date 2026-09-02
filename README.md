@@ -20,7 +20,7 @@ walkthrough video. Everything is regenerated from JSON; nothing is hand-modeled 
 
 ```sh
 python3 tools/fetch_assets.py          # one time: downloads textures, models and the sky HDRI into assets/
-PREVIEW=1 ./render.sh                  # fast check: both shots, stills, contact sheet (83 min on a 4-core CPU)
+PREVIEW=1 ./render.sh                  # fast check: both shots, stills, contact sheet (88 min on a 4-core CPU)
 ./render.sh                            # final: 1280x720, 128 samples, every frame
 ```
 
@@ -46,8 +46,8 @@ Time a single frame first if you want a total before committing:
     --still main_floor:9.2:test --res 1920x1080 --samples 256 --device METAL
 ```
 
-The build itself takes about 15 s; the log prints the per-still render time. Multiply by 480 frames
-(12 s + 8 s at 24 fps). If a frame is slower than about 90 s, `SAMPLES=160` is a fine compromise; denoising
+The build itself takes about 15 s; the log prints the per-still render time. Multiply by 504 frames
+(12 s + 9 s at 24 fps). If a frame is slower than about 90 s, `SAMPLES=160` is a fine compromise; denoising
 carries it. Frames that already exist are skipped, so a killed render resumes where it stopped.
 
 ## The two shots
@@ -132,14 +132,14 @@ All on the build VM: 4 CPU threads, Blender 4.2.11, denoised, adaptive sampling.
 | --- | --- | --- |
 | Phase 1 boxes, main floor shot | 640x360 / 32 | 19.8 s mean over 96 frames |
 | Phase 1 boxes, basement shot | 640x360 / 32 | 25.0 s mean over 64 frames |
-| Phase 2 staged, main floor shot | 640x360 / 32 | 29.9 s mean over 96 frames (47.9 min) |
-| Phase 2 staged, basement shot | 640x360 / 32 | 27.0 s mean over 64 frames (28.8 min) |
-| Phase 2 staged, review stills | 640x360 / 48 | 58 to 67 s |
+| Phase 2 staged, main floor shot | 640x360 / 32 | 30.7 s mean over 96 frames (49.1 min) |
+| Phase 2 staged, basement shot | 640x360 / 32 | 27.0 s mean over 72 frames (32.4 min) |
+| Phase 2 staged, review stills | 640x360 / 48 | 60 to 68 s |
 | Phase 2 staged, room views | 480x270 / 24 | 38 to 54 s |
 | scene build, Phase 1 | | 0.9 s, 172 objects |
 | scene build, Phase 2 | | about 14 s, about 1950 objects |
 
-`PREVIEW=1 ./render.sh` end to end (both shots, stills, sheet) took 83 minutes on this VM.
+`PREVIEW=1 ./render.sh` end to end (both shots, stills, sheet) took 88 minutes on this VM.
 Extrapolated from those, a full Phase 2 render at 1280x720 / 128 samples on this VM is roughly 6 to 8 minutes a
 frame (4x the pixels, 4x the samples, adaptive sampling helping a little), so 45 to 60 hours for 480 frames. That is why the final render is Jamie's job on the Mac Mini: Cycles on
 Metal on an M-series chip is typically 8 to 15 times faster than these four cores, which puts 720p at a few hours

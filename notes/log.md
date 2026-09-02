@@ -140,3 +140,6 @@ Timings (Phase 2, CPU 4 threads):
 24. Bar wallpaper rewritten as a two-layer voronoi leaf scatter on a dark teal ground; the wave-ring version read
     as stripes.
 Both camera paths clear (288 + 216 frames). Full pipeline re-run in progress.
+Second full preview: main_floor 96 frames at 30.7 s, basement 72 frames at 27.0 s, stills 60-68 s, 88 min wall.
+Output renders/walkthrough_preview.mp4: 164 frames, 20.5 s at 8 fps. This is the committed deliverable from the VM;
+the 24 fps final is Jamie's run on the Mac Mini (README).
