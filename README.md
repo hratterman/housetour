@@ -131,14 +131,17 @@ All on the build VM: 4 CPU threads, Blender 4.2.11, denoised, adaptive sampling.
 | what | resolution / samples | per frame |
 | --- | --- | --- |
 | Phase 1 boxes, main floor shot | 640x360 / 32 | 19.8 s mean over 96 frames |
-| Phase 1 boxes, basement shot | 640x360 / 32 | see `notes/log.md` |
-| Phase 2 staged, review stills | 640x360 / 32 | 45 to 80 s |
+| Phase 1 boxes, basement shot | 640x360 / 32 | 25.0 s mean over 64 frames |
+| Phase 2 staged, main floor shot | 640x360 / 32 | 29.9 s mean over 96 frames (47.9 min) |
+| Phase 2 staged, basement shot | 640x360 / 32 | 27.0 s mean over 64 frames (28.8 min) |
+| Phase 2 staged, review stills | 640x360 / 48 | 58 to 67 s |
 | Phase 2 staged, room views | 480x270 / 24 | 38 to 54 s |
 | scene build, Phase 1 | | 0.9 s, 172 objects |
 | scene build, Phase 2 | | about 14 s, about 1950 objects |
 
-Extrapolated from those, a full Phase 2 render at 1280x720 / 128 samples on this VM is roughly 5 to 8 minutes a
-frame, so 40 to 60 hours for 480 frames. That is why the final render is Jamie's job on the Mac Mini: Cycles on
+`PREVIEW=1 ./render.sh` end to end (both shots, stills, sheet) took 83 minutes on this VM.
+Extrapolated from those, a full Phase 2 render at 1280x720 / 128 samples on this VM is roughly 6 to 8 minutes a
+frame (4x the pixels, 4x the samples, adaptive sampling helping a little), so 45 to 60 hours for 480 frames. That is why the final render is Jamie's job on the Mac Mini: Cycles on
 Metal on an M-series chip is typically 8 to 15 times faster than these four cores, which puts 720p at a few hours
 and 1080p / 256 samples at an overnight run. Measure one frame first (command above) and multiply.
 

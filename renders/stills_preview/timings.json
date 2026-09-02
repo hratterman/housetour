@@ -1,0 +1,13 @@
+{
+  "res": "640x360",
+  "samples": 48,
+  "device": "CPU",
+  "seconds": {
+    "01_front_door": 57.7,
+    "02_spine": 66.8,
+    "03_kitchen": 63.6,
+    "04_living": 63.0,
+    "05_gym": 65.4,
+    "06_pit": 63.1
+  }
+}

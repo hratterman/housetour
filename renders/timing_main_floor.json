@@ -1,11 +1,11 @@
 {
   "shot": "main_floor",
-  "res": "1280x720",
-  "samples": 128,
-  "frame_step": 1,
-  "frames": 0,
-  "mean_s": null,
-  "total_s": 4.0531158447265625e-06,
+  "res": "640x360",
+  "samples": 32,
+  "frame_step": 3,
+  "frames": 96,
+  "mean_s": 29.919536791741848,
+  "total_s": 2872.7966165542603,
   "device": "CPU",
   "stage": "phase2"
 }

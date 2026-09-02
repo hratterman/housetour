@@ -122,3 +122,9 @@ Timings (Phase 2, CPU 4 threads):
 - 64 frames (every 3rd of 192) at 640x360 / 32 samples: mean 25.0 s/frame, 26.7 min total (rendered alongside
   other jobs, so per-frame is inflated versus the main floor's 19.8 s).
 - Stitched at 8 fps: renders/preview/basement_preview_phase1.mp4 (8 s).
+
+## Phase 2 preview (PREVIEW=1 ./render.sh, the whole pipeline)
+
+- main_floor: 96 frames, mean 29.9 s/frame, 47.9 min. basement: 64 frames, mean 27.0 s/frame, 28.8 min.
+- 6 stills at 48 samples: 58 to 67 s each. Total wall time 83 min. Output 156 frames, 19.5 s at 8 fps with the
+  12-frame dissolve. Both camera paths clear against the staged scene.
