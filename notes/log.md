@@ -147,3 +147,19 @@ the 24 fps final is Jamie's run on the Mac Mini (README).
   assets/wanted.json; fetch_assets.py now only exits non-zero if nothing at all could be fetched, so a flaky
   mirror cannot stop Jamie's render. Clean-clone test: build_scene.py --shot none builds the staged scene
   (39 model instances, 94 procedural placements, 62 lights) from a fresh clone plus the asset cache.
+
+## Look pass (Henry: "let's make it look better")
+
+25. Bevel pass: an unapplied Bevel modifier on every procedural box and shell wall (0.4 in detail, 0.25 in shell,
+    1.2 in on upholstery), smooth shading with hardened normals. Adds about 20 s to the build and nothing measurable
+    to render time. `--no-bevel` skips it.
+26. Exterior plantings are now Poly Haven models: island_tree_01 x8, shrub_02 hedges, shrub_03/04, fern_02, planters,
+    an outdoor table set and pots on the terrace. Procedural trees are off (plan exterior.procedural_trees=false).
+    Trees cost about 9 s a frame at 640x360 (alpha leaves). jacaranda_tree and tree_small_02 only ship as 8k
+    glTF (200 MB) and were dropped.
+27. Sofa test: Poly Haven sofa_02 (curvy) and sofa_03 (chesterfield) both read wrong for the room; the procedural
+    low sofa with beveled cushions stays.
+28. Linen drape stacks at both ends of the rear glass; vertical slat reveals every 6 in on the walnut fireplace wall;
+    about half the framed pieces now have a cream mat.
+29. Plaster cooled slightly ([0.90,0.88,0.84]); lawn tint greener; roof black with specular level 0.12 because a
+    rough dark roof at a grazing angle was mirroring the sky and reading light gray.

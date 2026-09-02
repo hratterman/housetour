@@ -93,6 +93,8 @@ class PBRLibrary:
             bsdf.inputs["Coat Roughness"].default_value = spec.get("coat_rough", 0.1)
         if spec.get("sheen"):
             bsdf.inputs["Sheen Weight"].default_value = spec["sheen"]
+        if "spec" in spec:
+            bsdf.inputs["Specular IOR Level"].default_value = spec["spec"]
 
         tex = spec.get("tex")
         color_socket = None
