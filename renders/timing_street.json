@@ -1,0 +1,11 @@
+{
+  "shot": "street",
+  "res": "640x360",
+  "samples": 32,
+  "frame_step": 12,
+  "frames": 24,
+  "mean_s": 57.24657536546389,
+  "total_s": 1375.7116615772247,
+  "device": "CPU",
+  "stage": "phase2"
+}
