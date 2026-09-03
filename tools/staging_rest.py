@@ -227,7 +227,7 @@ def basement():
     add(asset="proc:cabinet", room="recovery", b=[20.3, 26.0, 21.75, 27.5, z + 3.2, z + 3.28], doors=1, face="-x", m="walnut_h")
     proc("towels", "recovery", pos=[21.0, 26.2, z + 3.3], count=2)
     proc("hooks", "recovery", wall=W("y", 22.0, "-x"), span=[21.0, 22.5], z=z + 5.0, count=2, jacket=False)
-    proc("downlights", "recovery", positions=[[10, 24], [14, 24], [18, 24], [21, 22]], z=z + 9.5, watts=8)
+    proc("downlights", "recovery", positions=[[10, 24], [14, 24], [18, 24], [21, 22]], z=z + 9.5, watts=5)
     # ------------------------------------------------------------------ 5.4 lounge (north face Y 45, west face X 1)
     note("lounge")
     proc("paneled_wall", "lounge", b=[1.3, 44.94, 21.7, 45.0, z + 0.3, z + 9.4], face="-y", m="walnut_panel")
