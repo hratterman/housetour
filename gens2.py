@@ -1523,7 +1523,12 @@ class Gens2:
             objs.append(box_ft(self.uid("fire_end"), bx0, u - w / 2, bx1, u - w / 2 + t, z0, z1, fbi, self.col))
             objs.append(box_ft(self.uid("fire_end"), bx0, u + w / 2 - t, bx1, u + w / 2, z0, z1, fbi, self.col))
             objs.append(box_ft(self.uid("fire_glass"), min(at + dx * 0.01, at + dx * 0.03), u - w / 2 + 0.05, max(at + dx * 0.01, at + dx * 0.03), u + w / 2 - 0.05, z0 + 0.05, z1 - 0.05, self.mat("glass"), get_collection("glass")))
-            objs.append(box_ft(self.uid("fire_frame"), min(at, at + dx * 0.04), u - w / 2 - 0.08, max(at, at + dx * 0.04), u + w / 2 + 0.08, z0 - 0.08, z1 + 0.08, blk, self.col))
+            # trim frame: four thin bars around the opening (a solid slab here covered the glass entirely)
+            f0, f1 = min(at, at + dx * 0.04), max(at, at + dx * 0.04)
+            objs.append(box_ft(self.uid("fire_frame"), f0, u - w / 2 - 0.08, f1, u - w / 2, z0 - 0.08, z1 + 0.08, blk, self.col))
+            objs.append(box_ft(self.uid("fire_frame"), f0, u + w / 2, f1, u + w / 2 + 0.08, z0 - 0.08, z1 + 0.08, blk, self.col))
+            objs.append(box_ft(self.uid("fire_frame"), f0, u - w / 2, f1, u + w / 2, z0 - 0.08, z0, blk, self.col))
+            objs.append(box_ft(self.uid("fire_frame"), f0, u - w / 2, f1, u + w / 2, z1, z1 + 0.08, blk, self.col))
             # ember bed and flames along the length
             fcx = at - dx * depth * 0.5
             objs.append(box_ft(self.uid("embers"), bx0 + 0.2, u - w / 2 + 0.2, bx1 - 0.2, u + w / 2 - 0.2, z0 + 0.06, z0 + 0.14, self.mat("embers"), self.col))
