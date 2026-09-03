@@ -6801,8 +6801,8 @@
 "asset": "proc:reel",
 "room": "garage",
 "pos": [
-0.0,
-76.0,
+13.5,
+69.5,
 11.1
 ],
 "m": "steel_black"
@@ -6811,8 +6811,8 @@
 "asset": "proc:reel",
 "room": "garage",
 "pos": [
-2.0,
-76.0,
+15.5,
+69.5,
 11.1
 ],
 "m": "rubber_red"

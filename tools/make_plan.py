@@ -385,7 +385,7 @@ NEIGHBORHOOD = {
         # spec 1.1 trees on our lot
         {"pos": [-3, -22], "species": "oak", "h": 42}, {"pos": [36, -24], "species": "oak", "h": 36},
         {"pos": [48, 20], "species": "maple", "h": 40}, {"pos": [30, 110], "species": "locust", "h": 42},
-        {"pos": [9, 64], "species": "maple", "h": 16},
+        {"pos": [25, 60], "species": "maple", "h": 16},
         {"pos": [-40, 62], "species": "oak"}, {"pos": [132, 52], "species": "elm"}, {"pos": [-118, -140], "species": "oak"},
         {"pos": [-160, 40], "species": "maple"}, {"pos": [225, 30], "species": "oak"}, {"pos": [120, -150], "species": "elm"},
         {"pos": [-60, -150], "species": "maple"}, {"pos": [200, -100], "species": "spruce"},

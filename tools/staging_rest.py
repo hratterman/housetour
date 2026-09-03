@@ -299,8 +299,8 @@ def garage():
     model("wooden_ladder", (-3.9, 88.3, z), "garage", height_ft=5.5, rot_z=90)   # it is a step ladder
     proc("shelving_unit", "garage", pos=[16.05, 89.0, z], length=6.0, depth=1.8, height=7.0, rot_z=90, seed=4)   # east wall, north of the sedan
     proc("compressor_closet", "garage", b=[-5.0, 65.0, -3.0, 67.5, z, z + 6.0])
-    proc("reel", "garage", pos=[0.0, 76.0, z + 11.5], m="steel_black")
-    proc("reel", "garage", pos=[2.0, 76.0, z + 11.5], m="rubber_red")
+    proc("reel", "garage", pos=[13.5, 69.5, z + 11.5], m="steel_black")   # over the aisle in front of the bench
+    proc("reel", "garage", pos=[15.5, 69.5, z + 11.5], m="rubber_red")
     model("plastic_broom", (-4.3, 91.7, z), "garage", height_ft=4.5, rot_z=200)
     proc("shovel", "garage", pos=[-2.6, 92.4, z])
     proc("ice_melt", "garage", pos=[-1.6, 92.3, z])
