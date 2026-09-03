@@ -61,16 +61,16 @@ def main_floor():
     model("rubber_boots", (9.5, 4.95, 0), "vestibule", height_ft=1.1, rot_z=30)   # the model imports as one boot; two make the pair
     # ------------------------------------------------------------------ 3.3 powder room
     note("powder")
-    proc("wall_finish", "powder", wall=W("x", 6.0, "-y"), span=[14.3, 17.7], z=[0.3, 9.4], m="wallpaper_botanical_dark")
+    proc("wall_finish", "powder", wall=W("x", 6.0, "-y"), span=[14.3, 18.7], z=[0.3, 9.4], m="wallpaper_botanical_dark")
     proc("wall_finish", "powder", wall=W("y", 14.0, "+x"), span=[1.0, 5.75], z=[0.3, 9.4], m="wallpaper_botanical_dark")
-    proc("wall_finish", "powder", wall=W("y", 18.0, "-x"), span=[1.0, 5.75], z=[0.3, 9.4], m="wallpaper_botanical_dark")
-    proc("wall_vanity", "powder", b=[14.28, 2.1, 15.28, 4.6, 2.6, 3.2], face="+x")
-    proc("round_mirror", "powder", wall=W("y", 14.0, "+x"), u=3.35, z=5.5, radius=1.0)
-    proc("sconce", "powder", wall=W("y", 14.0, "+x"), u=1.9, z=6.0, watts=6, radius=0.12, height=0.5)
-    proc("sconce", "powder", wall=W("y", 14.0, "+x"), u=4.8, z=6.0, watts=6, radius=0.12, height=0.5)
-    proc("toilet", "powder", pos=[17.3, 3.3, 0], facing="-x")
+    proc("wall_finish", "powder", wall=W("y", 19.0, "-x"), span=[1.0, 5.75], z=[0.3, 9.4], m="wallpaper_botanical_dark")
+    proc("wall_vanity", "powder", b=[14.28, 3.6, 15.28, 5.6, 2.6, 3.2], face="+x")   # beside the toilet, north of its 21 in clear zone
+    proc("round_mirror", "powder", wall=W("y", 14.0, "+x"), u=4.6, z=5.5, radius=0.8)
+    proc("sconce", "powder", wall=W("y", 14.0, "+x"), u=3.45, z=6.0, watts=6, radius=0.12, height=0.5)
+    proc("sconce", "powder", wall=W("y", 14.0, "+x"), u=5.6, z=6.0, watts=6, radius=0.12, height=0.5)
+    proc("toilet", "powder", pos=[18.3, 2.3, 0], facing="-x")   # on the east wall at the south end; 2 ft clear in front
     proc("towel_bar", "powder", wall=W("x", 6.0, "-y"), u=15.0, z=4.2, length=1.2, towels=["towel_white"])
-    proc("downlight", "powder", pos=[16.0, 3.3, 9.5], watts=6)
+    proc("downlight", "powder", pos=[16.6, 3.6, 9.5], watts=6)
     # ------------------------------------------------------------------ 3.4 coat closet / 3.5 panel closet (closed)
     note("coat closet")
     proc("coats", "coat_closet", b=[18.3, 1.0, 21.7, 3.0, 0, 9.0], face="+y", rod_z=6.0, seed=3)
@@ -105,20 +105,20 @@ def main_floor():
     proc("downlights", "spine", positions=[[25, 8], [25, 18], [25, 28]], z=9.5, watts=5)
     # ------------------------------------------------------------------ 3.8 stair hall / well
     note("stair hall")
-    proc("globe_pendant", "stair_hall", pos=[31.0, 11.0, 15.0], radius=0.83, drop=5.0, watts=70)   # over the arrival zone, clear of the centre wall
-    proc("downlight", "stair_hall", pos=[31.0, 11.2, 9.5], watts=8)
+    proc("globe_pendant", "stair_hall", pos=[31.5, 11.0, 15.0], radius=0.83, drop=5.0, watts=70)   # over the arrival zone, clear of the centre wall
+    proc("downlight", "stair_hall", pos=[31.5, 11.2, 9.5], watts=8)
     # ------------------------------------------------------------------ 3.9 laundry
     note("laundry")
     proc("washer_dryer", "laundry", b=[39.0, 8.5, 41.0, 11.5, 1.2, 6.8], floor_z=0, face="-x")
-    add(asset="proc:cabinet", room="laundry", b=[34.5, 1.0, 41.0, 3.0, 0.3, 2.9], doors=5, face="+y", m="walnut_h")
-    add(asset="proc:rug", room="laundry", b=[34.5, 1.0, 41.0, 3.05], z=2.9, thick=0.12, m="walnut_h")   # folding counter top
+    add(asset="proc:cabinet", room="laundry", b=[35.5, 1.0, 41.0, 3.0, 0.3, 2.9], doors=5, face="+y", m="walnut_h")
+    add(asset="proc:rug", room="laundry", b=[35.5, 1.0, 41.0, 3.05], z=2.9, thick=0.12, m="walnut_h")   # folding counter top
     proc("utility_sink", "laundry", b=[39.0, 1.0, 41.0, 3.0, 0, 3.05], faucet_wall="+x")
-    proc("coats", "laundry", b=[35.0, 1.0, 40.5, 3.0, 6.0, 9.4], face="+y", rod_z=0.5, drawer_h=0.0, seed=6)
-    add(asset="proc:cabinet", room="laundry", b=[37.5, 9.5, 38.9, 12.75, 0, 8.0], doors=2, face="-x", m="walnut_h")
-    add(asset="proc:cabinet", room="laundry", b=[34.25, 11.0, 36.0, 12.75, 0, 4.0], doors=1, face="-y", m="walnut_h")   # chute hopper
-    proc("basket", "laundry", pos=[35.2, 10.3, 0], radius=0.7, height=1.6, throw_m="linen_white")
-    proc("rug", "laundry", b=[35.0, 4.0, 38.5, 8.5], m="rug_cream", thick=0.05)
-    proc("downlights", "laundry", positions=[[36, 5], [39, 10]], z=9.5, watts=9)
+    proc("coats", "laundry", b=[36.0, 1.0, 40.5, 3.0, 6.0, 9.4], face="+y", rod_z=0.5, drawer_h=0.0, seed=6)
+    add(asset="proc:cabinet", room="laundry", b=[37.8, 9.5, 38.9, 12.75, 0, 8.0], doors=2, face="-x", m="walnut_h")
+    add(asset="proc:cabinet", room="laundry", b=[39.5, 11.6, 41.0, 12.75, 0, 4.0], doors=1, face="-y", m="walnut_h")   # chute hopper, under the chute in the NE corner
+    proc("basket", "laundry", pos=[38.0, 7.6, 0], radius=0.7, height=1.6, throw_m="linen_white")
+    proc("rug", "laundry", b=[36.0, 4.0, 38.5, 8.5], m="rug_cream", thick=0.05)
+    proc("downlights", "laundry", positions=[[37, 5], [39, 10]], z=9.5, watts=9)
     # ------------------------------------------------------------------ 3.11 mudroom
     note("mudroom")
     proc("lockers2", "mudroom", b=[1.0, 19.25, 7.75, 20.75, 0, 9.5], dividers=[2.7, 4.4, 6.1])
@@ -146,9 +146,9 @@ def main_floor():
     # ------------------------------------------------------------------ 3.14 kitchen
     note("kitchen")
     proc("kitchen2", "kitchen")
-    proc("sputnik", "kitchen", pos=[13.75, 23.5, 7.5], arms=18, radius=1.6, ceil_z=9.5, watts=110, seed=11)
+    proc("sputnik", "kitchen", pos=[14.5, 25.0, 7.5], arms=18, radius=1.6, ceil_z=9.5, watts=110, seed=11)
     proc("downlights", "kitchen", positions=[[10.5, 17], [10.5, 22], [19.5, 17], [19.5, 24], [15, 28.5]], z=9.5, watts=9)
-    model("wooden_cutting_board", (13.0, 20.2, 3.05), "kitchen", length_ft=1.3, rot_z=80)   # on the island beside the sink
+    model("wooden_cutting_board", (15.1, 18.6, 3.05), "kitchen", length_ft=1.3, rot_z=80)   # on the island beside the sink
     model("brass_pot_01", (20.9, 23.7, 3.0), "kitchen", height_ft=0.7)
     # ------------------------------------------------------------------ 3.15 living room (X 0-20; west face at X 1)
     note("living")
@@ -168,10 +168,10 @@ def main_floor():
     proc("throw", "living", b=[9.3, 36.35, 11.6, 37.35], z=2.0, m="wool_oatmeal", hang="-y", drop=1.3)   # throw over the south arm
     model("modern_arm_chair_01", (5.9, 34.5, 0), "living", length_ft=2.9, rot_z=200, recolor=[0.75, 0.58, 0.16])
     model("modern_arm_chair_01", (5.5, 43.0, 0), "living", length_ft=2.9, rot_z=-20, recolor=[0.75, 0.58, 0.16])
-    model("coffee_table_round_01", (7.0, 39.0, 0), "living", length_ft=3.5)
-    model("book_encyclopedia_set_01", (6.7, 38.7, 1.32), "living", length_ft=1.1, rot_z=15)
-    model("ceramic_vase_02", (7.6, 39.6, 1.32), "living", height_ft=0.55)
-    model("brass_candleholders", (6.4, 39.7, 1.32), "living", height_ft=0.5, rot_z=30)
+    model("coffee_table_round_01", (6.5, 39.0, 0), "living", length_ft=3.5)   # 16 in off the sofa front
+    model("book_encyclopedia_set_01", (6.2, 38.7, 1.32), "living", length_ft=1.1, rot_z=15)
+    model("ceramic_vase_02", (7.1, 39.6, 1.32), "living", height_ft=0.55)
+    model("brass_candleholders", (5.9, 39.7, 1.32), "living", height_ft=0.5, rot_z=30)
     proc("credenza", "living", pos=[19.0, 33.3, 0], length=5.0, depth=1.5, height=2.4, rot_z=90, turntable=True)
     proc("records", "living", pos=[19.0, 31.1, 2.4], rot_z=90, count=8)
     proc("speaker", "living", pos=[19.15, 35.2, 2.4], rot_z=90, face="-y")
@@ -216,8 +216,8 @@ def main_floor():
     proc("shower2", "primary_bath", b=[35.0, 18.25, 41.0, 21.75], glass=[["-x", 18.25, 21.0]], head_wall="+y", heads=[36.8, 39.6],
          niche=[38.0, 39.3, 3.5, 4.8], bench=[39.4, 18.2, 41.0, 19.6, 0, 1.5])
     proc("tile_wainscot", "primary_bath", boxes=[[35.0, 21.72, 41.0, 21.75, 0, 9.5], [40.97, 18.0, 41.0, 21.75, 0, 9.5]], m="terrazzo")
-    proc("toilet", "wc", pos=[40.6, 15.5, 0], facing="-x")   # bowl centre; the carrier sits 0.4 behind it on the east face (X 41)
-    proc("downlight", "wc", pos=[40.2, 15.5, 9.5], watts=4)
+    proc("toilet", "wc", pos=[39.5, 17.3, 0], facing="-y")   # on the north wall, facing down the 4.5 ft length; 18 in each side
+    proc("downlight", "wc", pos=[39.5, 15.3, 9.5], watts=4)
     proc("towel_bar", "wc", wall=W("x", 13.0, "+y"), u=40.2, z=3.2, length=0.8, towels=["towel_white"])
     proc("towel_warmer", "primary_bath", wall=W("x", 13.0, "+y"), u=33.0, z=3.5)
     model("wooden_stool_01", (31.5, 20.5, 0), "primary_bath", height_ft=1.5, rot_z=20)

@@ -546,3 +546,33 @@ leave no 6 ft of wall); dropped, storage is the pegboard and under the bench. Th
 the lift from the door line. Toilet seats are white and the roll is on the side wall. The upstairs laundry had
 no light at all. Car wheels were asymmetric (left tyres stood proud of the body, right ones recessed, spokes
 floated outside the right rims); mirrored per side. Cars pass at room scale in the garage frames.
+
+## Dimension audit (Henry: "realistic and code compliant... would it be pleasant to live in? I don't want it cramped")
+
+Measured every room, door, stair and fixture against IRC/IPC minimums from plan.json and staging.json (the numbers,
+not the renders). Generous everywhere that matters: living 20 x 16, kitchen 14 x 17, primary 14 x 16 with a 10 x 9
+bath and 10 x 8 closet, kids' rooms 181 and 225 sq ft with two egress windows each (sills 30 in), 9 to 9.5 ft
+ceilings, 6 ft halls, 3 ft doors, gym 22 x 20, lounge 22 x 18, garage 24 x 30. Five failures, all fixed:
+
+1. Stair flights were 30 in clear: the 6 ft core less the partition face and the 6 in centre wall left 2.5 ft per
+   flight (IRC R311.7.1 wants 36). The core is now X 28-35: flights 28.25-31.25 and 31.75-34.75, centre wall at
+   31.5, landings 7 ft, tower 7 ft, clerestories S5/S9 recentred, the well opening 7 ft. The foot came out of the
+   main-floor laundry (7 ft wide now, elevator closet X 35-38), the upstairs laundry closet and the battery room.
+   Basement and upstairs shots re-centred on the wider flights (X 33.25 down, 29.75 up).
+2. The laundry's only door was from the primary bath, and with the WC widened the shared wall no longer took a
+   door at all. It now opens off the stair-hall arrival zone (X 35, Y 9.65-12.15). The chute moved to the NE corner
+   of both laundries (X 40-41) so its hopper is out of the door swing; the upstairs double doors moved west to clear it.
+3. WC toilet had 7 in in front of it: the 30 in compartment had the bowl pointing across the short way. Partition
+   moved to X 37.75 (36 in clear), bowl on the north wall facing down the 4.5 ft length, 18 in each side, 30 in in front.
+4. Powder toilet was 6 in from the vanity across a 3.5 ft room. Partition to X 19 (4.5 ft clear; the coat closet is
+   3 x 6 with a 2 ft door), toilet on the east wall at the south end, 2 ft clear in front, basin on the west wall north
+   of the clear zone, door recentred at X 17 so its swing clears both.
+5. Island seating: six chairs on both sides of a 3.5 ft island left 24 in behind the west chairs (the pantry door
+   swung into them) and 28 in behind the east chairs in the cooking aisle. Island is 3 ft at X 13-16, 3 ft off the
+   tall south run, sink and dishwasher on the work end, four chairs (three west, one at the north end), 36 in behind
+   them, 42 in cooking aisle; the pantry door swings into the pantry (details.build_door honours swing="out" now,
+   which the WC door had been asking for all along).
+6. Coffee table (3.5 ft across) sat 10 in off the sofa; moved to 16 in.
+
+Left open for Henry (README "Dimensions and code"): no dining table for more than four inside, no kitchen window,
+the 3 x 3 elevator stack is a placeholder.

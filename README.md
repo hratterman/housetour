@@ -6,7 +6,7 @@ walkthrough video. Everything is regenerated from JSON and Python; nothing is ha
 
 - `plan.json` (rooms, openings, stairs, roof, site, neighbourhood, lighting, shots) is written by
   `tools/make_plan.py` from `housemasterspec.md`. Do not hand-edit it.
-- `staging.json` (530 placements: 72 CC0 model instances, 415 procedural pieces, finishes and lights) is
+- `staging.json` (524 placements: 70 CC0 model instances, 411 procedural pieces, finishes and lights) is
   written by `tools/make_staging.py` from the room-by-room lists in `tools/staging_main.py` and
   `tools/staging_rest.py`. Do not hand-edit it either.
 - `renders/walkthrough_preview.mp4` is the committed check render, `renders/stills_preview/` the named stills
@@ -159,7 +159,8 @@ notes/acceptance.md   the spec checklist
 - Walls occupy the inside of the room lines: exterior walls 1 ft thick inward, partitions 3 in each side of
   the line. Openings find their walls by overlap and are cut with booleans; Phase 2 adds casings, doors, frames,
   glass, mullions and light portals from the same list.
-- The stair core (X 28-34, Y 0-13) is a stacked switchback: two 3 ft flights at 7.5 in risers on 10 in treads,
+- The stair core (X 28-35, Y 0-13) is a stacked switchback: two flights 3 ft clear between finished faces (IRC
+  36 in) at 7.5 in risers on 10 in treads,
   a landing against the street wall, a solid walnut centre wall, a glass guard on the well. A cedar tower with
   stacked clerestories rises 2 ft above the eave over it.
 - Staging entries name a wall (`axis`, `at`, `face`) and the Stager shifts them to the finished face, so
@@ -185,11 +186,24 @@ twice as fast.
 
 | what | value |
 | --- | --- |
-| staged build (house, block, 530 placements, 10,900 objects) | 6.3 min |
+| staged build (house, block, 524 placements, 10,900 objects) | 6.3 min |
 | review still, 960x540, 48 samples | 150 to 230 s (interiors slower than exteriors) |
 | memory while rendering | 7 to 8 GB |
 
 The preview run's per-frame times and totals are in `renders/timing_<shot>.json` and in `notes/log.md`.
+
+## Dimensions and code
+
+Every room, door, stair and fixture clearance was measured against IRC and IPC minimums (see the dimension audit in
+`notes/log.md`): flights 36 in clear, 7.5 in risers on 10 in treads, 6 ft 8 in headroom, landings at least the stair
+width, 42 in guards, egress windows in every bedroom and the basement, 21 in in front of every toilet and 15 in
+either side of its centreline, 42 in cooking aisle, 36 in behind the island chairs, 3 ft doors (2 ft 8 in at baths
+and closets), halls 3.5 ft clear or wider, ceilings 9 to 9.5 ft.
+
+Three program questions are open, on purpose, for Henry: there is no dining table for more than four anywhere
+inside (dinner for eight is the terrace); the kitchen has no window of its own and borrows the living room's glass
+wall through the 20 ft opening, though the nook counter sits on the west exterior wall and could take one; and the
+3 by 3 "elevator" stack is a placeholder for a future lift, not a shaft, which needs about 5 by 5.
 
 ## What I would change next
 

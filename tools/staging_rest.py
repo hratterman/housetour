@@ -83,7 +83,7 @@ def second_floor():
     proc("downlights", "landing", positions=[[26, 16], [38, 16]], z=z + 9.0, watts=7)
     # ------------------------------------------------------------------ 4.5 upstairs laundry closet
     note("upstairs laundry closet")
-    add(asset="proc:cabinet", room="up_laundry", b=[34.25, 11.0, 36.0, 12.75, z, z + 4.0], doors=1, face="-y", m="walnut_h")
+    add(asset="proc:cabinet", room="up_laundry", b=[39.5, 11.6, 41.0, 12.75, z, z + 4.0], doors=1, face="-y", m="walnut_h")
     proc("downlights", "up_laundry", positions=[[38.0, 11.0], [39.5, 7.5]], z=z + 9.0, watts=10)
     proc("wardrobe", "up_laundry", b=[38.0, 9.4, 41.0, 11.0, z, z + 8.5], face="+y", kind="shelves", shelves=5, seed=161)
     # ------------------------------------------------------------------ 4.6 hall
@@ -263,7 +263,7 @@ def basement():
     model("wine_bottles_01", (27.1, 39.0, z + 4.54), "bar", height_ft=1.0)
     # ------------------------------------------------------------------ 5.6 basement stair hall
     note("basement stair hall")
-    proc("globe_pendant", "bstair_hall", pos=[29.5, 11.2, z + 7.0], radius=0.45, drop=2.4, watts=30)
+    proc("globe_pendant", "bstair_hall", pos=[29.75, 11.2, z + 7.0], radius=0.45, drop=2.4, watts=30)
     # ------------------------------------------------------------------ 5.8 mechanical, 5.9 storage, 5.7 battery
     note("mechanical")
     proc("mechanical", "mechanical", z=z)

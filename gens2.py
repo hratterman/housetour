@@ -667,46 +667,47 @@ class Gens2:
             objs.append(box_ft(self.uid("k_oven_glass"), 9.15, 14.51, 11.35, 14.53, z + za + 0.15, z + zb - 0.15, self.mat("screen_dark"), self.col))
             objs.append(box_ft(self.uid("k_oven_handle"), 9.3, 14.55, 11.2, 14.62, z + zb - 0.3, z + zb - 0.22, ss, self.col))
         objs.append(box_ft(self.uid("k_warm_drawer"), 9.1, 14.51, 11.4, 14.53, z + 2.6, z + 3.4, ss, self.col))
-        # --- island: work end Y 15-21 olive with soapstone; table end Y 21-26 walnut slab at 2.5
-        ix0, ix1 = 12.0, 15.5
-        objs.append(box_ft(self.uid("k_island"), ix0, 15.0, ix1, 21.0, z + 0.35, z + 2.9, olive, self.col))
-        objs.append(box_ft(self.uid("k_island_toe"), ix0 + 0.25, 15.25, ix1 - 0.25, 21.0, z, z + 0.35, black, self.col))
-        objs.append(box_ft(self.uid("k_island_top"), ix0 - 0.125, 14.875, ix1 + 0.125, 21.1, z + 2.9, z + 3.0, soap, self.col))
-        # drawer/door reveals on the west face, dishwasher panel on the east face Y 19-21
-        for u in (17.0, 19.0):
+        # --- island: 3 ft wide at X 13-16 (42 in cooking aisle east, 36 in behind the chairs west); work end Y 17.5-22.5 olive
+        # with soapstone, 3 ft clear of the tall south run; table end Y 22.5-27.5 walnut slab at 2.5, seats on the west side and the end
+        ix0, ix1 = 13.0, 16.0
+        objs.append(box_ft(self.uid("k_island"), ix0, 17.5, ix1, 22.5, z + 0.35, z + 2.9, olive, self.col))
+        objs.append(box_ft(self.uid("k_island_toe"), ix0 + 0.25, 17.75, ix1 - 0.25, 22.5, z, z + 0.35, black, self.col))
+        objs.append(box_ft(self.uid("k_island_top"), ix0 - 0.125, 17.375, ix1 + 0.125, 22.6, z + 2.9, z + 3.0, soap, self.col))
+        # drawer/door reveals on the west face, dishwasher panel on the east face Y 17.5-19.5
+        for u in (19.5, 21.5):
             objs.append(box_ft(self.uid("reveal"), ix0 - 0.01, u - 0.01, ix0 + 0.005, u + 0.01, z + 0.4, z + 2.85, self.mat("black"), self.col))
-        objs.append(box_ft(self.uid("reveal"), ix1 - 0.005, 19.0, ix1 + 0.01, 19.02, z + 0.4, z + 2.85, self.mat("black"), self.col))
-        objs.append(box_ft(self.uid("k_dw_pull"), ix1 + 0.01, 19.4, ix1 + 0.08, 20.6, z + 2.55, z + 2.62, brass, self.col))
-        # sink 30 in at (13.75, 18), stainless basin recessed, bridge faucet behind at Y 16.8
-        objs.append(box_ft(self.uid("k_sink_rim"), 13.75 - 1.25, 17.25, 13.75 + 1.25, 18.75, z + 2.98, z + 3.005, ss, self.col))
-        objs.append(box_ft(self.uid("k_sink_basin"), 13.75 - 1.2, 17.3, 13.75 + 1.2, 18.7, z + 2.3, z + 2.98, ss, self.col))
-        objs.append(box_ft(self.uid("k_sink_hole"), 13.75 - 1.15, 17.35, 13.75 + 1.15, 18.65, z + 2.35, z + 3.0, self.mat("steel_black"), self.col))
+        objs.append(box_ft(self.uid("reveal"), ix1 - 0.005, 19.5, ix1 + 0.01, 19.52, z + 0.4, z + 2.85, self.mat("black"), self.col))
+        objs.append(box_ft(self.uid("k_dw_pull"), ix1 + 0.01, 17.9, ix1 + 0.08, 19.1, z + 2.55, z + 2.62, brass, self.col))
+        # sink 30 in at (14.5, 21), stainless basin recessed, bridge faucet behind at Y 19.3
+        objs.append(box_ft(self.uid("k_sink_rim"), 14.5 - 1.25, 19.75, 14.5 + 1.25, 22.25, z + 2.98, z + 3.005, ss, self.col))
+        objs.append(box_ft(self.uid("k_sink_basin"), 14.5 - 1.2, 19.8, 14.5 + 1.2, 22.2, z + 2.3, z + 2.98, ss, self.col))
+        objs.append(box_ft(self.uid("k_sink_hole"), 14.5 - 1.15, 19.85, 14.5 + 1.15, 22.15, z + 2.35, z + 3.0, self.mat("steel_black"), self.col))
         for dx in (-0.35, 0.35):
-            objs.append(cylinder_ft(self.uid("k_faucet"), (13.75 + dx, 16.8, z + 3.0), 0.05, 0.6, brass, self.col, 10))
-        objs.append(cylinder_ft(self.uid("k_faucet"), (13.75 - 0.35, 16.8, z + 3.6), 0.04, 0.7, brass, self.col, 8, axis="X"))
-        objs.append(cylinder_ft(self.uid("k_faucet"), (13.75, 16.8, z + 3.6), 0.05, 0.9, brass, self.col, 10))
-        objs.append(cylinder_ft(self.uid("k_faucet"), (13.75, 16.8, z + 4.5), 0.045, 1.1, brass, self.col, 8, axis="Y"))
-        objs.append(cylinder_ft(self.uid("k_hot_tap"), (13.2, 16.8, z + 3.0), 0.03, 0.55, brass, self.col, 8))
+            objs.append(cylinder_ft(self.uid("k_faucet"), (14.5 + dx, 19.3, z + 3.0), 0.05, 0.6, brass, self.col, 10))
+        objs.append(cylinder_ft(self.uid("k_faucet"), (14.5 - 0.35, 19.3, z + 3.6), 0.04, 0.7, brass, self.col, 8, axis="X"))
+        objs.append(cylinder_ft(self.uid("k_faucet"), (14.5, 19.3, z + 3.6), 0.05, 0.9, brass, self.col, 10))
+        objs.append(cylinder_ft(self.uid("k_faucet"), (14.5, 19.3, z + 4.5), 0.045, 1.1, brass, self.col, 8, axis="Y"))
+        objs.append(cylinder_ft(self.uid("k_hot_tap"), (13.95, 19.3, z + 3.0), 0.03, 0.55, brass, self.col, 8))
         # table end: walnut slab top at Z 2.5, 2.5 in thick, cantilevered from the island over a leg frame
-        objs.append(box_ft(self.uid("k_table"), ix0, 21.0, ix1, 26.0, z + 2.29, z + 2.5, wood, self.col))
-        objs.append(box_ft(self.uid("k_table_apron"), ix0 + 0.3, 21.0, ix1 - 0.3, 25.7, z + 2.05, z + 2.29, wood, self.col))
-        for (lx, ly) in ((ix0 + 0.35, 25.5), (ix1 - 0.35, 25.5)):
+        objs.append(box_ft(self.uid("k_table"), ix0, 22.5, ix1, 27.5, z + 2.29, z + 2.5, wood, self.col))
+        objs.append(box_ft(self.uid("k_table_apron"), ix0 + 0.3, 22.5, ix1 - 0.3, 27.2, z + 2.05, z + 2.29, wood, self.col))
+        for (lx, ly) in ((ix0 + 0.35, 27.0), (ix1 - 0.35, 27.0)):
             objs.append(box_ft(self.uid("k_table_leg"), lx - 0.1, ly - 0.1, lx + 0.1, ly + 0.1, z, z + 2.29, wood, self.col))
-        objs.append(box_ft(self.uid("k_table_leg"), ix0 + 0.35, 25.4, ix1 - 0.35, 25.6, z + 0.25, z + 0.35, wood, self.col))
-        # six shell chairs
-        for cy in (22.0, 23.75, 25.5):
-            objs += self.gen_dining_chair({"pos": [11.0, cy, z], "rot_z": 90, "m": "wool_mustard"})    # west side, faces +X into the table
-            objs += self.gen_dining_chair({"pos": [16.5, cy, z], "rot_z": -90, "m": "wool_mustard"})   # east side, faces -X
+        objs.append(box_ft(self.uid("k_table_leg"), ix0 + 0.35, 26.9, ix1 - 0.35, 27.1, z + 0.25, z + 0.35, wood, self.col))
+        # four shell chairs: three on the west side (36 in passage behind them), one at the north end; none in the cooking aisle
+        for cy in (23.25, 25.0, 26.75):
+            objs += self.gen_dining_chair({"pos": [12.0, cy, z], "rot_z": 90, "m": "wool_mustard"})    # west side, faces +X into the table
+        objs += self.gen_dining_chair({"pos": [14.5, 28.5, z], "rot_z": 0, "m": "wool_mustard"})        # north end, faces -Y
         # counter objects: bowl of oranges, cutting board, linen towel over the sink edge
-        bowl = sphere_ft(self.uid("k_bowl"), (13.75, 20.0, z + 3.16), 0.55, self.mat("walnut"), self.col)
+        bowl = sphere_ft(self.uid("k_bowl"), (14.5, 24.5, z + 2.66), 0.55, self.mat("walnut"), self.col)
         bowl.scale = (1, 1, 0.32)
         objs.append(bowl)
         rng = random.Random(7)
         for i in range(7):
             a = i * 0.9
-            objs.append(sphere_ft(self.uid("k_orange"), (13.75 + math.cos(a) * 0.22 * (i % 3), 20.0 + math.sin(a) * 0.22 * (i % 3), z + 3.18 + 0.13 + (0.2 if i == 6 else 0)), 0.14, self.mat("orange"), self.col, 12, 8))
-        objs.append(box_ft(self.uid("k_board"), 12.4, 19.2, 13.3, 20.6, z + 3.0, z + 3.07, self.mat("oak"), self.col))
-        objs.append(box_ft(self.uid("k_towel"), 14.6, 17.6, 15.6, 18.4, z + 2.6, z + 3.03, self.mat("linen_white"), self.col))
+            objs.append(sphere_ft(self.uid("k_orange"), (14.5 + math.cos(a) * 0.22 * (i % 3), 24.5 + math.sin(a) * 0.22 * (i % 3), z + 2.68 + 0.13 + (0.2 if i == 6 else 0)), 0.14, self.mat("orange"), self.col, 12, 8))
+        objs.append(box_ft(self.uid("k_board"), 13.3, 18.0, 14.2, 19.4, z + 3.0, z + 3.07, self.mat("oak"), self.col))
+        objs.append(box_ft(self.uid("k_towel"), 15.1, 20.6, 16.1, 21.4, z + 2.6, z + 3.03, self.mat("linen_white"), self.col))
         # --- nook: marble counter along Y 27.3-29.8, X 0.5-8, walnut base, open shelves at 5.5 and 7
         objs.append(box_ft(self.uid("n_base"), 1.0, 27.3, 8.0, 29.7, z + 0.35, z + 2.9, wood, self.col))
         objs.append(box_ft(self.uid("n_toe"), 1.0, 27.3, 8.0, 29.45, z, z + 0.35, black, self.col))

@@ -153,6 +153,8 @@ class Details:
             swing_pos = False
         else:
             swing_pos = True
+        if op.get("swing") == "out":      # plan override: swing the other way (WC into the bath, pantry into the pantry)
+            swing_pos = not swing_pos
         angle = 90.0 if exterior else op.get("open_deg", 80.0)
         thick = 2.25 * IN if exterior else DOOR_T
         mid = (n0 + n1) / 2 - thick / 2

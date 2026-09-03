@@ -173,7 +173,7 @@
 },
 "span": [
 14.3,
-17.7
+18.7
 ],
 "z": [
 0.3,
@@ -204,7 +204,7 @@
 "room": "powder",
 "wall": {
 "axis": "y",
-"at": 18.0,
+"at": 19.0,
 "face": "-x"
 },
 "span": [
@@ -222,9 +222,9 @@
 "room": "powder",
 "b": [
 14.28,
-2.1,
+3.6,
 15.28,
-4.6,
+5.6,
 2.6,
 3.2
 ],
@@ -238,9 +238,9 @@
 "at": 14.0,
 "face": "+x"
 },
-"u": 3.35,
+"u": 4.6,
 "z": 5.5,
-"radius": 1.0
+"radius": 0.8
 },
 {
 "asset": "proc:sconce",
@@ -250,7 +250,7 @@
 "at": 14.0,
 "face": "+x"
 },
-"u": 1.9,
+"u": 3.45,
 "z": 6.0,
 "watts": 6,
 "radius": 0.12,
@@ -264,7 +264,7 @@
 "at": 14.0,
 "face": "+x"
 },
-"u": 4.8,
+"u": 5.6,
 "z": 6.0,
 "watts": 6,
 "radius": 0.12,
@@ -274,8 +274,8 @@
 "asset": "proc:toilet",
 "room": "powder",
 "pos": [
-17.3,
-3.3,
+18.3,
+2.3,
 0
 ],
 "facing": "-x"
@@ -299,8 +299,8 @@
 "asset": "proc:downlight",
 "room": "powder",
 "pos": [
-16.0,
-3.3,
+16.6,
+3.6,
 9.5
 ],
 "watts": 6
@@ -747,7 +747,7 @@
 "asset": "proc:globe_pendant",
 "room": "stair_hall",
 "pos": [
-31.0,
+31.5,
 11.0,
 15.0
 ],
@@ -759,7 +759,7 @@
 "asset": "proc:downlight",
 "room": "stair_hall",
 "pos": [
-31.0,
+31.5,
 11.2,
 9.5
 ],
@@ -786,7 +786,7 @@
 "asset": "proc:cabinet",
 "room": "laundry",
 "b": [
-34.5,
+35.5,
 1.0,
 41.0,
 3.0,
@@ -801,7 +801,7 @@
 "asset": "proc:rug",
 "room": "laundry",
 "b": [
-34.5,
+35.5,
 1.0,
 41.0,
 3.05
@@ -827,7 +827,7 @@
 "asset": "proc:coats",
 "room": "laundry",
 "b": [
-35.0,
+36.0,
 1.0,
 40.5,
 3.0,
@@ -843,7 +843,7 @@
 "asset": "proc:cabinet",
 "room": "laundry",
 "b": [
-37.5,
+37.8,
 9.5,
 38.9,
 12.75,
@@ -858,9 +858,9 @@
 "asset": "proc:cabinet",
 "room": "laundry",
 "b": [
-34.25,
-11.0,
-36.0,
+39.5,
+11.6,
+41.0,
 12.75,
 0,
 4.0
@@ -873,8 +873,8 @@
 "asset": "proc:basket",
 "room": "laundry",
 "pos": [
-35.2,
-10.3,
+38.0,
+7.6,
 0
 ],
 "radius": 0.7,
@@ -885,7 +885,7 @@
 "asset": "proc:rug",
 "room": "laundry",
 "b": [
-35.0,
+36.0,
 4.0,
 38.5,
 8.5
@@ -898,7 +898,7 @@
 "room": "laundry",
 "positions": [
 [
-36,
+37,
 5
 ],
 [
@@ -1187,8 +1187,8 @@
 "asset": "proc:sputnik",
 "room": "kitchen",
 "pos": [
-13.75,
-23.5,
+14.5,
+25.0,
 7.5
 ],
 "arms": 18,
@@ -1228,8 +1228,8 @@
 {
 "asset": "wooden_cutting_board",
 "pos": [
-13.0,
-20.2,
+15.1,
+18.6,
 3.05
 ],
 "room": "kitchen",
@@ -1465,7 +1465,7 @@
 {
 "asset": "coffee_table_round_01",
 "pos": [
-7.0,
+6.5,
 39.0,
 0
 ],
@@ -1475,7 +1475,7 @@
 {
 "asset": "book_encyclopedia_set_01",
 "pos": [
-6.7,
+6.2,
 38.7,
 1.32
 ],
@@ -1486,7 +1486,7 @@
 {
 "asset": "ceramic_vase_02",
 "pos": [
-7.6,
+7.1,
 39.6,
 1.32
 ],
@@ -1496,7 +1496,7 @@
 {
 "asset": "brass_candleholders",
 "pos": [
-6.4,
+5.9,
 39.7,
 1.32
 ],
@@ -2100,18 +2100,18 @@
 "asset": "proc:toilet",
 "room": "wc",
 "pos": [
-40.6,
-15.5,
+39.5,
+17.3,
 0
 ],
-"facing": "-x"
+"facing": "-y"
 },
 {
 "asset": "proc:downlight",
 "room": "wc",
 "pos": [
-40.2,
-15.5,
+39.5,
+15.3,
 9.5
 ],
 "watts": 4
@@ -4200,9 +4200,9 @@
 "asset": "proc:cabinet",
 "room": "up_laundry",
 "b": [
-34.25,
-11.0,
-36.0,
+39.5,
+11.6,
+41.0,
 12.75,
 10.0,
 14.0
@@ -6434,7 +6434,7 @@
 "asset": "proc:globe_pendant",
 "room": "bstair_hall",
 "pos": [
-29.5,
+29.75,
 11.2,
 -3.0
 ],

@@ -28,7 +28,7 @@ floors = {
 }
 
 # ----------------------------------------------------------------------------- stair core geometry
-# Switchback (U) stair in the 6 x 13 stair hall, stacked: two 3 ft flights side by side, 8 risers each at 7.5 in,
+# Switchback (U) stair in the 7 x 13 stair hall, stacked: two flights 3 ft clear between finished faces (IRC 36 in), 8 risers each at 7.5 in,
 # 7 treads at 10 in (5.83 ft), a 3.25 ft landing against the south wall, and a 3.17 ft arrival zone at the north end
 # that opens to the spine (main), the landing (second) and the basement hall. The down stair sits directly under the
 # up stair with 10 ft between flights everywhere. A solid walnut-panelled centre wall separates the flights.
@@ -58,22 +58,22 @@ def room(name, floor, parts, floorm, wall, ceil, light=60, **kw):
 # --- main floor (spec 3, table)
 room("gear_closet", "main", [0, 0, 8, 6], "terrazzo", "plaster_warm", "plaster_warm", 30, label="gear closet")
 room("vestibule", "main", [8, 0, 14, 6], "terrazzo_3ft", "walnut_panel", "plaster_warm", 50)
-room("powder", "main", [14, 0, 18, 6], "terrazzo", "wallpaper_botanical_dark", "oxblood", 30)
-room("coat_closet", "main", [18, 0, 22, 6], "oak_floor", "plaster_warm", "plaster_warm", 20, label="coat closet")
+room("powder", "main", [14, 0, 19, 6], "terrazzo", "wallpaper_botanical_dark", "oxblood", 30)
+room("coat_closet", "main", [19, 0, 22, 6], "oak_floor", "plaster_warm", "plaster_warm", 20, label="coat closet")
 room("panel_closet", "main", [0, 6, 8, 13], "concrete_sealed", "plaster_warm", "plaster_warm", 20, label="panel closet")
 room("entry_hall", "main", [8, 6, 22, 13], "oak_floor", "plaster_warm", "plaster_warm", 80, label="entry hall")
 room("spine", "main", [22, 0, 28, 30], "oak_floor", "oxblood", "oxblood", 90, label="gallery spine")
-room("stair_hall", "main", [28, 0, 34, 13], "oak_floor", "plaster_warm", "plaster_warm", 60, label="stair hall")
-room("laundry", "main", [[34, 0, 42, 6], [37, 6, 42, 9], [34, 9, 42, 13]], "terrazzo", "plaster_warm", "plaster_warm", 70)
-room("elevator_closet", "main", [34, 6, 37, 9], "concrete_sealed", "plaster_warm", "plaster_warm", 10, label="elevator")
+room("stair_hall", "main", [28, 0, 35, 13], "oak_floor", "plaster_warm", "plaster_warm", 60, label="stair hall")
+room("laundry", "main", [[35, 0, 42, 6], [38, 6, 42, 9], [35, 9, 42, 13]], "terrazzo", "plaster_warm", "plaster_warm", 70)
+room("elevator_closet", "main", [35, 6, 38, 9], "concrete_sealed", "plaster_warm", "plaster_warm", 10, label="elevator")
 room("mudroom", "main", [[3, 13, 8, 16], [0, 16, 8, 21]], "terrazzo", "plaster_warm", "plaster_warm", 70)
 room("litter_closet", "main", [0, 13, 3, 16], "terrazzo", "plaster_warm", "plaster_warm", 10, label="litter")
 room("pantry", "main", [0, 21, 8, 27], "terrazzo", "plaster_warm", "plaster_warm", 50)
 room("kitchen", "main", [[8, 13, 22, 30], [0, 27, 8, 30]], "oak_floor", "plaster_warm", "plaster_warm", 160)
 room("living", "main", [0, 30, 20, 46], "oak_floor", "plaster_warm", "oak_decking", 150, label="living room")
 room("away", "main", [20, 30, 28, 46], "oak_floor", "wallpaper_geo_olive", "olive_paint", 60, label="away room")
-room("primary_bath", "main", [[28, 13, 38.25, 22], [38.25, 18, 42, 22]], "terrazzo", "plaster_warm", "plaster_warm", 90, label="primary bath")
-room("wc", "main", [38.25, 13, 42, 18], "terrazzo", "plaster_warm", "plaster_warm", 20, label="wc")
+room("primary_bath", "main", [[28, 13, 37.75, 22], [37.75, 18, 42, 22]], "terrazzo", "plaster_warm", "plaster_warm", 90, label="primary bath")
+room("wc", "main", [37.75, 13, 42, 18], "terrazzo", "plaster_warm", "plaster_warm", 20, label="wc")
 room("suite_hall", "main", [28, 22, 32, 30], "oak_floor", "oxblood", "plaster_warm", 30, label="suite hall")
 room("primary_closet", "main", [32, 22, 42, 30], "wool_carpet", "walnut", "plaster_warm", 80, label="primary closet")
 room("primary_bedroom", "main", [28, 30, 42, 46], "wool_carpet", "plaster_warm", "plaster_warm", 90, label="primary bedroom")
@@ -83,10 +83,10 @@ room("her_office", "second", [0, 6, 11, 26], "wool_carpet_charcoal", "plaster_wa
 room("lab", "second", [[11, 6, 22, 16], [14, 16, 22, 22], [22, 6, 28, 13]], "cork", "plaster_warm", "plaster_warm", 120)
 room("rack_closet", "second", [11, 16, 14, 22], "concrete_sealed", "plaster_warm", "plaster_warm", 15, label="rack")
 room("work_corridor", "second", [11, 22, 22, 26], "oak_floor", "oxblood", "plaster_warm", 30, label="work corridor")
-room("stair_well", "second", [28, 0, 34, WELL_N], "oak_floor", "plaster_warm", "plaster_warm", 40, void=True, label="stair well (open)")
-room("landing", "second", [[22, 13, 42, 19], [28, WELL_N, 34, 13]], "oak_floor", "oxblood", "plaster_warm", 80)
-room("elevator_closet2", "second", [34, 6, 37, 9], "concrete_sealed", "plaster_warm", "plaster_warm", 10, label="elevator")
-room("up_laundry", "second", [[34, 9, 42, 13], [37, 6, 42, 9]], "terrazzo", "plaster_warm", "plaster_warm", 30, label="laundry closet")
+room("stair_well", "second", [28, 0, 35, WELL_N], "oak_floor", "plaster_warm", "plaster_warm", 40, void=True, label="stair well (open)")
+room("landing", "second", [[22, 13, 42, 19], [28, WELL_N, 35, 13]], "oak_floor", "oxblood", "plaster_warm", 80)
+room("elevator_closet2", "second", [35, 6, 38, 9], "concrete_sealed", "plaster_warm", "plaster_warm", 10, label="elevator")
+room("up_laundry", "second", [[35, 9, 42, 13], [38, 6, 42, 9]], "terrazzo", "plaster_warm", "plaster_warm", 30, label="laundry closet")
 room("hall_south", "second", [22, 19, 28, 26], "oak_floor", "oxblood", "plaster_warm", 40, label="hall")
 room("hall", "second", [22, 26, 28, 46], "oak_floor", "oxblood", "plaster_warm", 80, label="hall (kid zone)")
 room("kid_bath_sink", "second", [28, 19, 35, 28], "terrazzo", "tile_white", "plaster_warm", 60, label="kid bath")
@@ -106,8 +106,8 @@ room("recovery", "basement", [8, 20, 22, 28], "terrazzo", "plaster_warm", "plast
 room("lounge", "basement", [0, 28, 22, 46], "wool_carpet_charcoal", "oxblood", "ceiling_dark", 90)
 room("bar", "basement", [22, 34, 28, 46], "terrazzo", "wallpaper_botanical_dark", "ceiling_dark", 60)
 room("bhall", "basement", [22, 0, 28, 34], "oak_floor", "oxblood", "oxblood", 60, label="basement hall")
-room("bstair_hall", "basement", [28, 0, 34, 13], "oak_floor", "plaster_warm", "plaster_warm", 40, label="stair hall")
-room("battery", "basement", [34, 0, 42, 13], "concrete_sealed", "concrete_sealed", "concrete_sealed", 60, label="battery room")
+room("bstair_hall", "basement", [28, 0, 35, 13], "oak_floor", "plaster_warm", "plaster_warm", 40, label="stair hall")
+room("battery", "basement", [35, 0, 42, 13], "concrete_sealed", "concrete_sealed", "concrete_sealed", 60, label="battery room")
 room("mechanical", "basement", [28, 13, 42, 34], "concrete_sealed", "concrete_sealed", "concrete_sealed", 120)
 room("storage", "basement", [28, 34, 42, 46], "concrete_sealed", "plaster_warm", "plaster_warm", 60, label="storage / projects")
 
@@ -132,7 +132,7 @@ op("S1 front door", "main", "x", 0, 11, 4, 0, 8.0, "door", exterior=True, swing=
 op("S2 sidelight", "main", "x", 0, 13.5, 1, 0, 8.0, "window")
 op("S3 powder slot", "main", "x", 0, 16, 2, 6.0, 1.5, "window", obscure=True)
 op("S4 spine bench window", "main", "x", 0, 25, 5, 0, 8.5, "window", portal=True)
-op("S5 stair hall clerestory", "main", "x", 0, 31, 4, 7.0, 2.0, "window")
+op("S5 stair hall clerestory", "main", "x", 0, 31.5, 4, 7.0, 2.0, "window")
 op("S6 laundry window", "main", "x", 0, 38.5, 5, 5.0, 2.5, "window", obscure=True)
 op("W1 mudroom side door", "main", "y", 0, 17.75, 3, 0, 7.0, "door", exterior=True, swing="in", open_deg=0, leaf="half_glass")
 op("N1 living lift-and-slide", "main", "x", 46, 11, 16, 0, 8.5, "glasswall", panels=4, portal=True, door_panel=None)
@@ -145,7 +145,7 @@ op("E4 bedroom window", "main", "y", 42, 39, 6, 2.5, 5.0, "window", portal=True)
 op("E5 cat tunnel", "main", "y", 42, 38.25, 1.5, 0.2, 1.5, "hatch")
 op("S7 her office window", "second", "x", 6, 5.5, 7, 2.5, 5.0, "window")
 op("S8 lab window run", "second", "x", 6, 20, 14, 2.5, 5.0, "window", portal=True, panels=4)
-op("S9 landing clerestory", "second", "x", 0, 31, 4, 6.5, 2.0, "window")
+op("S9 landing clerestory", "second", "x", 0, 31.5, 4, 6.5, 2.0, "window")
 op("W3 her office", "second", "y", 0, 12, 6, 2.5, 5.0, "window")
 op("W4 her office", "second", "y", 0, 21, 6, 2.5, 5.0, "window")
 op("W5 bedroom A", "second", "y", 0, 32, 6, 2.5, 5.0, "window")
@@ -166,23 +166,23 @@ op("B4 storage well", "basement", "x", 46, 34, 4, 6.5, 2.5, "window", well=True)
 op("gear closet door", "main", "y", 8, 3, 3, 0, 7, "door", open_deg=0)
 op("vestibule inner glass door", "main", "x", 6, 11, 4, 0, 8, "glassdoor", open_deg=90)
 op("vestibule inner sidelight", "main", "x", 6, 13.5, 1, 0, 8, "window", interior=True)
-op("powder door", "main", "x", 6, 16, 2.67, 0, 7, "door", open_deg=0)
-op("coat closet door", "main", "x", 6, 20, 2.67, 0, 7, "door", open_deg=0)
+op("powder door", "main", "x", 6, 17, 2.67, 0, 7, "door", open_deg=0)
+op("coat closet door", "main", "x", 6, 20.5, 2.0, 0, 7, "door", open_deg=0)
 op("panel closet door", "main", "y", 8, 9.5, 3, 0, 7, "door", open_deg=0)
 op("entry hall to spine", "main", "y", 22, 9.5, 5, 0, 8.5, "cased")
 op("spine to stair hall", "main", "y", 28, ARRIVE_C, 3, 0, 8.5, "cased")
 op("spine to kitchen", "main", "y", 22, 16.5, 6, 0, 9.0, "cased")
 op("spine to suite hall", "main", "y", 28, 28, 3, 0, 7, "door", open_deg=0)
 op("spine to away room", "main", "x", 30, 25, 3.5, 0, 8, "glassdoor", open_deg=0)  # terminates the gallery axis on N2
-op("bath to laundry", "main", "x", 13, 36.5, 3, 0, 7, "door", open_deg=0)
-op("elevator closet door", "main", "y", 37, 7.5, 2.5, 0, 7, "door", open_deg=0)
+op("stair hall to laundry", "main", "y", 35, 10.9, 2.5, 0, 7, "door", open_deg=0)   # off the arrival zone; the bath keeps its privacy
+op("elevator closet door", "main", "y", 38, 7.5, 2.5, 0, 7, "door", open_deg=0)
 op("mudroom to kitchen", "main", "y", 8, 17.5, 3, 0, 7, "door", open_deg=80)  # on axis with the side door W1
 op("litter cat door", "main", "y", 3, 14.5, 0.67, 0.2, 0.7, "hatch")
 op("litter service door", "main", "x", 16, 1.5, 2, 0, 7, "door", open_deg=0)
-op("pantry door", "main", "y", 8, 24, 3, 0, 7, "door", open_deg=45)
+op("pantry door", "main", "y", 8, 24, 3, 0, 7, "door", open_deg=45, swing="out")   # into the pantry, clear of the island chairs
 op("kitchen open to living", "main", "x", 30, 10, 20, 0, 9.5, "open", full=True)
 op("living to away pocket door", "main", "y", 20, 38.5, 5, 0, 8, "pocket", open_ft=3)
-op("wc door", "main", "y", 38.25, 15.5, 2.5, 0, 7, "door", open_deg=0, leaf="frosted", swing="out")
+op("wc door", "main", "y", 37.75, 15.5, 2.5, 0, 7, "door", open_deg=0, leaf="frosted", swing="out")
 op("closet to bath", "main", "x", 22, 37, 3, 0, 7, "door", open_deg=80)
 op("suite hall to bath", "main", "x", 22, 30, 3, 0, 7, "door", open_deg=0)
 op("suite hall to bedroom", "main", "x", 30, 30, 3, 0, 7, "door", open_deg=80)
@@ -195,9 +195,9 @@ op("hall to work corridor", "second", "y", 22, 24, 3, 0, 7, "door", open_deg=80)
 op("work corridor to lab", "second", "x", 22, 16.5, 3, 0, 7, "door", open_deg=80)
 op("rack closet glass door", "second", "y", 14, 19, 2.5, 0, 7, "glassdoor", open_deg=0)
 op("landing to lab", "second", "y", 22, 16, 3, 0, 7, "door", open_deg=80)
-op("landing to laundry closet", "second", "x", 13, 39, 4, 0, 7, "door", open_deg=0, leaves=2)
-op("chute flap", "second", "x", 13, 35, 1.5, 3.0, 1.5, "hatch")
-op("elevator closet2 door", "second", "x", 9, 35.5, 2.5, 0, 7, "door", open_deg=0)
+op("landing to laundry closet", "second", "x", 13, 37.5, 4, 0, 7, "door", open_deg=0, leaves=2)
+op("chute flap", "second", "x", 13, 40.25, 1.5, 3.0, 1.5, "hatch")
+op("elevator closet2 door", "second", "x", 9, 36.5, 2.5, 0, 7, "door", open_deg=0)
 op("kid zone door", "second", "x", 26, 25, 3, 0, 7, "door", open_deg=90)
 op("kid zone sidelight", "second", "x", 26, 27.125, 1.25, 0, 7, "window", interior=True)
 op("hall to kid bath", "second", "y", 28, 23.5, 3, 0, 7, "door", open_deg=0)
@@ -209,7 +209,7 @@ op("loft to bedroom A", "second", "y", 14, 37, 3, 0, 7, "door", open_deg=80)
 op("closet A door", "second", "y", 11, 28.5, 2.67, 0, 7, "door", open_deg=0)
 op("loft to hedge alcove", "second", "y", 14, 43, 4, 0, 7, "cased")
 op("loft open to hall", "second", "y", 22, 36, 20, 0, 9.0, "open", full=True)
-op("well open to landing", "second", "x", WELL_N, 31, 6, 0, 9.0, "open", full=True)  # guard built with the stair
+op("well open to landing", "second", "x", WELL_N, 31.5, 7, 0, 9.0, "open", full=True)  # guard built with the stair
 
 # basement (spec 5.x)
 op("bhall to bstair hall", "basement", "y", 28, ARRIVE_C, 3, 0, 8.5, "cased")
@@ -235,39 +235,39 @@ op("garage clerestory W", "garage", "y", -6, 79, 26, 9, 2, "window")
 
 # ----------------------------------------------------------------------------- voids (slab cuts)  spec 3.8, 6
 voids = [
-    {"note": "stair core: down flights and landing pass through the main floor", "floor": "main", "what": "floor", "b": [28, LAND_S, 34, WELL_N]},
-    {"note": "stair core: two-story well over the up flights", "floor": "main", "what": "ceil", "b": [28, LAND_S, 34, WELL_N]},
-    {"note": "stair core: no second floor slab over the well", "floor": "second", "what": "floor", "b": [28, LAND_S, 34, WELL_N]},
-    {"note": "stair core: down flights pass the basement ceiling", "floor": "basement", "what": "ceil", "b": [28, LAND_S, 34, WELL_N]},
-    {"note": "laundry chute", "floor": "main", "what": "ceil", "b": [34.25, 11.25, 35.75, 12.75]},
-    {"note": "laundry chute", "floor": "second", "what": "floor", "b": [34.25, 11.25, 35.75, 12.75]},
+    {"note": "stair core: down flights and landing pass through the main floor", "floor": "main", "what": "floor", "b": [28, LAND_S, 35, WELL_N]},
+    {"note": "stair core: two-story well over the up flights", "floor": "main", "what": "ceil", "b": [28, LAND_S, 35, WELL_N]},
+    {"note": "stair core: no second floor slab over the well", "floor": "second", "what": "floor", "b": [28, LAND_S, 35, WELL_N]},
+    {"note": "stair core: down flights pass the basement ceiling", "floor": "basement", "what": "ceil", "b": [28, LAND_S, 35, WELL_N]},
+    {"note": "laundry chute", "floor": "main", "what": "ceil", "b": [40.0, 11.75, 41.0, 12.75]},
+    {"note": "laundry chute", "floor": "second", "what": "floor", "b": [40.0, 11.75, 41.0, 12.75]},
 ]
 
 # ----------------------------------------------------------------------------- stairs  spec 6
 FIN = {"tread_m": "oak_floor", "riser_m": "oak_floor", "stringer_m": "walnut", "rail_m": "bronze_black"}
 stairs = [
     # up: west flight rises south from the arrival zone to the landing, east flight rises north to the second floor
-    dict(kind="flight", name="up_a", x0=28, x1=31, y_from=WELL_N, y_to=LAND_N, z_from=0.0, z_to=5.0, risers=8, handrail="west", **FIN),
-    dict(kind="landing", name="up_landing", b=[28, LAND_S, 34, LAND_N], z=5.0, t=0.6, **FIN),
-    dict(kind="flight", name="up_b", x0=31, x1=34, y_from=LAND_N, y_to=WELL_N, z_from=5.0, z_to=10.0, risers=8, handrail="east", **FIN),
+    dict(kind="flight", name="up_a", x0=28, x1=31.5, y_from=WELL_N, y_to=LAND_N, z_from=0.0, z_to=5.0, risers=8, handrail="west", **FIN),
+    dict(kind="landing", name="up_landing", b=[28, LAND_S, 35, LAND_N], z=5.0, t=0.6, **FIN),
+    dict(kind="flight", name="up_b", x0=31.5, x1=35, y_from=LAND_N, y_to=WELL_N, z_from=5.0, z_to=10.0, risers=8, handrail="east", **FIN),
     # down: east flight descends south under up_b, west flight descends north under up_a
-    dict(kind="flight", name="down_a", x0=31, x1=34, y_from=WELL_N, y_to=LAND_N, z_from=0.0, z_to=-5.0, risers=8, handrail="east", **FIN),
-    dict(kind="landing", name="down_landing", b=[28, LAND_S, 34, LAND_N], z=-5.0, t=0.6, **FIN),
-    dict(kind="flight", name="down_b", x0=28, x1=31, y_from=LAND_N, y_to=WELL_N, z_from=-5.0, z_to=-10.0, risers=8, handrail="west", **FIN),
+    dict(kind="flight", name="down_a", x0=31.5, x1=35, y_from=WELL_N, y_to=LAND_N, z_from=0.0, z_to=-5.0, risers=8, handrail="east", **FIN),
+    dict(kind="landing", name="down_landing", b=[28, LAND_S, 35, LAND_N], z=-5.0, t=0.6, **FIN),
+    dict(kind="flight", name="down_b", x0=28, x1=31.5, y_from=LAND_N, y_to=WELL_N, z_from=-5.0, z_to=-10.0, risers=8, handrail="west", **FIN),
     # centre wall between the flights, basement floor to guard height above the second floor
-    dict(kind="wall", name="stair_centre_wall", b=[31 - CW, LAND_N, 31 + CW, WELL_N, -10.0, 13.5], m="walnut_panel"),
+    dict(kind="wall", name="stair_centre_wall", b=[31.5 - CW, LAND_N, 31.5 + CW, WELL_N, -10.0, 13.5], m="walnut_panel"),
     # fill the slab-thickness band around the well where the main ceiling slab is cut
     dict(kind="wall", name="well_band_w", b=[28, 0.5, 28.25, WELL_N + 0.25, 9.5, 10.0], m="plaster_warm"),
-    dict(kind="wall", name="well_band_e", b=[33.75, 0.5, 34, WELL_N + 0.25, 9.5, 10.0], m="plaster_warm"),
-    dict(kind="wall", name="well_band_s", b=[28, 0, 34, 1.0, 9.5, 10.0], m="plaster_warm"),   # inside the 1 ft exterior wall zone
+    dict(kind="wall", name="well_band_e", b=[34.75, 0.5, 35, WELL_N + 0.25, 9.5, 10.0], m="plaster_warm"),
+    dict(kind="wall", name="well_band_s", b=[28, 0, 35, 1.0, 9.5, 10.0], m="plaster_warm"),   # inside the 1 ft exterior wall zone
     # bronze-post glass guard on the second floor along the well edge west of the up_b arrival
-    dict(kind="guard", name="well_guard", p0=[28.1, WELL_N + 0.1, 10.0], p1=[31 - CW, WELL_N + 0.1, 10.0], h=3.5, m="bronze_black", glass=True),
+    dict(kind="guard", name="well_guard", p0=[28.1, WELL_N + 0.1, 10.0], p1=[31.5 - CW, WELL_N + 0.1, 10.0], h=3.5, m="bronze_black", glass=True),
 ]
 
 # ----------------------------------------------------------------------------- exterior + roofs  spec 2
-# The stair core X 28-34, Y 0-13 rises through the low front band as a cedar stair tower (the spec puts clerestories
+# The stair core X 28-35, Y 0-13 rises through the low front band as a cedar stair tower (the spec puts clerestories
 # S5 and S9 stacked on its Y 0 face); its cap sits 2 ft above the main gable's eave and the low roofs stop against it.
-TOWER_X0, TOWER_X1 = 28.0, 34.0   # exterior wall faces sit on the room lines
+TOWER_X0, TOWER_X1 = 28.0, 35.0   # exterior wall faces sit on the room lines
 TOWER_TOP = 21.0
 exterior = {
     "wall_t": 1.0,
@@ -307,7 +307,7 @@ exterior = {
         {"note": "front band brick, west return", "b": [0, 1.0, 1.0, 6.0, 9.5, 10.0], "m": "roman_brick"},
         {"note": "front band brick, east return", "b": [41, 1.0, 42, 6.0, 9.5, 10.0], "m": "roman_brick"},
     ],
-    "tower": {"b": [TOWER_X0, 0, TOWER_X1, 7.0], "inner": [29, 1, 33, 6], "z_wall_top": 19.0, "z_top": TOWER_TOP,
+    "tower": {"b": [TOWER_X0, 0, TOWER_X1, 7.0], "inner": [29, 1, 34, 6], "z_wall_top": 19.0, "z_top": TOWER_TOP,
               "m": "cedar_ext", "reveal": {"m": "bronze_black", "z0": 9.5, "z1": 10.0}},
 }
 # ----------------------------------------------------------------------------- neighborhood (Henry: "set in the context of
@@ -470,14 +470,14 @@ shots = [
         {"t": 26, "pos": [9, 39, 5.5], "look": [25, 38, 4.5]}]},
     {"name": "basement", "seconds": 24, "exposure": 0.8, "path": [
         # down the switchback: east flight south from the main-floor arrival, landing, west flight north to the basement
-        {"t": 0, "pos": [32.5, 12.2, 5.5], "look": [32.5, 4, 0]}, {"t": 3, "pos": [32.5, 6.5, 3.0], "look": [32.5, 1, -3]},
-        {"t": 5, "pos": [32.5, 2.2, 0.5], "look": [29.5, 8, -3]}, {"t": 6, "pos": [29.5, 2.2, 0.5], "look": [29.5, 12, -6]},
-        {"t": 9, "pos": [29.5, 8, -2.9], "look": [27, 12, -6]}, {"t": 11, "pos": [29.5, 11.2, -4.5], "look": [20, 11.2, -5.5]},
+        {"t": 0, "pos": [33.25, 12.2, 5.5], "look": [33.25, 4, 0]}, {"t": 3, "pos": [33.25, 6.5, 3.0], "look": [33.25, 1, -3]},
+        {"t": 5, "pos": [33.25, 2.2, 0.5], "look": [29.75, 8, -3]}, {"t": 6, "pos": [29.75, 2.2, 0.5], "look": [29.75, 12, -6]},
+        {"t": 9, "pos": [29.75, 8, -2.9], "look": [27, 12, -6]}, {"t": 11, "pos": [29.75, 11.2, -4.5], "look": [20, 11.2, -5.5]},
         {"t": 13, "pos": [25, 11.2, -4.5], "look": [8, 8, -5.5]}, {"t": 16, "pos": [25.8, 24, -4.5], "look": [12, 24, -5.5]},
         {"t": 19, "pos": [24, 31, -4.5], "look": [10, 38, -7]}, {"t": 20, "pos": [21, 31.5, -4.5], "look": [8, 40, -7]},
         {"t": 22, "pos": [16, 40, -4.5], "look": [10, 34, -8]}, {"t": 24, "pos": [17, 40, -4.5], "look": [25, 41, -6.5]}]},
     {"name": "upstairs", "seconds": 18, "path": [
-        {"t": 0, "pos": [32.5, 11, 14.5], "look": [32, 16, 15]}, {"t": 3, "pos": [25, 16, 15.5], "look": [22, 16, 15]},
+        {"t": 0, "pos": [33.25, 11, 14.5], "look": [32.5, 16, 15]}, {"t": 3, "pos": [25, 16, 15.5], "look": [22, 16, 15]},
         {"t": 6, "pos": [20, 14, 15.5], "look": [25, 9, 15]}, {"t": 9, "pos": [16, 12, 15.5], "look": [12, 10, 14.5]},
         {"t": 11, "pos": [15, 17, 15.5], "look": [12.5, 19, 14.5]}, {"t": 12.2, "pos": [16.5, 21.6, 15.5], "look": [18, 25, 15]},
         {"t": 12.8, "pos": [16.8, 24, 15.5], "look": [24, 24, 15]}, {"t": 13.4, "pos": [21.4, 24, 15.5], "look": [25, 28, 15]},
