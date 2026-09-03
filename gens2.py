@@ -494,7 +494,7 @@ class Gens2:
         wood = self.mat("walnut_h")
         objs = [box_ft(self.uid("db_box"), x0, y0, x1, y1, z0, z1 - 0.4, wood, self.col),
                 box_ft(self.uid("bench_cush"), x0 + 0.05, y0 + 0.05, x1 - 0.05, y1 - 0.05, z1 - 0.4, z1, self.mat(e.get("cushion_m", "olive_paint")), self.col)]
-        objs += self.gen_cushions({"b": [x0 + 0.3, y0 + 0.2, x1 - 0.3, y1 - 0.3], "z": z1 + 0.19, "count": e.get("pillows", 5), "seed": e.get("seed", 3),
+        objs += self.gen_cushions({"b": [x0 + 0.3, y0 + 0.2, x1 - 0.3, y1 - 0.3], "z": z1, "back": e.get("back", "+y"), "count": e.get("pillows", 5), "seed": e.get("seed", 3),
                                    "mats": ["wool_mustard", "velvet_teal", "wool_oatmeal", "oxblood", "olive_paint"]})
         return objs
 

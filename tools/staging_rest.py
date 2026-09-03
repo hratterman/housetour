@@ -172,7 +172,7 @@ def second_floor():
     proc("puzzle", "loft", b=[17.0, 32.3, 19.0, 33.7], z=z + 1.41, seed=33)
     model("painted_wooden_chair_01", (16.5, 31.8, z), "loft", height_ft=2.0, rot_z=30)
     model("painted_wooden_chair_01", (19.6, 33.6, z), "loft", height_ft=2.0, rot_z=-120)
-    proc("cushions", "loft", b=[17.5, 34.6, 19.0, 35.6], z=z + 0.19, count=1, seed=3, mats=["velvet_teal"])
+    proc("cushions", "loft", b=[17.5, 34.6, 19.0, 35.6], z=z, count=1, seed=3, mats=["velvet_teal"])
     proc("rug", "loft", b=[15.3, 30.5, 21.0, 41.5], m="rug_mustard", thick=0.05)
     proc("toy_chest", "loft", b=[19.5, 26.5, 21.5, 29.0, z, z + 1.8])
     model("chess_set", (18.0, 40.0, z), "loft", length_ft=1.3, rot_z=15)

@@ -785,13 +785,37 @@ class Stager(Gens2, Gens3):
         rng = random.Random(e.get("seed", 9))
         mats = e.get("mats", ["teal", "mustard", "orange", "oxblood", "rug_cream"])
         objs = []
+        back = e.get("back")          # side of b the pillows lean against: "-y", "+y", "-x", "+x"; None = all lie flat
+        t = 0.38
         for i in range(n):
             s = rng.uniform(1.2, 1.7)
+            d = s * rng.uniform(0.85, 1.0)
             cx = rng.uniform(b[0] + s / 2, b[2] - s / 2)
             cy = rng.uniform(b[1] + s / 2, b[3] - s / 2)
-            ob = box_centered(self.uid("pillow"), (cx, cy, z), (s, s * rng.uniform(0.85, 1.0), 0.38), rng.uniform(-30, 30), self.mat(rng.choice(mats)), self.col)
-            if rng.random() < 0.4:
-                ob.rotation_euler = (math.radians(rng.uniform(55, 75)), 0, math.radians(rng.uniform(-20, 20)))
+            if back and rng.random() < 0.5:
+                # leaning against the back: box origin is bottom-centre, so tilt it about that origin,
+                # lift by the dropped edge and push it against the back edge of b
+                a = math.radians(rng.uniform(58, 74))
+                ext = d if back in ("-y", "+y") else s
+                zc = z + (ext / 2) * math.sin(a)
+                gap = (ext / 2) * math.cos(a) + t * math.sin(a) + 0.03
+                yaw = math.radians(rng.uniform(-12, 12))
+                if back == "-y":
+                    cy = b[1] + gap
+                    rot = (a, 0, yaw)
+                elif back == "+y":
+                    cy = b[3] - gap
+                    rot = (-a, 0, yaw)
+                elif back == "-x":
+                    cx = b[0] + gap
+                    rot = (0, -a, yaw)
+                else:
+                    cx = b[2] - gap
+                    rot = (0, a, yaw)
+                ob = box_centered(self.uid("pillow"), (cx, cy, zc), (s, d, t), 0, self.mat(rng.choice(mats)), self.col)
+                ob.rotation_euler = rot
+            else:
+                ob = box_centered(self.uid("pillow"), (cx, cy, z), (s, d, t), rng.uniform(-30, 30), self.mat(rng.choice(mats)), self.col)
             objs.append(ob)
         return objs
 

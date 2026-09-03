@@ -202,9 +202,9 @@ class Gens3:
         # shag rug on the pit floor
         objs.append(box_ft(self.uid("rug_shag"), x0 + 0.25 + d + 0.2, y0 + 0.25 + d + 0.2, x1 - 0.25 - d - 0.2, y1 - 3.2, zf + 0.002, zf + 0.09, self.mat("wool_oatmeal"), self.col))
         # pillows
-        objs += self.gen_cushions({"b": [x0 + 0.6, y0 + 0.5, x1 - 0.6, y0 + 0.5 + d], "z": seat_top + 0.19, "count": 4, "seed": 21, "mats": ["wool_mustard", "oxblood", "olive_paint", "wool_oatmeal"]})
-        objs += self.gen_cushions({"b": [x0 + 0.6, y0 + d + 0.6, x0 + 0.6 + d, y1 - 3.3], "z": seat_top + 0.19, "count": 3, "seed": 22, "mats": ["wool_mustard", "oxblood", "wool_oatmeal"]})
-        objs += self.gen_cushions({"b": [x1 - 0.6 - d, y0 + d + 0.6, x1 - 0.6, y1 - 3.3], "z": seat_top + 0.19, "count": 2, "seed": 23, "mats": ["olive_paint", "oxblood"]})
+        objs += self.gen_cushions({"b": [x0 + 0.6, y0 + 0.5, x1 - 0.6, y0 + 0.5 + d], "z": seat_top, "back": "-y", "count": 4, "seed": 21, "mats": ["wool_mustard", "oxblood", "olive_paint", "wool_oatmeal"]})
+        objs += self.gen_cushions({"b": [x0 + 0.6, y0 + d + 0.6, x0 + 0.6 + d, y1 - 3.3], "z": seat_top, "back": "-x", "count": 3, "seed": 22, "mats": ["wool_mustard", "oxblood", "wool_oatmeal"]})
+        objs += self.gen_cushions({"b": [x1 - 0.6 - d, y0 + d + 0.6, x1 - 0.6, y1 - 3.3], "z": seat_top, "back": "+x", "count": 2, "seed": 23, "mats": ["olive_paint", "oxblood"]})
         # low round table with popcorn and two glasses
         cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
         objs += self.gen_round_table({"pos": [cx, cy, zf], "radius": 1.25, "height": 1.0})
