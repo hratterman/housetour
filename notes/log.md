@@ -412,3 +412,43 @@ the lower roof), bar (terrazzo top, brass edge, slatted front, lit shelves, stoo
 rings, mirror wall), lounge pit (banquette, steps, table, three globes), bath and vanity (floating walnut,
 backlit mirror, sconces), kitchen (island, bridge faucet, sputnik, pantry), living (bookcases, fire wall,
 sofa, arc lamp).
+
+Daylight, second finding (stage_d). Doubling the sky changed nothing in the kitchen. Two causes. The kitchen
+has no window by design (spec: no main-level openings on the west wall) and borrows light from the living room
+glass 20 ft away, so it is honestly lit by its own lamps. And the HDRI (qwantani late afternoon) has an
+upper-hemisphere mean luminance of 0.25 with a sun disc of 115,000: any world strength that lit the shade
+also added a second sun. lighting.py now clamps the environment per channel at 4.0 (the disc is gone, the sun
+lamp is the only sun) and runs the diffuse sky at 3.0 (dusk 0.35, morning 2.5), sun lamp 4.0 (morning 5.0).
+While there: the dusk sky tint was being overridden by a second link into the background node; fixed.
+
+White balance. With the daylight fixed the interiors were still orange: 2700K lamps under a daylight balance
+are orange, and Blender 4.2 has no white balance in the view transform. geom.set_white_balance(3800) divides
+every light colour (fills, practicals, sun), the sky and every emissive glow by the colour of a 3800K
+blackbody, which is what a camera balanced for the room lights does: lamps read warm-neutral, the windows go
+slightly cool. Flames keep their own colour (wb: false).
+
+Lights aimed into walls. Area lights emit along local -Z, and three were rotated the wrong way: the fire
+(shone back into its firebox and lit the glass white at dusk), the powder-room mirror light (into the wall),
+and the Frame TV on Y-axis walls (lit its own screen white: the blown panel at the end of the main-floor
+shot). Rule recorded in the code: -90 about X -> -Y, +90 about X -> +Y, +90 about Y -> -X, -90 about Y -> +X.
+The firebox itself was a solid block that hid the flames; it is five thin panels now and the flame emission
+is up so the fire reads through the glass.
+
+Exposure. The street shot walks from the sunlit sidewalk into the shaded porch, which no single exposure
+covers (the door frame was black at -0.6 and the sidewalk blown at +0.5). Waypoints can now carry "exp" and
+key_shot keys the view exposure along the path: -0.3 to +0.5 over the street shot. Three 14 W downlights in
+the porch canopy and a 22 W door sconce so the recess reads by day. Block shot at -0.3.
+
+Frosted glass. The vanity mirror reflected a white panel: the lit water closet glowing through its frosted
+door, because the new shadow-ray transparency let the WC light straight through. glass_frosted blocks shadow
+rays again (shadow_transparent: false) and the WC downlight is 4 W.
+
+Wall panels. The path check caught the upstairs camera grazing a teal paint panel that spanned the lab
+doorway: gen_wall_finish never looked at the openings in its wall. It subtracts every door, window and cased
+opening (plus the casing margin) now. The lab storage cabinet stood in front of the landing door; moved north
+of it. All eight paths clear after the fix.
+
+Garage shot re-keyed twice: the first path walked into the lift under the roadster; the second stood too
+close beside it. It now enters by the east door, walks the aisle between the sedan and the lift and ends on a
+three-quarter view of the lift from X 12.5. Car bodies get a 5 in, five-segment bevel so the extruded profile
+reads as sheet metal.
