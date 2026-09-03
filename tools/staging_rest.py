@@ -117,7 +117,7 @@ def second_floor():
     # ------------------------------------------------------------------ 4.8 bedroom B (east face X 41, north face Y 45)
     note("bedroom B")
     proc("wall_finish", "bedroom_b", wall=W("x", 46.0, "-y"), span=[28.3, 41.0], z=[z + 0.3, z + 8.9], m="wallpaper_kid_teal")
-    proc("kid_bed", "bedroom_b", b=[37.5, 29.0, 41.0, 36.0, z, z + 1.6], head="-y", duvet_m="velvet_teal", seed=5)
+    proc("kid_bed", "bedroom_b", b=[37.5, 29.0, 41.0, 36.0, z, z + 1.6], head="-y", duvet_m="bedding_stripe_teal", seed=5)
     proc("nightstand2", "bedroom_b", pos=[36.0, 29.6, z], rot_z=0, on=True, items=[])
     model("alarm_clock_01", (36.4, 29.3, z + 2.2), "bedroom_b", height_ft=0.35, rot_z=200)
     proc("desk", "bedroom_b", b=[32.0, 28.3, 36.0, 30.3, z + 2.3, z + 2.4], floor_z=z, gables=True, drawers=True, facing="-y", monitors=0, keyboard=False,
@@ -138,7 +138,7 @@ def second_floor():
     # ------------------------------------------------------------------ 4.9 bedroom A (west face X 1)
     note("bedroom A")
     proc("wall_finish", "bedroom_a", wall=W("y", 0.0, "+x"), span=[26.3, 39.7], z=[z + 0.3, z + 8.9], m="wallpaper_kid_botanical")
-    proc("kid_bed", "bedroom_a", b=[4.0, 36.75, 11.0, 39.75, z, z + 1.6], head="-x", duvet_m="wool_mustard", seed=6)
+    proc("kid_bed", "bedroom_a", b=[4.0, 36.75, 11.0, 39.75, z, z + 1.6], head="-x", duvet_m="bedding_stripe_mustard", seed=6)
     proc("nightstand2", "bedroom_a", pos=[2.3, 38.5, z], rot_z=0, on=True, items=[])
     proc("desk", "bedroom_a", b=[1.0, 26.3, 6.0, 28.3, z + 2.3, z + 2.4], floor_z=z, gables=True, drawers=True, facing="-y", monitors=0, keyboard=False,
          lamp=[1.7, 27.6], notebook=[3.5, 27.4])

@@ -2218,5 +2218,51 @@
     0.35
    ]
   }
+ },
+ "bedding_stripe_teal": {
+  "rgb": [
+   0.86,
+   0.83,
+   0.74
+  ],
+  "rough": 0.9,
+  "sheen": 0.4,
+  "overlay": {
+   "type": "stripes",
+   "size_ft": 0.5,
+   "width": 0.45,
+   "rgb": [
+    0.1,
+    0.35,
+    0.38
+   ],
+   "axes": [
+    0
+   ],
+   "metallic": false
+  }
+ },
+ "bedding_stripe_mustard": {
+  "rgb": [
+   0.86,
+   0.83,
+   0.74
+  ],
+  "rough": 0.9,
+  "sheen": 0.4,
+  "overlay": {
+   "type": "stripes",
+   "size_ft": 0.5,
+   "width": 0.45,
+   "rgb": [
+    0.72,
+    0.55,
+    0.15
+   ],
+   "axes": [
+    1
+   ],
+   "metallic": false
+  }
  }
 }
