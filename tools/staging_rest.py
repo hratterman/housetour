@@ -22,7 +22,7 @@ def second_floor():
             add(asset="proc:cabinet", room="her_office", b=[1.0, yy - 0.08, 1.3, yy + 0.08, zz + 0.5, zz + 0.62], doors=1, face="+x", m="steel_black")   # arm
     add(asset="proc:cabinet", room="her_office", b=[1.0, 13.2, 1.12, 19.8, z + 4.6, z + 4.72], doors=1, face="+x", m="steel_black")   # rail
     model("classic_laptop", (2.5, 16.0, z + 2.5), "her_office", length_ft=1.2, rot_z=90)
-    proc("task_chair", "her_office", pos=[5.0, 16.5, z], rot_z=-90, m="leather_brown")
+    proc("task_chair", "her_office", pos=[5.0, 16.5, z], rot_z=90, m="leather_brown")
     proc("lounge_chair", "her_office", pos=[7.5, 9.5, z], rot_z=225, m="wool_mustard")
     proc("floor_lamp", "her_office", pos=[9.5, 8.0, z], height=5.4, on=True, kind="drum")
     model("side_table_01", (8.8, 11.6, z), "her_office", height_ft=1.9)
