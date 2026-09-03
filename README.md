@@ -103,7 +103,8 @@ To hand the viewer to someone without the repository, `python3 tools/viewer_bund
 
 `export_web.py` bakes every procedural material to a tile at its physical size, generates matching
 box-projected UVs, swaps the heavy tree models for light ones, decimates anything over 30k triangles and writes
-a glTF binary plus `lights.json` and `plan_web.json`. The viewer loads three.js from jsDelivr, so it needs the
+a Draco-compressed glTF binary plus `lights.json` and `plan_web.json` (the viewer decodes it with the three.js
+Draco decoder vendored in `web/vendor/three/libs/draco`; `--no-draco` writes plain geometry). The viewer loads three.js from jsDelivr, so it needs the
 internet once; the house itself is local.
 
 ## Repository layout
