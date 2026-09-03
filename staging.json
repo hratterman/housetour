@@ -22,7 +22,7 @@
 "asset": "proc:stroller",
 "room": "gear_closet",
 "pos": [
-4.0,
+4.5,
 2.3,
 0
 ],
@@ -830,7 +830,7 @@
 35.0,
 1.0,
 40.5,
-2.1,
+3.0,
 6.0,
 9.4
 ],
@@ -1043,7 +1043,7 @@
 },
 "span": [
 1.2,
-7.6
+7.4
 ],
 "z": [
 1.5,
@@ -1065,7 +1065,7 @@
 },
 "span": [
 3.3,
-7.6
+7.4
 ],
 "z": [
 1.5,
@@ -1172,21 +1172,6 @@
 22.9,
 3.2,
 4.2
-],
-"doors": 1,
-"face": "+x",
-"m": "walnut_h"
-},
-{
-"asset": "proc:cabinet",
-"room": "pantry",
-"b": [
-1.0,
-26.25,
-1.3,
-26.75,
-0,
-3.0
 ],
 "doors": 1,
 "face": "+x",
@@ -1471,7 +1456,7 @@
 {
 "asset": "modern_arm_chair_01",
 "pos": [
-5.5,
+5.9,
 34.5,
 0
 ],
@@ -1560,7 +1545,7 @@
 "asset": "proc:records",
 "room": "living",
 "pos": [
-19.15,
+19.0,
 31.1,
 2.4
 ],
@@ -1691,20 +1676,20 @@
 {
 "asset": "potted_plant_02",
 "pos": [
-14.6,
-43.2,
+14.8,
+42.2,
 0
 ],
 "room": "living",
-"height_ft": 5.5,
+"height_ft": 5.0,
 "rot_z": 20
 },
 {
 "asset": "calathea_orbifolia_01",
 "pos": [
-3.2,
-44.2,
-0
+3.1,
+43.5,
+1.4
 ],
 "room": "living",
 "length_ft": 1.6,
@@ -1925,7 +1910,7 @@
 {
 "asset": "side_table_01",
 "pos": [
-23.4,
+22.8,
 42.8,
 0
 ],
@@ -1984,7 +1969,7 @@
 "b": [
 22.5,
 44.2,
-27.5,
+26.6,
 45.0,
 0,
 2.5
@@ -2505,7 +2490,7 @@
 "room": "primary_bedroom",
 "pos": [
 29.05,
-32.9,
+32.4,
 0
 ],
 "rot_z": 90,
@@ -2520,7 +2505,7 @@
 "room": "primary_bedroom",
 "pos": [
 29.05,
-43.1,
+43.6,
 0
 ],
 "rot_z": 90,
@@ -2561,8 +2546,8 @@
 {
 "asset": "green_chair_01",
 "pos": [
-38.4,
-42.6,
+38.0,
+42.3,
 0
 ],
 "room": "primary_bedroom",
@@ -2592,8 +2577,8 @@
 {
 "asset": "side_table_01",
 "pos": [
-36.2,
-44.3,
+35.6,
+44.4,
 0
 ],
 "room": "primary_bedroom",
@@ -2602,8 +2587,8 @@
 {
 "asset": "jug_01",
 "pos": [
-36.2,
-44.3,
+35.6,
+44.4,
 1.9
 ],
 "room": "primary_bedroom",
@@ -2613,8 +2598,8 @@
 "asset": "proc:floor_lamp",
 "room": "primary_bedroom",
 "pos": [
-40.3,
-44.6,
+40.25,
+44.2,
 0
 ],
 "height": 5.2,
@@ -2650,12 +2635,12 @@
 {
 "asset": "potted_plant_02",
 "pos": [
-39.2,
-31.6,
+38.6,
+32.4,
 0
 ],
 "room": "primary_bedroom",
-"height_ft": 6.0,
+"height_ft": 4.5,
 "rot_z": 70
 },
 {
@@ -3567,12 +3552,12 @@
 {
 "asset": "potted_plant_04",
 "pos": [
-8.9,
-22.4,
+8.4,
+21.4,
 10.0
 ],
 "room": "her_office",
-"height_ft": 5.5,
+"height_ft": 5.0,
 "rot_z": 40
 },
 {
@@ -3925,7 +3910,7 @@
 "kind": "printer",
 "pos": [
 12.5,
-15.2
+14.6
 ],
 "face": "+x"
 },
@@ -4662,9 +4647,9 @@
 "asset": "proc:kid_bed",
 "room": "bedroom_b",
 "b": [
-37.4,
+37.5,
 29.0,
-40.8,
+40.9,
 36.0,
 10.0,
 11.6
@@ -4677,7 +4662,7 @@
 "asset": "proc:nightstand2",
 "room": "bedroom_b",
 "pos": [
-36.65,
+36.5,
 29.6,
 10.0
 ],
@@ -4702,7 +4687,7 @@
 "b": [
 32.0,
 28.3,
-35.8,
+35.5,
 30.3,
 12.3,
 12.4
@@ -5887,7 +5872,7 @@
 "b": [
 1.0,
 20.25,
-7.75,
+7.6,
 27.75,
 -10.0,
 -0.5
@@ -6788,17 +6773,6 @@
 "rot_z": 0
 },
 {
-"asset": "bench_vice_01",
-"pos": [
-4.0,
-65.6,
-2.6
-],
-"room": "garage",
-"length_ft": 1.2,
-"rot_z": 0
-},
-{
 "asset": "metal_toolbox",
 "pos": [
 14.0,
@@ -6813,7 +6787,7 @@
 "asset": "wooden_ladder",
 "pos": [
 -3.9,
-90.3,
+89.6,
 -0.4
 ],
 "room": "garage",
@@ -6869,8 +6843,8 @@
 {
 "asset": "plastic_broom",
 "pos": [
--4.5,
-92.6,
+-4.6,
+91.6,
 -0.4
 ],
 "room": "garage",
@@ -6881,8 +6855,8 @@
 "asset": "proc:shovel",
 "room": "garage",
 "pos": [
--4.2,
-92.4,
+-3.3,
+92.3,
 -0.4
 ]
 },
@@ -6890,8 +6864,8 @@
 "asset": "proc:ice_melt",
 "room": "garage",
 "pos": [
--3.5,
-91.7,
+-2.4,
+92.2,
 -0.4
 ]
 },
@@ -6908,8 +6882,8 @@
 {
 "asset": "garden_hose_wall_mounted_01",
 "pos": [
--4.85,
-92.0,
+-4.55,
+87.3,
 3.1
 ],
 "room": "garage",

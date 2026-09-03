@@ -348,7 +348,7 @@ class Gens3:
                 a = k * math.pi / 3
                 objs.append(cylinder_ft(self.uid("bolt"), (cx + math.cos(a) * 0.85, cy + math.sin(a) * 0.85, z + 0.2), 0.04, 0.05, st, self.col, 8))
         for i, (r, h) in enumerate(((0.55, 5.0), (0.55, 5.0), (0.45, 3.5))):
-            objs.append(cylinder_ft(self.uid("softener"), (41.0 - i * 1.3, 32.0, z), r, h, self.mat(["steel_black", "steel_black", "plaster_warm"][i]), self.col, 20))
+            objs.append(cylinder_ft(self.uid("softener"), (40.2 - i * 1.3, 32.0, z), r, h, self.mat(["steel_black", "steel_black", "plaster_warm"][i]), self.col, 20))
         # labels
         rng = random.Random(3)
         for i in range(10):
@@ -470,8 +470,9 @@ class Gens3:
                 else:
                     objs.append(cylinder_ft(self.uid("tool"), (u, (d0 + d1) / 2, tz - rng.uniform(0.3, 0.7)), rng.uniform(0.03, 0.09), rng.uniform(0.3, 0.8), mt, self.col, 8))
         # a vise on the bench
-        objs.append(box_ft(self.uid("vise"), x0 + 4.0, y0 - 0.3, x0 + 4.8, y0 + 0.6, z1, z1 + 0.6, self.mat("steel_black"), self.col))
-        objs.append(cylinder_ft(self.uid("vise_handle"), (x0 + 4.4, y0 - 0.45, z1 + 0.3), 0.03, 0.8, self.mat("chrome"), self.col, 8, axis="X"))
+        # a vise clamped to the front edge of the bench top
+        objs.append(box_ft(self.uid("vise"), x0 + 4.0, y1 - 0.9, x0 + 4.8, y1, z1, z1 + 0.6, self.mat("steel_black"), self.col))
+        objs.append(cylinder_ft(self.uid("vise_handle"), (x0 + 4.4, y1 + 0.15, z1 + 0.3), 0.03, 0.8, self.mat("chrome"), self.col, 8, axis="X"))
         return objs
 
     def gen_charger(self, e):
