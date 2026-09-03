@@ -900,11 +900,13 @@ class Gens2:
         objs.append(B("v_glow", u0 + 0.05, u1 - 0.05, 0.02, 0.06, mz0 - 0.05, mz1 + 0.05, self.mat("glow_soft")))
         gc = (u0 + u1) / 2
         if wall["axis"] == "y":
-            self.light(type="area", pos=(at + dx * 0.15, gc, (mz0 + mz1) / 2), size=u1 - u0 - 0.4, size_y=mz1 - mz0, shape="RECTANGLE", watts=e.get("glow_watts", 18),
-                       rot=(0, math.radians(90 * dx), 0), name="mirror_glow")
+            # emit into the room (+dx): -90*dx about Y. With +90*dx it shone back into the mirror, which then
+            # reflected the whole light panel as a blown white rectangle
+            self.light(type="area", pos=(at + dx * 0.3, gc, (mz0 + mz1) / 2), size=u1 - u0 - 0.4, size_y=mz1 - mz0, shape="RECTANGLE", watts=e.get("glow_watts", 18),
+                       rot=(0, math.radians(-90 * dx), 0), name="mirror_glow")
         else:
-            self.light(type="area", pos=(gc, at + dy * 0.15, (mz0 + mz1) / 2), size=u1 - u0 - 0.4, size_y=mz1 - mz0, shape="RECTANGLE", watts=e.get("glow_watts", 18),
-                       rot=(math.radians(-90 * dy), 0, 0), name="mirror_glow")
+            self.light(type="area", pos=(gc, at + dy * 0.3, (mz0 + mz1) / 2), size=u1 - u0 - 0.4, size_y=mz1 - mz0, shape="RECTANGLE", watts=e.get("glow_watts", 18),
+                       rot=(math.radians(90 * dy), 0, 0), name="mirror_glow")   # +90*dy about X emits toward +dy
         for su in e.get("sconces", [u0 + 0.3, u1 - 0.3]):
             objs += self.gen_sconce({"wall": wall, "u": su, "z": e.get("sconce_z", 6.0), "watts": 8})
         # towels, a stool, a plant are placed by the caller

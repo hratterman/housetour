@@ -146,6 +146,8 @@ def build(plan, house, mats):
         if ob.type == "LIGHT":
             try:
                 ob.visible_camera = False
+                ob.visible_glossy = False          # mirrors and glass must not reflect the light panels either
+                ob.visible_transmission = False
             except AttributeError:
                 pass
     log("lights: %d (fill %d rooms, practicals %d)" % (n, len(house.rooms), len(getattr(house, "practicals", []))))
