@@ -36,6 +36,7 @@ def parse():
     p.add_argument("--max-tris", type=int, default=30000, help="decimate imported models above this")
     p.add_argument("--model-tex", type=int, default=512, help="downscale imported model textures to this")
     p.add_argument("--no-trees", action="store_true", help="skip exterior trees entirely")
+    p.add_argument("--with-block", action="store_true", help="keep the neighbourhood (25 lots, 50 trees); default exports the house and its lot only")
     return p.parse_args(argv)
 
 
@@ -242,6 +243,15 @@ def main():
     t0 = time.time()
     plan = build_scene(args)
     import build_scene as bs
+    if not args.with_block:
+        # the viewer is about the house: drop the block (about 4,500 objects, most of the glTF's weight)
+        col = bpy.data.collections.get("neighborhood")
+        gone = 0
+        if col is not None:
+            for ob in list(col.all_objects):
+                bpy.data.objects.remove(ob, do_unlink=True)
+                gone += 1
+        log("dropped %d neighbourhood objects (use --with-block to keep them)" % gone)
     specs = json.load(open(os.path.join(HERE, "materials", "materials.json")))
     # art materials were added to specs at build time by staging; pull them from the live library
     live = None
