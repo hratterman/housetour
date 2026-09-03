@@ -716,9 +716,11 @@ def audit_staging(plan, out_path):
             rows.append(("in wall", round(worst[0], 2), e["room"], "%s (%d) into %s" % (e["asset"], k, worst[1]), "area %.1f sq ft" % worst[2]))
     # out of room: entry centre outside every part of its room (grown 0.6 ft), rooms by name
     rooms = {r["name"]: r for r in plan["rooms"]}
+    exterior = ("porch", "soffit", "house_numbers", "grill", "heater", "planter", "rain_chain", "spa", "outdoor", "ceiling_fan",
+                "ext_sconce", "mail_slot", "shop_light", "hydrant", "bike_rack")
     for k, e in ents.items():
         r = rooms.get(e["room"])
-        if r is None:
+        if r is None or any(w in e["asset"] for w in exterior):
             continue
         cx, cy = (e["mn"][0] + e["mx"][0]) / 2, (e["mn"][1] + e["mx"][1]) / 2
         inside = any(pt[0] - 0.6 <= cx <= pt[2] + 0.6 and pt[1] - 0.6 <= cy <= pt[3] + 0.6 for pt in r["parts"])
