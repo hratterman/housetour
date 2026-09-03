@@ -1144,7 +1144,10 @@ def main():
             e = min(e, args.frame_end)
         out_dir = os.path.join(args.out, "frames", shot["name"])
         times, total = render_frames(scene, out_dir, s, e, args.frame_step, shot["name"])
-        with open(os.path.join(args.out, "timing_%s.json" % shot["name"]), "w") as f:
+        timing_path = os.path.join(args.out, "timing_%s.json" % shot["name"])
+        if not times and os.path.exists(timing_path):
+            continue   # every frame already existed: keep the measured timing from the run that made them
+        with open(timing_path, "w") as f:
             json.dump({"shot": shot["name"], "res": args.res, "samples": args.samples,
                        "frame_step": args.frame_step, "frames": len(times),
                        "mean_s": (sum(times) / len(times)) if times else None,
