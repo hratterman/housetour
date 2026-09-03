@@ -96,19 +96,35 @@ def build(plan, house, mats):
         tc = nt.nodes.new("ShaderNodeTexCoord")
         mp = nt.nodes.new("ShaderNodeMapping")
         mp.inputs["Rotation"].default_value = (0, 0, math.radians(mspec.get("hdri_rot_deg", L.get("hdri_rot_deg", 0))))
+        nt.links.new(tc.outputs["Generated"], mp.inputs["Vector"])
+        nt.links.new(mp.outputs["Vector"], env.inputs["Vector"])
+        color = env.outputs["Color"]
+        # The HDRI's baked sun disc is ~100,000x the sky (upper-hemisphere mean 0.25, max 115,000), so at a
+        # strength that lights shade properly the disc would be a second sun. Clamp it out per channel and let
+        # the sun lamp be the only sun; the sky strength then scales the diffuse sky alone.
+        clamp = mspec.get("sky_clamp", L.get("sky_clamp", 4.0))
+        if clamp:
+            sep = nt.nodes.new("ShaderNodeSeparateColor")
+            comb = nt.nodes.new("ShaderNodeCombineColor")
+            nt.links.new(color, sep.inputs["Color"])
+            for ch in ("Red", "Green", "Blue"):
+                mn = nt.nodes.new("ShaderNodeMath")
+                mn.operation = "MINIMUM"
+                mn.inputs[1].default_value = clamp
+                nt.links.new(sep.outputs[ch], mn.inputs[0])
+                nt.links.new(mn.outputs[0], comb.inputs[ch])
+            color = comb.outputs["Color"]
         if mspec.get("sky_rgb"):
             # tint the sky (blue hour): multiply the environment by a colour before the background
             mix = nt.nodes.new("ShaderNodeMix")
             mix.data_type = "RGBA"
             mix.blend_type = "MULTIPLY"
             mix.inputs["Factor"].default_value = 1.0
-            nt.links.new(env.outputs["Color"], mix.inputs[6])
+            nt.links.new(color, mix.inputs[6])
             c = mspec["sky_rgb"]
             mix.inputs[7].default_value = (c[0], c[1], c[2], 1.0)
-            nt.links.new(mix.outputs[2], bg.inputs["Color"])
-        nt.links.new(tc.outputs["Generated"], mp.inputs["Vector"])
-        nt.links.new(mp.outputs["Vector"], env.inputs["Vector"])
-        nt.links.new(env.outputs["Color"], bg.inputs["Color"])
+            color = mix.outputs[2]
+        nt.links.new(color, bg.inputs["Color"])
         bg.inputs["Strength"].default_value = sky_strength
         # keep the sky from lighting interiors too flatly: slightly cooler multiplier is inherent in the HDRI
         log("world: HDRI", os.path.basename(hdri), "strength", sky_strength)

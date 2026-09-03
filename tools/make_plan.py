@@ -442,21 +442,21 @@ site = {
 
 # ----------------------------------------------------------------------------- lighting, camera, shots  spec 9, 10
 lighting = {"fill_scale": {"main": 0.35, "second": 0.35, "basement": 1.2, "garage": 1.0}, "practical_scale": 1.3,
-            "sun_strength": 2.0, "sky_strength": 1.0, "hdri": "sky", "hdri_rot_deg": 0, "sun_kelvin": 4800, "sun_angle_deg": 1.0,
+            "sun_strength": 4.0, "sky_strength": 3.0, "sky_clamp": 4.0, "hdri": "sky", "hdri_rot_deg": 0, "sun_kelvin": 4800, "sun_angle_deg": 1.0,
             "fill_kelvin": 3000,
             # per-shot modes (spec 9): blue hour for the terrace shot, low eastern sun for the bedroom shot
             "modes": {
-                "dusk": {"sun_strength": 0.25, "sun_direction": [0.85, 0.25, -0.12], "sun_kelvin": 2600, "sky_strength": 0.12,
+                "dusk": {"sun_strength": 0.25, "sun_direction": [0.85, 0.25, -0.12], "sun_kelvin": 2600, "sky_strength": 0.35,
                          "sky_rgb": [0.55, 0.62, 0.95], "hdri_rot_deg": 60, "fill_mul": 1.6, "practical_mul": 1.5},
-                "morning": {"sun_strength": 3.2, "sun_direction": [-0.82, 0.25, -0.38], "sun_kelvin": 4200, "sky_strength": 0.9,
+                "morning": {"sun_strength": 5.0, "sun_direction": [-0.82, 0.25, -0.38], "sun_kelvin": 4200, "sky_strength": 2.5,
                             "hdri_rot_deg": 180, "fill_mul": 0.8, "practical_mul": 0.9},
             }}
 camera = {"focal_mm": 24, "sensor_mm": 36, "exposure": 0.0, "fstop": 4.0, "handheld_ft": 0.06}
 shots = [
-    {"name": "block", "seconds": 10, "exposure": -0.1, "path": [
+    {"name": "block", "seconds": 10, "exposure": -0.6, "path": [
         {"t": 0, "pos": [-46, -79, 5.5], "look": [-10, -20, 12]}, {"t": 5, "pos": [-20, -78.5, 5.5], "look": [12, -6, 10]},
         {"t": 10, "pos": [4, -78, 5.5], "look": [20, 0, 9]}]},
-    {"name": "street", "seconds": 12, "exposure": -0.2, "path": [
+    {"name": "street", "seconds": 12, "exposure": -0.6, "path": [
         {"t": 0, "pos": [10.5, -34, 5.5], "look": [14, 0, 6]}, {"t": 4, "pos": [10.5, -22, 5.5], "look": [12, 0, 5]},
         {"t": 8, "pos": [10.5, -15, 5.5], "look": [11, 0, 4.5]}, {"t": 12, "pos": [11, -9.5, 5.3], "look": [12.5, 0, 4.5]}]},   # ends on the porch, door and sidelight
     {"name": "main_floor", "seconds": 26, "path": [
