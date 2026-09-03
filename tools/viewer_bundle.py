@@ -39,9 +39,10 @@ python -m http.server 8765
 
 README = """House walkthrough (web viewer)
 
-1. macOS: double-click start_viewer.command (first time: right-click, Open, because it is unsigned).
+1. macOS: right-click start_viewer.command and choose Open (a plain double-click is refused the first time:
+   "cannot be opened because it is from an unidentified developer"). Or, in Terminal, cd into this folder
+   and run  python3 -m http.server 8765
    Windows: double-click start_viewer.bat (needs Python from python.org, ticked "Add to PATH").
-   Anything else: open a terminal in this folder and run  python3 -m http.server 8765
 2. The browser opens http://localhost:8765 . Click the page to grab the mouse.
 3. WASD or arrows to walk, mouse to look, Space to jump, Shift to run, Esc to release the mouse.
    Number keys or the buttons top-left teleport to a room. L toggles the lamps, M the map, F flies (Q/E up, down).

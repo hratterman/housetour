@@ -593,3 +593,10 @@ export_web.py now bakes in a one-plane scene (149 tiles in under a minute), keep
 cache (--rebake to refresh), drops trees off the lot, and decimates each heavy mesh datablock once so instances
 stay shared. Result 65 MB (40 MB geometry, 21 MB textures, 6,045 meshes), no longer committed; tools/viewer_bundle.py
 packages web/ as a zip with double-click starters and as one self-contained HTML.
+
+Viewer delivery (Henry: "a format I can download and walk around in"). dist/housetour_viewer.zip, 20.8 MB after
+Draco: geometry 40 MB to about 6 MB, model textures at 384 px. Headless Chromium reaches ready in about ten
+minutes under software GL (the 6,045 draw calls are the cost; merging procedural meshes by material would be
+the next step), with no page errors; a Mac GPU loads it in well under a minute. macOS refuses the unsigned
+.command on a double-click; right-click, Open, or serve the folder by hand. The 27 MB house.glb is tracked again
+so a clone of the branch walks out of the box.
