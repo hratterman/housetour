@@ -73,7 +73,7 @@ def main_floor():
     proc("downlight", "powder", pos=[16.6, 3.6, 9.5], watts=6)
     # ------------------------------------------------------------------ 3.4 coat closet / 3.5 panel closet (closed)
     note("coat closet")
-    proc("coats", "coat_closet", b=[18.3, 1.0, 21.7, 3.0, 0, 9.0], face="+y", rod_z=6.0, seed=3)
+    proc("coats", "coat_closet", b=[19.3, 1.0, 21.7, 3.0, 0, 9.0], face="+y", rod_z=6.0, seed=3)
     note("panel closet")
     add(asset="proc:cabinet", room="panel_closet", b=[1.0, 7.5, 1.3, 12.0, 2.0, 7.5], doors=3, face="+x", m="steel_black")
     # ------------------------------------------------------------------ 3.6 entry hall
@@ -116,8 +116,8 @@ def main_floor():
     proc("coats", "laundry", b=[36.0, 1.0, 40.5, 3.0, 6.0, 9.4], face="+y", rod_z=0.5, drawer_h=0.0, seed=6)
     add(asset="proc:cabinet", room="laundry", b=[37.8, 9.5, 38.9, 12.75, 0, 8.0], doors=2, face="-x", m="walnut_h")
     add(asset="proc:cabinet", room="laundry", b=[39.5, 11.6, 41.0, 12.75, 0, 4.0], doors=1, face="-y", m="walnut_h")   # chute hopper, under the chute in the NE corner
-    proc("basket", "laundry", pos=[38.0, 7.6, 0], radius=0.7, height=1.6, throw_m="linen_white")
-    proc("rug", "laundry", b=[36.0, 4.0, 38.5, 8.5], m="rug_cream", thick=0.05)
+    proc("basket", "laundry", pos=[36.5, 4.6, 0], radius=0.7, height=1.6, throw_m="linen_white")
+    proc("rug", "laundry", b=[38.5, 3.5, 40.5, 8.5], m="rug_cream", thick=0.05)
     proc("downlights", "laundry", positions=[[37, 5], [39, 10]], z=9.5, watts=9)
     # ------------------------------------------------------------------ 3.11 mudroom
     note("mudroom")
@@ -148,7 +148,7 @@ def main_floor():
     proc("kitchen2", "kitchen")
     proc("sputnik", "kitchen", pos=[14.5, 25.0, 7.5], arms=18, radius=1.6, ceil_z=9.5, watts=110, seed=11)
     proc("downlights", "kitchen", positions=[[10.5, 17], [10.5, 22], [19.5, 17], [19.5, 24], [15, 28.5]], z=9.5, watts=9)
-    model("wooden_cutting_board", (15.1, 18.6, 3.05), "kitchen", length_ft=1.3, rot_z=80)   # on the island beside the sink
+    model("wooden_cutting_board", (15.0, 18.3, 3.05), "kitchen", length_ft=1.3, rot_z=80)   # on the island beside the sink
     model("brass_pot_01", (20.9, 23.7, 3.0), "kitchen", height_ft=0.7)
     # ------------------------------------------------------------------ 3.15 living room (X 0-20; west face at X 1)
     note("living")

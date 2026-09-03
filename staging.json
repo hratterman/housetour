@@ -312,7 +312,7 @@
 "asset": "proc:coats",
 "room": "coat_closet",
 "b": [
-18.3,
+19.3,
 1.0,
 21.7,
 3.0,
@@ -873,8 +873,8 @@
 "asset": "proc:basket",
 "room": "laundry",
 "pos": [
-38.0,
-7.6,
+36.5,
+4.6,
 0
 ],
 "radius": 0.7,
@@ -885,9 +885,9 @@
 "asset": "proc:rug",
 "room": "laundry",
 "b": [
-36.0,
-4.0,
 38.5,
+3.5,
+40.5,
 8.5
 ],
 "m": "rug_cream",
@@ -1228,8 +1228,8 @@
 {
 "asset": "wooden_cutting_board",
 "pos": [
-15.1,
-18.6,
+15.0,
+18.3,
 3.05
 ],
 "room": "kitchen",
