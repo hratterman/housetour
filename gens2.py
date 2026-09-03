@@ -1486,8 +1486,16 @@ class Gens2:
             xs = sorted((at + dx * 0.0, at + dx * depth))
             # the box sits inside the wall thickness (recessed): push it into the wall
             bx0, bx1 = sorted((at, at - dx * depth))
-            objs.append(box_ft(self.uid("fire_box"), bx0, u - w / 2, bx1, u + w / 2, z0, z1, blk, self.col))
-            objs.append(box_ft(self.uid("fire_interior"), bx0 + 0.05, u - w / 2 + 0.05, bx1 - 0.05, u + w / 2 - 0.05, z0 + 0.05, z1 - 0.05, self.mat("fire_black_int"), self.col))
+            # the firebox is a hollow: five thin black panels (back, top, bottom, two ends) open toward the glass,
+            # so the flames inside are visible (a solid box here hid them entirely)
+            t = 0.05
+            back = (bx0, bx0 + t) if dx > 0 else (bx1 - t, bx1)
+            fbi = self.mat("fire_black_int")
+            objs.append(box_ft(self.uid("fire_back"), back[0], u - w / 2, back[1], u + w / 2, z0, z1, fbi, self.col))
+            objs.append(box_ft(self.uid("fire_top"), bx0, u - w / 2, bx1, u + w / 2, z1 - t, z1, fbi, self.col))
+            objs.append(box_ft(self.uid("fire_bottom"), bx0, u - w / 2, bx1, u + w / 2, z0, z0 + t, fbi, self.col))
+            objs.append(box_ft(self.uid("fire_end"), bx0, u - w / 2, bx1, u - w / 2 + t, z0, z1, fbi, self.col))
+            objs.append(box_ft(self.uid("fire_end"), bx0, u + w / 2 - t, bx1, u + w / 2, z0, z1, fbi, self.col))
             objs.append(box_ft(self.uid("fire_glass"), min(at + dx * 0.01, at + dx * 0.03), u - w / 2 + 0.05, max(at + dx * 0.01, at + dx * 0.03), u + w / 2 - 0.05, z0 + 0.05, z1 - 0.05, self.mat("glass"), get_collection("glass")))
             objs.append(box_ft(self.uid("fire_frame"), min(at, at + dx * 0.04), u - w / 2 - 0.08, max(at, at + dx * 0.04), u + w / 2 + 0.08, z0 - 0.08, z1 + 0.08, blk, self.col))
             # ember bed and flames along the length
