@@ -209,10 +209,10 @@ def build_car(stager, e):
             # mirrors on the A pillar
             my_ref = K["front_glass"][1] - 0.3
             my = my_ref * sy
-            wg = _interp(K["w_roof"], my_ref) * sx + 0.12      # glass line at the A pillar: the mirror hangs off it
-            mz = _interp(K["z_belt"], my_ref) * sz + 0.25
-            parts.append(box_ft(stager.uid("car_mirror"), min(s * (wg + 0.15), s * (wg + 0.5)), my - 0.3, max(s * (wg + 0.15), s * (wg + 0.5)), my + 0.3, mz, mz + 0.42, paint, col))
-            parts.append(box_ft(stager.uid("car_mirror_arm"), min(s * (wg - 0.15), s * (wg + 0.2)), my - 0.06, max(s * (wg - 0.15), s * (wg + 0.2)), my + 0.06, mz + 0.1, mz + 0.22, paint, col))
+            wsh = _interp(K["w_body"], my_ref) * sx * 0.97     # shoulder half-width at the A pillar: the mirror sits on the door there
+            mz = _interp(K["z_belt"], my_ref) * sz + 0.05
+            parts.append(box_ft(stager.uid("car_mirror"), min(s * (wsh + 0.05), s * (wsh + 0.42)), my - 0.3, max(s * (wsh + 0.05), s * (wsh + 0.42)), my + 0.3, mz, mz + 0.42, paint, col))
+            parts.append(box_ft(stager.uid("car_mirror_arm"), min(s * (wsh - 0.25), s * (wsh + 0.12)), my - 0.06, max(s * (wsh - 0.25), s * (wsh + 0.12)), my + 0.06, mz + 0.1, mz + 0.22, paint, col))
             # door handles
             for hy in K["doors"]:
                 hy2 = (hy - 1.1) * sy
