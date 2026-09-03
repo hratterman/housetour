@@ -297,14 +297,14 @@ def garage():
     model("metal_tool_chest", (10.0, 66.3, z), "garage", height_ft=3.0, rot_z=0)
     model("metal_toolbox", (14.0, 66.0, z + 3.0), "garage", length_ft=1.6, rot_z=10)
     model("wooden_ladder", (-3.9, 88.3, z), "garage", height_ft=5.5, rot_z=90)   # it is a step ladder
-    proc("shelving_unit", "garage", pos=[16.05, 89.0, z], length=6.0, depth=1.8, height=7.0, rot_z=90, seed=4)   # east wall, north of the sedan
+    # (no free wall for a 6 ft shelving unit with three cars, the lift and the bench; storage is on the pegboard and under the bench)
     proc("compressor_closet", "garage", b=[-5.0, 65.0, -3.0, 67.5, z, z + 6.0])
     proc("reel", "garage", pos=[13.5, 69.5, z + 11.5], m="steel_black")   # over the aisle in front of the bench
     proc("reel", "garage", pos=[15.5, 69.5, z + 11.5], m="rubber_red")
     model("plastic_broom", (-4.3, 91.7, z), "garage", height_ft=4.5, rot_z=200)
     proc("shovel", "garage", pos=[-2.6, 92.4, z])
     proc("ice_melt", "garage", pos=[-1.6, 92.3, z])
-    model("cardboard_box_01", (16.05, 89.0, z + 5.2), "garage", length_ft=1.5)
+    model("cardboard_box_01", (16.2, 66.4, z + 3.0), "garage", length_ft=1.5)
     model("garden_hose_wall_mounted_01", (-4.55, 90.4, z + 3.5), "garage", length_ft=1.8, rot_z=90)
     for x in (-3.0, 3.0, 9.0, 15.0):
         for y in (70, 86):

@@ -6772,20 +6772,6 @@
 "rot_z": 90
 },
 {
-"asset": "proc:shelving_unit",
-"room": "garage",
-"pos": [
-16.05,
-89.0,
--0.4
-],
-"length": 6.0,
-"depth": 1.8,
-"height": 7.0,
-"rot_z": 90,
-"seed": 4
-},
-{
 "asset": "proc:compressor_closet",
 "room": "garage",
 "b": [
@@ -6849,9 +6835,9 @@
 {
 "asset": "cardboard_box_01",
 "pos": [
-16.05,
-89.0,
-4.8
+16.2,
+66.4,
+2.6
 ],
 "room": "garage",
 "length_ft": 1.5
