@@ -686,7 +686,8 @@ class Stager(Gens2, Gens3):
             screen_m = self.art_material(e.get("seed", 88), emit=0.35)
             self.light(type="area", pos=(u, at + (-0.3 if face == "-y" else 0.3), zc) if wall["axis"] == "x" else (at + (-0.3 if face == "-x" else 0.3), u, zc),
                        size=w * 0.8, size_y=h * 0.8, shape="RECTANGLE", watts=e.get("watts", 25), kelvin=5500,
-                       rot=(math.radians(-90 if face == "-y" else 90), 0, 0) if wall["axis"] == "x" else (0, math.radians(-90 if face == "-x" else 90), 0), name="tv")
+                       # area lights emit along local -Z: -90 about X -> -Y, +90 about X -> +Y, +90 about Y -> -X, -90 about Y -> +X
+                       rot=(math.radians(-90 if face == "-y" else 90), 0, 0) if wall["axis"] == "x" else (0, math.radians(90 if face == "-x" else -90), 0), name="tv")
         if wall["axis"] == "y":
             d0, d1 = (at - 0.1, at) if face == "-x" else (at, at + 0.1)
             objs.append(box_ft(self.uid("tv_frame"), d0, u - w / 2, d1, u + w / 2, zc - h / 2, zc + h / 2, self.mat("walnut_h"), self.col))

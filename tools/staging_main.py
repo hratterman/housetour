@@ -178,7 +178,7 @@ def main_floor():
     proc("speaker", "living", pos=[19.15, 35.2, 2.4], rot_z=90, face="-y")
     proc("speaker", "living", pos=[19.15, 31.5, 2.4], rot_z=90, face="-y")
     proc("table_lamp", "living", pos=[19.05, 35.4, 2.4], height=1.8, base_r=0.22, shade_r=0.45, base_m="brass", watts=25)
-    proc("tv_wall", "living", wall=W("y", 20.0, "-x"), u=33.0, zc=5.0, w=4.8, h=2.75, on=True, seed=88, watts=14)
+    proc("tv_wall", "living", wall=W("y", 20.0, "-x"), u=33.0, zc=5.0, w=4.8, h=2.75, on=True, seed=88, watts=8)
     frames("living", W("y", 20.0, "-x"), [30.6, 35.9], 6, zc=6.5, seed=61)
     frames("living", W("y", 20.0, "-x"), [41.2, 44.9], 8, zc=5.3, seed=62)
     proc("picture_light", "living", wall=W("y", 20.0, "-x"), u=33.0, z=8.3, watts=4.5)
