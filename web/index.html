@@ -173,13 +173,34 @@ const spotsEl = document.getElementById('spots');
 plan.spots.forEach((s, i) => {
   const b = document.createElement('button');
   b.innerHTML = `<b>${i + 1}</b>${s.name}`;
-  b.onclick = () => { teleport(s); controls.lock(); };
+  b.onclick = () => { teleport(s); grab(); };
   spotsEl.appendChild(b);
 });
-document.getElementById('help').onclick = () => controls.lock();
-canvas.onclick = () => controls.lock();
+// Pointer lock where the browser allows it; otherwise (an embedded frame, some tablets) drag to look.
+let dragMode = false;
+function enterDrag() { dragMode = true; document.body.classList.add('locked'); }
+function grab() {
+  if (dragMode) return;
+  try { controls.lock(); } catch (e) { enterDrag(); return; }
+  setTimeout(() => { if (!controls.isLocked && !dragMode) enterDrag(); }, 400);
+}
+document.addEventListener('pointerlockerror', enterDrag);
+document.getElementById('help').onclick = grab;
+canvas.onclick = grab;
 controls.addEventListener('lock', () => document.body.classList.add('locked'));
-controls.addEventListener('unlock', () => document.body.classList.remove('locked'));
+controls.addEventListener('unlock', () => { if (!dragMode) document.body.classList.remove('locked'); });
+const dragEuler = new THREE.Euler(0, 0, 0, 'YXZ');
+let dragging = false, lastX = 0, lastY = 0;
+function lookBy(dx, dy) {
+  dragEuler.setFromQuaternion(camera.quaternion);
+  dragEuler.y -= dx * 0.0035; dragEuler.x -= dy * 0.0035;
+  dragEuler.x = Math.max(-1.45, Math.min(1.45, dragEuler.x));
+  camera.quaternion.setFromEuler(dragEuler);
+}
+canvas.addEventListener('pointerdown', (e) => { if (!controls.isLocked) { dragging = true; lastX = e.clientX; lastY = e.clientY; canvas.setPointerCapture(e.pointerId); } });
+canvas.addEventListener('pointermove', (e) => { if (dragging && !controls.isLocked) { lookBy(e.clientX - lastX, e.clientY - lastY); lastX = e.clientX; lastY = e.clientY; } });
+canvas.addEventListener('pointerup', () => { dragging = false; });
+canvas.addEventListener('pointercancel', () => { dragging = false; });
 teleport(plan.spots[0]);
 
 const ray = new THREE.Raycaster();
@@ -312,7 +333,7 @@ let frame = 0;
 function tick() {
   requestAnimationFrame(tick);
   const dt = Math.min(clock.getDelta(), 0.05);
-  if (controls.isLocked || fly) move(dt);
+  if (controls.isLocked || fly || dragMode) move(dt);
   const pos = controls.getObject().position;
   if ((frame++ & 3) === 0) updateLights(pos);
   const fwd = new THREE.Vector3(); camera.getWorldDirection(fwd);
