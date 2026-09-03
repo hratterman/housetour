@@ -572,7 +572,9 @@ def bevel_pass(plan):
         # imported model instances share a mesh with the prototype; leave them alone
         if ob.data.users > 1 and not nm.startswith(("wall_", "floor_", "ceil_")):
             continue
-        if any(tag in nm for tag in soft_tags):
+        if nm.startswith(("car_body", "car_cabin", "car_roof")):
+            w, seg = 5.0 / 12.0 * FT, 5          # sheet metal: a wide soft radius turns the extruded profile into a body
+        elif any(tag in nm for tag in soft_tags):
             w, seg = w_soft, 3
             if any(tag in nm for tag in cloth_tags) and len(ob.data.vertices) == 8 and ob.data.users == 1:
                 cloth.append(ob)
