@@ -20,9 +20,9 @@ for r in plan["rooms"]:
     cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
     # the corner of the largest part, 0.6 ft inside, just under the ceiling
     big = max(parts, key=lambda p: (p[2] - p[0]) * (p[3] - p[1]))
-    corner = (big[0] + 0.6, big[1] + 0.6)
-    views.append({"name": "au_%s_%s" % (r["floor"], r["name"]), "pos": [corner[0], corner[1], fz + h - 0.5], "look": [cx, cy, fz + 1.2]})
+    corner = (big[0] + 1.4, big[1] + 1.4)     # inside the 1 ft exterior wall
+    views.append({"name": "au_%s_%s" % (r["floor"], r["name"]), "pos": [corner[0], corner[1], fz + h - 1.3], "look": [cx, cy, fz + 1.2]})
     if (x1 - x0) * (y1 - y0) > 250:      # big rooms: a second corner
-        views.append({"name": "au_%s_%s_b" % (r["floor"], r["name"]), "pos": [big[2] - 0.6, big[3] - 0.6, fz + h - 0.5], "look": [cx, cy, fz + 1.2]})
+        views.append({"name": "au_%s_%s_b" % (r["floor"], r["name"]), "pos": [big[2] - 1.4, big[3] - 1.4, fz + h - 1.3], "look": [cx, cy, fz + 1.2]})
 json.dump(views, sys.stdout)
 print(len(views), "views", file=sys.stderr)
