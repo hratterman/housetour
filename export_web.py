@@ -16,6 +16,7 @@ import argparse
 import json
 import math
 import os
+import re
 import sys
 import time
 
@@ -276,6 +277,16 @@ def main():
                 bpy.data.objects.remove(ob, do_unlink=True)
                 gone += 1
         log("dropped %d neighbourhood objects (use --with-block to keep them)" % gone)
+        # the block's parkway and lot trees are instanced outside that collection; keep only the ones on our lot
+        # (48 imported trees were 180 MB of the glTF even after decimation)
+        gone = 0
+        for ob in list(bpy.data.objects):
+            if ob.type == "MESH" and not ob.name.startswith("proto_") and re.match(r"(tree_small|island_tree|tree_)", ob.name):
+                x, y = ob.matrix_world.translation.x / FT, ob.matrix_world.translation.y / FT
+                if args.no_trees or not (-12 < x < 54 and -45 < y < 105):
+                    bpy.data.objects.remove(ob, do_unlink=True)
+                    gone += 1
+        log("dropped %d trees off the lot" % gone)
     specs = json.load(open(os.path.join(HERE, "materials", "materials.json")))
     # art materials were added to specs at build time by staging; pull them from the live library
     live = None
@@ -350,21 +361,31 @@ def main():
     # trees included; the first version only looked at prototype meshes and let 270 MB of tool-chest curves
     # and tree leaves through), downscale their textures
     n_dec = 0
-    tri_cache = {}
+    users = {}
     for ob in bpy.data.objects:
         if ob.type != "MESH" or ob.name.startswith("proto_") or not ob.visible_get():
             continue
         if ob.users_collection and ob.users_collection[0].name == "asset_lib":
             continue
-        me = ob.data
-        if me not in tri_cache:
-            tri_cache[me] = sum(len(p.vertices) - 2 for p in me.polygons)
-        tris = tri_cache[me]
-        if tris > args.max_tris:
-            mod = ob.modifiers.new("dec", "DECIMATE")
-            mod.ratio = args.max_tris / tris
-            mod.use_collapse_triangulate = True
-            n_dec += 1
+        users.setdefault(ob.data, []).append(ob)
+    for me, obs in users.items():
+        tris = sum(len(p.vertices) - 2 for p in me.polygons)
+        if tris <= args.max_tris:
+            continue
+        # decimate the datablock once and share it, so instances stay instances in the glTF (a modifier per
+        # object made the exporter write every tree separately)
+        ob0 = obs[0]
+        mod = ob0.modifiers.new("dec", "DECIMATE")
+        mod.ratio = args.max_tris / tris
+        mod.use_collapse_triangulate = True
+        bpy.context.view_layer.update()
+        dg = bpy.context.evaluated_depsgraph_get()
+        new_me = bpy.data.meshes.new_from_object(ob0.evaluated_get(dg))
+        new_me.name = me.name + "_dec"
+        ob0.modifiers.remove(mod)
+        for ob in obs:
+            ob.data = new_me
+        n_dec += 1
     for m in bpy.data.materials:
         if m is None or not m.use_nodes or m.name.startswith("web_"):
             continue

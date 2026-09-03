@@ -94,7 +94,12 @@ cd web && python3 -m http.server 8000        # then open http://localhost:8000
 ```
 
 By default the export carries the house and its lot only; `--with-block` keeps the 25 neighbouring lots and their
-trees (the file grows past 100 MB, too big to commit).
+trees (the file grows past 100 MB, too big to commit). Baked material tiles are cached in `web/_tiles`; pass
+`--rebake` after editing `materials/materials.json`.
+
+To hand the viewer to someone without the repository, `python3 tools/viewer_bundle.py` writes
+`dist/housetour_viewer.zip` (the `web/` folder with a double-click starter for macOS and Windows) and
+`dist/housetour_viewer.html`, a single self-contained file that loads three.js from jsDelivr.
 
 `export_web.py` bakes every procedural material to a tile at its physical size, generates matching
 box-projected UVs, swaps the heavy tree models for light ones, decimates anything over 30k triangles and writes
