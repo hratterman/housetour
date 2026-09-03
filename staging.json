@@ -2545,8 +2545,8 @@
 {
 "asset": "green_chair_01",
 "pos": [
-37.8,
-42.2,
+38.3,
+42.6,
 0
 ],
 "room": "primary_bedroom",
@@ -4661,7 +4661,7 @@
 "asset": "proc:nightstand2",
 "room": "bedroom_b",
 "pos": [
-36.5,
+36.4,
 29.6,
 10.0
 ],
@@ -4686,7 +4686,7 @@
 "b": [
 32.0,
 28.3,
-35.5,
+35.3,
 30.3,
 12.3,
 12.4
@@ -4698,11 +4698,11 @@
 "monitors": 0,
 "keyboard": false,
 "laptop": [
-33.7,
+33.5,
 29.5
 ],
 "lamp": [
-34.7,
+34.5,
 29.6
 ],
 "mug": [
@@ -6786,7 +6786,7 @@
 "asset": "wooden_ladder",
 "pos": [
 -3.9,
-89.6,
+88.3,
 -0.4
 ],
 "room": "garage",
@@ -6842,8 +6842,8 @@
 {
 "asset": "plastic_broom",
 "pos": [
--4.2,
-92.4,
+-4.3,
+91.7,
 -0.4
 ],
 "room": "garage",
@@ -6882,7 +6882,7 @@
 "asset": "garden_hose_wall_mounted_01",
 "pos": [
 -4.55,
-87.3,
+90.4,
 3.1
 ],
 "room": "garage",

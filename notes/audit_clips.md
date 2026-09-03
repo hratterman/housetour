@@ -1,14 +1,11 @@
 # Staging clip audit
 
-483 entries with geometry, 77 findings.
+483 entries with geometry, 72 findings.
 
 | kind | size (cu ft / ft) | room | what | where |
 | --- | --- | --- | --- | --- |
-| in wall | 0.7 | garage | plastic_broom (513) part plastic_broom_4597 into wall_garage_west_2 | area 11.4 sq ft |
-| in wall | 0.25 | mechanical | proc:mechanical (482) part duct_4232 into wall_bhall_east_5 | area 1.0 sq ft |
-| in wall | 0.21 | primary_bedroom | potted_plant_02 (200) part potted_plant_02_1887 into wall_primary_bedroom_south_1 | area 20.6 sq ft |
-| in wall | 0.2 | lab | proc:workbench (295) part vent_hood_2544 into wall_lab_0_north_1 | area 1.2 sq ft |
-| in wall | 0.18 | primary_bedroom | side_table_01 (195) part side_table_01_1877 into wall_primary_bedroom_north_2 | area 3.6 sq ft |
+| in wall | 0.67 | garage | plastic_broom (513) part plastic_broom_4584 into wall_garage_north_1 | area 9.9 sq ft |
+| in wall | 0.25 | mechanical | proc:mechanical (482) part duct_4217 into wall_bstair_hall_north_1 | area 1.0 sq ft |
 | overlap | 592.8 | garage | proc:lift (499) x proc:car (501) | x -3.5-3.3 y 69.1-84.9 z -0.4-5.2 |
 | overlap | 255.0 | garage | proc:garage_bench (505) x proc:compressor_closet (510) | x -3.0-14.0 y 65.0-67.5 z -0.4-5.6 |
 | overlap | 210.54 | garage | proc:lift (499) x proc:car (500) | x -3.1-2.7 y 71.3-85.7 z 5.1-7.6 |
@@ -17,34 +14,34 @@
 | overlap | 17.73 | garage | proc:garage_bench (505) x metal_tool_chest (506) | x 8.4-11.6 y 65.4-67.2 z -0.4-2.6 |
 | overlap | 17.73 | garage | metal_tool_chest (506) x proc:compressor_closet (510) | x 8.4-11.6 y 65.4-67.2 z -0.4-2.6 |
 | overlap | 10.61 | laundry | proc:cabinet (65) x proc:utility_sink (67) | x 39.0-41.0 y 1.0-3.0 z 0.3-2.9 |
-| overlap | 8.0 | garage | wooden_ladder (508) x plastic_broom (513) | x -4.9--3.5 y 90.3-91.6 z -0.4-4.1 |
 | overlap | 7.16 | lounge | proc:pit_furnish (452) x proc:arc_lamp (461) | x 3.9-7.4 y 40.5-42.0 z -10.0--8.7 |
-| overlap | 5.76 | bedroom_b | proc:nightstand2 (347) x proc:desk (349) | x 35.5-36.6 y 28.9-30.3 z 10.0-13.4 |
 | overlap | 4.26 | garage | proc:lift (499) x wooden_ladder (508) | x -4.9--2.9 y 87.6-88.0 z -0.4-5.1 |
 | overlap | 3.7 | living | proc:hearth_bench (107) x proc:mushroom_lamp (110) | x 2.3-3.9 y 32.0-34.1 z 1.4-2.5 |
+| overlap | 3.65 | garage | wooden_ladder (508) x plastic_broom (513) | x -4.9--3.1 y 91.1-91.6 z -0.4-4.1 |
 | overlap | 3.32 | garage | proc:lift (499) x garden_hose_wall_mounted_01 (517) | x -5.0--4.1 y 86.4-88.0 z 3.1-5.2 |
 | overlap | 3.27 | garage | proc:lift (499) x proc:charger (504) | x -5.0--3.9 y 74.4-75.6 z 1.5-4.0 |
 | overlap | 3.08 | her_office | proc:desk (242) x proc:task_chair (263) | x 3.9-4.2 y 15.5-17.7 z 10.0-14.0 |
 | overlap | 2.89 | garage | proc:garage_bench (505) x metal_toolbox (507) | x 13.1-14.9 y 65.3-66.7 z 2.6-3.8 |
 | overlap | 2.75 | living | proc:hearth_bench (107) x calathea_orbifolia_01 (134) | x 2.3-3.9 y 42.4-44.0 z 1.4-2.5 |
+| overlap | 2.74 | bedroom_b | proc:nightstand2 (347) x proc:desk (349) | x 35.5-36.0 y 28.9-30.3 z 10.0-13.4 |
 | overlap | 2.09 | laundry | proc:utility_sink (67) x proc:coats (68) | x 39.0-40.5 y 1.0-3.0 z 3.4-4.0 |
-| overlap | 1.74 | pantry | proc:pantry_shelves (86) x proc:cabinet (88) | x 1.2-3.0 y 25.9-26.5 z 1.5-3.1 |
 | overlap | 1.68 | garage | proc:shelving_unit (509) x cardboard_box_01 (516) | x 15.5-16.6 y 88.2-89.7 z 4.8-5.8 |
+| overlap | 1.66 | primary_bedroom | proc:platform_bed (188) x green_chair_01 (193) | x 35.9-36.0 y 40.3-42.5 z 0.0-4.0 |
 | overlap | 1.45 | lab | proc:desk (288) x proc:task_chair (289) | x 23.8-26.0 y 10.4-10.6 z 10.0-14.0 |
 | overlap | 1.44 | garage | metal_toolbox (507) x proc:compressor_closet (510) | x 13.1-14.0 y 65.3-66.7 z 2.6-3.8 |
-| overlap | 1.25 | primary_bedroom | green_chair_01 (193) x proc:floor_lamp (197) | x 39.6-39.9 y 43.5-44.2 z 0.0-4.4 |
+| overlap | 1.19 | primary_bedroom | green_chair_01 (193) x side_table_01 (195) | x 35.9-36.5 y 43.2-44.1 z 0.0-1.9 |
 | overlap | 1.07 | her_office | proc:desk (242) x classic_laptop (262) | x 2.1-2.9 y 15.4-16.6 z 12.5-13.5 |
 | overlap | 1.03 | loft | proc:round_table (392) x painted_wooden_chair_01 (395) | x 18.9-19.5 y 33.0-34.2 z 10.0-11.4 |
 | overlap | 1.02 | loft | proc:round_table (392) x painted_wooden_chair_01 (394) | x 16.5-17.2 y 31.5-32.5 z 10.0-11.4 |
 | overlap | 0.99 | garage | wooden_ladder (508) x garden_hose_wall_mounted_01 (517) | x -4.9--4.1 y 87.6-88.2 z 3.1-5.1 |
 | overlap | 0.96 | bedroom_b | proc:kid_bed (346) x proc:nightstand2 (347) | x 37.3-37.5 y 28.9-30.3 z 10.0-13.2 |
-| overlap | 0.92 | garage | plastic_broom (513) x proc:shovel (514) | x -3.8--3.5 y 91.7-92.3 z -0.4-4.1 |
 | overlap | 0.82 | gym | proc:treadmill (427) x proc:band_rail (435) | x 21.5-21.6 y 2.6-4.5 z -8.2--5.0 |
 | overlap | 0.71 | away | proc:mushroom_lamp (146) x side_table_01 (148) | x 21.9-22.4 y 42.9-43.6 z 0.0-1.9 |
 | overlap | 0.7 | living | proc:linear_fire (106) x proc:hearth_bench (107) | x 2.3-2.3 y 34.5-41.5 z 0.0-2.5 |
 | overlap | 0.67 | living | modern_arm_chair_01 (117) x calathea_orbifolia_01 (134) | x 3.9-4.2 y 42.4-44.6 z 1.4-2.5 |
-| overlap | 0.57 | primary_bedroom | green_chair_01 (193) x side_table_01 (195) | x 36.1-36.5 y 43.6-44.2 z 0.0-1.9 |
+| overlap | 0.63 | primary_bedroom | green_chair_01 (193) x proc:bench (199) | x 36.1-37.7 y 40.3-40.5 z 0.0-1.8 |
 | overlap | 0.5 | living | proc:builtin_shelves (109) x calathea_orbifolia_01 (134) | x 2.0-2.3 y 42.4-44.6 z 1.6-2.5 |
+| overlap | 0.5 | primary_bedroom | green_chair_01 (193) x proc:floor_lamp (197) | x 39.6-39.7 y 43.3-44.1 z 0.0-4.4 |
 | overlap | 0.47 | vestibule | proc:bench (9) x rubber_boots (12) | x 8.8-9.3 y 4.5-5.3 z 0.0-1.1 |
 | overlap | 0.44 | living | proc:speaker (124) x proc:table_lamp (126) | x 18.8-19.5 y 34.9-35.5 z 3.0-4.1 |
 | overlap | 0.44 | bar | proc:bar2 (471) x bar_chair_round_01 (472) | x 22.5-22.6 y 36.7-38.3 z -10.0--7.5 |
@@ -55,9 +52,7 @@
 | overlap | 0.37 | kitchen | proc:kitchen2 (96) x boombox (99) | x 17.6-18.9 y 14.7-15.1 z 3.0-3.8 |
 | overlap | 0.37 | kitchen | proc:kitchen2 (96) x brass_pot_01 (102) | x 20.5-21.3 y 23.3-24.1 z 3.0-3.7 |
 | overlap | 0.37 | away | mid_century_lounge_chair (144) x proc:cabinet (153) | x 23.8-26.2 y 44.2-44.3 z 0.0-2.5 |
-| overlap | 0.37 | primary_bedroom | green_chair_01 (193) x proc:bench (199) | x 36.1-37.7 y 40.4-40.5 z 0.0-1.8 |
 | overlap | 0.36 | her_office | proc:bookwall (268) x mantel_clock_01 (271) | x 5.4-6.6 y 25.0-25.4 z 13.1-13.7 |
-| overlap | 0.32 | garage | proc:shovel (514) x proc:ice_melt (515) | x -3.1--2.8 y 91.7-92.3 z 0.3-1.7 |
 | overlap | 0.31 | living | proc:credenza (122) x proc:table_lamp (126) | x 18.6-19.5 y 34.9-35.8 z 2.4-2.8 |
 | overlap | 0.31 | primary_bath | wooden_stool_01 (166) x potted_plant_04 (167) | x 32.3-32.4 y 19.8-21.4 z 0.0-1.5 |
 | overlap | 0.29 | laundry | proc:washer_dryer (64) x proc:cabinet (69) | x 38.9-38.9 y 9.5-11.6 z 0.0-6.8 |
@@ -69,10 +64,10 @@
 | overlap | 0.26 | vestibule | proc:bench (9) x rubber_boots (13) | x 9.2-9.5 y 4.5-5.3 z 0.0-1.1 |
 | overlap | 0.26 | lounge | proc:wall_screen (454) x proc:media_cabinet (455) | x 6.0-14.1 y 44.8-44.9 z -8.3--8.0 |
 | overlap | 0.22 | gym | proc:plate_tree (423) x proc:dumbbell_rack (426) | x 7.4-7.5 y 1.3-2.7 z -9.9--6.9 |
+| overlap | 0.22 | garage | proc:shovel (514) x proc:ice_melt (515) | x -2.3--2.1 y 91.8-92.5 z 0.3-1.7 |
 | overlap | 0.2 | living | proc:hearth_bench (107) x modern_arm_chair_01 (117) | x 3.9-3.9 y 41.2-44.0 z 0.0-2.5 |
 | overlap | 0.19 | living | proc:records (123) x proc:speaker (125) | x 18.8-19.5 y 30.9-31.1 z 3.0-3.9 |
 | overlap | 0.16 | kitchen | proc:kitchen2 (96) x wooden_cutting_board (101) | x 20.0-21.0 y 14.2-15.6 z 3.0-3.2 |
-| overlap | 0.15 | pantry | proc:pantry_shelves (86) x vintage_electric_kettle (91) | x 1.3-2.5 y 25.9-26.1 z 3.2-4.0 |
 | overlap | 0.11 | vestibule | rubber_boots (12) x rubber_boots (13) | x 9.2-9.3 y 4.5-5.3 z 0.0-1.1 |
 | overlap | 0.11 | bedroom_a | proc:kid_bed (365) x proc:low_bookcase (371) | x 3.7-4.0 y 36.4-36.5 z 10.0-13.0 |
 | overlap | 0.1 | her_office | proc:desk (242) x proc:cabinet (244) | x 1.2-1.3 y 13.4-15.4 z 13.3-14.0 |
