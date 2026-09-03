@@ -632,7 +632,8 @@ class Gens2:
         # hood 42 in wide, bottom Z 6, top 8, black steel canopy, duct box above
         objs.append(box_ft(self.uid("k_hood"), wx - 1.9, 19.25, wx, 22.75, z + 6.0, z + 6.55, black, self.col))
         objs.append(box_ft(self.uid("k_hood_box"), wx - 1.3, 19.6, wx, 22.4, z + 6.55, z + 8.0, black, self.col))
-        objs.append(box_ft(self.uid("k_hood_lens"), wx - 1.6, 19.6, wx - 0.3, 22.4, z + 5.98, z + 6.0, self.mat("lamp_glow"), self.col))
+        for ly in (20.2, 21.8):   # two small LED lamps, not a 3.6 sq ft light panel (which blew out under the camera at t 15)
+            objs.append(box_ft(self.uid("k_hood_lens"), wx - 1.35, ly - 0.2, wx - 0.95, ly + 0.2, z + 5.98, z + 6.0, self.mat("lamp_glow"), self.col))
         self.light(type="area", pos=(wx - 1.0, 21.0, z + 5.95), size=1.2, size_y=2.6, shape="RECTANGLE", watts=8, kelvin=2700, rot=(0, 0, 0), name="hood")
         # pot filler
         objs.append(cylinder_ft(self.uid("k_potfiller"), (wx - 0.02, 21.0, z + 5.0), 0.04, 0.9, brass, self.col, 8, axis="X"))
