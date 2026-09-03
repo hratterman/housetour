@@ -278,10 +278,10 @@ def exterior():
     note("porch")
     proc("porch_bench", "vestibule", b=[14.0, -1.5, 22.0, 0.0, 0.0, 1.5])
     model("ceiling_fan", (13.0, -3.5, 9.5), "vestibule", length_ft=4.3)
-    proc("ext_sconce", "vestibule", wall=W("x", 0.0, "-y"), wall_is_face=True, u=13.5, z=6.5, watts=22)
+    proc("ext_sconce", "vestibule", wall=W("x", 0.0, "-y"), wall_is_face=True, u=13.5, z=6.5, watts=30)
     # porch canopy underside (Z 10.0): three warm downlights so the recessed door is not a black hole by day
     for x in (7.0, 13.0, 19.0):
-        proc("soffit_downlight", "vestibule", pos=[x, -4.0, 9.95], watts=14, angle=50, kelvin=3000)
+        proc("soffit_downlight", "vestibule", pos=[x, -2.2, 9.45], watts=18, angle=60, kelvin=3000)   # canopy underside is at ~9.5
     proc("house_numbers", "vestibule", wall=W("x", 0.0, "-y"), wall_is_face=True, u=16.0, z=5.5, height=0.5, text="1956")
     proc("mail_slot", "vestibule", wall=W("x", 0.0, "-y"), wall_is_face=True, u=8.5, z=3.5)
     model("planter_pot_clay", (5.0, -1.0, -0.2), "vestibule", height_ft=1.6)

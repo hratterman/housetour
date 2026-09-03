@@ -2801,18 +2801,18 @@
 "wall_is_face": true,
 "u": 13.5,
 "z": 6.5,
-"watts": 22
+"watts": 30
 },
 {
 "asset": "proc:soffit_downlight",
 "room": "vestibule",
 "pos": [
 7.0,
--4.0,
-9.95
+-2.2,
+9.45
 ],
-"watts": 14,
-"angle": 50,
+"watts": 18,
+"angle": 60,
 "kelvin": 3000
 },
 {
@@ -2820,11 +2820,11 @@
 "room": "vestibule",
 "pos": [
 13.0,
--4.0,
-9.95
+-2.2,
+9.45
 ],
-"watts": 14,
-"angle": 50,
+"watts": 18,
+"angle": 60,
 "kelvin": 3000
 },
 {
@@ -2832,11 +2832,11 @@
 "room": "vestibule",
 "pos": [
 19.0,
--4.0,
-9.95
+-2.2,
+9.45
 ],
-"watts": 14,
-"angle": 50,
+"watts": 18,
+"angle": 60,
 "kelvin": 3000
 },
 {
