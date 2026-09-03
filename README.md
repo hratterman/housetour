@@ -91,6 +91,9 @@ blender -b -P export_web.py -- --out web     # rebuilds web/house.glb from the s
 cd web && python3 -m http.server 8000        # then open http://localhost:8000
 ```
 
+By default the export carries the house and its lot only; `--with-block` keeps the 25 neighbouring lots and their
+trees (the file grows past 100 MB, too big to commit).
+
 `export_web.py` bakes every procedural material to a tile at its physical size, generates matching
 box-projected UVs, swaps the heavy tree models for light ones, decimates anything over 30k triangles and writes
 a glTF binary plus `lights.json` and `plan_web.json`. The viewer loads three.js from jsDelivr, so it needs the
