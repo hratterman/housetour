@@ -312,7 +312,7 @@ class Gens3:
             lem = sphere_ft(self.uid("lemon"), (24.0 + math.cos(a) * 0.18, 42.5 + math.sin(a) * 0.18, z + 3.5 + 0.28 + (0.18 if i == 4 else 0)), 0.11, self.mat("mustard_paint"), self.col, 12, 8)
             lem.scale = (1.25, 1, 1)
             objs.append(lem)
-        objs += self.gen_table_lamp({"pos": (24.0, 36.6, z + 3.5), "height": 1.4, "base_r": 0.18, "shade_r": 0.38, "base_m": "brass", "watts": 18})
+        objs += self.gen_table_lamp({"pos": (26.6, 44.3, z + 3.0), "height": 1.4, "base_r": 0.18, "shade_r": 0.38, "base_m": "brass", "watts": 18})   # on the back bar; the sink takes the counter's south end
         # cabinet under the counter (service side) with the dessert program: reveals on the east face
         for u in (39.0, 42.0):
             objs.append(box_ft(self.uid("reveal"), 24.99, u - 0.01, 25.01, u + 0.01, z + 0.4, z + 3.3, self.mat("black"), self.col))
