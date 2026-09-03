@@ -484,4 +484,10 @@ def build(plan, house, mats):
     s = Site(plan, house, mats)
     s.build_all()
     house.site = s
+    if "neighborhood" in plan.get("site", {}):
+        import neighborhood
+        from staging import Stager
+        import os
+        stager = Stager(plan, house, mats, os.path.dirname(os.path.abspath(__file__)))
+        neighborhood.build(plan, house, mats, stager)
     return s

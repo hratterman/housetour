@@ -2779,38 +2779,13 @@
   "ground": {
    "m": "lawn",
    "b": [
-    -70,
-    -60,
-    110,
+    -240,
+    -240,
+    280,
     150
    ]
   },
   "slabs": [
-   {
-    "note": "sidewalk",
-    "b": [
-     -70,
-     -30,
-     110,
-     -25
-    ],
-    "z": -0.45,
-    "t": 0.4,
-    "m": "concrete_sealed"
-   },
-   {
-    "note": "street",
-    "b": [
-     -70,
-     -60,
-     110,
-     -30
-    ],
-    "z": -0.95,
-    "t": 0.4,
-    "m": "asphalt",
-    "cut_ground": true
-   },
    {
     "note": "front walk",
     "b": [
@@ -2958,9 +2933,9 @@
    {
     "note": "alley",
     "b": [
-     -70,
+     -230,
      100,
-     110,
+     270,
      116
     ],
     "z": -0.7,
@@ -3097,34 +3072,540 @@
     "autumn": true
    }
   ],
-  "neighbors": [
-   {
-    "note": "west neighbor",
-    "b": [
-     -55,
-     0,
-     -20,
-     40
+  "neighbors": [],
+  "neighborhood": {
+   "seed": 1926,
+   "street": {
+    "x": [
+     -230,
+     270
     ],
-    "eave_z": 20,
-    "ridge_z": 28,
-    "ridge_axis": "y",
-    "m": "roman_brick"
+    "curb_y": [
+     -38,
+     -68
+    ],
+    "sidewalks": [
+     [
+      -30,
+      -25
+     ],
+     [
+      -81,
+      -76
+     ]
+    ],
+    "sidewalk_y": [
+     -25,
+     -81
+    ],
+    "trees": {
+     "y": [
+      -34,
+      -72
+     ],
+     "spacing": 42,
+     "offset": 14,
+     "species": [
+      "elm",
+      "oak",
+      "maple",
+      "elm",
+      "locust"
+     ],
+     "skip_x": [
+      10.5
+     ]
+    },
+    "lamps": [
+     [
+      -150,
+      -35.5
+     ],
+     [
+      -10,
+      -35.5
+     ],
+     [
+      130,
+      -35.5
+     ],
+     [
+      -80,
+      -70.5
+     ],
+     [
+      60,
+      -70.5
+     ],
+     [
+      200,
+      -70.5
+     ]
+    ],
+    "hydrants": [
+     [
+      26,
+      -33.5
+     ]
+    ],
+    "aprons": [
+     [
+      -105,
+      -70,
+      -93,
+      -64
+     ],
+     [
+      77,
+      -70,
+      88,
+      -64
+     ],
+     [
+      188,
+      -70,
+      208,
+      -64
+     ]
+    ]
    },
-   {
-    "note": "east neighbor",
-    "b": [
-     60,
-     0,
-     95,
-     40
-    ],
-    "eave_z": 20,
-    "ridge_z": 28,
-    "ridge_axis": "y",
-    "m": "roman_brick"
-   }
-  ],
+   "lots": [
+    {
+     "x0": -75,
+     "x1": -9,
+     "hx0": -62,
+     "style": "tudor",
+     "front_y": 1,
+     "facing": "s",
+     "walk_x": -38.5,
+     "garage": {
+      "b": [
+       -56,
+       78,
+       -34,
+       100
+      ],
+      "m": "brick_common"
+     },
+     "trees": [
+      {
+       "pos": [
+        -58,
+        -16
+       ],
+       "species": "maple"
+      }
+     ]
+    },
+    {
+     "x0": -140,
+     "x1": -75,
+     "hx0": -126,
+     "style": "georgian",
+     "front_y": 2,
+     "facing": "s",
+     "walk_x": -107,
+     "garage": {
+      "b": [
+       -120,
+       78,
+       -98,
+       100
+      ],
+      "m": "brick_red"
+     },
+     "trees": [
+      {
+       "pos": [
+        -135,
+        -12
+       ],
+       "species": "oak"
+      }
+     ]
+    },
+    {
+     "x0": -205,
+     "x1": -140,
+     "hx0": -188,
+     "style": "foursquare",
+     "front_y": 3,
+     "facing": "s",
+     "walk_x": -182,
+     "garage": {
+      "b": [
+       -180,
+       78,
+       -158,
+       100
+      ],
+      "m": "siding_gray"
+     },
+     "trees": [
+      {
+       "pos": [
+        -150,
+        -10
+       ],
+       "species": "spruce"
+      }
+     ]
+    },
+    {
+     "x0": 51,
+     "x1": 111,
+     "hx0": 65,
+     "style": "bungalow",
+     "front_y": 4,
+     "facing": "s",
+     "walk_x": 75.2,
+     "garage": {
+      "b": [
+       70,
+       78,
+       92,
+       100
+      ],
+      "m": "siding_sage"
+     },
+     "trees": [
+      {
+       "pos": [
+        105,
+        -14
+       ],
+       "species": "maple"
+      }
+     ]
+    },
+    {
+     "x0": 111,
+     "x1": 171,
+     "hx0": 118,
+     "style": "colonial",
+     "front_y": 2,
+     "facing": "s",
+     "walk_x": 136,
+     "wing": "right",
+     "garage": {
+      "b": [
+       125,
+       78,
+       147,
+       100
+      ],
+      "m": "siding_white"
+     },
+     "trees": [
+      {
+       "pos": [
+        160,
+        -16
+       ],
+       "species": "elm"
+      }
+     ]
+    },
+    {
+     "x0": 171,
+     "x1": 235,
+     "hx0": 183,
+     "style": "tudor",
+     "front_y": 1,
+     "facing": "s",
+     "walk_x": 206.5,
+     "wall_m": "brick_red",
+     "garage": {
+      "b": [
+       190,
+       78,
+       212,
+       100
+      ],
+      "m": "brick_red"
+     }
+    },
+    {
+     "x0": -150,
+     "x1": -90,
+     "hx0": -144,
+     "style": "georgian",
+     "front_y": -111,
+     "facing": "n",
+     "walk_x": -125,
+     "wall_m": "brick_common",
+     "shutter_m": "shutter_green",
+     "portico": "flat",
+     "driveway": {
+      "x": -104,
+      "w": 10,
+      "y": [
+       -81,
+       -160
+      ]
+     },
+     "garage": {
+      "b": [
+       -104,
+       -160,
+       -84,
+       -140
+      ],
+      "m": "brick_common",
+      "door_side": "n"
+     },
+     "trees": [
+      {
+       "pos": [
+        -140,
+        -95
+       ],
+       "species": "oak"
+      }
+     ]
+    },
+    {
+     "x0": -90,
+     "x1": -30,
+     "hx0": -75,
+     "style": "foursquare",
+     "front_y": -112,
+     "facing": "n",
+     "walk_x": -69,
+     "wall_m": "stucco_cream",
+     "roof_m": "shingle_brown",
+     "trees": [
+      {
+       "pos": [
+        -36,
+        -100
+       ],
+       "species": "maple"
+      }
+     ]
+    },
+    {
+     "x0": -30,
+     "x1": 30,
+     "hx0": -12,
+     "style": "colonial",
+     "front_y": -110,
+     "facing": "n",
+     "walk_x": 6,
+     "wing": "left",
+     "shutter_m": "shutter_black",
+     "trees": [
+      {
+       "pos": [
+        26,
+        -96
+       ],
+       "species": "elm"
+      }
+     ]
+    },
+    {
+     "x0": 30,
+     "x1": 90,
+     "hx0": 44,
+     "style": "bungalow",
+     "front_y": -108,
+     "facing": "n",
+     "walk_x": 54.2,
+     "wall_m": "siding_gray",
+     "roof_m": "shingle_dark",
+     "driveway": {
+      "x": 78,
+      "w": 9,
+      "y": [
+       -81,
+       -150
+      ]
+     },
+     "garage": {
+      "b": [
+       70,
+       -152,
+       90,
+       -132
+      ],
+      "m": "siding_gray",
+      "door_side": "n"
+     }
+    },
+    {
+     "x0": 90,
+     "x1": 150,
+     "hx0": 100,
+     "style": "tudor",
+     "front_y": -111,
+     "facing": "n",
+     "walk_x": 123.5,
+     "trees": [
+      {
+       "pos": [
+        146,
+        -96
+       ],
+       "species": "oak"
+      }
+     ]
+    },
+    {
+     "x0": 150,
+     "x1": 215,
+     "hx0": 153,
+     "style": "ranch",
+     "front_y": -114,
+     "facing": "n",
+     "walk_x": 177,
+     "driveway": {
+      "x": 189,
+      "w": 18,
+      "y": [
+       -81,
+       -112
+      ]
+     }
+    }
+   ],
+   "fences": [
+    {
+     "b": [
+      -9.3,
+      46,
+      -8.7,
+      100
+     ]
+    },
+    {
+     "b": [
+      -75.3,
+      40,
+      -74.7,
+      100
+     ]
+    },
+    {
+     "b": [
+      -140.3,
+      40,
+      -139.7,
+      100
+     ]
+    },
+    {
+     "b": [
+      110.7,
+      40,
+      111.3,
+      100
+     ]
+    },
+    {
+     "b": [
+      170.7,
+      40,
+      171.3,
+      100
+     ]
+    },
+    {
+     "b": [
+      -90.3,
+      -200,
+      -89.7,
+      -125
+     ]
+    },
+    {
+     "b": [
+      29.7,
+      -200,
+      30.3,
+      -125
+     ]
+    }
+   ],
+   "hedges": [
+    {
+     "b": [
+      -150,
+      -83.5,
+      -92,
+      -82.5
+     ],
+     "h": 3.0
+    },
+    {
+     "b": [
+      -205,
+      -24,
+      -142,
+      -23
+     ],
+     "h": 2.5
+    }
+   ],
+   "trees": [
+    {
+     "pos": [
+      -40,
+      62
+     ],
+     "species": "oak"
+    },
+    {
+     "pos": [
+      132,
+      52
+     ],
+     "species": "elm"
+    },
+    {
+     "pos": [
+      -118,
+      -140
+     ],
+     "species": "oak"
+    },
+    {
+     "pos": [
+      -160,
+      40
+     ],
+     "species": "maple"
+    },
+    {
+     "pos": [
+      225,
+      30
+     ],
+     "species": "oak"
+    },
+    {
+     "pos": [
+      120,
+      -150
+     ],
+     "species": "elm"
+    },
+    {
+     "pos": [
+      -60,
+      -150
+     ],
+     "species": "maple"
+    },
+    {
+     "pos": [
+      200,
+      -100
+     ],
+     "species": "spruce"
+    }
+   ]
+  },
   "structures": [
    {
     "note": "swim spa shell",
@@ -3320,13 +3801,59 @@
  },
  "sun": {
   "direction": [
-   0.35,
-   -0.55,
-   -0.75
+   0.5,
+   0.6,
+   -0.62
   ],
   "strength": 2.0
  },
  "shots": [
+  {
+   "name": "block",
+   "seconds": 10,
+   "exposure": -0.3,
+   "path": [
+    {
+     "t": 0,
+     "pos": [
+      -46,
+      -79,
+      5.5
+     ],
+     "look": [
+      -10,
+      -20,
+      12
+     ]
+    },
+    {
+     "t": 5,
+     "pos": [
+      -20,
+      -78.5,
+      5.5
+     ],
+     "look": [
+      12,
+      -6,
+      10
+     ]
+    },
+    {
+     "t": 10,
+     "pos": [
+      4,
+      -78,
+      5.5
+     ],
+     "look": [
+      20,
+      0,
+      9
+     ]
+    }
+   ]
+  },
   {
    "name": "street",
    "seconds": 12,
@@ -3988,6 +4515,11 @@
  ],
  "stills": [
   {
+   "name": "00_block_end",
+   "shot": "block",
+   "t": 10
+  },
+  {
    "name": "01_street_end",
    "shot": "street",
    "t": 12
@@ -4281,6 +4813,58 @@
     4,
     80,
     6
+   ]
+  },
+  {
+   "name": "v19_block_west",
+   "pos": [
+    -70,
+    -84,
+    6
+   ],
+   "look": [
+    21,
+    -2,
+    12
+   ]
+  },
+  {
+   "name": "v20_aerial_block",
+   "pos": [
+    21,
+    -190,
+    130
+   ],
+   "look": [
+    21,
+    10,
+    0
+   ]
+  },
+  {
+   "name": "v21_across",
+   "pos": [
+    21,
+    -95,
+    5.5
+   ],
+   "look": [
+    21,
+    0,
+    9
+   ]
+  },
+  {
+   "name": "v22_street_east",
+   "pos": [
+    130,
+    -56,
+    5.5
+   ],
+   "look": [
+    0,
+    -32,
+    9
    ]
   }
  ],

@@ -1550,5 +1550,287 @@
    0.08
   ],
   "rough": 1.0
+ },
+ "brick_red": {
+  "rgb": [
+   0.45,
+   0.2,
+   0.14
+  ],
+  "rough": 0.95,
+  "tex": "brick",
+  "size_ft": 5,
+  "tint": [
+   0.8,
+   0.5,
+   0.42
+  ],
+  "bump": 0.8
+ },
+ "brick_common": {
+  "rgb": [
+   0.6,
+   0.48,
+   0.36
+  ],
+  "rough": 0.95,
+  "tex": "brick",
+  "size_ft": 5,
+  "tint": [
+   1.0,
+   0.95,
+   0.85
+  ],
+  "bump": 0.8
+ },
+ "brick_painted": {
+  "rgb": [
+   0.88,
+   0.86,
+   0.8
+  ],
+  "rough": 0.9,
+  "tex": "brick",
+  "size_ft": 5,
+  "paint": true,
+  "bump": 0.8
+ },
+ "stucco_cream": {
+  "rgb": [
+   0.9,
+   0.86,
+   0.76
+  ],
+  "rough": 0.95,
+  "tex": "plaster_rough",
+  "paint": true,
+  "size_ft": 3,
+  "bump": 0.6
+ },
+ "siding_white": {
+  "rgb": [
+   0.92,
+   0.91,
+   0.87
+  ],
+  "rough": 0.6,
+  "tex": "plaster",
+  "paint": true,
+  "size_ft": 2,
+  "bump": 0.2,
+  "overlay": {
+   "type": "stripes",
+   "size_ft": 0.5,
+   "width": 0.06,
+   "rgb": [
+    0.72,
+    0.71,
+    0.68
+   ],
+   "axes": [
+    2
+   ],
+   "metallic": false
+  }
+ },
+ "siding_gray": {
+  "rgb": [
+   0.55,
+   0.57,
+   0.56
+  ],
+  "rough": 0.65,
+  "tex": "plaster",
+  "paint": true,
+  "size_ft": 2,
+  "bump": 0.2,
+  "overlay": {
+   "type": "stripes",
+   "size_ft": 0.5,
+   "width": 0.06,
+   "rgb": [
+    0.4,
+    0.42,
+    0.41
+   ],
+   "axes": [
+    2
+   ],
+   "metallic": false
+  }
+ },
+ "siding_sage": {
+  "rgb": [
+   0.5,
+   0.56,
+   0.44
+  ],
+  "rough": 0.65,
+  "tex": "plaster",
+  "paint": true,
+  "size_ft": 2,
+  "bump": 0.2,
+  "overlay": {
+   "type": "stripes",
+   "size_ft": 0.5,
+   "width": 0.06,
+   "rgb": [
+    0.36,
+    0.42,
+    0.32
+   ],
+   "axes": [
+    2
+   ],
+   "metallic": false
+  }
+ },
+ "trim_white": {
+  "rgb": [
+   0.93,
+   0.93,
+   0.9
+  ],
+  "rough": 0.45
+ },
+ "trim_cream": {
+  "rgb": [
+   0.9,
+   0.86,
+   0.76
+  ],
+  "rough": 0.5
+ },
+ "shutter_black": {
+  "rgb": [
+   0.05,
+   0.05,
+   0.05
+  ],
+  "rough": 0.5
+ },
+ "shutter_green": {
+  "rgb": [
+   0.08,
+   0.2,
+   0.12
+  ],
+  "rough": 0.5
+ },
+ "slate_roof": {
+  "rgb": [
+   0.22,
+   0.24,
+   0.27
+  ],
+  "rough": 0.75,
+  "tex": "concrete",
+  "size_ft": 4,
+  "tint": [
+   0.45,
+   0.48,
+   0.55
+  ],
+  "bump": 0.5
+ },
+ "shingle_dark": {
+  "rgb": [
+   0.16,
+   0.15,
+   0.14
+  ],
+  "rough": 0.95,
+  "tex": "concrete",
+  "size_ft": 3,
+  "tint": [
+   0.3,
+   0.29,
+   0.28
+  ],
+  "bump": 0.6
+ },
+ "shingle_brown": {
+  "rgb": [
+   0.3,
+   0.22,
+   0.15
+  ],
+  "rough": 0.95,
+  "tex": "concrete",
+  "size_ft": 3,
+  "tint": [
+   0.55,
+   0.42,
+   0.3
+  ],
+  "bump": 0.6
+ },
+ "half_timber": {
+  "rgb": [
+   0.18,
+   0.11,
+   0.07
+  ],
+  "rough": 0.8
+ },
+ "window_dark": {
+  "rgb": [
+   0.05,
+   0.07,
+   0.08
+  ],
+  "rough": 0.08,
+  "spec": 0.6
+ },
+ "leaf_dark": {
+  "rgb": [
+   0.1,
+   0.2,
+   0.09
+  ],
+  "rough": 1.0
+ },
+ "leaf_oak": {
+  "rgb": [
+   0.5,
+   0.25,
+   0.08
+  ],
+  "rough": 1.0
+ },
+ "leaf_elm": {
+  "rgb": [
+   0.72,
+   0.6,
+   0.15
+  ],
+  "rough": 1.0
+ },
+ "leaf_maple": {
+  "rgb": [
+   0.7,
+   0.2,
+   0.06
+  ],
+  "rough": 1.0
+ },
+ "bark": {
+  "rgb": [
+   0.28,
+   0.22,
+   0.17
+  ],
+  "rough": 1.0,
+  "tex": "walnut_dark",
+  "size_ft": 3,
+  "bump": 0.8
+ },
+ "hydrant_red": {
+  "rgb": [
+   0.7,
+   0.08,
+   0.05
+  ],
+  "rough": 0.4
  }
 }

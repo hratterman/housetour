@@ -1,275 +1,291 @@
 {
-  "textures": {
-    "oak_floor": {
-      "source": "polyhaven",
-      "id": "plank_flooring_02"
-    },
-    "walnut": {
-      "source": "polyhaven",
-      "id": "american_walnut_veneer"
-    },
-    "walnut_dark": {
-      "source": "polyhaven",
-      "id": "black_walnut_veneer_01"
-    },
-    "oak_deck": {
-      "source": "polyhaven",
-      "id": "oak_veneer_01"
-    },
-    "cedar": {
-      "source": "polyhaven",
-      "id": "japanese_cedar_planks"
-    },
-    "plaster": {
-      "source": "polyhaven",
-      "id": "white_plaster_02"
-    },
-    "plaster_rough": {
-      "source": "polyhaven",
-      "id": "plastered_wall_02"
-    },
-    "concrete": {
-      "source": "polyhaven",
-      "id": "concrete_floor_02"
-    },
-    "concrete_wall": {
-      "source": "polyhaven",
-      "id": "concrete_wall_008"
-    },
-    "rubber": {
-      "source": "polyhaven",
-      "id": "rubber_tiles"
-    },
-    "brick": {
-      "source": "polyhaven",
-      "id": "brick_wall_02"
-    },
-    "terrazzo": {
-      "source": "ambientcg",
-      "id": "Terrazzo018"
-    },
-    "terrazzo_fine": {
-      "source": "ambientcg",
-      "id": "Terrazzo013"
-    },
-    "boucle": {
-      "source": "polyhaven",
-      "id": "wool_boucle"
-    },
-    "velvet": {
-      "source": "polyhaven",
-      "id": "velour_velvet"
-    },
-    "linen": {
-      "source": "polyhaven",
-      "id": "rough_linen"
-    },
-    "herringbone": {
-      "source": "polyhaven",
-      "id": "poly_wool_herringbone"
-    },
-    "leather": {
-      "source": "polyhaven",
-      "id": "brown_leather"
-    },
-    "marble": {
-      "source": "polyhaven",
-      "id": "marble_01"
-    },
-    "grass": {
-      "source": "polyhaven",
-      "id": "forest_floor"
-    }
-  },
-  "models": {
-    "sofa_03": {
-      "id": "sofa_03"
-    },
-    "sofa_02": {
-      "id": "sofa_02"
-    },
-    "mid_century_lounge_chair": {
-      "id": "mid_century_lounge_chair"
-    },
-    "modern_arm_chair_01": {
-      "id": "modern_arm_chair_01"
-    },
-    "armchair_01": {
-      "id": "ArmChair_01"
-    },
-    "green_chair_01": {
-      "id": "GreenChair_01"
-    },
-    "ottoman_01": {
-      "id": "Ottoman_01"
-    },
-    "modern_coffee_table_01": {
-      "id": "modern_coffee_table_01"
-    },
-    "modern_coffee_table_02": {
-      "id": "modern_coffee_table_02"
-    },
-    "coffee_table_round_01": {
-      "id": "coffee_table_round_01"
-    },
-    "side_table_01": {
-      "id": "side_table_01"
-    },
-    "side_table_tall_01": {
-      "id": "side_table_tall_01"
-    },
-    "dining_chair_02": {
-      "id": "dining_chair_02"
-    },
-    "bar_chair_round_01": {
-      "id": "bar_chair_round_01"
-    },
-    "metal_stool_01": {
-      "id": "metal_stool_01"
-    },
-    "classic_nightstand_01": {
-      "id": "ClassicNightstand_01"
-    },
-    "painted_wooden_nightstand": {
-      "id": "painted_wooden_nightstand"
-    },
-    "painted_wooden_bench": {
-      "id": "painted_wooden_bench"
-    },
-    "modern_wooden_cabinet": {
-      "id": "modern_wooden_cabinet"
-    },
-    "drawer_cabinet": {
-      "id": "drawer_cabinet"
-    },
-    "desk_lamp_arm_01": {
-      "id": "desk_lamp_arm_01"
-    },
-    "modern_ceiling_lamp_01": {
-      "id": "modern_ceiling_lamp_01"
-    },
-    "potted_plant_01": {
-      "id": "potted_plant_01"
-    },
-    "potted_plant_02": {
-      "id": "potted_plant_02"
-    },
-    "potted_plant_04": {
-      "id": "potted_plant_04"
-    },
-    "calathea_orbifolia_01": {
-      "id": "calathea_orbifolia_01"
-    },
-    "pachira_aquatica_01": {
-      "id": "pachira_aquatica_01"
-    },
-    "fern_02": {
-      "id": "fern_02"
-    },
-    "book_encyclopedia_set_01": {
-      "id": "book_encyclopedia_set_01"
-    },
-    "ceramic_vase_01": {
-      "id": "ceramic_vase_01"
-    },
-    "ceramic_vase_02": {
-      "id": "ceramic_vase_02"
-    },
-    "ceramic_vase_03": {
-      "id": "ceramic_vase_03"
-    },
-    "brass_vase_01": {
-      "id": "brass_vase_01"
-    },
-    "brass_vase_03": {
-      "id": "brass_vase_03"
-    },
-    "brass_candleholders": {
-      "id": "brass_candleholders"
-    },
-    "brass_goblets": {
-      "id": "brass_goblets"
-    },
-    "tea_set_01": {
-      "id": "tea_set_01"
-    },
-    "jug_01": {
-      "id": "jug_01"
-    },
-    "brass_pot_01": {
-      "id": "brass_pot_01"
-    },
-    "vintage_electric_kettle": {
-      "id": "vintage_electric_kettle"
-    },
-    "carrot_cake": {
-      "id": "carrot_cake"
-    },
-    "bananas": {
-      "id": "bananas"
-    },
-    "food_apple_01": {
-      "id": "food_apple_01"
-    },
-    "lemon": {
-      "id": "lemon"
-    },
-    "food_pears_asian_01": {
-      "id": "food_pears_asian_01"
-    },
-    "throw_pillows_01": {
-      "id": "throw_pillows_01"
-    },
-    "chess_set": {
-      "id": "chess_set"
-    },
-    "mantel_clock_01": {
-      "id": "mantel_clock_01"
-    },
-    "marble_bust_01": {
-      "id": "marble_bust_01"
-    },
-    "boombox": {
-      "id": "boombox"
-    },
-    "alarm_clock_01": {
-      "id": "alarm_clock_01"
-    },
-    "rubber_boots": {
-      "id": "rubber_boots"
-    },
-    "hanging_picture_frame_01": {
-      "id": "hanging_picture_frame_01"
-    },
-    "concrete_cat_statue": {
-      "id": "concrete_cat_statue"
-    },
-    "shrub_02": {
-      "id": "shrub_02"
-    },
-    "shrub_03": {
-      "id": "shrub_03"
-    },
-    "shrub_04": {
-      "id": "shrub_04"
-    },
-    "island_tree_01": {
-      "id": "island_tree_01"
-    },
-    "outdoor_table_chair_set_01": {
-      "id": "outdoor_table_chair_set_01"
-    },
-    "planter_box_01": {
-      "id": "planter_box_01"
-    },
-    "planter_pot_clay": {
-      "id": "planter_pot_clay"
-    }
-  },
-  "hdris": {
-    "sky": {
-      "id": "qwantani_late_afternoon_puresky",
-      "res": "2k"
-    }
+ "hdris": {
+  "sky": {
+   "id": "qwantani_late_afternoon_puresky",
+   "res": "2k"
   }
+ },
+ "models": {
+  "alarm_clock_01": {
+   "id": "alarm_clock_01"
+  },
+  "armchair_01": {
+   "id": "ArmChair_01"
+  },
+  "bananas": {
+   "id": "bananas"
+  },
+  "bar_chair_round_01": {
+   "id": "bar_chair_round_01"
+  },
+  "book_encyclopedia_set_01": {
+   "id": "book_encyclopedia_set_01"
+  },
+  "boombox": {
+   "id": "boombox"
+  },
+  "brass_candleholders": {
+   "id": "brass_candleholders"
+  },
+  "brass_goblets": {
+   "id": "brass_goblets"
+  },
+  "brass_pot_01": {
+   "id": "brass_pot_01"
+  },
+  "brass_vase_01": {
+   "id": "brass_vase_01"
+  },
+  "brass_vase_03": {
+   "id": "brass_vase_03"
+  },
+  "calathea_orbifolia_01": {
+   "id": "calathea_orbifolia_01"
+  },
+  "carrot_cake": {
+   "id": "carrot_cake"
+  },
+  "ceramic_vase_01": {
+   "id": "ceramic_vase_01"
+  },
+  "ceramic_vase_02": {
+   "id": "ceramic_vase_02"
+  },
+  "ceramic_vase_03": {
+   "id": "ceramic_vase_03"
+  },
+  "chess_set": {
+   "id": "chess_set"
+  },
+  "classic_nightstand_01": {
+   "id": "ClassicNightstand_01"
+  },
+  "coffee_table_round_01": {
+   "id": "coffee_table_round_01"
+  },
+  "concrete_cat_statue": {
+   "id": "concrete_cat_statue"
+  },
+  "desk_lamp_arm_01": {
+   "id": "desk_lamp_arm_01"
+  },
+  "dining_chair_02": {
+   "id": "dining_chair_02"
+  },
+  "drawer_cabinet": {
+   "id": "drawer_cabinet"
+  },
+  "fern_02": {
+   "id": "fern_02"
+  },
+  "fir_tree_01": {
+   "id": "fir_tree_01",
+   "res": "1k"
+  },
+  "food_apple_01": {
+   "id": "food_apple_01"
+  },
+  "food_pears_asian_01": {
+   "id": "food_pears_asian_01"
+  },
+  "green_chair_01": {
+   "id": "GreenChair_01"
+  },
+  "hanging_picture_frame_01": {
+   "id": "hanging_picture_frame_01"
+  },
+  "island_tree_01": {
+   "id": "island_tree_01"
+  },
+  "island_tree_02": {
+   "id": "island_tree_02",
+   "res": "1k"
+  },
+  "jacaranda_tree": {
+   "id": "jacaranda_tree",
+   "res": "1k"
+  },
+  "jug_01": {
+   "id": "jug_01"
+  },
+  "lemon": {
+   "id": "lemon"
+  },
+  "mantel_clock_01": {
+   "id": "mantel_clock_01"
+  },
+  "marble_bust_01": {
+   "id": "marble_bust_01"
+  },
+  "metal_stool_01": {
+   "id": "metal_stool_01"
+  },
+  "mid_century_lounge_chair": {
+   "id": "mid_century_lounge_chair"
+  },
+  "modern_arm_chair_01": {
+   "id": "modern_arm_chair_01"
+  },
+  "modern_ceiling_lamp_01": {
+   "id": "modern_ceiling_lamp_01"
+  },
+  "modern_coffee_table_01": {
+   "id": "modern_coffee_table_01"
+  },
+  "modern_coffee_table_02": {
+   "id": "modern_coffee_table_02"
+  },
+  "modern_wooden_cabinet": {
+   "id": "modern_wooden_cabinet"
+  },
+  "ottoman_01": {
+   "id": "Ottoman_01"
+  },
+  "outdoor_table_chair_set_01": {
+   "id": "outdoor_table_chair_set_01"
+  },
+  "pachira_aquatica_01": {
+   "id": "pachira_aquatica_01"
+  },
+  "painted_wooden_bench": {
+   "id": "painted_wooden_bench"
+  },
+  "painted_wooden_nightstand": {
+   "id": "painted_wooden_nightstand"
+  },
+  "planter_box_01": {
+   "id": "planter_box_01"
+  },
+  "planter_pot_clay": {
+   "id": "planter_pot_clay"
+  },
+  "potted_plant_01": {
+   "id": "potted_plant_01"
+  },
+  "potted_plant_02": {
+   "id": "potted_plant_02"
+  },
+  "potted_plant_04": {
+   "id": "potted_plant_04"
+  },
+  "rubber_boots": {
+   "id": "rubber_boots"
+  },
+  "shrub_02": {
+   "id": "shrub_02"
+  },
+  "shrub_03": {
+   "id": "shrub_03"
+  },
+  "shrub_04": {
+   "id": "shrub_04"
+  },
+  "side_table_01": {
+   "id": "side_table_01"
+  },
+  "side_table_tall_01": {
+   "id": "side_table_tall_01"
+  },
+  "sofa_02": {
+   "id": "sofa_02"
+  },
+  "sofa_03": {
+   "id": "sofa_03"
+  },
+  "tea_set_01": {
+   "id": "tea_set_01"
+  },
+  "throw_pillows_01": {
+   "id": "throw_pillows_01"
+  },
+  "tree_small_02": {
+   "id": "tree_small_02",
+   "res": "1k"
+  },
+  "vintage_electric_kettle": {
+   "id": "vintage_electric_kettle"
+  }
+ },
+ "textures": {
+  "boucle": {
+   "id": "wool_boucle",
+   "source": "polyhaven"
+  },
+  "brick": {
+   "id": "brick_wall_02",
+   "source": "polyhaven"
+  },
+  "cedar": {
+   "id": "japanese_cedar_planks",
+   "source": "polyhaven"
+  },
+  "concrete": {
+   "id": "concrete_floor_02",
+   "source": "polyhaven"
+  },
+  "concrete_wall": {
+   "id": "concrete_wall_008",
+   "source": "polyhaven"
+  },
+  "grass": {
+   "id": "forest_floor",
+   "source": "polyhaven"
+  },
+  "herringbone": {
+   "id": "poly_wool_herringbone",
+   "source": "polyhaven"
+  },
+  "leather": {
+   "id": "brown_leather",
+   "source": "polyhaven"
+  },
+  "linen": {
+   "id": "rough_linen",
+   "source": "polyhaven"
+  },
+  "marble": {
+   "id": "marble_01",
+   "source": "polyhaven"
+  },
+  "oak_deck": {
+   "id": "oak_veneer_01",
+   "source": "polyhaven"
+  },
+  "oak_floor": {
+   "id": "plank_flooring_02",
+   "source": "polyhaven"
+  },
+  "plaster": {
+   "id": "white_plaster_02",
+   "source": "polyhaven"
+  },
+  "plaster_rough": {
+   "id": "plastered_wall_02",
+   "source": "polyhaven"
+  },
+  "rubber": {
+   "id": "rubber_tiles",
+   "source": "polyhaven"
+  },
+  "terrazzo": {
+   "id": "Terrazzo018",
+   "source": "ambientcg"
+  },
+  "terrazzo_fine": {
+   "id": "Terrazzo013",
+   "source": "ambientcg"
+  },
+  "velvet": {
+   "id": "velour_velvet",
+   "source": "polyhaven"
+  },
+  "walnut": {
+   "id": "american_walnut_veneer",
+   "source": "polyhaven"
+  },
+  "walnut_dark": {
+   "id": "black_walnut_veneer_01",
+   "source": "polyhaven"
+  }
+ }
 }

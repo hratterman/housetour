@@ -9,7 +9,7 @@
 #   DEVICE=CPU|METAL|CUDA|OPTIX|HIP   Cycles device (default: METAL on macOS, CPU elsewhere)
 #   RES=1920x1080 SAMPLES=256   override resolution / samples
 #   STAGE=phase1|phase2         force the box model or the staged house (default: auto)
-#   SHOTS="street main_floor ..." which shots to render (default: all seven spec shots, in order)
+#   SHOTS="block street ..." which shots to render (default: the block establishing shot plus the seven spec shots)
 #   OUT=renders                 output directory
 #   SKIP_FRAMES=1               skip shot rendering, only stitch + stills + sheet
 set -euo pipefail
@@ -36,7 +36,7 @@ fi
 
 OUT="${OUT:-renders}"
 STAGE="${STAGE:-auto}"
-SHOTS="${SHOTS:-street main_floor basement upstairs terrace_dusk bedroom garage}"
+SHOTS="${SHOTS:-block street main_floor basement upstairs terrace_dusk bedroom garage}"
 FPS=$(python3 -c "import json;print(json.load(open('plan.json')).get('fps',24))")
 
 if [ "${PREVIEW:-0}" = "1" ]; then

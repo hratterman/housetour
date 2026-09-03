@@ -283,3 +283,26 @@ lounge opening from the basement hall works. Two more clipping bugs found and fi
 slab-band filler stood 6 in proud of the tower face as a white plaster strip (it assumed a centred wall), and the
 brick foundation band ran through the heads of the basement windows (now cut by the opening). Web viewer
 re-exported for the new program (three floors, multi-part rooms, 14 teleport spots); screenshots checked headless.
+
+## Neighborhood (Henry: "set in the context of other surrounding homes, similar to the north shore villages")
+
+New module neighborhood.py, driven by plan["site"]["neighborhood"] (written in tools/make_plan.py). The block:
+a 30 ft street six inches below the parkways with concrete curb and gutter both sides, 8 ft parkways carrying
+big street trees every ~42 ft (elm, oak, maple, locust cycle, staggered across the street), 5 ft scored
+sidewalks, black acorn lamp posts, a hydrant, curb-cut aprons where houses across the street have side
+driveways, cedar fences between back yards, a couple of front hedges, and rear garages on the alley.
+Twelve neighbours on 60 to 66 ft lots with 30 ft setbacks, six procedural period types with trim, sashes,
+muntins, shutters, porches, dormers and chimneys: brick Georgian (five bays, gabled portico, end chimneys),
+white clapboard colonial with a side wing, Tudor (brick base, stucco and half-timber cross gable, front
+chimney), foursquare (hip roof, hipped dormer, full porch on brick piers), craftsman bungalow (front gable,
+rafter tails, tapered columns), 1950s ranch (painted brick, picture window, attached garage). Our block:
+Tudor, Georgian, foursquare to the west; bungalow, colonial, Tudor to the east. Across: Georgian, foursquare,
+colonial, bungalow, Tudor, ranch. The spec's two placeholder brick boxes are gone.
+Trees: island_tree_01/02 and tree_small_02 (Poly Haven CC0) tinted for autumn by species; a clumped
+procedural crown (trunk, three limbs, 15 clumps in an ellipsoid envelope) when a model is missing; conifers
+as stacked cones. jacaranda_tree and fir_tree_01 were tried and dropped: 200 to 470 MB of geometry each.
+New materials: brick_red, brick_common, brick_painted, stucco_cream, three clapboard sidings (horizontal
+course lines through the stripes overlay, now with an axes option and no metallic), trims, shutters, slate
+and shingle roofs, half timber, dark window glass, leaf colours by species, bark, hydrant red.
+Camera: an 8th shot "block" (10 s) walks the far sidewalk with the neighbours sliding past and settles on
+the house; it now leads the walkthrough. Four review views v19 to v22. All eight paths clear.

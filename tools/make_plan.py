@@ -311,14 +311,76 @@ exterior = {
     "tower": {"b": [TOWER_X0, 0, TOWER_X1, 7.0], "inner": [29, 1, 33, 6], "z_wall_top": 19.0, "z_top": TOWER_TOP,
               "m": "cedar_ext", "reveal": {"m": "bronze_black", "z0": 9.5, "z1": 10.0}},
 }
+# ----------------------------------------------------------------------------- neighborhood (Henry: "set in the context of
+# other surrounding homes, like the North Shore villages"). A village block: 30 ft street with concrete curbs and
+# gutters, 8 ft parkways with big street trees, 5 ft sidewalks, 30 ft setbacks, mixed 1910s-1950s houses, rear
+# garages on the alley, wood fences between back yards. The spec's two brick neighbours become the first two lots.
+def lot(x0, x1, hx0, style, front_y, facing, walk_x, **kw):
+    d = {"x0": x0, "x1": x1, "hx0": hx0, "style": style, "front_y": front_y, "facing": facing, "walk_x": walk_x}
+    d.update(kw)
+    return d
+
+
+NEIGHBORHOOD = {
+    "seed": 1926,
+    "street": {
+        "x": [-230, 270],
+        "curb_y": [-38, -68],                    # north curb (our side), south curb
+        "sidewalks": [[-30, -25], [-81, -76]],
+        "sidewalk_y": [-25, -81],
+        "trees": {"y": [-34, -72], "spacing": 42, "offset": 14, "species": ["elm", "oak", "maple", "elm", "locust"],
+                  "skip_x": [10.5]},
+        "lamps": [[-150, -35.5], [-10, -35.5], [130, -35.5], [-80, -70.5], [60, -70.5], [200, -70.5]],
+        "hydrants": [[26, -33.5]],
+        "aprons": [[-105, -70, -93, -64], [77, -70, 88, -64], [188, -70, 208, -64]],
+    },
+    "lots": [
+        # our block, north side of the street, houses face south
+        lot(-75, -9, -62, "tudor", 1, "s", -38.5, garage={"b": [-56, 78, -34, 100], "m": "brick_common"},
+            trees=[{"pos": [-58, -16], "species": "maple"}]),
+        lot(-140, -75, -126, "georgian", 2, "s", -107, garage={"b": [-120, 78, -98, 100], "m": "brick_red"},
+            trees=[{"pos": [-135, -12], "species": "oak"}]),
+        lot(-205, -140, -188, "foursquare", 3, "s", -182, garage={"b": [-180, 78, -158, 100], "m": "siding_gray"},
+            trees=[{"pos": [-150, -10], "species": "spruce"}]),
+        lot(51, 111, 65, "bungalow", 4, "s", 75.2, garage={"b": [70, 78, 92, 100], "m": "siding_sage"},
+            trees=[{"pos": [105, -14], "species": "maple"}]),
+        lot(111, 171, 118, "colonial", 2, "s", 136, wing="right", garage={"b": [125, 78, 147, 100], "m": "siding_white"},
+            trees=[{"pos": [160, -16], "species": "elm"}]),
+        lot(171, 235, 183, "tudor", 1, "s", 206.5, wall_m="brick_red", garage={"b": [190, 78, 212, 100], "m": "brick_red"}),
+        # across the street, houses face north; a few have side driveways to rear garages
+        lot(-150, -90, -144, "georgian", -111, "n", -125, wall_m="brick_common", shutter_m="shutter_green", portico="flat",
+            driveway={"x": -104, "w": 10, "y": [-81, -160]}, garage={"b": [-104, -160, -84, -140], "m": "brick_common", "door_side": "n"},
+            trees=[{"pos": [-140, -95], "species": "oak"}]),
+        lot(-90, -30, -75, "foursquare", -112, "n", -69, wall_m="stucco_cream", roof_m="shingle_brown",
+            trees=[{"pos": [-36, -100], "species": "maple"}]),
+        lot(-30, 30, -12, "colonial", -110, "n", 6, wing="left", shutter_m="shutter_black",
+            trees=[{"pos": [26, -96], "species": "elm"}]),
+        lot(30, 90, 44, "bungalow", -108, "n", 54.2, wall_m="siding_gray", roof_m="shingle_dark",
+            driveway={"x": 78, "w": 9, "y": [-81, -150]}, garage={"b": [70, -152, 90, -132], "m": "siding_gray", "door_side": "n"}),
+        lot(90, 150, 100, "tudor", -111, "n", 123.5, trees=[{"pos": [146, -96], "species": "oak"}]),
+        lot(150, 215, 153, "ranch", -114, "n", 177, driveway={"x": 189, "w": 18, "y": [-81, -112]}),
+    ],
+    "fences": [
+        {"b": [-9.3, 46, -8.7, 100]}, {"b": [-75.3, 40, -74.7, 100]}, {"b": [-140.3, 40, -139.7, 100]},
+        {"b": [110.7, 40, 111.3, 100]}, {"b": [170.7, 40, 171.3, 100]},
+        {"b": [-90.3, -200, -89.7, -125]}, {"b": [29.7, -200, 30.3, -125]},
+    ],
+    "hedges": [
+        {"b": [-150, -83.5, -92, -82.5], "h": 3.0}, {"b": [-205, -24, -142, -23], "h": 2.5},
+    ],
+    "trees": [
+        {"pos": [-40, 62], "species": "oak"}, {"pos": [132, 52], "species": "elm"}, {"pos": [-118, -140], "species": "oak"},
+        {"pos": [-160, 40], "species": "maple"}, {"pos": [225, 30], "species": "oak"}, {"pos": [120, -150], "species": "elm"},
+        {"pos": [-60, -150], "species": "maple"}, {"pos": [200, -100], "species": "spruce"},
+    ],
+}
+
 # ----------------------------------------------------------------------------- site  spec 1
 site = {
     "grade_z": -0.5,
     "lot": [-9, -30, 51, 140],
-    "ground": {"m": "lawn", "b": [-70, -60, 110, 150]},
+    "ground": {"m": "lawn", "b": [-240, -240, 280, 150]},
     "slabs": [
-        {"note": "sidewalk", "b": [-70, -30, 110, -25], "z": -0.45, "t": 0.4, "m": "concrete_sealed"},
-        {"note": "street", "b": [-70, -60, 110, -30], "z": -0.95, "t": 0.4, "m": "asphalt", "cut_ground": True},  # 6 in curb
         {"note": "front walk", "b": [8, -25, 13, -7], "z": -0.42, "t": 0.3, "m": "bluestone"},
         {"note": "porch step 1", "b": [4, -7, 22, -6.5], "z": -0.3, "t": 0.5, "m": "bluestone"},
         {"note": "porch step 2", "b": [4, -6.5, 22, -6], "z": -0.2, "t": 0.5, "m": "bluestone"},
@@ -331,7 +393,7 @@ site = {
         {"note": "terrace", "b": [0, 46, 42, 62], "z": -0.3, "t": 0.4, "m": "bluestone"},
         {"note": "catio floor", "b": [42, 33, 48, 41], "z": -0.3, "t": 0.3, "m": "bluestone"},
         {"note": "driveway apron", "b": [-6, 94, 18, 100], "z": -0.42, "t": 0.3, "m": "concrete_sealed"},
-        {"note": "alley", "b": [-70, 100, 110, 116], "z": -0.7, "t": 0.4, "m": "asphalt", "cut_ground": True},
+        {"note": "alley", "b": [-230, 100, 270, 116], "z": -0.7, "t": 0.4, "m": "asphalt", "cut_ground": True},
         {"note": "lawn rectangle (edged)", "b": [18, 64, 42, 94], "z": -0.46, "t": 0.1, "m": "lawn"},
     ],
     "beds": [
@@ -349,10 +411,8 @@ site = {
         {"note": "honey locust", "pos": [30, 110], "trunk_d": 1.2, "canopy_r": 15, "canopy_z": 14},
         {"note": "japanese maple", "pos": [9, 64], "trunk_d": 0.6, "canopy_r": 6, "canopy_z": 4, "autumn": True},
     ],
-    "neighbors": [
-        {"note": "west neighbor", "b": [-55, 0, -20, 40], "eave_z": 20, "ridge_z": 28, "ridge_axis": "y", "m": "roman_brick"},
-        {"note": "east neighbor", "b": [60, 0, 95, 40], "eave_z": 20, "ridge_z": 28, "ridge_axis": "y", "m": "roman_brick"},
-    ],
+    "neighbors": [],   # replaced by the neighborhood block below
+    "neighborhood": NEIGHBORHOOD,
     "structures": [
         {"note": "swim spa shell", "kind": "box", "b": [30, 50, 37.5, 64, -3.3, 1.2], "m": "steel_black"},
         {"note": "swim spa water", "kind": "box", "b": [30.3, 50.3, 37.2, 63.7, 0.85, 0.9], "m": "water_teal"},
@@ -375,6 +435,9 @@ lighting = {"fill_scale": {"main": 0.35, "second": 0.35, "basement": 1.2, "garag
             "fill_kelvin": 3000}
 camera = {"focal_mm": 24, "sensor_mm": 36, "exposure": 0.0, "fstop": 4.0, "handheld_ft": 0.06}
 shots = [
+    {"name": "block", "seconds": 10, "exposure": -0.3, "path": [
+        {"t": 0, "pos": [-46, -79, 5.5], "look": [-10, -20, 12]}, {"t": 5, "pos": [-20, -78.5, 5.5], "look": [12, -6, 10]},
+        {"t": 10, "pos": [4, -78, 5.5], "look": [20, 0, 9]}]},
     {"name": "street", "seconds": 12, "exposure": -0.3, "path": [
         {"t": 0, "pos": [10.5, -34, 5.5], "look": [14, 0, 6]}, {"t": 4, "pos": [10.5, -22, 5.5], "look": [12, 0, 5]},
         {"t": 8, "pos": [10.5, -12, 5.5], "look": [11, 0, 4.5]}, {"t": 12, "pos": [11, -6.5, 5.5], "look": [11, 0, 4]}]},
@@ -411,7 +474,7 @@ shots = [
         {"t": 8, "pos": [-2, 78, 5.5], "look": [6, 66, 3.5]}]},
 ]
 stills = [
-    {"name": "01_street_end", "shot": "street", "t": 12}, {"name": "02_main_kitchen", "shot": "main_floor", "t": 13},
+    {"name": "00_block_end", "shot": "block", "t": 10}, {"name": "01_street_end", "shot": "street", "t": 12}, {"name": "02_main_kitchen", "shot": "main_floor", "t": 13},
     {"name": "03_main_living", "shot": "main_floor", "t": 21}, {"name": "04_main_end", "shot": "main_floor", "t": 26},
     {"name": "05_basement_gym", "shot": "basement", "t": 13}, {"name": "06_basement_lounge", "shot": "basement", "t": 22},
     {"name": "07_basement_end", "shot": "basement", "t": 24}, {"name": "08_upstairs_rack", "shot": "upstairs", "t": 11},
@@ -437,6 +500,10 @@ views = [
     {"name": "v16_exterior_front", "pos": [16, -46, 6], "look": [20, 6, 9]},
     {"name": "v17_exterior_rear", "pos": [34, 84, 8], "look": [14, 46, 8]},
     {"name": "v18_garage", "pos": [6, 104, 6], "look": [4, 80, 6]},
+    {"name": "v19_block_west", "pos": [-70, -84, 6], "look": [21, -2, 12]},
+    {"name": "v20_aerial_block", "pos": [21, -190, 130], "look": [21, 10, 0]},
+    {"name": "v21_across", "pos": [21, -95, 5.5], "look": [21, 0, 9]},
+    {"name": "v22_street_east", "pos": [130, -56, 5.5], "look": [0, -32, 9]},
 ]
 
 
@@ -450,7 +517,7 @@ plan = {
     "no_baseboard": ["gym", "mechanical", "battery", "storage", "gear_closet", "coat_closet", "panel_closet", "elevator_closet",
                      "elevator_closet2", "litter_closet", "closet_a", "closet_b", "linen", "rack_closet", "garage", "up_laundry", "sauna"],
     "exterior": exterior, "site": site, "lighting": lighting, "camera": camera,
-    "sun": {"direction": [0.35, -0.55, -0.75], "strength": 2.0},
+    "sun": {"direction": [0.5, 0.6, -0.62], "strength": 2.0},   # afternoon sun from the south-west: lights the street fronts
     "shots": shots, "stills": stills, "views": views, "questions": Q,
 }
 

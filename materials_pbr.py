@@ -225,7 +225,7 @@ class PBRLibrary:
             links.new(mp.outputs["Vector"], sep.inputs[0])
             width = ov.get("width", 0.02)
             masks = []
-            for axis in (0, 1):
+            for axis in ov.get("axes", (0, 1)):        # axes [2] = horizontal courses (clapboard, standing seam on a wall)
                 fr = nodes.new("ShaderNodeMath")
                 fr.operation = "FRACT"
                 links.new(sep.outputs[axis], fr.inputs[0])
@@ -234,11 +234,14 @@ class PBRLibrary:
                 lt.inputs[1].default_value = width
                 links.new(fr.outputs[0], lt.inputs[0])
                 masks.append(lt.outputs[0])
-            mx = nodes.new("ShaderNodeMath")
-            mx.operation = "MAXIMUM"
-            links.new(masks[0], mx.inputs[0])
-            links.new(masks[1], mx.inputs[1])
-            mask = mx.outputs[0]
+            if len(masks) > 1:
+                mx = nodes.new("ShaderNodeMath")
+                mx.operation = "MAXIMUM"
+                links.new(masks[0], mx.inputs[0])
+                links.new(masks[1], mx.inputs[1])
+                mask = mx.outputs[0]
+            else:
+                mask = masks[0]
             brass = const_color(ov.get("rgb", [0.85, 0.62, 0.30]))
             mix = nodes.new("ShaderNodeMix")
             mix.data_type = "RGBA"
@@ -246,6 +249,8 @@ class PBRLibrary:
             links.new(base, mix.inputs[6])
             links.new(brass, mix.inputs[7])
             links.new(mix.outputs[2], bsdf.inputs["Base Color"])
+            if not ov.get("metallic", True):
+                return
             links.new(mask, bsdf.inputs["Metallic"])
             rm = nodes.new("ShaderNodeMix")
             rm.data_type = "FLOAT"

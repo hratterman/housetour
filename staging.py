@@ -125,13 +125,27 @@ class Stager:
             return None
         mesh = proto.data
         if e.get("tint") or e.get("recolor"):
-            mesh = mesh.copy()
-            for i, mt in enumerate(mesh.materials):
-                if mt is None:
-                    continue
-                mt2 = mt.copy()
-                self.tint_material(mt2, e.get("tint"), e.get("recolor"))
-                mesh.materials[i] = mt2
+            # one tinted copy per (asset, tint, recolor): every placement shares it, so Cycles instances the mesh
+            key = (e["asset"], tuple(e.get("tint") or ()), tuple(e.get("recolor") or ()))
+            cache = getattr(self, "_tinted", None)
+            if cache is None:
+                cache = self._tinted = {}
+            if key not in cache:
+                mesh = mesh.copy()
+                only = e.get("tint_only")   # substrings of material names to tint (e.g. leaves, not bark)
+                names = [mt.name.lower() for mt in mesh.materials if mt is not None]
+                if only and not any(any(o in nm for o in only) for nm in names):
+                    only = None
+                for i, mt in enumerate(mesh.materials):
+                    if mt is None:
+                        continue
+                    if only and not any(o in mt.name.lower() for o in only):
+                        continue
+                    mt2 = mt.copy()
+                    self.tint_material(mt2, e.get("tint"), e.get("recolor"))
+                    mesh.materials[i] = mt2
+                cache[key] = mesh
+            mesh = cache[key]
         ob = bpy.data.objects.new(self.uid(e["asset"]), mesh)
         self.col.objects.link(ob)
         sz = proto["size_m"]
