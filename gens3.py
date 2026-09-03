@@ -359,8 +359,9 @@ class Gens3:
         L, W, H = e.get("length", 15.5), e.get("width", 6.2), e.get("height", 5.4)
         kind = e.get("kind", "suv")
         rot = e.get("rot_z", 0)
-        paint = self.mat(e.get("m", "car_white"))
-        glass = self.mat("screen_dark")
+        covered = e.get("covered", False)          # a fitted fabric car cover: hides the procedural body honestly
+        paint = self.mat("car_cover" if covered else e.get("m", "car_white"))
+        glass = self.mat("car_cover" if covered else "screen_dark")
         tire = self.mat("tire")
         objs = []
         # side profile in (y, z) local, y from -L/2 (rear) to +L/2 (nose)
@@ -382,9 +383,10 @@ class Gens3:
             cabin = [(-L / 2 + 0.4, bh), (-L / 2 + 1.0, H), (L * 0.15, H), (L * 0.32, bh)]
             cab_w = W * 0.9
         # build in local space then rotate: use prism_yz for the body (extruded along local X)
-        body = prism_yz(self.uid("car_body"), prof, -W / 2 + 0.15, W / 2 - 0.15, paint, self.col)
-        cab = prism_yz(self.uid("car_cabin"), cabin, -cab_w / 2, cab_w / 2, glass, self.col)
-        pillars = prism_yz(self.uid("car_roof"), [(cabin[1][0] + 0.2, H - 0.02), (cabin[2][0] - 0.2, H - 0.02), (cabin[2][0] - 0.2, H + 0.04), (cabin[1][0] + 0.2, H + 0.04)], -cab_w / 2 + 0.05, cab_w / 2 - 0.05, paint, self.col)
+        tag = "car_cover_" if covered else "car_"
+        body = prism_yz(self.uid(tag + "body"), prof, -W / 2 + 0.15, W / 2 - 0.15, paint, self.col)
+        cab = prism_yz(self.uid(tag + "cabin"), cabin, -cab_w / 2, cab_w / 2, glass, self.col)
+        pillars = prism_yz(self.uid(tag + "roof"), [(cabin[1][0] + 0.2, H - 0.02), (cabin[2][0] - 0.2, H - 0.02), (cabin[2][0] - 0.2, H + 0.04), (cabin[1][0] + 0.2, H + 0.04)], -cab_w / 2 + 0.05, cab_w / 2 - 0.05, paint, self.col)
         parts = [body, cab, pillars]
         # wheels
         wr = 1.15 if kind != "roadster" else 1.0
@@ -395,13 +397,14 @@ class Gens3:
                 rim = cylinder_ft(self.uid("car_rim"), (sx - 0.36, sy, wr), wr * 0.62, 0.72, self.mat("chrome_dark"), self.col, 20, axis="X")
                 # wheel arch cut is skipped; the body bottom sits above the wheel centres
                 parts += [t, rim]
-        # lights and details
-        for sx in (-W * 0.32, W * 0.32):
+        # lights and details (none under a cover)
+        for sx in ((-W * 0.32, W * 0.32) if not covered else ()):
             parts.append(box_ft(self.uid("car_headlight"), sx - 0.45, L / 2 - 0.05, sx + 0.45, L / 2 + 0.03, bh * 0.55, bh * 0.75, self.mat("glass_frosted"), self.col))
             parts.append(box_ft(self.uid("car_taillight"), sx - 0.45, -L / 2 - 0.03, sx + 0.45, -L / 2 + 0.05, bh * 0.6, bh * 0.85, self.mat("rubber_red"), self.col))
-        parts.append(box_ft(self.uid("car_grille"), -W * 0.3, L / 2 - 0.02, W * 0.3, L / 2 + 0.02, gc + 0.3, bh * 0.5, self.mat("steel_black"), self.col))
-        parts.append(box_ft(self.uid("car_plate"), -0.5, -L / 2 - 0.03, 0.5, -L / 2 - 0.01, bh * 0.3, bh * 0.45, self.mat("paper"), self.col))
-        for sx in (-W / 2 + 0.16, W / 2 - 0.22):
+        if not covered:
+            parts.append(box_ft(self.uid("car_grille"), -W * 0.3, L / 2 - 0.02, W * 0.3, L / 2 + 0.02, gc + 0.3, bh * 0.5, self.mat("steel_black"), self.col))
+            parts.append(box_ft(self.uid("car_plate"), -0.5, -L / 2 - 0.03, 0.5, -L / 2 - 0.01, bh * 0.3, bh * 0.45, self.mat("paper"), self.col))
+        for sx in ((-W / 2 + 0.16, W / 2 - 0.22) if not covered else ()):
             parts.append(box_ft(self.uid("car_mirror"), sx - 0.1, L * 0.14, sx + 0.16, L * 0.14 + 0.6, bh + 0.2, bh + 0.65, paint, self.col))
         # place: move everything by pos and rotate about Z
         for ob in parts:

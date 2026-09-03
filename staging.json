@@ -6713,7 +6713,8 @@
 "width": 5.4,
 "height": 4.0,
 "rot_z": 0,
-"m": "car_green"
+"m": "car_green",
+"covered": true
 },
 {
 "asset": "proc:car",

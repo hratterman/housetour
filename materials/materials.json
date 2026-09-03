@@ -2286,5 +2286,18 @@
   "bump": 1.0,
   "rough_var": 0.3,
   "sheen": 0.2
+ },
+ "car_cover": {
+  "rgb": [
+   0.55,
+   0.56,
+   0.58
+  ],
+  "rough": 0.95,
+  "sheen": 0.5,
+  "tex": "linen",
+  "paint": true,
+  "size_ft": 2,
+  "bump": 0.5
  }
 }

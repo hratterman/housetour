@@ -286,7 +286,7 @@ def garage():
     # garage walls are 1 ft inside the lines: faces X -5 / 17, Y 65 / 93
     note("garage")
     proc("lift", "garage", posts=[[-4.5, 68], [4.5, 68], [-4.5, 84], [4.5, 84]], runways=[[-3.8, -2.1], [2.1, 3.8]], y=[66, 86], z=z, runway_z=5.5)
-    proc("car", "garage", pos=[0.0, 76.8, z + 5.5], kind="roadster", length=14.5, width=5.4, height=4.0, rot_z=0, m="car_green")
+    proc("car", "garage", pos=[0.0, 76.8, z + 5.5], kind="roadster", length=14.5, width=5.4, height=4.0, rot_z=0, m="car_green", covered=True)   # stored under a fitted cover
     proc("car", "garage", pos=[0.0, 73.75, z], kind="suv", length=15.5, width=6.3, height=5.6, rot_z=0, m="car_white")
     proc("car", "garage", pos=[12.0, 73.75, z], kind="sedan", length=15.5, width=6.1, height=4.7, rot_z=0, m="car_gray")
     proc("charger", "garage", wall=W("y", 18.0, "-x"), u=70.0, z=z + 4.0)
