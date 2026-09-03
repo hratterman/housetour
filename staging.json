@@ -2804,7 +2804,43 @@
 "wall_is_face": true,
 "u": 13.5,
 "z": 6.5,
-"watts": 14
+"watts": 22
+},
+{
+"asset": "proc:soffit_downlight",
+"room": "vestibule",
+"pos": [
+7.0,
+-4.0,
+9.95
+],
+"watts": 14,
+"angle": 50,
+"kelvin": 3000
+},
+{
+"asset": "proc:soffit_downlight",
+"room": "vestibule",
+"pos": [
+13.0,
+-4.0,
+9.95
+],
+"watts": 14,
+"angle": 50,
+"kelvin": 3000
+},
+{
+"asset": "proc:soffit_downlight",
+"room": "vestibule",
+"pos": [
+19.0,
+-4.0,
+9.95
+],
+"watts": 14,
+"angle": 50,
+"kelvin": 3000
 },
 {
 "asset": "proc:house_numbers",
