@@ -1045,6 +1045,15 @@ def main():
         log("details %.1fs" % (time.time() - t1)); t1 = time.time()
         staging.build(plan, house, mats, args.staging)
         log("staging %.1fs" % (time.time() - t1)); t1 = time.time()
+        import archdetail
+        from geom import get_collection as _gc
+        _n = [0]
+
+        def _ad_uid(base):
+            _n[0] += 1
+            return "ad_%s_%04d" % (base, _n[0])
+        _objs, _counts = archdetail.build(plan, mats.get, _gc("details"), _ad_uid)
+        log("architectural detail:", ", ".join("%s %d" % kv for kv in _counts.items()), "(%.1fs)" % (time.time() - t1)); t1 = time.time()
         import lighting
         lighting.build(plan, house, mats)
         if not args.no_bevel:
