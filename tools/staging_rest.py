@@ -102,7 +102,7 @@ def second_floor():
     proc("wall_finish", "kid_bath_sink", wall=W("x", 28.0, "-y"), span=[28.3, 34.7], z=[z + 4.0, z + 8.9], m="mustard_paint")
     proc("vanity2", "kid_bath_sink", wall=W("x", 28.0, "-y"), span=[29.0, 34.7], top_z=z + 2.5, depth=1.5, sinks=[30.4, 33.3],
          sconces=[29.5, 34.2], sconce_z=z + 6.0, mirror_z=[z + 3.3, z + 6.6], glow_watts=12, top_m="marble_white")
-    model("wooden_stool_01", (32.0, 25.5, z), "kid_bath_sink", height_ft=1.0)
+    model("wooden_stool_01", (29.4, 26.6, z), "kid_bath_sink", height_ft=1.0)   # step stool beside the vanity
     proc("towel_bar", "kid_bath_sink", wall=W("x", 19.0, "+y"), u=31.5, z=z + 3.8, length=2.5, towels=["towel_white", "wool_mustard"])
     proc("basket", "kid_bath_sink", pos=[29.0, 20.0, z], radius=0.6, height=2.0, throw_m="linen_white")
     proc("wall_finish", "kid_bath_tub", wall=W("x", 28.0, "-y"), span=[35.3, 41.0], z=[z, z + 7.0], m="tile_white")
