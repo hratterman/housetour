@@ -7,6 +7,7 @@ Conventions (feet, absolute Z unless a 'room' is given for floor_z):
             face is the direction the object projects INTO the room from that wall
 Every light-emitting piece registers a practical with self.light(...) so lighting.py builds a real source.
 """
+import softgoods as sg
 import math
 import random
 
@@ -30,16 +31,21 @@ class Gens2:
         z = e["z"]
         mat = self.mat(e.get("m", "wool_mustard"))
         rot = e.get("rot_z", 0)
-        objs = [box_centered(self.uid("throw_fold"), ((x0 + x1) / 2, (y0 + y1) / 2, z + 0.12), (x1 - x0, y1 - y0, 0.24), rot, mat, self.col)]
         drop = e.get("drop", 1.2)
         side = e.get("hang", "+x")
-        if side in ("+x", "-x"):
-            hx = x1 if side == "+x" else x0
-            objs.append(box_centered(self.uid("throw_hang"), (hx + (0.1 if side == "+x" else -0.1), (y0 + y1) / 2, z + 0.12 - drop / 2), (0.2, (y1 - y0) * 0.9, drop), rot, mat, self.col))
+        seed = int(abs(x0 * 13 + y0 * 7))
+        if not side:
+            return [sg.slab(self.uid("sg_throw"), ((x0 + x1) / 2, (y0 + y1) / 2, z + 0.1), (x1 - x0, y1 - y0, 0.2), mat, self.col,
+                            rot=(0, 0, math.radians(rot)), puff=0.3, edge=5.0, seed=seed)]
+        if side == "+x":
+            p0, p1, out, top = (x1, y0, z + 0.02), (x1, y1, z + 0.02), (1, 0), x1 - x0
+        elif side == "-x":
+            p0, p1, out, top = (x0, y0, z + 0.02), (x0, y1, z + 0.02), (-1, 0), x1 - x0
+        elif side == "+y":
+            p0, p1, out, top = (x0, y1, z + 0.02), (x1, y1, z + 0.02), (0, 1), y1 - y0
         else:
-            hy = y1 if side == "+y" else y0
-            objs.append(box_centered(self.uid("throw_hang"), ((x0 + x1) / 2, hy + (0.1 if side == "+y" else -0.1), z + 0.12 - drop / 2), ((x1 - x0) * 0.9, 0.2, drop), rot, mat, self.col))
-        return objs
+            p0, p1, out, top = (x0, y0, z + 0.02), (x1, y0, z + 0.02), (0, -1), y1 - y0
+        return [sg.drape(self.uid("sg_throw"), p0, p1, out, top, drop, 0.07, mat, self.col, edge_r=0.15, seed=seed)]
 
     def _room_floor(self, room):
         for r in self.plan.get("rooms", []):
@@ -269,23 +275,35 @@ class Gens2:
                 u = y0 + i * (y1 - y0) / nd
                 fx = (x1 - 0.005, x1 + 0.01) if face == "+x" else (x0 - 0.01, x0 + 0.005)
                 objs.append(box_ft(self.uid("reveal"), fx[0], u - 0.01, fx[1], u + 0.01, z0 + 0.15, z1 - 0.2, self.mat("black"), self.col))
-        cush = box_ft(self.uid("bench_cush"), x0 + 0.05, y0 + 0.05, x1 - 0.05, y1 - 0.05, z1 - 0.05, z1 + e.get("cushion_t", 0.33), self.mat(e.get("cushion_m", "wool_mustard")), self.col)
-        objs.append(cush)
+        ct = e.get("cushion_t", 0.33)
+        objs.append(sg.slab(self.uid("sg_bench_cush"), ((x0 + x1) / 2, (y0 + y1) / 2, z1 - 0.05 + ct / 2), (x1 - x0 - 0.1, y1 - y0 - 0.1, ct),
+                            self.mat(e.get("cushion_m", "wool_mustard")), self.col, puff=0.15, sag=0.05, seed=e.get("seed", 4)))
         rng = random.Random(e.get("seed", 4))
         mats = e.get("pillow_mats", ["velvet_teal", "wool_oatmeal", "oxblood"])
+        ztop = z1 - 0.05 + ct
+        t = 0.36
         for i in range(e.get("pillows", 2)):
             s = rng.uniform(1.2, 1.6)
-            # pillows lean against the wall side
+            d = s * 0.95
+            a = math.radians(rng.uniform(64, 72))
+            yaw = math.radians(rng.uniform(-8, 8))
+            gap = 0.04 + (d / 2) * math.cos(a) + (t / 2) * math.sin(a)
+            zc = ztop + (d / 2) * math.sin(a) + (t / 2) * math.cos(a) - 0.02
+            # pillows lean back against the wall side (the seat faces the room)
             if face in ("-y", "+y"):
                 px = rng.uniform(x0 + s / 2 + 0.2, x1 - s / 2 - 0.2)
-                py = y0 + 0.45 if face == "+y" else y1 - 0.45
-                ob = box_centered(self.uid("pillow"), (px, py, z1 + 0.33 + s * 0.45), (s, 0.35, s * 0.9), rng.uniform(-8, 8), self.mat(mats[i % len(mats)]), self.col)
-                ob.rotation_euler = (math.radians(-18 if face == "+y" else 18), 0, math.radians(rng.uniform(-8, 8)))
+                if face == "+y":
+                    py, rot = y0 + gap, (-a, 0, yaw)
+                else:
+                    py, rot = y1 - gap, (a, 0, yaw)
+                ob = sg.pillow(self.uid("sg_pillow"), (px, py, zc), (s, d, t), self.mat(mats[i % len(mats)]), self.col, rot=rot, seed=e.get("seed", 4) * 7 + i)
             else:
                 py = rng.uniform(y0 + s / 2 + 0.2, y1 - s / 2 - 0.2)
-                px = x0 + 0.45 if face == "+x" else x1 - 0.45
-                ob = box_centered(self.uid("pillow"), (px, py, z1 + 0.33 + s * 0.45), (0.35, s, s * 0.9), rng.uniform(-8, 8), self.mat(mats[i % len(mats)]), self.col)
-                ob.rotation_euler = (0, math.radians(18 if face == "+x" else -18), math.radians(rng.uniform(-8, 8)))
+                if face == "+x":
+                    px, rot = x0 + gap, (0, a, yaw)
+                else:
+                    px, rot = x1 - gap, (0, -a, yaw)
+                ob = sg.pillow(self.uid("sg_pillow"), (px, py, zc), (d, s, t), self.mat(mats[i % len(mats)]), self.col, rot=rot, seed=e.get("seed", 4) * 7 + i)
             objs.append(ob)
         if e.get("books", 2):
             bx = x0 + (x1 - x0) * 0.72
@@ -312,8 +330,10 @@ class Gens2:
             ob.rotation_euler = (0, 0, math.radians(rot))
             objs.append(ob)
         # front is -y in local space (sitter faces -y)
-        part("ch_seat_cushion", 0.25, 0.3, W - 0.25, D - 0.5, 1.05, 1.45, fab)
-        part("ch_back", 0.25, D - 0.65, W - 0.25, D - 0.3, 1.3, 2.9, fab)
+        objs.append(sg.slab(self.uid("sg_ch_seat"), (0, (D - 0.2) / 2 - D / 2, 1.25), (W - 0.5, D - 0.8, 0.4), fab, self.col,
+                            origin_ft=p, rot_z_deg=rot, puff=0.2, sag=0.08, seed=int(p[0] * 3)))
+        objs.append(sg.slab(self.uid("sg_ch_back"), (0, D - 0.475 - D / 2, 2.1), (W - 0.5, 1.6, 0.35), fab, self.col,
+                            rot=(math.radians(80), 0, 0), origin_ft=p, rot_z_deg=rot, puff=0.3, seed=int(p[1] * 3)))
         part("ch_arm", 0.0, 0.3, 0.22, D - 0.3, 1.5, 2.0, wood)
         part("ch_arm", W - 0.22, 0.3, W, D - 0.3, 1.5, 2.0, wood)
         part("ch_frame", 0.1, 0.35, W - 0.1, D - 0.45, 0.85, 1.05, wood)
@@ -411,7 +431,8 @@ class Gens2:
 
     def gen_ottoman(self, e):
         p = e["pos"]
-        objs = [box_centered(self.uid("ott_cushion"), (p[0], p[1], p[2] + 1.05), (2.1, 1.8, 0.45), e.get("rot_z", 0), self.mat(e.get("m", "leather_brown")), self.col),
+        objs = [sg.slab(self.uid("sg_ott_cushion"), (0, 0, 1.275), (2.1, 1.8, 0.45), self.mat(e.get("m", "leather_brown")), self.col,
+                        origin_ft=p, rot_z_deg=e.get("rot_z", 0), puff=0.35),
                 box_centered(self.uid("ott_shell"), (p[0], p[1], p[2] + 0.75), (2.15, 1.85, 0.15), e.get("rot_z", 0), self.mat("walnut_h"), self.col),
                 cylinder_ft(self.uid("ott_base"), p, 0.7, 0.7, self.mat("steel_black"), self.col, 20)]
         if e.get("throw_m"):
@@ -465,40 +486,42 @@ class Gens2:
             return ob
         part("bed_platform", -0.5, -0.4, W + 0.5, L, plat_h - 0.35, plat_h, wood)
         part("bed_plinth", 0.4, 0.5, W - 0.4, L - 0.3, 0, plat_h - 0.35, self.mat("black"))
-        part("bed_mattress", 0, 0, W, L, plat_h, matt_top, lin)
-        # fitted sheet edge line
-        part("bed_sheet", -0.02, -0.02, W + 0.02, L + 0.02, plat_h + 0.02, matt_top - 0.35, lin)
-        # duvet: thrown back on one side (state 'thrown') or flat
-        # the duvet drapes over the exposed edges: thin drop panels hang from the top slab down the sides
-        drop = 0.85
+        # mattress with rounded edges (the fitted sheet is its material); softgoods work in the bed's local
+        # frame (centre of the footprint, head toward +Y) and take the bed's yaw as the object rotation
+        seed = e.get("seed", 8)
+        objs.append(sg.slab(self.uid("sg_mattress"), (0, 0, (plat_h + matt_top) / 2), (W, L, matt_top - plat_h), lin, self.col,
+                            origin_ft=p, rot_z_deg=rot, puff=0.02, edge=14, n=12))
+        T = 0.16                                     # duvet thickness
         if e.get("duvet", "flat") == "thrown":
-            part("bed_duvet", W * 0.42, -0.3, W + 0.35, L - 2.3, matt_top, matt_top + 0.42, duv, rz=rng.uniform(-3, 3))
-            part("bed_duvet_drop", W + 0.2, -0.3, W + 0.36, L - 2.3, matt_top - drop, matt_top + 0.1, duv)
-            part("bed_duvet_drop", W * 0.42, -0.31, W + 0.36, -0.15, matt_top - drop, matt_top + 0.1, duv)
-            part("bed_duvet", W * 0.1, L * 0.35, W * 0.55, L - 2.4, matt_top, matt_top + 0.6, duv, rz=rng.uniform(-12, -4))  # folded-back roll
-            part("bed_duvet", -0.3, -0.3, W * 0.5, L * 0.35, matt_top, matt_top + 0.25, duv, rz=rng.uniform(-2, 2))
-            part("bed_duvet_drop", -0.31, -0.3, -0.15, L * 0.35, matt_top - drop * 0.6, matt_top + 0.05, duv)
+            xa = W * 0.42 - W / 2
+            objs.append(sg.duvet(self.uid("sg_duvet"), (xa, -L / 2, W / 2, L / 2 - 2.3), matt_top, {"+x": 0.85, "-y": 0.85}, T, duv, self.col,
+                                 origin_ft=p, rot_z_deg=rot, seed=seed))
+            objs.append(sg.duvet_fold(self.uid("sg_duvet_fold"), -L / 2 + 0.2, L / 2 - 2.4, xa, 1.1, matt_top, T, duv, self.col, axis="x", toward=1,
+                                      origin_ft=p, rot_z_deg=rot, seed=seed + 1))
         else:
-            # made bed: one duvet slab to just below the pillows, its top edge folded back as a soft roll,
-            # dropping over both sides and the foot
-            part("bed_duvet", -0.3, -0.3, W + 0.3, L - 2.2, matt_top, matt_top + 0.35, duv, rz=rng.uniform(-1, 1))
-            part("bed_duvet_fold", -0.3, L - 3.0, W + 0.3, L - 2.15, matt_top + 0.3, matt_top + 0.75, duv)
-            part("bed_duvet_drop", W + 0.15, -0.3, W + 0.31, L - 2.2, matt_top - drop, matt_top + 0.1, duv)
-            part("bed_duvet_drop", -0.31, -0.3, -0.15, L - 2.2, matt_top - drop, matt_top + 0.1, duv)
-            part("bed_duvet_drop", -0.3, -0.31, W + 0.3, -0.15, matt_top - drop, matt_top + 0.1, duv)
-        # pillows: two rows
+            # made bed: the duvet to just below the pillows, folded back at the head, over both sides and the foot
+            objs.append(sg.duvet(self.uid("sg_duvet"), (-W / 2, -L / 2, W / 2, L / 2 - 2.2), matt_top, {"-x": 0.85, "+x": 0.85, "-y": 0.85}, T, duv, self.col,
+                                 origin_ft=p, rot_z_deg=rot, seed=seed))
+            objs.append(sg.duvet_fold(self.uid("sg_duvet_fold"), -W / 2 - 0.06, W / 2 + 0.06, L / 2 - 2.2, 1.2, matt_top, T, duv, self.col, axis="y", toward=-1,
+                                      origin_ft=p, rot_z_deg=rot, seed=seed + 1))
+        # pillows: sleeping pillows propped on the headboard, smaller shams leaning on them
         pm = e.get("pillow_mats", ["linen_white", "linen_white", "olive_paint", "olive_paint"])
         pw = (W - 0.6) / 2
         for i, x in enumerate((0.2, W / 2 + 0.1)):
-            part("bed_pillow", x, L - 2.05, x + pw, L - 0.25, matt_top, matt_top + 0.55, self.mat(pm[i % len(pm)]), rz=rng.uniform(-3, 3))
-            part("bed_pillow", x + 0.15, L - 1.35, x + pw - 0.15, L - 0.15, matt_top + 0.5, matt_top + 1.05, self.mat(pm[(i + 2) % len(pm)]), rx=-25)
+            cx = x + pw / 2 - W / 2
+            objs.append(sg.pillow(self.uid("sg_bed_pillow"), (cx + rng.uniform(-0.05, 0.05), L / 2 - 1.05, matt_top + 0.24), (pw, 1.6, 0.5),
+                                  self.mat(pm[i % len(pm)]), self.col, rot=(math.radians(rng.uniform(8, 14)), 0, math.radians(rng.uniform(-3, 3))),
+                                  origin_ft=p, rot_z_deg=rot, seed=seed + 10 + i))
+            objs.append(sg.pillow(self.uid("sg_bed_pillow"), (cx, L / 2 - 1.55, matt_top + 0.5), (pw - 0.35, 1.25, 0.42),
+                                  self.mat(pm[(i + 2) % len(pm)]), self.col, rot=(math.radians(rng.uniform(28, 36)), 0, math.radians(rng.uniform(-4, 4))),
+                                  origin_ft=p, rot_z_deg=rot, seed=seed + 20 + i))
         if e.get("blanket_m"):
-            # folded wool throw across the foot: two thin layers, the lower one hanging over the end
+            # wool throw across the foot, hanging over the end of the duvet
             bm = self.mat(e["blanket_m"])
-            top = matt_top + 0.36
-            part("bed_throw", W * 0.3, -0.2, W + 0.4, 1.6, top, top + 0.16, bm, rz=rng.uniform(-4, 4))
-            part("bed_throw", W * 0.36, 0.05, W + 0.3, 1.45, top + 0.16, top + 0.3, bm, rz=rng.uniform(-4, 4))
-            part("bed_throw_drop", W * 0.3, -0.36, W + 0.4, -0.2, top - 0.9, top + 0.16, bm)
+            xa, xb = W * 0.3 - W / 2, W / 2 + 0.3
+            ye = -L / 2 - 0.26
+            objs.append(sg.drape(self.uid("sg_bed_throw"), (xa, ye, matt_top + T + 0.05), (xb, ye, matt_top + T + 0.05), (0, -1), 1.5, 1.0, 0.07,
+                                 bm, self.col, edge_r=0.14, origin_ft=p, rot_z_deg=rot, seed=seed + 5))
         if hb_w:
             part("bed_headboard", W / 2 - hb_w / 2, L + 0.02, W / 2 + hb_w / 2, L + 0.3, 0, hb_h, wood)
             part("bed_headpad", W / 2 - hb_w / 2 + 0.3, L - 0.1, W / 2 + hb_w / 2 - 0.3, L + 0.02, plat_h + 0.6, hb_h - 0.3, self.mat(e.get("headpad_m", "leather_brown")))
@@ -515,6 +538,27 @@ class Gens2:
             objs.append(box_centered(self.uid("slipper_vamp"), (p[0] + dx, p[1] + 0.25, p[2] + 0.17), (0.34, 0.4, 0.1), rot + (8 if i else -5), mat, self.col))
         return objs
 
+    def _wall_sides(self, room, rect, tol=0.45):
+        """Sides ('-x', '+x', '-y', '+y') of a footprint rect that sit against a wall of the named room."""
+        sides = set()
+        x0, y0, x1, y1 = rect
+        for r in self.plan.get("rooms", []):
+            if r["name"] != room:
+                continue
+            for part in r["parts"]:
+                px0, py0, px1, py1 = part[:4]
+                if y0 < py1 and y1 > py0:
+                    if abs(x0 - px0) <= tol + 0.3:
+                        sides.add("-x")
+                    if abs(x1 - px1) <= tol + 0.3:
+                        sides.add("+x")
+                if x0 < px1 and x1 > px0:
+                    if abs(y0 - py0) <= tol + 0.3:
+                        sides.add("-y")
+                    if abs(y1 - py1) <= tol + 0.3:
+                        sides.add("+y")
+        return sides
+
     def gen_kid_bed(self, e):
         """Twin XL platform bed against a wall: b = mattress footprint box (z0 floor, z1 mattress top)."""
         b = e["b"]
@@ -523,28 +567,35 @@ class Gens2:
         rng = random.Random(e.get("seed", 5))
         objs = [box_ft(self.uid("kb_platform"), x0 - 0.2, y0 - 0.2, x1 + 0.2, y1 + 0.2, z0 + 0.5, z0 + 0.95, wood, self.col),
                 box_ft(self.uid("kb_plinth"), x0 + 0.3, y0 + 0.3, x1 - 0.3, y1 - 0.3, z0, z0 + 0.5, self.mat("black"), self.col),
-                box_ft(self.uid("bed_mattress"), x0, y0, x1, y1, z0 + 0.95, z1, self.mat("linen_white"), self.col)]
+                sg.slab(self.uid("sg_mattress"), ((x0 + x1) / 2, (y0 + y1) / 2, (z0 + 0.95 + z1) / 2), (x1 - x0, y1 - y0, z1 - z0 - 0.95),
+                        self.mat("linen_white"), self.col, puff=0.02, edge=14, n=12)]
         head = e.get("head", "+y")
         duv = self.mat(e.get("duvet_m", "wool_mustard"))
-        if head in ("+y", "-y"):
-            L = y1 - y0
-            if head == "+y":
-                objs.append(box_ft(self.uid("bed_duvet"), x0 - 0.15, y0 - 0.15, x1 + 0.15, y1 - 1.8, z1, z1 + 0.35, duv, self.col))
-                objs.append(box_ft(self.uid("bed_pillow"), x0 + 0.3, y1 - 1.6, x1 - 0.3, y1 - 0.2, z1, z1 + 0.5, self.mat("linen_white"), self.col))
-                hb = box_ft(self.uid("kb_headboard"), x0 - 0.2, y1 + 0.02, x1 + 0.2, y1 + 0.25, z0, z0 + 3.2, wood, self.col)
-            else:
-                objs.append(box_ft(self.uid("bed_duvet"), x0 - 0.15, y0 + 1.8, x1 + 0.15, y1 + 0.15, z1, z1 + 0.35, duv, self.col))
-                objs.append(box_ft(self.uid("bed_pillow"), x0 + 0.3, y0 + 0.2, x1 - 0.3, y0 + 1.6, z1, z1 + 0.5, self.mat("linen_white"), self.col))
-                hb = box_ft(self.uid("kb_headboard"), x0 - 0.2, y0 - 0.25, x1 + 0.2, y0 - 0.02, z0, z0 + 3.2, wood, self.col)
+        lin = self.mat("linen_white")
+        seed = e.get("seed", 5)
+        near = self._wall_sides(e.get("room"), (x0, y0, x1, y1))     # sides of the mattress against a wall: no overhang there
+        drops = {s: 0.7 for s in ("-x", "+x", "-y", "+y") if s != head and s not in near}
+        a = math.radians(12)
+        if head == "+y":
+            hb = box_ft(self.uid("kb_headboard"), x0 - 0.2, y1 + 0.02, x1 + 0.2, y1 + 0.25, z0, z0 + 3.2, wood, self.col)
+            rect, edge, axis, toward = (x0, y0, x1, y1 - 1.8), y1 - 1.8, "y", -1
+            pc, ps, pr = ((x0 + x1) / 2, y1 - 0.95, z1 + 0.22), (x1 - x0 - 0.6, 1.4, 0.45), (a, 0, 0)
+        elif head == "-y":
+            hb = box_ft(self.uid("kb_headboard"), x0 - 0.2, y0 - 0.25, x1 + 0.2, y0 - 0.02, z0, z0 + 3.2, wood, self.col)
+            rect, edge, axis, toward = (x0, y0 + 1.8, x1, y1), y0 + 1.8, "y", 1
+            pc, ps, pr = ((x0 + x1) / 2, y0 + 0.95, z1 + 0.22), (x1 - x0 - 0.6, 1.4, 0.45), (-a, 0, 0)
+        elif head == "+x":
+            hb = box_ft(self.uid("kb_headboard"), x1 + 0.02, y0 - 0.2, x1 + 0.25, y1 + 0.2, z0, z0 + 3.2, wood, self.col)
+            rect, edge, axis, toward = (x0, y0, x1 - 1.8, y1), x1 - 1.8, "x", -1
+            pc, ps, pr = (x1 - 0.95, (y0 + y1) / 2, z1 + 0.22), (1.4, y1 - y0 - 0.6, 0.45), (0, -a, 0)
         else:
-            if head == "+x":
-                objs.append(box_ft(self.uid("bed_duvet"), x0 - 0.15, y0 - 0.15, x1 - 1.8, y1 + 0.15, z1, z1 + 0.35, duv, self.col))
-                objs.append(box_ft(self.uid("bed_pillow"), x1 - 1.6, y0 + 0.3, x1 - 0.2, y1 - 0.3, z1, z1 + 0.5, self.mat("linen_white"), self.col))
-                hb = box_ft(self.uid("kb_headboard"), x1 + 0.02, y0 - 0.2, x1 + 0.25, y1 + 0.2, z0, z0 + 3.2, wood, self.col)
-            else:
-                objs.append(box_ft(self.uid("bed_duvet"), x0 + 1.8, y0 - 0.15, x1 + 0.15, y1 + 0.15, z1, z1 + 0.35, duv, self.col))
-                objs.append(box_ft(self.uid("bed_pillow"), x0 + 0.2, y0 + 0.3, x0 + 1.6, y1 - 0.3, z1, z1 + 0.5, self.mat("linen_white"), self.col))
-                hb = box_ft(self.uid("kb_headboard"), x0 - 0.25, y0 - 0.2, x0 - 0.02, y1 + 0.2, z0, z0 + 3.2, wood, self.col)
+            hb = box_ft(self.uid("kb_headboard"), x0 - 0.25, y0 - 0.2, x0 - 0.02, y1 + 0.2, z0, z0 + 3.2, wood, self.col)
+            rect, edge, axis, toward = (x0 + 1.8, y0, x1, y1), x0 + 1.8, "x", 1
+            pc, ps, pr = (x0 + 0.95, (y0 + y1) / 2, z1 + 0.22), (1.4, y1 - y0 - 0.6, 0.45), (0, a, 0)
+        objs.append(sg.duvet(self.uid("sg_duvet"), rect, z1, drops, 0.15, duv, self.col, seed=seed))
+        u0, u1 = (x0 - 0.05, x1 + 0.05) if axis == "y" else (y0 - 0.05, y1 + 0.05)
+        objs.append(sg.duvet_fold(self.uid("sg_duvet_fold"), u0, u1, edge, 0.9, z1, 0.15, duv, self.col, axis=axis, toward=toward, seed=seed + 1))
+        objs.append(sg.pillow(self.uid("sg_bed_pillow"), pc, ps, lin, self.col, rot=pr, seed=seed + 2))
         objs.append(hb)
         # stuffed bear sitting on the duvet: body, head, ears, arms, legs, snout (all soft-tagged spheres)
         cx, cy = (x0 + x1) / 2 + rng.uniform(-0.6, 0.6), (y0 + y1) / 2 + rng.uniform(-0.8, 0.8)
@@ -569,7 +620,8 @@ class Gens2:
         x0, y0, x1, y1, z0, z1 = b
         wood = self.mat("walnut_h")
         objs = [box_ft(self.uid("db_box"), x0, y0, x1, y1, z0, z1 - 0.4, wood, self.col),
-                box_ft(self.uid("bench_cush"), x0 + 0.05, y0 + 0.05, x1 - 0.05, y1 - 0.05, z1 - 0.4, z1, self.mat(e.get("cushion_m", "olive_paint")), self.col)]
+                sg.slab(self.uid("sg_bench_cush"), ((x0 + x1) / 2, (y0 + y1) / 2, z1 - 0.2), (x1 - x0 - 0.1, y1 - y0 - 0.1, 0.4),
+                        self.mat(e.get("cushion_m", "olive_paint")), self.col, puff=0.15, sag=0.04)]
         objs += self.gen_cushions({"b": [x0 + 0.3, y0 + 0.2, x1 - 0.3, y1 - 0.3], "z": z1, "back": e.get("back", "+y"), "count": e.get("pillows", 5), "seed": e.get("seed", 3),
                                    "mats": ["wool_mustard", "velvet_teal", "wool_oatmeal", "oxblood", "olive_paint"]})
         return objs
@@ -1025,11 +1077,13 @@ class Gens2:
         if wall["axis"] == "y":
             objs.append(cylinder_ft(self.uid("tb_bar"), (at + dx * 0.3, u - L / 2, z), 0.035, L, self.mat("brass"), self.col, 10, axis="Y"))
             for t, mt in enumerate(e.get("towels", ["towel_white"])):
-                objs.append(box_ft(self.uid("towel"), min(at + dx * 0.15, at + dx * 0.4), u - L / 2 + 0.2 + t * 1.0, max(at + dx * 0.15, at + dx * 0.4), u - L / 2 + 1.0 + t * 1.0, z - 2.2, z + 0.05, self.mat(mt), self.col))
+                objs.append(sg.towel_hung(self.uid("sg_towel"), (at + dx * 0.3, u - L / 2 + 0.6 + t * 1.0, z), "y", 0.035, 0.95, min(2.1, z - 0.4), 0.55,
+                                          (-dx, 0), self.mat(mt), self.col, seed=t + int(u)))
         else:
             objs.append(cylinder_ft(self.uid("tb_bar"), (u - L / 2, at + dy * 0.3, z), 0.035, L, self.mat("brass"), self.col, 10, axis="X"))
             for t, mt in enumerate(e.get("towels", ["towel_white"])):
-                objs.append(box_ft(self.uid("towel"), u - L / 2 + 0.2 + t * 1.0, min(at + dy * 0.15, at + dy * 0.4), u - L / 2 + 1.0 + t * 1.0, max(at + dy * 0.15, at + dy * 0.4), z - 2.2, z + 0.05, self.mat(mt), self.col))
+                objs.append(sg.towel_hung(self.uid("sg_towel"), (u - L / 2 + 0.6 + t * 1.0, at + dy * 0.3, z), "x", 0.035, 0.95, min(2.1, z - 0.4), 0.55,
+                                          (0, -dy), self.mat(mt), self.col, seed=t + int(u)))
         return objs
 
     def gen_tile_wainscot(self, e):

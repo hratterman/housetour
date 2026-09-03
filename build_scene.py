@@ -566,6 +566,8 @@ def bevel_pass(plan):
         if ob.data.users > 1 and "size_m" in (ob.data.get("_proto") or {}):
             continue
         nm = ob.name
+        if nm.startswith("sg_"):
+            continue                     # softgoods carry their own subdivision and thickness
         if any(tag in nm for tag in skip_tags):
             continue
         if ob.get("kind") == "ground":

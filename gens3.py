@@ -1,5 +1,6 @@
 """gens3: gym, garage and vehicles, pit furnishings, mechanical room, exterior fixtures, the spec mudroom lockers,
 the spec bar. Mixed into Stager together with gens2."""
+import softgoods as sg
 import math
 import random
 
@@ -185,12 +186,20 @@ class Gens3:
         seat_top = zr - 0.3
         back_top = zr + 0.9
         # seats and backs on S, W, E
-        objs.append(box_ft(self.uid("pit_seat"), x0 + 0.25, y0 + 0.25, x1 - 0.25, y0 + 0.25 + d, zf, seat_top, vel, self.col))
-        objs.append(box_ft(self.uid("pit_seat"), x0 + 0.25, y0 + 0.25 + d, x0 + 0.25 + d, y1 - 3.0, zf, seat_top, vel, self.col))
-        objs.append(box_ft(self.uid("pit_seat"), x1 - 0.25 - d, y0 + 0.25 + d, x1 - 0.25, y1 - 3.0, zf, seat_top, vel, self.col))
-        objs.append(box_ft(self.uid("pit_back"), x0 + 0.25, y0 + 0.25, x1 - 0.25, y0 + 0.75, seat_top, back_top, vel, self.col))
-        objs.append(box_ft(self.uid("pit_back"), x0 + 0.25, y0 + 0.75, x0 + 0.75, y1 - 3.0, seat_top, back_top, vel, self.col))
-        objs.append(box_ft(self.uid("pit_back"), x1 - 0.75, y0 + 0.75, x1 - 0.25, y1 - 3.0, seat_top, back_top, vel, self.col))
+        # upholstered bases with a soft seat slab on each, back cushions standing against the pit walls
+        for k, (a0, b0, a1, b1) in enumerate(((x0 + 0.25, y0 + 0.25, x1 - 0.25, y0 + 0.25 + d),
+                                              (x0 + 0.25, y0 + 0.25 + d, x0 + 0.25 + d, y1 - 3.0),
+                                              (x1 - 0.25 - d, y0 + 0.25 + d, x1 - 0.25, y1 - 3.0))):
+            objs.append(box_ft(self.uid("pit_base"), a0, b0, a1, b1, zf, seat_top - 0.4, vel, self.col))
+            objs.append(sg.slab(self.uid("sg_pit_seat"), ((a0 + a1) / 2, (b0 + b1) / 2, seat_top - 0.2), (a1 - a0, b1 - b0, 0.42), vel, self.col,
+                                puff=0.12, sag=0.04, seed=40 + k))
+        bh = back_top - seat_top
+        by = (y0 + 0.75 + y1 - 3.0) / 2
+        bl = (y1 - 3.0) - (y0 + 0.75)
+        objs.append(sg.slab(self.uid("sg_pit_back"), ((x0 + x1) / 2, y0 + 0.5, seat_top + bh / 2), (x1 - x0 - 0.5, bh, 0.5), vel, self.col,
+                            rot=(math.radians(-82), 0, 0), puff=0.25, seed=44))
+        objs.append(sg.slab(self.uid("sg_pit_back"), (x0 + 0.5, by, seat_top + bh / 2), (bh, bl, 0.5), vel, self.col, rot=(0, math.radians(82), 0), puff=0.25, seed=45))
+        objs.append(sg.slab(self.uid("sg_pit_back"), (x1 - 0.5, by, seat_top + bh / 2), (bh, bl, 0.5), vel, self.col, rot=(0, math.radians(-82), 0), puff=0.25, seed=46))
         # walnut cap along the three backs
         objs.append(box_ft(self.uid("pit_cap"), x0 - 0.1, y0 - 0.1, x1 + 0.1, y0 + 0.5, back_top, back_top + 0.1, wood, self.col))
         objs.append(box_ft(self.uid("pit_cap"), x0 - 0.1, y0 + 0.5, x0 + 0.5, y1 - 3.0, back_top, back_top + 0.1, wood, self.col))

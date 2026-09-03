@@ -9,6 +9,7 @@ imported once, joined into one mesh, normalized to a bottom-center origin, then 
 Procedural generators build stand-ins with real proportions. Generators register practical lights
 on house.practicals for lighting.py.
 """
+import softgoods as sg
 import json
 import math
 import os
@@ -647,8 +648,11 @@ class Stager(Gens2, Gens3):
         nc = 3 if L > 6.5 else 2
         cw = (L - 0.5) / nc
         for i in range(nc):
-            part("sofa_cushion", 0.25 + i * cw + 0.03, 0.2, 0.25 + (i + 1) * cw - 0.03, D - 0.75, seat_h - 0.05, seat_h + 0.42, fab)
-            part("sofa_back", 0.25 + i * cw + 0.03, D - 0.8, 0.25 + (i + 1) * cw - 0.03, D - 0.35, seat_h, seat_h + 1.35, fab)
+            xa, xb = 0.25 + i * cw + 0.03, 0.25 + (i + 1) * cw - 0.03
+            objs.append(sg.slab(self.uid("sg_sofa_cushion"), ((xa + xb) / 2 - L / 2, (D - 0.55) / 2 - D / 2, seat_h + 0.185), (xb - xa, D - 0.95, 0.47),
+                                fab, self.col, origin_ft=p, rot_z_deg=rot, seed=i, puff=0.18, sag=0.05))
+            objs.append(sg.slab(self.uid("sg_sofa_back"), ((xa + xb) / 2 - L / 2, D - 0.57 - D / 2, seat_h + 0.68), (xb - xa, 1.3, 0.42),
+                                fab, self.col, rot=(math.radians(80), 0, 0), origin_ft=p, rot_z_deg=rot, seed=10 + i, puff=0.3))
         part("sofa_arm", 0, 0.2, 0.25, D - 0.3, seat_h - 0.35, seat_h + 0.65, wood)
         part("sofa_arm", L - 0.25, 0.2, L, D - 0.3, seat_h - 0.35, seat_h + 0.65, wood)
         part("sofa_backrail", 0, D - 0.4, L, D - 0.2, seat_h - 0.35, seat_h + 1.4, wood)
@@ -832,22 +836,24 @@ class Stager(Gens2, Gens3):
             d = s_ * rng.uniform(0.85, 1.0)
             u = (b[0] if along_x else b[1]) + slot * (i + 0.5) + rng.uniform(-0.08, 0.08) * slot
             lean = back is not None and (i % 2 == 0 or rng.random() < 0.3)
+            mat = self.mat(mats[i % len(mats)])
+            seed = e.get("seed", 9) * 31 + i
             if lean:
-                a = math.radians(rng.uniform(58, 74))
-                ext = d
-                zc = z + (ext / 2) * math.sin(a)
-                gap = (ext / 2) * math.cos(a) + t * math.sin(a) + 0.03
-                yaw = math.radians(rng.uniform(-8, 8))
+                # leaning back against the backrest: bottom edge forward on the seat, top edge on the back,
+                # puffy face toward the room (the pillow's +Z)
+                a = math.radians(rng.uniform(62, 74))
+                yaw = math.radians(rng.uniform(-7, 7))
+                zc = z + (d / 2) * math.sin(a) + (t / 2) * math.cos(a) - 0.02
+                gap = (d / 2) * math.cos(a) + (t / 2) * math.sin(a) + 0.03
                 if back == "-y":
-                    cx, cy, rot = u, b[1] + gap, (a, 0, yaw)
+                    cx, cy, rot, size = u, b[1] + gap, (-a, 0, yaw), (s_, d, t)
                 elif back == "+y":
-                    cx, cy, rot = u, b[3] - gap, (-a, 0, yaw)
+                    cx, cy, rot, size = u, b[3] - gap, (a, 0, yaw), (s_, d, t)
                 elif back == "-x":
-                    cx, cy, rot = b[0] + gap, u, (0, -a, yaw)
+                    cx, cy, rot, size = b[0] + gap, u, (0, a, yaw), (d, s_, t)
                 else:
-                    cx, cy, rot = b[2] - gap, u, (0, a, yaw)
-                ob = box_centered(self.uid("pillow"), (cx, cy, zc), (s_, d, t) if back in ("-y", "+y") else (d, s_, t), 0, self.mat(mats[i % len(mats)]), self.col)
-                ob.rotation_euler = rot
+                    cx, cy, rot, size = b[2] - gap, u, (0, -a, yaw), (d, s_, t)
+                ob = sg.pillow(self.uid("sg_pillow"), (cx, cy, zc), size, mat, self.col, rot=rot, seed=seed)
             else:
                 # flat, a little forward of the back so it does not sit under a leaning neighbour
                 if along_x:
@@ -856,7 +862,8 @@ class Stager(Gens2, Gens3):
                 else:
                     cx = (b[0] + d / 2 + 0.55) if back == "-x" else (b[2] - d / 2 - 0.55)
                     cy = u
-                ob = box_centered(self.uid("pillow"), (cx, cy, z), (s_, d, t), rng.uniform(-25, 25), self.mat(mats[i % len(mats)]), self.col)
+                ob = sg.pillow(self.uid("sg_pillow"), (cx, cy, z + t * 0.36), (s_, d, t), mat, self.col,
+                               rot=(0, 0, math.radians(rng.uniform(-25, 25))), seed=seed, dent=0.12)
             objs.append(ob)
         return objs
 
@@ -1037,7 +1044,8 @@ class Stager(Gens2, Gens3):
             wx, wy = p[0] + lx * math.cos(rot), p[1] + lx * math.sin(rot)
             objs.append(box_centered(self.uid("bench_leg"), (wx, wy, p[2]), (0.15, D - 0.2, H - 0.15), e.get("rot_z", 0), wood, self.col))
         if e.get("cushion", True):
-            objs.append(box_centered(self.uid("bench_cush"), (p[0], p[1], p[2] + H), (L - 0.2, D - 0.15, 0.25), e.get("rot_z", 0), self.mat(e.get("cushion_m", "oxblood")), self.col))
+            objs.append(sg.slab(self.uid("sg_bench_cush"), (0, 0, H + 0.125), (L - 0.2, D - 0.15, 0.25), self.mat(e.get("cushion_m", "oxblood")), self.col,
+                                origin_ft=p, rot_z_deg=e.get("rot_z", 0), puff=0.2, sag=0.05))
         return objs
 
     def gen_lockers(self, e):
@@ -1139,13 +1147,14 @@ class Stager(Gens2, Gens3):
             else:
                 d = at - 0.3 if face == "-y" else at + 0.3
                 objs.append(cylinder_ft(self.uid("tw_bar"), (u, d, zz), 0.04, 2.0, self.mat("brass"), self.col, 10, axis="X"))
-        # towel over the top bars
+        # a bath towel over the top bar, the short end toward the wall
+        zt = z + 5 * 0.45
         if wall["axis"] == "y":
-            d0, d1 = (at - 0.45, at - 0.15) if face == "-x" else (at + 0.15, at + 0.45)
-            objs.append(box_ft(self.uid("towel"), d0, u - 0.7, d1, u + 0.7, z + 1.0, z + 2.5, self.mat("towel_white"), self.col))
+            d = at - 0.3 if face == "-x" else at + 0.3
+            objs.append(sg.towel_hung(self.uid("sg_towel"), (d, u, zt), "y", 0.04, 1.4, 1.9, 0.5, ((1, 0) if face == "-x" else (-1, 0)), self.mat("towel_white"), self.col, seed=int(u)))
         else:
-            d0, d1 = (at - 0.45, at - 0.15) if face == "-y" else (at + 0.15, at + 0.45)
-            objs.append(box_ft(self.uid("towel"), u - 0.7, d0, u + 0.7, d1, z + 1.0, z + 2.5, self.mat("towel_white"), self.col))
+            d = at - 0.3 if face == "-y" else at + 0.3
+            objs.append(sg.towel_hung(self.uid("sg_towel"), (u, d, zt), "x", 0.04, 1.4, 1.9, 0.5, ((0, 1) if face == "-y" else (0, -1)), self.mat("towel_white"), self.col, seed=int(u)))
         return objs
 
     def gen_closet(self, e):
