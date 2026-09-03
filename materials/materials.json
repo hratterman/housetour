@@ -2268,5 +2268,23 @@
    ],
    "metallic": false
   }
+ },
+ "hedge": {
+  "rgb": [
+   0.12,
+   0.2,
+   0.07
+  ],
+  "rough": 0.95,
+  "tex": "grass",
+  "size_ft": 3,
+  "tint": [
+   0.3,
+   0.45,
+   0.2
+  ],
+  "bump": 1.0,
+  "rough_var": 0.3,
+  "sheen": 0.2
  }
 }

@@ -292,7 +292,7 @@ class Site:
                 sp.scale = (1, 1, 0.8)
         for h in s.get("hedges", []):
             b = h["b"]
-            box_ft("hedge_%s" % h["note"].replace(" ", "_"), b[0], b[1], b[2], b[3], gz, gz + h["h"], self.mats.get("leaf"), self.col)
+            box_ft("hedge_%s" % h["note"].replace(" ", "_"), b[0], b[1], b[2], b[3], gz, gz + h["h"], self.mats.get("hedge"), self.col)
         self.build_wells()
         for i, t in enumerate(s.get("trees", [])):
             self.tree(i, t)

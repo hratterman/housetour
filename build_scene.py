@@ -609,6 +609,25 @@ def bevel_pass(plan):
             for md in ob.modifiers:
                 if md.type == "BEVEL":
                     md.harden_normals = True
+    # hedges: a flat box reads as a green wall; subdivide and displace it into a clipped but living surface
+    hedges = [ob for ob in bpy.data.objects if ob.type == "MESH" and (ob.name.startswith("hedge_") or ob.name.startswith("nb_hedge_"))]
+    if hedges:
+        htex = bpy.data.textures.get("hedge_clouds") or bpy.data.textures.new("hedge_clouds", type="CLOUDS")
+        htex.noise_scale = 0.7
+        htex.noise_depth = 4
+        for ob in hedges:
+            s1 = ob.modifiers.new("hedge_subd", "SUBSURF")
+            s1.subdivision_type = "SIMPLE"
+            s1.levels = s1.render_levels = 4
+            dp = ob.modifiers.new("hedge_leaf", "DISPLACE")
+            dp.texture = htex
+            dp.texture_coords = "GLOBAL"
+            dp.strength = 0.22
+            dp.mid_level = 0.5
+            try:
+                ob.data.shade_smooth()
+            except Exception:
+                pass
     if cloth:
         tex = bpy.data.textures.get("cloth_clouds") or bpy.data.textures.new("cloth_clouds", type="CLOUDS")
         tex.noise_scale = 0.4

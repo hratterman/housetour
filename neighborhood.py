@@ -651,7 +651,7 @@ class Hood:
             box_ft("nb_fence_%d" % self.n, b[0], b[1], b[2], b[3], self.gz, self.gz + h, ced, self.col); self.n += 1
         for hg in self.cfg.get("hedges", []):
             b = hg["b"]
-            box_ft("nb_hedge_%d" % self.n, b[0], b[1], b[2], b[3], self.gz, self.gz + hg.get("h", 3.5), self.mats.get("leaf_dark"), self.col); self.n += 1
+            box_ft("nb_hedge_%d" % self.n, b[0], b[1], b[2], b[3], self.gz, self.gz + hg.get("h", 3.5), self.mats.get("hedge"), self.col); self.n += 1
 
     # ------------------------------------------------------------------ all
     def build_all(self):
