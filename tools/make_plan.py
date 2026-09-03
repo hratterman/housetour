@@ -487,9 +487,10 @@ shots = [
         {"t": 0, "pos": [38.5, 44.0, 5.5], "look": [30.5, 36.5, 3.5]}, {"t": 4, "pos": [36.0, 40.5, 5.5], "look": [29.3, 42.8, 2.6]},
         {"t": 8, "pos": [34.0, 38.0, 5.5], "look": [40.5, 43.0, 4.0]}]},
     {"name": "garage", "seconds": 8, "path": [
-        {"t": 0, "pos": [6, 96, 5.5], "look": [0, 76, 5]}, {"t": 1.6, "pos": [2.5, 94.3, 5.5], "look": [0, 76, 5.5]},
-        {"t": 4, "pos": [2, 86, 5.5], "look": [0, 74, 6.5]},
-        {"t": 8, "pos": [-2, 78, 5.5], "look": [6, 66, 3.5]}]},
+        # in through the east door, up the aisle between the sedan and the lift, ending on the roadster and the bench
+        {"t": 0, "pos": [12, 97, 5.5], "look": [4, 76, 5]}, {"t": 1.6, "pos": [11.5, 94.3, 5.5], "look": [3, 76, 5.5]},
+        {"t": 4, "pos": [8.5, 88, 5.5], "look": [0, 72, 6.0]},
+        {"t": 8, "pos": [7, 82, 5.5], "look": [-3, 67, 4.0]}]},
 ]
 stills = [
     {"name": "00_block_end", "shot": "block", "t": 10}, {"name": "01_street_end", "shot": "street", "t": 12}, {"name": "02_main_kitchen", "shot": "main_floor", "t": 13},
