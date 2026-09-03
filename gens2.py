@@ -833,7 +833,7 @@ class Gens2:
         bowl.scale = (along, 1.0, 1.0) if dx else (1.0, along, 1.0)
         under = cylinder_ft(self.uid("wc_bowl_u"), (bc[0] - dx * 0.1, bc[1] - dy * 0.1, p[2] + 0.55), W / 2 - 0.12, 0.3, cer, self.col, 32)
         under.scale = (along * 0.85, 0.85, 1.0) if dx else (0.85, along * 0.85, 1.0)
-        seat = cylinder_ft(self.uid("wc_seat"), (bc[0], bc[1], p[2] + 1.45), W / 2 - 0.02, 0.08, self.mat("linen_white"), self.col, 40)
+        seat = cylinder_ft(self.uid("wc_seat"), (bc[0], bc[1], p[2] + 1.45), W / 2 - 0.02, 0.08, self.mat("ceramic_white"), self.col, 40)
         seat.scale = (along, 1.0, 1.0) if dx else (1.0, along, 1.0)
         objs += [bowl, under, seat]
         if dx:
@@ -846,7 +846,8 @@ class Gens2:
             objs.append(box_ft(self.uid("wc_plate"), cx - 0.35, min(wall_y, wall_y + dy * 0.02), cx + 0.35, max(wall_y, wall_y + dy * 0.02), p[2] + 3.2, p[2] + 3.7, self.mat("brass"), self.col))
         if e.get("paper", True):
             # paper holder beside the bowl on the side wall or on a post
-            objs.append(cylinder_ft(self.uid("wc_roll"), (cx + dx * 1.0 + (0 if dx else 0.8), cy + dy * 1.0 + (0.8 if dx else 0), p[2] + 2.0), 0.2, 0.35, self.mat("paper"), self.col, 16, axis="Y" if dx else "X"))
+            side = e.get("roll_side", 1.3)     # on the side wall, an arm's reach from the bowl
+            objs.append(cylinder_ft(self.uid("wc_roll"), (cx + dx * 0.9 + (0 if dx else side), cy + dy * 0.9 + (side if dx else 0), p[2] + 2.3), 0.2, 0.35, self.mat("paper"), self.col, 16, axis="Y" if dx else "X"))
         return objs
 
     def gen_round_mirror(self, e):
