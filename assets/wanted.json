@@ -384,6 +384,462 @@
   "wooden_stool_01": {
    "id": "wooden_stool_01",
    "res": "1k"
+  },
+  "sofa_01": {
+   "id": "Sofa_01",
+   "res": "1k"
+  },
+  "painted_wooden_sofa": {
+   "id": "painted_wooden_sofa",
+   "res": "1k"
+  },
+  "vintage_day_bed": {
+   "id": "vintage_day_bed",
+   "res": "1k"
+  },
+  "rockingchair_01": {
+   "id": "Rockingchair_01",
+   "res": "1k"
+  },
+  "schoolchair_01": {
+   "id": "SchoolChair_01",
+   "res": "1k"
+  },
+  "schooldesk_01": {
+   "id": "SchoolDesk_01",
+   "res": "1k"
+  },
+  "painted_wooden_chair_02": {
+   "id": "painted_wooden_chair_02",
+   "res": "1k"
+  },
+  "wooden_stool_02": {
+   "id": "wooden_stool_02",
+   "res": "1k"
+  },
+  "metal_stool_02": {
+   "id": "metal_stool_02",
+   "res": "1k"
+  },
+  "plastic_monobloc_chair_01": {
+   "id": "plastic_monobloc_chair_01",
+   "res": "1k"
+  },
+  "coffeetable_01": {
+   "id": "CoffeeTable_01",
+   "res": "1k"
+  },
+  "woodentable_02": {
+   "id": "WoodenTable_02",
+   "res": "1k"
+  },
+  "small_wooden_table_01": {
+   "id": "small_wooden_table_01",
+   "res": "1k"
+  },
+  "round_wooden_table_02": {
+   "id": "round_wooden_table_02",
+   "res": "1k"
+  },
+  "metal_office_desk": {
+   "id": "metal_office_desk",
+   "res": "1k"
+  },
+  "wooden_picnic_table": {
+   "id": "wooden_picnic_table",
+   "res": "1k"
+  },
+  "shelf_01": {
+   "id": "Shelf_01",
+   "res": "1k"
+  },
+  "wooden_bookshelf_worn": {
+   "id": "wooden_bookshelf_worn",
+   "res": "1k"
+  },
+  "painted_wooden_shelves": {
+   "id": "painted_wooden_shelves",
+   "res": "1k"
+  },
+  "vintage_cabinet_01": {
+   "id": "vintage_cabinet_01",
+   "res": "1k"
+  },
+  "painted_wooden_cabinet": {
+   "id": "painted_wooden_cabinet",
+   "res": "1k"
+  },
+  "painted_wooden_cabinet_02": {
+   "id": "painted_wooden_cabinet_02",
+   "res": "1k"
+  },
+  "wooden_display_shelves_01": {
+   "id": "wooden_display_shelves_01",
+   "res": "1k"
+  },
+  "steel_frame_shelves_02": {
+   "id": "steel_frame_shelves_02",
+   "res": "1k"
+  },
+  "worn_metal_rack": {
+   "id": "worn_metal_rack",
+   "res": "1k"
+  },
+  "industrial_storage_cart": {
+   "id": "industrial_storage_cart",
+   "res": "1k"
+  },
+  "treasure_chest": {
+   "id": "treasure_chest",
+   "res": "1k"
+  },
+  "wooden_crate_02": {
+   "id": "wooden_crate_02",
+   "res": "1k"
+  },
+  "plastic_crate_02": {
+   "id": "plastic_crate_02",
+   "res": "1k"
+  },
+  "plastic_crate_03": {
+   "id": "plastic_crate_03",
+   "res": "1k"
+  },
+  "chandelier_01": {
+   "id": "Chandelier_01",
+   "res": "1k"
+  },
+  "chandelier_02": {
+   "id": "Chandelier_02",
+   "res": "1k"
+  },
+  "chandelier_03": {
+   "id": "Chandelier_03",
+   "res": "1k"
+  },
+  "television_01": {
+   "id": "Television_01",
+   "res": "1k"
+  },
+  "television_02": {
+   "id": "television_02",
+   "res": "1k"
+  },
+  "gaming_console": {
+   "id": "gaming_console",
+   "res": "1k"
+  },
+  "cassette_player": {
+   "id": "cassette_player",
+   "res": "1k"
+  },
+  "camera_01": {
+   "id": "Camera_01",
+   "res": "1k"
+  },
+  "vintage_radio_transceiver": {
+   "id": "vintage_radio_transceiver",
+   "res": "1k"
+  },
+  "lightbulb_led": {
+   "id": "lightbulb_led",
+   "res": "1k"
+  },
+  "pull_chain_light_socket": {
+   "id": "pull_chain_light_socket",
+   "res": "1k"
+  },
+  "exterior_aircon_unit": {
+   "id": "exterior_aircon_unit",
+   "res": "1k"
+  },
+  "fancy_picture_frame_01": {
+   "id": "fancy_picture_frame_01",
+   "res": "1k"
+  },
+  "fancy_picture_frame_02": {
+   "id": "fancy_picture_frame_02",
+   "res": "1k"
+  },
+  "ornate_mirror_01": {
+   "id": "ornate_mirror_01",
+   "res": "1k"
+  },
+  "dartboard": {
+   "id": "dartboard",
+   "res": "1k"
+  },
+  "standing_chalkboard_01": {
+   "id": "standing_chalkboard_01",
+   "res": "1k"
+  },
+  "postcard_set_01": {
+   "id": "postcard_set_01",
+   "res": "1k"
+  },
+  "ukulele_01": {
+   "id": "Ukulele_01",
+   "res": "1k"
+  },
+  "round_spectacles": {
+   "id": "round_spectacles",
+   "res": "1k"
+  },
+  "pocket_watch": {
+   "id": "pocket_watch",
+   "res": "1k"
+  },
+  "digital_wrist_watch": {
+   "id": "digital_wrist_watch",
+   "res": "1k"
+  },
+  "magnifying_glass_01": {
+   "id": "magnifying_glass_01",
+   "res": "1k"
+  },
+  "binoculars": {
+   "id": "binoculars",
+   "res": "1k"
+  },
+  "wooden_candlestick": {
+   "id": "wooden_candlestick",
+   "res": "1k"
+  },
+  "vintage_oil_lamp": {
+   "id": "vintage_oil_lamp",
+   "res": "1k"
+  },
+  "ceramic_vase_04": {
+   "id": "ceramic_vase_04",
+   "res": "1k"
+  },
+  "brass_vase_04": {
+   "id": "brass_vase_04",
+   "res": "1k"
+  },
+  "antique_ceramic_vase_01": {
+   "id": "antique_ceramic_vase_01",
+   "res": "1k"
+  },
+  "metal_jug": {
+   "id": "metal_jug",
+   "res": "1k"
+  },
+  "carved_wooden_elephant": {
+   "id": "carved_wooden_elephant",
+   "res": "1k"
+  },
+  "sungka_board": {
+   "id": "sungka_board",
+   "res": "1k"
+  },
+  "garden_gnome": {
+   "id": "garden_gnome",
+   "res": "1k"
+  },
+  "croissant": {
+   "id": "croissant",
+   "res": "1k"
+  },
+  "hamburger_buns": {
+   "id": "hamburger_buns",
+   "res": "1k"
+  },
+  "food_avocado_01": {
+   "id": "food_avocado_01",
+   "res": "1k"
+  },
+  "food_lime_01": {
+   "id": "food_lime_01",
+   "res": "1k"
+  },
+  "yellow_onion": {
+   "id": "yellow_onion",
+   "res": "1k"
+  },
+  "food_kiwi_01": {
+   "id": "food_kiwi_01",
+   "res": "1k"
+  },
+  "wooden_spoon": {
+   "id": "wooden_spoon",
+   "res": "1k"
+  },
+  "carved_wooden_plate": {
+   "id": "carved_wooden_plate",
+   "res": "1k"
+  },
+  "brass_pot_02": {
+   "id": "brass_pot_02",
+   "res": "1k"
+  },
+  "vintage_microwave": {
+   "id": "vintage_microwave",
+   "res": "1k"
+  },
+  "stationery_supplies": {
+   "id": "stationery_supplies",
+   "res": "1k"
+  },
+  "office_notepads": {
+   "id": "office_notepads",
+   "res": "1k"
+  },
+  "clipboard": {
+   "id": "clipboard",
+   "res": "1k"
+  },
+  "vintage_stapler": {
+   "id": "vintage_stapler",
+   "res": "1k"
+  },
+  "chemistry_set": {
+   "id": "chemistry_set",
+   "res": "1k"
+  },
+  "bunsen_burner": {
+   "id": "bunsen_burner",
+   "res": "1k"
+  },
+  "industrial_microscope": {
+   "id": "industrial_microscope",
+   "res": "1k"
+  },
+  "retro_multimeter": {
+   "id": "retro_multimeter",
+   "res": "1k"
+  },
+  "circuit_board": {
+   "id": "circuit_board",
+   "res": "1k"
+  },
+  "power_box_01": {
+   "id": "power_box_01",
+   "res": "1k"
+  },
+  "all_purpose_cleaner": {
+   "id": "all_purpose_cleaner",
+   "res": "1k"
+  },
+  "bleach_bottle": {
+   "id": "bleach_bottle",
+   "res": "1k"
+  },
+  "multi_cleaner_bottle": {
+   "id": "multi_cleaner_bottle",
+   "res": "1k"
+  },
+  "trashbag": {
+   "id": "trashbag",
+   "res": "1k"
+  },
+  "dustpan": {
+   "id": "dustpan",
+   "res": "1k"
+  },
+  "wooden_broom": {
+   "id": "wooden_broom",
+   "res": "1k"
+  },
+  "medical_box": {
+   "id": "medical_box",
+   "res": "1k"
+  },
+  "fire_alarm": {
+   "id": "fire_alarm",
+   "res": "1k"
+  },
+  "korean_fire_extinguisher_01": {
+   "id": "korean_fire_extinguisher_01",
+   "res": "1k"
+  },
+  "plastic_container": {
+   "id": "plastic_container",
+   "res": "1k"
+  },
+  "covered_car": {
+   "id": "covered_car",
+   "res": "1k"
+  },
+  "tire_pump": {
+   "id": "tire_pump",
+   "res": "1k"
+  },
+  "hand_truck": {
+   "id": "hand_truck",
+   "res": "1k"
+  },
+  "measuring_tape_01": {
+   "id": "measuring_tape_01",
+   "res": "1k"
+  },
+  "screwdrivers_02": {
+   "id": "screwdrivers_02",
+   "res": "1k"
+  },
+  "pliers": {
+   "id": "pliers",
+   "res": "1k"
+  },
+  "adjustable_wrench": {
+   "id": "adjustable_wrench",
+   "res": "1k"
+  },
+  "garden_gloves_01": {
+   "id": "garden_gloves_01",
+   "res": "1k"
+  },
+  "watering_can_metal_01": {
+   "id": "watering_can_metal_01",
+   "res": "1k"
+  },
+  "propane_tank": {
+   "id": "propane_tank",
+   "res": "1k"
+  },
+  "stone_fire_pit": {
+   "id": "stone_fire_pit",
+   "res": "1k"
+  },
+  "garden_sprinkler_01": {
+   "id": "garden_sprinkler_01",
+   "res": "1k"
+  },
+  "spray_paint_bottles": {
+   "id": "spray_paint_bottles",
+   "res": "1k"
+  },
+  "oil_tin": {
+   "id": "oil_tin",
+   "res": "1k"
+  },
+  "lubricant_spray": {
+   "id": "lubricant_spray",
+   "res": "1k"
+  },
+  "football": {
+   "id": "football",
+   "res": "1k"
+  },
+  "baseball_bat": {
+   "id": "baseball_bat",
+   "res": "1k"
+  },
+  "metal_jerrycan": {
+   "id": "metal_jerrycan",
+   "res": "1k"
+  },
+  "plastic_jerrycan": {
+   "id": "plastic_jerrycan",
+   "res": "1k"
+  },
+  "wooden_bucket_01": {
+   "id": "wooden_bucket_01",
+   "res": "1k"
+  },
+  "seeding_tray_01": {
+   "id": "seeding_tray_01",
+   "res": "1k"
   }
  },
  "textures": {
@@ -522,6 +978,56 @@
    "id": "wood_planks",
    "res": "2k",
    "source": "polyhaven"
+  },
+  "fabric_wool": {
+   "id": "Fabric030",
+   "res": "2k",
+   "source": "ambientcg"
+  },
+  "fabric_linen": {
+   "id": "Fabric021",
+   "res": "2k",
+   "source": "ambientcg"
+  },
+  "fabric_knit": {
+   "id": "Fabric028",
+   "res": "2k",
+   "source": "ambientcg"
+  },
+  "fabric_weave": {
+   "id": "Fabric032",
+   "res": "2k",
+   "source": "ambientcg"
+  },
+  "fabric_towel": {
+   "id": "Fabric057",
+   "res": "2k",
+   "source": "ambientcg"
+  },
+  "leather_black": {
+   "id": "Leather011",
+   "res": "2k",
+   "source": "ambientcg"
+  },
+  "leather_tan": {
+   "id": "Leather026",
+   "res": "2k",
+   "source": "ambientcg"
+  },
+  "paint_eggshell": {
+   "id": "PaintedPlaster017",
+   "res": "2k",
+   "source": "ambientcg"
+  },
+  "metal_brushed": {
+   "id": "Metal032",
+   "res": "2k",
+   "source": "ambientcg"
+  },
+  "ceramic_glaze": {
+   "id": "Tiles074",
+   "res": "2k",
+   "source": "ambientcg"
   }
  }
 }
