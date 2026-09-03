@@ -533,12 +533,22 @@ class Gens2:
                 objs.append(box_ft(self.uid("bed_pillow"), x0 + 0.2, y0 + 0.3, x0 + 1.6, y1 - 0.3, z1, z1 + 0.5, self.mat("linen_white"), self.col))
                 hb = box_ft(self.uid("kb_headboard"), x0 - 0.25, y0 - 0.2, x0 - 0.02, y1 + 0.2, z0, z0 + 3.2, wood, self.col)
         objs.append(hb)
-        # stuffed animal: a small ellipsoid pair
-        cx, cy = (x0 + x1) / 2 + rng.uniform(-0.8, 0.8), (y0 + y1) / 2 + rng.uniform(-1, 1)
-        body = sphere_ft(self.uid("plush"), (cx, cy, z1 + 0.35 + 0.35), 0.4, self.mat("wool_oatmeal"), self.col, 12, 8)
-        body.scale = (1, 1.2, 0.8)
-        headp = sphere_ft(self.uid("plush"), (cx, cy + 0.45, z1 + 0.35 + 0.55), 0.3, self.mat("wool_oatmeal"), self.col, 12, 8)
-        objs += [body, headp]
+        # stuffed bear sitting on the duvet: body, head, ears, arms, legs, snout (all soft-tagged spheres)
+        cx, cy = (x0 + x1) / 2 + rng.uniform(-0.6, 0.6), (y0 + y1) / 2 + rng.uniform(-0.8, 0.8)
+        fur = self.mat("wool_oatmeal")
+        zt = z1 + 0.35
+        body = sphere_ft(self.uid("plush_body"), (cx, cy, zt + 0.38), 0.34, fur, self.col, 16, 12)
+        body.scale = (1.0, 0.85, 1.1)
+        head = sphere_ft(self.uid("plush_head"), (cx, cy - 0.05, zt + 0.98), 0.27, fur, self.col, 16, 12)
+        snout = sphere_ft(self.uid("plush_snout"), (cx, cy - 0.3, zt + 0.9), 0.11, self.mat("linen_white"), self.col, 12, 8)
+        objs += [body, head, snout]
+        for sx in (-0.2, 0.2):
+            objs.append(sphere_ft(self.uid("plush_ear"), (cx + sx, cy, zt + 1.2), 0.1, fur, self.col, 12, 8))
+            arm = sphere_ft(self.uid("plush_arm"), (cx + sx * 1.9, cy - 0.15, zt + 0.45), 0.11, fur, self.col, 12, 8)
+            arm.scale = (1.0, 1.0, 2.0)
+            leg = sphere_ft(self.uid("plush_leg"), (cx + sx * 1.1, cy - 0.35, zt + 0.12), 0.13, fur, self.col, 12, 8)
+            leg.scale = (1.0, 1.8, 1.0)
+            objs += [arm, leg]
         return objs
 
     def gen_daybed(self, e):
