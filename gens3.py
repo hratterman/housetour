@@ -493,7 +493,10 @@ class Gens3:
         objs += self.gen_panel_grooves({"b": [x1, y0, x1 + 0.02, y1, z0, z1], "pitch": 0.25, "width": 0.09})
         objs.append(box_ft(self.uid("closet_slats"), x1 - 0.02, y0, x1, y1, z0, z1, self.mat("cedar_ext"), self.col))
         objs.append(box_ft(self.uid("closet_slats"), x0, y1 - 0.02, x1, y1, z0, z1, self.mat("cedar_ext"), self.col))
-        objs.append(cylinder_ft(self.uid("air_line"), (x1 + 0.1, y0 + 0.5, z1 - 0.3), 0.03, 20.0, self.mat("copper"), self.col, 8, axis="X"))
+        # copper air line from the closet along the south wall above the bench (it used to be centred on the
+        # closet and ran 10 ft out through the west wall)
+        run = e.get("air_line_ft", 17.0)
+        objs.append(cylinder_ft(self.uid("air_line"), (x1 + run / 2, y0 + 0.5, z1 - 0.3), 0.03, run, self.mat("copper"), self.col, 8, axis="X"))
         return objs
 
     def gen_reel(self, e):
