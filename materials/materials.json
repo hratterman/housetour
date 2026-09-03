@@ -46,7 +46,8 @@
    0.72
   ],
   "bump": 0.4,
-  "coat": 0.15
+  "coat": 0.35,
+  "coat_rough": 0.25
  },
  "cedar": {
   "rgb": [
@@ -332,7 +333,8 @@
    0.72
   ],
   "bump": 0.4,
-  "coat": 0.15
+  "coat": 0.35,
+  "coat_rough": 0.25
  },
  "concrete_pavers": {
   "rgb": [
@@ -405,7 +407,7 @@
    0.65
   ],
   "rough": 0.9,
-  "emit": 3.0,
+  "emit": 1.4,
   "emit_rgb": [
    1.0,
    0.75,
@@ -419,7 +421,7 @@
    0.42
   ],
   "rough": 0.5,
-  "emit": 30.0
+  "emit": 14.0
  },
  "fire": {
   "rgb": [
@@ -810,7 +812,8 @@
   "tex": "plaster",
   "paint": true,
   "size_ft": 2,
-  "bump": 0.35
+  "bump": 0.35,
+  "rough_var": 0.05
  },
  "olive_paint": {
   "rgb": [
@@ -887,7 +890,10 @@
    0.93,
    0.82
   ],
-  "bump": 0.5
+  "bump": 0.5,
+  "rough_var": 0.12,
+  "coat": 0.25,
+  "coat_rough": 0.3
  },
  "oak_decking": {
   "rgb": [
@@ -922,7 +928,8 @@
    0.68
   ],
   "bump": 0.4,
-  "coat": 0.1
+  "coat": 0.3,
+  "coat_rough": 0.3
  },
  "cedar_ext": {
   "rgb": [
@@ -934,7 +941,8 @@
   "tex": "cedar",
   "size_ft": 4,
   "rot": 90,
-  "bump": 0.5
+  "bump": 0.5,
+  "rough_var": 0.15
  },
  "cedar_sauna": {
   "rgb": [
@@ -966,7 +974,8 @@
    0.85,
    0.78
   ],
-  "bump": 0.8
+  "bump": 0.8,
+  "rough_var": 0.1
  },
  "limestone": {
   "rgb": [
@@ -1022,7 +1031,8 @@
   "rough": 0.6,
   "tex": "concrete",
   "size_ft": 6,
-  "bump": 0.4
+  "bump": 0.4,
+  "rough_var": 0.15
  },
  "rubber_floor": {
   "rgb": [
@@ -1093,7 +1103,8 @@
    0.35
   ],
   "rough": 0.35,
-  "metallic": 1.0
+  "metallic": 1.0,
+  "rough_add": 0.15
  },
  "bronze_black": {
   "rgb": [
@@ -1378,14 +1389,14 @@
    0.45
   ],
   "rough": 0.75,
-  "tex": "concrete",
-  "size_ft": 3,
+  "tex": "slate",
+  "size_ft": 4,
   "tint": [
-   0.55,
-   0.6,
-   0.7
+   0.7,
+   0.75,
+   0.85
   ],
-  "bump": 0.5,
+  "bump": 0.6,
   "overlay": {
    "type": "stripes",
    "size_ft": 3,
@@ -1404,14 +1415,14 @@
    0.12
   ],
   "rough": 0.95,
-  "tex": "concrete",
-  "size_ft": 6,
+  "tex": "asphalt",
+  "size_ft": 8,
   "tint": [
-   0.25,
-   0.25,
-   0.25
+   0.55,
+   0.55,
+   0.55
   ],
-  "bump": 0.3
+  "bump": 0.4
  },
  "lawn": {
   "rgb": [
@@ -1420,12 +1431,12 @@
    0.15
   ],
   "rough": 1.0,
-  "tex": "grass",
-  "size_ft": 8,
+  "tex": "lawn_leafy",
+  "size_ft": 6,
   "tint": [
-   0.5,
-   0.7,
-   0.35
+   0.85,
+   0.95,
+   0.7
   ],
   "bump": 0.6
  },
@@ -1436,14 +1447,14 @@
    0.52
   ],
   "rough": 0.95,
-  "tex": "concrete",
-  "size_ft": 1,
+  "tex": "gravel",
+  "size_ft": 3,
   "tint": [
-   0.9,
-   0.9,
-   0.88
+   0.95,
+   0.95,
+   0.92
   ],
-  "bump": 0.8
+  "bump": 0.9
  },
  "metal_roof_charcoal": {
   "rgb": [
@@ -1558,12 +1569,12 @@
    0.14
   ],
   "rough": 0.95,
-  "tex": "brick",
-  "size_ft": 5,
+  "tex": "brick_red_tex",
+  "size_ft": 6,
   "tint": [
-   0.8,
-   0.5,
-   0.42
+   0.85,
+   0.7,
+   0.62
   ],
   "bump": 0.8
  },
@@ -1574,12 +1585,12 @@
    0.36
   ],
   "rough": 0.95,
-  "tex": "brick",
-  "size_ft": 5,
+  "tex": "brick_yellow",
+  "size_ft": 6,
   "tint": [
-   1.0,
    0.95,
-   0.85
+   0.9,
+   0.8
   ],
   "bump": 0.8
  },
@@ -1602,10 +1613,10 @@
    0.76
   ],
   "rough": 0.95,
-  "tex": "plaster_rough",
+  "tex": "stucco",
   "paint": true,
-  "size_ft": 3,
-  "bump": 0.6
+  "size_ft": 4,
+  "bump": 0.7
  },
  "siding_white": {
   "rgb": [
@@ -1614,24 +1625,11 @@
    0.87
   ],
   "rough": 0.6,
-  "tex": "plaster",
+  "tex": "siding",
   "paint": true,
-  "size_ft": 2,
-  "bump": 0.2,
-  "overlay": {
-   "type": "stripes",
-   "size_ft": 0.5,
-   "width": 0.06,
-   "rgb": [
-    0.72,
-    0.71,
-    0.68
-   ],
-   "axes": [
-    2
-   ],
-   "metallic": false
-  }
+  "size_ft": 4,
+  "bump": 0.5,
+  "rot": 0
  },
  "siding_gray": {
   "rgb": [
@@ -1640,24 +1638,11 @@
    0.56
   ],
   "rough": 0.65,
-  "tex": "plaster",
+  "tex": "siding",
   "paint": true,
-  "size_ft": 2,
-  "bump": 0.2,
-  "overlay": {
-   "type": "stripes",
-   "size_ft": 0.5,
-   "width": 0.06,
-   "rgb": [
-    0.4,
-    0.42,
-    0.41
-   ],
-   "axes": [
-    2
-   ],
-   "metallic": false
-  }
+  "size_ft": 4,
+  "bump": 0.5,
+  "rot": 0
  },
  "siding_sage": {
   "rgb": [
@@ -1666,24 +1651,11 @@
    0.44
   ],
   "rough": 0.65,
-  "tex": "plaster",
+  "tex": "siding",
   "paint": true,
-  "size_ft": 2,
-  "bump": 0.2,
-  "overlay": {
-   "type": "stripes",
-   "size_ft": 0.5,
-   "width": 0.06,
-   "rgb": [
-    0.36,
-    0.42,
-    0.32
-   ],
-   "axes": [
-    2
-   ],
-   "metallic": false
-  }
+  "size_ft": 4,
+  "bump": 0.5,
+  "rot": 0
  },
  "trim_white": {
   "rgb": [
@@ -1724,14 +1696,14 @@
    0.27
   ],
   "rough": 0.75,
-  "tex": "concrete",
-  "size_ft": 4,
+  "tex": "roof_slate",
+  "size_ft": 5,
   "tint": [
-   0.45,
-   0.48,
-   0.55
+   0.6,
+   0.62,
+   0.68
   ],
-  "bump": 0.5
+  "bump": 0.7
  },
  "shingle_dark": {
   "rgb": [
@@ -1740,14 +1712,14 @@
    0.14
   ],
   "rough": 0.95,
-  "tex": "concrete",
-  "size_ft": 3,
+  "tex": "roof_slate",
+  "size_ft": 4,
   "tint": [
    0.3,
    0.29,
    0.28
   ],
-  "bump": 0.6
+  "bump": 0.7
  },
  "shingle_brown": {
   "rgb": [
@@ -1756,14 +1728,14 @@
    0.15
   ],
   "rough": 0.95,
-  "tex": "concrete",
-  "size_ft": 3,
+  "tex": "roof_slate",
+  "size_ft": 4,
   "tint": [
    0.55,
    0.42,
    0.3
   ],
-  "bump": 0.6
+  "bump": 0.7
  },
  "half_timber": {
   "rgb": [
@@ -1832,5 +1804,434 @@
    0.05
   ],
   "rough": 0.4
+ },
+ "mint_enamel": {
+  "rgb": [
+   0.62,
+   0.78,
+   0.66
+  ],
+  "rough": 0.25,
+  "coat": 0.6
+ },
+ "cake_cream": {
+  "rgb": [
+   0.92,
+   0.86,
+   0.74
+  ],
+  "rough": 0.9
+ },
+ "felt_charcoal": {
+  "rgb": [
+   0.16,
+   0.16,
+   0.17
+  ],
+  "rough": 1.0,
+  "tex": "boucle",
+  "paint": true,
+  "size_ft": 1.0,
+  "bump": 0.5
+ },
+ "screen_code": {
+  "rgb": [
+   0.03,
+   0.035,
+   0.045
+  ],
+  "rough": 0.2,
+  "emit": 0.3,
+  "emit_rgb": [
+   0.45,
+   0.6,
+   0.8
+  ],
+  "overlay": {
+   "type": "stripes",
+   "size_ft": 0.09,
+   "width": 0.35,
+   "rgb": [
+    0.02,
+    0.03,
+    0.04
+   ],
+   "axes": [
+    2
+   ],
+   "metallic": false
+  }
+ },
+ "screen_green": {
+  "rgb": [
+   0.05,
+   0.12,
+   0.06
+  ],
+  "rough": 0.3,
+  "emit": 0.5,
+  "emit_rgb": [
+   0.3,
+   1.0,
+   0.4
+  ]
+ },
+ "screen_dash": {
+  "rgb": [
+   0.05,
+   0.06,
+   0.08
+  ],
+  "rough": 0.2,
+  "emit": 0.35,
+  "emit_rgb": [
+   0.4,
+   0.6,
+   0.9
+  ]
+ },
+ "led_green": {
+  "rgb": [
+   0.1,
+   0.9,
+   0.2
+  ],
+  "rough": 0.4,
+  "emit": 6.0,
+  "emit_rgb": [
+   0.2,
+   1.0,
+   0.3
+  ]
+ },
+ "led_amber": {
+  "rgb": [
+   1.0,
+   0.6,
+   0.1
+  ],
+  "rough": 0.4,
+  "emit": 6.0,
+  "emit_rgb": [
+   1.0,
+   0.6,
+   0.15
+  ]
+ },
+ "led_blue": {
+  "rgb": [
+   0.2,
+   0.5,
+   1.0
+  ],
+  "rough": 0.4,
+  "emit": 6.0,
+  "emit_rgb": [
+   0.25,
+   0.55,
+   1.0
+  ]
+ },
+ "cable_blue": {
+  "rgb": [
+   0.1,
+   0.25,
+   0.7
+  ],
+  "rough": 0.7
+ },
+ "cable_orange": {
+  "rgb": [
+   0.85,
+   0.35,
+   0.05
+  ],
+  "rough": 0.7
+ },
+ "fire_black_int": {
+  "rgb": [
+   0.03,
+   0.03,
+   0.03
+  ],
+  "rough": 0.9
+ },
+ "wicker": {
+  "rgb": [
+   0.66,
+   0.5,
+   0.3
+  ],
+  "rough": 0.9,
+  "tex": "herringbone",
+  "paint": true,
+  "size_ft": 0.5,
+  "bump": 1.0
+ },
+ "sisal": {
+  "rgb": [
+   0.72,
+   0.6,
+   0.4
+  ],
+  "rough": 1.0,
+  "tex": "herringbone",
+  "paint": true,
+  "size_ft": 0.3,
+  "bump": 1.0
+ },
+ "denim": {
+  "rgb": [
+   0.2,
+   0.28,
+   0.42
+  ],
+  "rough": 1.0,
+  "tex": "linen",
+  "paint": true,
+  "size_ft": 1.0,
+  "bump": 0.6
+ },
+ "car_green": {
+  "rgb": [
+   0.04,
+   0.16,
+   0.09
+  ],
+  "rough": 0.18,
+  "coat": 1.0,
+  "coat_rough": 0.05,
+  "metallic": 0.3
+ },
+ "car_white": {
+  "rgb": [
+   0.9,
+   0.9,
+   0.88
+  ],
+  "rough": 0.2,
+  "coat": 1.0,
+  "coat_rough": 0.05
+ },
+ "car_gray": {
+  "rgb": [
+   0.32,
+   0.33,
+   0.35
+  ],
+  "rough": 0.2,
+  "coat": 1.0,
+  "coat_rough": 0.05,
+  "metallic": 0.5
+ },
+ "tire": {
+  "rgb": [
+   0.03,
+   0.03,
+   0.03
+  ],
+  "rough": 0.85
+ },
+ "chrome_dark": {
+  "rgb": [
+   0.5,
+   0.5,
+   0.52
+  ],
+  "rough": 0.25,
+  "metallic": 1.0
+ },
+ "rubber_red": {
+  "rgb": [
+   0.55,
+   0.08,
+   0.06
+  ],
+  "rough": 0.8
+ },
+ "canvas_tan": {
+  "rgb": [
+   0.72,
+   0.64,
+   0.5
+  ],
+  "rough": 1.0,
+  "tex": "linen",
+  "paint": true,
+  "size_ft": 1.0,
+  "bump": 0.6
+ },
+ "pegboard": {
+  "rgb": [
+   0.85,
+   0.82,
+   0.75
+  ],
+  "rough": 0.8
+ },
+ "oak_platform": {
+  "rgb": [
+   0.68,
+   0.52,
+   0.33
+  ],
+  "rough": 0.5,
+  "tex": "oak_deck",
+  "size_ft": 4,
+  "bump": 0.4
+ },
+ "mirror_wall": {
+  "rgb": [
+   1,
+   1,
+   1
+  ],
+  "rough": 0.0,
+  "metallic": 1.0
+ },
+ "copper": {
+  "rgb": [
+   0.85,
+   0.5,
+   0.35
+  ],
+  "rough": 0.3,
+  "metallic": 1.0
+ },
+ "galvanized": {
+  "rgb": [
+   0.6,
+   0.62,
+   0.64
+  ],
+  "rough": 0.45,
+  "metallic": 1.0
+ },
+ "duct_silver": {
+  "rgb": [
+   0.7,
+   0.71,
+   0.72
+  ],
+  "rough": 0.35,
+  "metallic": 1.0
+ },
+ "pex_red": {
+  "rgb": [
+   0.7,
+   0.1,
+   0.08
+  ],
+  "rough": 0.5
+ },
+ "pex_blue": {
+  "rgb": [
+   0.1,
+   0.2,
+   0.7
+  ],
+  "rough": 0.5
+ },
+ "heater_glow": {
+  "rgb": [
+   1.0,
+   0.3,
+   0.1
+  ],
+  "rough": 0.5,
+  "emit": 4.0,
+  "emit_rgb": [
+   1.0,
+   0.35,
+   0.1
+  ]
+ },
+ "green_glass": {
+  "rgb": [
+   0.35,
+   0.6,
+   0.35
+  ],
+  "rough": 0.02,
+  "transmission": 1.0,
+  "ior": 1.45,
+  "thin": true,
+  "tint": [
+   0.35,
+   0.6,
+   0.35
+  ]
+ },
+ "amber_glass": {
+  "rgb": [
+   0.85,
+   0.55,
+   0.2
+  ],
+  "rough": 0.02,
+  "transmission": 1.0,
+  "ior": 1.45,
+  "thin": true,
+  "tint": [
+   0.85,
+   0.55,
+   0.2
+  ]
+ },
+ "teal_glass": {
+  "rgb": [
+   0.3,
+   0.65,
+   0.7
+  ],
+  "rough": 0.02,
+  "transmission": 1.0,
+  "ior": 1.45,
+  "thin": true,
+  "tint": [
+   0.3,
+   0.65,
+   0.7
+  ]
+ },
+ "window_lit": {
+  "rgb": [
+   1.0,
+   0.8,
+   0.55
+  ],
+  "rough": 0.1,
+  "emit": 2.5,
+  "emit_rgb": [
+   1.0,
+   0.78,
+   0.5
+  ]
+ },
+ "terrazzo_3ft": {
+  "rgb": [
+   0.8,
+   0.78,
+   0.74
+  ],
+  "rough": 0.3,
+  "tex": "terrazzo_fine",
+  "size_ft": 1.5,
+  "tint": [
+   1.0,
+   0.97,
+   0.92
+  ],
+  "bump": 0.2,
+  "overlay": {
+   "type": "stripes",
+   "size_ft": 3,
+   "width": 0.01,
+   "rgb": [
+    0.85,
+    0.65,
+    0.35
+   ]
+  }
  }
 }

@@ -122,6 +122,9 @@ class Hood:
             ob.data.materials.append(mat)
         return zr
 
+    def mat(self, name):
+        return self.mats.get(name)
+
     def window(self, fr, face, a, z, w, h, trim, glass, muntins=None, shutters=None, sill=True, depth_u=None):
         """Window on a wall face. face: 'front' (v=0), 'back' (v=D), 'left' (u=0), 'right' (u=W); a is the
         coordinate along the wall (u for front/back, v for left/right). depth_u carries D or W for the far faces."""
@@ -138,6 +141,8 @@ class Hood:
             def B(a0, a1, d0, d1, z0, z1, mat, nm):
                 return self.box(fr, u + s * d0, a0, u + s * d1, a1, z0, z1, mat, nm)
         a0, a1 = a - w / 2, a + w / 2
+        if self.plan.get("_dusk") and self.rng.random() < 0.4:
+            glass = self.mat("window_lit")
         B(a0, a1, -0.3, 0.02, z, z + h, glass, "nb_glass")            # glass, recessed 4 in
         B(a0 - t, a0, -0.02, p, z - 0.1, z + h + t, trim, "nb_trim")
         B(a1, a1 + t, -0.02, p, z - 0.1, z + h + t, trim, "nb_trim")

@@ -21,6 +21,15 @@ def build(plan, house, mats):
     practical_scale = L.get("practical_scale", 1.0)
     sun_strength = L.get("sun_strength", plan.get("sun", {}).get("strength", 4.0))
     sky_strength = L.get("sky_strength", 0.6)
+    mode = plan.get("_mode", "day")
+    modes = L.get("modes", {})
+    mspec = modes.get(mode, {})
+    if mode != "day":
+        fill_scale = {k: v * mspec.get("fill_mul", 1.0) for k, v in fill_scale.items()}
+        practical_scale *= mspec.get("practical_mul", 1.0)
+        sun_strength = mspec.get("sun_strength", sun_strength)
+        sky_strength = mspec.get("sky_strength", sky_strength)
+    log("lighting: mode", mode, "sun", sun_strength, "sky", sky_strength)
     warm = kelvin_rgb(2700)
     n = 0
 
@@ -62,10 +71,12 @@ def build(plan, house, mats):
             n += 1
 
     # sun
-    sun = plan.get("sun", {"direction": [0.35, -0.55, -0.75]})
+    sun = dict(plan.get("sun", {"direction": [0.35, -0.55, -0.75]}))
+    if mspec.get("sun_direction"):
+        sun["direction"] = mspec["sun_direction"]
     sd = bpy.data.lights.new("sun", "SUN")
     sd.energy = sun_strength
-    sd.color = kelvin_rgb(L.get("sun_kelvin", 4800))
+    sd.color = kelvin_rgb(mspec.get("sun_kelvin", L.get("sun_kelvin", 4800)))
     sd.angle = math.radians(L.get("sun_angle_deg", 1.0))
     so = bpy.data.objects.new("sun", sd)
     so.location = (m(21), m(23), m(40))
@@ -84,7 +95,17 @@ def build(plan, house, mats):
         env.image = bpy.data.images.load(hdri)
         tc = nt.nodes.new("ShaderNodeTexCoord")
         mp = nt.nodes.new("ShaderNodeMapping")
-        mp.inputs["Rotation"].default_value = (0, 0, math.radians(L.get("hdri_rot_deg", 0)))
+        mp.inputs["Rotation"].default_value = (0, 0, math.radians(mspec.get("hdri_rot_deg", L.get("hdri_rot_deg", 0))))
+        if mspec.get("sky_rgb"):
+            # tint the sky (blue hour): multiply the environment by a colour before the background
+            mix = nt.nodes.new("ShaderNodeMix")
+            mix.data_type = "RGBA"
+            mix.blend_type = "MULTIPLY"
+            mix.inputs["Factor"].default_value = 1.0
+            nt.links.new(env.outputs["Color"], mix.inputs[6])
+            c = mspec["sky_rgb"]
+            mix.inputs[7].default_value = (c[0], c[1], c[2], 1.0)
+            nt.links.new(mix.outputs[2], bg.inputs["Color"])
         nt.links.new(tc.outputs["Generated"], mp.inputs["Vector"])
         nt.links.new(mp.outputs["Vector"], env.inputs["Vector"])
         nt.links.new(env.outputs["Color"], bg.inputs["Color"])
@@ -102,4 +123,11 @@ def build(plan, house, mats):
         w.cycles.sample_map_resolution = 1024
     except Exception:
         pass
+    # lamps are represented by their emissive shades; the light objects themselves must not show up as white shapes
+    for ob in col.objects:
+        if ob.type == "LIGHT":
+            try:
+                ob.visible_camera = False
+            except AttributeError:
+                pass
     log("lights: %d (fill %d rooms, practicals %d)" % (n, len(house.rooms), len(getattr(house, "practicals", []))))

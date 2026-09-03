@@ -9,6 +9,10 @@
   "alarm_clock_01": {
    "id": "alarm_clock_01"
   },
+  "american_football": {
+   "id": "american_football",
+   "res": "1k"
+  },
   "armchair_01": {
    "id": "ArmChair_01"
   },
@@ -17,6 +21,18 @@
   },
   "bar_chair_round_01": {
    "id": "bar_chair_round_01"
+  },
+  "baseball_01": {
+   "id": "baseball_01",
+   "res": "1k"
+  },
+  "bench_vice_01": {
+   "id": "bench_vice_01",
+   "res": "1k"
+  },
+  "binder_notebook": {
+   "id": "binder_notebook",
+   "res": "1k"
   },
   "book_encyclopedia_set_01": {
    "id": "book_encyclopedia_set_01"
@@ -30,11 +46,19 @@
   "brass_goblets": {
    "id": "brass_goblets"
   },
+  "brass_pan_01": {
+   "id": "brass_pan_01",
+   "res": "1k"
+  },
   "brass_pot_01": {
    "id": "brass_pot_01"
   },
   "brass_vase_01": {
    "id": "brass_vase_01"
+  },
+  "brass_vase_02": {
+   "id": "brass_vase_02",
+   "res": "1k"
   },
   "brass_vase_03": {
    "id": "brass_vase_03"
@@ -42,8 +66,20 @@
   "calathea_orbifolia_01": {
    "id": "calathea_orbifolia_01"
   },
+  "cardboard_box_01": {
+   "id": "cardboard_box_01",
+   "res": "1k"
+  },
   "carrot_cake": {
    "id": "carrot_cake"
+  },
+  "ceiling_fan": {
+   "id": "ceiling_fan",
+   "res": "1k"
+  },
+  "ceramic_pot": {
+   "id": "ceramic_pot",
+   "res": "1k"
   },
   "ceramic_vase_01": {
    "id": "ceramic_vase_01"
@@ -57,6 +93,10 @@
   "chess_set": {
    "id": "chess_set"
   },
+  "classic_laptop": {
+   "id": "classic_laptop",
+   "res": "1k"
+  },
   "classic_nightstand_01": {
    "id": "ClassicNightstand_01"
   },
@@ -66,11 +106,19 @@
   "concrete_cat_statue": {
    "id": "concrete_cat_statue"
   },
+  "decorative_book_set_01": {
+   "id": "decorative_book_set_01",
+   "res": "1k"
+  },
   "desk_lamp_arm_01": {
    "id": "desk_lamp_arm_01"
   },
   "dining_chair_02": {
    "id": "dining_chair_02"
+  },
+  "dining_table": {
+   "id": "dining_table",
+   "res": "1k"
   },
   "drawer_cabinet": {
    "id": "drawer_cabinet"
@@ -82,17 +130,41 @@
    "id": "fir_tree_01",
    "res": "1k"
   },
+  "fire_hydrant": {
+   "id": "fire_hydrant",
+   "res": "1k"
+  },
+  "folding_wooden_stool": {
+   "id": "folding_wooden_stool",
+   "res": "1k"
+  },
   "food_apple_01": {
    "id": "food_apple_01"
   },
   "food_pears_asian_01": {
    "id": "food_pears_asian_01"
   },
+  "gamepad": {
+   "id": "gamepad",
+   "res": "1k"
+  },
+  "garden_hose_wall_mounted_01": {
+   "id": "garden_hose_wall_mounted_01",
+   "res": "1k"
+  },
   "green_chair_01": {
    "id": "GreenChair_01"
   },
   "hanging_picture_frame_01": {
    "id": "hanging_picture_frame_01"
+  },
+  "hanging_picture_frame_02": {
+   "id": "hanging_picture_frame_02",
+   "res": "1k"
+  },
+  "hanging_picture_frame_03": {
+   "id": "hanging_picture_frame_03",
+   "res": "1k"
   },
   "island_tree_01": {
    "id": "island_tree_01"
@@ -119,6 +191,18 @@
   },
   "metal_stool_01": {
    "id": "metal_stool_01"
+  },
+  "metal_tool_chest": {
+   "id": "metal_tool_chest",
+   "res": "1k"
+  },
+  "metal_toolbox": {
+   "id": "metal_toolbox",
+   "res": "1k"
+  },
+  "metal_trash_can": {
+   "id": "metal_trash_can",
+   "res": "1k"
   },
   "mid_century_lounge_chair": {
    "id": "mid_century_lounge_chair"
@@ -150,6 +234,10 @@
   "painted_wooden_bench": {
    "id": "painted_wooden_bench"
   },
+  "painted_wooden_chair_01": {
+   "id": "painted_wooden_chair_01",
+   "res": "1k"
+  },
   "painted_wooden_nightstand": {
    "id": "painted_wooden_nightstand"
   },
@@ -158,6 +246,22 @@
   },
   "planter_pot_clay": {
    "id": "planter_pot_clay"
+  },
+  "plastic_bottle_gallon": {
+   "id": "plastic_bottle_gallon",
+   "res": "1k"
+  },
+  "plastic_broom": {
+   "id": "plastic_broom",
+   "res": "1k"
+  },
+  "plastic_crate_01": {
+   "id": "plastic_crate_01",
+   "res": "1k"
+  },
+  "pot_enamel_01": {
+   "id": "pot_enamel_01",
+   "res": "1k"
   },
   "potted_plant_01": {
    "id": "potted_plant_01"
@@ -168,8 +272,20 @@
   "potted_plant_04": {
    "id": "potted_plant_04"
   },
+  "round_wooden_table_01": {
+   "id": "round_wooden_table_01",
+   "res": "1k"
+  },
   "rubber_boots": {
    "id": "rubber_boots"
+  },
+  "rubber_duck_toy": {
+   "id": "rubber_duck_toy",
+   "res": "1k"
+  },
+  "security_camera_01": {
+   "id": "security_camera_01",
+   "res": "1k"
   },
   "shrub_02": {
    "id": "shrub_02"
@@ -192,11 +308,31 @@
   "sofa_03": {
    "id": "sofa_03"
   },
+  "standing_picture_frame_01": {
+   "id": "standing_picture_frame_01",
+   "res": "1k"
+  },
+  "standing_picture_frame_02": {
+   "id": "standing_picture_frame_02",
+   "res": "1k"
+  },
+  "steel_frame_shelves_01": {
+   "id": "steel_frame_shelves_01",
+   "res": "1k"
+  },
+  "strawberry_chocolate_cake": {
+   "id": "strawberry_chocolate_cake",
+   "res": "1k"
+  },
   "tea_set_01": {
    "id": "tea_set_01"
   },
   "throw_pillows_01": {
    "id": "throw_pillows_01"
+  },
+  "tool_cart": {
+   "id": "tool_cart",
+   "res": "1k"
   },
   "tree_small_02": {
    "id": "tree_small_02",
@@ -204,23 +340,85 @@
   },
   "vintage_electric_kettle": {
    "id": "vintage_electric_kettle"
+  },
+  "vintage_suitcase": {
+   "id": "vintage_suitcase",
+   "res": "1k"
+  },
+  "wall_clock": {
+   "id": "wall_clock",
+   "res": "1k"
+  },
+  "wicker_basket_01": {
+   "id": "wicker_basket_01",
+   "res": "1k"
+  },
+  "wicker_basket_02": {
+   "id": "wicker_basket_02",
+   "res": "1k"
+  },
+  "wine_bottles_01": {
+   "id": "wine_bottles_01",
+   "res": "1k"
+  },
+  "wooden_bowl_01": {
+   "id": "wooden_bowl_01",
+   "res": "1k"
+  },
+  "wooden_bowl_02": {
+   "id": "wooden_bowl_02",
+   "res": "1k"
+  },
+  "wooden_crate_01": {
+   "id": "wooden_crate_01",
+   "res": "1k"
+  },
+  "wooden_cutting_board": {
+   "id": "wooden_cutting_board",
+   "res": "1k"
+  },
+  "wooden_ladder": {
+   "id": "wooden_ladder",
+   "res": "1k"
+  },
+  "wooden_stool_01": {
+   "id": "wooden_stool_01",
+   "res": "1k"
   }
  },
  "textures": {
+  "asphalt": {
+   "id": "asphalt_02",
+   "res": "2k",
+   "source": "polyhaven"
+  },
   "boucle": {
    "id": "wool_boucle",
    "source": "polyhaven"
   },
   "brick": {
    "id": "brick_wall_02",
+   "res": "4k",
+   "source": "polyhaven"
+  },
+  "brick_red_tex": {
+   "id": "red_brick_03",
+   "res": "2k",
+   "source": "polyhaven"
+  },
+  "brick_yellow": {
+   "id": "yellow_brick",
+   "res": "2k",
    "source": "polyhaven"
   },
   "cedar": {
    "id": "japanese_cedar_planks",
+   "res": "4k",
    "source": "polyhaven"
   },
   "concrete": {
    "id": "concrete_floor_02",
+   "res": "4k",
    "source": "polyhaven"
   },
   "concrete_wall": {
@@ -231,8 +429,18 @@
    "id": "forest_floor",
    "source": "polyhaven"
   },
+  "gravel": {
+   "id": "gravel_floor_02",
+   "res": "2k",
+   "source": "polyhaven"
+  },
   "herringbone": {
    "id": "poly_wool_herringbone",
+   "source": "polyhaven"
+  },
+  "lawn_leafy": {
+   "id": "leafy_grass",
+   "res": "2k",
    "source": "polyhaven"
   },
   "leather": {
@@ -253,18 +461,40 @@
   },
   "oak_floor": {
    "id": "plank_flooring_02",
+   "res": "4k",
    "source": "polyhaven"
   },
   "plaster": {
    "id": "white_plaster_02",
+   "res": "4k",
    "source": "polyhaven"
   },
   "plaster_rough": {
    "id": "plastered_wall_02",
    "source": "polyhaven"
   },
+  "roof_slate": {
+   "id": "roof_slates_02",
+   "res": "2k",
+   "source": "polyhaven"
+  },
   "rubber": {
    "id": "rubber_tiles",
+   "source": "polyhaven"
+  },
+  "siding": {
+   "id": "white_planks_clean",
+   "res": "2k",
+   "source": "polyhaven"
+  },
+  "slate": {
+   "id": "slate_floor_02",
+   "res": "2k",
+   "source": "polyhaven"
+  },
+  "stucco": {
+   "id": "white_stucco",
+   "res": "2k",
    "source": "polyhaven"
   },
   "terrazzo": {
@@ -281,10 +511,16 @@
   },
   "walnut": {
    "id": "american_walnut_veneer",
+   "res": "4k",
    "source": "polyhaven"
   },
   "walnut_dark": {
    "id": "black_walnut_veneer_01",
+   "source": "polyhaven"
+  },
+  "wood_planks": {
+   "id": "wood_planks",
+   "res": "2k",
    "source": "polyhaven"
   }
  }

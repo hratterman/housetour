@@ -123,6 +123,31 @@ class PBRLibrary:
         links.new(tc.outputs["Object"], mp.inputs["Vector"])
         return mp
 
+    def _rough_var(self, nt, spec, src, mp):
+        """Multiply a roughness signal by a soft noise so large flat surfaces stop reading as uniform plastic."""
+        var = spec.get("rough_var", 0.0)
+        if not var:
+            return src
+        nodes, links = nt.nodes, nt.links
+        noise = nodes.new("ShaderNodeTexNoise")
+        noise.inputs["Scale"].default_value = 1.0 / max(spec.get("rough_var_ft", 1.5) * 0.3048, 0.05)
+        noise.inputs["Detail"].default_value = 3.0
+        noise.inputs["Roughness"].default_value = 0.6
+        if mp is not None:
+            links.new(mp.outputs["Vector"], noise.inputs["Vector"])
+        rng_ = nodes.new("ShaderNodeMapRange")
+        rng_.inputs["From Min"].default_value = 0.3
+        rng_.inputs["From Max"].default_value = 0.7
+        rng_.inputs["To Min"].default_value = 1.0 - var
+        rng_.inputs["To Max"].default_value = 1.0 + var
+        links.new(noise.outputs["Fac"], rng_.inputs["Value"])
+        mul = nodes.new("ShaderNodeMath")
+        mul.operation = "MULTIPLY"
+        mul.use_clamp = True
+        links.new(src, mul.inputs[0])
+        links.new(rng_.outputs["Result"], mul.inputs[1])
+        return mul.outputs[0]
+
     def _image_node(self, nt, folder, mapname, colorspace, mapping):
         path = os.path.join(self.tex_root, folder, mapname + ".jpg")
         if not os.path.exists(path):
@@ -176,7 +201,12 @@ class PBRLibrary:
                 mm.use_clamp = True
                 links.new(src, mm.inputs[0])
                 src = mm.outputs[0]
+            src = self._rough_var(nt, spec, src, mp)
             links.new(src, bsdf.inputs["Roughness"])
+        elif spec.get("rough_var"):
+            val = nodes.new("ShaderNodeValue")
+            val.outputs[0].default_value = spec.get("rough", 0.5)
+            links.new(self._rough_var(nt, spec, val.outputs[0], mp), bsdf.inputs["Roughness"])
         nor = self._image_node(nt, folder, "normal", "Non-Color", mp)
         if nor is not None:
             nm = nodes.new("ShaderNodeNormalMap")

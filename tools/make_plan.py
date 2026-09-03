@@ -57,7 +57,7 @@ def room(name, floor, parts, floorm, wall, ceil, light=60, **kw):
 
 # --- main floor (spec 3, table)
 room("gear_closet", "main", [0, 0, 8, 6], "terrazzo", "plaster_warm", "plaster_warm", 30, label="gear closet")
-room("vestibule", "main", [8, 0, 14, 6], "terrazzo", "walnut_panel", "plaster_warm", 50)
+room("vestibule", "main", [8, 0, 14, 6], "terrazzo_3ft", "walnut_panel", "plaster_warm", 50)
 room("powder", "main", [14, 0, 18, 6], "terrazzo", "wallpaper_botanical_dark", "oxblood", 30)
 room("coat_closet", "main", [18, 0, 22, 6], "oak_floor", "plaster_warm", "plaster_warm", 20, label="coat closet")
 room("panel_closet", "main", [0, 6, 8, 13], "concrete_sealed", "plaster_warm", "plaster_warm", 20, label="panel closet")
@@ -171,7 +171,6 @@ op("coat closet door", "main", "x", 6, 20, 2.67, 0, 7, "door", open_deg=0)
 op("panel closet door", "main", "y", 8, 9.5, 3, 0, 7, "door", open_deg=0)
 op("entry hall to spine", "main", "y", 22, 9.5, 5, 0, 8.5, "cased")
 op("spine to stair hall", "main", "y", 28, ARRIVE_C, 3, 0, 8.5, "cased")
-op("stair hall to laundry", "main", "y", 34, ARRIVE_C, 2.67, 0, 7, "door", open_deg=0)
 op("spine to kitchen", "main", "y", 22, 16.5, 6, 0, 9.0, "cased")
 op("spine to suite hall", "main", "y", 28, 28, 3, 0, 7, "door", open_deg=0)
 op("spine to away room", "main", "x", 30, 25, 3.5, 0, 8, "glassdoor", open_deg=0)  # terminates the gallery axis on N2
@@ -444,7 +443,14 @@ site = {
 # ----------------------------------------------------------------------------- lighting, camera, shots  spec 9, 10
 lighting = {"fill_scale": {"main": 0.35, "second": 0.35, "basement": 1.2, "garage": 1.0}, "practical_scale": 1.3,
             "sun_strength": 2.0, "sky_strength": 0.45, "hdri": "sky", "hdri_rot_deg": 0, "sun_kelvin": 4800, "sun_angle_deg": 1.0,
-            "fill_kelvin": 3000}
+            "fill_kelvin": 3000,
+            # per-shot modes (spec 9): blue hour for the terrace shot, low eastern sun for the bedroom shot
+            "modes": {
+                "dusk": {"sun_strength": 0.25, "sun_direction": [0.85, 0.25, -0.12], "sun_kelvin": 2600, "sky_strength": 0.12,
+                         "sky_rgb": [0.55, 0.62, 0.95], "hdri_rot_deg": 60, "fill_mul": 1.6, "practical_mul": 1.5},
+                "morning": {"sun_strength": 3.2, "sun_direction": [-0.82, 0.25, -0.38], "sun_kelvin": 4200, "sky_strength": 0.55,
+                            "hdri_rot_deg": 180, "fill_mul": 0.8, "practical_mul": 0.9},
+            }}
 camera = {"focal_mm": 24, "sensor_mm": 36, "exposure": 0.0, "fstop": 4.0, "handheld_ft": 0.06}
 shots = [
     {"name": "block", "seconds": 10, "exposure": 0.3, "path": [
@@ -478,8 +484,8 @@ shots = [
         {"t": 0, "pos": [36, 78, 5.5], "look": [12, 46, 6]}, {"t": 5, "pos": [26, 66, 5.5], "look": [10, 46, 5]},
         {"t": 9, "pos": [16, 58, 5.5], "look": [8, 40, 4.5]}, {"t": 12, "pos": [11, 48, 5.5], "look": [2, 38, 4]}]},
     {"name": "bedroom", "seconds": 8, "morning": True, "path": [
-        {"t": 0, "pos": [33, 44, 5.5], "look": [35, 31, 3.5]}, {"t": 4, "pos": [30, 41, 5.5], "look": [39, 32, 2.5]},
-        {"t": 8, "pos": [31, 37, 5.5], "look": [41, 41, 4]}]},
+        {"t": 0, "pos": [38.5, 44.0, 5.5], "look": [30.5, 36.5, 3.5]}, {"t": 4, "pos": [36.0, 40.5, 5.5], "look": [29.3, 42.8, 2.6]},
+        {"t": 8, "pos": [34.0, 38.0, 5.5], "look": [40.5, 43.0, 4.0]}]},
     {"name": "garage", "seconds": 8, "path": [
         {"t": 0, "pos": [6, 96, 5.5], "look": [0, 76, 5]}, {"t": 1.6, "pos": [2.5, 94.3, 5.5], "look": [0, 76, 5.5]},
         {"t": 4, "pos": [2, 86, 5.5], "look": [0, 74, 6.5]},
@@ -501,7 +507,7 @@ views = [
     {"name": "v05_living_wide", "pos": [20, 32, 5.5], "look": [3, 42, 4]},
     {"name": "v06_bath", "pos": [29, 21, 5.5], "look": [40, 14, 4]},
     {"name": "v07_closet", "pos": [32, 23, 5.5], "look": [41, 29, 3.5]},
-    {"name": "v08_bedroom", "pos": [29, 44, 5.5], "look": [38, 31, 3.5]},
+    {"name": "v08_bedroom", "pos": [39, 33, 5.5], "look": [30, 41, 3.5]},
     {"name": "v09_office", "pos": [9, 8, 15.5], "look": [2, 18, 14.5]},
     {"name": "v10_lab", "pos": [21, 21, 15.5], "look": [12, 8, 14.5]},
     {"name": "v11_loft", "pos": [23, 28, 15.5], "look": [16, 44, 14.5]},
@@ -524,6 +530,8 @@ plan = {
     "materials_file": "materials/materials.json", "source": "housemasterspec.md",
     "floors": floors, "rooms": rooms, "openings": openings, "voids": voids, "stairs": stairs,
     "beams": [{"room": "living", "axis": "x", "positions": [30.5, 34.5, 38.5, 42.5, 45.5], "w_in": 6, "d_in": 12, "m": "walnut", "deck_m": "oak_decking"}],
+    "pits": [{"note": "conversation pit", "room": "lounge", "b": [4, 32, 16, 42], "depth": 1.5, "lip": 0.9, "open_side": "north",
+              "edge": "walnut_panel", "seat": "velvet_teal", "floor_m": "wool_oatmeal"}],
     "columns": [{"note": "walnut-wrapped column", "b": [7.5, 29.5, 8.5, 30.5, 0, 9.5], "m": "walnut"},
                 {"note": "walnut-wrapped column", "b": [19.5, 29.5, 20.5, 30.5, 0, 9.5], "m": "walnut"}],
     "no_baseboard": ["gym", "mechanical", "battery", "storage", "gear_closet", "coat_closet", "panel_closet", "elevator_closet",

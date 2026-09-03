@@ -23,7 +23,11 @@ from geom import (FT, IN, m, log, box_ft, box_local, box_centered, beam_between,
 BOOK_MATS = ["book_a", "book_b", "book_c", "book_d", "book_e", "book_f", "book_g", "book_h", "book_i", "book_j"]
 
 
-class Stager:
+from gens2 import Gens2  # noqa: E402
+from gens3 import Gens3  # noqa: E402
+
+
+class Stager(Gens2, Gens3):
     def __init__(self, plan, house, mats, root, staging_path=None):
         self.plan = plan
         self.house = house
@@ -46,6 +50,13 @@ class Stager:
     def uid(self, base):
         self.serial += 1
         return "%s_%03d" % (base, self.serial)
+
+    def ceil_z(self, room_name):
+        r = self.house.room_by_name.get(room_name) if hasattr(self.house, "room_by_name") else None
+        if r is None:
+            return 9.5
+        fl = self.house.floors[r["floor"]]
+        return fl["z"] + fl["h"]
 
     def floor_z(self, room):
         r = self.house.room_by_name.get(room)
@@ -192,7 +203,47 @@ class Stager:
             inp.default_value = (c[0] * tint[0], c[1] * tint[1], c[2] * tint[2], 1.0)
 
     # ------------------------------------------------------------------ dispatch
+    def wall_lines(self, floor):
+        """(boundary_x, boundary_y, interior_x, interior_y) coordinate sets for a floor, from the plan's room parts."""
+        if not hasattr(self, "_wl"):
+            self._wl = {}
+        if floor in self._wl:
+            return self._wl[floor]
+        parts = [p for r in self.plan["rooms"] if r["floor"] == floor for p in r["parts"]]
+        xs = set(); ys = set()
+        for p in parts:
+            xs.update((p[0], p[2])); ys.update((p[1], p[3]))
+        bx = {min(xs), max(xs)}; by = {min(ys), max(ys)}
+        # the second floor's stair tower reaches Y 0 while the volume starts at Y 6: both are exterior lines
+        if floor == "second":
+            by.add(6.0)
+        self._wl[floor] = (bx, by, xs - bx, ys - by)
+        return self._wl[floor]
+
+    def wall_face(self, e, wall):
+        """Shift a wall spec from the room line to the finished face: 1 ft for exterior walls, 3 in for partitions."""
+        room = self.house.room_by_name.get(e.get("room", ""))
+        if room is None:
+            return wall
+        bx, by, ix, iy = self.wall_lines(room["floor"])
+        at = wall["at"]
+        lines_b, lines_i = (bx, ix) if wall["axis"] == "y" else (by, iy)
+        t = 0.0
+        if any(abs(at - v) < 1e-6 for v in lines_b):
+            t = room.get("exterior_wall", self.house.ext_t) if hasattr(self.house, "ext_t") else 1.0
+        elif any(abs(at - v) < 1e-6 for v in lines_i):
+            t = self.house.wt / 2 if hasattr(self.house, "wt") else 0.25
+        if not t:
+            return wall
+        sign = 1 if wall["face"] in ("+x", "+y") else -1
+        w = dict(wall)
+        w["at"] = at + sign * t
+        return w
+
     def place(self, e):
+        if isinstance(e.get("wall"), dict) and not e.get("wall_is_face"):
+            e = dict(e)
+            e["wall"] = self.wall_face(e, e["wall"])
         a = e["asset"]
         if a.startswith("proc:"):
             fn = getattr(self, "gen_" + a[5:], None)

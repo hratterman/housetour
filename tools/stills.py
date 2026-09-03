@@ -52,27 +52,39 @@ def main():
     # build_scene writes to <out>/stills/<name>.png, so hand it the parent
     tmp_out = os.path.join(args.out, "_work")
     timings = {}
-    for s in stills:
+    # one Blender build per lighting group (each shot may carry its own dusk/morning mode), many renders per build
+    groups = {}
+    for st in stills:
+        groups.setdefault(st.get("shot", "_views"), []).append(st)
+    for key, group in groups.items():
         t0 = time.time()
-        if "pos" in s:
-            sel = ["--view", "%s:%s" % (s["name"], ",".join(str(x) for x in list(s["pos"]) + list(s["look"])))]
-        else:
-            sel = ["--still", "%s:%s:%s" % (s["shot"], s["t"], s["name"])]
+        vf = os.path.join(tmp_out, "views_%s.json" % key)
+        os.makedirs(tmp_out, exist_ok=True)
+        json.dump(group, open(vf, "w"))
         cmd = [blender, "-b", "-P", os.path.join(ROOT, "build_scene.py"), "--",
-               "--plan", args.plan] + sel + [
+               "--plan", args.plan, "--views-file", vf,
                "--res", args.res, "--samples", str(args.samples), "--device", device,
                "--stage", args.stage, "--out", tmp_out, "--no-blend", "--motion-blur", "off"]
         if args.exposure is not None:
             cmd += ["--exposure", str(args.exposure)]
         r = subprocess.run(cmd, capture_output=True, text=True)
-        src = os.path.join(tmp_out, "stills", s["name"] + ".png")
-        if r.returncode != 0 or not os.path.exists(src):
-            print(r.stdout[-3000:], r.stderr[-3000:])
-            sys.exit("still %s failed" % s["name"])
-        shutil.move(src, os.path.join(args.out, s["name"] + ".png"))
-        dt = time.time() - t0
-        timings[s["name"]] = round(dt, 1)
-        print("still %-16s %6.1fs" % (s["name"], dt), flush=True)
+        per = {}
+        for line in r.stdout.splitlines():
+            if line.startswith("[build] view ") and line.rstrip().endswith("s"):
+                parts = line.split()
+                try:
+                    per[parts[2]] = float(parts[-1].rstrip("s"))
+                except ValueError:
+                    pass
+        for st in group:
+            src = os.path.join(tmp_out, "stills", st["name"] + ".png")
+            if r.returncode != 0 or not os.path.exists(src):
+                print(r.stdout[-3000:], r.stderr[-3000:])
+                sys.exit("still %s failed" % st["name"])
+            shutil.move(src, os.path.join(args.out, st["name"] + ".png"))
+            timings[st["name"]] = per.get(st["name"], round((time.time() - t0) / len(group), 1))
+            print("still %-16s %6.1fs" % (st["name"], timings[st["name"]]), flush=True)
+        print("group %-10s %d stills, %.1fs including the build" % (key, len(group), time.time() - t0), flush=True)
     shutil.rmtree(tmp_out, ignore_errors=True)
     json.dump({"res": args.res, "samples": args.samples, "device": device, "seconds": timings},
               open(os.path.join(args.out, "timings.json"), "w"), indent=2)

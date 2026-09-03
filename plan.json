@@ -52,7 +52,7 @@
      6
     ]
    ],
-   "floorm": "terrazzo",
+   "floorm": "terrazzo_3ft",
    "wall": "walnut_panel",
    "ceil": "plaster_warm",
    "light": 50
@@ -1433,18 +1433,6 @@
    "kind": "cased"
   },
   {
-   "note": "stair hall to laundry",
-   "floor": "main",
-   "axis": "y",
-   "at": 34,
-   "c": 11.166,
-   "w": 2.67,
-   "z0": 0,
-   "h": 7,
-   "kind": "door",
-   "open_deg": 0
-  },
-  {
    "note": "spine to kitchen",
    "floor": "main",
    "axis": "y",
@@ -2356,6 +2344,24 @@
    "d_in": 12,
    "m": "walnut",
    "deck_m": "oak_decking"
+  }
+ ],
+ "pits": [
+  {
+   "note": "conversation pit",
+   "room": "lounge",
+   "b": [
+    4,
+    32,
+    16,
+    42
+   ],
+   "depth": 1.5,
+   "lip": 0.9,
+   "open_side": "north",
+   "edge": "walnut_panel",
+   "seat": "velvet_teal",
+   "floor_m": "wool_oatmeal"
   }
  ],
  "columns": [
@@ -3961,7 +3967,40 @@
   "hdri_rot_deg": 0,
   "sun_kelvin": 4800,
   "sun_angle_deg": 1.0,
-  "fill_kelvin": 3000
+  "fill_kelvin": 3000,
+  "modes": {
+   "dusk": {
+    "sun_strength": 0.25,
+    "sun_direction": [
+     0.85,
+     0.25,
+     -0.12
+    ],
+    "sun_kelvin": 2600,
+    "sky_strength": 0.12,
+    "sky_rgb": [
+     0.55,
+     0.62,
+     0.95
+    ],
+    "hdri_rot_deg": 60,
+    "fill_mul": 1.6,
+    "practical_mul": 1.5
+   },
+   "morning": {
+    "sun_strength": 3.2,
+    "sun_direction": [
+     -0.82,
+     0.25,
+     -0.38
+    ],
+    "sun_kelvin": 4200,
+    "sky_strength": 0.55,
+    "hdri_rot_deg": 180,
+    "fill_mul": 0.8,
+    "practical_mul": 0.9
+   }
+  }
  },
  "camera": {
   "focal_mm": 24,
@@ -4587,40 +4626,40 @@
     {
      "t": 0,
      "pos": [
-      33,
-      44,
+      38.5,
+      44.0,
       5.5
      ],
      "look": [
-      35,
-      31,
+      30.5,
+      36.5,
       3.5
      ]
     },
     {
      "t": 4,
      "pos": [
-      30,
-      41,
+      36.0,
+      40.5,
       5.5
      ],
      "look": [
-      39,
-      32,
-      2.5
+      29.3,
+      42.8,
+      2.6
      ]
     },
     {
      "t": 8,
      "pos": [
-      31,
-      37,
+      34.0,
+      38.0,
       5.5
      ],
      "look": [
-      41,
-      41,
-      4
+      40.5,
+      43.0,
+      4.0
      ]
     }
    ]
@@ -4846,13 +4885,13 @@
   {
    "name": "v08_bedroom",
    "pos": [
-    29,
-    44,
+    39,
+    33,
     5.5
    ],
    "look": [
-    38,
-    31,
+    30,
+    41,
     3.5
    ]
   },

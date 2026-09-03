@@ -40,6 +40,7 @@ def parse_args():
                    help="phase1 (boxes only), phase2 (textures, details, staging), or auto")
     p.add_argument("--no-blend", action="store_true", help="do not save renders/scene.blend")
     p.add_argument("--check-paths", action="store_true", help="key every shot, run the collision check, render nothing")
+    p.add_argument("--views-file", default=None, help="JSON list of {name,pos,look}: build once, render each to <out>/stills")
     p.add_argument("--staging", default=None, help="alternate staging json (default staging.json)")
     p.add_argument("--no-bevel", action="store_true", help="skip the edge bevel pass (faster builds)")
     p.add_argument("--frame-start", type=int, default=None)
@@ -546,7 +547,8 @@ def bevel_pass(plan):
     w_soft = spec.get("soft_in", 1.2) / 12.0 * FT
     n = 0
     soft_tags = ("sofa_cushion", "sofa_back", "pillow", "bed_mattress", "bed_duvet", "bed_pillow", "bed_throw",
-                 "bench_cush", "pit_seat", "pit_back", "fold", "towel", "jacket", "bag")
+                 "bench_cush", "pit_seat", "pit_back", "fold", "towel", "jacket", "bag", "throw", "plush", "beanbag",
+                 "ch_seat", "ch_back", "dc_pad", "tc_seat", "tc_pad", "ott_cushion", "wr_item", "shoe", "basket_sq")
     skip_tags = ("glass", "canvas", "flame", "embers", "rug", "runner", "puzzle", "piece", "panel", "cove",
                  "reveal", "sput_rod", "stem", "leaf", "arc_seg", "tree_", "ground", "hedge")
     for ob in bpy.data.objects:
@@ -842,6 +844,20 @@ def main():
     scene.unit_settings.scale_length = 1.0
 
     _PLAN_CAMERA.update(plan.get("camera", {}))
+    # lighting mode from the shot being rendered: 'day' (default), 'dusk', 'morning'
+    sel = None
+    if args.shot not in ("none", "all"):
+        sel = shot_by_name(plan, args.shot)
+    elif args.still:
+        sel = shot_by_name(plan, args.still.split(":")[0])
+    elif args.views_file:
+        vs = json.load(open(args.views_file))
+        shots_in = [v["shot"] for v in vs if "shot" in v]
+        sel = shot_by_name(plan, shots_in[0]) if shots_in and len(set(shots_in)) == 1 else None
+    mode = "dusk" if sel and sel.get("dusk") else ("morning" if sel and sel.get("morning") else "day")
+    plan["_mode"] = mode
+    plan["_dusk"] = mode == "dusk"
+    log("lighting mode:", mode)
     mats = Materials(plan, stage)
     house = House(plan, mats)
     house.root = HERE
@@ -856,15 +872,20 @@ def main():
         site_build.build(plan, house, mats)
     else:
         house.build_ground()
+    log("phase 1 (shell, openings, stairs, site) %.1fs" % (time.time() - t_build))
     if stage == "phase2":
         import details
         import staging
+        t1 = time.time()
         details.build(plan, house, mats)
+        log("details %.1fs" % (time.time() - t1)); t1 = time.time()
         staging.build(plan, house, mats, args.staging)
+        log("staging %.1fs" % (time.time() - t1)); t1 = time.time()
         import lighting
         lighting.build(plan, house, mats)
         if not args.no_bevel:
             bevel_pass(plan)
+        log("lighting + bevel %.1fs" % (time.time() - t1))
     else:
         house.build_lights()
 
@@ -917,6 +938,29 @@ def main():
         log("still", name, "frame", frame, "%.1fs" % (time.time() - t0))
         return
 
+    if args.views_file:
+        views = json.load(open(args.views_file))
+        still_dir = os.path.join(args.out, "stills")
+        os.makedirs(still_dir, exist_ok=True)
+        for v in views:
+            if "shot" in v:
+                shot = shot_by_name(plan, v["shot"])
+                key_shot(scene, cam, tgt, shot, fps, plan.get("camera", {}).get("exposure", 0.0), args.exposure)
+                scene.frame_set(1 + int(round(float(v["t"]) * fps)))
+            else:
+                cam.animation_data_clear()
+                tgt.animation_data_clear()
+                cam.location = tuple(m(x) for x in v["pos"])
+                tgt.location = tuple(m(x) for x in v["look"])
+                scene.view_settings.exposure = plan.get("camera", {}).get("exposure", 0.0) + (0.8 if v["pos"][2] < -1 else 0.0)
+                scene.frame_set(1)
+            if v.get("exposure") is not None:
+                scene.view_settings.exposure = v["exposure"]
+            scene.render.filepath = os.path.join(still_dir, v["name"] + ".png")
+            t0 = time.time()
+            bpy.ops.render.render(write_still=True)
+            log("view", v["name"], "%.1fs" % (time.time() - t0))
+        return
     if args.check_paths:
         for shot in plan["shots"]:
             key_shot(scene, cam, tgt, shot, fps, plan.get("camera", {}).get("exposure", 0.0), args.exposure)
