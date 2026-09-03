@@ -89,7 +89,7 @@ neighbours' windows. `morning` puts a low warm sun in the east. Modes live in `p
 stairs, a minimap, teleport buttons, the lamps as real point lights. It runs in any desktop browser.
 
 ```sh
-blender -b -P export_web.py -- --out web     # writes web/house.glb (65 MB, not committed) from plan.json and staging.json
+blender -b -P export_web.py -- --out web     # rewrites web/house.glb (27 MB, Draco) from plan.json and staging.json
 cd web && python3 -m http.server 8000        # then open http://localhost:8000
 ```
 
