@@ -468,3 +468,15 @@ drifts along the east side and ends wide on the lift from X 15.5. The recovery s
 the south edge reaches the landing and the sauna; sauna strips and sconce about twice as bright. Hedges were
 flat green boxes in every window; they carry a leafy texture and a subdivided, noise-displaced surface now.
 Porch downlights were inside the canopy slab; moved below it. Mudroom downlights 14 W.
+
+Preview run. The first block frames went blue: one white balance cannot serve the sidewalk and the kitchen.
+Shots now carry white_balance_k (block and street 5600K, terrace dusk 4600K, bedroom morning 4200K, garage
+4500K, the interiors keep 3800K) and the exterior exposures went back to 0.0 (street riding to +0.9 on the
+porch). Stale frames from the September 2 preview (pre-furniture) were still in renders/frames and render.sh
+skips existing frames, so they were deleted before the run reached those shots.
+The fire's last tell: its trim frame was a solid slab across the glass, so the box stayed black through three
+fixes (recess in a solid wall, solid interior, frame). It is four bars now; the flames read behind the glass and
+reflect in the away-room glazing.
+Web export: with the block the glTF passes 100 MB and the bake takes over half an hour, so export_web drops the
+neighbourhood by default (--with-block keeps it). The export runs after the preview; two Blender processes do
+not fit in 16 GB with this scene.
