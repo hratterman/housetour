@@ -172,24 +172,25 @@ def build_car(stager, e):
     parts.append(body)
     parts += cutters
 
-    # ---- wheels: tyre (dark), rim (chrome/dark alloy), hub
+    # ---- wheels: tyre, alloy rim with five spokes, hub. Each wheel's outer face sits at |x| = W/2 - wheel_x,
+    # 0.8 ft of tyre inboard of it (mirrored per side, so both sides tuck equally into the arches)
     tire = stager.mat("tire")
     rim_m = stager.mat("alloy_dark")
     for syy in (-wb / 2, wb / 2):
         for sxx in (-W / 2 + K["wheel_x"], W / 2 - K["wheel_x"]):
-            t = cylinder_ft(stager.uid("car_tire"), (sxx - 0.4, syy, wr), wr, 0.8, tire, col, 40, axis="X")
-            r = cylinder_ft(stager.uid("car_rim"), (sxx - 0.36, syy, wr), wr * 0.64, 0.74, rim_m, col, 32, axis="X")
-            hub = cylinder_ft(stager.uid("car_hub"), (sxx - 0.33 + (0.72 if sxx > 0 else 0.0), syy, wr), wr * 0.16, 0.06, stager.mat("chrome_dark"), col, 16, axis="X")
-            # five spokes on the outer face of the rim, rotated about the axle (box meshes are local to their centre)
+            sgn = 1 if sxx > 0 else -1
+            t = cylinder_ft(stager.uid("car_tire"), (sxx - sgn * 0.4, syy, wr), wr, 0.8, tire, col, 40, axis="X")
+            r = cylinder_ft(stager.uid("car_rim"), (sxx - sgn * 0.37, syy, wr), wr * 0.64, 0.74, rim_m, col, 32, axis="X")
+            hub = cylinder_ft(stager.uid("car_hub"), (sxx + sgn * 0.02, syy, wr), wr * 0.16, 0.06, stager.mat("chrome_dark"), col, 16, axis="X")
+            parts += [t, r, hub]
             for k in range(5):
                 a = math.radians(k * 72 + (0 if sxx > 0 else 36))
-                x0s, x1s = (sxx + 0.30, sxx + 0.37) if sxx > 0 else (sxx - 0.77, sxx - 0.70)
+                x0s, x1s = sxx - 0.035, sxx + 0.035
                 z0s, z1s = wr, wr + wr * 0.58
                 spoke = box_ft(stager.uid("car_spoke"), x0s, syy - 0.09, x1s, syy + 0.09, z0s, z1s, stager.mat("chrome_dark"), col)
                 cz = m((z0s + z1s) / 2)
                 spoke.data.transform(Matrix.Translation((0, 0, m(wr) - cz)) @ Matrix.Rotation(a, 4, "X") @ Matrix.Translation((0, 0, cz - m(wr))))
                 parts.append(spoke)
-            parts += [t, r, hub]
 
     if not covered:
         bh = _interp(K["z_belt"], K["z_belt"][-1][0]) * sz    # belt height at the nose
