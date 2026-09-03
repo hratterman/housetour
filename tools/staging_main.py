@@ -263,7 +263,7 @@ def main_floor():
     proc("floor_lamp", "primary_bedroom", pos=[40.3, 44.3, 0], height=5.2, on=False, kind="drum")
     proc("rug", "primary_bedroom", b=[33.5, 33.5, 40.0, 42.5], m="rug_oxblood", thick=0.05)
     proc("bench", "primary_bedroom", pos=[36.2, 38.0, 0], length=5.0, depth=1.5, height=1.5, rot_z=90, cushion_m="wool_oatmeal")
-    model("potted_plant_02", (33.0, 44.0, 0), "primary_bedroom", height_ft=6.0, rot_z=70)
+    model("potted_plant_02", (40.8, 31.0, 0), "primary_bedroom", height_ft=6.0, rot_z=70)   # SE corner, out of the bedroom shot path
     proc("slippers", "primary_bedroom", pos=[31.5, 34.2, 0], rot_z=110)
     proc("slippers", "primary_bedroom", pos=[37.5, 41.5, 0], rot_z=-70)
     proc("wall_frame", "primary_bedroom", wall=W("x", 46.0, "-y"), u=30.2, zc=5.5, w=2.5, h=3.5, seed=111, frame_m="brass")
