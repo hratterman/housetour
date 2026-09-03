@@ -4023,7 +4023,8 @@
   {
    "name": "block",
    "seconds": 10,
-   "exposure": -0.3,
+   "exposure": 0.0,
+   "white_balance_k": 5600,
    "path": [
     {
      "t": 0,
@@ -4069,7 +4070,8 @@
   {
    "name": "street",
    "seconds": 12,
-   "exposure": -0.3,
+   "exposure": 0.0,
+   "white_balance_k": 5600,
    "path": [
     {
      "t": 0,
@@ -4083,7 +4085,7 @@
       0,
       6
      ],
-     "exp": -0.3
+     "exp": 0.0
     },
     {
      "t": 4,
@@ -4097,7 +4099,7 @@
       0,
       5
      ],
-     "exp": -0.3
+     "exp": 0.0
     },
     {
      "t": 8,
@@ -4111,7 +4113,7 @@
       0,
       4.5
      ],
-     "exp": 0.2
+     "exp": 0.4
     },
     {
      "t": 12,
@@ -4125,7 +4127,7 @@
       0,
       4.5
      ],
-     "exp": 0.8
+     "exp": 0.9
     }
    ]
   },
@@ -4569,6 +4571,7 @@
    "seconds": 12,
    "dusk": true,
    "exposure": 0.5,
+   "white_balance_k": 4600,
    "path": [
     {
      "t": 0,
@@ -4629,6 +4632,7 @@
    "seconds": 8,
    "morning": true,
    "exposure": 0.3,
+   "white_balance_k": 4200,
    "path": [
     {
      "t": 0,
@@ -4674,6 +4678,7 @@
   {
    "name": "garage",
    "seconds": 8,
+   "white_balance_k": 4500,
    "path": [
     {
      "t": 0,

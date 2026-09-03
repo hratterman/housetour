@@ -25,7 +25,7 @@ def build(plan, house, mats):
     mode = plan.get("_mode", "day")
     modes = L.get("modes", {})
     mspec = modes.get(mode, {})
-    wb = set_white_balance(mspec.get("white_balance_k", L.get("white_balance_k", 0)))
+    wb = set_white_balance(plan.get("_wb_k", mspec.get("white_balance_k", L.get("white_balance_k", 0))))
     if mode != "day":
         fill_scale = {k: v * mspec.get("fill_mul", 1.0) for k, v in fill_scale.items()}
         practical_scale *= mspec.get("practical_mul", 1.0)

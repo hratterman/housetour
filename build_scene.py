@@ -919,7 +919,9 @@ def main():
     # camera white balance must be set before any emissive material is built
     import geom as _geom
     _L = plan.get("lighting", {})
-    _geom.set_white_balance(_L.get("modes", {}).get(mode, {}).get("white_balance_k", _L.get("white_balance_k", 0)))
+    # a shot may override it: exteriors balance for daylight (5600K), interiors for the room lights (3800K)
+    plan["_wb_k"] = (sel or {}).get("white_balance_k", _L.get("modes", {}).get(mode, {}).get("white_balance_k", _L.get("white_balance_k", 0)))
+    _geom.set_white_balance(plan["_wb_k"])
     mats = Materials(plan, stage)
     house = House(plan, mats)
     house.root = HERE

@@ -455,13 +455,13 @@ lighting = {"fill_scale": {"main": 0.35, "second": 0.35, "basement": 1.2, "garag
             }}
 camera = {"focal_mm": 24, "sensor_mm": 36, "exposure": 0.0, "fstop": 4.0, "handheld_ft": 0.06}
 shots = [
-    {"name": "block", "seconds": 10, "exposure": -0.3, "path": [
+    {"name": "block", "seconds": 10, "exposure": 0.0, "white_balance_k": 5600, "path": [
         {"t": 0, "pos": [-46, -79, 5.5], "look": [-10, -20, 12]}, {"t": 5, "pos": [-20, -78.5, 5.5], "look": [12, -6, 10]},
         {"t": 10, "pos": [4, -78, 5.5], "look": [20, 0, 9]}]},
-    {"name": "street", "seconds": 12, "exposure": -0.3, "path": [
+    {"name": "street", "seconds": 12, "exposure": 0.0, "white_balance_k": 5600, "path": [
         # exposure rides up as the camera walks from the sunlit sidewalk into the shaded porch
-        {"t": 0, "pos": [10.5, -34, 5.5], "look": [14, 0, 6], "exp": -0.3}, {"t": 4, "pos": [10.5, -22, 5.5], "look": [12, 0, 5], "exp": -0.3},
-        {"t": 8, "pos": [10.5, -15, 5.5], "look": [11, 0, 4.5], "exp": 0.2}, {"t": 12, "pos": [11, -9.5, 5.3], "look": [12.5, 0, 4.5], "exp": 0.8}]},   # ends on the porch, door and sidelight
+        {"t": 0, "pos": [10.5, -34, 5.5], "look": [14, 0, 6], "exp": 0.0}, {"t": 4, "pos": [10.5, -22, 5.5], "look": [12, 0, 5], "exp": 0.0},
+        {"t": 8, "pos": [10.5, -15, 5.5], "look": [11, 0, 4.5], "exp": 0.4}, {"t": 12, "pos": [11, -9.5, 5.3], "look": [12.5, 0, 4.5], "exp": 0.9}]},   # ends on the porch, door and sidelight
     {"name": "main_floor", "seconds": 26, "path": [
         {"t": 0, "pos": [11, 3, 5.5], "look": [11, 12, 5]}, {"t": 3, "pos": [11, 9, 5.5], "look": [22, 9.5, 5]},
         {"t": 6, "pos": [23, 9.5, 5.5], "look": [25, 1, 4]}, {"t": 9, "pos": [25, 8, 5.5], "look": [25, 30, 5]},
@@ -483,13 +483,13 @@ shots = [
         {"t": 12.8, "pos": [16.8, 24, 15.5], "look": [24, 24, 15]}, {"t": 13.4, "pos": [21.4, 24, 15.5], "look": [25, 28, 15]},
         {"t": 14.0, "pos": [24.8, 25.0, 15.5], "look": [25, 32, 15]}, {"t": 14.6, "pos": [25, 27.6, 15.5], "look": [20, 38, 15]},
         {"t": 18, "pos": [19, 36, 15.5], "look": [17, 44, 14.5]}]},
-    {"name": "terrace_dusk", "seconds": 12, "dusk": True, "exposure": 0.5, "path": [
+    {"name": "terrace_dusk", "seconds": 12, "dusk": True, "exposure": 0.5, "white_balance_k": 4600, "path": [
         {"t": 0, "pos": [36, 78, 5.5], "look": [12, 46, 6]}, {"t": 5, "pos": [26, 66, 5.5], "look": [10, 46, 5]},
         {"t": 9, "pos": [16, 58, 5.5], "look": [8, 40, 4.5]}, {"t": 12, "pos": [11, 48, 5.5], "look": [2, 38, 4]}]},
-    {"name": "bedroom", "seconds": 8, "morning": True, "exposure": 0.3, "path": [
+    {"name": "bedroom", "seconds": 8, "morning": True, "exposure": 0.3, "white_balance_k": 4200, "path": [
         {"t": 0, "pos": [38.5, 44.0, 5.5], "look": [30.5, 36.5, 3.5]}, {"t": 4, "pos": [36.0, 40.5, 5.5], "look": [29.3, 42.8, 2.6]},
         {"t": 8, "pos": [34.0, 38.0, 5.5], "look": [40.5, 43.0, 4.0]}]},
-    {"name": "garage", "seconds": 8, "path": [
+    {"name": "garage", "seconds": 8, "white_balance_k": 4500, "path": [
         # in through the east door, up the aisle between the sedan and the lift, ending on the roadster and the bench
         {"t": 0, "pos": [12, 97, 5.5], "look": [4, 76, 5]}, {"t": 1.6, "pos": [11.5, 94.3, 5.5], "look": [3, 76, 5.5]},
         {"t": 4, "pos": [12.5, 90, 5.5], "look": [0, 72, 6.0]},
