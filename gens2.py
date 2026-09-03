@@ -41,19 +41,64 @@ class Gens2:
             objs.append(box_centered(self.uid("throw_hang"), ((x0 + x1) / 2, hy + (0.1 if side == "+y" else -0.1), z + 0.12 - drop / 2), ((x1 - x0) * 0.9, 0.2, drop), rot, mat, self.col))
         return objs
 
+    def _room_floor(self, room):
+        for r in self.plan.get("rooms", []):
+            if r["name"] == room:
+                return r["floor"]
+        return "main"
+
+    def _wall_cuts(self, wall, floor, margin=0.25):
+        """Openings (doors, windows, cased openings) in this wall on this floor as (u0, u1, z0, z1) in absolute
+        feet, grown by the casing margin. 'at' may already be shifted to the finished face, so match loosely."""
+        fz = self.plan.get("floors", {}).get(floor, {}).get("z", 0.0)
+        cuts = []
+        for op in self.plan.get("openings", []):
+            if op.get("floor") != floor or op.get("axis") != wall["axis"] or abs(op["at"] - wall["at"]) > 1.1:
+                continue
+            c, w = op["c"], op["w"]
+            cuts.append((c - w / 2 - margin, c + w / 2 + margin, fz + op.get("z0", 0) - margin, fz + op.get("z0", 0) + op["h"] + margin))
+        return cuts
+
     def gen_wall_finish(self, e):
-        """Thin finish panel (paint colour, wallpaper, tile, mirror) on a wall face: wall spec, span [u0,u1], z [z0,z1]."""
+        """Thin finish panel (paint colour, wallpaper, tile, mirror) on a wall face: wall spec, span [u0,u1], z [z0,z1].
+        Split around every door and window in that wall, so the panel never covers an opening."""
         wall = e["wall"]
         u0, u1 = e["span"]
         z0, z1 = e["z"]
         dx, dy = _face_dir(wall)
         at = wall["at"]
         t = e.get("thick", 0.03)
-        if wall["axis"] == "y":
-            xs = sorted((at, at + dx * t))
-            return [box_ft(self.uid("panel_finish"), xs[0], u0, xs[1], u1, z0, z1, self.mat(e["m"]), self.col)]
-        ys = sorted((at, at + dy * t))
-        return [box_ft(self.uid("panel_finish"), u0, ys[0], u1, ys[1], z0, z1, self.mat(e["m"]), self.col)]
+        mat = self.mat(e["m"])
+        cuts = [c for c in self._wall_cuts(wall, self._room_floor(e.get("room", ""))) if c[0] < u1 and c[1] > u0 and c[2] < z1 and c[3] > z0]
+        # rectangles to place: start with the whole span, subtract each cut into left / right / below / above pieces
+        rects = [(u0, u1, z0, z1)]
+        for (cu0, cu1, cz0, cz1) in cuts:
+            nxt = []
+            for (a0, a1, b0, b1) in rects:
+                if cu0 >= a1 or cu1 <= a0 or cz0 >= b1 or cz1 <= b0:
+                    nxt.append((a0, a1, b0, b1))
+                    continue
+                if cu0 > a0:
+                    nxt.append((a0, cu0, b0, b1))
+                if cu1 < a1:
+                    nxt.append((cu1, a1, b0, b1))
+                m0, m1 = max(a0, cu0), min(a1, cu1)
+                if cz0 > b0:
+                    nxt.append((m0, m1, b0, cz0))
+                if cz1 < b1:
+                    nxt.append((m0, m1, cz1, b1))
+            rects = nxt
+        objs = []
+        for (a0, a1, b0, b1) in rects:
+            if a1 - a0 < 0.02 or b1 - b0 < 0.02:
+                continue
+            if wall["axis"] == "y":
+                xs = sorted((at, at + dx * t))
+                objs.append(box_ft(self.uid("panel_finish"), xs[0], a0, xs[1], a1, b0, b1, mat, self.col))
+            else:
+                ys = sorted((at, at + dy * t))
+                objs.append(box_ft(self.uid("panel_finish"), a0, ys[0], a1, ys[1], b0, b1, mat, self.col))
+        return objs
 
     # ================================================================== lighting fixtures
     def gen_downlight(self, e):

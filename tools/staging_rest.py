@@ -64,7 +64,7 @@ def second_floor():
                 {"kind": "hood", "pos": [12.5, 15.2], "z": 2.0, "duct_h": 4.0}])
     proc("rack", "rack_closet", b=[11.5, 17.0, 13.5, 20.0, z, z + 6.5], face="+x")
     proc("downlight", "rack_closet", pos=[12.5, 21.0, z + 9.0], watts=5, kelvin=4000)
-    add(asset="proc:cabinet", room="lab", b=[20.75, 13.5, 21.75, 21.5, z, z + 8.0], doors=4, face="-x", m="walnut_h")
+    add(asset="proc:cabinet", room="lab", b=[20.75, 18.6, 21.75, 21.5, z, z + 8.0], doors=2, face="-x", m="walnut_h")   # north of the landing door (Y 14.5-17.5)
     proc("rug", "lab", b=[14.5, 9.5, 19.5, 14.5], m="rug_teal", thick=0.05)
     model("metal_stool_01", (16.5, 13.0, z), "lab", height_ft=2.0, rot_z=30)
     model("round_wooden_table_01", (17.5, 18.0, z), "lab", length_ft=2.4)
