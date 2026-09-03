@@ -683,7 +683,7 @@ class Stager(Gens2, Gens3):
         objs = []
         screen_m = self.mat("screen")
         if e.get("on"):
-            screen_m = self.art_material(e.get("seed", 88), emit=0.35)
+            screen_m = self.art_material(e.get("seed", 88), emit=0.2)
             self.light(type="area", pos=(u, at + (-0.3 if face == "-y" else 0.3), zc) if wall["axis"] == "x" else (at + (-0.3 if face == "-x" else 0.3), u, zc),
                        size=w * 0.8, size_y=h * 0.8, shape="RECTANGLE", watts=e.get("watts", 25), kelvin=5500,
                        # area lights emit along local -Z: -90 about X -> -Y, +90 about X -> +Y, +90 about Y -> -X, -90 about Y -> +X
