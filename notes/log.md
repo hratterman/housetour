@@ -480,3 +480,27 @@ reflect in the away-room glazing.
 Web export: with the block the glTF passes 100 MB and the bake takes over half an hour, so export_web drops the
 neighbourhood by default (--with-block keeps it). The export runs after the preview; two Blender processes do
 not fit in 16 GB with this scene.
+
+## Henry's morning review: cars, orientation, clipping
+
+Cars. The extruded-profile cars are gone. car.py lofts a 12-vertex ring through side-profile stations sampled
+every 0.7 ft (centre-line silhouette, shoulder line, body and roof half-widths as piecewise-linear keys per
+kind), smooths it with two levels of Catmull-Clark under creased shoulder, sill and roof-edge loops, cuts the
+wheel arches with boolean cylinders after the subdivision, and adds tyres, alloy rims with five spokes, a glass
+band with pillars, windshield and rear glass, head and tail lights, grille, bumpers, mirrors off the A-pillar
+glass line, handles, door seams and a plate. Sedan, SUV and roadster tables; the roadster stays under its
+cover. Car paint has a clearcoat. Garage lift, cars and ladder moved off the bench; the garage shot ends behind
+the cars from the doors.
+
+Orientation. tools/model_facing.py measures a model's forward direction from its geometry (the backrest
+centroid sits behind the seat centre): every Poly Haven chair faces -Y at rot 0, the procedural lounge and
+dining chairs too, the procedural task and kid chairs face +Y. Against that: the living armchairs faced the
+south-west corner, the away-room lounge chair the cabinet, both kid desk chairs away from their desks, the
+loft chairs away from the puzzle table, the bedroom reading chair the corner, the office task chair the room
+instead of the desk, all four games-table chairs and both island-table-end chairs outward. All corrected.
+
+Clipping. build_scene --audit tags every object with its staging entry (Stager.build_all) and reports, per
+entry AABB, overlaps with other entries (contact from above excepted), penetration into wall boxes deeper than
+0.15 ft, and centres outside the entry's room; exterior fixtures are exempt from the room test. The first run
+was garbage: object matrices and bound boxes are stale until view_layer.update(). tools/audit_views.py writes
+a bird's-eye pose per room (59 views) for the eye check.
