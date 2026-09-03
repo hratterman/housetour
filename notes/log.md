@@ -452,3 +452,19 @@ Garage shot re-keyed twice: the first path walked into the lift under the roadst
 close beside it. It now enters by the east door, walks the aisle between the sedan and the lift and ends on a
 three-quarter view of the lift from X 12.5. Car bodies get a 5 in, five-segment bevel so the extruded profile
 reads as sheet metal.
+
+Check batch (stage_e, first frames with the white balance). Kitchen, living, office, spine, lounge, bedroom all
+read neutral: white plaster, olive island, oak, teal, oxblood, with the windows slightly cool. Kept 3800K.
+Found and fixed from the same batch: the vanity mirror's white panel was the mirror backlight itself, aimed
+into the mirror (rotation sign) and visible to reflection rays; all lights are now hidden from glossy and
+transmission rays too, so no mirror or window shows a light panel. The living fire never showed its flames
+because the firebox was recessed into the solid exterior wall (the flames sat inside the wall mesh); the fire
+now sits in a 1.3 ft limestone chimney breast built as four pieces around the cavity, flush with the bookcase
+fronts, the hearth bench in front of it. Two gallery frames hung across the Frame TV; the gallery moved up and
+the TV art is dimmer. The roadster on the lift is stored under a fitted fabric cover (cloth pass): a
+procedural car body will not pass as a photograph, a covered car will; the car bevel is 3 in. The garage shot
+drifts along the east side and ends wide on the lift from X 15.5. The recovery suite's landing had no way in
+(the spec's shower wall runs the full Y 20-28), so the shower's west wall stops at Y 22 and the dry path along
+the south edge reaches the landing and the sauna; sauna strips and sconce about twice as bright. Hedges were
+flat green boxes in every window; they carry a leafy texture and a subdivided, noise-displaced surface now.
+Porch downlights were inside the canopy slab; moved below it. Mudroom downlights 14 W.
