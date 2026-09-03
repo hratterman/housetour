@@ -35,7 +35,8 @@ def parse():
     p.add_argument("--tex", type=int, default=512, help="baked tile resolution")
     p.add_argument("--hero-tex", type=int, default=1024, help="tile resolution for floors and walnut")
     p.add_argument("--max-tris", type=int, default=30000, help="decimate imported models above this")
-    p.add_argument("--model-tex", type=int, default=512, help="downscale imported model textures to this")
+    p.add_argument("--model-tex", type=int, default=384, help="downscale imported model textures to this")
+    p.add_argument("--no-draco", action="store_true", help="write uncompressed geometry")
     p.add_argument("--no-trees", action="store_true", help="skip exterior trees entirely")
     p.add_argument("--rebake", action="store_true", help="bake every material tile again instead of reusing <out>/_tiles")
     p.add_argument("--with-block", action="store_true", help="keep the neighbourhood (25 lots, 50 trees); default exports the house and its lot only")
@@ -449,7 +450,12 @@ def main():
                               export_cameras=False, export_lights=False, export_animations=False,
                               export_image_format="JPEG", export_jpeg_quality=80,
                               export_texcoords=True, export_normals=True, export_materials="EXPORT",
-                              export_yup=True)
+                              export_yup=True,
+                              # Draco cuts the geometry about six to one; the viewer decodes it with the vendored
+                              # three.js decoder (web/vendor/three/libs/draco)
+                              export_draco_mesh_compression_enable=not args.no_draco,
+                              export_draco_mesh_compression_level=6, export_draco_position_quantization=14,
+                              export_draco_normal_quantization=10, export_draco_texcoord_quantization=12)
     size = os.path.getsize(glb) / 1e6
     log("wrote %s (%.1f MB) in %.0fs" % (glb, size, time.time() - t0))
     import shutil

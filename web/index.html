@@ -51,6 +51,7 @@
 <script type="module">
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
 
 const FT = 0.3048;
@@ -105,6 +106,9 @@ sun.target.position.set(21 * FT, 0, -23 * FT);
 const colliders = [];
 const lamps = [];
 const loader = new GLTFLoader();
+const draco = new DRACOLoader();
+draco.setDecoderPath(new URL('./vendor/three/libs/draco/', import.meta.url ?? location.href).href);
+loader.setDRACOLoader(draco);
 let house;
 await new Promise((resolve, reject) => {
   const onLoad = (g) => {

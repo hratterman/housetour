@@ -59,6 +59,8 @@ def single_file(revision):
                  '  "three/addons/": "%s/examples/jsm/"\n} }\n</script>' % (cdn, cdn))
     html, n = re.subn(r'<script type="importmap">.*?</script>', importmap, html, count=1, flags=re.S)
     assert n == 1, "importmap not found in web/index.html"
+    html, n = re.subn(r"draco\.setDecoderPath\([^\n]*\);", "draco.setDecoderPath('%s/examples/jsm/libs/draco/');" % cdn, html, count=1)
+    assert n == 1, "draco.setDecoderPath not found in web/index.html"
     with open(os.path.join(WEB, "house.glb"), "rb") as f:
         glb = base64.b64encode(f.read()).decode("ascii")
     inline = {
