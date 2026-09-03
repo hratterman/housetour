@@ -505,7 +505,7 @@
 },
 "u": 5,
 "z": 8.3,
-"watts": 9
+"watts": 4.5
 },
 {
 "asset": "proc:picture_light",
@@ -517,7 +517,7 @@
 },
 "u": 11,
 "z": 8.3,
-"watts": 9
+"watts": 4.5
 },
 {
 "asset": "proc:picture_light",
@@ -529,7 +529,7 @@
 },
 "u": 17,
 "z": 8.3,
-"watts": 9
+"watts": 4.5
 },
 {
 "asset": "proc:picture_light",
@@ -541,7 +541,7 @@
 },
 "u": 23,
 "z": 8.3,
-"watts": 9
+"watts": 4.5
 },
 {
 "asset": "proc:picture_light",
@@ -553,7 +553,7 @@
 },
 "u": 29,
 "z": 8.3,
-"watts": 9
+"watts": 4.5
 },
 {
 "asset": "proc:picture_light",
@@ -565,7 +565,7 @@
 },
 "u": 3,
 "z": 8.3,
-"watts": 9
+"watts": 4.5
 },
 {
 "asset": "proc:picture_light",
@@ -577,7 +577,7 @@
 },
 "u": 10,
 "z": 8.3,
-"watts": 9
+"watts": 4.5
 },
 {
 "asset": "proc:picture_light",
@@ -589,7 +589,7 @@
 },
 "u": 17,
 "z": 8.3,
-"watts": 9
+"watts": 4.5
 },
 {
 "asset": "proc:picture_light",
@@ -601,7 +601,7 @@
 },
 "u": 24,
 "z": 8.3,
-"watts": 9
+"watts": 4.5
 },
 {
 "asset": "proc:picture_light",
@@ -613,7 +613,7 @@
 },
 "u": 29,
 "z": 8.3,
-"watts": 9
+"watts": 4.5
 },
 {
 "asset": "proc:frames",
@@ -1653,7 +1653,7 @@
 },
 "u": 33.0,
 "z": 8.3,
-"watts": 9
+"watts": 4.5
 },
 {
 "asset": "proc:picture_light",
@@ -1665,7 +1665,7 @@
 },
 "u": 43.3,
 "z": 8.3,
-"watts": 9
+"watts": 4.5
 },
 {
 "asset": "proc:arc_lamp",

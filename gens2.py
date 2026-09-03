@@ -115,7 +115,7 @@ class Gens2:
             objs.append(cylinder_ft(self.uid("pl_body"), (cx - w / 2, cy, z), 0.09, w, brass, self.col, 14, axis="X"))
             objs.append(box_ft(self.uid("pl_lens"), cx - w / 2 + 0.05, cy - 0.05, cx + w / 2 - 0.05, cy + 0.05, z - 0.1, z - 0.085, self.mat("lamp_glow"), self.col))
             aim = (u, at, e.get("aim_z", z - 3.2))
-        self.light(type="spot", pos=(cx, cy, z - 0.1), aim=aim, watts=e.get("watts", 9), kelvin=2700, angle=e.get("angle", 32), blend=0.85, name="piclight")
+        self.light(type="spot", pos=(cx, cy, z - 0.1), aim=aim, watts=e.get("watts", 4.5), kelvin=2700, angle=e.get("angle", 50), blend=0.9, name="piclight")
         return objs
 
     def gen_floor_lamp(self, e):
@@ -1449,8 +1449,10 @@ class Gens2:
                     core = sphere_ft(self.uid("flame_core"), (fcx, fy, z0 + 0.15 + h * 0.25), 0.07, self.mat("fire_core"), self.col, 8, 6)
                     core.scale = (0.7, 0.8, h / 0.26 * 0.5)
                     objs.append(core)
-            self.light(type="area", pos=(at + dx * 0.15, u, (z0 + z1) / 2), size=w * 0.9, size_y=(z1 - z0) * 0.8, shape="RECTANGLE", watts=e.get("watts", 45), kelvin=1900,
-                       rot=(0, math.radians(90 * dx), 0), name="fire")
+            # rotated 90 deg about Y the area light's local X becomes world Z, so 'size' is the height and
+            # 'size_y' the length along the firebox (the first cut had them swapped: a tall stripe up the stone)
+            self.light(type="area", pos=(at + dx * 0.06, u, z0 + (z1 - z0) * 0.45), size=(z1 - z0) * 0.7, size_y=w * 0.9, shape="RECTANGLE",
+                       watts=e.get("watts", 30), kelvin=1900, rot=(0, math.radians(90 * dx), 0), name="fire")
         return objs
 
     def gen_paneled_wall(self, e):

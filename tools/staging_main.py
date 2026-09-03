@@ -92,9 +92,9 @@ def main_floor():
     proc("picture_rail", "spine", wall=W("y", 22.0, "+x"), span=[1.2, 29.5], z=9.0)
     proc("picture_rail", "spine", wall=W("y", 28.0, "-x"), span=[1.2, 29.5], z=9.0)
     for y in (5, 11, 17, 23, 29):
-        proc("picture_light", "spine", wall=W("y", 22.0, "+x"), u=y, z=8.3, watts=9)
+        proc("picture_light", "spine", wall=W("y", 22.0, "+x"), u=y, z=8.3, watts=4.5)
     for y in (3, 10, 17, 24, 29):
-        proc("picture_light", "spine", wall=W("y", 28.0, "-x"), u=y, z=8.3, watts=9)
+        proc("picture_light", "spine", wall=W("y", 28.0, "-x"), u=y, z=8.3, watts=4.5)
     frames("spine", W("y", 22.0, "+x"), [1.4, 6.0], 5, zc=5.5, seed=101)
     frames("spine", W("y", 22.0, "+x"), [20.2, 26.2], 7, zc=5.3, seed=102)
     proc("wall_frame", "spine", wall=W("y", 22.0, "+x"), u=28.3, zc=5.5, w=2.5, h=3.33, seed=103, frame_m="brass")
@@ -181,8 +181,8 @@ def main_floor():
     proc("tv_wall", "living", wall=W("y", 20.0, "-x"), u=33.0, zc=5.0, w=4.8, h=2.75, on=True, seed=88, watts=14)
     frames("living", W("y", 20.0, "-x"), [30.6, 35.9], 6, zc=6.5, seed=61)
     frames("living", W("y", 20.0, "-x"), [41.2, 44.9], 8, zc=5.3, seed=62)
-    proc("picture_light", "living", wall=W("y", 20.0, "-x"), u=33.0, z=8.3, watts=9)
-    proc("picture_light", "living", wall=W("y", 20.0, "-x"), u=43.3, z=8.3, watts=9)
+    proc("picture_light", "living", wall=W("y", 20.0, "-x"), u=33.0, z=8.3, watts=4.5)
+    proc("picture_light", "living", wall=W("y", 20.0, "-x"), u=43.3, z=8.3, watts=4.5)
     proc("arc_lamp", "living", pos=[13.8, 43.6, 0], reach=4.9, height=7.3, rot_z=-135, watts=55)
     model("potted_plant_02", (17.8, 43.8, 0), "living", height_ft=6.0, rot_z=20)
     model("calathea_orbifolia_01", (3.0, 44.0, 0), "living", height_ft=4.6, rot_z=50)

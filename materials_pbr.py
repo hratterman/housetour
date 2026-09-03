@@ -108,6 +108,22 @@ class PBRLibrary:
         ov = spec.get("overlay")
         if ov:
             self._wire_overlay(nt, bsdf, spec, ov, color_socket)
+        if spec.get("transmission", 0) >= 0.5 and spec.get("shadow_transparent", True):
+            # Cycles blocks shadow rays at refractive surfaces, so sun and sky light sampled through
+            # window glass never reached the interiors (only multi-bounce paths did). Let shadow rays
+            # pass as tinted transparency, the standard archviz trick; the camera still sees glass.
+            out = next((n for n in nodes if n.type == "OUTPUT_MATERIAL"), None)
+            if out is not None and out.inputs["Surface"].is_linked:
+                src = out.inputs["Surface"].links[0].from_socket
+                lp = nodes.new("ShaderNodeLightPath")
+                tr = nodes.new("ShaderNodeBsdfTransparent")
+                t = spec.get("tint", [1.0, 1.0, 1.0])
+                tr.inputs["Color"].default_value = (t[0], t[1], t[2], 1.0)
+                mix = nodes.new("ShaderNodeMixShader")
+                links.new(lp.outputs["Is Shadow Ray"], mix.inputs["Fac"])
+                links.new(src, mix.inputs[1])
+                links.new(tr.outputs[0], mix.inputs[2])
+                links.new(mix.outputs[0], out.inputs["Surface"])
         return mat
 
     def _mapping(self, nt, spec):
