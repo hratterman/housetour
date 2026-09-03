@@ -405,12 +405,12 @@
 {
 "asset": "pachira_aquatica_01",
 "pos": [
-19.6,
-10.2,
+20.2,
+11.3,
 0
 ],
 "room": "entry_hall",
-"height_ft": 5.8,
+"height_ft": 4.8,
 "rot_z": 30
 },
 {
