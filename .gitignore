@@ -21,3 +21,4 @@ web/mem.log
 !renders/web_shots/
 !renders/floorplan.png
 dist/
+web/house.glb
