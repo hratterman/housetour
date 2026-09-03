@@ -638,14 +638,15 @@ def bevel_pass(plan):
         tex.noise_scale = 0.4
         tex.noise_depth = 3
         for ob in cloth:
-            d = min(abs(v) for v in ob.dimensions if abs(v) > 1e-5)
+            dims = sorted(abs(v) for v in ob.dimensions if abs(v) > 1e-5)
+            d2 = dims[1] if len(dims) > 1 else dims[0]           # the second-smallest: a thin throw still needs real waves
             s1 = ob.modifiers.new("cloth_subd", "SUBSURF")
             s1.subdivision_type = "SIMPLE"
-            s1.levels = s1.render_levels = 2
+            s1.levels = s1.render_levels = 3 if dims[-1] > 1.0 else 2
             dp = ob.modifiers.new("cloth_wrinkle", "DISPLACE")
             dp.texture = tex
             dp.texture_coords = "GLOBAL"
-            dp.strength = max(0.008, min(0.035, d * 0.18))
+            dp.strength = max(0.01, min(0.04, d2 * 0.06))
             dp.mid_level = 0.5
             s2 = ob.modifiers.new("cloth_smooth", "SUBSURF")
             s2.levels = s2.render_levels = 1
