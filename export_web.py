@@ -36,6 +36,7 @@ def parse():
     p.add_argument("--max-tris", type=int, default=30000, help="decimate imported models above this")
     p.add_argument("--model-tex", type=int, default=512, help="downscale imported model textures to this")
     p.add_argument("--no-trees", action="store_true", help="skip exterior trees entirely")
+    p.add_argument("--rebake", action="store_true", help="bake every material tile again instead of reusing <out>/_tiles")
     p.add_argument("--with-block", action="store_true", help="keep the neighbourhood (25 lots, 50 trees); default exports the house and its lot only")
     return p.parse_args(argv)
 
@@ -88,9 +89,36 @@ def tile_ft_for(spec):
     return base
 
 
+REBAKE = False
+_BAKE_SCENE = None
+
+
+def bake_scene():
+    """A scene holding nothing but the bake plane. Baking in the house scene made Cycles synchronise all
+    10,000 objects and every texture for each of ~150 tiles (25 s a tile, an hour an export)."""
+    global _BAKE_SCENE
+    if _BAKE_SCENE is None:
+        sc = bpy.data.scenes.new("bake_scene")
+        sc.render.engine = "CYCLES"
+        sc.cycles.device = "CPU"
+        sc.cycles.samples = 1
+        sc.render.bake.use_pass_direct = False
+        sc.render.bake.use_pass_indirect = False
+        sc.render.bake.use_pass_color = True
+        sc.render.bake.margin = 2
+        _BAKE_SCENE = sc
+    return _BAKE_SCENE
+
+
 def bake_tile(mat, tile_m, res, out_path):
-    """Bake the diffuse color of a world-space material onto a plane of one tile, save JPEG."""
-    scene = bpy.context.scene
+    """Bake the diffuse color of a world-space material onto a plane of one tile, save JPEG.
+
+    Tiles already in <out>/_tiles are reused (pass --rebake after changing materials.json)."""
+    if os.path.exists(out_path) and not REBAKE:
+        img = bpy.data.images.load(out_path)
+        img.name = "bake_" + mat.name
+        return img
+    scene = bake_scene()
     mesh = bpy.data.meshes.new("bake_plane")
     h = tile_m / 2
     mesh.from_pydata([(-h, -h, 0), (h, -h, 0), (h, h, 0), (-h, h, 0)], [], [(0, 1, 2, 3)])
@@ -106,18 +134,12 @@ def bake_tile(mat, tile_m, res, out_path):
     node = nt.nodes.new("ShaderNodeTexImage")
     node.image = img
     nt.nodes.active = node
-    for o in bpy.context.selected_objects:
-        o.select_set(False)
-    ob.select_set(True)
-    bpy.context.view_layer.objects.active = ob
-    scene.render.engine = "CYCLES"
-    scene.cycles.device = "CPU"
-    scene.cycles.samples = 1
-    scene.render.bake.use_pass_direct = False
-    scene.render.bake.use_pass_indirect = False
-    scene.render.bake.use_pass_color = True
-    scene.render.bake.margin = 2
-    bpy.ops.object.bake(type="DIFFUSE", pass_filter={"COLOR"}, use_clear=True)
+    vl = scene.view_layers[0]
+    vl.objects.active = ob
+    ob.select_set(True, view_layer=vl)
+    with bpy.context.temp_override(scene=scene, view_layer=vl, object=ob, active_object=ob, selected_objects=[ob],
+                                   selected_editable_objects=[ob]):
+        bpy.ops.object.bake(type="DIFFUSE", pass_filter={"COLOR"}, use_clear=True)
     img.filepath_raw = out_path
     img.file_format = "JPEG"
     scene.render.image_settings.quality = 88
@@ -240,6 +262,8 @@ def box_uvs(ob, tile_m):
 
 def main():
     args = parse()
+    global REBAKE
+    REBAKE = args.rebake
     t0 = time.time()
     plan = build_scene(args)
     import build_scene as bs
@@ -322,17 +346,24 @@ def main():
                 ob.data.materials[i] = web_mats[m.name]
     log("uv-mapped %d procedural meshes" % n_uv)
 
-    # 3. imported models: decimate heavy prototypes, downscale their textures
+    # 3. imported models: decimate every heavy mesh that will be exported (multi-part models and the site
+    # trees included; the first version only looked at prototype meshes and let 270 MB of tool-chest curves
+    # and tree leaves through), downscale their textures
     n_dec = 0
-    for me in proto_meshes:
-        tris = sum(len(p.vertices) - 2 for p in me.polygons)
+    tri_cache = {}
+    for ob in bpy.data.objects:
+        if ob.type != "MESH" or ob.name.startswith("proto_") or not ob.visible_get():
+            continue
+        if ob.users_collection and ob.users_collection[0].name == "asset_lib":
+            continue
+        me = ob.data
+        if me not in tri_cache:
+            tri_cache[me] = sum(len(p.vertices) - 2 for p in me.polygons)
+        tris = tri_cache[me]
         if tris > args.max_tris:
-            ratio = args.max_tris / tris
-            for ob in bpy.data.objects:
-                if ob.data is me and not ob.name.startswith("proto_"):
-                    mod = ob.modifiers.new("dec", "DECIMATE")
-                    mod.ratio = ratio
-                    mod.use_collapse_triangulate = True
+            mod = ob.modifiers.new("dec", "DECIMATE")
+            mod.ratio = args.max_tris / tris
+            mod.use_collapse_triangulate = True
             n_dec += 1
     for m in bpy.data.materials:
         if m is None or not m.use_nodes or m.name.startswith("web_"):
@@ -401,7 +432,7 @@ def main():
     size = os.path.getsize(glb) / 1e6
     log("wrote %s (%.1f MB) in %.0fs" % (glb, size, time.time() - t0))
     import shutil
-    shutil.rmtree(tiles_dir, ignore_errors=True)
+    # tiles stay in <out>/_tiles (gitignored) as the bake cache for the next export
 
 
 if __name__ == "__main__":
