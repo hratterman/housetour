@@ -459,6 +459,54 @@ class Gens2:
         return [bb]
 
     # ================================================================== beds
+    def gen_curtains(self, e):
+        """Floor-length pleated panels stacked open either side of a window, on a brass rod with rings and finials.
+        wall: {axis, at (finished face), face}; span: [u0, u1] of the glass; z: [sill, head]; panel width;
+        panels: 'both' | 'left' | 'right'."""
+        wall = e["wall"]
+        u0, u1 = e["span"]
+        sill, head = e["z"]
+        fz = e.get("floor_z", self.floor_z(e.get("room", "")))
+        pw = e.get("panel", 1.4)
+        dx, dy = _face_dir(wall)
+        at = wall["at"]
+        axis = wall["axis"]                       # the wall runs along this axis
+        fd = dx if axis == "y" else dy            # +1/-1: which side of the wall the room is
+        along = "y" if axis == "y" else "x"
+        mat = self.mat(e.get("m", "linen_grey"))
+        brass = self.mat("brass")
+        rod_z = head + 0.6
+        out = e.get("out", 0.42)
+        objs = []
+        panels = e.get("panels", "both")
+        spans = []
+        if panels in ("both", "left"):
+            spans.append((u0 - pw + 0.15, u0 + 0.15))
+        if panels in ("both", "right"):
+            spans.append((u1 - 0.15, u1 + pw - 0.15))
+        for k, (a, b) in enumerate(spans):
+            objs.append(sg.curtain(self.uid("sg_curtain"), a, b, at, fd, rod_z - 0.08, fz + 0.04, mat, self.col, out=out,
+                                   amp=e.get("pleat", 0.13), period=e.get("period", 0.5), seed=e.get("seed", 3) + k, axis=along))
+            n = max(4, int((b - a) / 0.5))
+            for i in range(n + 1):
+                u = a + (b - a) * i / n
+                c = (at + fd * out, u, rod_z) if axis == "y" else (u, at + fd * out, rod_z)
+                objs.append(cylinder_ft(self.uid("cur_ring"), c, 0.09, 0.03, brass, self.col, 12, axis=("Y" if axis == "y" else "X")))
+        r0, r1 = u0 - pw - 0.1, u1 + pw + 0.1
+        if axis == "y":
+            objs.append(cylinder_ft(self.uid("cur_rod"), (at + fd * out, r0, rod_z), 0.045, r1 - r0, brass, self.col, 12, axis="Y"))
+            for u in (r0, r1):
+                objs.append(sphere_ft(self.uid("cur_finial"), (at + fd * out, u, rod_z), 0.09, brass, self.col, 12, 8))
+            for u in (r0 + 0.6, r1 - 0.6):
+                objs.append(box_ft(self.uid("cur_bracket"), min(at, at + fd * out), u - 0.04, max(at, at + fd * out), u + 0.04, rod_z - 0.03, rod_z + 0.03, brass, self.col))
+        else:
+            objs.append(cylinder_ft(self.uid("cur_rod"), (r0, at + fd * out, rod_z), 0.045, r1 - r0, brass, self.col, 12, axis="X"))
+            for u in (r0, r1):
+                objs.append(sphere_ft(self.uid("cur_finial"), (u, at + fd * out, rod_z), 0.09, brass, self.col, 12, 8))
+            for u in (r0 + 0.6, r1 - 0.6):
+                objs.append(box_ft(self.uid("cur_bracket"), u - 0.04, min(at, at + fd * out), u + 0.04, max(at, at + fd * out), rod_z - 0.03, rod_z + 0.03, brass, self.col))
+        return objs
+
     def gen_platform_bed(self, e):
         """Walnut platform bed with headboard, rumpled duvet, pillows, folded blanket. Head toward +Y in local space."""
         p = e["pos"]                # centre of the mattress footprint at floor level

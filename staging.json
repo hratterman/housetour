@@ -2575,8 +2575,8 @@
 "asset": "proc:floor_lamp",
 "room": "primary_bedroom",
 "pos": [
-40.45,
-44.55,
+39.6,
+41.0,
 0
 ],
 "height": 5.2,
@@ -2710,6 +2710,44 @@
 "inward": -1,
 "top": 9.3,
 "drop": 2.6
+},
+{
+"asset": "proc:curtains",
+"room": "primary_bedroom",
+"wall": {
+"axis": "x",
+"at": 45.0,
+"face": "-y"
+},
+"span": [
+32.0,
+40.0
+],
+"z": [
+2.0,
+8.0
+],
+"m": "linen_grey",
+"seed": 3
+},
+{
+"asset": "proc:curtains",
+"room": "primary_bedroom",
+"wall": {
+"axis": "y",
+"at": 41.0,
+"face": "-x"
+},
+"span": [
+36.0,
+42.0
+],
+"z": [
+2.5,
+7.5
+],
+"m": "linen_grey",
+"seed": 5
 },
 {
 "note": "== porch =="

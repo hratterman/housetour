@@ -423,7 +423,16 @@
   "rough": 0.5,
   "emit": 7.0
  },
- "hood_lamp": {"rgb": [1.0, 0.85, 0.62], "rough": 0.5, "emit": 1.2, "note": "range hood LED lenses: seen from below at arm's length, lamp_glow blew out"},
+ "hood_lamp": {
+  "rgb": [
+   1.0,
+   0.85,
+   0.62
+  ],
+  "rough": 0.5,
+  "emit": 1.2,
+  "note": "range hood LED lenses: seen from below at arm's length, lamp_glow blew out"
+ },
  "fire": {
   "rgb": [
    1.0,
@@ -640,10 +649,11 @@
    0.86
   ],
   "rough": 1.0,
-  "tex": "boucle",
+  "tex": "fabric_towel",
   "paint": true,
-  "size_ft": 1,
-  "bump": 0.8
+  "size_ft": 0.6,
+  "bump": 0.9,
+  "sheen": 0.2
  },
  "cream_paint": {
   "rgb": [
@@ -1182,10 +1192,11 @@
    0.16
   ],
   "rough": 1.0,
-  "tex": "boucle",
+  "tex": "fabric_wool",
   "paint": true,
-  "size_ft": 1.5,
-  "bump": 0.8
+  "size_ft": 0.8,
+  "bump": 0.8,
+  "sheen": 0.3
  },
  "wool_oatmeal": {
   "rgb": [
@@ -1194,10 +1205,11 @@
    0.62
   ],
   "rough": 1.0,
-  "tex": "boucle",
+  "tex": "fabric_wool",
   "paint": true,
-  "size_ft": 1.5,
-  "bump": 0.8
+  "size_ft": 0.8,
+  "bump": 0.8,
+  "sheen": 0.3
  },
  "leather_brown": {
   "rgb": [
@@ -1223,9 +1235,10 @@
    0.88
   ],
   "rough": 0.95,
-  "tex": "linen",
-  "size_ft": 1.5,
-  "bump": 0.6,
+  "tex": "fabric_linen",
+  "paint": true,
+  "size_ft": 0.7,
+  "bump": 0.7,
   "sheen": 0.3
  },
  "tile_backsplash": {
@@ -2418,5 +2431,86 @@
    "size_ft": 3.0,
    "along": "x"
   }
+ },
+ "knit_oatmeal": {
+  "rgb": [
+   0.78,
+   0.72,
+   0.6
+  ],
+  "rough": 1.0,
+  "tex": "fabric_knit",
+  "paint": true,
+  "size_ft": 0.5,
+  "bump": 0.9,
+  "sheen": 0.3
+ },
+ "knit_charcoal": {
+  "rgb": [
+   0.16,
+   0.16,
+   0.17
+  ],
+  "rough": 1.0,
+  "tex": "fabric_knit",
+  "paint": true,
+  "size_ft": 0.5,
+  "bump": 0.9,
+  "sheen": 0.3
+ },
+ "wool_grey": {
+  "rgb": [
+   0.42,
+   0.42,
+   0.42
+  ],
+  "rough": 1.0,
+  "tex": "fabric_wool",
+  "paint": true,
+  "size_ft": 0.8,
+  "bump": 0.8,
+  "sheen": 0.35
+ },
+ "linen_grey": {
+  "rgb": [
+   0.62,
+   0.6,
+   0.56
+  ],
+  "rough": 0.95,
+  "tex": "fabric_linen",
+  "paint": true,
+  "size_ft": 0.7,
+  "bump": 0.7,
+  "sheen": 0.3
+ },
+ "leather_tan": {
+  "rgb": [
+   0.55,
+   0.36,
+   0.2
+  ],
+  "rough": 0.5,
+  "tex": "leather_tan",
+  "size_ft": 2,
+  "tint": [
+   0.9,
+   0.8,
+   0.7
+  ],
+  "bump": 0.6,
+  "coat": 0.12
+ },
+ "leather_black": {
+  "rgb": [
+   0.05,
+   0.05,
+   0.05
+  ],
+  "rough": 0.45,
+  "tex": "leather_black",
+  "size_ft": 2,
+  "bump": 0.6,
+  "coat": 0.15
  }
 }
