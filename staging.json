@@ -1467,7 +1467,7 @@
 ],
 "room": "living",
 "length_ft": 2.9,
-"rot_z": -60,
+"rot_z": 200,
 "recolor": [
 0.75,
 0.58,
@@ -1483,7 +1483,7 @@
 ],
 "room": "living",
 "length_ft": 2.9,
-"rot_z": -120,
+"rot_z": -20,
 "recolor": [
 0.75,
 0.58,
@@ -1866,7 +1866,7 @@
 ],
 "room": "away",
 "length_ft": 2.9,
-"rot_z": 180
+"rot_z": 0
 },
 {
 "asset": "ottoman_01",
@@ -2583,7 +2583,7 @@
 ],
 "room": "primary_bedroom",
 "length_ft": 2.8,
-"rot_z": 210,
+"rot_z": -55,
 "recolor": [
 0.08,
 0.32,
@@ -4771,7 +4771,7 @@
 ],
 "room": "bedroom_b",
 "height_ft": 2.7,
-"rot_z": 180
+"rot_z": 0
 },
 {
 "asset": "proc:low_bookcase",
@@ -5034,7 +5034,7 @@
 ],
 "room": "bedroom_a",
 "height_ft": 2.7,
-"rot_z": 180
+"rot_z": 0
 },
 {
 "asset": "proc:low_bookcase",
@@ -5336,7 +5336,7 @@
 ],
 "room": "loft",
 "height_ft": 2.0,
-"rot_z": 30
+"rot_z": 129
 },
 {
 "asset": "painted_wooden_chair_01",
@@ -5347,7 +5347,7 @@
 ],
 "room": "loft",
 "height_ft": 2.0,
-"rot_z": -120
+"rot_z": -69
 },
 {
 "asset": "proc:cushions",

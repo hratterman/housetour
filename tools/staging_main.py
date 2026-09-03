@@ -168,8 +168,8 @@ def main_floor():
     proc("sofa", "living", pos=[10.5, 40.0, 0], rot_z=90, length=8.0, depth=3.0, m="velvet_orange")
     proc("cushions", "living", b=[10.6, 37.0, 12.2, 43.0], z=1.77, back="+x", count=3, seed=12, mats=["velvet_teal", "velvet_teal", "wool_mustard"])
     proc("throw", "living", b=[9.3, 36.35, 11.6, 37.35], z=2.0, m="wool_oatmeal", hang="-y", drop=1.3)   # throw over the south arm
-    model("modern_arm_chair_01", (5.5, 34.5, 0), "living", length_ft=2.9, rot_z=-60, recolor=[0.75, 0.58, 0.16])
-    model("modern_arm_chair_01", (5.5, 43.0, 0), "living", length_ft=2.9, rot_z=-120, recolor=[0.75, 0.58, 0.16])
+    model("modern_arm_chair_01", (5.5, 34.5, 0), "living", length_ft=2.9, rot_z=200, recolor=[0.75, 0.58, 0.16])
+    model("modern_arm_chair_01", (5.5, 43.0, 0), "living", length_ft=2.9, rot_z=-20, recolor=[0.75, 0.58, 0.16])
     model("coffee_table_round_01", (7.0, 39.0, 0), "living", length_ft=3.5)
     model("book_encyclopedia_set_01", (6.7, 38.7, 1.32), "living", length_ft=1.1, rot_z=15)
     model("ceramic_vase_02", (7.6, 39.6, 1.32), "living", height_ft=0.55)
@@ -197,7 +197,7 @@ def main_floor():
     proc("wall_finish", "away", wall=W("y", 20.0, "+x"), span=[41.3, 45.0], z=[0.3, 9.4], m="wallpaper_geo_olive")
     proc("wall_finish", "away", wall=W("x", 30.0, "+y"), span=[20.3, 23.0], z=[0.3, 9.4], m="wallpaper_geo_olive")
     proc("wall_finish", "away", wall=W("x", 30.0, "+y"), span=[27.0, 27.7], z=[0.3, 9.4], m="wallpaper_geo_olive")
-    model("mid_century_lounge_chair", (25.0, 42.8, 0), "away", length_ft=2.9, rot_z=180)
+    model("mid_century_lounge_chair", (25.0, 42.8, 0), "away", length_ft=2.9, rot_z=0)   # faces the ottoman (models face -Y at rot 0)
     model("ottoman_01", (25.0, 40.3, 0), "away", length_ft=2.1, rot_z=180, recolor=[0.3, 0.18, 0.1])
     proc("mushroom_lamp", "away", pos=[26.8, 43.9, 0], height=5.0, m="brass", watts=38)
     proc("bookwall", "away", b=[26.75, 30.6, 27.75, 44.9, 0.0, 9.0], face="-x", seed=7, density=0.92, shelf_ft=1.2)
@@ -257,7 +257,7 @@ def main_floor():
     proc("nightstand2", "primary_bedroom", pos=[29.05, 42.6, 0], rot_z=90, on=True, items=["watch", "phone"])
     proc("sconce", "primary_bedroom", wall=W("y", 28.0, "+x"), u=33.4, z=5.2, on=False, radius=0.12, height=0.5)
     proc("sconce", "primary_bedroom", wall=W("y", 28.0, "+x"), u=42.6, z=5.2, on=False, radius=0.12, height=0.5)
-    model("green_chair_01", (39.6, 43.4, 0), "primary_bedroom", length_ft=2.8, rot_z=210, recolor=[0.08, 0.32, 0.36])
+    model("green_chair_01", (39.6, 43.4, 0), "primary_bedroom", length_ft=2.8, rot_z=-55, recolor=[0.08, 0.32, 0.36])
     proc("throw", "primary_bedroom", b=[38.7, 42.4, 39.6, 43.6], z=2.0, m="wool_oatmeal", rot_z=25, hang="-x", drop=0.9)   # sweater over the arm
     model("side_table_01", (38.0, 44.2, 0), "primary_bedroom", height_ft=1.9)
     model("jug_01", (38.0, 44.2, 1.9), "primary_bedroom", height_ft=0.35)
