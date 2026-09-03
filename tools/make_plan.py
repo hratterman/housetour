@@ -461,7 +461,7 @@ shots = [
     {"name": "street", "seconds": 12, "exposure": -0.3, "path": [
         # exposure rides up as the camera walks from the sunlit sidewalk into the shaded porch
         {"t": 0, "pos": [10.5, -34, 5.5], "look": [14, 0, 6], "exp": -0.3}, {"t": 4, "pos": [10.5, -22, 5.5], "look": [12, 0, 5], "exp": -0.3},
-        {"t": 8, "pos": [10.5, -15, 5.5], "look": [11, 0, 4.5], "exp": 0.0}, {"t": 12, "pos": [11, -9.5, 5.3], "look": [12.5, 0, 4.5], "exp": 0.5}]},   # ends on the porch, door and sidelight
+        {"t": 8, "pos": [10.5, -15, 5.5], "look": [11, 0, 4.5], "exp": 0.2}, {"t": 12, "pos": [11, -9.5, 5.3], "look": [12.5, 0, 4.5], "exp": 0.8}]},   # ends on the porch, door and sidelight
     {"name": "main_floor", "seconds": 26, "path": [
         {"t": 0, "pos": [11, 3, 5.5], "look": [11, 12, 5]}, {"t": 3, "pos": [11, 9, 5.5], "look": [22, 9.5, 5]},
         {"t": 6, "pos": [23, 9.5, 5.5], "look": [25, 1, 4]}, {"t": 9, "pos": [25, 8, 5.5], "look": [25, 30, 5]},
