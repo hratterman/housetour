@@ -794,24 +794,31 @@ class Gens2:
         return objs
 
     def gen_toilet(self, e):
-        """Wall-hung toilet: bowl (rounded box), seat, brass flush plate on the wall behind."""
+        """Wall-hung toilet: elongated bowl (scaled cylinder), skirt to the wall, seat ring, brass flush plate."""
         p = e["pos"]           # centre of the bowl at floor level
         facing = e.get("facing", "-x")   # direction the user faces (bowl projects this way from the wall)
         dx, dy = {"-x": (-1, 0), "+x": (1, 0), "-y": (0, -1), "+y": (0, 1)}[facing]
         cer = self.mat("ceramic_white")
         objs = []
         L, W = 1.9, 1.2
-        cx, cy = p[0] + dx * 0.0, p[1] + dy * 0.0
+        cx, cy = p[0], p[1]
+        # elongated bowl: a scaled cylinder (the bevel pass rounds its rim), the rear third hidden in a skirt
+        # that meets the wall over the carrier; seat ring on top; brass flush plate on the wall
+        bc = (cx + dx * 0.55, cy + dy * 0.55)
+        along = 0.95 / (W / 2)
+        bowl = cylinder_ft(self.uid("wc_bowl"), (bc[0], bc[1], p[2] + 0.8), W / 2, 0.65, cer, self.col, 40)
+        bowl.scale = (along, 1.0, 1.0) if dx else (1.0, along, 1.0)
+        under = cylinder_ft(self.uid("wc_bowl_u"), (bc[0] - dx * 0.1, bc[1] - dy * 0.1, p[2] + 0.55), W / 2 - 0.12, 0.3, cer, self.col, 32)
+        under.scale = (along * 0.85, 0.85, 1.0) if dx else (0.85, along * 0.85, 1.0)
+        seat = cylinder_ft(self.uid("wc_seat"), (bc[0], bc[1], p[2] + 1.45), W / 2 - 0.02, 0.08, self.mat("linen_white"), self.col, 40)
+        seat.scale = (along, 1.0, 1.0) if dx else (1.0, along, 1.0)
+        objs += [bowl, under, seat]
         if dx:
-            objs.append(box_ft(self.uid("wc_bowl"), min(cx - dx * 0.4, cx + dx * 1.5), cy - W / 2, max(cx - dx * 0.4, cx + dx * 1.5), cy + W / 2, p[2] + 1.05, p[2] + 1.45, cer, self.col))
-            objs.append(box_ft(self.uid("wc_seat"), min(cx - dx * 0.3, cx + dx * 1.5), cy - W / 2 + 0.03, max(cx - dx * 0.3, cx + dx * 1.5), cy + W / 2 - 0.03, p[2] + 1.45, p[2] + 1.52, self.mat("linen_white"), self.col))
-            objs.append(box_ft(self.uid("wc_bowl_u"), min(cx - dx * 0.2, cx + dx * 1.35), cy - W / 2 + 0.15, max(cx - dx * 0.2, cx + dx * 1.35), cy + W / 2 - 0.15, p[2] + 0.75, p[2] + 1.05, cer, self.col))
+            objs.append(box_ft(self.uid("wc_skirt"), min(cx - dx * 0.45, cx + dx * 0.3), cy - W / 2 + 0.05, max(cx - dx * 0.45, cx + dx * 0.3), cy + W / 2 - 0.05, p[2] + 0.6, p[2] + 1.45, cer, self.col))
             wall_x = cx - dx * 0.45
             objs.append(box_ft(self.uid("wc_plate"), min(wall_x, wall_x + dx * 0.02), cy - 0.35, max(wall_x, wall_x + dx * 0.02), cy + 0.35, p[2] + 3.2, p[2] + 3.7, self.mat("brass"), self.col))
         else:
-            objs.append(box_ft(self.uid("wc_bowl"), cx - W / 2, min(cy - dy * 0.4, cy + dy * 1.5), cx + W / 2, max(cy - dy * 0.4, cy + dy * 1.5), p[2] + 1.05, p[2] + 1.45, cer, self.col))
-            objs.append(box_ft(self.uid("wc_seat"), cx - W / 2 + 0.03, min(cy - dy * 0.3, cy + dy * 1.5), cx + W / 2 - 0.03, max(cy - dy * 0.3, cy + dy * 1.5), p[2] + 1.45, p[2] + 1.52, self.mat("linen_white"), self.col))
-            objs.append(box_ft(self.uid("wc_bowl_u"), cx - W / 2 + 0.15, min(cy - dy * 0.2, cy + dy * 1.35), cx + W / 2 - 0.15, max(cy - dy * 0.2, cy + dy * 1.35), p[2] + 0.75, p[2] + 1.05, cer, self.col))
+            objs.append(box_ft(self.uid("wc_skirt"), cx - W / 2 + 0.05, min(cy - dy * 0.45, cy + dy * 0.3), cx + W / 2 - 0.05, max(cy - dy * 0.45, cy + dy * 0.3), p[2] + 0.6, p[2] + 1.45, cer, self.col))
             wall_y = cy - dy * 0.45
             objs.append(box_ft(self.uid("wc_plate"), cx - 0.35, min(wall_y, wall_y + dy * 0.02), cx + 0.35, max(wall_y, wall_y + dy * 0.02), p[2] + 3.2, p[2] + 3.7, self.mat("brass"), self.col))
         if e.get("paper", True):
