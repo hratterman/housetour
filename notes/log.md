@@ -536,3 +536,13 @@ in a follow-up set. Two false alarms recorded so I do not chase them again: bike
 bird's-eye because a vertical wheel foreshortens to an ellipse (checked numerically: wheels stand 2.2 ft
 tall), and the audit's per-entry union box makes any room-filling entry (kitchen run, garage bench with its
 pegboard and air line, lift with its runways) "overlap" everything near it.
+
+Verification set (renders/audit_x). The kitchen's south wall is a run of full-height cabinets, so the boombox,
+books and cutting board that sat at Z 3 there were floating on the doors; removed, the board is on the island.
+The spec's 16 ft maple stood in the bed against the garage's south wall and its crown grew through the garage
+roof; it is in the yard between the terrace canopy and the spa. The hose reels hung over the lift bay; they
+are over the bench aisle. The garage shelving unit stood in front of a door wherever it went (two 9 ft doors
+leave no 6 ft of wall); dropped, storage is the pegboard and under the bench. The garage shot ends square on
+the lift from the door line. Toilet seats are white and the roll is on the side wall. The upstairs laundry had
+no light at all. Car wheels were asymmetric (left tyres stood proud of the body, right ones recessed, spokes
+floated outside the right rims); mirrored per side. Cars pass at room scale in the garage frames.
