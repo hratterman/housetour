@@ -243,7 +243,7 @@ def main_floor():
     proc("wall_finish", "primary_closet", wall=W("y", 32.0, "+x"), span=[27.0, 29.5], z=[0.3, 8.5], m="mirror", thick=0.04)
     add(asset="proc:cabinet", room="primary_closet", b=[39.5, 28.0, 41.0, 29.75, 0, 2.5], doors=1, face="-x", m="walnut_h")   # safe cabinet door
     proc("three_globe_pendant", "primary_closet", pos=[36.5, 26.0, 9.5])
-    proc("downlights", "primary_closet", positions=[[33.5, 23], [39.5, 23], [33.5, 29], [39.5, 29]], z=9.5, watts=7)
+    proc("downlights", "primary_closet", positions=[[33.5, 23], [39.5, 23], [33.5, 29], [39.5, 29]], z=9.5, watts=11)
     model("vintage_suitcase", (33.5, 23.0, 7.0), "primary_closet", length_ft=2.2, rot_z=0)
     # ------------------------------------------------------------------ 3.20 primary bedroom
     note("primary bedroom")

@@ -549,6 +549,12 @@ def bevel_pass(plan):
     soft_tags = ("sofa_cushion", "sofa_back", "pillow", "bed_mattress", "bed_duvet", "bed_pillow", "bed_throw",
                  "bench_cush", "pit_seat", "pit_back", "fold", "towel", "jacket", "bag", "throw", "plush", "beanbag",
                  "ch_seat", "ch_back", "dc_pad", "tc_seat", "tc_pad", "ott_cushion", "wr_item", "shoe", "basket_sq")
+    # boxes that should read as fabric: after the bevel they get a simple subdivision, a noise displacement
+    # (wrinkles, global coordinates so no two pieces match) and one level of Catmull-Clark smoothing
+    cloth_tags = ("pillow", "bed_duvet", "bed_throw", "throw", "sofa_cushion", "sofa_back", "bench_cush", "pit_seat",
+                  "pit_back", "fold", "towel", "plush", "beanbag", "ch_seat", "ch_back", "dc_pad", "tc_seat", "tc_pad",
+                  "ott_cushion", "jacket", "duvet")
+    cloth = []
     skip_tags = ("glass", "canvas", "flame", "embers", "rug", "runner", "puzzle", "piece", "panel", "cove",
                  "reveal", "sput_rod", "stem", "leaf", "arc_seg", "tree_", "ground", "hedge")
     for ob in bpy.data.objects:
@@ -568,6 +574,8 @@ def bevel_pass(plan):
             continue
         if any(tag in nm for tag in soft_tags):
             w, seg = w_soft, 3
+            if any(tag in nm for tag in cloth_tags) and len(ob.data.vertices) == 8 and ob.data.users == 1:
+                cloth.append(ob)
         elif nm.startswith(("wall_", "floor_", "ceil_", "skin_", "roof", "gable", "chimney", "terrace", "walk")):
             w, seg = w_shell, 1
         else:
@@ -599,7 +607,23 @@ def bevel_pass(plan):
             for md in ob.modifiers:
                 if md.type == "BEVEL":
                     md.harden_normals = True
-    log("bevel pass: %d objects" % n)
+    if cloth:
+        tex = bpy.data.textures.get("cloth_clouds") or bpy.data.textures.new("cloth_clouds", type="CLOUDS")
+        tex.noise_scale = 0.4
+        tex.noise_depth = 3
+        for ob in cloth:
+            d = min(abs(v) for v in ob.dimensions if abs(v) > 1e-5)
+            s1 = ob.modifiers.new("cloth_subd", "SUBSURF")
+            s1.subdivision_type = "SIMPLE"
+            s1.levels = s1.render_levels = 2
+            dp = ob.modifiers.new("cloth_wrinkle", "DISPLACE")
+            dp.texture = tex
+            dp.texture_coords = "GLOBAL"
+            dp.strength = max(0.008, min(0.035, d * 0.18))
+            dp.mid_level = 0.5
+            s2 = ob.modifiers.new("cloth_smooth", "SUBSURF")
+            s2.levels = s2.render_levels = 1
+    log("bevel pass: %d objects, %d softened as cloth" % (n, len(cloth)))
 
 
 def setup_camera(plan):

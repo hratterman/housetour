@@ -411,12 +411,20 @@ class Gens2:
         # fitted sheet edge line
         part("bed_sheet", -0.02, -0.02, W + 0.02, L + 0.02, plat_h + 0.02, matt_top - 0.35, lin)
         # duvet: thrown back on one side (state 'thrown') or flat
+        # the duvet drapes over the exposed edges: thin drop panels hang from the top slab down the sides
+        drop = 0.85
         if e.get("duvet", "thrown") == "thrown":
             part("bed_duvet", W * 0.42, -0.3, W + 0.35, L - 2.3, matt_top, matt_top + 0.42, duv, rz=rng.uniform(-3, 3))
+            part("bed_duvet_drop", W + 0.2, -0.3, W + 0.36, L - 2.3, matt_top - drop, matt_top + 0.1, duv)
+            part("bed_duvet_drop", W * 0.42, -0.31, W + 0.36, -0.15, matt_top - drop, matt_top + 0.1, duv)
             part("bed_duvet", W * 0.1, L * 0.35, W * 0.55, L - 2.4, matt_top, matt_top + 0.6, duv, rz=rng.uniform(-12, -4))  # folded-back roll
             part("bed_duvet", -0.3, -0.3, W * 0.5, L * 0.35, matt_top, matt_top + 0.25, duv, rz=rng.uniform(-2, 2))
+            part("bed_duvet_drop", -0.31, -0.3, -0.15, L * 0.35, matt_top - drop * 0.6, matt_top + 0.05, duv)
         else:
             part("bed_duvet", -0.3, -0.3, W + 0.3, L - 2.2, matt_top, matt_top + 0.4, duv)
+            part("bed_duvet_drop", W + 0.15, -0.3, W + 0.31, L - 2.2, matt_top - drop, matt_top + 0.1, duv)
+            part("bed_duvet_drop", -0.31, -0.3, -0.15, L - 2.2, matt_top - drop, matt_top + 0.1, duv)
+            part("bed_duvet_drop", -0.3, -0.31, W + 0.3, -0.15, matt_top - drop, matt_top + 0.1, duv)
         # pillows: two rows
         pm = e.get("pillow_mats", ["linen_white", "linen_white", "olive_paint", "olive_paint"])
         pw = (W - 0.6) / 2
