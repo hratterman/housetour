@@ -332,6 +332,17 @@ class Site:
             tag = op["note"].replace(" ", "_")
             if ground is not None:
                 cut_with_box([ground], [b[0], b[1], b[2], b[3], zf - 1, gz + 1], "cut_well")
+            # the foundation band runs through the window head: cut it with the opening
+            z0o, z1o = sill, sill + op["h"]
+            # the wall sits inside the room line: X/Y at..at+ext_t on the west/south sides, at-ext_t..at on the east/north
+            lo_w, hi_w = (op["at"] - 0.1, op["at"] + ext_t + 0.1) if out < 0 else (op["at"] - ext_t - 0.1, op["at"] + 0.1)
+            if op["axis"] == "y":
+                ob_box = [lo_w, c - op["w"] / 2, hi_w, c + op["w"] / 2, z0o, z1o]
+            else:
+                ob_box = [c - op["w"] / 2, lo_w, c + op["w"] / 2, hi_w, z0o, z1o]
+            found = [o for o in bpy.data.objects if o.name.startswith("found_") and overlap(bounds_of(o), ob_box)]
+            if found:
+                cut_with_box(found, ob_box, "cut_found")
             for sl in [o for o in bpy.data.objects if o.name.startswith("slab_") and overlap(bounds_of(o), [b[0], b[1], b[2], b[3], zf, gz + 1])]:
                 cut_with_box([sl], [b[0], b[1], b[2], b[3], zf - 1, gz + 1], "cut_well")
             # liner: three sides (the fourth is the house wall), 1 in thick, 4 in above grade

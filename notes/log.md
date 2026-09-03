@@ -276,3 +276,10 @@ all seven shots and cross-fades every cut through one chained xfade graph.
 
 The eight spec questions are closed by these decisions (alley at Y 100 per 1.9, chase through the rake with a
 roof cut, W1 shifted 9 in north).
+
+Verification pass (renders/audit, 13 review views at 960x540/24 samples): east and west elevations clean,
+tower flush, garage gable correct, gallery axis ends on the away-room glass and N2, suite hall and WC read right,
+lounge opening from the basement hall works. Two more clipping bugs found and fixed on the way: the well's
+slab-band filler stood 6 in proud of the tower face as a white plaster strip (it assumed a centred wall), and the
+brick foundation band ran through the heads of the basement windows (now cut by the opening). Web viewer
+re-exported for the new program (three floors, multi-part rooms, 14 teleport spots); screenshots checked headless.

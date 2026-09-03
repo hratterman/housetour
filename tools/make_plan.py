@@ -260,7 +260,7 @@ stairs = [
     # fill the slab-thickness band around the well where the main ceiling slab is cut
     dict(kind="wall", name="well_band_w", b=[28, 0.5, 28.25, WELL_N + 0.25, 9.5, 10.0], m="plaster_warm"),
     dict(kind="wall", name="well_band_e", b=[33.75, 0.5, 34, WELL_N + 0.25, 9.5, 10.0], m="plaster_warm"),
-    dict(kind="wall", name="well_band_s", b=[28, -0.5, 34, 0.5, 9.5, 10.0], m="plaster_warm"),
+    dict(kind="wall", name="well_band_s", b=[28, 0, 34, 1.0, 9.5, 10.0], m="plaster_warm"),   # inside the 1 ft exterior wall zone
     # bronze-post glass guard on the second floor along the well edge west of the up_b arrival
     dict(kind="guard", name="well_guard", p0=[28.1, WELL_N + 0.1, 10.0], p1=[31 - CW, WELL_N + 0.1, 10.0], h=3.5, m="bronze_black", glass=True),
 ]
