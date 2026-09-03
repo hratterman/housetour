@@ -61,7 +61,7 @@ def second_floor():
          items=[{"kind": "lamp", "pos": [12.3, 8.0], "rot_z": 0}, {"kind": "lamp", "pos": [12.3, 14.0], "rot_z": 0}, {"kind": "mat", "pos": [12.5, 10.5], "w": 2.0, "d": 3.0},
                 {"kind": "printer", "pos": [12.5, 14.6], "face": "+x"}, {"kind": "soldering", "pos": [12.9, 12.8]}, {"kind": "psu", "pos": [12.4, 9.0]},
                 {"kind": "microscope", "pos": [12.6, 12.0]}, {"kind": "organizer", "pos": [12.0, 7.5], "z": 0.5}, {"kind": "spools", "pos": [11.8, 13.2]},
-                {"kind": "hood", "pos": [12.5, 15.2], "z": 2.0, "duct_h": 4.0}])
+                {"kind": "hood", "pos": [12.5, 14.7], "z": 2.0, "duct_h": 4.0}])
     proc("rack", "rack_closet", b=[11.5, 17.0, 13.5, 20.0, z, z + 6.5], face="+x")
     proc("downlight", "rack_closet", pos=[12.5, 21.0, z + 9.0], watts=5, kelvin=4000)
     add(asset="proc:cabinet", room="lab", b=[20.75, 18.6, 21.75, 21.5, z, z + 8.0], doors=2, face="-x", m="walnut_h")   # north of the landing door (Y 14.5-17.5)
@@ -121,7 +121,7 @@ def second_floor():
     proc("nightstand2", "bedroom_b", pos=[36.5, 29.6, z], rot_z=0, on=True, items=[])
     model("alarm_clock_01", (36.4, 29.3, z + 2.2), "bedroom_b", height_ft=0.35, rot_z=200)
     proc("desk", "bedroom_b", b=[32.0, 28.3, 35.5, 30.3, z + 2.3, z + 2.4], floor_z=z, gables=True, drawers=True, facing="-y", monitors=0, keyboard=False,
-         laptop=[34.0, 29.5], lamp=[35.3, 29.6], mug=[32.6, 29.9], mug_m="teal")
+         laptop=[33.7, 29.5], lamp=[34.7, 29.6], mug=[32.5, 29.9], mug_m="teal")
     proc("corkboard", "bedroom_b", wall=W("x", 28.0, "+y"), span=[32.2, 35.8], z=[z + 4.0, z + 6.5], papers=8, seed=181)
     model("dining_chair_02", (34.0, 31.6, z), "bedroom_b", height_ft=2.7, rot_z=0)   # faces the desk (-Y)
     proc("low_bookcase", "bedroom_b", b=[33.0, 44.0, 41.0, 45.0, z, z + 2.5], back="+y", shelves=2, seed=182)
