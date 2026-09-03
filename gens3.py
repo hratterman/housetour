@@ -366,6 +366,88 @@ class Gens3:
         return objs
 
     # ================================================================== garage (spec 7)
+    def gen_towel_stack(self, e):
+        """Folded towels on a shelf or bench: pos = centre of the stack's footprint at the surface."""
+        p = e["pos"]
+        mats = e.get("mats")
+        return sg.towel_stack(self.uid("sg_towel_stack"), (p[0], p[1], p[2]), e.get("w", 1.2), e.get("d", 0.7), e.get("count", 3),
+                              self.mat(e.get("m", "towel_white")), self.col, layer=e.get("layer", 0.11), rot_z_deg=0.0,
+                              seed=e.get("seed", 1), mats=[self.mat(x) for x in mats] if mats else None)
+
+    def gen_small_props(self, e):
+        """Everyday small things a real counter or table carries. kind: oil_bottles, soap_pump, toothbrush_cup,
+        shampoo_set, paper_towel, water_glass, phone, mug, remote, magazines, knife_block, candle. pos = base centre."""
+        kind = e["kind"]
+        x, y, z = e["pos"]
+        rot = e.get("rot_z", 0)
+        r = math.radians(rot)
+        objs = []
+        gl = get_collection("glass")
+
+        def at(dx, dy):
+            return (x + dx * math.cos(r) - dy * math.sin(r), y + dx * math.sin(r) + dy * math.cos(r))
+        if kind == "oil_bottles":
+            for k, (dx, dy, h, mname) in enumerate(((0, 0, 0.85, "glass_olive"), (0.26, 0.12, 0.7, "glass_amber"))):
+                cx, cy = at(dx, dy)
+                objs.append(cylinder_ft(self.uid("bottle"), (cx, cy, z), 0.11 - 0.015 * k, h, self.mat(mname), gl, 20))
+                objs.append(cylinder_ft(self.uid("bottle_neck"), (cx, cy, z + h), 0.04, 0.22, self.mat(mname), gl, 12))
+                objs.append(cylinder_ft(self.uid("cork"), (cx, cy, z + h + 0.2), 0.045, 0.08, self.mat("cork"), self.col, 10))
+                objs.append(box_centered(self.uid("label"), (cx, cy, z + h * 0.3), (0.235 - 0.03 * k, 0.235 - 0.03 * k, h * 0.35), rot, self.mat("paper"), self.col))
+        elif kind == "soap_pump":
+            objs.append(cylinder_ft(self.uid("soap"), (x, y, z), 0.1, 0.5, self.mat(e.get("m", "ceramic_white")), self.col, 20))
+            objs.append(cylinder_ft(self.uid("soap_neck"), (x, y, z + 0.5), 0.035, 0.16, self.mat("chrome"), self.col, 12))
+            cx, cy = at(0.07, 0)
+            objs.append(box_centered(self.uid("soap_spout"), (cx, cy, z + 0.62), (0.16, 0.05, 0.04), rot, self.mat("chrome"), self.col))
+        elif kind == "toothbrush_cup":
+            objs.append(cylinder_ft(self.uid("cup"), (x, y, z), 0.12, 0.34, self.mat("ceramic_white"), self.col, 20))
+            for k, (dx, dy, tilt, mname) in enumerate(((0.04, 0.03, 12, "plastic_teal"), (-0.05, -0.02, -9, "plastic_white"))):
+                cx, cy = at(dx, dy)
+                tb = cylinder_ft(self.uid("toothbrush"), (cx, cy, z + 0.12), 0.02, 0.68, self.mat(mname), self.col, 8)
+                tb.rotation_euler = (math.radians(tilt), math.radians(tilt * 0.5), 0)
+                objs.append(tb)
+        elif kind == "shampoo_set":
+            for k, (dx, dy, rr, h, mname) in enumerate(((0, 0, 0.13, 0.75, "plastic_white"), (0.3, 0.05, 0.11, 0.62, "plastic_teal"), (0.56, -0.02, 0.12, 0.55, "plastic_black"))):
+                cx, cy = at(dx, dy)
+                objs.append(cylinder_ft(self.uid("shampoo"), (cx, cy, z), rr, h, self.mat(mname), self.col, 16))
+                objs.append(cylinder_ft(self.uid("shampoo_cap"), (cx, cy, z + h), rr * 0.7, 0.07, self.mat("plastic_black" if k != 2 else "plastic_white"), self.col, 12))
+        elif kind == "paper_towel":
+            objs.append(cylinder_ft(self.uid("pt_base"), (x, y, z), 0.3, 0.04, self.mat("brass"), self.col, 24))
+            objs.append(cylinder_ft(self.uid("pt_rod"), (x, y, z), 0.03, 1.15, self.mat("brass"), self.col, 10))
+            objs.append(cylinder_ft(self.uid("pt_roll"), (x, y, z + 0.05), 0.24, 0.92, self.mat("paper"), self.col, 28))
+        elif kind == "water_glass":
+            objs.append(cylinder_ft(self.uid("glass"), (x, y, z), 0.13, 0.36, self.mat("glass"), gl, 20))
+        elif kind == "phone":
+            objs.append(box_centered(self.uid("phone"), (x, y, z), (0.24, 0.5, 0.03), rot, self.mat("screen_dark"), self.col))
+            cx, cy = at(0, -0.4)
+            objs.append(box_centered(self.uid("phone_cable"), (cx, cy, z), (0.02, 0.5, 0.015), rot, self.mat("plastic_white"), self.col))
+        elif kind == "mug":
+            objs.append(cylinder_ft(self.uid("mug"), (x, y, z), 0.16, 0.33, self.mat(e.get("m", "ceramic_white")), self.col, 24))
+            cx, cy = at(0.2, 0)
+            objs.append(box_centered(self.uid("mug_handle"), (cx, cy, z + 0.06), (0.06, 0.05, 0.2), rot, self.mat(e.get("m", "ceramic_white")), self.col))
+            cx2, cy2 = at(0.14, 0)
+            objs.append(box_centered(self.uid("mug_handle"), (cx2, cy2, z + 0.06), (0.14, 0.05, 0.04), rot, self.mat(e.get("m", "ceramic_white")), self.col))
+            objs.append(box_centered(self.uid("mug_handle"), (cx2, cy2, z + 0.22), (0.14, 0.05, 0.04), rot, self.mat(e.get("m", "ceramic_white")), self.col))
+        elif kind == "remote":
+            objs.append(box_centered(self.uid("remote"), (x, y, z), (0.15, 0.6, 0.06), rot, self.mat("plastic_black"), self.col))
+        elif kind == "magazines":
+            rng = random.Random(e.get("seed", 3))
+            for k in range(e.get("count", 3)):
+                objs.append(box_centered(self.uid("magazine"), (x + rng.uniform(-0.04, 0.04), y + rng.uniform(-0.04, 0.04), z + k * 0.025),
+                                         (0.8, 1.05, 0.022), rot + rng.uniform(-14, 14), self.mat(rng.choice(["paper", "book_c", "book_f", "teal"])), self.col))
+        elif kind == "knife_block":
+            blk = box_centered(self.uid("knife_block"), (x, y, z), (0.32, 0.5, 0.78), rot, self.mat("walnut_h"), self.col)
+            blk.rotation_euler = (math.radians(-12), 0, r)
+            objs.append(blk)
+            for k in range(4):
+                cx, cy = at(0, -0.15 + k * 0.1)
+                kb = box_centered(self.uid("knife"), (cx, cy, z + 0.66), (0.1, 0.04, 0.34), rot, self.mat("plastic_black"), self.col)
+                kb.rotation_euler = (math.radians(-12), 0, r)
+                objs.append(kb)
+        elif kind == "candle":
+            objs.append(cylinder_ft(self.uid("candle_jar"), (x, y, z), 0.15, 0.3, self.mat("glass_amber"), gl, 20))
+            objs.append(cylinder_ft(self.uid("candle_wax"), (x, y, z + 0.02), 0.13, 0.22, self.mat("linen_white"), self.col, 16))
+        return objs
+
     def gen_car(self, e):
         """Procedural car: see car.py (lofted subdivision cage, wheel arches, glass band, lights)."""
         import importlib

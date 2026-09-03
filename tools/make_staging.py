@@ -13,6 +13,7 @@ sys.path.insert(0, HERE)
 
 import staging_main  # noqa: E402
 import staging_rest  # noqa: E402
+import staging_clutter  # noqa: E402
 
 
 def main():
@@ -21,6 +22,11 @@ def main():
     staging_rest.second_floor()
     staging_rest.basement()
     staging_rest.garage()
+    staging_clutter.main_floor()
+    staging_clutter.exterior()
+    staging_clutter.second_floor()
+    staging_clutter.basement()
+    staging_clutter.garage()
     entries = [e for e in staging_main.E if e is not None]
     out = os.path.join(ROOT, "staging.json")
     json.dump(entries, open(out, "w"), indent=0)

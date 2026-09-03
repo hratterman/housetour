@@ -124,7 +124,7 @@ def second_floor():
     proc("desk", "bedroom_b", b=[32.0, 28.3, 35.3, 30.3, z + 2.3, z + 2.4], floor_z=z, gables=True, drawers=True, facing="-y", monitors=0, keyboard=False,
          laptop=[33.5, 29.5], lamp=[34.5, 29.6], mug=[32.5, 29.9], mug_m="teal")
     proc("corkboard", "bedroom_b", wall=W("x", 28.0, "+y"), span=[32.2, 35.8], z=[z + 4.0, z + 6.5], papers=8, seed=181)
-    model("dining_chair_02", (34.0, 31.6, z), "bedroom_b", height_ft=2.7, rot_z=0)   # faces the desk (-Y)
+    model("schoolchair_01", (34.0, 31.5, z), "bedroom_b", height_ft=2.6, rot_z=0)   # faces the desk (-Y)
     proc("low_bookcase", "bedroom_b", b=[33.0, 44.0, 41.0, 45.0, z, z + 2.5], back="+y", shelves=2, seed=182)
     proc("rug", "bedroom_b", b=[31.0, 37.5, 38.0, 44.0], m="rug_teal", thick=0.05)
     proc("toy_chest", "bedroom_b", b=[29.0, 43.0, 31.5, 45.0, z, z + 1.8])
@@ -145,7 +145,7 @@ def second_floor():
          lamp=[1.7, 27.6], notebook=[3.5, 27.4])
     model("book_encyclopedia_set_01", (5.2, 27.6, z + 2.4), "bedroom_a", length_ft=0.9, rot_z=0)
     proc("corkboard", "bedroom_a", wall=W("x", 26.0, "+y"), span=[1.2, 5.8], z=[z + 4.0, z + 6.5], papers=7, seed=191)
-    model("dining_chair_02", (3.5, 29.6, z), "bedroom_a", height_ft=2.7, rot_z=0)   # faces the desk (-Y)
+    model("schoolchair_01", (3.5, 29.5, z), "bedroom_a", height_ft=2.6, rot_z=0)   # faces the desk (-Y)
     proc("low_bookcase", "bedroom_a", b=[1.0, 35.5, 4.0, 36.5, z, z + 3.0], back="-x", shelves=2, seed=192)
     proc("rug", "bedroom_a", b=[4.0, 30.0, 11.0, 36.5], m="rug_stripe_mustard", thick=0.05)
     proc("beanbag", "bedroom_a", pos=[8.0, 30.5, z], m="velvet_teal")
@@ -289,7 +289,7 @@ def garage():
     # garage walls are 1 ft inside the lines: faces X -5 / 17, Y 65 / 93
     note("garage")
     proc("lift", "garage", posts=[[-4.5, 70], [4.5, 70], [-4.5, 86], [4.5, 86]], runways=[[-3.8, -2.1], [2.1, 3.8]], y=[68.5, 88], z=z, runway_z=5.5)   # clear of the bench (Y 65-67.5)
-    proc("car", "garage", pos=[0.0, 78.5, z + 5.5], kind="roadster", length=14.5, width=5.4, height=4.0, rot_z=0, m="car_green", covered=True)   # stored under a fitted cover
+    model("covered_car", (0.0, 78.5, z + 5.5), "garage", height_ft=4.6, rot_z=0)   # the roadster under its fitted cover, on the lift runways (Poly Haven covered_car)
     proc("car", "garage", pos=[0.0, 77.0, z], kind="suv", length=15.5, width=6.3, height=5.6, rot_z=0, m="car_white")
     proc("car", "garage", pos=[12.0, 77.0, z], kind="sedan", length=15.5, width=6.1, height=4.7, rot_z=0, m="car_gray")
     proc("charger", "garage", wall=W("y", 18.0, "-x"), u=70.0, z=z + 4.0)
