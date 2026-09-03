@@ -263,7 +263,7 @@ def basement():
     model("wine_bottles_01", (27.1, 39.0, z + 4.54), "bar", height_ft=1.0)
     # ------------------------------------------------------------------ 5.6 basement stair hall
     note("basement stair hall")
-    proc("globe_pendant", "bstair_hall", pos=[29.75, 11.2, z + 7.0], radius=0.45, drop=2.4, watts=30)
+    proc("globe_pendant", "bstair_hall", pos=[29.75, 11.2, z + 7.5], radius=0.45, drop=1.9, watts=30)   # 7 ft clear under the globe at the foot of the stair
     # ------------------------------------------------------------------ 5.8 mechanical, 5.9 storage, 5.7 battery
     note("mechanical")
     proc("mechanical", "mechanical", z=z)

@@ -472,8 +472,9 @@ shots = [
     {"name": "basement", "seconds": 24, "exposure": 0.8, "path": [
         # down the switchback: east flight south from the main-floor arrival, landing, west flight north to the basement
         {"t": 0, "pos": [33.25, 12.2, 5.5], "look": [33.25, 4, 0]}, {"t": 3, "pos": [33.25, 6.5, 3.0], "look": [33.25, 1, -3]},
-        {"t": 5, "pos": [33.25, 2.2, 0.5], "look": [29.75, 8, -3]}, {"t": 6, "pos": [29.75, 2.2, 0.5], "look": [29.75, 12, -6]},
-        {"t": 9, "pos": [29.75, 8, -2.9], "look": [27, 12, -6]}, {"t": 11, "pos": [29.75, 11.2, -4.5], "look": [20, 11.2, -5.5]},
+        # the landing turn takes 2.5 s (it was a 1 s whip): look across the landing, then down the west flight
+        {"t": 5.0, "pos": [33.0, 2.4, 0.5], "look": [29.5, 3.5, -1.5]}, {"t": 7.0, "pos": [29.75, 2.4, 0.5], "look": [29.75, 12, -6]},
+        {"t": 9.5, "pos": [29.75, 8, -2.9], "look": [27, 12, -6]}, {"t": 11, "pos": [29.75, 11.2, -4.5], "look": [20, 11.2, -5.5]},
         {"t": 13, "pos": [25, 11.2, -4.5], "look": [8, 8, -5.5]}, {"t": 16, "pos": [25.8, 24, -4.5], "look": [12, 24, -5.5]},
         {"t": 19, "pos": [24, 31, -4.5], "look": [10, 38, -7]}, {"t": 20, "pos": [21, 31.5, -4.5], "look": [8, 40, -7]},
         {"t": 22, "pos": [16, 40, -4.5], "look": [10, 34, -8]}, {"t": 24, "pos": [17, 40, -4.5], "look": [25, 41, -6.5]}]},
