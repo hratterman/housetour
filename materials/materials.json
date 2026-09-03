@@ -2374,5 +2374,48 @@
    0.02
   ],
   "rough": 0.8
+ },
+ "rug_stripe_mustard": {
+  "rgb": [
+   0.84,
+   0.78,
+   0.64
+  ],
+  "rough": 1.0,
+  "tex": "boucle",
+  "size_ft": 1.5,
+  "paint": true,
+  "bump": 0.8,
+  "sheen": 0.4,
+  "overlay": {
+   "type": "stripes",
+   "size_ft": 0.8,
+   "width": 0.45,
+   "rgb": [
+    0.72,
+    0.55,
+    0.15
+   ],
+   "axes": [
+    0
+   ],
+   "metallic": false
+  }
+ },
+ "rug_stripe_multi": {
+  "rgb": [
+   0.32,
+   0.08,
+   0.09
+  ],
+  "rough": 1.0,
+  "tex": "herringbone",
+  "size_ft": 2,
+  "bump": 0.6,
+  "overlay": {
+   "type": "runner",
+   "size_ft": 3.0,
+   "along": "x"
+  }
  }
 }

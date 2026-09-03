@@ -420,8 +420,21 @@ class Gens2:
 
     def gen_beanbag(self, e):
         p = e["pos"]
-        bb = sphere_ft(self.uid("beanbag"), (p[0], p[1], p[2] + 0.75), 1.4, self.mat(e.get("m", "velvet_teal")), self.col, 20, 12)
-        bb.scale = (1, 1, 0.55)
+        bb = sphere_ft(self.uid("beanbag"), (p[0], p[1], p[2] + 0.7), 1.4, self.mat(e.get("m", "velvet_teal")), self.col, 24, 14)
+        bb.scale = (1, 1, 0.5)
+        # slouch: smooth it, then dent and crease it with a coarse noise so it reads as a sat-in bag, not a balloon
+        sub = bb.modifiers.new("bb_subd", "SUBSURF")
+        sub.levels = sub.render_levels = 2
+        tex = bpy.data.textures.get("beanbag_clouds") or bpy.data.textures.new("beanbag_clouds", type="CLOUDS")
+        tex.noise_scale = 0.35
+        tex.noise_depth = 2
+        dp = bb.modifiers.new("bb_dent", "DISPLACE")
+        dp.texture = tex
+        dp.texture_coords = "GLOBAL"
+        dp.strength = 0.09
+        dp.mid_level = 0.55
+        for pg in bb.data.polygons:
+            pg.use_smooth = True
         return [bb]
 
     # ================================================================== beds
