@@ -73,7 +73,7 @@ room("kitchen", "main", [[8, 13, 22, 30], [0, 27, 8, 30]], "oak_floor", "plaster
 room("living", "main", [0, 30, 20, 46], "oak_floor", "plaster_warm", "oak_decking", 150, label="living room")
 room("away", "main", [20, 30, 28, 46], "oak_floor", "wallpaper_geo_olive", "olive_paint", 60, label="away room")
 room("primary_bath", "main", [[28, 13, 38.25, 22], [38.25, 18, 42, 22]], "terrazzo", "plaster_warm", "plaster_warm", 90, label="primary bath")
-room("wc", "main", [38.25, 13, 42, 18],   # 2.5 ft clear between the partition face and the east wall "terrazzo", "plaster_warm", "plaster_warm", 20, label="wc")
+room("wc", "main", [38.25, 13, 42, 18], "terrazzo", "plaster_warm", "plaster_warm", 20, label="wc")
 room("suite_hall", "main", [28, 22, 32, 30], "oak_floor", "oxblood", "plaster_warm", 30, label="suite hall")
 room("primary_closet", "main", [32, 22, 42, 30], "wool_carpet", "walnut", "plaster_warm", 80, label="primary closet")
 room("primary_bedroom", "main", [28, 30, 42, 46], "wool_carpet", "plaster_warm", "plaster_warm", 90, label="primary bedroom")
