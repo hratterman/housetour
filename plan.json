@@ -3969,6 +3969,7 @@
   "sun_kelvin": 4800,
   "sun_angle_deg": 1.0,
   "fill_kelvin": 3000,
+  "white_balance_k": 3800,
   "modes": {
    "dusk": {
     "sun_strength": 0.25,

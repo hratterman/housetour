@@ -444,6 +444,8 @@ site = {
 lighting = {"fill_scale": {"main": 0.35, "second": 0.35, "basement": 1.2, "garage": 1.0}, "practical_scale": 1.3,
             "sun_strength": 4.0, "sky_strength": 3.0, "sky_clamp": 4.0, "hdri": "sky", "hdri_rot_deg": 0, "sun_kelvin": 4800, "sun_angle_deg": 1.0,
             "fill_kelvin": 3000,
+            # camera white balance: lamps at this temperature render neutral (a photo balanced for the room lights)
+            "white_balance_k": 3800,
             # per-shot modes (spec 9): blue hour for the terrace shot, low eastern sun for the bedroom shot
             "modes": {
                 "dusk": {"sun_strength": 0.25, "sun_direction": [0.85, 0.25, -0.12], "sun_kelvin": 2600, "sky_strength": 0.35,

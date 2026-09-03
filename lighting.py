@@ -9,7 +9,8 @@ import os
 import bpy
 from mathutils import Vector
 
-from geom import m, log, get_collection, area_light, point_light, spot_light, kelvin_rgb
+from geom import m, log, get_collection, area_light, point_light, spot_light, kelvin_rgb, light_rgb, set_white_balance
+import geom
 
 
 def build(plan, house, mats):
@@ -24,12 +25,13 @@ def build(plan, house, mats):
     mode = plan.get("_mode", "day")
     modes = L.get("modes", {})
     mspec = modes.get(mode, {})
+    wb = set_white_balance(mspec.get("white_balance_k", L.get("white_balance_k", 0)))
     if mode != "day":
         fill_scale = {k: v * mspec.get("fill_mul", 1.0) for k, v in fill_scale.items()}
         practical_scale *= mspec.get("practical_mul", 1.0)
         sun_strength = mspec.get("sun_strength", sun_strength)
         sky_strength = mspec.get("sky_strength", sky_strength)
-    log("lighting: mode", mode, "sun", sun_strength, "sky", sky_strength)
+    log("lighting: mode", mode, "sun", sun_strength, "sky", sky_strength, "white balance", [round(v, 3) for v in wb])
     warm = kelvin_rgb(2700)
     n = 0
 
@@ -76,7 +78,7 @@ def build(plan, house, mats):
         sun["direction"] = mspec["sun_direction"]
     sd = bpy.data.lights.new("sun", "SUN")
     sd.energy = sun_strength
-    sd.color = kelvin_rgb(mspec.get("sun_kelvin", L.get("sun_kelvin", 4800)))
+    sd.color = light_rgb(mspec.get("sun_kelvin", L.get("sun_kelvin", 4800)))
     sd.angle = math.radians(L.get("sun_angle_deg", 1.0))
     so = bpy.data.objects.new("sun", sd)
     so.location = (m(21), m(23), m(40))
@@ -114,15 +116,15 @@ def build(plan, house, mats):
                 nt.links.new(sep.outputs[ch], mn.inputs[0])
                 nt.links.new(mn.outputs[0], comb.inputs[ch])
             color = comb.outputs["Color"]
-        if mspec.get("sky_rgb"):
-            # tint the sky (blue hour): multiply the environment by a colour before the background
+        tint = list(mspec.get("sky_rgb", [1.0, 1.0, 1.0]))
+        tint = [tint[i] * geom.WB[i] for i in range(3)]      # blue-hour tint and the camera white balance
+        if any(abs(v - 1.0) > 1e-6 for v in tint):
             mix = nt.nodes.new("ShaderNodeMix")
             mix.data_type = "RGBA"
             mix.blend_type = "MULTIPLY"
             mix.inputs["Factor"].default_value = 1.0
             nt.links.new(color, mix.inputs[6])
-            c = mspec["sky_rgb"]
-            mix.inputs[7].default_value = (c[0], c[1], c[2], 1.0)
+            mix.inputs[7].default_value = (tint[0], tint[1], tint[2], 1.0)
             color = mix.outputs[2]
         nt.links.new(color, bg.inputs["Color"])
         bg.inputs["Strength"].default_value = sky_strength

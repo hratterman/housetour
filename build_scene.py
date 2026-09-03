@@ -889,6 +889,10 @@ def main():
     plan["_mode"] = mode
     plan["_dusk"] = mode == "dusk"
     log("lighting mode:", mode)
+    # camera white balance must be set before any emissive material is built
+    import geom as _geom
+    _L = plan.get("lighting", {})
+    _geom.set_white_balance(_L.get("modes", {}).get(mode, {}).get("white_balance_k", _L.get("white_balance_k", 0)))
     mats = Materials(plan, stage)
     house = House(plan, mats)
     house.root = HERE

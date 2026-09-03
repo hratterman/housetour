@@ -267,10 +267,31 @@ def kelvin_rgb(k):
     return tuple(v ** 2.2 for v in c)
 
 
+# camera white balance: light colours are divided by the colour of a WHITE_BALANCE_K blackbody, so a lamp at
+# that temperature renders neutral, warmer lamps stay warm and daylight goes slightly cool, as in a photograph
+# balanced for the room lights. set_white_balance() is called by the lighting setup from plan["lighting"].
+WB = (1.0, 1.0, 1.0)
+
+
+def set_white_balance(kelvin):
+    global WB
+    if not kelvin:
+        WB = (1.0, 1.0, 1.0)
+        return WB
+    w = kelvin_rgb(kelvin)
+    WB = (w[1] / w[0], 1.0, w[1] / w[2])
+    return WB
+
+
+def light_rgb(kelvin):
+    c = kelvin_rgb(kelvin)
+    return (c[0] * WB[0], c[1] * WB[1], c[2] * WB[2])
+
+
 def point_light(name, pos_ft, watts, kelvin=2700, radius_ft=0.15, collection=None):
     ld = bpy.data.lights.new(name, "POINT")
     ld.energy = watts
-    ld.color = kelvin_rgb(kelvin)
+    ld.color = light_rgb(kelvin)
     ld.shadow_soft_size = m(radius_ft)
     ob = bpy.data.objects.new(name, ld)
     ob.location = tuple(m(v) for v in pos_ft)
@@ -286,7 +307,7 @@ def area_light(name, pos_ft, size_ft, watts, kelvin=2700, collection=None, rot=(
     if size_y_ft is not None:
         ld.size_y = m(size_y_ft)
     ld.energy = watts
-    ld.color = kelvin_rgb(kelvin)
+    ld.color = light_rgb(kelvin)
     if portal:
         ld.cycles.is_portal = True
     ob = bpy.data.objects.new(name, ld)
@@ -299,7 +320,7 @@ def area_light(name, pos_ft, size_ft, watts, kelvin=2700, collection=None, rot=(
 def spot_light(name, pos_ft, aim_ft, watts, kelvin=2700, angle_deg=50, blend=0.5, collection=None):
     ld = bpy.data.lights.new(name, "SPOT")
     ld.energy = watts
-    ld.color = kelvin_rgb(kelvin)
+    ld.color = light_rgb(kelvin)
     ld.spot_size = math.radians(angle_deg)
     ld.spot_blend = blend
     ld.shadow_soft_size = m(0.1)

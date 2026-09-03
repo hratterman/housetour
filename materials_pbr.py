@@ -84,6 +84,9 @@ class PBRLibrary:
             bsdf.inputs["Transmission Weight"].default_value = spec["transmission"]
         if spec.get("emit"):
             ec = spec.get("emit_rgb", rgb)
+            if spec.get("wb", True):
+                import geom
+                ec = [ec[i] * geom.WB[i] for i in range(3)]     # lamp glows follow the camera white balance
             bsdf.inputs["Emission Color"].default_value = (ec[0], ec[1], ec[2], 1.0)
             bsdf.inputs["Emission Strength"].default_value = spec["emit"]
         if spec.get("thin"):
