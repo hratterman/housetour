@@ -1495,8 +1495,20 @@ class Gens2:
         objs = []
         dx, dy = _face_dir(wall)
         if wall["axis"] == "y":
-            xs = sorted((at + dx * 0.0, at + dx * depth))
-            # the box sits inside the wall thickness (recessed): push it into the wall
+            # optional chimney breast: a stone block proud of the wall, built as four pieces around the firebox
+            # cavity (a recess cut into a solid wall would put the flames inside the wall mesh, invisible)
+            br = e.get("breast")
+            if br:
+                bd = br.get("depth", depth + 0.1)
+                s0, s1 = br["span"]
+                bz0, bz1 = br["z"]
+                bm = self.mat(br.get("m", "limestone"))
+                fx0, fx1 = sorted((at, at - dx * bd))
+                objs.append(box_ft(self.uid("breast"), fx0, s0, fx1, u - w / 2 - 0.08, bz0, bz1, bm, self.col))
+                objs.append(box_ft(self.uid("breast"), fx0, u + w / 2 + 0.08, fx1, s1, bz0, bz1, bm, self.col))
+                objs.append(box_ft(self.uid("breast"), fx0, u - w / 2 - 0.08, fx1, u + w / 2 + 0.08, bz0, z0 - 0.08, bm, self.col))
+                objs.append(box_ft(self.uid("breast"), fx0, u - w / 2 - 0.08, fx1, u + w / 2 + 0.08, z1 + 0.08, bz1, bm, self.col))
+                depth = min(depth, bd - 0.05)
             bx0, bx1 = sorted((at, at - dx * depth))
             # the firebox is a hollow: five thin black panels (back, top, bottom, two ends) open toward the glass,
             # so the flames inside are visible (a solid box here hid them entirely)

@@ -156,12 +156,13 @@ def main_floor():
     note("living")
     proc("paneled_wall", "living", b=[1.0, 30.5, 1.06, 34.5, 0.0, 9.5], face="+x", m="walnut_panel")
     proc("paneled_wall", "living", b=[1.0, 41.5, 1.06, 45.0, 0.0, 9.5], face="+x", m="walnut_panel")
-    add(asset="proc:cabinet", room="living", b=[1.0, 34.5, 1.08, 41.5, 0.0, 9.5], doors=1, face="+x", m="limestone")   # limestone slab
-    proc("linear_fire", "living", wall=W("y", 1.08, "+x"), wall_is_face=True, u=38.0, z0=2.2, z1=3.7, width=5.0, watts=45)
-    proc("hearth_bench", "living", b=[1.5, 32.0, 3.1, 44.0, 0.0, 1.4], m="limestone")
+    # limestone chimney breast 1.3 ft proud of the wall, flush with the bookcase fronts, the fire set into it
+    proc("linear_fire", "living", wall=W("y", 2.3, "+x"), wall_is_face=True, u=38.0, z0=2.2, z1=3.7, width=5.0, watts=25,
+         breast={"span": [34.5, 41.5], "z": [0.0, 9.5], "depth": 1.3, "m": "limestone"})
+    proc("hearth_bench", "living", b=[2.3, 32.0, 3.9, 44.0, 0.0, 1.4], m="limestone")
     proc("builtin_shelves", "living", b=[1.06, 30.6, 2.3, 33.9, 1.6, 8.5], face="+x", shelves=5, seed=51)
     proc("builtin_shelves", "living", b=[1.06, 42.1, 2.3, 44.9, 1.6, 8.5], face="+x", shelves=5, seed=52)
-    proc("mushroom_lamp", "living", pos=[2.3, 33.0, 1.4], height=1.6, m="brass", watts=18)
+    proc("mushroom_lamp", "living", pos=[3.1, 33.0, 1.4], height=1.6, m="brass", watts=18)
     proc("rug", "living", b=[4.5, 33.5, 16.5, 45.0], m="rug_cream", thick=0.05)
     add(asset="proc:rug", room="living", b=[6.0, 35.0, 11.0, 42.0], m="rug_oxblood", thick=0.09, rot_z=8)
     proc("sofa", "living", pos=[10.5, 40.0, 0], rot_z=90, length=8.0, depth=3.0, m="velvet_orange")
