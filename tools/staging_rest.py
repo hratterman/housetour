@@ -297,7 +297,7 @@ def garage():
     model("metal_tool_chest", (10.0, 66.3, z), "garage", height_ft=3.0, rot_z=0)
     model("bench_vice_01", (4.0, 65.6, z + 3.0), "garage", length_ft=1.2, rot_z=0)
     model("metal_toolbox", (14.0, 66.0, z + 3.0), "garage", length_ft=1.6, rot_z=10)
-    model("wooden_ladder", (-3.9, 92.4, z), "garage", height_ft=8.0, rot_z=90)
+    model("wooden_ladder", (-3.9, 92.4, z), "garage", height_ft=5.5, rot_z=90)   # it is a step ladder
     proc("shelving_unit", "garage", pos=[-4.0, 88.5, z], length=6.0, depth=1.8, height=7.0, rot_z=90, seed=4)
     proc("compressor_closet", "garage", b=[-5.0, 65.0, -3.0, 67.5, z, z + 6.0])
     proc("reel", "garage", pos=[0.0, 76.0, z + 11.5], m="steel_black")

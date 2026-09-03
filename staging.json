@@ -1678,14 +1678,14 @@
 "rot_z": 20
 },
 {
-"asset": "calathea_orbifolia_01",
+"asset": "potted_plant_02",
 "pos": [
 4.4,
 43.6,
 0
 ],
 "room": "living",
-"height_ft": 4.6,
+"height_ft": 4.2,
 "rot_z": 50
 },
 {
@@ -6819,7 +6819,7 @@
 -0.4
 ],
 "room": "garage",
-"height_ft": 8.0,
+"height_ft": 5.5,
 "rot_z": 90
 },
 {

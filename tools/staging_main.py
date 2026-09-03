@@ -185,7 +185,7 @@ def main_floor():
     proc("picture_light", "living", wall=W("y", 20.0, "-x"), u=43.3, z=8.3, watts=4.5)
     proc("arc_lamp", "living", pos=[13.8, 43.6, 0], reach=4.9, height=7.3, rot_z=-135, watts=55)
     model("potted_plant_02", (17.8, 42.6, 0), "living", height_ft=6.0, rot_z=20)
-    model("calathea_orbifolia_01", (4.4, 43.6, 0), "living", height_ft=4.6, rot_z=50)
+    model("potted_plant_02", (4.4, 43.6, 0), "living", height_ft=4.2, rot_z=50)   # (calathea model ships as three variants side by side)
     proc("basket", "living", pos=[16.8, 32.0, 0], radius=0.75, height=1.4, throw_m="wool_mustard")
     proc("downlights", "living", positions=[[5, 32.5], [15, 32.5], [5, 36.5], [15, 36.5], [5, 40.5], [15, 40.5], [5, 44], [15, 44]], z=9.5, watts=5)
     proc("roller_shade", "living", span=[3.0, 19.0], at=45.0, inward=-1, top=9.3, drop=0.15)

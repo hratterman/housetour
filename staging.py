@@ -27,6 +27,11 @@ from gens2 import Gens2  # noqa: E402
 from gens3 import Gens3  # noqa: E402
 
 
+# models that are genuinely a group of separate pieces (a pair of boots, a set of books), not variants
+KEEP_ALL_PARTS = {"rubber_boots", "book_encyclopedia_set_01", "brass_candleholders", "outdoor_table_chair_set_01",
+                  "wine_bottles_01", "decorative_book_set_01", "kitchen_utensils", "wooden_ladder", "metal_tool_chest"}
+
+
 class Stager(Gens2, Gens3):
     def __init__(self, plan, house, mats, root, staging_path=None):
         self.plan = plan
@@ -102,6 +107,27 @@ class Stager(Gens2, Gens3):
         if meshes:
             bpy.context.view_layer.objects.active = meshes[0]
             bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
+        # Poly Haven plant and prop files often carry several variants laid out side by side; keep the
+        # largest piece and whatever touches its (slightly grown) bounds, drop the rest
+        if len(meshes) > 1 and name not in KEEP_ALL_PARTS:
+            bpy.context.view_layer.update()
+            boxes = {}
+            for o in meshes:
+                mn, mx = world_bounds(o)
+                boxes[o.name] = (mn, mx, (mx.x - mn.x) * (mx.y - mn.y) * max(mx.z - mn.z, 1e-4))
+            main = max(meshes, key=lambda o: boxes[o.name][2])
+            mmn, mmx = boxes[main.name][0].copy(), boxes[main.name][1].copy()
+            grow = 0.15 * max(mmx.x - mmn.x, mmx.y - mmn.y, mmx.z - mmn.z) + 0.02
+            keep, drop = [], []
+            for o in meshes:
+                mn, mx = boxes[o.name][0], boxes[o.name][1]
+                touches = all(mn[i] <= mmx[i] + grow and mx[i] >= mmn[i] - grow for i in range(3))
+                (keep if touches else drop).append(o)
+            if drop:
+                log("  %s: %d mesh parts kept, %d side-by-side variants dropped" % (name, len(keep), len(drop)))
+                for o in drop:
+                    bpy.data.objects.remove(o, do_unlink=True)
+                meshes = keep
         ob = join_objects(meshes, "proto_%s" % name)
         for nm in other_names:
             o = bpy.data.objects.get(nm)
