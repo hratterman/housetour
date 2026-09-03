@@ -134,7 +134,7 @@ def main_floor():
     add(asset="proc:cabinet", room="litter_closet", b=[1.1, 13.4, 2.6, 15.0, 0, 1.6], doors=1, face="+x", m="plaster_warm")
     # ------------------------------------------------------------------ 3.13 pantry
     note("pantry")
-    proc("pantry_shelves", "pantry", wall=W("x", 27.0, "-y"), span=[1.2, 7.4], z=[1.5, 3.25, 5.0, 6.75, 8.5], depth=0.85, seed=41)
+    proc("pantry_shelves", "pantry", wall=W("x", 27.0, "-y"), span=[1.2, 7.4], z=[4.0, 5.5, 7.0, 8.5], depth=0.85, seed=41)
     proc("pantry_shelves", "pantry", wall=W("x", 21.0, "+y"), span=[3.3, 7.4], z=[1.5, 3.25, 5.0, 6.75, 8.5], depth=0.85, seed=42)
     add(asset="proc:cabinet", room="pantry", b=[1.0, 21.5, 3.0, 26.5, 0.3, 3.1], doors=3, face="+x", m="walnut_h")
     add(asset="proc:rug", room="pantry", b=[0.98, 21.45, 3.05, 26.55], z=3.1, thick=0.1, m="soapstone")
@@ -256,14 +256,14 @@ def main_floor():
     proc("nightstand2", "primary_bedroom", pos=[29.05, 43.6, 0], rot_z=90, on=True, items=["watch", "phone"])
     proc("sconce", "primary_bedroom", wall=W("y", 28.0, "+x"), u=33.4, z=5.2, on=False, radius=0.12, height=0.5)
     proc("sconce", "primary_bedroom", wall=W("y", 28.0, "+x"), u=42.6, z=5.2, on=False, radius=0.12, height=0.5)
-    model("green_chair_01", (38.0, 42.3, 0), "primary_bedroom", length_ft=2.8, rot_z=-55, recolor=[0.08, 0.32, 0.36])
+    model("green_chair_01", (37.8, 42.2, 0), "primary_bedroom", length_ft=2.8, rot_z=-55, recolor=[0.08, 0.32, 0.36])
     proc("throw", "primary_bedroom", b=[38.7, 42.4, 39.6, 43.6], z=2.0, m="wool_oatmeal", rot_z=25, hang="-x", drop=0.9)   # sweater over the arm
-    model("side_table_01", (35.6, 44.4, 0), "primary_bedroom", height_ft=1.9)
-    model("jug_01", (35.6, 44.4, 1.9), "primary_bedroom", height_ft=0.35)
-    proc("floor_lamp", "primary_bedroom", pos=[40.25, 44.2, 0], height=5.2, on=False, kind="drum")
+    model("side_table_01", (35.6, 44.0, 0), "primary_bedroom", height_ft=1.9)
+    model("jug_01", (35.6, 44.0, 1.9), "primary_bedroom", height_ft=0.35)
+    proc("floor_lamp", "primary_bedroom", pos=[40.3, 44.0, 0], height=5.2, on=False, kind="drum")
     proc("rug", "primary_bedroom", b=[33.5, 33.5, 40.0, 42.5], m="rug_oxblood", thick=0.05)
     proc("bench", "primary_bedroom", pos=[36.9, 38.0, 0], length=5.0, depth=1.5, height=1.5, rot_z=90, cushion_m="wool_oatmeal")
-    model("potted_plant_02", (38.6, 32.4, 0), "primary_bedroom", height_ft=4.5, rot_z=70)   # SE corner, out of the bedroom shot path
+    model("potted_plant_02", (38.6, 33.0, 0), "primary_bedroom", height_ft=4.5, rot_z=70)   # SE corner, out of the bedroom shot path
     proc("slippers", "primary_bedroom", pos=[31.5, 34.2, 0], rot_z=110)
     proc("slippers", "primary_bedroom", pos=[37.5, 41.5, 0], rot_z=-70)
     proc("wall_frame", "primary_bedroom", wall=W("x", 46.0, "-y"), u=30.2, zc=5.5, w=2.5, h=3.5, seed=111, frame_m="brass")

@@ -338,7 +338,7 @@ class Gens3:
         objs.append(box_ft(self.uid("erv"), 30.0, 28.5, 34.0, 31.5, z + 7.2, z + 9.0, self.mat("galvanized"), self.col))
         for (x, y0_, y1_) in ((31.0, 13.5, 28.5), (33.0, 13.5, 28.5)):
             objs.append(cylinder_ft(self.uid("duct"), (x, y0_, z + 8.6), 0.5, y1_ - y0_, self.mat("duct_silver"), self.col, 18, axis="Y"))
-        objs.append(cylinder_ft(self.uid("duct"), (28.5, 20.0, z + 8.6), 0.5, 12.0, self.mat("duct_silver"), self.col, 18, axis="X"))
+        objs.append(cylinder_ft(self.uid("duct"), (34.6, 20.0, z + 8.6), 0.5, 12.0, self.mat("duct_silver"), self.col, 18, axis="X"))   # X 28.6-40.6, inside the room
         # dehumidifier, media filter, sump and ejector lids, softener stack
         objs.append(box_ft(self.uid("dehum"), 36.0, 30.0, 37.6, 31.6, z, z + 2.3, self.mat("plaster_warm"), self.col))
         objs.append(box_ft(self.uid("filter_cab"), 34.5, 14.0, 36.5, 16.0, z + 1.0, z + 5.0, self.mat("galvanized"), self.col))

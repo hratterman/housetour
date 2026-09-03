@@ -1046,10 +1046,9 @@
 7.4
 ],
 "z": [
-1.5,
-3.25,
-5.0,
-6.75,
+4.0,
+5.5,
+7.0,
 8.5
 ],
 "depth": 0.85,
@@ -2546,8 +2545,8 @@
 {
 "asset": "green_chair_01",
 "pos": [
-38.0,
-42.3,
+37.8,
+42.2,
 0
 ],
 "room": "primary_bedroom",
@@ -2578,7 +2577,7 @@
 "asset": "side_table_01",
 "pos": [
 35.6,
-44.4,
+44.0,
 0
 ],
 "room": "primary_bedroom",
@@ -2588,7 +2587,7 @@
 "asset": "jug_01",
 "pos": [
 35.6,
-44.4,
+44.0,
 1.9
 ],
 "room": "primary_bedroom",
@@ -2598,8 +2597,8 @@
 "asset": "proc:floor_lamp",
 "room": "primary_bedroom",
 "pos": [
-40.25,
-44.2,
+40.3,
+44.0,
 0
 ],
 "height": 5.2,
@@ -2636,7 +2635,7 @@
 "asset": "potted_plant_02",
 "pos": [
 38.6,
-32.4,
+33.0,
 0
 ],
 "room": "primary_bedroom",
@@ -6843,8 +6842,8 @@
 {
 "asset": "plastic_broom",
 "pos": [
--4.6,
-91.6,
+-4.2,
+92.4,
 -0.4
 ],
 "room": "garage",
@@ -6855,8 +6854,8 @@
 "asset": "proc:shovel",
 "room": "garage",
 "pos": [
--3.3,
-92.3,
+-2.6,
+92.4,
 -0.4
 ]
 },
@@ -6864,8 +6863,8 @@
 "asset": "proc:ice_melt",
 "room": "garage",
 "pos": [
--2.4,
-92.2,
+-1.6,
+92.3,
 -0.4
 ]
 },

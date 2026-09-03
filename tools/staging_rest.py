@@ -301,9 +301,9 @@ def garage():
     proc("compressor_closet", "garage", b=[-5.0, 65.0, -3.0, 67.5, z, z + 6.0])
     proc("reel", "garage", pos=[0.0, 76.0, z + 11.5], m="steel_black")
     proc("reel", "garage", pos=[2.0, 76.0, z + 11.5], m="rubber_red")
-    model("plastic_broom", (-4.6, 91.6, z), "garage", height_ft=4.5, rot_z=200)
-    proc("shovel", "garage", pos=[-3.3, 92.3, z])
-    proc("ice_melt", "garage", pos=[-2.4, 92.2, z])
+    model("plastic_broom", (-4.2, 92.4, z), "garage", height_ft=4.5, rot_z=200)
+    proc("shovel", "garage", pos=[-2.6, 92.4, z])
+    proc("ice_melt", "garage", pos=[-1.6, 92.3, z])
     model("cardboard_box_01", (16.05, 89.0, z + 5.2), "garage", length_ft=1.5)
     model("garden_hose_wall_mounted_01", (-4.55, 87.3, z + 3.5), "garage", length_ft=1.8, rot_z=90)
     for x in (-3.0, 3.0, 9.0, 15.0):
