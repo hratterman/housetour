@@ -2523,8 +2523,8 @@
 {
 "asset": "green_chair_01",
 "pos": [
-38.3,
-42.6,
+37.9,
+42.3,
 0
 ],
 "room": "primary_bedroom",
@@ -2575,8 +2575,8 @@
 "asset": "proc:floor_lamp",
 "room": "primary_bedroom",
 "pos": [
-40.3,
-44.0,
+40.45,
+44.55,
 0
 ],
 "height": 5.2,
@@ -4640,7 +4640,7 @@
 "asset": "proc:kid_bed",
 "room": "bedroom_b",
 "b": [
-37.5,
+37.7,
 29.0,
 40.9,
 36.0,
@@ -4655,7 +4655,7 @@
 "asset": "proc:nightstand2",
 "room": "bedroom_b",
 "pos": [
-36.4,
+36.65,
 29.6,
 10.0
 ],
@@ -6822,8 +6822,8 @@
 {
 "asset": "plastic_broom",
 "pos": [
--4.3,
-91.7,
+-3.9,
+92.6,
 -0.4
 ],
 "room": "garage",
@@ -6862,7 +6862,7 @@
 "asset": "garden_hose_wall_mounted_01",
 "pos": [
 -4.55,
-90.4,
+91.5,
 3.1
 ],
 "room": "garage",

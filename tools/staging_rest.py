@@ -118,8 +118,8 @@ def second_floor():
     # ------------------------------------------------------------------ 4.8 bedroom B (east face X 41, north face Y 45)
     note("bedroom B")
     proc("wall_finish", "bedroom_b", wall=W("x", 46.0, "-y"), span=[28.3, 41.0], z=[z + 0.3, z + 8.9], m="wallpaper_kid_teal")
-    proc("kid_bed", "bedroom_b", b=[37.5, 29.0, 40.9, 36.0, z, z + 1.6], head="-y", duvet_m="bedding_stripe_teal", seed=5)
-    proc("nightstand2", "bedroom_b", pos=[36.4, 29.6, z], rot_z=0, on=True, items=[])
+    proc("kid_bed", "bedroom_b", b=[37.7, 29.0, 40.9, 36.0, z, z + 1.6], head="-y", duvet_m="bedding_stripe_teal", seed=5)
+    proc("nightstand2", "bedroom_b", pos=[36.65, 29.6, z], rot_z=0, on=True, items=[])
     model("alarm_clock_01", (36.4, 29.3, z + 2.2), "bedroom_b", height_ft=0.35, rot_z=200)
     proc("desk", "bedroom_b", b=[32.0, 28.3, 35.3, 30.3, z + 2.3, z + 2.4], floor_z=z, gables=True, drawers=True, facing="-y", monitors=0, keyboard=False,
          laptop=[33.5, 29.5], lamp=[34.5, 29.6], mug=[32.5, 29.9], mug_m="teal")
@@ -302,11 +302,11 @@ def garage():
     proc("compressor_closet", "garage", b=[-5.0, 65.0, -3.0, 67.5, z, z + 6.0])
     proc("reel", "garage", pos=[13.5, 69.5, z + 11.5], m="steel_black")   # over the aisle in front of the bench
     proc("reel", "garage", pos=[15.5, 69.5, z + 11.5], m="rubber_red")
-    model("plastic_broom", (-4.3, 91.7, z), "garage", height_ft=4.5, rot_z=200)
+    model("plastic_broom", (-3.9, 92.6, z), "garage", height_ft=4.5, rot_z=200)
     proc("shovel", "garage", pos=[-2.6, 92.4, z])
     proc("ice_melt", "garage", pos=[-1.6, 92.3, z])
     model("cardboard_box_01", (16.2, 66.4, z + 3.0), "garage", length_ft=1.5)
-    model("garden_hose_wall_mounted_01", (-4.55, 90.4, z + 3.5), "garage", length_ft=1.8, rot_z=90)
+    model("garden_hose_wall_mounted_01", (-4.55, 91.5, z + 3.5), "garage", length_ft=1.8, rot_z=90)
     for x in (-3.0, 3.0, 9.0, 15.0):
         for y in (70, 86):
             proc("shop_light", "garage", pos=[x, y, z + 11.4], length=4.0, rot_z=90, kelvin=4000, watts=60)

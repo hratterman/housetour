@@ -254,11 +254,11 @@ def main_floor():
     proc("nightstand2", "primary_bedroom", pos=[29.05, 43.6, 0], rot_z=90, on=True, items=["watch", "phone"])
     proc("sconce", "primary_bedroom", wall=W("y", 28.0, "+x"), u=33.4, z=5.2, on=False, radius=0.12, height=0.5)
     proc("sconce", "primary_bedroom", wall=W("y", 28.0, "+x"), u=42.6, z=5.2, on=False, radius=0.12, height=0.5)
-    model("green_chair_01", (38.3, 42.6, 0), "primary_bedroom", length_ft=2.8, rot_z=-55, recolor=[0.08, 0.32, 0.36])
+    model("green_chair_01", (37.9, 42.3, 0), "primary_bedroom", length_ft=2.8, rot_z=-55, recolor=[0.08, 0.32, 0.36])
     proc("throw", "primary_bedroom", b=[38.7, 42.4, 39.6, 43.6], z=2.0, m="wool_oatmeal", rot_z=25, hang="-x", drop=0.9)   # sweater over the arm
     model("side_table_01", (35.6, 44.0, 0), "primary_bedroom", height_ft=1.9)
     model("jug_01", (35.6, 44.0, 1.9), "primary_bedroom", height_ft=0.35)
-    proc("floor_lamp", "primary_bedroom", pos=[40.3, 44.0, 0], height=5.2, on=False, kind="drum")
+    proc("floor_lamp", "primary_bedroom", pos=[40.45, 44.55, 0], height=5.2, on=False, kind="drum")
     proc("rug", "primary_bedroom", b=[33.5, 33.5, 40.0, 42.5], m="rug_oxblood", thick=0.05)
     proc("bench", "primary_bedroom", pos=[36.9, 38.0, 0], length=5.0, depth=1.5, height=1.5, rot_z=90, cushion_m="wool_oatmeal")
     model("potted_plant_02", (38.6, 33.0, 0), "primary_bedroom", height_ft=4.5, rot_z=70)   # SE corner, out of the bedroom shot path
