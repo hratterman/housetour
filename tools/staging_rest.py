@@ -31,7 +31,7 @@ def second_floor():
     add(asset="proc:cabinet", room="her_office", b=[1.0, 24.6, 10.5, 25.75, z, z + 2.4], doors=4, face="-y", m="walnut_h")
     add(asset="proc:cabinet", room="her_office", b=[2.0, 24.8, 3.6, 25.7, z + 2.4, z + 3.0], doors=1, face="-y", m="stainless")   # printer
     model("mantel_clock_01", (6.0, 25.2, z + 3.06), "her_office", height_ft=0.6)
-    model("potted_plant_04", (9.5, 23.8, z), "her_office", height_ft=5.5, rot_z=40)
+    model("potted_plant_04", (9.0, 23.6, z), "her_office", height_ft=5.5, rot_z=40)
     proc("wall_frame", "her_office", wall=W("y", 11.0, "-x"), u=16.5, zc=z + 5.5, w=4.0, h=3.0, seed=121, frame_m="brass")
     proc("wall_frame", "her_office", wall=W("y", 11.0, "-x"), u=12.0, zc=z + 5.0, w=1.5, h=1.8, seed=122)
     proc("wall_frame", "her_office", wall=W("y", 11.0, "-x"), u=21.0, zc=z + 5.0, w=1.5, h=1.8, seed=123)
@@ -57,7 +57,7 @@ def second_floor():
     model("potted_plant_01", (24.6, 12.6, z + 5.05), "lab", height_ft=0.9)
     model("book_encyclopedia_set_01", (25.9, 12.6, z + 5.05), "lab", length_ft=0.8)
     proc("wall_frame", "lab", wall=W("x", 13.0, "-y"), u=25.0, zc=z + 5.8, w=0.67, h=0.83, seed=140, frame_m="black")   # the dad print
-    proc("workbench", "lab", b=[11.25, 7.0, 13.75, 16.5, z, z + 3.0], wall=W("y", 11.0, "+x"), cleat_z=[z + 3.5, z + 7.5], cleat_span=[7.0, 16.5], tools=26,
+    proc("workbench", "lab", b=[11.25, 7.0, 13.75, 15.7, z, z + 3.0], wall=W("y", 11.0, "+x"), cleat_z=[z + 3.5, z + 7.5], cleat_span=[7.0, 15.6], tools=26,
          items=[{"kind": "lamp", "pos": [12.3, 8.0], "rot_z": 0}, {"kind": "lamp", "pos": [12.3, 14.0], "rot_z": 0}, {"kind": "mat", "pos": [12.5, 10.5], "w": 2.0, "d": 3.0},
                 {"kind": "printer", "pos": [12.5, 15.2], "face": "+x"}, {"kind": "soldering", "pos": [12.9, 12.8]}, {"kind": "psu", "pos": [12.4, 9.0]},
                 {"kind": "microscope", "pos": [12.6, 12.0]}, {"kind": "organizer", "pos": [12.0, 7.5], "z": 0.5}, {"kind": "spools", "pos": [11.8, 13.2]},
@@ -117,7 +117,7 @@ def second_floor():
     # ------------------------------------------------------------------ 4.8 bedroom B (east face X 41, north face Y 45)
     note("bedroom B")
     proc("wall_finish", "bedroom_b", wall=W("x", 46.0, "-y"), span=[28.3, 41.0], z=[z + 0.3, z + 8.9], m="wallpaper_kid_teal")
-    proc("kid_bed", "bedroom_b", b=[37.5, 29.0, 41.0, 36.0, z, z + 1.6], head="-y", duvet_m="bedding_stripe_teal", seed=5)
+    proc("kid_bed", "bedroom_b", b=[37.4, 29.0, 40.8, 36.0, z, z + 1.6], head="-y", duvet_m="bedding_stripe_teal", seed=5)
     proc("nightstand2", "bedroom_b", pos=[36.0, 29.6, z], rot_z=0, on=True, items=[])
     model("alarm_clock_01", (36.4, 29.3, z + 2.2), "bedroom_b", height_ft=0.35, rot_z=200)
     proc("desk", "bedroom_b", b=[32.0, 28.3, 36.0, 30.3, z + 2.3, z + 2.4], floor_z=z, gables=True, drawers=True, facing="-y", monitors=0, keyboard=False,
@@ -138,7 +138,7 @@ def second_floor():
     # ------------------------------------------------------------------ 4.9 bedroom A (west face X 1)
     note("bedroom A")
     proc("wall_finish", "bedroom_a", wall=W("y", 0.0, "+x"), span=[26.3, 39.7], z=[z + 0.3, z + 8.9], m="wallpaper_kid_botanical")
-    proc("kid_bed", "bedroom_a", b=[4.0, 36.75, 11.0, 39.75, z, z + 1.6], head="-x", duvet_m="bedding_stripe_mustard", seed=6)
+    proc("kid_bed", "bedroom_a", b=[4.0, 36.55, 11.0, 39.55, z, z + 1.6], head="-x", duvet_m="bedding_stripe_mustard", seed=6)
     proc("nightstand2", "bedroom_a", pos=[2.3, 38.5, z], rot_z=0, on=True, items=[])
     proc("desk", "bedroom_a", b=[1.0, 26.3, 6.0, 28.3, z + 2.3, z + 2.4], floor_z=z, gables=True, drawers=True, facing="-y", monitors=0, keyboard=False,
          lamp=[1.7, 27.6], notebook=[3.5, 27.4])
@@ -204,7 +204,7 @@ def basement():
     proc("gym_bench", "gym", pos=[12.0, 12.0, z], rot_z=0)
     proc("dumbbell_rack", "gym", pos=[5.0, 1.9, z], length=5.0, rot_z=0)
     proc("treadmill", "gym", pos=[18.0, 4.0, z], rot_z=180)
-    proc("rower", "gym", pos=[20.0, 14.0, z], rot_z=90)
+    proc("rower", "gym", pos=[19.5, 14.0, z], rot_z=90)
     proc("kettlebells", "gym", pos=[12.4, 2.0, z])
     proc("yoga_basket", "gym", pos=[1.9, 18.0, z])
     proc("rings", "gym", pos=[14.0, 7.0, z + 9.4], drop=5.5)
@@ -216,7 +216,7 @@ def basement():
     # ------------------------------------------------------------------ 5.3 recovery suite
     note("recovery suite")
     proc("wall_finish", "recovery", wall=W("y", 22.0, "-x"), span=[20.3, 27.7], z=[z + 0.3, z + 9.4], m="green_deep")
-    proc("sauna2", "sauna", b=[1.0, 20.25, 8.0, 27.75, z, z + 9.5])
+    proc("sauna2", "sauna", b=[1.0, 20.25, 7.75, 27.75, z, z + 9.5])
     proc("bench", "recovery", pos=[10.0, 26.9, z], length=3.0, depth=1.5, height=1.5, rot_z=0, cushion=False, m="walnut_h")
     proc("hooks", "recovery", wall=W("x", 28.0, "-y"), span=[8.5, 11.5], z=z + 4.0, count=3, jacket=True)
     proc("towel_warmer", "recovery", wall=W("x", 28.0, "-y"), u=10.0, z=z + 3.5)
@@ -237,7 +237,7 @@ def basement():
     proc("pendant_row", "lounge", positions=[[7, 37, z + 5.5], [10, 37, z + 5.5], [13, 37, z + 5.5]], radius=0.5, drop=3.5, watts=28)
     proc("wall_screen", "lounge", b=[6.0, 44.85, 14.0, 44.94, z + 1.75, z + 6.25])
     proc("media_cabinet", "lounge", b=[5.0, 44.2, 15.0, 44.94, z, z + 1.8], face="-y")
-    proc("game_table", "lounge", pos=[18.5, 31.0, z])
+    proc("game_table", "lounge", pos=[18.5, 32.6, z])
     proc("pendant_cone", "lounge", pos=[18.5, 31.0, z + 5.5], drop=3.5, watts=26)
     proc("cabinet_row", "lounge", b=[1.0, 28.5, 2.0, 32.0, z, z + 7.0], doors=2, face="+x", m="walnut_h", games=True)
     proc("rug", "lounge", b=[2.5, 29.0, 15.5, 32.0], m="rug_oxblood", thick=0.05)
@@ -269,7 +269,7 @@ def basement():
     proc("shop_light", "mechanical", pos=[33.0, 20.0, z + 9.2], length=4.0, rot_z=90, kelvin=4000, watts=45)
     proc("shop_light", "mechanical", pos=[38.0, 28.0, z + 9.2], length=4.0, rot_z=90, kelvin=4000, watts=45)
     note("storage")
-    proc("shelving_unit", "storage", pos=[40.0, 40.0, z], length=10.0, depth=2.0, height=7.0, rot_z=90, seed=8)
+    proc("shelving_unit", "storage", pos=[39.9, 40.0, z], length=10.0, depth=2.0, height=7.0, rot_z=90, seed=8)
     proc("bike", "storage", pos=[31.0, 44.0, z], rot_z=0, m="oxblood")
     proc("bike", "storage", pos=[31.0, 42.0, z], rot_z=0, m="steel_black", wheel_r=1.0)
     proc("square_table", "storage", pos=[35.0, 38.0, z], length=6.0, depth=2.5, height=2.5, m="plaster_warm")
@@ -297,16 +297,16 @@ def garage():
     model("metal_tool_chest", (10.0, 66.3, z), "garage", height_ft=3.0, rot_z=0)
     model("bench_vice_01", (4.0, 65.6, z + 3.0), "garage", length_ft=1.2, rot_z=0)
     model("metal_toolbox", (14.0, 66.0, z + 3.0), "garage", length_ft=1.6, rot_z=10)
-    model("wooden_ladder", (-4.7, 92.6, z), "garage", height_ft=8.0, rot_z=90)
-    proc("shelving_unit", "garage", pos=[-4.1, 88.5, z], length=6.0, depth=1.8, height=7.0, rot_z=90, seed=4)
+    model("wooden_ladder", (-3.9, 92.4, z), "garage", height_ft=8.0, rot_z=90)
+    proc("shelving_unit", "garage", pos=[-4.0, 88.5, z], length=6.0, depth=1.8, height=7.0, rot_z=90, seed=4)
     proc("compressor_closet", "garage", b=[-5.0, 65.0, -3.0, 67.5, z, z + 6.0])
     proc("reel", "garage", pos=[0.0, 76.0, z + 11.5], m="steel_black")
     proc("reel", "garage", pos=[2.0, 76.0, z + 11.5], m="rubber_red")
-    model("plastic_broom", (16.6, 92.3, z), "garage", height_ft=4.5, rot_z=200)
+    model("plastic_broom", (16.2, 92.3, z), "garage", height_ft=4.5, rot_z=200)
     proc("shovel", "garage", pos=[16.2, 92.5, z])
     proc("ice_melt", "garage", pos=[15.0, 91.8, z])
     model("cardboard_box_01", (-4.1, 88.5, z + 5.2), "garage", length_ft=1.5)
-    model("garden_hose_wall_mounted_01", (16.9, 88.0, z + 3.5), "garage", length_ft=1.8, rot_z=-90)
+    model("garden_hose_wall_mounted_01", (16.55, 88.0, z + 3.5), "garage", length_ft=1.8, rot_z=-90)
     for x in (-3.0, 3.0, 9.0, 15.0):
         for y in (70, 86):
             proc("shop_light", "garage", pos=[x, y, z + 11.4], length=4.0, rot_z=90, kelvin=4000, watts=60)

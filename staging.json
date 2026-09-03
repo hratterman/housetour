@@ -22,8 +22,8 @@
 "asset": "proc:stroller",
 "room": "gear_closet",
 "pos": [
-3.0,
-3.0,
+4.0,
+2.3,
 0
 ],
 "rot_z": 0
@@ -33,19 +33,7 @@
 "room": "gear_closet",
 "pos": [
 1.9,
-2.2,
-0
-],
-"rot_z": 90,
-"wheel_r": 0.8,
-"m": "teal"
-},
-{
-"asset": "proc:bike",
-"room": "gear_closet",
-"pos": [
-1.9,
-4.6,
+3.4,
 0
 ],
 "rot_z": 90,
@@ -154,7 +142,7 @@
 "asset": "rubber_boots",
 "pos": [
 9.2,
-5.3,
+4.9,
 0
 ],
 "room": "vestibule",
@@ -406,8 +394,8 @@
 {
 "asset": "pachira_aquatica_01",
 "pos": [
-19.6,
-10.3,
+19.0,
+10.6,
 0
 ],
 "room": "entry_hall",
@@ -875,7 +863,7 @@
 "room": "laundry",
 "pos": [
 35.2,
-9.8,
+10.3,
 0
 ],
 "radius": 0.7,
@@ -1682,7 +1670,7 @@
 "asset": "potted_plant_02",
 "pos": [
 17.8,
-43.8,
+42.6,
 0
 ],
 "room": "living",
@@ -1692,8 +1680,8 @@
 {
 "asset": "calathea_orbifolia_01",
 "pos": [
-3.0,
-44.0,
+4.4,
+43.6,
 0
 ],
 "room": "living",
@@ -1888,8 +1876,8 @@
 "asset": "proc:mushroom_lamp",
 "room": "away",
 "pos": [
-26.8,
-43.9,
+22.9,
+43.5,
 0
 ],
 "height": 5.0,
@@ -2070,14 +2058,14 @@
 "room": "primary_bath",
 "b": [
 35.0,
-18.0,
+18.25,
 41.0,
 21.75
 ],
 "glass": [
 [
 "-x",
-18.0,
+18.25,
 21.0
 ]
 ],
@@ -2128,7 +2116,7 @@
 "asset": "proc:toilet",
 "room": "wc",
 "pos": [
-40.55,
+40.95,
 15.5,
 0
 ],
@@ -2185,7 +2173,7 @@
 "asset": "potted_plant_04",
 "pos": [
 33.0,
-21.0,
+20.6,
 0
 ],
 "room": "primary_bath",
@@ -2495,7 +2483,7 @@
 "asset": "proc:platform_bed",
 "room": "primary_bedroom",
 "pos": [
-31.85,
+32.15,
 38.0,
 0
 ],
@@ -2521,7 +2509,7 @@
 "room": "primary_bedroom",
 "pos": [
 29.05,
-33.4,
+32.9,
 0
 ],
 "rot_z": 90,
@@ -2536,7 +2524,7 @@
 "room": "primary_bedroom",
 "pos": [
 29.05,
-42.6,
+43.1,
 0
 ],
 "rot_z": 90,
@@ -2577,8 +2565,8 @@
 {
 "asset": "green_chair_01",
 "pos": [
-39.6,
-43.4,
+38.9,
+43.0,
 0
 ],
 "room": "primary_bedroom",
@@ -2608,7 +2596,7 @@
 {
 "asset": "side_table_01",
 "pos": [
-38.0,
+36.9,
 44.2,
 0
 ],
@@ -2618,7 +2606,7 @@
 {
 "asset": "jug_01",
 "pos": [
-38.0,
+36.9,
 44.2,
 1.9
 ],
@@ -2629,7 +2617,7 @@
 "asset": "proc:floor_lamp",
 "room": "primary_bedroom",
 "pos": [
-40.3,
+40.2,
 44.3,
 0
 ],
@@ -2653,7 +2641,7 @@
 "asset": "proc:bench",
 "room": "primary_bedroom",
 "pos": [
-36.2,
+36.9,
 38.0,
 0
 ],
@@ -2666,8 +2654,8 @@
 {
 "asset": "potted_plant_02",
 "pos": [
-40.8,
-31.0,
+39.2,
+31.6,
 0
 ],
 "room": "primary_bedroom",
@@ -2731,7 +2719,7 @@
 "at": 30.0,
 "face": "+y"
 },
-"u": 39.5,
+"u": 33.0,
 "zc": 5.5,
 "w": 1.2,
 "h": 1.5,
@@ -3583,8 +3571,8 @@
 {
 "asset": "potted_plant_04",
 "pos": [
-9.5,
-23.8,
+9.0,
+23.6,
 10.0
 ],
 "room": "her_office",
@@ -3893,7 +3881,7 @@
 11.25,
 7.0,
 13.75,
-16.5,
+15.7,
 10.0,
 13.0
 ],
@@ -3908,7 +3896,7 @@
 ],
 "cleat_span": [
 7.0,
-16.5
+15.6
 ],
 "tools": 26,
 "items": [
@@ -4678,9 +4666,9 @@
 "asset": "proc:kid_bed",
 "room": "bedroom_b",
 "b": [
-37.5,
+37.4,
 29.0,
-41.0,
+40.8,
 36.0,
 10.0,
 11.6
@@ -4947,9 +4935,9 @@
 "room": "bedroom_a",
 "b": [
 4.0,
-36.75,
+36.55,
 11.0,
-39.75,
+39.55,
 10.0,
 11.6
 ],
@@ -5756,7 +5744,7 @@
 "asset": "proc:rower",
 "room": "gym",
 "pos": [
-20.0,
+19.5,
 14.0,
 -10.0
 ],
@@ -5903,7 +5891,7 @@
 "b": [
 1.0,
 20.25,
-8.0,
+7.75,
 27.75,
 -10.0,
 -0.5
@@ -6181,7 +6169,7 @@
 "room": "lounge",
 "pos": [
 18.5,
-31.0,
+32.6,
 -10.0
 ]
 },
@@ -6520,7 +6508,7 @@
 "asset": "proc:shelving_unit",
 "room": "storage",
 "pos": [
-40.0,
+39.9,
 40.0,
 -10.0
 ],
@@ -6826,8 +6814,8 @@
 {
 "asset": "wooden_ladder",
 "pos": [
--4.7,
-92.6,
+-3.9,
+92.4,
 -0.4
 ],
 "room": "garage",
@@ -6838,7 +6826,7 @@
 "asset": "proc:shelving_unit",
 "room": "garage",
 "pos": [
--4.1,
+-4.0,
 88.5,
 -0.4
 ],
@@ -6883,7 +6871,7 @@
 {
 "asset": "plastic_broom",
 "pos": [
-16.6,
+16.2,
 92.3,
 -0.4
 ],
@@ -6922,7 +6910,7 @@
 {
 "asset": "garden_hose_wall_mounted_01",
 "pos": [
-16.9,
+16.55,
 88.0,
 3.1
 ],

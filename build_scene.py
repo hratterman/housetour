@@ -695,27 +695,37 @@ def audit_staging(plan, out_path):
                 continue
             rows.append(("overlap", round(v, 2), a["room"], "%s (%d) x %s (%d)" % (a["asset"], ka, bb["asset"], kb),
                          "x %.1f-%.1f y %.1f-%.1f z %.1f-%.1f" % (max(a["mn"][0], bb["mn"][0]), min(a["mx"][0], bb["mx"][0]), max(a["mn"][1], bb["mn"][1]), min(a["mx"][1], bb["mx"][1]), max(a["mn"][2], bb["mn"][2]), min(a["mx"][2], bb["mx"][2]))))
-    # walls: penetration deeper than 0.15 ft with a real footprint
+    # walls: per object (an entry's union box would touch every wall of a room-filling entry), penetration
+    # deeper than 0.15 ft with a real footprint; the worst object per entry is reported by name
     walls = []
     for ob in bpy.data.objects:
         if ob.type == "MESH" and ob.name.startswith("wall_"):
             mn, mx = world_bounds(ob)
             walls.append((ob.name, [mn[i] / FT for i in range(3)], [mx[i] / FT for i in range(3)]))
-    for k, e in ents.items():
-        if skip(e):
+    worst_by_entry = {}
+    for ob in bpy.data.objects:
+        if ob.type != "MESH" or ob.hide_render or "entry" not in ob.keys() or ob.name.startswith("proto_"):
             continue
-        worst = None
+        if ob.users_collection and ob.users_collection[0].name == "asset_lib":
+            continue
+        k = int(ob["entry"])
+        if k not in ents or skip(ents[k]):
+            continue
+        mn, mx = world_bounds(ob)
+        omn, omx = [mn[i] / FT for i in range(3)], [mx[i] / FT for i in range(3)]
         for (wn, wmn, wmx) in walls:
-            d = [min(e["mx"][i], wmx[i]) - max(e["mn"][i], wmn[i]) for i in range(3)]
+            d = [min(omx[i], wmx[i]) - max(omn[i], wmn[i]) for i in range(3)]
             if not all(v > 0 for v in d):
                 continue
             thin = 0 if (wmx[0] - wmn[0]) < (wmx[1] - wmn[1]) else 1
-            depth = d[thin]
-            area = d[1 - thin] * d[2]
-            if depth > 0.15 and area > 0.5 and (worst is None or depth > worst[0]):
-                worst = (depth, wn, area)
-        if worst:
-            rows.append(("in wall", round(worst[0], 2), e["room"], "%s (%d) into %s" % (e["asset"], k, worst[1]), "area %.1f sq ft" % worst[2]))
+            depth, area = d[thin], d[1 - thin] * d[2]
+            if depth > 0.15 and area > 0.3:
+                cur = worst_by_entry.get(k)
+                if cur is None or depth > cur[0]:
+                    worst_by_entry[k] = (depth, wn, area, ob.name)
+    for k, (depth, wn, area, on) in worst_by_entry.items():
+        e = ents[k]
+        rows.append(("in wall", round(depth, 2), e["room"], "%s (%d) part %s into %s" % (e["asset"], k, on, wn), "area %.1f sq ft" % area))
     # out of room: entry centre outside every part of its room (grown 0.6 ft), rooms by name
     rooms = {r["name"]: r for r in plan["rooms"]}
     exterior = ("porch", "soffit", "house_numbers", "grill", "heater", "planter", "rain_chain", "spa", "outdoor", "ceiling_fan",
