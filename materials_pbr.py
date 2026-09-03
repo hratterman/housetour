@@ -203,6 +203,8 @@ class PBRLibrary:
                     links.new(src, h.inputs["Color"])
                     src = h.outputs["Color"]
                 links.new(src, bsdf.inputs["Base Color"])
+                if spec.get("emit_tex"):
+                    links.new(src, bsdf.inputs["Emission Color"])   # screens: the image is what glows
                 out_color = src
         rough = self._image_node(nt, folder, "rough", "Non-Color", mp)
         if rough is not None:
