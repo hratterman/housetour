@@ -666,6 +666,10 @@ class Gens2:
         dome = sphere_ft(self.uid("n_glass_dome"), (5.0, 28.5, z + 3.5), 0.66, self.mat("glass"), glassc, 24, 12)
         dome.scale = (1, 1, 1.1)
         objs.append(dome)
+        # a second surface just inside makes it a hollow shell instead of a solid glass lens
+        inner = sphere_ft(self.uid("n_glass_dome_in"), (5.0, 28.5, z + 3.5), 0.66, self.mat("glass"), glassc, 24, 12)
+        inner.scale = tuple(v * 0.955 for v in (1, 1, 1.1))
+        objs.append(inner)
         # rolling pin, canister set
         objs.append(cylinder_ft(self.uid("n_pin"), (3.0, 29.0, z + 3.12), 0.12, 1.4, self.mat("marble_white"), self.col, 14, axis="X"))
         for i, hgt in enumerate((0.9, 0.75, 0.6)):

@@ -296,6 +296,10 @@ class Gens3:
         dome = sphere_ft(self.uid("cake_dome"), (24.0, 44.0, z + 3.98), 0.62, self.mat("glass"), gc, 24, 12)
         dome.scale = (1, 1, 1.15)
         objs.append(dome)
+        # a second surface just inside makes it a hollow shell instead of a solid glass lens
+        inner = sphere_ft(self.uid("cake_dome_in"), (24.0, 44.0, z + 3.98), 0.62, self.mat("glass"), gc, 24, 12)
+        inner.scale = tuple(v * 0.955 for v in (1, 1, 1.15))
+        objs.append(inner)
         lb = sphere_ft(self.uid("lemon_bowl"), (24.0, 42.5, z + 3.5 + 0.15), 0.42, self.mat("ceramic_white"), self.col)
         lb.scale = (1, 1, 0.38)
         objs.append(lb)
