@@ -401,8 +401,8 @@ views = [
     {"name": "v13_gym", "pos": [20, 18, -4.5], "look": [4, 4, -6.5]},
     {"name": "v14_recovery", "pos": [21, 21, -4.5], "look": [4, 25, -6.5]},
     {"name": "v15_lounge", "pos": [20, 44, -4.5], "look": [4, 32, -7.5]},
-    {"name": "v16_exterior_front", "pos": [-12, -40, 6], "look": [16, 6, 8]},
-    {"name": "v17_exterior_rear", "pos": [20, 90, 8], "look": [14, 46, 8]},
+    {"name": "v16_exterior_front", "pos": [16, -46, 6], "look": [20, 6, 9]},
+    {"name": "v17_exterior_rear", "pos": [34, 84, 8], "look": [14, 46, 8]},
     {"name": "v18_garage", "pos": [6, 104, 6], "look": [4, 80, 6]},
 ]
 

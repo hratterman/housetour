@@ -5,7 +5,7 @@
   "frame_step": 1,
   "frames": 0,
   "mean_s": null,
-  "total_s": 3.814697265625e-06,
+  "total_s": 2.86102294921875e-06,
   "device": "CPU",
   "stage": "phase2"
 }
