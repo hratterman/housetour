@@ -132,7 +132,7 @@
      22,
      0,
      28,
-     32
+     30
     ]
    ],
    "floorm": "oak_floor",
@@ -156,7 +156,6 @@
    "wall": "plaster_warm",
    "ceil": "plaster_warm",
    "light": 60,
-   "no_ceiling": true,
    "label": "stair hall"
   },
   {
@@ -288,7 +287,7 @@
     [
      0,
      30,
-     22,
+     20,
      46
     ]
    ],
@@ -303,8 +302,8 @@
    "floor": "main",
    "parts": [
     [
-     22,
-     32,
+     20,
+     30,
      28,
      46
     ]
@@ -327,7 +326,7 @@
     ],
     [
      39,
-     16.5,
+     18,
      42,
      22
     ]
@@ -346,7 +345,7 @@
      39,
      13,
      42,
-     16.5
+     18
     ]
    ],
    "floorm": "terrazzo",
@@ -362,7 +361,7 @@
     [
      28,
      22,
-     31,
+     32,
      30
     ]
    ],
@@ -377,7 +376,7 @@
    "floor": "main",
    "parts": [
     [
-     31,
+     32,
      22,
      42,
      30
@@ -493,7 +492,7 @@
      28,
      0,
      34,
-     13
+     9.583
     ]
    ],
    "floorm": "oak_floor",
@@ -512,6 +511,12 @@
      13,
      42,
      19
+    ],
+    [
+     28,
+     9.583,
+     34,
+     13
     ]
    ],
    "floorm": "oak_floor",
@@ -1086,7 +1091,7 @@
    "floor": "main",
    "axis": "y",
    "at": 42,
-   "c": 18,
+   "c": 20,
    "w": 3,
    "z0": 5.0,
    "h": 2.0,
@@ -1292,8 +1297,8 @@
    "at": 0,
    "c": 6,
    "w": 4,
-   "z0": 6.5,
-   "h": 3.0,
+   "z0": 3.5,
+   "h": 6.0,
    "kind": "window",
    "well": true
   },
@@ -1304,8 +1309,8 @@
    "at": 0,
    "c": 38,
    "w": 4,
-   "z0": 6.5,
-   "h": 3.0,
+   "z0": 3.5,
+   "h": 6.0,
    "kind": "window",
    "well": true
   },
@@ -1421,18 +1426,30 @@
    "floor": "main",
    "axis": "y",
    "at": 28,
-   "c": 7,
-   "w": 4,
+   "c": 11.166,
+   "w": 3,
    "z0": 0,
    "h": 8.5,
    "kind": "cased"
+  },
+  {
+   "note": "stair hall to laundry",
+   "floor": "main",
+   "axis": "y",
+   "at": 34,
+   "c": 11.166,
+   "w": 2.67,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0
   },
   {
    "note": "spine to kitchen",
    "floor": "main",
    "axis": "y",
    "at": 22,
-   "c": 16,
+   "c": 16.5,
    "w": 6,
    "z0": 0,
    "h": 9.0,
@@ -1443,11 +1460,23 @@
    "floor": "main",
    "axis": "y",
    "at": 28,
-   "c": 28.5,
+   "c": 28,
    "w": 3,
    "z0": 0,
    "h": 7,
    "kind": "door",
+   "open_deg": 0
+  },
+  {
+   "note": "spine to away room",
+   "floor": "main",
+   "axis": "x",
+   "at": 30,
+   "c": 25,
+   "w": 3.5,
+   "z0": 0,
+   "h": 8,
+   "kind": "glassdoor",
    "open_deg": 0
   },
   {
@@ -1479,7 +1508,7 @@
    "floor": "main",
    "axis": "y",
    "at": 8,
-   "c": 14.5,
+   "c": 17.5,
    "w": 3,
    "z0": 0,
    "h": 7,
@@ -1526,8 +1555,8 @@
    "floor": "main",
    "axis": "x",
    "at": 30,
-   "c": 11,
-   "w": 22,
+   "c": 10,
+   "w": 20,
    "z0": 0,
    "h": 9.5,
    "kind": "open",
@@ -1537,7 +1566,7 @@
    "note": "living to away pocket door",
    "floor": "main",
    "axis": "y",
-   "at": 22,
+   "at": 20,
    "c": 38.5,
    "w": 5,
    "z0": 0,
@@ -1550,20 +1579,21 @@
    "floor": "main",
    "axis": "y",
    "at": 39,
-   "c": 14.75,
+   "c": 15.5,
    "w": 2.5,
    "z0": 0,
    "h": 7,
    "kind": "door",
    "open_deg": 0,
-   "leaf": "frosted"
+   "leaf": "frosted",
+   "swing": "out"
   },
   {
    "note": "closet to bath",
    "floor": "main",
    "axis": "x",
    "at": 22,
-   "c": 36,
+   "c": 37,
    "w": 3,
    "z0": 0,
    "h": 7,
@@ -1571,11 +1601,23 @@
    "open_deg": 80
   },
   {
+   "note": "suite hall to bath",
+   "floor": "main",
+   "axis": "x",
+   "at": 22,
+   "c": 30,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0
+  },
+  {
    "note": "suite hall to bedroom",
    "floor": "main",
    "axis": "x",
    "at": 30,
-   "c": 29.5,
+   "c": 30,
    "w": 3,
    "z0": 0,
    "h": 7,
@@ -1586,7 +1628,7 @@
    "note": "suite hall to closet",
    "floor": "main",
    "axis": "y",
-   "at": 31,
+   "at": 32,
    "c": 26,
    "w": 3,
    "z0": 0,
@@ -1719,8 +1761,8 @@
    "floor": "second",
    "axis": "x",
    "at": 26,
-   "c": 27.25,
-   "w": 1.5,
+   "c": 27.125,
+   "w": 1.25,
    "z0": 0,
    "h": 7,
    "kind": "window",
@@ -1835,12 +1877,24 @@
    "full": true
   },
   {
+   "note": "well open to landing",
+   "floor": "second",
+   "axis": "x",
+   "at": 9.583,
+   "c": 31,
+   "w": 6,
+   "z0": 0,
+   "h": 9.0,
+   "kind": "open",
+   "full": true
+  },
+  {
    "note": "bhall to bstair hall",
    "floor": "basement",
    "axis": "y",
    "at": 28,
-   "c": 7,
-   "w": 4,
+   "c": 11.166,
+   "w": 3,
    "z0": 0,
    "h": 8.5,
    "kind": "cased"
@@ -1886,7 +1940,7 @@
    "floor": "basement",
    "axis": "x",
    "at": 20,
-   "c": 20.5,
+   "c": 20,
    "w": 3,
    "z0": 0,
    "h": 7,
@@ -1921,7 +1975,7 @@
    "leaf": "steel"
   },
   {
-   "note": "hall open to lounge",
+   "note": "hall open to bar",
    "floor": "basement",
    "axis": "x",
    "at": 34,
@@ -1931,6 +1985,17 @@
    "h": 9.5,
    "kind": "open",
    "full": true
+  },
+  {
+   "note": "hall to lounge",
+   "floor": "basement",
+   "axis": "y",
+   "at": 22,
+   "c": 31,
+   "w": 5,
+   "z0": 0,
+   "h": 8.5,
+   "kind": "cased"
   },
   {
    "note": "bar open to lounge",
@@ -2043,47 +2108,47 @@
  ],
  "voids": [
   {
-   "note": "down-stair slot through the main floor",
+   "note": "stair core: down flights and landing pass through the main floor",
    "floor": "main",
    "what": "floor",
    "b": [
-    31,
-    0.75,
+    28,
+    0.5,
     34,
-    13.25
+    9.583
    ]
   },
   {
-   "note": "two-story well: no main ceiling / second floor over the stair hall",
+   "note": "stair core: two-story well over the up flights",
    "floor": "main",
    "what": "ceil",
    "b": [
     28,
-    0,
+    0.5,
     34,
-    13
+    9.583
    ]
   },
   {
-   "note": "two-story well: no second floor slab",
+   "note": "stair core: no second floor slab over the well",
    "floor": "second",
    "what": "floor",
    "b": [
     28,
-    0,
+    0.5,
     34,
-    13
+    9.583
    ]
   },
   {
-   "note": "down-stair passes the basement ceiling",
+   "note": "stair core: down flights pass the basement ceiling",
    "floor": "basement",
    "what": "ceil",
    "b": [
-    31,
-    0.75,
+    28,
+    0.5,
     34,
-    13.25
+    9.583
    ]
   },
   {
@@ -2111,36 +2176,169 @@
  ],
  "stairs": [
   {
-   "name": "up_stair",
-   "x0": 31,
-   "x1": 34,
-   "y_from": 0.75,
-   "y_to": 13.25,
+   "kind": "flight",
+   "name": "up_a",
+   "x0": 28,
+   "x1": 31,
+   "y_from": 9.583,
+   "y_to": 3.75,
    "z_from": 0.0,
-   "z_to": 10.0,
-   "risers": 16,
+   "z_to": 5.0,
+   "risers": 8,
+   "handrail": "west",
    "tread_m": "oak_floor",
    "riser_m": "oak_floor",
    "stringer_m": "walnut",
-   "rail_m": "bronze_black",
-   "guard": "west",
-   "handrail": "east"
+   "rail_m": "bronze_black"
   },
   {
-   "name": "down_stair",
-   "x0": 31,
-   "x1": 34,
-   "y_from": 13.25,
-   "y_to": 0.75,
-   "z_from": 0.0,
-   "z_to": -10.0,
-   "risers": 16,
+   "kind": "landing",
+   "name": "up_landing",
+   "b": [
+    28,
+    0.5,
+    34,
+    3.75
+   ],
+   "z": 5.0,
+   "t": 0.6,
    "tread_m": "oak_floor",
    "riser_m": "oak_floor",
    "stringer_m": "walnut",
-   "rail_m": "bronze_black",
-   "guard": "west",
-   "handrail": "east"
+   "rail_m": "bronze_black"
+  },
+  {
+   "kind": "flight",
+   "name": "up_b",
+   "x0": 31,
+   "x1": 34,
+   "y_from": 3.75,
+   "y_to": 9.583,
+   "z_from": 5.0,
+   "z_to": 10.0,
+   "risers": 8,
+   "handrail": "east",
+   "tread_m": "oak_floor",
+   "riser_m": "oak_floor",
+   "stringer_m": "walnut",
+   "rail_m": "bronze_black"
+  },
+  {
+   "kind": "flight",
+   "name": "down_a",
+   "x0": 31,
+   "x1": 34,
+   "y_from": 9.583,
+   "y_to": 3.75,
+   "z_from": 0.0,
+   "z_to": -5.0,
+   "risers": 8,
+   "handrail": "east",
+   "tread_m": "oak_floor",
+   "riser_m": "oak_floor",
+   "stringer_m": "walnut",
+   "rail_m": "bronze_black"
+  },
+  {
+   "kind": "landing",
+   "name": "down_landing",
+   "b": [
+    28,
+    0.5,
+    34,
+    3.75
+   ],
+   "z": -5.0,
+   "t": 0.6,
+   "tread_m": "oak_floor",
+   "riser_m": "oak_floor",
+   "stringer_m": "walnut",
+   "rail_m": "bronze_black"
+  },
+  {
+   "kind": "flight",
+   "name": "down_b",
+   "x0": 28,
+   "x1": 31,
+   "y_from": 3.75,
+   "y_to": 9.583,
+   "z_from": -5.0,
+   "z_to": -10.0,
+   "risers": 8,
+   "handrail": "west",
+   "tread_m": "oak_floor",
+   "riser_m": "oak_floor",
+   "stringer_m": "walnut",
+   "rail_m": "bronze_black"
+  },
+  {
+   "kind": "wall",
+   "name": "stair_centre_wall",
+   "b": [
+    30.75,
+    3.75,
+    31.25,
+    9.583,
+    -10.0,
+    13.5
+   ],
+   "m": "walnut_panel"
+  },
+  {
+   "kind": "wall",
+   "name": "well_band_w",
+   "b": [
+    28,
+    0.5,
+    28.25,
+    9.833,
+    9.5,
+    10.0
+   ],
+   "m": "plaster_warm"
+  },
+  {
+   "kind": "wall",
+   "name": "well_band_e",
+   "b": [
+    33.75,
+    0.5,
+    34,
+    9.833,
+    9.5,
+    10.0
+   ],
+   "m": "plaster_warm"
+  },
+  {
+   "kind": "wall",
+   "name": "well_band_s",
+   "b": [
+    28,
+    -0.5,
+    34,
+    0.5,
+    9.5,
+    10.0
+   ],
+   "m": "plaster_warm"
+  },
+  {
+   "kind": "guard",
+   "name": "well_guard",
+   "p0": [
+    28.1,
+    9.683,
+    10.0
+   ],
+   "p1": [
+    30.75,
+    9.683,
+    10.0
+   ],
+   "h": 3.5,
+   "m": "bronze_black",
+   "glass": true
   }
  ],
  "beams": [
@@ -2176,9 +2374,9 @@
   {
    "note": "walnut-wrapped column",
    "b": [
-    21.5,
+    19.5,
     29.5,
-    22.5,
+    20.5,
     30.5,
     0,
     9.5
@@ -2269,17 +2467,65 @@
       3,
       4
      ]
+    ],
+    "cuts": [
+     [
+      28.0,
+      1.5,
+      34.0,
+      7.0
+     ],
+     [
+      -1.5,
+      36,
+      0.5,
+      40
+     ]
     ]
    },
    {
-    "name": "front shed",
+    "name": "stair tower cap",
+    "type": "flat",
+    "x0": 28.0,
+    "x1": 34.0,
+    "y0": 0,
+    "y1": 7.0,
+    "z": 21.0,
+    "thick": 0.5,
+    "fascia": 1.0,
+    "m": "metal_roof_charcoal",
+    "soffit_m": "cedar_ext"
+   },
+   {
+    "name": "front shed west",
     "type": "shed",
-    "x0": 0,
-    "x1": 42,
+    "x0": -1.0,
+    "x1": 28.0,
     "y0": -1.5,
     "y1": 6,
     "z_high": 10.5,
-    "z_low": 10.0,
+    "z_low": 10.21,
+    "slope_to": "south",
+    "thick": 0.5,
+    "fascia": 1.0,
+    "m": "metal_roof_charcoal",
+    "soffit_m": "cedar_ext",
+    "beams": {
+     "axis": "y",
+     "spacing": 4,
+     "w_in": 6,
+     "d_in": 12
+    }
+   },
+   {
+    "name": "front shed east",
+    "type": "shed",
+    "x0": 34.0,
+    "x1": 43.0,
+    "y0": -1.5,
+    "y1": 6,
+    "z_high": 10.5,
+    "z_low": 10.21,
     "slope_to": "south",
     "thick": 0.5,
     "fascia": 1.0,
@@ -2299,7 +2545,7 @@
     "x1": 22,
     "y0": -7,
     "y1": -1.5,
-    "z_high": 10.2,
+    "z_high": 10.21,
     "z_low": 10.0,
     "slope_to": "south",
     "thick": 0.5,
@@ -2448,6 +2694,78 @@
    ],
    "m": "cedar_ext",
    "cap_m": "steel_black"
+  },
+  "bands": [
+   {
+    "note": "front band brick to the low roof, south west",
+    "b": [
+     0,
+     0,
+     28.0,
+     1.0,
+     9.5,
+     10.0
+    ],
+    "m": "roman_brick"
+   },
+   {
+    "note": "front band brick to the low roof, south east",
+    "b": [
+     34.0,
+     0,
+     42,
+     1.0,
+     9.5,
+     10.0
+    ],
+    "m": "roman_brick"
+   },
+   {
+    "note": "front band brick, west return",
+    "b": [
+     0,
+     1.0,
+     1.0,
+     6.0,
+     9.5,
+     10.0
+    ],
+    "m": "roman_brick"
+   },
+   {
+    "note": "front band brick, east return",
+    "b": [
+     41,
+     1.0,
+     42,
+     6.0,
+     9.5,
+     10.0
+    ],
+    "m": "roman_brick"
+   }
+  ],
+  "tower": {
+   "b": [
+    28.0,
+    0,
+    34.0,
+    7.0
+   ],
+   "inner": [
+    29,
+    1,
+    33,
+    6
+   ],
+   "z_wall_top": 19.0,
+   "z_top": 21.0,
+   "m": "cedar_ext",
+   "reveal": {
+    "m": "bronze_black",
+    "z0": 9.5,
+    "z1": 10.0
+   }
   }
  },
  "site": {
@@ -2476,7 +2794,7 @@
      110,
      -25
     ],
-    "z": -0.6,
+    "z": -0.45,
     "t": 0.4,
     "m": "concrete_sealed"
    },
@@ -2488,9 +2806,10 @@
      110,
      -30
     ],
-    "z": -0.7,
+    "z": -0.95,
     "t": 0.4,
-    "m": "asphalt"
+    "m": "asphalt",
+    "cut_ground": true
    },
    {
     "note": "front walk",
@@ -2500,7 +2819,7 @@
      13,
      -7
     ],
-    "z": -0.5,
+    "z": -0.42,
     "t": 0.3,
     "m": "bluestone"
    },
@@ -2548,7 +2867,7 @@
      43.5,
      0
     ],
-    "z": -0.5,
+    "z": -0.46,
     "t": 0.15,
     "m": "gravel_gray"
    },
@@ -2560,7 +2879,7 @@
      43.5,
      47.5
     ],
-    "z": -0.5,
+    "z": -0.46,
     "t": 0.15,
     "m": "gravel_gray"
    },
@@ -2572,7 +2891,7 @@
      0,
      46
     ],
-    "z": -0.5,
+    "z": -0.46,
     "t": 0.15,
     "m": "gravel_gray"
    },
@@ -2584,7 +2903,7 @@
      43.5,
      46
     ],
-    "z": -0.5,
+    "z": -0.46,
     "t": 0.15,
     "m": "gravel_gray"
    },
@@ -2632,7 +2951,7 @@
      18,
      100
     ],
-    "z": -0.5,
+    "z": -0.42,
     "t": 0.3,
     "m": "concrete_sealed"
    },
@@ -2644,9 +2963,10 @@
      110,
      116
     ],
-    "z": -0.6,
+    "z": -0.7,
     "t": 0.4,
-    "m": "asphalt"
+    "m": "asphalt",
+    "cut_ground": true
    },
    {
     "note": "lawn rectangle (edged)",
@@ -2656,7 +2976,7 @@
      42,
      94
     ],
-    "z": -0.5,
+    "z": -0.46,
     "t": 0.1,
     "m": "lawn"
    }
@@ -2729,8 +3049,8 @@
      -22
     ],
     "trunk_d": 2.5,
-    "canopy_r": 22,
-    "canopy_z": 14,
+    "canopy_r": 20,
+    "canopy_z": 20,
     "autumn": true
    },
    {
@@ -2740,8 +3060,8 @@
      -24
     ],
     "trunk_d": 2.0,
-    "canopy_r": 18,
-    "canopy_z": 12,
+    "canopy_r": 17,
+    "canopy_z": 18,
     "autumn": true
    },
    {
@@ -2751,8 +3071,8 @@
      20
     ],
     "trunk_d": 1.5,
-    "canopy_r": 14,
-    "canopy_z": 9,
+    "canopy_r": 13,
+    "canopy_z": 13,
     "autumn": true
    },
    {
@@ -2762,8 +3082,8 @@
      110
     ],
     "trunk_d": 1.2,
-    "canopy_r": 16,
-    "canopy_z": 10
+    "canopy_r": 15,
+    "canopy_z": 14
    },
    {
     "note": "japanese maple",
@@ -3191,53 +3511,92 @@
   },
   {
    "name": "basement",
-   "seconds": 20,
+   "seconds": 24,
    "exposure": 0.8,
    "path": [
     {
      "t": 0,
      "pos": [
-      29.5,
-      10,
-      4.5
+      32.5,
+      12.2,
+      5.5
      ],
      "look": [
-      29.5,
+      32.5,
       4,
-      -4
+      0
      ]
     },
     {
      "t": 3,
      "pos": [
       32.5,
-      9,
-      -1
+      6.5,
+      3.0
      ],
      "look": [
       32.5,
-      2,
-      -8
+      1,
+      -3
+     ]
+    },
+    {
+     "t": 5,
+     "pos": [
+      32.5,
+      2.2,
+      0.5
+     ],
+     "look": [
+      29.5,
+      8,
+      -3
      ]
     },
     {
      "t": 6,
      "pos": [
       29.5,
-      3,
-      -4.5
+      2.2,
+      0.5
      ],
      "look": [
-      24,
-      8,
-      -5
+      29.5,
+      12,
+      -6
      ]
     },
     {
      "t": 9,
      "pos": [
+      29.5,
+      8,
+      -2.9
+     ],
+     "look": [
+      27,
+      12,
+      -6
+     ]
+    },
+    {
+     "t": 11,
+     "pos": [
+      29.5,
+      11.2,
+      -4.5
+     ],
+     "look": [
+      20,
+      11.2,
+      -5.5
+     ]
+    },
+    {
+     "t": 13,
+     "pos": [
       25,
-      10,
+      11.2,
       -4.5
      ],
      "look": [
@@ -3247,9 +3606,9 @@
      ]
     },
     {
-     "t": 12,
+     "t": 16,
      "pos": [
-      25,
+      25.8,
       24,
       -4.5
      ],
@@ -3260,10 +3619,10 @@
      ]
     },
     {
-     "t": 15,
+     "t": 19,
      "pos": [
-      23,
-      34,
+      24,
+      31,
       -4.5
      ],
      "look": [
@@ -3273,10 +3632,23 @@
      ]
     },
     {
-     "t": 18,
+     "t": 20,
      "pos": [
-      14,
-      42,
+      21,
+      31.5,
+      -4.5
+     ],
+     "look": [
+      8,
+      40,
+      -7
+     ]
+    },
+    {
+     "t": 22,
+     "pos": [
+      16,
+      40,
       -4.5
      ],
      "look": [
@@ -3286,7 +3658,7 @@
      ]
     },
     {
-     "t": 20,
+     "t": 24,
      "pos": [
       17,
       40,
@@ -3373,38 +3745,64 @@
      "t": 12.2,
      "pos": [
       16.5,
-      21.5,
+      21.6,
       15.5
      ],
      "look": [
-      20,
+      18,
       25,
       15
      ]
     },
     {
-     "t": 13.1,
+     "t": 12.8,
      "pos": [
-      21.5,
+      16.8,
+      24,
+      15.5
+     ],
+     "look": [
+      24,
+      24,
+      15
+     ]
+    },
+    {
+     "t": 13.4,
+     "pos": [
+      21.4,
       24,
       15.5
      ],
      "look": [
       25,
-      29,
+      28,
       15
      ]
     },
     {
-     "t": 14,
+     "t": 14.0,
      "pos": [
-      25,
-      30,
+      24.8,
+      25.0,
       15.5
      ],
      "look": [
-      18,
-      40,
+      25,
+      32,
+      15
+     ]
+    },
+    {
+     "t": 14.6,
+     "pos": [
+      25,
+      27.6,
+      15.5
+     ],
+     "look": [
+      20,
+      38,
       15
      ]
     },
@@ -3612,17 +4010,17 @@
   {
    "name": "05_basement_gym",
    "shot": "basement",
-   "t": 9
+   "t": 13
   },
   {
-   "name": "06_basement_pit",
+   "name": "06_basement_lounge",
    "shot": "basement",
-   "t": 18
+   "t": 22
   },
   {
    "name": "07_basement_end",
    "shot": "basement",
-   "t": 20
+   "t": 24
   },
   {
    "name": "08_upstairs_rack",
@@ -3680,13 +4078,13 @@
   {
    "name": "v03_stair_hall",
    "pos": [
-    29.5,
-    12,
+    24.5,
+    11.2,
     5.5
    ],
    "look": [
     32,
-    1,
+    3,
     4
    ]
   },
@@ -3886,14 +4284,5 @@
    ]
   }
  ],
- "questions": [
-  "2.5 W1 mudroom side door Y 15.5-18.5 overlaps the litter closet (X 0-3, Y 13-16) by 6 in on the west wall. Moved the door 9 in north to Y 16.25-19.25. OK, or should the litter closet shrink to Y 13-15.5?",
-  "2.5 E2 bath window Y 15-18 straddles the WC compartment wall at Y 16.5 (WC is X 39-42, Y 13-16.5). Moved the window to Y 16.5-19.5 so it lands over the shower. OK?",
-  "5.1 gym glass door at X 22, Y 10 with 'a glass sidelight from Y 8 to Y 12': the 3 ft door already spans Y 8.5-11.5, so a sidelight Y 8-12 leaves 6 in each side. I built the sidelight as a 4 ft fixed pane at Y 12-16 north of the door. Correct?",
-  "5.2 gym-to-recovery glass door at Y 20, X 21 (3 ft) would span X 19.5-22.5, past the gym's east wall at X 22. Moved it 6 in west to X 19-22, tight to the corner. OK?",
-  "6 / 3.8: the up-stair's first tread (Y 0.75, Z 0) sits directly above the down-stair's last tread (Y 0.75, Z -10) with the up-stair rising north and the down-stair descending south beneath it. That works geometrically (10 ft between runs everywhere), but the main-floor stair slot X 31-34, Y 0.75-13.25 is then open from the basement to the second floor, and the only way past the slot on the main floor is the 3 ft aisle X 28-31. Confirm that is intended.",
-  "1.1 says the lot runs to Y 140 with the alley at Y 140; 1.9 says to model the alley as asphalt from Y 100 to Y 116 right behind the 6 ft apron. I used 1.9 (alley Y 100-116), which puts the honey locust at (30, 110) in the alley and the rear hedge at Y 100 on the alley edge. Which is right: alley at Y 100 or at Y 140?",
-  "2.2 direct-vent chase [-1.5, 36, 0.5, 40] rises to Z 26 along the west gable wall; the main gable's west rake overhang runs X -4 to 0, so the chase passes up through the roof overhang at Y 36-40. I cut the roof around it. OK?",
-  "10 Shot 4 (upstairs) t 11 -> t 14 runs from the rack closet straight to the hall through two 3 ft doors on a curve; the camera clipped both jambs. Added waypoints in the corridor door (16.5, 21.5) and the hall door (21.5, 24). Shot 7 (garage) t 0 -> t 4 passed through the north wall beside the west door; added a waypoint in the door at (2.5, 94.3)."
- ]
+ "questions": []
 }

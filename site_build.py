@@ -25,7 +25,7 @@ class Site:
         self.counts[k] = self.counts.get(k, 0) + v
 
     # ------------------------------------------------------------------ footprints
-    def footprint(self, floor):
+    def footprint(self, floor, skip_void=False):
         parts = [p for r, p in self.house.parts_on_floor(floor) if not r.get("void")]
         return (min(p[0] for p in parts), min(p[1] for p in parts), max(p[2] for p in parts), max(p[3] for p in parts))
 
@@ -73,14 +73,25 @@ class Site:
             fh = r.get("fascia", 1.0)
             box_ft("fascia_%s_s" % r["name"].replace(" ", "_"), x0, y0 - 0.15, x1, y0, fz_s - fh + thick, fz_s + thick + 0.1, fas, self.col_roof)
             box_ft("fascia_%s_n" % r["name"].replace(" ", "_"), x0, y1, x1, y1 + 0.15, fz_n - fh + thick, fz_n + thick + 0.1, fas, self.col_roof)
+            # cuts: footprints (x0, y0, x1, y1) of volumes that rise through the roof (the stair tower through the south eave)
+            cuts = r.get("cuts", [])
+            fas_s = bpy.data.objects["fascia_%s_s" % r["name"].replace(" ", "_")]
+            fas_n = bpy.data.objects["fascia_%s_n" % r["name"].replace(" ", "_")]
+            for cb in cuts:
+                cut_with_box([rs, rn, fas_s, fas_n], [cb[0], cb[1], cb[2], cb[3], r["z_wall"] - 4, ridge_z + 4], "cut_roof")
+
+            def in_cut(x, y):
+                return any(cb[0] - 0.5 <= x <= cb[2] + 0.5 and cb[1] - 0.5 <= y <= cb[3] + 0.5 for cb in cuts)
             # rafter tails under both eaves
             rt = r.get("rafter_tails")
             if rt:
                 ced = self.mats.get("cedar_ext")
                 x = x0 + 2
                 while x < x1 - 1:
-                    box_local("tail_s_%s_%d" % (r["name"][:4], int(x)), (x - 0.17, y0 + 0.2, fz_s - 0.9), (0.33, r.get("eave_ft", 4.0) + 1.0, 0.95), 0, ced, self.col_roof)
-                    box_local("tail_n_%s_%d" % (r["name"][:4], int(x)), (x - 0.17, y1 - r.get("eave_ft", 4.0) - 1.2, fz_n - 0.9), (0.33, r.get("eave_ft", 4.0) + 1.0, 0.95), 0, ced, self.col_roof)
+                    if not in_cut(x, y0 + 1):
+                        box_local("tail_s_%s_%d" % (r["name"][:4], int(x)), (x - 0.17, y0 + 0.2, fz_s - 0.9), (0.33, r.get("eave_ft", 4.0) + 1.0, 0.95), 0, ced, self.col_roof)
+                    if not in_cut(x, y1 - 1):
+                        box_local("tail_n_%s_%d" % (r["name"][:4], int(x)), (x - 0.17, y1 - r.get("eave_ft", 4.0) - 1.2, fz_n - 0.9), (0.33, r.get("eave_ft", 4.0) + 1.0, 0.95), 0, ced, self.col_roof)
                     x += rt
             # skylights: cut and add a glass pane + curb
             for sk in r.get("skylights", []):
@@ -109,8 +120,8 @@ class Site:
             rw = box_local("roof_%s_w" % r["name"][:6], (ridge, y0, ridge_z), (Lw, y1 - y0, thick), 0, mat, self.col_roof, rot_y_deg=ang)
             # rotate so local +X goes toward -X and down: rot_z 180 then rot_y ang? use rot_z=180 with rot_y=-ang
             bpy.data.objects.remove(rw, do_unlink=True)
-            rw = box_local("roof_%s_w" % r["name"][:6], (ridge, y1, ridge_z), (Lw, y1 - y0, thick), 180, mat, self.col_roof, rot_y_deg=-ang)
-            re = box_local("roof_%s_e" % r["name"][:6], (ridge, y0, ridge_z), (Le, y1 - y0, thick), 0, mat, self.col_roof, rot_y_deg=-ang)
+            rw = box_local("roof_%s_w" % r["name"][:6], (ridge, y1, ridge_z), (Lw, y1 - y0, thick), 180, mat, self.col_roof, rot_y_deg=ang)
+            re = box_local("roof_%s_e" % r["name"][:6], (ridge, y0, ridge_z), (Le, y1 - y0, thick), 0, mat, self.col_roof, rot_y_deg=ang)
             for ob in (rw, re):
                 set_face_material(ob, 0, soffit)
             box_ft("ridge_%s" % r["name"][:6], ridge - 0.3, y0, ridge + 0.3, y1, ridge_z + thick - 0.1, ridge_z + thick + 0.12, mat, self.col_roof)
@@ -204,11 +215,29 @@ class Site:
         up = ex.get("upper", {})
         rv = up.get("reveal")
         if rv and any(r["floor"] == "second" for r in self.house.rooms):
-            sx0, sy0, sx1, sy1 = self.footprint("second")
+            sx0, sy0, sx1, sy1 = self.footprint("second", skip_void=True)
             bm = self.mats.get(rv["m"])
             box_ft("reveal_n", sx0, sy1 - 0.5, sx1, sy1 + 0.02, rv["z0"], rv["z1"], bm, self.col)
             box_ft("reveal_w", sx0 - 0.02, sy0, sx0 + 0.5, sy1, rv["z0"], rv["z1"], bm, self.col)
             box_ft("reveal_e", sx1 - 0.5, sy0, sx1 + 0.02, sy1, rv["z0"], rv["z1"], bm, self.col)
+        for bd in ex.get("bands", []):
+            box_ft("band_%s" % bd["note"].replace(" ", "_")[:24], *bd["b"], mat=self.mats.get(bd["m"]), collection=self.col)
+        # stair tower: cedar parapet from the second-floor ceiling to the cap, bronze reveal at the brick line
+        tw = ex.get("tower")
+        if tw:
+            b, inner = tw["b"], tw["inner"]
+            ced = self.mats.get(tw.get("m", "cedar_ext"))
+            zt0, zt1 = tw["z_wall_top"], tw["z_top"]
+            box_ft("tower_par_s", b[0], b[1], b[2], inner[1], zt0, zt1, ced, self.col)
+            box_ft("tower_par_n", b[0], inner[3], b[2], b[3], zt0, zt1, ced, self.col)
+            box_ft("tower_par_w", b[0], inner[1], inner[0], inner[3], zt0, zt1, ced, self.col)
+            box_ft("tower_par_e", inner[2], inner[1], b[2], inner[3], zt0, zt1, ced, self.col)
+            trv = tw.get("reveal")
+            if trv:
+                bm = self.mats.get(trv["m"])
+                box_ft("tower_reveal_s", b[0] - 0.02, b[1] - 0.02, b[2] + 0.02, b[1] + 0.5, trv["z0"], trv["z1"], bm, self.col)
+                box_ft("tower_reveal_w", b[0] - 0.02, b[1], b[0] + 0.5, b[3], trv["z0"], trv["z1"], bm, self.col)
+                box_ft("tower_reveal_e", b[2] - 0.5, b[1], b[2] + 0.02, b[3], trv["z0"], trv["z1"], bm, self.col)
         # vent chase
         ch = ex.get("chase")
         if ch:
@@ -244,6 +273,8 @@ class Site:
                     cut_with_box([bpy.data.objects["ground"]], [X0, Y0, X1, Y1, gz - 2, gz + 1], "cut_ground")
         for sl in s.get("slabs", []):
             b = sl["b"]
+            if sl.get("cut_ground") and g:
+                cut_with_box([bpy.data.objects["ground"]], [b[0], b[1], b[2], b[3], sl["z"] - 0.01, gz + 1], "cut_slab")
             box_ft("slab_%s" % sl["note"].replace(" ", "_"), b[0], b[1], b[2], b[3], sl["z"] - sl.get("t", 0.3), sl["z"], self.mats.get(sl["m"]), self.col)
         bed_m = self.mats.get("gravel_gray")
         import random
@@ -262,6 +293,7 @@ class Site:
         for h in s.get("hedges", []):
             b = h["b"]
             box_ft("hedge_%s" % h["note"].replace(" ", "_"), b[0], b[1], b[2], b[3], gz, gz + h["h"], self.mats.get("leaf"), self.col)
+        self.build_wells()
         for i, t in enumerate(s.get("trees", [])):
             self.tree(i, t)
         for nb in s.get("neighbors", []):
@@ -269,6 +301,80 @@ class Site:
         for st in s.get("structures", []):
             self.structure(st)
         self.n("site items", len(s.get("slabs", [])) + len(s.get("structures", [])))
+
+    def build_wells(self):
+        """Window wells for basement openings flagged well=True: a cavity cut from the ground outside the wall,
+        galvanized liner, gravel floor, a steel grate at grade and a ladder when the well is deeper than 44 in."""
+        gz = self.gz
+        ext_t = self.house.ext_t
+        steel = self.mats.get("stainless")
+        dark = self.mats.get("steel_black")
+        gravel = self.mats.get("gravel_gray")
+        ground = bpy.data.objects.get("ground")
+        for op in self.plan["openings"]:
+            if not op.get("well"):
+                continue
+            fl = self.plan["floors"][op["floor"]]
+            sill = fl["z"] + op.get("z0", 0)
+            zf = sill - 0.5                       # well floor 6 in below the sill
+            depth = 3.0                           # projection from the wall face
+            w = op["w"] + 1.0                     # 6 in wider than the window each side
+            c = op["c"]
+            X0, Y0, X1, Y1 = self.footprint("main")
+            if op["axis"] == "y":                 # wall runs along Y at X = at
+                out = -1 if op["at"] <= X0 + 1e-6 else 1
+                face = op["at"]                    # exterior walls sit inside the room line; the face is on it
+                b = [min(face, face + out * depth), c - w / 2, max(face, face + out * depth), c + w / 2]
+            else:
+                out = -1 if op["at"] <= Y0 + 1e-6 else 1
+                face = op["at"]
+                b = [c - w / 2, min(face, face + out * depth), c + w / 2, max(face, face + out * depth)]
+            tag = op["note"].replace(" ", "_")
+            if ground is not None:
+                cut_with_box([ground], [b[0], b[1], b[2], b[3], zf - 1, gz + 1], "cut_well")
+            for sl in [o for o in bpy.data.objects if o.name.startswith("slab_") and overlap(bounds_of(o), [b[0], b[1], b[2], b[3], zf, gz + 1])]:
+                cut_with_box([sl], [b[0], b[1], b[2], b[3], zf - 1, gz + 1], "cut_well")
+            # liner: three sides (the fourth is the house wall), 1 in thick, 4 in above grade
+            t = 0.08
+            top = gz + 0.35
+            if op["axis"] == "y":
+                box_ft("well_%s_s" % tag, b[0], b[1] - t, b[2], b[1], zf, top, steel, self.col)
+                box_ft("well_%s_n" % tag, b[0], b[3], b[2], b[3] + t, zf, top, steel, self.col)
+                xo = b[0] - t if out < 0 else b[2]
+                box_ft("well_%s_o" % tag, xo, b[1] - t, xo + t, b[3] + t, zf, top, steel, self.col)
+            else:
+                box_ft("well_%s_w" % tag, b[0] - t, b[1], b[0], b[3], zf, top, steel, self.col)
+                box_ft("well_%s_e" % tag, b[2], b[1], b[2] + t, b[3], zf, top, steel, self.col)
+                yo = b[1] - t if out < 0 else b[3]
+                box_ft("well_%s_o" % tag, b[0] - t, yo, b[2] + t, yo + t, zf, top, steel, self.col)
+            box_ft("well_%s_floor" % tag, b[0], b[1], b[2], b[3], zf - 0.2, zf, gravel, self.col)
+            # grate: bars every 4 in across the short direction, flush with the liner top
+            gtop = top
+            if op["axis"] == "y":
+                y = b[1] + 0.2
+                while y < b[3]:
+                    box_ft("grate_%s_%d" % (tag, int(y * 10)), b[0], y - 0.03, b[2], y + 0.03, gtop - 0.15, gtop, dark, self.col)
+                    y += 0.33
+            else:
+                x = b[0] + 0.2
+                while x < b[2]:
+                    box_ft("grate_%s_%d" % (tag, int(x * 10)), x - 0.03, b[1], x + 0.03, b[3], gtop - 0.15, gtop, dark, self.col)
+                    x += 0.33
+            # ladder on the outer liner when the well is deeper than 44 in (egress)
+            if gz - zf > 44 / 12:
+                if op["axis"] == "y":
+                    xl = (b[0] + 0.15) if out < 0 else (b[2] - 0.15)
+                    for zz in [zf + 1 + k for k in range(int(gz - zf - 1))]:
+                        box_ft("ladder_%s_%d" % (tag, int(zz * 10)), xl - 0.05, c - 0.75, xl + 0.05, c + 0.75, zz, zz + 0.08, dark, self.col)
+                    box_ft("ladder_%s_ra" % tag, xl - 0.05, c - 0.75, xl + 0.05, c - 0.7, zf + 0.5, gz + 0.3, dark, self.col)
+                    box_ft("ladder_%s_rb" % tag, xl - 0.05, c + 0.7, xl + 0.05, c + 0.75, zf + 0.5, gz + 0.3, dark, self.col)
+                else:
+                    yl = (b[1] + 0.15) if out < 0 else (b[3] - 0.15)
+                    for zz in [zf + 1 + k for k in range(int(gz - zf - 1))]:
+                        box_ft("ladder_%s_%d" % (tag, int(zz * 10)), c - 0.75, yl - 0.05, c + 0.75, yl + 0.05, zz, zz + 0.08, dark, self.col)
+                    box_ft("ladder_%s_ra" % tag, c - 0.75, yl - 0.05, c - 0.7, yl + 0.05, zf + 0.5, gz + 0.3, dark, self.col)
+                    box_ft("ladder_%s_rb" % tag, c + 0.7, yl - 0.05, c + 0.75, yl + 0.05, zf + 0.5, gz + 0.3, dark, self.col)
+            self.n("window wells")
 
     def tree(self, i, t):
         gz = self.gz

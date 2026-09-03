@@ -88,6 +88,8 @@ class PBRLibrary:
             bsdf.inputs["Emission Strength"].default_value = spec["emit"]
         if spec.get("thin"):
             mat.blend_method = "HASHED"
+        if "alpha" in spec:
+            bsdf.inputs["Alpha"].default_value = spec["alpha"]   # insect screen, sheer fabric
         if spec.get("coat"):
             bsdf.inputs["Coat Weight"].default_value = spec["coat"]
             bsdf.inputs["Coat Roughness"].default_value = spec.get("coat_rough", 0.1)

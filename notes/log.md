@@ -213,3 +213,66 @@ Open questions for Henry (also in plan.json "questions"):
 6. 1.1 says the lot runs to Y 140 with the alley at Y 140; 1.9 says to model the alley as asphalt from Y 100 to Y 116 right behind the 6 ft apron. I used 1.9 (alley Y 100-116), which puts the honey locust at (30, 110) in the alley and the rear hedge at Y 100 on the alley edge. Which is right: alley at Y 100 or at Y 140?
 7. 2.2 direct-vent chase [-1.5, 36, 0.5, 40] rises to Z 26 along the west gable wall; the main gable's west rake overhang runs X -4 to 0, so the chase passes up through the roof overhang at Y 36-40. I cut the roof around it. OK?
 8. 10 Shot 4 (upstairs) t 11 -> t 14 runs from the rack closet straight to the hall through two 3 ft doors on a curve; the camera clipped both jambs. Added waypoints in the corridor door (16.5, 21.5) and the hall door (21.5, 24). Shot 7 (garage) t 0 -> t 4 passed through the north wall beside the west door; added a waypoint in the door at (2.5, 94.3).
+
+## Architectural audit (Henry: "code compliant, navigable, not cramped, no clipping, no weird windows, no ugly exterior")
+
+Henry released the exact spec numbers; every space should be what an architect would draw. Findings and fixes,
+all in tools/make_plan.py unless noted:
+
+Stair core. The spec's two straight runs in a 3 ft slot had their first and last treads against the south and
+north walls, so both stairs were entered sideways from a 3 ft aisle and the main-floor slot was open from the
+basement to the roof. Replaced with a stacked switchback: flights 3 ft wide, 8 risers at 7.5 in, 7 treads at
+10 in (5.83 ft), a 3.25 ft landing against the south wall (>= stair width), a 3.17 ft arrival zone at the north
+end that opens to the spine, the second-floor landing and the basement hall through 3 ft cased openings, and a
+solid walnut centre wall from the basement floor to 3.5 ft above the second floor. Headroom is 10 ft less
+structure everywhere; the up landing sits under clerestory S5 at 7 to 9 ft. build_scene.build_stairs now takes
+kinds: flight, landing, wall, guard (bronze posts, walnut rail, glass). The floor voids shrank to the flights and
+landing (X 28-34, Y 0.5-9.58). A bronze-and-glass guard closes the well edge on the second floor.
+
+Stair tower. The stair hall sits in the low front band (Y 0-6) but the well needs the full height, so the core is
+a cedar tower through the front shed and the main gable's south eave, capped flat at Z 21 (2 ft above the eave
+surface). Roofs now take a "cuts" list; the front shed is two pieces either side of the tower and the vent chase
+is cut through the west rake. Exterior faces sit on the room lines, so the tower parapet, reveal and brick bands
+were pulled flush (first pass had them 6 in proud).
+
+Exterior walls. East and west elevations showed white vertical stripes at every room boundary and at the
+corners: exterior wall segments were inset by the thickness of whatever perpendicular wall met them, exposing the
+plaster end faces of interior partitions, and corner end faces were never clad. Exterior segments now run
+continuous past interior partitions (only another exterior wall at a corner insets them) and their end faces take
+the cladding (build_scene.build_rooms / face_exterior).
+
+Garage roof. The gable with its ridge along Y had both planes rotated the wrong way (a butterfly). Sign fixed in
+site_build.gable.
+
+Basement windows. All four sat below grade with no well, so they looked at dirt. site_build.build_wells cuts a
+3 ft deep galvanized well (window width plus 1 ft), gravel floor, steel grate at grade, and a ladder when the well
+is deeper than 44 in. B1 (gym) and B2 (lounge) are now egress: sill 3.5 ft, 6 ft tall.
+
+Site. Street and sidewalk were buried inside the ground box; the front walk was co-planar with the lawn and
+rendered black. Slabs with cut_ground carve the ground first (street and alley 6 in below the curb); walks and
+gravel bands sit 0.5 to 1 in proud of the lawn. Tree crowns raised so the lowest crown sphere clears 12 ft
+(the street camera was inside the red oak's crown). Catio screen now honours its alpha (materials_pbr).
+
+Rooms and doors (main). Away room widened from 6 to 8 ft (X 20-28, Y 30-46) and given a glass door on the
+spine axis, so the 30 ft gallery ends on N2 instead of a blank wall; the living room is 20 x 16 and its opening to
+the kitchen X 0-20 with the columns at X 8 and X 20. WC compartment lengthened from 3.5 to 5 ft (21 in in front
+of the bowl), its door swings out, E2 moved over the shower. Suite hall widened from 3 to 4 ft and given its own
+door into the bath, so the bath is not only reached through the closet; closet 10 x 8. Laundry gets a door from
+the stair-hall arrival zone as well as from the bath. Mudroom-to-kitchen door moved on axis with the side door
+(it filled its 3 ft wall segment with no jambs). Spine-to-kitchen opening moved 6 in off the corner.
+
+Rooms and doors (second, basement). Kid-zone sidelight shortened off the corner. Gym-to-recovery glass door
+centred 6 in off the corner. The basement hall opens directly into the lounge (5 ft cased opening) as well as
+through the bar. "hall open to lounge" was really the opening into the bar; renamed.
+
+Checked and left alone: all doors >= 2 ft 8 in (baths and closets) or 3 ft; halls >= 4 ft except the 3 ft
+basement/kid doors' corridors which are 6 ft; ceilings 9 to 9.5 ft; every bedroom has an operable window
+>= 5.7 sq ft; guards 3.5 ft; handrails 3 ft above nosings; closets 3 ft deep; the elevator closets 3 x 3;
+garage 24 x 30 with two 9 ft doors, a 3 ft pier and 18 in returns.
+
+Camera. Basement shot rewritten to descend the switchback (24 s); upstairs shot gets waypoints through the
+corridor and kid-zone doors. All seven paths are clear (build_scene --check-paths). render.sh now defaults to
+all seven shots and cross-fades every cut through one chained xfade graph.
+
+The eight spec questions are closed by these decisions (alley at Y 100 per 1.9, chase through the rake with a
+roof cut, W1 shifted 9 in north).

@@ -260,7 +260,8 @@ const mctx = map.getContext('2d');
 const palette = { plaster: '#6b5a48', oxblood: '#7a2a2a', olive: '#5a5f38', terrazzo: '#8b877c', walnut: '#5a3a22',
   concrete: '#66655f', wallpaper_geo: '#5a5f38', default: '#5b4d40' };
 const roomEl = document.getElementById('room');
-function currentFloor(y) { return y < 0 ? 'basement' : 'main'; }
+function currentFloor(y) { return y < -1.2 ? 'basement' : (y > 1.9 ? 'second' : 'main'); }
+const FLOOR_LABEL = { main: 'main floor', second: 'second floor', basement: 'basement' };
 function drawMap(pos, heading) {
   const floor = currentFloor(pos.y);
   const W = map.width, H = map.height, pad = 12;
@@ -272,13 +273,14 @@ function drawMap(pos, heading) {
   let here = null;
   for (const r of plan.rooms) {
     if (r.floor !== floor) continue;
-    const [x0, y0, x1, y1] = r.b;
-    mctx.fillStyle = palette[r.wall] || palette.default;
-    mctx.fillRect(x0, y0, x1 - x0, y1 - y0);
-    mctx.strokeStyle = 'rgba(234,223,205,.35)'; mctx.lineWidth = 0.25;
-    mctx.strokeRect(x0, y0, x1 - x0, y1 - y0);
-    const px = pos.x / FT, py = -pos.z / FT;
-    if (px >= x0 && px <= x1 && py >= y0 && py <= y1) here = r;
+    for (const [x0, y0, x1, y1] of (r.parts || [r.b])) {
+      mctx.fillStyle = r.void ? 'rgba(0,0,0,0)' : (palette[r.wall] || palette.default);
+      mctx.fillRect(x0, y0, x1 - x0, y1 - y0);
+      mctx.strokeStyle = 'rgba(234,223,205,.35)'; mctx.lineWidth = 0.25;
+      mctx.strokeRect(x0, y0, x1 - x0, y1 - y0);
+      const px = pos.x / FT, py = -pos.z / FT;
+      if (px >= x0 && px <= x1 && py >= y0 && py <= y1) here = r;
+    }
   }
   // openings as gaps
   mctx.strokeStyle = '#eadfcd'; mctx.lineWidth = 0.6;
@@ -289,7 +291,7 @@ function drawMap(pos, heading) {
     else { mctx.moveTo(o.at, o.c - o.w / 2); mctx.lineTo(o.at, o.c + o.w / 2); }
     mctx.stroke();
   }
-  for (const p of plan.pits) { if (floor === 'basement') { mctx.strokeStyle = '#2f6c6a'; mctx.lineWidth = 0.5; mctx.strokeRect(p.b[0], p.b[1], p.b[2] - p.b[0], p.b[3] - p.b[1]); } }
+  for (const p of (plan.pits || [])) { if (floor === 'basement') { mctx.strokeStyle = '#2f6c6a'; mctx.lineWidth = 0.5; mctx.strokeRect(p.b[0], p.b[1], p.b[2] - p.b[0], p.b[3] - p.b[1]); } }
   // player
   const px = pos.x / FT, py = -pos.z / FT;
   mctx.fillStyle = '#ffb347';
@@ -298,10 +300,10 @@ function drawMap(pos, heading) {
   mctx.beginPath(); mctx.moveTo(px, py); mctx.lineTo(px + Math.sin(heading) * -3, py + Math.cos(heading) * -3); mctx.stroke();
   mctx.restore();
   mctx.fillStyle = 'rgba(234,223,205,.75)'; mctx.font = '11px system-ui';
-  mctx.fillText(floor === 'main' ? 'main floor' : 'basement', pad, 14);
+  mctx.fillText(FLOOR_LABEL[floor], pad, 14);
   mctx.fillText('N ↑  street at bottom', W - 118, 14);
-  const label = here ? here.name.replace('awayhall', 'away hall').replace('spine', 'gallery spine') : (floor === 'main' ? 'outside' : '');
-  roomEl.innerHTML = `<small>${floor === 'main' ? 'main floor' : 'basement'}</small>${label.charAt(0).toUpperCase() + label.slice(1)}`;
+  const label = here ? (here.label || here.name.replace(/_/g, ' ')) : (floor === 'main' ? 'outside' : '');
+  roomEl.innerHTML = `<small>${FLOOR_LABEL[floor]}</small>${label.charAt(0).toUpperCase() + label.slice(1)}`;
 }
 
 // loop -----------------------------------------------------------------------------------------

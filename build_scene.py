@@ -39,6 +39,7 @@ def parse_args():
     p.add_argument("--stage", default="auto",
                    help="phase1 (boxes only), phase2 (textures, details, staging), or auto")
     p.add_argument("--no-blend", action="store_true", help="do not save renders/scene.blend")
+    p.add_argument("--check-paths", action="store_true", help="key every shot, run the collision check, render nothing")
     p.add_argument("--staging", default=None, help="alternate staging json (default staging.json)")
     p.add_argument("--no-bevel", action="store_true", help="skip the edge bevel pass (faster builds)")
     p.add_argument("--frame-start", type=int, default=None)
@@ -245,10 +246,19 @@ class House:
                 def thickness(kind):
                     return None if kind in ("same", "open") else (half if kind == "room" else ext_t)
 
-                def end_inset(side_segs, coord):
-                    # thickness of the perpendicular wall touching this end (0 if none)
+                def end_kind(side_segs, coord):
                     for a, b, kind, other in side_segs:
                         if a - 1e-6 <= coord <= b + 1e-6:
+                            return kind
+                    return None
+
+                def end_inset(side_segs, coord, ext_only=False):
+                    # thickness of the perpendicular wall touching this end (0 if none). Exterior walls run continuous
+                    # past interior partitions (ext_only), so only another exterior wall at a corner insets them.
+                    for a, b, kind, other in side_segs:
+                        if a - 1e-6 <= coord <= b + 1e-6:
+                            if ext_only and kind != "ext":
+                                return 0.0
                             t = thickness(kind)
                             return t or 0.0
                     return 0.0
@@ -265,12 +275,12 @@ class House:
                         elif side == "north":
                             bx = [a, y1 - t, b, y1]
                         elif side == "west":
-                            ia = end_inset(seg_info["south"], x0) if abs(a - y0) < 1e-6 else 0.0
-                            ib = end_inset(seg_info["north"], x0) if abs(b - y1) < 1e-6 else 0.0
+                            ia = end_inset(seg_info["south"], x0, kind == "ext") if abs(a - y0) < 1e-6 else 0.0
+                            ib = end_inset(seg_info["north"], x0, kind == "ext") if abs(b - y1) < 1e-6 else 0.0
                             bx = [x0, a + ia, x0 + t, b - ib]
                         else:
-                            ia = end_inset(seg_info["south"], x1) if abs(a - y0) < 1e-6 else 0.0
-                            ib = end_inset(seg_info["north"], x1) if abs(b - y1) < 1e-6 else 0.0
+                            ia = end_inset(seg_info["south"], x1, kind == "ext") if abs(a - y0) < 1e-6 else 0.0
+                            ib = end_inset(seg_info["north"], x1, kind == "ext") if abs(b - y1) < 1e-6 else 0.0
                             bx = [x1 - t, a + ia, x1, b - ib]
                         if bx[2] - bx[0] < 1e-4 or bx[3] - bx[1] < 1e-4:
                             continue
@@ -279,7 +289,14 @@ class House:
                                                     "side": side, "exterior": kind == "ext"})
                         k += 1
                         if kind == "ext":
-                            self.face_exterior(w, side, room["floor"], ext)
+                            # clad the end faces only where they turn an outside corner (the perpendicular wall is exterior)
+                            if side in ("south", "north"):
+                                perp_a = end_kind(seg_info["west"], y0 if side == "south" else y1) if abs(a - x0) < 1e-6 else None
+                                perp_b = end_kind(seg_info["east"], y0 if side == "south" else y1) if abs(b - x1) < 1e-6 else None
+                            else:
+                                perp_a = end_kind(seg_info["south"], x0 if side == "west" else x1) if abs(a - y0) < 1e-6 else None
+                                perp_b = end_kind(seg_info["north"], x0 if side == "west" else x1) if abs(b - y1) < 1e-6 else None
+                            self.face_exterior(w, side, room["floor"], ext, corners=(perp_a == "ext", perp_b == "ext"))
                         self.walls.append(w)
         # voids: cut slabs
         for v in self.plan.get("voids", []):
@@ -292,7 +309,7 @@ class House:
                 cut_with_box(targets, bnd, "cut_void")
         log("rooms:", len(self.rooms), "walls:", len(self.walls), "slabs:", len(self.slabs), "voids:", len(self.plan.get("voids", [])))
 
-    def face_exterior(self, wall, side, floor, ext):
+    def face_exterior(self, wall, side, floor, ext, corners=(False, False)):
         """Give the outward face of an exterior wall its cladding material (brick base, cedar upper)."""
         from geom import set_face_material
         spec = None
@@ -304,8 +321,13 @@ class House:
             spec = ext["garage"]["m_out_low"]
         if not spec:
             return
-        face = {"south": 2, "east": 3, "north": 4, "west": 5}[side]
-        set_face_material(wall, face, self.mats.get(spec))
+        faces = {"south": 2, "east": 3, "north": 4, "west": 5}
+        set_face_material(wall, faces[side], self.mats.get(spec))
+        # end faces at outside corners are exposed too (a: low end, b: high end along the wall)
+        ends = ("west", "east") if side in ("south", "north") else ("south", "north")
+        for is_corner, end in zip(corners, ends):
+            if is_corner:
+                set_face_material(wall, faces[end], self.mats.get(spec))
 
     def build_openings(self):
         cut = 0
@@ -388,9 +410,22 @@ class House:
         log("features:", n)
 
     def build_stairs(self):
-        """Straight runs from plan['stairs']: treads, closed risers, stringers, a handrail, and a guard on the open side."""
-        from geom import beam_between, cylinder_ft
+        """plan['stairs'] entries by kind: 'flight' (straight run along Y: treads, closed risers, stringers, handrail,
+        optional open-side guard), 'landing' (platform), 'wall' (solid box), 'guard' (posts + top rail + glass)."""
+        from geom import beam_between, cylinder_ft, prism_yz
         for st in self.plan.get("stairs", []):
+            kind = st.get("kind", "flight")
+            if kind == "landing":
+                b = st["b"]
+                box_ft("landing_%s" % st["name"], b[0], b[1], b[2], b[3], st["z"] - st.get("t", 0.6), st["z"],
+                       self.mats.get(st.get("tread_m", "oak_floor")), self.col_features)
+                continue
+            if kind == "wall":
+                box_ft(st["name"], *st["b"], mat=self.mats.get(st.get("m", "plaster_warm")), collection=self.col_features)
+                continue
+            if kind == "guard":
+                self.build_guard(st)
+                continue
             n = st["risers"]
             x0, x1 = st["x0"], st["x1"]
             yf, yt = st["y_from"], st["y_to"]
@@ -408,24 +443,23 @@ class House:
                 ya = yf + (i - 1) * run
                 yb = ya + run
                 zt_i = zf + i * rise
-                lo, hi = (min(ya, yb) - 0.08 * d if d > 0 else min(ya, yb)), (max(ya, yb) if d > 0 else max(ya, yb) + 0.08)
                 box_ft("%s_tread_%d" % (st["name"], i), x0 + 0.08, min(ya, yb) - (0.08 if d > 0 else 0), x1 - 0.08,
                        max(ya, yb) + (0.08 if d < 0 else 0), zt_i - tt, zt_i, tread_m, self.col_features)
-                # riser under the nosing edge of tread i
-                ry = ya if d > 0 else ya
-                box_ft("%s_riser_%d" % (st["name"], i), x0 + 0.08, ry - 0.04, x1 - 0.08, ry + 0.04,
+                box_ft("%s_riser_%d" % (st["name"], i), x0 + 0.08, ya - 0.04, x1 - 0.08, ya + 0.04,
                        zt_i - rise - tt, zt_i - tt, riser_m, self.col_features)
-            # top riser to the upper floor
-            ry = yt
-            box_ft("%s_riser_%d" % (st["name"], n), x0 + 0.08, ry - 0.04, x1 - 0.08, ry + 0.04, zt - rise - tt, zt, riser_m, self.col_features)
+            # top riser to the upper floor / landing
+            box_ft("%s_riser_%d" % (st["name"], n), x0 + 0.08, yt - 0.04, x1 - 0.08, yt + 0.04, zt - rise - tt, zt, riser_m, self.col_features)
             # stringers: sloped boards each side, 1 ft deep, under the nosing line
             depth = 1.0
             prof = [(yf - 0.4 * d, zf - rise * 0.6), (yt + 0.4 * d, zt - rise * 0.6), (yt + 0.4 * d, zt - rise * 0.6 - depth), (yf - 0.4 * d, zf - rise * 0.6 - depth)]
             if d < 0:
                 prof = prof[::-1]
-            from geom import prism_yz
             prism_yz("%s_stringer_w" % st["name"], prof, x0, x0 + 0.1, str_m, self.col_features)
             prism_yz("%s_stringer_e" % st["name"], prof, x1 - 0.1, x1, str_m, self.col_features)
+            # soffit board closing the underside (the flight below sees a walnut ceiling, not open risers)
+            prism_yz("%s_soffit" % st["name"], [(yf - 0.4 * d, zf - rise * 0.6 - depth), (yt + 0.4 * d, zt - rise * 0.6 - depth),
+                                                 (yt + 0.4 * d, zt - rise * 0.6 - depth + 0.1), (yf - 0.4 * d, zf - rise * 0.6 - depth + 0.1)][::(1 if d > 0 else -1)],
+                     x0 + 0.1, x1 - 0.1, str_m, self.col_features)
             # handrail on the named wall side, 3 ft above nosings
             side = st.get("handrail", "east")
             hx = x1 - 0.2 if side == "east" else x0 + 0.2
@@ -443,6 +477,29 @@ class House:
                 if len(pts) >= 2:
                     beam_between("%s_guard" % st["name"], pts[0], pts[-1], 0.12, 0.08, rail_m, self.col_features)
             log("stair %s: %d risers, rise %.3f ft, run %.3f ft" % (st["name"], n, rise, abs(run)))
+
+    def build_guard(self, st):
+        """Level guard: bronze posts every ~3 ft, a top rail at h, and a glass panel between."""
+        from geom import beam_between, cylinder_ft
+        p0, p1 = st["p0"], st["p1"]
+        h = st.get("h", 3.5)
+        rail_m = self.mats.get(st.get("m", "bronze_black"))
+        L = math.hypot(p1[0] - p0[0], p1[1] - p0[1])
+        nseg = max(1, int(math.ceil(L / 3.0)))
+        for i in range(nseg + 1):
+            t = i / nseg
+            x, y = p0[0] + (p1[0] - p0[0]) * t, p0[1] + (p1[1] - p0[1]) * t
+            cylinder_ft("%s_post_%d" % (st["name"], i), (x, y, p0[2]), 0.05, h, rail_m, self.col_features, 12)
+        beam_between("%s_rail" % st["name"], (p0[0], p0[1], p0[2] + h), (p1[0], p1[1], p1[2] + h), 0.15, 0.1, self.mats.get("walnut"), self.col_features)
+        if st.get("glass", True):
+            along_x = abs(p1[0] - p0[0]) >= abs(p1[1] - p0[1])
+            g = self.mats.get("glass")
+            if along_x:
+                box_ft("%s_glass" % st["name"], min(p0[0], p1[0]) + 0.1, p0[1] - 0.02, max(p0[0], p1[0]) - 0.1, p0[1] + 0.02,
+                       p0[2] + 0.2, p0[2] + h - 0.15, g, get_collection("glass"))
+            else:
+                box_ft("%s_glass" % st["name"], p0[0] - 0.02, min(p0[1], p1[1]) + 0.1, p0[0] + 0.02, max(p0[1], p1[1]) - 0.1,
+                       p0[2] + 0.2, p0[2] + h - 0.15, g, get_collection("glass"))
 
     # -- lights (phase 1 fill only)
     def build_lights(self, room_fill_scale=1.0):
@@ -860,6 +917,11 @@ def main():
         log("still", name, "frame", frame, "%.1fs" % (time.time() - t0))
         return
 
+    if args.check_paths:
+        for shot in plan["shots"]:
+            key_shot(scene, cam, tgt, shot, fps, plan.get("camera", {}).get("exposure", 0.0), args.exposure)
+            check_path(scene, cam, shot)
+        return
     if args.shot == "none":
         return
     shots = plan["shots"] if args.shot == "all" else [shot_by_name(plan, args.shot)]

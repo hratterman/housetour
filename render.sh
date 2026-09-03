@@ -9,7 +9,7 @@
 #   DEVICE=CPU|METAL|CUDA|OPTIX|HIP   Cycles device (default: METAL on macOS, CPU elsewhere)
 #   RES=1920x1080 SAMPLES=256   override resolution / samples
 #   STAGE=phase1|phase2         force the box model or the staged house (default: auto)
-#   SHOTS="main_floor basement" which shots to render
+#   SHOTS="street main_floor ..." which shots to render (default: all seven spec shots, in order)
 #   OUT=renders                 output directory
 #   SKIP_FRAMES=1               skip shot rendering, only stitch + stills + sheet
 set -euo pipefail
@@ -36,7 +36,7 @@ fi
 
 OUT="${OUT:-renders}"
 STAGE="${STAGE:-auto}"
-SHOTS="${SHOTS:-main_floor basement}"
+SHOTS="${SHOTS:-street main_floor basement upstairs terrace_dusk bedroom garage}"
 FPS=$(python3 -c "import json;print(json.load(open('plan.json')).get('fps',24))")
 
 if [ "${PREVIEW:-0}" = "1" ]; then
@@ -80,13 +80,23 @@ done
 
 FINAL="$OUT/walkthrough${TAG}.mp4"
 if [ "${#CLIPS[@]}" -ge 2 ]; then
-  # cross-dissolve: XFADE_FRAMES of the animation, scaled to the output fps
-  DUR1=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "${CLIPS[0]}")
+  # cross-dissolve every cut: XFADE_FRAMES of the animation, scaled to the output fps, chained through one filter graph
   XD=$(python3 -c "print(max($XFADE_FRAMES/$FPS, 2.0/$OUT_FPS))")
-  OFF=$(python3 -c "print(max(0.0, $DUR1 - $XD))")
-  ffmpeg -y -loglevel error -i "${CLIPS[0]}" -i "${CLIPS[1]}" \
-      -filter_complex "[0:v][1:v]xfade=transition=fade:duration=${XD}:offset=${OFF},format=yuv420p" \
-      -c:v libx264 -crf 18 -r "$OUT_FPS" "$FINAL"
+  INPUTS=(); for C in "${CLIPS[@]}"; do INPUTS+=(-i "$C"); done
+  FILTER=$(python3 - "$XD" "${CLIPS[@]}" <<'PY'
+import subprocess, sys
+xd = float(sys.argv[1]); clips = sys.argv[2:]
+durs = [float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", c]).decode().strip()) for c in clips]
+parts = []; prev = "[0:v]"; total = durs[0]
+for i in range(1, len(clips)):
+    off = max(0.0, total - xd)
+    out = "[v%d]" % i if i < len(clips) - 1 else "[vout]"
+    parts.append("%s[%d:v]xfade=transition=fade:duration=%.4f:offset=%.4f%s" % (prev, i, xd, off, out))
+    total = off + durs[i]; prev = out
+print(";".join(parts) + ";[vout]format=yuv420p[final]")
+PY
+)
+  ffmpeg -y -loglevel error "${INPUTS[@]}" -filter_complex "$FILTER" -map "[final]" -c:v libx264 -crf 18 -r "$OUT_FPS" "$FINAL"
 else
   cp "${CLIPS[0]}" "$FINAL"
 fi

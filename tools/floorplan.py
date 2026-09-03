@@ -100,10 +100,24 @@ def draw_floor(plan, floor, scale):
             for k in range(int((b[2] - b[0]) * 2)):
                 x = b[0] + k / 2
                 sh.line((x, b[1]), (min(b[2], x + (b[3] - b[1])), min(b[3], b[1] + (b[3] - b[1]))), (160, 120, 120), 1)
-    # stairs
+    # stairs: flights (treads + UP/DOWN), landings, centre walls
+    flights = [st for st in plan.get("stairs", []) if st.get("kind", "flight") == "flight"]
     for st in plan.get("stairs", []):
+        kind = st.get("kind", "flight")
+        if kind == "landing":
+            b = st["b"]
+            if abs(st["z"] - fz) < 5.01 and st["z"] != fz:
+                sh.rect(b, fill=(235, 215, 175), outline=(120, 90, 40), width=2)
+                sh.text((b[0] + b[2]) / 2, (b[1] + b[3]) / 2, "landing %+g" % (st["z"] - fz), scale * 0.7, (80, 60, 20))
+            continue
+        if kind == "wall":
+            b = st["b"]
+            if b[4] <= fz + 3 and b[5] >= fz + 3:
+                sh.rect(b[:4], fill=(60, 50, 40), outline=(60, 50, 40), width=1)
+            continue
+        if kind != "flight":
+            continue
         zf, zt = st["z_from"], st["z_to"]
-        top_floor = fz + 0.01 >= max(zf, zt) - 0.01 and fz <= max(zf, zt) + 0.01
         if not (min(zf, zt) - 0.01 <= fz <= max(zf, zt) + 0.01):
             continue
         n = st["risers"]
@@ -113,7 +127,7 @@ def draw_floor(plan, floor, scale):
             y = y0 + i * (y1 - y0) / (n - 1)
             sh.line((st["x0"], y), (st["x1"], y), (120, 90, 40), 1)
         arrow = "UP" if zt > fz + 0.01 else "DOWN"
-        sh.text((st["x0"] + st["x1"]) / 2, (y0 + y1) / 2, "%s %s" % (st["name"].replace("_", " "), arrow), scale * 0.75, (80, 60, 20))
+        sh.text((st["x0"] + st["x1"]) / 2, (y0 + y1) / 2, arrow, scale * 0.75, (80, 60, 20))
     # columns, beams
     for c in plan.get("columns", []):
         b = c["b"]
@@ -162,7 +176,7 @@ def draw_floor(plan, floor, scale):
         name = r.get("label", r["name"].replace("_", " "))
         area = sum((p[2] - p[0]) * (p[3] - p[1]) for p in ps)
         small = (bb[2] - bb[0]) * (bb[3] - bb[1]) < 40
-        if any(st["x0"] < cx < st["x1"] and min(st["y_from"], st["y_to"]) < cy < max(st["y_from"], st["y_to"]) for st in plan.get("stairs", [])):
+        if any(st["x0"] < cx < st["x1"] and min(st["y_from"], st["y_to"]) < cy < max(st["y_from"], st["y_to"]) for st in flights):
             cx = bb[0] + 1.5
             small = True
         sh.text(cx, cy + (0.45 if not small else 0.3), name, scale * (0.8 if small else 1.05))
