@@ -747,12 +747,12 @@
 "asset": "proc:globe_pendant",
 "room": "stair_hall",
 "pos": [
-31.5,
-11.0,
-15.0
+29.75,
+5.5,
+13.5
 ],
 "radius": 0.83,
-"drop": 5.0,
+"drop": 4.7,
 "watts": 70
 },
 {

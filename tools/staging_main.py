@@ -105,7 +105,7 @@ def main_floor():
     proc("downlights", "spine", positions=[[25, 8], [25, 18], [25, 28]], z=9.5, watts=5)
     # ------------------------------------------------------------------ 3.8 stair hall / well
     note("stair hall")
-    proc("globe_pendant", "stair_hall", pos=[31.5, 11.0, 15.0], radius=0.83, drop=5.0, watts=70)   # over the arrival zone, clear of the centre wall
+    proc("globe_pendant", "stair_hall", pos=[29.75, 5.5, 13.5], radius=0.83, drop=4.7, watts=70)   # in the two-storey well over the west flight (9 ft above its treads), canopy on the second-floor ceiling
     proc("downlight", "stair_hall", pos=[31.5, 11.2, 9.5], watts=8)
     # ------------------------------------------------------------------ 3.9 laundry
     note("laundry")
