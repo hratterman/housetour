@@ -1414,7 +1414,7 @@
 40.0,
 0
 ],
-"rot_z": -90,
+"rot_z": 90,
 "length": 8.0,
 "depth": 3.0,
 "m": "velvet_orange"
@@ -1423,9 +1423,9 @@
 "asset": "proc:cushions",
 "room": "living",
 "b": [
-10.6,
+9.5,
 37.0,
-12.2,
+11.2,
 43.0
 ],
 "z": 1.77,
