@@ -135,11 +135,13 @@
    0.08,
    0.09
   ],
-  "rough": 0.9,
-  "tex": "plaster",
+  "rough": 0.72,
+  "tex": "paint_eggshell",
   "paint": true,
-  "size_ft": 2,
-  "bump": 0.35
+  "size_ft": 3.0,
+  "bump": 0.3,
+  "rough_var": 0.06,
+  "note": "eggshell paint: roller texture from the ambientCG set, colour from rgb"
  },
  "olive": {
   "rgb": [
@@ -288,8 +290,13 @@
    0.62,
    0.3
   ],
-  "rough": 0.35,
-  "metallic": 1.0
+  "rough": 0.32,
+  "metallic": 1.0,
+  "tex": "metal_brushed",
+  "paint": true,
+  "size_ft": 0.8,
+  "bump": 0.35,
+  "rough_var": 0.08
  },
  "bronze": {
   "rgb": [
@@ -628,8 +635,12 @@
    0.9,
    0.88
   ],
-  "rough": 0.15,
-  "coat": 0.5
+  "rough": 0.12,
+  "coat": 0.6,
+  "tex": "ceramic_glaze",
+  "paint": true,
+  "size_ft": 1.0,
+  "bump": 0.15
  },
  "sauna_glow": {
   "rgb": [
@@ -822,12 +833,13 @@
    0.89,
    0.82
   ],
-  "rough": 0.95,
-  "tex": "plaster",
+  "rough": 0.72,
+  "tex": "paint_eggshell",
   "paint": true,
-  "size_ft": 2,
-  "bump": 0.35,
-  "rough_var": 0.05
+  "size_ft": 3.0,
+  "bump": 0.3,
+  "rough_var": 0.06,
+  "note": "eggshell paint: roller texture from the ambientCG set, colour from rgb"
  },
  "olive_paint": {
   "rgb": [
@@ -835,11 +847,13 @@
    0.36,
    0.2
   ],
-  "rough": 0.85,
-  "tex": "plaster",
+  "rough": 0.72,
+  "tex": "paint_eggshell",
   "paint": true,
-  "size_ft": 2,
-  "bump": 0.35
+  "size_ft": 3.0,
+  "bump": 0.3,
+  "rough_var": 0.06,
+  "note": "eggshell paint: roller texture from the ambientCG set, colour from rgb"
  },
  "teal_paint": {
   "rgb": [
@@ -847,11 +861,13 @@
    0.32,
    0.36
   ],
-  "rough": 0.85,
-  "tex": "plaster",
+  "rough": 0.72,
+  "tex": "paint_eggshell",
   "paint": true,
-  "size_ft": 2,
-  "bump": 0.35
+  "size_ft": 3.0,
+  "bump": 0.3,
+  "rough_var": 0.06,
+  "note": "eggshell paint: roller texture from the ambientCG set, colour from rgb"
  },
  "mustard_paint": {
   "rgb": [
@@ -859,11 +875,13 @@
    0.58,
    0.16
   ],
-  "rough": 0.85,
-  "tex": "plaster",
+  "rough": 0.72,
+  "tex": "paint_eggshell",
   "paint": true,
-  "size_ft": 2,
-  "bump": 0.35
+  "size_ft": 3.0,
+  "bump": 0.3,
+  "rough_var": 0.06,
+  "note": "eggshell paint: roller texture from the ambientCG set, colour from rgb"
  },
  "green_deep": {
   "rgb": [
@@ -871,11 +889,13 @@
    0.28,
    0.18
   ],
-  "rough": 0.85,
-  "tex": "plaster",
+  "rough": 0.72,
+  "tex": "paint_eggshell",
   "paint": true,
-  "size_ft": 2,
-  "bump": 0.35
+  "size_ft": 3.0,
+  "bump": 0.3,
+  "rough_var": 0.06,
+  "note": "eggshell paint: roller texture from the ambientCG set, colour from rgb"
  },
  "ceiling_dark": {
   "rgb": [
@@ -883,11 +903,13 @@
    0.05,
    0.06
   ],
-  "rough": 1.0,
-  "tex": "plaster",
+  "rough": 0.72,
+  "tex": "paint_eggshell",
   "paint": true,
-  "size_ft": 2,
-  "bump": 0.35
+  "size_ft": 3.0,
+  "bump": 0.3,
+  "rough_var": 0.06,
+  "note": "eggshell paint: roller texture from the ambientCG set, colour from rgb"
  },
  "oak_floor": {
   "rgb": [
@@ -1135,8 +1157,13 @@
    0.05,
    0.05
   ],
-  "rough": 0.55,
-  "metallic": 1.0
+  "rough": 0.5,
+  "metallic": 1.0,
+  "tex": "metal_brushed",
+  "paint": true,
+  "size_ft": 0.8,
+  "bump": 0.3,
+  "rough_var": 0.1
  },
  "stainless": {
   "rgb": [
