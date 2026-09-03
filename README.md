@@ -121,6 +121,9 @@ tools/make_plan.py    writes plan.json
 tools/make_staging.py writes staging.json from staging_main.py and staging_rest.py
 tools/stills.py       renders the named stills and the free-pose room views, one build per lighting mode
 tools/acceptance.py   spec section by section: present / partial / missing table into notes/acceptance.md
+tools/audit_views.py  one bird's-eye pose per room, for an orientation and clipping review with --views-file
+tools/model_facing.py measures a model's forward direction (Poly Haven chairs face -Y at rot 0)
+car.py                the cars: lofted subdivision cage, wheel arches, glass band, lights, wheels
 tools/fetch_assets.py downloads the CC0 assets in assets/wanted.json; tools/gen_textures.py draws the screen images
 tools/contact_sheet.py, tools/floorplan.py, tools/web_screenshots.py
 notes/log.md          the running log: every plan edit, every bug, every measured timing
@@ -135,6 +138,7 @@ notes/acceptance.md   the spec checklist
 --view NAME:px,py,pz,lx,ly,lz   render one frame from a free pose (feet)
 --views-file FILE         JSON list of {name,pos,look} or {name,shot,t}: build once, render each to <out>/stills
 --check-paths             key every shot, run the collision check, render nothing
+--audit                   build, then write notes/audit_clips.md: entries overlapping each other, sunk into walls, outside their room
 --res WxH  --samples N  --frame-step N  --frame-start N  --frame-end N
 --device CPU|METAL|CUDA|OPTIX|HIP
 --exposure EV  --motion-blur on|off  --dof on|off  --no-bevel  --no-blend

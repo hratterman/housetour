@@ -504,3 +504,18 @@ entry AABB, overlaps with other entries (contact from above excepted), penetrati
 0.15 ft, and centres outside the entry's room; exterior fixtures are exempt from the room test. The first run
 was garbage: object matrices and bound boxes are stale until view_layer.update(). tools/audit_views.py writes
 a bird's-eye pose per room (59 views) for the eye check.
+
+Audit findings, second pass. Model prototypes in the hidden asset library were being counted (they sit at
+the origin, so every entry that first loaded a model had a bounding box stretched to the origin); excluded.
+Poly Haven plant and prop files carry several variants side by side and the importer joined them all: the
+pachira was 21 ft wide, the calathea 27 ft; load_proto now keeps the largest piece and whatever touches it
+(known multi-piece sets exempt), which also revealed that rubber_boots imports as a single boot, so pairs are
+two placements. gen_shelving_unit placed its crates and posts without rotating their offsets, so rotated
+units spilled through walls (storage and garage). The water closet was 1.75 ft clear between the partition
+face and the exterior wall, too narrow for any toilet; the partition moved to X 38.25 for 2.5 ft clear
+(code minimum 30 in), the door with it. The games table corner is 5.75 ft between the pit and the wall, so
+the table keeps two chairs. Garage shelving moved to the east wall clear of the lift posts, the ladder, broom,
+shovel, salt and hose to the north-west corner; the bench's low shelf is off where the rolling chest parks.
+Kitchen columns stop at Y 29.7, short of the column line. Bedroom B nightstand and desk separated, gym plate
+tree off the dumbbell rack, laundry tall cabinet off the washer, the closet safe cabinet and the suitcase on
+top of the wardrobe removed, primary nightstands and bench clear of the platform overhang.
