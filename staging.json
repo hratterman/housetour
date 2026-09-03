@@ -2509,8 +2509,8 @@
 "mattress_top": 2.0,
 "headboard_w": 9.0,
 "headboard_h": 4.0,
-"duvet": "thrown",
-"blanket_m": "velvet_orange",
+"duvet": "flat",
+"blanket_m": "wool_mustard",
 "pillow_mats": [
 "linen_white",
 "linen_white",

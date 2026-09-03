@@ -251,7 +251,7 @@ def main_floor():
     # east window and the catio; nightstands north and south of it
     proc("wall_finish", "primary_bedroom", wall=W("y", 28.0, "+x"), span=[30.3, 45.0], z=[0.3, 9.4], m="wallpaper_geo_muted")
     proc("platform_bed", "primary_bedroom", pos=[31.85, 38.0, 0], width=6.5, length=7.0, rot_z=90, platform_h=1.0, mattress_top=2.0,
-         headboard_w=9.0, headboard_h=4.0, duvet="thrown", blanket_m="velvet_orange", pillow_mats=["linen_white", "linen_white", "olive_paint", "olive_paint"], seed=8)
+         headboard_w=9.0, headboard_h=4.0, duvet="flat", blanket_m="wool_mustard", pillow_mats=["linen_white", "linen_white", "olive_paint", "olive_paint"], seed=8)
     proc("nightstand2", "primary_bedroom", pos=[29.05, 33.4, 0], rot_z=90, on=False, items=["books", "glass"])
     proc("nightstand2", "primary_bedroom", pos=[29.05, 42.6, 0], rot_z=90, on=True, items=["watch", "phone"])
     proc("sconce", "primary_bedroom", wall=W("y", 28.0, "+x"), u=33.4, z=5.2, on=False, radius=0.12, height=0.5)
