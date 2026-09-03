@@ -813,44 +813,50 @@ class Stager(Gens2, Gens3):
         return objs
 
     def gen_cushions(self, e):
-        """Throw pillows scattered on a surface: b = [x0,y0,x1,y1] surface, z = top of surface."""
+        """Throw pillows on a surface: b = [x0,y0,x1,y1] surface, z = top of surface, back = the side they lean
+        against ("-y", "+y", "-x", "+x"; None = all flat). Pillows take evenly spaced slots along the back with a
+        little jitter, so they never pile into each other; about half lean, the rest lie flat in front."""
         b = e["b"]
         z = e["z"]
         n = e.get("count", 5)
         rng = random.Random(e.get("seed", 9))
         mats = e.get("mats", ["teal", "mustard", "orange", "oxblood", "rug_cream"])
-        objs = []
-        back = e.get("back")          # side of b the pillows lean against: "-y", "+y", "-x", "+x"; None = all lie flat
+        back = e.get("back")
         t = 0.38
+        along_x = back in ("-y", "+y", None)          # slots run along X when the back is a Y side
+        length = (b[2] - b[0]) if along_x else (b[3] - b[1])
+        slot = length / max(n, 1)
+        objs = []
         for i in range(n):
-            s = rng.uniform(1.2, 1.7)
-            d = s * rng.uniform(0.85, 1.0)
-            cx = rng.uniform(b[0] + s / 2, b[2] - s / 2)
-            cy = rng.uniform(b[1] + s / 2, b[3] - s / 2)
-            if back and rng.random() < 0.5:
-                # leaning against the back: box origin is bottom-centre, so tilt it about that origin,
-                # lift by the dropped edge and push it against the back edge of b
+            s_ = min(rng.uniform(1.2, 1.7), slot * 0.95)
+            d = s_ * rng.uniform(0.85, 1.0)
+            u = (b[0] if along_x else b[1]) + slot * (i + 0.5) + rng.uniform(-0.08, 0.08) * slot
+            lean = back is not None and (i % 2 == 0 or rng.random() < 0.3)
+            if lean:
                 a = math.radians(rng.uniform(58, 74))
-                ext = d if back in ("-y", "+y") else s
+                ext = d
                 zc = z + (ext / 2) * math.sin(a)
                 gap = (ext / 2) * math.cos(a) + t * math.sin(a) + 0.03
-                yaw = math.radians(rng.uniform(-12, 12))
+                yaw = math.radians(rng.uniform(-8, 8))
                 if back == "-y":
-                    cy = b[1] + gap
-                    rot = (a, 0, yaw)
+                    cx, cy, rot = u, b[1] + gap, (a, 0, yaw)
                 elif back == "+y":
-                    cy = b[3] - gap
-                    rot = (-a, 0, yaw)
+                    cx, cy, rot = u, b[3] - gap, (-a, 0, yaw)
                 elif back == "-x":
-                    cx = b[0] + gap
-                    rot = (0, -a, yaw)
+                    cx, cy, rot = b[0] + gap, u, (0, -a, yaw)
                 else:
-                    cx = b[2] - gap
-                    rot = (0, a, yaw)
-                ob = box_centered(self.uid("pillow"), (cx, cy, zc), (s, d, t), 0, self.mat(rng.choice(mats)), self.col)
+                    cx, cy, rot = b[2] - gap, u, (0, a, yaw)
+                ob = box_centered(self.uid("pillow"), (cx, cy, zc), (s_, d, t) if back in ("-y", "+y") else (d, s_, t), 0, self.mat(mats[i % len(mats)]), self.col)
                 ob.rotation_euler = rot
             else:
-                ob = box_centered(self.uid("pillow"), (cx, cy, z), (s, d, t), rng.uniform(-30, 30), self.mat(rng.choice(mats)), self.col)
+                # flat, a little forward of the back so it does not sit under a leaning neighbour
+                if along_x:
+                    cy = (b[1] + d / 2 + 0.55) if back == "-y" else ((b[3] - d / 2 - 0.55) if back == "+y" else rng.uniform(b[1] + d / 2, b[3] - d / 2))
+                    cx = u
+                else:
+                    cx = (b[0] + d / 2 + 0.55) if back == "-x" else (b[2] - d / 2 - 0.55)
+                    cy = u
+                ob = box_centered(self.uid("pillow"), (cx, cy, z), (s_, d, t), rng.uniform(-25, 25), self.mat(mats[i % len(mats)]), self.col)
             objs.append(ob)
         return objs
 
