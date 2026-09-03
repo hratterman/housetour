@@ -329,7 +329,7 @@ NEIGHBORHOOD = {
         "sidewalks": [[-30, -25], [-81, -76]],
         "sidewalk_y": [-25, -81],
         "trees": {"y": [-34, -72], "spacing": 42, "offset": 14, "species": ["elm", "oak", "maple", "elm", "locust"],
-                  "skip_x": [10.5]},
+                  "skip_x": [10.5], "skip_x_s": [21]},
         "lamps": [[-150, -35.5], [-10, -35.5], [130, -35.5], [-80, -70.5], [60, -70.5], [200, -70.5]],
         "hydrants": [[26, -33.5]],
         "aprons": [[-105, -70, -93, -64], [77, -70, 88, -64], [188, -70, 208, -64]],
@@ -359,6 +359,20 @@ NEIGHBORHOOD = {
             driveway={"x": 78, "w": 9, "y": [-81, -150]}, garage={"b": [70, -152, 90, -132], "m": "siding_gray", "door_side": "n"}),
         lot(90, 150, 100, "tudor", -111, "n", 123.5, trees=[{"pos": [146, -96], "species": "oak"}]),
         lot(150, 215, 153, "ranch", -114, "n", 177, driveway={"x": 189, "w": 18, "y": [-81, -112]}),
+        # the next street north (backs to our alley) and the next street south: depth for aerials and gaps
+        lot(-200, -140, -186, "colonial", 214, "n", None, wing=None, trees=[{"pos": [-150, 150], "species": "oak"}]),
+        lot(-140, -80, -126, "georgian", 212, "n", None, wall_m="brick_common"),
+        lot(-80, -20, -66, "bungalow", 216, "n", None, wall_m="siding_gray", trees=[{"pos": [-30, 145], "species": "maple"}]),
+        lot(-20, 40, -6, "tudor", 213, "n", None),
+        lot(40, 100, 55, "foursquare", 214, "n", None, wall_m="siding_white", trees=[{"pos": [95, 150], "species": "elm"}]),
+        lot(100, 160, 112, "colonial", 212, "n", None, wing="right", wall_m="siding_sage"),
+        lot(160, 225, 170, "georgian", 214, "n", None, wall_m="brick_red"),
+        lot(-190, -130, -176, "tudor", -292, "s", None, trees=[{"pos": [-140, -230], "species": "oak"}]),
+        lot(-130, -70, -114, "colonial", -290, "s", None, wing="left"),
+        lot(-70, -10, -56, "georgian", -292, "s", None, wall_m="brick_common", portico="flat"),
+        lot(-10, 50, 4, "foursquare", -291, "s", None, wall_m="stucco_cream", trees=[{"pos": [40, -232], "species": "elm"}]),
+        lot(50, 110, 62, "bungalow", -290, "s", None),
+        lot(110, 175, 122, "tudor", -292, "s", None, wall_m="brick_red", trees=[{"pos": [170, -228], "species": "maple"}]),
     ],
     "fences": [
         {"b": [-9.3, 46, -8.7, 100]}, {"b": [-75.3, 40, -74.7, 100]}, {"b": [-140.3, 40, -139.7, 100]},
@@ -369,6 +383,10 @@ NEIGHBORHOOD = {
         {"b": [-150, -83.5, -92, -82.5], "h": 3.0}, {"b": [-205, -24, -142, -23], "h": 2.5},
     ],
     "trees": [
+        # spec 1.1 trees on our lot
+        {"pos": [-3, -22], "species": "oak", "h": 42}, {"pos": [36, -24], "species": "oak", "h": 36},
+        {"pos": [48, 20], "species": "maple", "h": 40}, {"pos": [30, 110], "species": "locust", "h": 42},
+        {"pos": [9, 64], "species": "maple", "h": 16},
         {"pos": [-40, 62], "species": "oak"}, {"pos": [132, 52], "species": "elm"}, {"pos": [-118, -140], "species": "oak"},
         {"pos": [-160, 40], "species": "maple"}, {"pos": [225, 30], "species": "oak"}, {"pos": [120, -150], "species": "elm"},
         {"pos": [-60, -150], "species": "maple"}, {"pos": [200, -100], "species": "spruce"},
@@ -379,7 +397,7 @@ NEIGHBORHOOD = {
 site = {
     "grade_z": -0.5,
     "lot": [-9, -30, 51, 140],
-    "ground": {"m": "lawn", "b": [-240, -240, 280, 150]},
+    "ground": {"m": "lawn", "b": [-400, -400, 450, 450]},
     "slabs": [
         {"note": "front walk", "b": [8, -25, 13, -7], "z": -0.42, "t": 0.3, "m": "bluestone"},
         {"note": "porch step 1", "b": [4, -7, 22, -6.5], "z": -0.3, "t": 0.5, "m": "bluestone"},
@@ -404,13 +422,7 @@ site = {
         {"note": "east lot line hedge", "b": [48.5, 0, 50.5, 100], "h": 6},
         {"note": "rear privacy hedge", "b": [18, 100, 51, 101], "h": 7},
     ],
-    "trees": [
-        {"note": "red oak", "pos": [-3, -22], "trunk_d": 2.5, "canopy_r": 20, "canopy_z": 20, "autumn": True},
-        {"note": "red oak", "pos": [36, -24], "trunk_d": 2.0, "canopy_r": 17, "canopy_z": 18, "autumn": True},
-        {"note": "sugar maple", "pos": [48, 20], "trunk_d": 1.5, "canopy_r": 13, "canopy_z": 13, "autumn": True},
-        {"note": "honey locust", "pos": [30, 110], "trunk_d": 1.2, "canopy_r": 15, "canopy_z": 14},
-        {"note": "japanese maple", "pos": [9, 64], "trunk_d": 0.6, "canopy_r": 6, "canopy_z": 4, "autumn": True},
-    ],
+    "trees": [],   # the spec's trees are built by the neighborhood tree builder (models), see NEIGHBORHOOD["trees"]
     "neighbors": [],   # replaced by the neighborhood block below
     "neighborhood": NEIGHBORHOOD,
     "structures": [
@@ -435,12 +447,12 @@ lighting = {"fill_scale": {"main": 0.35, "second": 0.35, "basement": 1.2, "garag
             "fill_kelvin": 3000}
 camera = {"focal_mm": 24, "sensor_mm": 36, "exposure": 0.0, "fstop": 4.0, "handheld_ft": 0.06}
 shots = [
-    {"name": "block", "seconds": 10, "exposure": -0.3, "path": [
+    {"name": "block", "seconds": 10, "exposure": 0.3, "path": [
         {"t": 0, "pos": [-46, -79, 5.5], "look": [-10, -20, 12]}, {"t": 5, "pos": [-20, -78.5, 5.5], "look": [12, -6, 10]},
         {"t": 10, "pos": [4, -78, 5.5], "look": [20, 0, 9]}]},
-    {"name": "street", "seconds": 12, "exposure": -0.3, "path": [
+    {"name": "street", "seconds": 12, "exposure": 0.2, "path": [
         {"t": 0, "pos": [10.5, -34, 5.5], "look": [14, 0, 6]}, {"t": 4, "pos": [10.5, -22, 5.5], "look": [12, 0, 5]},
-        {"t": 8, "pos": [10.5, -12, 5.5], "look": [11, 0, 4.5]}, {"t": 12, "pos": [11, -6.5, 5.5], "look": [11, 0, 4]}]},
+        {"t": 8, "pos": [10.5, -15, 5.5], "look": [11, 0, 4.5]}, {"t": 12, "pos": [11, -9.5, 5.3], "look": [12.5, 0, 4.5]}]},   # ends on the porch, door and sidelight
     {"name": "main_floor", "seconds": 26, "path": [
         {"t": 0, "pos": [11, 3, 5.5], "look": [11, 12, 5]}, {"t": 3, "pos": [11, 9, 5.5], "look": [22, 9.5, 5]},
         {"t": 6, "pos": [23, 9.5, 5.5], "look": [25, 1, 4]}, {"t": 9, "pos": [25, 8, 5.5], "look": [25, 30, 5]},
@@ -501,7 +513,7 @@ views = [
     {"name": "v17_exterior_rear", "pos": [34, 84, 8], "look": [14, 46, 8]},
     {"name": "v18_garage", "pos": [6, 104, 6], "look": [4, 80, 6]},
     {"name": "v19_block_west", "pos": [-70, -84, 6], "look": [21, -2, 12]},
-    {"name": "v20_aerial_block", "pos": [21, -190, 130], "look": [21, 10, 0]},
+    {"name": "v20_aerial_block", "pos": [21, -280, 230], "look": [21, 0, 0]},
     {"name": "v21_across", "pos": [21, -95, 5.5], "look": [21, 0, 9]},
     {"name": "v22_street_east", "pos": [130, -56, 5.5], "look": [0, -32, 9]},
 ]

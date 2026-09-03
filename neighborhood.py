@@ -523,7 +523,9 @@ class Hood:
         h = t.get("h") or self.rng.uniform(*sp["h"])
         self.tree_n += 1
         if sp["model"] and self.stager is not None:
-            e = {"asset": sp["model"], "pos": [x, y, self.gz], "height_ft": h, "rot_z": self.rng.uniform(0, 360)}
+            # the island_tree models carry a ground disc at their base: sink it below grade
+            sink = 0.9 if sp["model"].startswith("island_tree") else 0.1
+            e = {"asset": sp["model"], "pos": [x, y, self.gz - sink], "height_ft": h + sink, "rot_z": self.rng.uniform(0, 360)}
             if t.get("autumn", True) and sp["tint"]:
                 e["tint"] = sp["tint"]
                 e["tint_only"] = ["leaf", "leav", "foli", "canopy"]
@@ -602,7 +604,8 @@ class Hood:
                 xx = x0 + st.get("offset", 20) + (st["spacing"] / 2 if side == "s" else 0)
                 i = 0
                 while xx < x1 - 10:
-                    skip = any(abs(xx - sx) < 6 for sx in st.get("skip_x", []) if side == "n")
+                    skips = st.get("skip_x", []) if side == "n" else st.get("skip_x_s", [])
+                    skip = any(abs(xx - sx) < 14 for sx in skips)
                     if not skip:
                         self.tree({"pos": [xx, y], "species": sp_cycle[i % len(sp_cycle)], "autumn": True})
                     xx += st["spacing"] * self.rng.uniform(0.85, 1.15)

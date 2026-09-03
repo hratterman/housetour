@@ -306,3 +306,19 @@ course lines through the stripes overlay, now with an axes option and no metalli
 and shingle roofs, half timber, dark window glass, leaf colours by species, bark, hydrant red.
 Camera: an 8th shot "block" (10 s) walks the far sidewalk with the neighbours sliding past and settles on
 the house; it now leads the walkthrough. Four review views v19 to v22. All eight paths clear.
+Review pass on the block renders: the spec's four lot trees were still the old sphere crowns and read as
+orange balloons beside the model trees, so they now go through the neighbourhood tree builder as oak, maple
+and locust models. The island_tree models carry a ground disc at the base; they sit 0.9 ft below grade so it
+is buried. Parkway trees are skipped within 14 ft of our front walk on both sides of the street, so the house
+is visible from the far sidewalk. Ground extended to 850 x 850 ft for the aerial. Autumn tints apply to foliage
+materials only (bark stayed brown) and are milder than the first try. Sun moved to the south-west: the spec's
+north-east sun lit the rear glass but left every street front in shadow, and Chicago sun never comes from the
+north anyway. Per-still render cost at 960x540 / 24 samples went from about 60 s to 110 to 190 s with the tree
+models in frame; interiors are unchanged.
+Added the next street north (backs to our alley) and the next street south, thirteen more houses, so the
+aerial and the gaps between neighbours show a grid rather than empty lawn; 25 lots, 50 trees, about 4,500
+objects, 90 s build. Block and street shots run at exposure +0.3 / +0.2; the street shot now ends on the porch
+(door, sidelight, house number) instead of a close-up of the dark walnut slab. The two red oaks in front are
+42 and 36 ft tall; taller and the house disappears under them. Review renders in renders/neighborhood.
+Known limitation: the island_tree models have a banyan-like sprawling trunk that reads odd in close-ups; a
+proper oak and elm model would replace them one for one through the SPECIES table in neighborhood.py.
