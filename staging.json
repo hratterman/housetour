@@ -4212,6 +4212,22 @@
 "m": "walnut_h"
 },
 {
+"asset": "proc:downlights",
+"room": "up_laundry",
+"positions": [
+[
+38.0,
+11.0
+],
+[
+39.5,
+7.5
+]
+],
+"z": 19.0,
+"watts": 10
+},
+{
 "asset": "proc:wardrobe",
 "room": "up_laundry",
 "b": [
