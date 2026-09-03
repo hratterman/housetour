@@ -123,88 +123,205 @@ class Materials:
 
 
 class House:
+    """Rooms are unions of axis-aligned rectangles ("parts", wall centerlines). Walls are built per edge
+    segment: nothing where the segment borders another part of the same room, a half wall (wt/2, inside the
+    bounds) where it borders another room, a full exterior wall (ext_t, inside the bounds) elsewhere."""
+
     def __init__(self, plan, mats):
         self.plan = plan
         self.mats = mats
         self.wt = plan.get("wall_thickness", 0.5)
         self.st = plan.get("slab_thickness", 0.5)
+        self.ext_t = plan.get("exterior", {}).get("wall_t", self.wt)
         self.rooms = plan["rooms"]
+        for r in self.rooms:  # legacy single-rect rooms
+            if "parts" not in r:
+                r["parts"] = [r["b"]]
+            if "b" not in r:
+                xs = [p[0] for p in r["parts"]] + [p[2] for p in r["parts"]]
+                ys = [p[1] for p in r["parts"]] + [p[3] for p in r["parts"]]
+                r["b"] = [min(xs), min(ys), max(xs), max(ys)]
         self.floors = plan["floors"]
-        self.walls = []       # wall objects
+        self.walls = []
         self.slabs = []
         self.room_by_name = {r["name"]: r for r in self.rooms}
         self.col_shell = get_collection("shell")
         self.col_features = get_collection("features")
         self.col_lights = get_collection("lights")
         self.col_cameras = get_collection("cameras")
+        # edges declared fully open (no wall at all) by openings with kind "open" and full=true
+        self.open_edges = [o for o in plan.get("openings", []) if o.get("kind") == "open" and o.get("full")]
 
-    # -- adjacency: does another room on this floor share this edge?
-    def neighbor_along(self, room, side):
-        x0, y0, x1, y1 = room["b"]
-        for r in self.rooms:
-            if r is room or r["floor"] != room["floor"]:
+    # -- geometry helpers ---------------------------------------------------------------------
+    def parts_on_floor(self, floor):
+        return [(r, p) for r in self.rooms if r["floor"] == floor for p in r["parts"]]
+
+    def edge_segments(self, room, part, side):
+        """Split one edge of a part into segments tagged 'same' (same room), 'room' (other room) or 'ext'."""
+        x0, y0, x1, y1 = part
+        if side in ("south", "north"):
+            at = y0 if side == "south" else y1
+            lo, hi = x0, x1
+        else:
+            at = x0 if side == "west" else x1
+            lo, hi = y0, y1
+        cuts = {lo, hi}
+        nbrs = []
+        for r, p in self.parts_on_floor(room["floor"]):
+            if p is part:
                 continue
-            a0, b0, a1, b1 = r["b"]
-            if side == "south" and abs(b1 - y0) < 1e-6 and min(a1, x1) - max(a0, x0) > 0.01:
-                return r
-            if side == "north" and abs(b0 - y1) < 1e-6 and min(a1, x1) - max(a0, x0) > 0.01:
-                return r
-            if side == "west" and abs(a1 - x0) < 1e-6 and min(b1, y1) - max(b0, y0) > 0.01:
-                return r
-            if side == "east" and abs(a0 - x1) < 1e-6 and min(b1, y1) - max(b0, y0) > 0.01:
-                return r
-        return None
+            if side in ("south", "north"):
+                touches = abs((p[3] if side == "south" else p[1]) - at) < 1e-6
+                a, b = p[0], p[2]
+            else:
+                touches = abs((p[2] if side == "west" else p[0]) - at) < 1e-6
+                a, b = p[1], p[3]
+            if touches and min(b, hi) - max(a, lo) > 1e-6:
+                nbrs.append((max(a, lo), min(b, hi), r))
+                cuts.add(max(a, lo))
+                cuts.add(min(b, hi))
+        # fully open edges also split the segments
+        for o in self.open_edges:
+            if o["floor"] != room["floor"]:
+                continue
+            if side in ("south", "north") and o["axis"] == "x" and abs(o["at"] - at) < 1e-6:
+                a, b = o["c"] - o["w"] / 2, o["c"] + o["w"] / 2
+            elif side in ("west", "east") and o["axis"] == "y" and abs(o["at"] - at) < 1e-6:
+                a, b = o["c"] - o["w"] / 2, o["c"] + o["w"] / 2
+            else:
+                continue
+            if min(b, hi) - max(a, lo) > 1e-6:
+                cuts.add(max(a, lo))
+                cuts.add(min(b, hi))
+        pts = sorted(cuts)
+        segs = []
+        for a, b in zip(pts[:-1], pts[1:]):
+            if b - a < 1e-6:
+                continue
+            mid = (a + b) / 2
+            kind, other = "ext", None
+            for na, nb, r in nbrs:
+                if na - 1e-6 <= mid <= nb + 1e-6:
+                    kind, other = ("same" if r is room else "room"), r
+                    break
+            is_open = False
+            for o in self.open_edges:
+                if o["floor"] != room["floor"]:
+                    continue
+                if ((side in ("south", "north") and o["axis"] == "x") or (side in ("west", "east") and o["axis"] == "y")) \
+                        and abs(o["at"] - at) < 1e-6 and o["c"] - o["w"] / 2 - 1e-6 <= mid <= o["c"] + o["w"] / 2 + 1e-6:
+                    is_open = True
+            if is_open:
+                kind = "open"
+            segs.append((a, b, kind, other))
+        return segs
 
     def build_rooms(self):
         wt, st = self.wt, self.st
         half = wt / 2
+        ext = self.plan.get("exterior", {})
         for room in self.rooms:
             fl = self.floors[room["floor"]]
             z, h = fl["z"], fl["h"]
-            x0, y0, x1, y1 = room["b"]
             nm = room["name"]
             wall_mat = self.mats.get(room["wall"])
             floor_mat = self.mats.get(room["floorm"])
             ceil_mat = self.mats.get(room["ceil"])
-            # slabs: split slab thickness between floor of this room and ceiling of the one below
-            s = box_ft("floor_%s" % nm, x0, y0, x1, y1, z - st / 2, z, floor_mat, self.col_shell,
-                       {"room": nm, "floor": room["floor"], "kind": "floor"})
-            self.slabs.append(s)
-            s = box_ft("ceil_%s" % nm, x0, y0, x1, y1, z + h, z + h + st / 2, ceil_mat, self.col_shell,
-                       {"room": nm, "floor": room["floor"], "kind": "ceil"})
-            self.slabs.append(s)
-            # walls: half thickness if shared with a neighbor, full if exterior
-            tS = half if self.neighbor_along(room, "south") else wt
-            tN = half if self.neighbor_along(room, "north") else wt
-            tW = half if self.neighbor_along(room, "west") else wt
-            tE = half if self.neighbor_along(room, "east") else wt
-            specs = [
-                ("south", x0, y0, x1, y0 + tS, "x"),
-                ("north", x0, y1 - tN, x1, y1, "x"),
-                ("west", x0, y0 + tS, x0 + tW, y1 - tN, "y"),
-                ("east", x1 - tE, y0 + tS, x1, y1 - tN, "y"),
-            ]
-            for side, ax0, ay0, ax1, ay1, axis in specs:
-                w = box_ft("wall_%s_%s" % (nm, side), ax0, ay0, ax1, ay1, z, z + h, wall_mat,
-                           self.col_shell,
-                           {"room": nm, "floor": room["floor"], "kind": "wall", "axis": axis,
-                            "side": side})
-                self.walls.append(w)
-        log("rooms:", len(self.rooms), "walls:", len(self.walls), "slabs:", len(self.slabs))
+            ext_t = room.get("exterior_wall", self.ext_t)
+            for pi, part in enumerate(room["parts"]):
+                x0, y0, x1, y1 = part
+                tag = nm if len(room["parts"]) == 1 else "%s_%d" % (nm, pi)
+                if not room.get("void"):
+                    s = box_ft("floor_%s" % tag, x0, y0, x1, y1, z - st / 2, z, floor_mat, self.col_shell,
+                               {"room": nm, "floor": room["floor"], "kind": "floor"})
+                    self.slabs.append(s)
+                if not room.get("no_ceiling"):
+                    s = box_ft("ceil_%s" % tag, x0, y0, x1, y1, z + h, z + h + st / 2, ceil_mat, self.col_shell,
+                               {"room": nm, "floor": room["floor"], "kind": "ceil"})
+                    self.slabs.append(s)
+                # walls, per edge segment; inset the side walls by the front/back wall thickness at each end
+                seg_info = {side: self.edge_segments(room, part, side) for side in ("south", "north", "west", "east")}
+
+                def thickness(kind):
+                    return None if kind in ("same", "open") else (half if kind == "room" else ext_t)
+
+                def end_inset(side_segs, coord):
+                    # thickness of the perpendicular wall touching this end (0 if none)
+                    for a, b, kind, other in side_segs:
+                        if a - 1e-6 <= coord <= b + 1e-6:
+                            t = thickness(kind)
+                            return t or 0.0
+                    return 0.0
+
+                k = 0
+                for side, segs in seg_info.items():
+                    for a, b, kind, other in segs:
+                        t = thickness(kind)
+                        if t is None:
+                            continue
+                        axis = "x" if side in ("south", "north") else "y"
+                        if side == "south":
+                            bx = [a, y0, b, y0 + t]
+                        elif side == "north":
+                            bx = [a, y1 - t, b, y1]
+                        elif side == "west":
+                            ia = end_inset(seg_info["south"], x0) if abs(a - y0) < 1e-6 else 0.0
+                            ib = end_inset(seg_info["north"], x0) if abs(b - y1) < 1e-6 else 0.0
+                            bx = [x0, a + ia, x0 + t, b - ib]
+                        else:
+                            ia = end_inset(seg_info["south"], x1) if abs(a - y0) < 1e-6 else 0.0
+                            ib = end_inset(seg_info["north"], x1) if abs(b - y1) < 1e-6 else 0.0
+                            bx = [x1 - t, a + ia, x1, b - ib]
+                        if bx[2] - bx[0] < 1e-4 or bx[3] - bx[1] < 1e-4:
+                            continue
+                        w = box_ft("wall_%s_%s_%d" % (tag, side, k), bx[0], bx[1], bx[2], bx[3], z, z + h, wall_mat,
+                                   self.col_shell, {"room": nm, "floor": room["floor"], "kind": "wall", "axis": axis,
+                                                    "side": side, "exterior": kind == "ext"})
+                        k += 1
+                        if kind == "ext":
+                            self.face_exterior(w, side, room["floor"], ext)
+                        self.walls.append(w)
+        # voids: cut slabs
+        for v in self.plan.get("voids", []):
+            b = v["b"]
+            fl = self.floors[v["floor"]]
+            z = fl["z"] if v["what"] == "floor" else fl["z"] + fl["h"]
+            bnd = [b[0], b[1], b[2], b[3], z - self.st, z + self.st]
+            targets = [s for s in self.slabs if s["floor"] == v["floor"] and s["kind"] == v["what"] and overlap(bounds_of(s), bnd)]
+            if targets:
+                cut_with_box(targets, bnd, "cut_void")
+        log("rooms:", len(self.rooms), "walls:", len(self.walls), "slabs:", len(self.slabs), "voids:", len(self.plan.get("voids", [])))
+
+    def face_exterior(self, wall, side, floor, ext):
+        """Give the outward face of an exterior wall its cladding material (brick base, cedar upper)."""
+        from geom import set_face_material
+        spec = None
+        if floor in ext.get("base", {}).get("floors", []):
+            spec = ext["base"]["m_out"]
+        elif floor in ext.get("upper", {}).get("floors", []):
+            spec = ext["upper"]["m_out"]
+        elif floor == "garage" and "garage" in ext:
+            spec = ext["garage"]["m_out_low"]
+        if not spec:
+            return
+        face = {"south": 2, "east": 3, "north": 4, "west": 5}[side]
+        set_face_material(wall, face, self.mats.get(spec))
 
     def build_openings(self):
         cut = 0
         skipped = []
         for op in self.plan["openings"]:
+            if op.get("kind") == "open" and op.get("full"):
+                op["_cut_walls"] = []
+                continue
             fl = self.floors[op["floor"]]
             z0 = fl["z"] + op.get("z0", 0)
             z1 = z0 + op["h"]
-            pad = self.wt * 1.2
+            pad = max(self.wt, self.ext_t) * 1.2
             if op["axis"] == "x":
                 b = [op["c"] - op["w"] / 2, op["at"] - pad, op["c"] + op["w"] / 2, op["at"] + pad, z0, z1]
             else:
                 b = [op["at"] - pad, op["c"] - op["w"] / 2, op["at"] + pad, op["c"] + op["w"] / 2, z0, z1]
-            # a door opening that starts at floor level: cut a hair below the floor so no sliver remains
             if op.get("z0", 0) == 0:
                 b[4] -= 0.02
             cutter = box_ft("cutter_%s" % op["note"].replace(" ", "_"), *b)
@@ -221,6 +338,10 @@ class House:
         if skipped:
             log("WARNING openings that hit no wall:", skipped)
 
+    def build_columns(self):
+        for c in self.plan.get("columns", []):
+            box_ft("col_%s" % c["note"].replace(" ", "_"), *c["b"], mat=self.mats.get(c["m"]), collection=self.col_features)
+
     def build_pits(self):
         for pit in self.plan.get("pits", []):
             room = self.room_by_name[pit["room"]]
@@ -228,55 +349,19 @@ class House:
             z = fl["z"]
             px0, py0, px1, py1 = pit["b"]
             d = pit["depth"]
-            floor_ob = bpy.data.objects["floor_%s" % room["name"]]
-            cutter = box_ft("cutter_pit", px0, py0, px1, py1, z - self.st, z + 0.1)
-            boolean_cut(floor_ob, cutter)
-            bpy.data.objects.remove(cutter, do_unlink=True)
+            floors_ = [o for o in self.slabs if o["room"] == room["name"] and o["kind"] == "floor"]
+            cut_with_box(floors_, [px0, py0, px1, py1, z - self.st, z + 0.1], "cutter_pit")
             edge = self.mats.get(pit["edge"])
             seat = self.mats.get(pit["seat"])
-            floor_mat = self.mats.get(room["floorm"])
-            # pit floor
+            floor_mat = self.mats.get(pit.get("floor_m", room["floorm"]))
             box_ft("pit_floor", px0, py0, px1, py1, z - d - self.st / 2, z - d, floor_mat, self.col_features)
-            # lining walls with a small lip above the room floor, capped in the edge material
             t = 0.25
-            lip = 0.2
+            lip = pit.get("lip", 0.9)
             zb, zt = z - d - self.st / 2, z + lip
             box_ft("pit_wall_s", px0, py0, px1, py0 + t, zb, zt, edge, self.col_features)
-            box_ft("pit_wall_n", px0, py1 - t, px1, py1, zb, zt, edge, self.col_features)
+            box_ft("pit_wall_n", px0, py1 - t, px1, py1, zb, z + (0.0 if pit.get("open_side") == "north" else lip), edge, self.col_features)
             box_ft("pit_wall_w", px0, py0 + t, px0 + t, py1 - t, zb, zt, edge, self.col_features)
             box_ft("pit_wall_e", px1 - t, py0 + t, px1, py1 - t, zb, zt, edge, self.col_features)
-            # seat cushions on three sides; open side faces the panel
-            open_side = pit.get("open_side", "north")
-            sd, sh = 2.5, 1.4
-            zc0, zc1 = z - d, z - d + sh
-            ix0, iy0, ix1, iy1 = px0 + t, py0 + t, px1 - t, py1 - t
-            sides = {
-                "south": (ix0, iy0, ix1, iy0 + sd),
-                "north": (ix0, iy1 - sd, ix1, iy1),
-                "west": (ix0, iy0, ix0 + sd, iy1),
-                "east": (ix1 - sd, iy0, ix1, iy1),
-            }
-            # trim the E/W cushions so they butt against the S/N cushion instead of overlapping
-            for side, (a0, b0, a1, b1) in sides.items():
-                if side == open_side:
-                    continue
-                if side in ("west", "east"):
-                    if "south" != open_side:
-                        b0 += sd
-                    if "north" != open_side:
-                        b1 -= sd
-                box_ft("pit_seat_%s" % side, a0, b0, a1, b1, zc0, zc1, seat, self.col_features)
-            # back cushions leaning on the lining walls
-            bt = 0.35
-            zk0, zk1 = zc1, zc1 + 1.2
-            if open_side != "south":
-                box_ft("pit_back_s", ix0, iy0, ix1, iy0 + bt, zk0, zk1, seat, self.col_features)
-            if open_side != "north":
-                box_ft("pit_back_n", ix0, iy1 - bt, ix1, iy1, zk0, zk1, seat, self.col_features)
-            if open_side != "west":
-                box_ft("pit_back_w", ix0, iy0, ix0 + bt, iy1, zk0, zk1, seat, self.col_features)
-            if open_side != "east":
-                box_ft("pit_back_e", ix1 - bt, iy0, ix1, iy1, zk0, zk1, seat, self.col_features)
             log("pit in", room["name"], "depth", d)
 
     def build_ground(self):
@@ -284,16 +369,12 @@ class House:
         if not g:
             return
         half = g.get("size", 400) / 2
-        rooms = [r for r in self.rooms if r["floor"] == "main"]
-        skin = self.plan.get("exterior", {}).get("skin_t", 0.0)
-        X0 = min(r["b"][0] for r in rooms) - skin
-        Y0 = min(r["b"][1] for r in rooms) - skin
-        X1 = max(r["b"][2] for r in rooms) + skin
-        Y1 = max(r["b"][3] for r in rooms) + skin
+        parts = [p for r, p in self.parts_on_floor("main")]
+        X0 = min(p[0] for p in parts); Y0 = min(p[1] for p in parts)
+        X1 = max(p[2] for p in parts); Y1 = max(p[3] for p in parts)
         z0, z1 = g["z"] - 0.5, g["z"]
-        mat = self.mats.get(g.get("m", "grass"))
+        mat = self.mats.get(g.get("m", "lawn"))
         cx, cy = (X0 + X1) / 2, (Y0 + Y1) / 2
-        # four boxes around the house footprint so nothing intrudes into the basement
         box_ft("ground_s", cx - half, cy - half, cx + half, Y0, z0, z1, mat, self.col_shell, {"kind": "ground"})
         box_ft("ground_n", cx - half, Y1, cx + half, cy + half, z0, z1, mat, self.col_shell, {"kind": "ground"})
         box_ft("ground_w", cx - half, Y0, X0, Y1, z0, z1, mat, self.col_shell, {"kind": "ground"})
@@ -302,18 +383,73 @@ class House:
     def build_features(self):
         n = 0
         for f in self.plan.get("features", []):
-            b = f["box"]
-            box_ft("feat_%s" % f["note"].replace(" ", "_"), *b, mat=self.mats.get(f["m"]),
-                   collection=self.col_features)
+            box_ft("feat_%s" % f["note"].replace(" ", "_"), *f["box"], mat=self.mats.get(f["m"]), collection=self.col_features)
             n += 1
         log("features:", n)
 
-    # -- lights
+    def build_stairs(self):
+        """Straight runs from plan['stairs']: treads, closed risers, stringers, a handrail, and a guard on the open side."""
+        from geom import beam_between, cylinder_ft
+        for st in self.plan.get("stairs", []):
+            n = st["risers"]
+            x0, x1 = st["x0"], st["x1"]
+            yf, yt = st["y_from"], st["y_to"]
+            zf, zt = st["z_from"], st["z_to"]
+            rise = (zt - zf) / n
+            run = (yt - yf) / (n - 1) if n > 1 else 0
+            tread_m = self.mats.get(st.get("tread_m", "oak_floor"))
+            riser_m = self.mats.get(st.get("riser_m", "oak_floor"))
+            str_m = self.mats.get(st.get("stringer_m", "walnut"))
+            rail_m = self.mats.get(st.get("rail_m", "bronze_black"))
+            tt = 1.5 / 12
+            d = 1 if run > 0 else -1
+            for i in range(1, n):
+                # tread i has its nosing at y = yf + (i-1)*run, top at zf + i*rise
+                ya = yf + (i - 1) * run
+                yb = ya + run
+                zt_i = zf + i * rise
+                lo, hi = (min(ya, yb) - 0.08 * d if d > 0 else min(ya, yb)), (max(ya, yb) if d > 0 else max(ya, yb) + 0.08)
+                box_ft("%s_tread_%d" % (st["name"], i), x0 + 0.08, min(ya, yb) - (0.08 if d > 0 else 0), x1 - 0.08,
+                       max(ya, yb) + (0.08 if d < 0 else 0), zt_i - tt, zt_i, tread_m, self.col_features)
+                # riser under the nosing edge of tread i
+                ry = ya if d > 0 else ya
+                box_ft("%s_riser_%d" % (st["name"], i), x0 + 0.08, ry - 0.04, x1 - 0.08, ry + 0.04,
+                       zt_i - rise - tt, zt_i - tt, riser_m, self.col_features)
+            # top riser to the upper floor
+            ry = yt
+            box_ft("%s_riser_%d" % (st["name"], n), x0 + 0.08, ry - 0.04, x1 - 0.08, ry + 0.04, zt - rise - tt, zt, riser_m, self.col_features)
+            # stringers: sloped boards each side, 1 ft deep, under the nosing line
+            depth = 1.0
+            prof = [(yf - 0.4 * d, zf - rise * 0.6), (yt + 0.4 * d, zt - rise * 0.6), (yt + 0.4 * d, zt - rise * 0.6 - depth), (yf - 0.4 * d, zf - rise * 0.6 - depth)]
+            if d < 0:
+                prof = prof[::-1]
+            from geom import prism_yz
+            prism_yz("%s_stringer_w" % st["name"], prof, x0, x0 + 0.1, str_m, self.col_features)
+            prism_yz("%s_stringer_e" % st["name"], prof, x1 - 0.1, x1, str_m, self.col_features)
+            # handrail on the named wall side, 3 ft above nosings
+            side = st.get("handrail", "east")
+            hx = x1 - 0.2 if side == "east" else x0 + 0.2
+            beam_between("%s_handrail" % st["name"], (hx, yf, zf + 3.0), (hx, yt, zt + 3.0 - rise), 0.15, 0.2, self.mats.get("walnut"), self.col_features)
+            # guard on the open side: posts every 3 treads + top rail
+            gside = st.get("guard")
+            if gside:
+                gx = x0 + 0.08 if gside == "west" else x1 - 0.08
+                pts = []
+                for i in range(1, n, 3):
+                    y = yf + (i - 1) * run + run * 0.5
+                    zt_i = zf + i * rise
+                    cylinder_ft("%s_post_%d" % (st["name"], i), (gx, y, zt_i), 0.04, 3.2, rail_m, self.col_features, 10)
+                    pts.append((gx, y, zt_i + 3.2))
+                if len(pts) >= 2:
+                    beam_between("%s_guard" % st["name"], pts[0], pts[-1], 0.12, 0.08, rail_m, self.col_features)
+            log("stair %s: %d risers, rise %.3f ft, run %.3f ft" % (st["name"], n, rise, abs(run)))
+
+    # -- lights (phase 1 fill only)
     def build_lights(self, room_fill_scale=1.0):
         warm = kelvin_rgb(2700)
         for room in self.rooms:
             fl = self.floors[room["floor"]]
-            x0, y0, x1, y1 = room["b"]
+            x0, y0, x1, y1 = room["parts"][0]
             ld = bpy.data.lights.new("area_%s" % room["name"], "AREA")
             ld.shape = "SQUARE"
             ld.size = m(2.0)
@@ -329,15 +465,13 @@ class House:
         sd.angle = math.radians(1.5)
         so = bpy.data.objects.new("sun", sd)
         so.location = (m(21), m(23), m(40))
-        d = Vector(sun["direction"]).normalized()
-        so.rotation_euler = d.to_track_quat("-Z", "Y").to_euler()
+        so.rotation_euler = Vector(sun["direction"]).normalized().to_track_quat("-Z", "Y").to_euler()
         self.col_lights.objects.link(so)
-        # world
         w = bpy.data.worlds.new("world")
         bpy.context.scene.world = w
         w.use_nodes = True
         bg = w.node_tree.nodes["Background"]
-        wr = self.plan.get("world", {"rgb": [0.9, 0.85, 0.78], "strength": 1.0})
+        wr = self.plan.get("world", {"rgb": [0.9, 0.85, 0.78], "strength": 0.8})
         bg.inputs[0].default_value = (wr["rgb"][0], wr["rgb"][1], wr["rgb"][2], 1.0)
         bg.inputs[1].default_value = wr["strength"]
         log("lights:", len(self.rooms), "area +", "sun")
@@ -471,7 +605,7 @@ def key_shot(scene, cam, tgt, shot, fps, base_exposure=None, override=None):
     return 1, n
 
 
-def check_path(scene, cam, shot, radius_ft=0.3):
+def check_path(scene, cam, shot, radius_ft=0.22):
     """Sample every frame; report any frame where the camera is within radius of shell/feature geometry."""
     from geom import world_bounds
     obs = []
@@ -504,7 +638,7 @@ def check_path(scene, cam, shot, radius_ft=0.3):
                 count += 1
                 origin = hloc + Vector((1e-4, 0, 0))
                 guard += 1
-            inside = (count % 2) == 1
+            inside = (count % 2) == 1 and d < m(0.5)
             if inside or d < r:
                 hits.append((f, o.name, round(d / FT, 2), inside))
     if hits:
@@ -658,7 +792,13 @@ def main():
     house.build_openings()
     house.build_pits()
     house.build_features()
-    house.build_ground()
+    house.build_columns()
+    house.build_stairs()
+    if plan.get("site"):
+        import site_build
+        site_build.build(plan, house, mats)
+    else:
+        house.build_ground()
     if stage == "phase2":
         import details
         import staging

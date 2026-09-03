@@ -58,7 +58,10 @@ class Details:
         return n0, n1
 
     def is_exterior(self, op):
-        return len(op.get("_cut_walls", [])) == 1
+        names = op.get("_cut_walls", [])
+        if not names:
+            return bool(op.get("exterior"))
+        return all(bpy.data.objects[n].get("exterior") for n in names if n in bpy.data.objects)
 
     def rooms_either_side(self, op):
         """(room on the negative side, room on the positive side) of the opening, or None."""
@@ -66,21 +69,22 @@ class Details:
         for r in self.house.rooms:
             if r["floor"] != op["floor"]:
                 continue
-            x0, y0, x1, y1 = r["b"]
-            if op["axis"] == "x":
-                if not (x0 - 1e-6 <= op["c"] <= x1 + 1e-6):
-                    continue
-                if abs(y1 - op["at"]) < 1e-6:
-                    neg = r
-                if abs(y0 - op["at"]) < 1e-6:
-                    pos = r
-            else:
-                if not (y0 - 1e-6 <= op["c"] <= y1 + 1e-6):
-                    continue
-                if abs(x1 - op["at"]) < 1e-6:
-                    neg = r
-                if abs(x0 - op["at"]) < 1e-6:
-                    pos = r
+            for part in r.get("parts", [r.get("b")]):
+                x0, y0, x1, y1 = part
+                if op["axis"] == "x":
+                    if not (x0 - 1e-6 <= op["c"] <= x1 + 1e-6):
+                        continue
+                    if abs(y1 - op["at"]) < 1e-6:
+                        neg = r
+                    if abs(y0 - op["at"]) < 1e-6:
+                        pos = r
+                else:
+                    if not (y0 - 1e-6 <= op["c"] <= y1 + 1e-6):
+                        continue
+                    if abs(x1 - op["at"]) < 1e-6:
+                        neg = r
+                    if abs(x0 - op["at"]) < 1e-6:
+                        pos = r
         return neg, pos
 
     # ------------------------------------------------------------------ casings + doors
@@ -89,7 +93,9 @@ class Details:
         brass = self.mats.get("brass")
         for op in self.plan["openings"]:
             kind = op.get("kind", "door")
-            if kind not in ("door", "cased"):
+            if kind not in ("door", "cased", "glassdoor", "pocket"):
+                continue
+            if not op.get("_cut_walls"):
                 continue
             fl = self.floors[op["floor"]]
             z = fl["z"]
@@ -112,8 +118,28 @@ class Details:
                 box_ft("casing_%s_head" % tag, f0, a0 - CASING_W, f1, a1 + CASING_W, z + h - LINER_T,
                        z + h + CASING_W, walnut, self.col)
             self.n("casings")
-            if kind == "door":
-                self.build_door(op, z, n0, n1, a0 + LINER_T, a1 - LINER_T, h - LINER_T, walnut, brass, tag)
+            if kind in ("door", "glassdoor") and op.get("open_deg", 80) > 0:
+                self.build_door(op, z, n0, n1, a0 + LINER_T, a1 - LINER_T, h - LINER_T,
+                                self.mats.get("glass") if kind == "glassdoor" else walnut, brass, tag)
+            elif kind in ("door", "glassdoor"):
+                # closed leaf in the plane of the wall
+                leaf_m = self.mats.get("glass") if kind == "glassdoor" else walnut
+                mid = (n0 + n1) / 2
+                if op["axis"] == "x":
+                    box_ft("door_%s" % tag, a0 + LINER_T, mid - DOOR_T / 2, a1 - LINER_T, mid + DOOR_T / 2, z + 0.01, z + h - LINER_T, leaf_m, self.col)
+                else:
+                    box_ft("door_%s" % tag, mid - DOOR_T / 2, a0 + LINER_T, mid + DOOR_T / 2, a1 - LINER_T, z + 0.01, z + h - LINER_T, leaf_m, self.col)
+                self.n("doors")
+            elif kind == "pocket":
+                # leaf recessed into the wall except for open_ft showing
+                mid = (n0 + n1) / 2
+                show = op.get("open_ft", 0)
+                leaf_w = (a1 - a0) / 2
+                if op["axis"] == "x":
+                    box_ft("pocket_%s" % tag, a0 + LINER_T, mid - DOOR_T / 2, a0 + LINER_T + max(0.05, leaf_w - show), mid + DOOR_T / 2, z + 0.01, z + h - LINER_T, walnut, self.col)
+                else:
+                    box_ft("pocket_%s" % tag, mid - DOOR_T / 2, a0 + LINER_T, mid + DOOR_T / 2, a0 + LINER_T + max(0.05, leaf_w - show), z + 0.01, z + h - LINER_T, walnut, self.col)
+                self.n("pocket doors")
 
     def build_door(self, op, z, n0, n1, a0, a1, h, walnut, brass, tag):
         exterior = self.is_exterior(op)
@@ -161,6 +187,8 @@ class Details:
         for op in self.plan["openings"]:
             kind = op.get("kind", "door")
             if kind not in ("window", "glasswall"):
+                continue
+            if not op.get("_cut_walls"):
                 continue
             fl = self.floors[op["floor"]]
             z0 = fl["z"] + op.get("z0", 0)
@@ -290,13 +318,17 @@ class Details:
             d_ft = spec.get("d_in", 12) / 12.0
             mat = self.mats.get(spec.get("m", "walnut"))
             # deck material on the ceiling slab
-            ceil = bpy.data.objects.get("ceil_%s" % room["name"])
-            if ceil is not None and spec.get("deck_m"):
-                ceil.data.materials.clear()
-                ceil.data.materials.append(self.mats.get(spec["deck_m"]))
+            for ob in bpy.data.objects:
+                if ob.name.startswith("ceil_") and ob.get("room") == room["name"] and spec.get("deck_m"):
+                    ob.data.materials.clear()
+                    ob.data.materials.append(self.mats.get(spec["deck_m"]))
             sp = spec.get("spacing", 4.0)
             k = 0
-            if spec.get("axis", "x") == "x":
+            if spec.get("positions") and spec.get("axis", "x") == "x":
+                for y in spec["positions"]:
+                    box_ft("beam_%s_%d" % (room["name"], k), x0 + 0.2, y - w_ft / 2, x1 - 0.2, y + w_ft / 2, zc - d_ft, zc, mat, self.col)
+                    k += 1
+            elif spec.get("axis", "x") == "x":
                 y = y0 + sp / 2
                 while y < y1 - 0.5:
                     box_ft("beam_%s_%d" % (room["name"], k), x0 + 0.2, y - w_ft / 2, x1 - 0.2, y + w_ft / 2, zc - d_ft, zc, mat, self.col)
@@ -506,13 +538,15 @@ class Details:
 
     # ------------------------------------------------------------------ run
     def build_all(self):
-        self.build_exterior()
+        if not self.plan.get("site"):
+            self.build_exterior()
         self.build_casings_and_doors()
         self.build_windows()
         self.build_baseboards()
         self.build_beams()
         self.build_picture_lights()
-        self.build_stair()
+        if self.plan.get("stair") and not self.plan.get("stairs"):
+            self.build_stair()
         log("details:", ", ".join("%s %d" % kv for kv in sorted(self.counts.items())))
 
 

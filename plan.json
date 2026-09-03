@@ -4,1207 +4,2983 @@
  "wall_thickness": 0.5,
  "slab_thickness": 0.5,
  "materials_file": "materials/materials.json",
+ "source": "housemasterspec.md",
+ "floors": {
+  "basement": {
+   "z": -10.0,
+   "h": 9.5
+  },
+  "main": {
+   "z": 0.0,
+   "h": 9.5
+  },
+  "second": {
+   "z": 10.0,
+   "h": 9.0
+  },
+  "garage": {
+   "z": -0.4,
+   "h": 12.0
+  }
+ },
  "rooms": [
   {
-   "name": "mudroom",
+   "name": "gear_closet",
    "floor": "main",
-   "b": [
-    0,
-    0,
-    10,
-    14
+   "parts": [
+    [
+     0,
+     0,
+     8,
+     6
+    ]
    ],
-   "wall": "plaster",
    "floorm": "terrazzo",
-   "ceil": "plaster",
-   "light": 80
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 30,
+   "label": "gear closet"
   },
   {
-   "name": "foyer",
+   "name": "vestibule",
    "floor": "main",
-   "b": [
-    10,
-    0,
-    18,
-    14
+   "parts": [
+    [
+     8,
+     0,
+     14,
+     6
+    ]
    ],
-   "wall": "plaster",
    "floorm": "terrazzo",
-   "ceil": "plaster",
-   "light": 80
-  },
-  {
-   "name": "spine",
-   "floor": "main",
-   "b": [
-    18,
-    0,
-    24,
-    46
-   ],
-   "wall": "oxblood",
-   "floorm": "oak",
-   "ceil": "plaster",
-   "light": 120
+   "wall": "walnut_panel",
+   "ceil": "plaster_warm",
+   "light": 50
   },
   {
    "name": "powder",
    "floor": "main",
-   "b": [
-    24,
-    0,
-    30,
-    5
+   "parts": [
+    [
+     14,
+     0,
+     18,
+     6
+    ]
    ],
-   "wall": "olive",
    "floorm": "terrazzo",
-   "ceil": "olive",
-   "light": 40
+   "wall": "wallpaper_botanical_dark",
+   "ceil": "oxblood",
+   "light": 30
+  },
+  {
+   "name": "coat_closet",
+   "floor": "main",
+   "parts": [
+    [
+     18,
+     0,
+     22,
+     6
+    ]
+   ],
+   "floorm": "oak_floor",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 20,
+   "label": "coat closet"
+  },
+  {
+   "name": "panel_closet",
+   "floor": "main",
+   "parts": [
+    [
+     0,
+     6,
+     8,
+     13
+    ]
+   ],
+   "floorm": "concrete_sealed",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 20,
+   "label": "panel closet"
+  },
+  {
+   "name": "entry_hall",
+   "floor": "main",
+   "parts": [
+    [
+     8,
+     6,
+     22,
+     13
+    ]
+   ],
+   "floorm": "oak_floor",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 80,
+   "label": "entry hall"
+  },
+  {
+   "name": "spine",
+   "floor": "main",
+   "parts": [
+    [
+     22,
+     0,
+     28,
+     32
+    ]
+   ],
+   "floorm": "oak_floor",
+   "wall": "oxblood",
+   "ceil": "oxblood",
+   "light": 90,
+   "label": "gallery spine"
+  },
+  {
+   "name": "stair_hall",
+   "floor": "main",
+   "parts": [
+    [
+     28,
+     0,
+     34,
+     13
+    ]
+   ],
+   "floorm": "oak_floor",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 60,
+   "no_ceiling": true,
+   "label": "stair hall"
   },
   {
    "name": "laundry",
    "floor": "main",
-   "b": [
-    24,
-    5,
-    30,
-    10.5
+   "parts": [
+    [
+     34,
+     0,
+     42,
+     6
+    ],
+    [
+     37,
+     6,
+     42,
+     9
+    ],
+    [
+     34,
+     9,
+     42,
+     13
+    ]
    ],
-   "wall": "plaster",
    "floorm": "terrazzo",
-   "ceil": "plaster",
-   "light": 60
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 70
   },
   {
-   "name": "awayhall",
+   "name": "elevator_closet",
    "floor": "main",
-   "b": [
-    24,
-    10.5,
-    30,
-    14
+   "parts": [
+    [
+     34,
+     6,
+     37,
+     9
+    ]
    ],
-   "wall": "olive",
-   "floorm": "oak",
-   "ceil": "olive",
-   "light": 20
+   "floorm": "concrete_sealed",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 10,
+   "label": "elevator"
   },
   {
-   "name": "away",
+   "name": "mudroom",
    "floor": "main",
-   "b": [
-    30,
-    0,
-    42,
-    14
+   "parts": [
+    [
+     3,
+     13,
+     8,
+     16
+    ],
+    [
+     0,
+     16,
+     8,
+     21
+    ]
    ],
-   "wall": "wallpaper_geo",
-   "floorm": "oak",
-   "ceil": "olive",
-   "light": 90
+   "floorm": "terrazzo",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 70
+  },
+  {
+   "name": "litter_closet",
+   "floor": "main",
+   "parts": [
+    [
+     0,
+     13,
+     3,
+     16
+    ]
+   ],
+   "floorm": "terrazzo",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 10,
+   "label": "litter"
+  },
+  {
+   "name": "pantry",
+   "floor": "main",
+   "parts": [
+    [
+     0,
+     21,
+     8,
+     27
+    ]
+   ],
+   "floorm": "terrazzo",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 50
   },
   {
    "name": "kitchen",
    "floor": "main",
-   "b": [
-    0,
-    14,
-    18,
-    30
+   "parts": [
+    [
+     8,
+     13,
+     22,
+     30
+    ],
+    [
+     0,
+     27,
+     8,
+     30
+    ]
    ],
-   "wall": "plaster",
-   "floorm": "oak",
-   "ceil": "plaster",
-   "light": 150
-  },
-  {
-   "name": "closet",
-   "floor": "main",
-   "b": [
-    24,
-    14,
-    32,
-    30
-   ],
-   "wall": "plaster",
-   "floorm": "wool",
-   "ceil": "plaster",
-   "light": 100
-  },
-  {
-   "name": "bath",
-   "floor": "main",
-   "b": [
-    32,
-    14,
-    42,
-    30
-   ],
-   "wall": "terrazzo",
-   "floorm": "terrazzo",
-   "ceil": "plaster",
-   "light": 90
+   "floorm": "oak_floor",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 160
   },
   {
    "name": "living",
    "floor": "main",
-   "b": [
-    0,
-    30,
-    18,
-    46
+   "parts": [
+    [
+     0,
+     30,
+     22,
+     46
+    ]
    ],
-   "wall": "plaster",
-   "floorm": "oak",
-   "ceil": "walnut",
-   "light": 140
+   "floorm": "oak_floor",
+   "wall": "plaster_warm",
+   "ceil": "oak_decking",
+   "light": 150,
+   "label": "living room"
   },
   {
-   "name": "bedroom",
+   "name": "away",
    "floor": "main",
-   "b": [
-    24,
-    30,
-    42,
-    46
+   "parts": [
+    [
+     22,
+     32,
+     28,
+     46
+    ]
    ],
-   "wall": "plaster",
-   "floorm": "wool",
-   "ceil": "plaster",
+   "floorm": "oak_floor",
+   "wall": "wallpaper_geo_olive",
+   "ceil": "olive_paint",
+   "light": 60,
+   "label": "away room"
+  },
+  {
+   "name": "primary_bath",
+   "floor": "main",
+   "parts": [
+    [
+     28,
+     13,
+     39,
+     22
+    ],
+    [
+     39,
+     16.5,
+     42,
+     22
+    ]
+   ],
+   "floorm": "terrazzo",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 90,
+   "label": "primary bath"
+  },
+  {
+   "name": "wc",
+   "floor": "main",
+   "parts": [
+    [
+     39,
+     13,
+     42,
+     16.5
+    ]
+   ],
+   "floorm": "terrazzo",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 20,
+   "label": "wc"
+  },
+  {
+   "name": "suite_hall",
+   "floor": "main",
+   "parts": [
+    [
+     28,
+     22,
+     31,
+     30
+    ]
+   ],
+   "floorm": "oak_floor",
+   "wall": "oxblood",
+   "ceil": "plaster_warm",
+   "light": 30,
+   "label": "suite hall"
+  },
+  {
+   "name": "primary_closet",
+   "floor": "main",
+   "parts": [
+    [
+     31,
+     22,
+     42,
+     30
+    ]
+   ],
+   "floorm": "wool_carpet",
+   "wall": "walnut",
+   "ceil": "plaster_warm",
+   "light": 80,
+   "label": "primary closet"
+  },
+  {
+   "name": "primary_bedroom",
+   "floor": "main",
+   "parts": [
+    [
+     28,
+     30,
+     42,
+     46
+    ]
+   ],
+   "floorm": "wool_carpet",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 90,
+   "label": "primary bedroom"
+  },
+  {
+   "name": "her_office",
+   "floor": "second",
+   "parts": [
+    [
+     0,
+     6,
+     11,
+     26
+    ]
+   ],
+   "floorm": "wool_carpet_charcoal",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 100,
+   "label": "her office"
+  },
+  {
+   "name": "lab",
+   "floor": "second",
+   "parts": [
+    [
+     11,
+     6,
+     22,
+     16
+    ],
+    [
+     14,
+     16,
+     22,
+     22
+    ],
+    [
+     22,
+     6,
+     28,
+     13
+    ]
+   ],
+   "floorm": "cork",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 120
+  },
+  {
+   "name": "rack_closet",
+   "floor": "second",
+   "parts": [
+    [
+     11,
+     16,
+     14,
+     22
+    ]
+   ],
+   "floorm": "concrete_sealed",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 15,
+   "label": "rack"
+  },
+  {
+   "name": "work_corridor",
+   "floor": "second",
+   "parts": [
+    [
+     11,
+     22,
+     22,
+     26
+    ]
+   ],
+   "floorm": "oak_floor",
+   "wall": "oxblood",
+   "ceil": "plaster_warm",
+   "light": 30,
+   "label": "work corridor"
+  },
+  {
+   "name": "stair_well",
+   "floor": "second",
+   "parts": [
+    [
+     28,
+     0,
+     34,
+     13
+    ]
+   ],
+   "floorm": "oak_floor",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 40,
+   "void": true,
+   "label": "stair well (open)"
+  },
+  {
+   "name": "landing",
+   "floor": "second",
+   "parts": [
+    [
+     22,
+     13,
+     42,
+     19
+    ]
+   ],
+   "floorm": "oak_floor",
+   "wall": "oxblood",
+   "ceil": "plaster_warm",
+   "light": 80
+  },
+  {
+   "name": "elevator_closet2",
+   "floor": "second",
+   "parts": [
+    [
+     34,
+     6,
+     37,
+     9
+    ]
+   ],
+   "floorm": "concrete_sealed",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 10,
+   "label": "elevator"
+  },
+  {
+   "name": "up_laundry",
+   "floor": "second",
+   "parts": [
+    [
+     34,
+     9,
+     42,
+     13
+    ],
+    [
+     37,
+     6,
+     42,
+     9
+    ]
+   ],
+   "floorm": "terrazzo",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 30,
+   "label": "laundry closet"
+  },
+  {
+   "name": "hall_south",
+   "floor": "second",
+   "parts": [
+    [
+     22,
+     19,
+     28,
+     26
+    ]
+   ],
+   "floorm": "oak_floor",
+   "wall": "oxblood",
+   "ceil": "plaster_warm",
+   "light": 40,
+   "label": "hall"
+  },
+  {
+   "name": "hall",
+   "floor": "second",
+   "parts": [
+    [
+     22,
+     26,
+     28,
+     46
+    ]
+   ],
+   "floorm": "oak_floor",
+   "wall": "oxblood",
+   "ceil": "plaster_warm",
+   "light": 80,
+   "label": "hall (kid zone)"
+  },
+  {
+   "name": "kid_bath_sink",
+   "floor": "second",
+   "parts": [
+    [
+     28,
+     19,
+     35,
+     28
+    ]
+   ],
+   "floorm": "terrazzo",
+   "wall": "tile_white",
+   "ceil": "plaster_warm",
+   "light": 60,
+   "label": "kid bath"
+  },
+  {
+   "name": "kid_bath_tub",
+   "floor": "second",
+   "parts": [
+    [
+     35,
+     19,
+     42,
+     28
+    ]
+   ],
+   "floorm": "terrazzo",
+   "wall": "tile_white",
+   "ceil": "plaster_warm",
+   "light": 50,
+   "label": "tub room"
+  },
+  {
+   "name": "bedroom_b",
+   "floor": "second",
+   "parts": [
+    [
+     31,
+     28,
+     42,
+     37
+    ],
+    [
+     28,
+     37,
+     42,
+     46
+    ]
+   ],
+   "floorm": "wool_carpet",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 80,
+   "label": "bedroom B"
+  },
+  {
+   "name": "closet_b",
+   "floor": "second",
+   "parts": [
+    [
+     28,
+     28,
+     31,
+     33
+    ]
+   ],
+   "floorm": "wool_carpet",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 10,
+   "label": "closet"
+  },
+  {
+   "name": "linen",
+   "floor": "second",
+   "parts": [
+    [
+     28,
+     33,
+     31,
+     37
+    ]
+   ],
+   "floorm": "oak_floor",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 10,
+   "label": "linen"
+  },
+  {
+   "name": "bedroom_a",
+   "floor": "second",
+   "parts": [
+    [
+     0,
+     26,
+     11,
+     31
+    ],
+    [
+     0,
+     31,
+     14,
+     40
+    ]
+   ],
+   "floorm": "wool_carpet",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 80,
+   "label": "bedroom A"
+  },
+  {
+   "name": "closet_a",
+   "floor": "second",
+   "parts": [
+    [
+     11,
+     26,
+     14,
+     31
+    ]
+   ],
+   "floorm": "wool_carpet",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 10,
+   "label": "closet"
+  },
+  {
+   "name": "hedge_alcove",
+   "floor": "second",
+   "parts": [
+    [
+     0,
+     40,
+     14,
+     46
+    ]
+   ],
+   "floorm": "wool_carpet",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 50,
+   "label": "hedge alcove"
+  },
+  {
+   "name": "loft",
+   "floor": "second",
+   "parts": [
+    [
+     14,
+     26,
+     22,
+     46
+    ]
+   ],
+   "floorm": "oak_floor",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
    "light": 90
   },
   {
    "name": "gym",
    "floor": "basement",
-   "b": [
-    0,
-    0,
-    22,
-    30
+   "parts": [
+    [
+     0,
+     0,
+     22,
+     20
+    ]
    ],
-   "wall": "plaster",
-   "floorm": "rubber",
-   "ceil": "plaster",
-   "light": 220
+   "floorm": "rubber_floor",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 260
+  },
+  {
+   "name": "sauna",
+   "floor": "basement",
+   "parts": [
+    [
+     0,
+     20,
+     8,
+     28
+    ]
+   ],
+   "floorm": "cedar_sauna",
+   "wall": "cedar_sauna",
+   "ceil": "cedar_sauna",
+   "light": 25
   },
   {
    "name": "recovery",
    "floor": "basement",
-   "b": [
-    22,
-    0,
-    30,
-    14
+   "parts": [
+    [
+     8,
+     20,
+     22,
+     28
+    ]
    ],
-   "wall": "terrazzo",
    "floorm": "terrazzo",
-   "ceil": "plaster",
-   "light": 110
-  },
-  {
-   "name": "bar",
-   "floor": "basement",
-   "b": [
-    22,
-    14,
-    30,
-    30
-   ],
-   "wall": "oxblood",
-   "floorm": "terrazzo",
-   "ceil": "dark",
-   "light": 60
-  },
-  {
-   "name": "mechanical",
-   "floor": "basement",
-   "b": [
-    30,
-    0,
-    42,
-    20
-   ],
-   "wall": "concrete",
-   "floorm": "concrete",
-   "ceil": "concrete",
-   "light": 90
-  },
-  {
-   "name": "storage",
-   "floor": "basement",
-   "b": [
-    30,
-    20,
-    42,
-    30
-   ],
-   "wall": "concrete",
-   "floorm": "concrete",
-   "ceil": "concrete",
-   "light": 60
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 90,
+   "label": "recovery suite"
   },
   {
    "name": "lounge",
    "floor": "basement",
-   "b": [
-    0,
-    30,
-    30,
-    46
+   "parts": [
+    [
+     0,
+     28,
+     22,
+     46
+    ]
    ],
-   "wall": "walnut",
-   "floorm": "wool",
-   "ceil": "dark",
+   "floorm": "wool_carpet_charcoal",
+   "wall": "oxblood",
+   "ceil": "ceiling_dark",
    "light": 90
   },
   {
-   "name": "stair",
+   "name": "bar",
    "floor": "basement",
-   "b": [
-    30,
-    30,
-    42,
-    46
+   "parts": [
+    [
+     22,
+     34,
+     28,
+     46
+    ]
    ],
-   "wall": "plaster",
-   "floorm": "oak",
-   "ceil": "plaster",
-   "light": 70
+   "floorm": "terrazzo",
+   "wall": "wallpaper_botanical_dark",
+   "ceil": "ceiling_dark",
+   "light": 60
+  },
+  {
+   "name": "bhall",
+   "floor": "basement",
+   "parts": [
+    [
+     22,
+     0,
+     28,
+     34
+    ]
+   ],
+   "floorm": "oak_floor",
+   "wall": "oxblood",
+   "ceil": "oxblood",
+   "light": 60,
+   "label": "basement hall"
+  },
+  {
+   "name": "bstair_hall",
+   "floor": "basement",
+   "parts": [
+    [
+     28,
+     0,
+     34,
+     13
+    ]
+   ],
+   "floorm": "oak_floor",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 40,
+   "label": "stair hall"
+  },
+  {
+   "name": "battery",
+   "floor": "basement",
+   "parts": [
+    [
+     34,
+     0,
+     42,
+     13
+    ]
+   ],
+   "floorm": "concrete_sealed",
+   "wall": "concrete_sealed",
+   "ceil": "concrete_sealed",
+   "light": 60,
+   "label": "battery room"
+  },
+  {
+   "name": "mechanical",
+   "floor": "basement",
+   "parts": [
+    [
+     28,
+     13,
+     42,
+     34
+    ]
+   ],
+   "floorm": "concrete_sealed",
+   "wall": "concrete_sealed",
+   "ceil": "concrete_sealed",
+   "light": 120
+  },
+  {
+   "name": "storage",
+   "floor": "basement",
+   "parts": [
+    [
+     28,
+     34,
+     42,
+     46
+    ]
+   ],
+   "floorm": "concrete_sealed",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 60,
+   "label": "storage / projects"
+  },
+  {
+   "name": "garage",
+   "floor": "garage",
+   "parts": [
+    [
+     -6,
+     64,
+     18,
+     94
+    ]
+   ],
+   "floorm": "concrete_sealed",
+   "wall": "plaster_warm",
+   "ceil": "plaster_warm",
+   "light": 200,
+   "exterior_wall": 1.0
   }
  ],
- "floors": {
-  "main": {
-   "z": 0.0,
-   "h": 9.5
-  },
-  "basement": {
-   "z": -10.0,
-   "h": 9.5
-  }
- },
  "openings": [
   {
-   "note": "front door",
+   "note": "S1 front door",
    "floor": "main",
    "axis": "x",
    "at": 0,
-   "c": 14,
+   "c": 11,
+   "w": 4,
+   "z0": 0,
+   "h": 8.0,
+   "kind": "door",
+   "exterior": true,
+   "swing": "in",
+   "open_deg": 0,
+   "leaf": "walnut_slab"
+  },
+  {
+   "note": "S2 sidelight",
+   "floor": "main",
+   "axis": "x",
+   "at": 0,
+   "c": 13.5,
+   "w": 1,
+   "z0": 0,
+   "h": 8.0,
+   "kind": "window"
+  },
+  {
+   "note": "S3 powder slot",
+   "floor": "main",
+   "axis": "x",
+   "at": 0,
+   "c": 16,
+   "w": 2,
+   "z0": 6.0,
+   "h": 1.5,
+   "kind": "window",
+   "obscure": true
+  },
+  {
+   "note": "S4 spine bench window",
+   "floor": "main",
+   "axis": "x",
+   "at": 0,
+   "c": 25,
+   "w": 5,
+   "z0": 0,
+   "h": 8.5,
+   "kind": "window",
+   "portal": true
+  },
+  {
+   "note": "S5 stair hall clerestory",
+   "floor": "main",
+   "axis": "x",
+   "at": 0,
+   "c": 31,
+   "w": 4,
+   "z0": 7.0,
+   "h": 2.0,
+   "kind": "window"
+  },
+  {
+   "note": "S6 laundry window",
+   "floor": "main",
+   "axis": "x",
+   "at": 0,
+   "c": 38.5,
+   "w": 5,
+   "z0": 5.0,
+   "h": 2.5,
+   "kind": "window",
+   "obscure": true
+  },
+  {
+   "note": "W1 mudroom side door",
+   "floor": "main",
+   "axis": "y",
+   "at": 0,
+   "c": 17.75,
+   "w": 3,
+   "z0": 0,
+   "h": 7.0,
+   "kind": "door",
+   "exterior": true,
+   "swing": "in",
+   "open_deg": 0,
+   "leaf": "half_glass"
+  },
+  {
+   "note": "N1 living lift-and-slide",
+   "floor": "main",
+   "axis": "x",
+   "at": 46,
+   "c": 11,
+   "w": 16,
+   "z0": 0,
+   "h": 8.5,
+   "kind": "glasswall",
+   "panels": 4,
+   "portal": true,
+   "door_panel": null
+  },
+  {
+   "note": "N2 away window",
+   "floor": "main",
+   "axis": "x",
+   "at": 46,
+   "c": 25,
+   "w": 4,
+   "z0": 2.5,
+   "h": 5.0,
+   "kind": "window"
+  },
+  {
+   "note": "N3 bedroom window",
+   "floor": "main",
+   "axis": "x",
+   "at": 46,
+   "c": 36,
+   "w": 8,
+   "z0": 2.0,
+   "h": 6.0,
+   "kind": "window",
+   "portal": true,
+   "mullions": [
+    2,
+    6
+   ]
+  },
+  {
+   "note": "E1 laundry high window",
+   "floor": "main",
+   "axis": "y",
+   "at": 42,
+   "c": 4,
+   "w": 4,
+   "z0": 6.0,
+   "h": 2.0,
+   "kind": "window"
+  },
+  {
+   "note": "E2 bath window",
+   "floor": "main",
+   "axis": "y",
+   "at": 42,
+   "c": 18,
+   "w": 3,
+   "z0": 5.0,
+   "h": 2.0,
+   "kind": "window",
+   "obscure": true
+  },
+  {
+   "note": "E3 closet window",
+   "floor": "main",
+   "axis": "y",
+   "at": 42,
+   "c": 26,
+   "w": 4,
+   "z0": 5.0,
+   "h": 2.5,
+   "kind": "window",
+   "obscure": true
+  },
+  {
+   "note": "E4 bedroom window",
+   "floor": "main",
+   "axis": "y",
+   "at": 42,
+   "c": 39,
+   "w": 6,
+   "z0": 2.5,
+   "h": 5.0,
+   "kind": "window",
+   "portal": true
+  },
+  {
+   "note": "E5 cat tunnel",
+   "floor": "main",
+   "axis": "y",
+   "at": 42,
+   "c": 38.25,
+   "w": 1.5,
+   "z0": 0.2,
+   "h": 1.5,
+   "kind": "hatch"
+  },
+  {
+   "note": "S7 her office window",
+   "floor": "second",
+   "axis": "x",
+   "at": 6,
+   "c": 5.5,
+   "w": 7,
+   "z0": 2.5,
+   "h": 5.0,
+   "kind": "window"
+  },
+  {
+   "note": "S8 lab window run",
+   "floor": "second",
+   "axis": "x",
+   "at": 6,
+   "c": 20,
+   "w": 14,
+   "z0": 2.5,
+   "h": 5.0,
+   "kind": "window",
+   "portal": true,
+   "panels": 4
+  },
+  {
+   "note": "S9 landing clerestory",
+   "floor": "second",
+   "axis": "x",
+   "at": 0,
+   "c": 31,
+   "w": 4,
+   "z0": 6.5,
+   "h": 2.0,
+   "kind": "window"
+  },
+  {
+   "note": "W3 her office",
+   "floor": "second",
+   "axis": "y",
+   "at": 0,
+   "c": 12,
+   "w": 6,
+   "z0": 2.5,
+   "h": 5.0,
+   "kind": "window"
+  },
+  {
+   "note": "W4 her office",
+   "floor": "second",
+   "axis": "y",
+   "at": 0,
+   "c": 21,
+   "w": 6,
+   "z0": 2.5,
+   "h": 5.0,
+   "kind": "window"
+  },
+  {
+   "note": "W5 bedroom A",
+   "floor": "second",
+   "axis": "y",
+   "at": 0,
+   "c": 32,
+   "w": 6,
+   "z0": 2.5,
+   "h": 5.0,
+   "kind": "window"
+  },
+  {
+   "note": "W6 hedge alcove",
+   "floor": "second",
+   "axis": "y",
+   "at": 0,
+   "c": 43,
+   "w": 4,
+   "z0": 2.5,
+   "h": 4.0,
+   "kind": "window"
+  },
+  {
+   "note": "N4 hedge alcove",
+   "floor": "second",
+   "axis": "x",
+   "at": 46,
+   "c": 5,
+   "w": 6,
+   "z0": 2.5,
+   "h": 4.0,
+   "kind": "window"
+  },
+  {
+   "note": "N5 loft window seat",
+   "floor": "second",
+   "axis": "x",
+   "at": 46,
+   "c": 18,
+   "w": 6,
+   "z0": 1.5,
+   "h": 6.0,
+   "kind": "window"
+  },
+  {
+   "note": "N6 hall window",
+   "floor": "second",
+   "axis": "x",
+   "at": 46,
+   "c": 25,
+   "w": 4,
+   "z0": 2.5,
+   "h": 5.0,
+   "kind": "window"
+  },
+  {
+   "note": "N7 bedroom B",
+   "floor": "second",
+   "axis": "x",
+   "at": 46,
+   "c": 37,
+   "w": 6,
+   "z0": 2.5,
+   "h": 5.0,
+   "kind": "window"
+  },
+  {
+   "note": "E6 landing window",
+   "floor": "second",
+   "axis": "y",
+   "at": 42,
+   "c": 16,
+   "w": 4,
+   "z0": 3.0,
+   "h": 4.0,
+   "kind": "window"
+  },
+  {
+   "note": "E7 kid bath tub",
+   "floor": "second",
+   "axis": "y",
+   "at": 42,
+   "c": 23,
+   "w": 4,
+   "z0": 4.0,
+   "h": 2.5,
+   "kind": "window",
+   "obscure": true
+  },
+  {
+   "note": "E8 bedroom B",
+   "floor": "second",
+   "axis": "y",
+   "at": 42,
+   "c": 36,
+   "w": 6,
+   "z0": 2.5,
+   "h": 5.0,
+   "kind": "window"
+  },
+  {
+   "note": "B1 gym well",
+   "floor": "basement",
+   "axis": "y",
+   "at": 0,
+   "c": 6,
+   "w": 4,
+   "z0": 6.5,
+   "h": 3.0,
+   "kind": "window",
+   "well": true
+  },
+  {
+   "note": "B2 lounge well",
+   "floor": "basement",
+   "axis": "y",
+   "at": 0,
+   "c": 38,
+   "w": 4,
+   "z0": 6.5,
+   "h": 3.0,
+   "kind": "window",
+   "well": true
+  },
+  {
+   "note": "B3 lounge well",
+   "floor": "basement",
+   "axis": "x",
+   "at": 46,
+   "c": 18,
+   "w": 4,
+   "z0": 6.5,
+   "h": 3.0,
+   "kind": "window",
+   "well": true
+  },
+  {
+   "note": "B4 storage well",
+   "floor": "basement",
+   "axis": "x",
+   "at": 46,
+   "c": 34,
+   "w": 4,
+   "z0": 6.5,
+   "h": 2.5,
+   "kind": "window",
+   "well": true
+  },
+  {
+   "note": "gear closet door",
+   "floor": "main",
+   "axis": "y",
+   "at": 8,
+   "c": 3,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0
+  },
+  {
+   "note": "vestibule inner glass door",
+   "floor": "main",
+   "axis": "x",
+   "at": 6,
+   "c": 11,
    "w": 4,
    "z0": 0,
    "h": 8,
-   "kind": "door"
+   "kind": "glassdoor",
+   "open_deg": 90
   },
   {
-   "note": "mudroom to foyer",
+   "note": "vestibule inner sidelight",
    "floor": "main",
-   "axis": "y",
-   "at": 10,
-   "c": 7,
-   "w": 3.5,
+   "axis": "x",
+   "at": 6,
+   "c": 13.5,
+   "w": 1,
    "z0": 0,
    "h": 8,
-   "kind": "cased"
+   "kind": "window",
+   "interior": true
   },
   {
-   "note": "foyer to spine",
+   "note": "powder door",
+   "floor": "main",
+   "axis": "x",
+   "at": 6,
+   "c": 16,
+   "w": 2.67,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0
+  },
+  {
+   "note": "coat closet door",
+   "floor": "main",
+   "axis": "x",
+   "at": 6,
+   "c": 20,
+   "w": 2.67,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0
+  },
+  {
+   "note": "panel closet door",
    "floor": "main",
    "axis": "y",
-   "at": 18,
-   "c": 7,
+   "at": 8,
+   "c": 9.5,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0
+  },
+  {
+   "note": "entry hall to spine",
+   "floor": "main",
+   "axis": "y",
+   "at": 22,
+   "c": 9.5,
    "w": 5,
    "z0": 0,
    "h": 8.5,
    "kind": "cased"
   },
   {
-   "note": "powder door",
+   "note": "spine to stair hall",
    "floor": "main",
    "axis": "y",
-   "at": 24,
-   "c": 2.5,
-   "w": 2.8,
-   "z0": 0,
-   "h": 7,
-   "kind": "door"
-  },
-  {
-   "note": "laundry door",
-   "floor": "main",
-   "axis": "y",
-   "at": 24,
-   "c": 7.75,
-   "w": 3,
-   "z0": 0,
-   "h": 7,
-   "kind": "door"
-  },
-  {
-   "note": "spine to away hall",
-   "floor": "main",
-   "axis": "y",
-   "at": 24,
-   "c": 12.25,
-   "w": 3.5,
+   "at": 28,
+   "c": 7,
+   "w": 4,
    "z0": 0,
    "h": 8.5,
    "kind": "cased"
   },
   {
-   "note": "away room door",
+   "note": "spine to kitchen",
    "floor": "main",
    "axis": "y",
+   "at": 22,
+   "c": 16,
+   "w": 6,
+   "z0": 0,
+   "h": 9.0,
+   "kind": "cased"
+  },
+  {
+   "note": "spine to suite hall",
+   "floor": "main",
+   "axis": "y",
+   "at": 28,
+   "c": 28.5,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0
+  },
+  {
+   "note": "bath to laundry",
+   "floor": "main",
+   "axis": "x",
+   "at": 13,
+   "c": 36.5,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0
+  },
+  {
+   "note": "elevator closet door",
+   "floor": "main",
+   "axis": "y",
+   "at": 37,
+   "c": 7.5,
+   "w": 2.5,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0
+  },
+  {
+   "note": "mudroom to kitchen",
+   "floor": "main",
+   "axis": "y",
+   "at": 8,
+   "c": 14.5,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 80
+  },
+  {
+   "note": "litter cat door",
+   "floor": "main",
+   "axis": "y",
+   "at": 3,
+   "c": 14.5,
+   "w": 0.67,
+   "z0": 0.2,
+   "h": 0.7,
+   "kind": "hatch"
+  },
+  {
+   "note": "litter service door",
+   "floor": "main",
+   "axis": "x",
+   "at": 16,
+   "c": 1.5,
+   "w": 2,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0
+  },
+  {
+   "note": "pantry door",
+   "floor": "main",
+   "axis": "y",
+   "at": 8,
+   "c": 24,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 45
+  },
+  {
+   "note": "kitchen open to living",
+   "floor": "main",
+   "axis": "x",
    "at": 30,
-   "c": 12.25,
-   "w": 3,
+   "c": 11,
+   "w": 22,
    "z0": 0,
-   "h": 8.5,
-   "kind": "door"
+   "h": 9.5,
+   "kind": "open",
+   "full": true
   },
   {
-   "note": "away street window",
-   "floor": "main",
-   "axis": "x",
-   "at": 0,
-   "c": 36,
-   "w": 8,
-   "z0": 1.5,
-   "h": 7,
-   "kind": "window"
-  },
-  {
-   "note": "kitchen to spine",
+   "note": "living to away pocket door",
    "floor": "main",
    "axis": "y",
-   "at": 18,
-   "c": 22,
-   "w": 8,
+   "at": 22,
+   "c": 38.5,
+   "w": 5,
    "z0": 0,
-   "h": 9,
-   "kind": "cased"
+   "h": 8,
+   "kind": "pocket",
+   "open_ft": 3
   },
   {
-   "note": "kitchen to living",
-   "floor": "main",
-   "axis": "x",
-   "at": 30,
-   "c": 9,
-   "w": 17,
-   "z0": 0,
-   "h": 9,
-   "kind": "open"
-  },
-  {
-   "note": "living to spine",
+   "note": "wc door",
    "floor": "main",
    "axis": "y",
-   "at": 18,
-   "c": 32,
-   "w": 3,
-   "z0": 0,
-   "h": 9,
-   "kind": "cased"
-  },
-  {
-   "note": "rear glass",
-   "floor": "main",
-   "axis": "x",
-   "at": 46,
-   "c": 9,
-   "w": 15,
-   "z0": 0,
-   "h": 8.5,
-   "kind": "glasswall",
-   "door_panel": 3
-  },
-  {
-   "note": "closet door",
-   "floor": "main",
-   "axis": "y",
-   "at": 24,
-   "c": 20,
-   "w": 3,
+   "at": 39,
+   "c": 14.75,
+   "w": 2.5,
    "z0": 0,
    "h": 7,
-   "kind": "door"
+   "kind": "door",
+   "open_deg": 0,
+   "leaf": "frosted"
   },
   {
    "note": "closet to bath",
    "floor": "main",
-   "axis": "y",
-   "at": 32,
-   "c": 22,
+   "axis": "x",
+   "at": 22,
+   "c": 36,
    "w": 3,
    "z0": 0,
    "h": 7,
-   "kind": "door"
+   "kind": "door",
+   "open_deg": 80
   },
   {
-   "note": "bedroom door",
-   "floor": "main",
-   "axis": "y",
-   "at": 24,
-   "c": 38,
-   "w": 3.5,
-   "z0": 0,
-   "h": 7,
-   "kind": "door"
-  },
-  {
-   "note": "bedroom to bath",
+   "note": "suite hall to bedroom",
    "floor": "main",
    "axis": "x",
    "at": 30,
+   "c": 29.5,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 80
+  },
+  {
+   "note": "suite hall to closet",
+   "floor": "main",
+   "axis": "y",
+   "at": 31,
+   "c": 26,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 80
+  },
+  {
+   "note": "closet to bedroom",
+   "floor": "main",
+   "axis": "x",
+   "at": 30,
+   "c": 36,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 80
+  },
+  {
+   "note": "her office door",
+   "floor": "second",
+   "axis": "y",
+   "at": 11,
+   "c": 24,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0
+  },
+  {
+   "note": "hall to work corridor",
+   "floor": "second",
+   "axis": "y",
+   "at": 22,
+   "c": 24,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 80
+  },
+  {
+   "note": "work corridor to lab",
+   "floor": "second",
+   "axis": "x",
+   "at": 22,
+   "c": 16.5,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 80
+  },
+  {
+   "note": "rack closet glass door",
+   "floor": "second",
+   "axis": "y",
+   "at": 14,
+   "c": 19,
+   "w": 2.5,
+   "z0": 0,
+   "h": 7,
+   "kind": "glassdoor",
+   "open_deg": 0
+  },
+  {
+   "note": "landing to lab",
+   "floor": "second",
+   "axis": "y",
+   "at": 22,
+   "c": 16,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 80
+  },
+  {
+   "note": "landing to laundry closet",
+   "floor": "second",
+   "axis": "x",
+   "at": 13,
+   "c": 39,
+   "w": 4,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0,
+   "leaves": 2
+  },
+  {
+   "note": "chute flap",
+   "floor": "second",
+   "axis": "x",
+   "at": 13,
+   "c": 35,
+   "w": 1.5,
+   "z0": 3.0,
+   "h": 1.5,
+   "kind": "hatch"
+  },
+  {
+   "note": "elevator closet2 door",
+   "floor": "second",
+   "axis": "x",
+   "at": 9,
+   "c": 35.5,
+   "w": 2.5,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0
+  },
+  {
+   "note": "kid zone door",
+   "floor": "second",
+   "axis": "x",
+   "at": 26,
+   "c": 25,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 90
+  },
+  {
+   "note": "kid zone sidelight",
+   "floor": "second",
+   "axis": "x",
+   "at": 26,
+   "c": 27.25,
+   "w": 1.5,
+   "z0": 0,
+   "h": 7,
+   "kind": "window",
+   "interior": true
+  },
+  {
+   "note": "hall to kid bath",
+   "floor": "second",
+   "axis": "y",
+   "at": 28,
+   "c": 23.5,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0
+  },
+  {
+   "note": "sink room to tub room",
+   "floor": "second",
+   "axis": "y",
+   "at": 35,
+   "c": 23.5,
+   "w": 2.67,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 45,
+   "leaf": "frosted"
+  },
+  {
+   "note": "hall to bedroom B",
+   "floor": "second",
+   "axis": "y",
+   "at": 28,
+   "c": 40,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 80
+  },
+  {
+   "note": "hall to linen",
+   "floor": "second",
+   "axis": "y",
+   "at": 28,
+   "c": 35,
+   "w": 2,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0
+  },
+  {
+   "note": "closet B door",
+   "floor": "second",
+   "axis": "y",
+   "at": 31,
+   "c": 30.5,
+   "w": 2.67,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 60
+  },
+  {
+   "note": "loft to bedroom A",
+   "floor": "second",
+   "axis": "y",
+   "at": 14,
    "c": 37,
    "w": 3,
    "z0": 0,
    "h": 7,
-   "kind": "door"
+   "kind": "door",
+   "open_deg": 80
   },
   {
-   "note": "bedroom garden window",
-   "floor": "main",
-   "axis": "x",
-   "at": 46,
-   "c": 33,
-   "w": 10,
-   "z0": 2,
-   "h": 6,
-   "kind": "window"
-  },
-  {
-   "note": "kitchen clerestory",
-   "floor": "main",
+   "note": "closet A door",
+   "floor": "second",
    "axis": "y",
-   "at": 0,
-   "c": 22,
-   "w": 14,
-   "z0": 7,
-   "h": 2,
-   "kind": "window"
+   "at": 11,
+   "c": 28.5,
+   "w": 2.67,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0
   },
   {
-   "note": "gym to lounge glass",
+   "note": "loft to hedge alcove",
+   "floor": "second",
+   "axis": "y",
+   "at": 14,
+   "c": 43,
+   "w": 4,
+   "z0": 0,
+   "h": 7,
+   "kind": "cased"
+  },
+  {
+   "note": "loft open to hall",
+   "floor": "second",
+   "axis": "y",
+   "at": 22,
+   "c": 36,
+   "w": 20,
+   "z0": 0,
+   "h": 9.0,
+   "kind": "open",
+   "full": true
+  },
+  {
+   "note": "bhall to bstair hall",
    "floor": "basement",
-   "axis": "x",
-   "at": 30,
-   "c": 8,
-   "w": 8,
+   "axis": "y",
+   "at": 28,
+   "c": 7,
+   "w": 4,
    "z0": 0,
    "h": 8.5,
-   "kind": "glasswall",
-   "door_panel": 1
+   "kind": "cased"
   },
   {
-   "note": "gym to recovery",
+   "note": "gym glass door",
    "floor": "basement",
    "axis": "y",
    "at": 22,
-   "c": 4,
+   "c": 10,
    "w": 3,
    "z0": 0,
    "h": 7,
-   "kind": "door"
+   "kind": "glassdoor",
+   "open_deg": 0
+  },
+  {
+   "note": "gym sidelight",
+   "floor": "basement",
+   "axis": "y",
+   "at": 22,
+   "c": 14,
+   "w": 4,
+   "z0": 0,
+   "h": 7,
+   "kind": "window",
+   "interior": true
+  },
+  {
+   "note": "hall to recovery",
+   "floor": "basement",
+   "axis": "y",
+   "at": 22,
+   "c": 24,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 80
+  },
+  {
+   "note": "gym to recovery glass door",
+   "floor": "basement",
+   "axis": "x",
+   "at": 20,
+   "c": 20.5,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "glassdoor",
+   "open_deg": 0
+  },
+  {
+   "note": "sauna glass front",
+   "floor": "basement",
+   "axis": "y",
+   "at": 8,
+   "c": 24,
+   "w": 6,
+   "z0": 0,
+   "h": 8,
+   "kind": "glasswall",
+   "panels": 1,
+   "door_panel": null,
+   "interior": true
+  },
+  {
+   "note": "hall to mechanical",
+   "floor": "basement",
+   "axis": "y",
+   "at": 28,
+   "c": 16,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0,
+   "leaf": "steel"
+  },
+  {
+   "note": "hall open to lounge",
+   "floor": "basement",
+   "axis": "x",
+   "at": 34,
+   "c": 25,
+   "w": 6,
+   "z0": 0,
+   "h": 9.5,
+   "kind": "open",
+   "full": true
   },
   {
    "note": "bar open to lounge",
    "floor": "basement",
-   "axis": "x",
-   "at": 30,
-   "c": 26,
-   "w": 7,
+   "axis": "y",
+   "at": 22,
+   "c": 40,
+   "w": 12,
    "z0": 0,
-   "h": 9,
-   "kind": "open"
+   "h": 9.5,
+   "kind": "open",
+   "full": true
   },
   {
-   "note": "lounge to stair",
+   "note": "bar to storage",
    "floor": "basement",
    "axis": "y",
-   "at": 30,
-   "c": 38,
-   "w": 4,
+   "at": 28,
+   "c": 40,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0
+  },
+  {
+   "note": "mechanical to storage",
+   "floor": "basement",
+   "axis": "x",
+   "at": 34,
+   "c": 35,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0,
+   "leaf": "steel"
+  },
+  {
+   "note": "mechanical to battery",
+   "floor": "basement",
+   "axis": "x",
+   "at": 13,
+   "c": 38.5,
+   "w": 3,
+   "z0": 0,
+   "h": 7,
+   "kind": "door",
+   "open_deg": 0,
+   "leaf": "steel"
+  },
+  {
+   "note": "garage door W",
+   "floor": "garage",
+   "axis": "x",
+   "at": 94,
+   "c": 0,
+   "w": 9,
    "z0": 0,
    "h": 8,
-   "kind": "cased"
+   "kind": "garagedoor"
   },
   {
-   "note": "storage to mechanical",
-   "floor": "basement",
+   "note": "garage door E",
+   "floor": "garage",
    "axis": "x",
-   "at": 20,
-   "c": 36,
+   "at": 94,
+   "c": 12,
+   "w": 9,
+   "z0": 0,
+   "h": 8,
+   "kind": "garagedoor"
+  },
+  {
+   "note": "garage pedestrian door",
+   "floor": "garage",
+   "axis": "x",
+   "at": 64,
+   "c": -3,
    "w": 3,
    "z0": 0,
    "h": 7,
-   "kind": "door"
+   "kind": "door",
+   "exterior": true,
+   "open_deg": 0,
+   "leaf": "half_glass"
   },
   {
-   "note": "stair to storage",
-   "floor": "basement",
-   "axis": "x",
-   "at": 30,
-   "c": 36,
-   "w": 3,
-   "z0": 0,
-   "h": 7,
-   "kind": "door"
+   "note": "garage clerestory E",
+   "floor": "garage",
+   "axis": "y",
+   "at": 18,
+   "c": 79,
+   "w": 26,
+   "z0": 9,
+   "h": 2,
+   "kind": "window"
+  },
+  {
+   "note": "garage clerestory W",
+   "floor": "garage",
+   "axis": "y",
+   "at": -6,
+   "c": 79,
+   "w": 26,
+   "z0": 9,
+   "h": 2,
+   "kind": "window"
   }
  ],
- "pits": [
+ "voids": [
   {
-   "room": "lounge",
+   "note": "down-stair slot through the main floor",
+   "floor": "main",
+   "what": "floor",
    "b": [
-    4,
-    34,
-    18,
-    44
-   ],
-   "depth": 1.5,
-   "seat": "teal",
-   "edge": "walnut",
-   "open_side": "north"
-  }
- ],
- "features": [
-  {
-   "note": "kitchen island",
-   "box": [
-    4,
-    19,
-    10.2,
-    22.5,
-    0,
-    3
-   ],
-   "m": "walnut"
-  },
-  {
-   "note": "island olive base",
-   "box": [
-    4,
-    19.2,
-    10,
-    22.3,
-    0,
-    2.9
-   ],
-   "m": "olive"
-  },
-  {
-   "note": "island stone top",
-   "box": [
-    3.9,
-    18.9,
-    10.3,
-    22.6,
-    3,
-    3.15
-   ],
-   "m": "stone"
-  },
-  {
-   "note": "kitchen back counter",
-   "box": [
-    0.5,
-    14.25,
-    17.5,
-    16.4,
-    0,
-    3
-   ],
-   "m": "walnut"
-  },
-  {
-   "note": "fireplace walnut wall",
-   "box": [
-    0.5,
     31,
-    1.0,
-    45.5,
-    0,
-    9.5
-   ],
-   "m": "walnut"
-  },
-  {
-   "note": "hearth bench",
-   "box": [
-    1.0,
-    33,
-    2.5,
-    43,
-    0,
-    1.4
-   ],
-   "m": "stone"
-  },
-  {
-   "note": "firebox",
-   "box": [
-    0.9,
-    36,
-    1.2,
-    40,
-    1.4,
-    4.2
-   ],
-   "m": "black"
-  },
-  {
-   "note": "fire glow",
-   "box": [
-    1.2,
-    37,
-    1.28,
-    39,
-    1.7,
-    3.2
-   ],
-   "m": "lamp"
-  },
-  {
-   "note": "living sofa",
-   "box": [
-    6,
-    36,
-    14,
-    39,
-    0,
-    2.4
-   ],
-   "m": "orange"
-  },
-  {
-   "note": "living rug",
-   "box": [
-    4,
-    33,
-    16,
-    43,
-    0,
-    0.05
-   ],
-   "m": "wool"
-  },
-  {
-   "note": "living bookwall",
-   "box": [
-    17.0,
+    0.75,
     34,
-    17.5,
-    45.5,
-    0,
-    9.5
-   ],
-   "m": "walnut"
-  },
-  {
-   "note": "away lounge chair",
-   "box": [
-    35,
-    5,
-    38,
-    8,
-    0,
-    2.4
-   ],
-   "m": "walnut"
-  },
-  {
-   "note": "away bookwall",
-   "box": [
-    41.5,
-    0.5,
-    42,
-    13.5,
-    0,
-    9.5
-   ],
-   "m": "walnut"
-  },
-  {
-   "note": "bed",
-   "box": [
-    30,
-    36,
-    37,
-    43,
-    0,
-    1.6
-   ],
-   "m": "wool"
-  },
-  {
-   "note": "headboard",
-   "box": [
-    30,
-    43,
-    37,
-    43.4,
-    0,
-    3.5
-   ],
-   "m": "walnut"
-  },
-  {
-   "note": "gym platform",
-   "box": [
-    3,
-    3,
-    11,
-    11,
-    -10,
-    -9.85
-   ],
-   "m": "oak"
-  },
-  {
-   "note": "gym rack",
-   "box": [
-    5,
-    5,
-    9,
-    9,
-    -10,
-    -2.5
-   ],
-   "m": "black"
-  },
-  {
-   "note": "gym mirror wall",
-   "box": [
-    0.5,
-    12,
-    0.6,
-    28,
-    -10,
-    -2
-   ],
-   "m": "terrazzo"
-  },
-  {
-   "note": "sauna box",
-   "box": [
-    23,
-    8,
-    29,
-    13.5,
-    -10,
-    -3
-   ],
-   "m": "cedar"
-  },
-  {
-   "note": "sauna glass front",
-   "box": [
-    23,
-    8,
-    29,
-    8.1,
-    -10,
-    -3
-   ],
-   "m": "lamp"
-  },
-  {
-   "note": "shower wall",
-   "box": [
-    29.5,
-    0.5,
-    29.9,
-    6,
-    -10,
-    -2
-   ],
-   "m": "terrazzo"
-  },
-  {
-   "note": "bar counter",
-   "box": [
-    23,
-    24,
-    29,
-    26,
-    -10,
-    -6.5
-   ],
-   "m": "terrazzo"
-  },
-  {
-   "note": "bar back wall",
-   "box": [
-    29.5,
-    15,
-    29.9,
-    29.5,
-    -10,
-    -0.5
-   ],
-   "m": "olive"
-  },
-  {
-   "note": "lounge tv panel",
-   "box": [
-    7,
-    45.4,
-    15,
-    45.6,
-    -7.5,
-    -3
-   ],
-   "m": "black"
-  },
-  {
-   "note": "lounge games table",
-   "box": [
-    23,
-    40,
-    27,
-    43,
-    -10,
-    -7.5
-   ],
-   "m": "walnut"
-  }
- ],
- "sun": {
-  "direction": [
-   0.35,
-   -0.55,
-   -0.75
-  ],
-  "strength": 4.0
- },
- "world": {
-  "rgb": [
-   0.9,
-   0.85,
-   0.78
-  ],
-  "strength": 0.8
- },
- "camera": {
-  "focal_mm": 24,
-  "sensor_mm": 36,
-  "exposure": 0.0,
-  "fstop": 4.0,
-  "handheld_ft": 0.06
- },
- "shots": [
-  {
-   "name": "main_floor",
-   "seconds": 12,
-   "path": [
-    {
-     "t": 0,
-     "pos": [
-      14,
-      -7,
-      5.5
-     ],
-     "look": [
-      14,
-      10,
-      5.0
-     ]
-    },
-    {
-     "t": 2.7,
-     "pos": [
-      14,
-      4,
-      5.5
-     ],
-     "look": [
-      17,
-      10,
-      5.0
-     ]
-    },
-    {
-     "t": 4.0,
-     "pos": [
-      18,
-      7,
-      5.5
-     ],
-     "look": [
-      21,
-      20,
-      5.0
-     ]
-    },
-    {
-     "t": 5.6,
-     "pos": [
-      20.5,
-      13,
-      5.5
-     ],
-     "look": [
-      17,
-      24,
-      5.0
-     ]
-    },
-    {
-     "t": 8.0,
-     "pos": [
-      18,
-      22,
-      5.5
-     ],
-     "look": [
-      6,
-      21,
-      4.5
-     ]
-    },
-    {
-     "t": 9.2,
-     "pos": [
-      15.5,
-      25.5,
-      5.5
-     ],
-     "look": [
-      5,
-      20,
-      4.5
-     ]
-    },
-    {
-     "t": 11.3,
-     "pos": [
-      11,
-      32.5,
-      5.5
-     ],
-     "look": [
-      3,
-      40,
-      4.5
-     ]
-    },
-    {
-     "t": 12,
-     "pos": [
-      10.5,
-      34.5,
-      5.5
-     ],
-     "look": [
-      3,
-      41,
-      4.0
-     ]
-    }
+    13.25
    ]
   },
   {
-   "name": "basement",
-   "seconds": 9,
-   "path": [
-    {
-     "t": 0,
-     "pos": [
-      8,
-      22,
-      -4.5
-     ],
-     "look": [
-      12,
-      40,
-      -6.0
-     ]
-    },
-    {
-     "t": 2.5,
-     "pos": [
-      9,
-      31,
-      -4.5
-     ],
-     "look": [
-      13,
-      40,
-      -7.0
-     ]
-    },
-    {
-     "t": 5,
-     "pos": [
-      9.5,
-      31.8,
-      -4.3
-     ],
-     "look": [
-      14.5,
-      42,
-      -9.3
-     ]
-    },
-    {
-     "t": 6.8,
-     "pos": [
-      16,
-      32.5,
-      -4.5
-     ],
-     "look": [
-      24,
-      34,
-      -7.0
-     ]
-    },
-    {
-     "t": 9,
-     "pos": [
-      21.5,
-      35,
-      -4.5
-     ],
-     "look": [
-      27.5,
-      25,
-      -6.5
-     ]
-    }
-   ],
-   "exposure": 0.8
+   "note": "two-story well: no main ceiling / second floor over the stair hall",
+   "floor": "main",
+   "what": "ceil",
+   "b": [
+    28,
+    0,
+    34,
+    13
+   ]
+  },
+  {
+   "note": "two-story well: no second floor slab",
+   "floor": "second",
+   "what": "floor",
+   "b": [
+    28,
+    0,
+    34,
+    13
+   ]
+  },
+  {
+   "note": "down-stair passes the basement ceiling",
+   "floor": "basement",
+   "what": "ceil",
+   "b": [
+    31,
+    0.75,
+    34,
+    13.25
+   ]
+  },
+  {
+   "note": "laundry chute",
+   "floor": "main",
+   "what": "ceil",
+   "b": [
+    34.25,
+    11.25,
+    35.75,
+    12.75
+   ]
+  },
+  {
+   "note": "laundry chute",
+   "floor": "second",
+   "what": "floor",
+   "b": [
+    34.25,
+    11.25,
+    35.75,
+    12.75
+   ]
   }
  ],
- "stills": [
+ "stairs": [
   {
-   "name": "01_front_door",
-   "shot": "main_floor",
-   "t": 0
+   "name": "up_stair",
+   "x0": 31,
+   "x1": 34,
+   "y_from": 0.75,
+   "y_to": 13.25,
+   "z_from": 0.0,
+   "z_to": 10.0,
+   "risers": 16,
+   "tread_m": "oak_floor",
+   "riser_m": "oak_floor",
+   "stringer_m": "walnut",
+   "rail_m": "bronze_black",
+   "guard": "west",
+   "handrail": "east"
   },
   {
-   "name": "02_spine",
-   "shot": "main_floor",
-   "t": 5.6
-  },
-  {
-   "name": "03_kitchen",
-   "shot": "main_floor",
-   "t": 9.2
-  },
-  {
-   "name": "04_living",
-   "shot": "main_floor",
-   "t": 12
-  },
-  {
-   "name": "05_gym",
-   "shot": "basement",
-   "t": 0
-  },
-  {
-   "name": "06_pit",
-   "shot": "basement",
-   "t": 5
+   "name": "down_stair",
+   "x0": 31,
+   "x1": 34,
+   "y_from": 13.25,
+   "y_to": 0.75,
+   "z_from": 0.0,
+   "z_to": -10.0,
+   "risers": 16,
+   "tread_m": "oak_floor",
+   "riser_m": "oak_floor",
+   "stringer_m": "walnut",
+   "rail_m": "bronze_black",
+   "guard": "west",
+   "handrail": "east"
   }
  ],
- "ground": {
-  "z": -0.3,
-  "size": 400,
-  "m": "grass"
- },
- "stair": {
-  "note": "straight run from the spine's north end down into the lounge",
-  "floor_top": "main",
-  "floor_bottom": "basement",
-  "x0": 18.5,
-  "x1": 23.5,
-  "y_top": 33.5,
-  "dir": "north",
-  "risers": 14,
-  "tread_in": 10.5,
-  "headroom_open_from": 36.5,
-  "tread_m": "oak",
-  "stringer_m": "walnut",
-  "rail_m": "bronze"
- },
  "beams": [
   {
    "room": "living",
    "axis": "x",
-   "spacing": 4.0,
+   "positions": [
+    30.5,
+    34.5,
+    38.5,
+    42.5,
+    45.5
+   ],
    "w_in": 6,
    "d_in": 12,
    "m": "walnut",
-   "deck_m": "oak_deck"
-  },
-  {
-   "room": "kitchen",
-   "axis": "x",
-   "spacing": 4.0,
-   "w_in": 6,
-   "d_in": 12,
-   "m": "walnut",
-   "deck_m": "oak_deck"
+   "deck_m": "oak_decking"
   }
  ],
- "exterior": {
-  "skin_m": "brick",
-  "skin_t": 0.5,
-  "soffit_m": "cedar",
-  "roof_m": "roof",
-  "ridge_axis": "x",
-  "pitch": 0.25,
-  "eave": 4.0,
-  "fascia_m": "cedar",
-  "terrace": {
+ "columns": [
+  {
+   "note": "walnut-wrapped column",
    "b": [
+    7.5,
+    29.5,
+    8.5,
+    30.5,
     0,
-    46,
-    26,
-    60
+    9.5
    ],
-   "m": "concrete_pavers"
+   "m": "walnut"
   },
-  "walk": {
+  {
+   "note": "walnut-wrapped column",
    "b": [
-    11,
-    -14,
-    17,
-    0
+    21.5,
+    29.5,
+    22.5,
+    30.5,
+    0,
+    9.5
    ],
-   "m": "concrete_pavers"
-  },
-  "procedural_trees": false
- },
+   "m": "walnut"
+  }
+ ],
  "no_baseboard": [
   "gym",
   "mechanical",
-  "storage"
+  "battery",
+  "storage",
+  "gear_closet",
+  "coat_closet",
+  "panel_closet",
+  "elevator_closet",
+  "elevator_closet2",
+  "litter_closet",
+  "closet_a",
+  "closet_b",
+  "linen",
+  "rack_closet",
+  "garage",
+  "up_laundry",
+  "sauna"
  ],
- "picture_lights": [
-  {
-   "room": "spine",
-   "wall": "east",
-   "y": [
-    15.5,
-    29,
-    33,
-    42,
-    45
+ "exterior": {
+  "wall_t": 1.0,
+  "base": {
+   "m_out": "roman_brick",
+   "z0": -0.5,
+   "z1": 9.5,
+   "floors": [
+    "main"
    ]
   },
-  {
-   "room": "spine",
-   "wall": "west",
-   "y": [
-    13.5,
-    28
-   ]
+  "upper": {
+   "m_out": "cedar_ext",
+   "z0": 10.0,
+   "z1": 19.0,
+   "floors": [
+    "second"
+   ],
+   "reveal": {
+    "m": "bronze_black",
+    "z0": 9.5,
+    "z1": 10.0
+   }
+  },
+  "garage": {
+   "m_out_low": "roman_brick",
+   "m_out_high": "cedar_ext",
+   "split_z": 8.0
+  },
+  "roofs": [
+   {
+    "name": "main gable",
+    "type": "gable",
+    "ridge_axis": "x",
+    "ridge_at": 26,
+    "x0": -4,
+    "x1": 46,
+    "y0": 2,
+    "y1": 50,
+    "z_wall": 19.5,
+    "pitch": 0.25,
+    "thick": 0.6,
+    "fascia": 1.0,
+    "m": "metal_roof_charcoal",
+    "soffit_m": "cedar_ext",
+    "rafter_tails": 4.0,
+    "skylights": [
+     [
+      26,
+      16,
+      3,
+      4
+     ],
+     [
+      38,
+      16,
+      3,
+      4
+     ],
+     [
+      18,
+      40,
+      3,
+      4
+     ]
+    ]
+   },
+   {
+    "name": "front shed",
+    "type": "shed",
+    "x0": 0,
+    "x1": 42,
+    "y0": -1.5,
+    "y1": 6,
+    "z_high": 10.5,
+    "z_low": 10.0,
+    "slope_to": "south",
+    "thick": 0.5,
+    "fascia": 1.0,
+    "m": "metal_roof_charcoal",
+    "soffit_m": "cedar_ext",
+    "beams": {
+     "axis": "y",
+     "spacing": 4,
+     "w_in": 6,
+     "d_in": 12
+    }
+   },
+   {
+    "name": "porch canopy",
+    "type": "shed",
+    "x0": 4,
+    "x1": 22,
+    "y0": -7,
+    "y1": -1.5,
+    "z_high": 10.2,
+    "z_low": 10.0,
+    "slope_to": "south",
+    "thick": 0.5,
+    "fascia": 1.0,
+    "m": "metal_roof_charcoal",
+    "soffit_m": "cedar_ext",
+    "posts": [
+     [
+      4,
+      -6.5
+     ],
+     [
+      13,
+      -6.5
+     ],
+     [
+      22,
+      -6.5
+     ]
+    ],
+    "post_size": 0.67,
+    "post_z0": -0.5
+   },
+   {
+    "name": "terrace canopy",
+    "type": "flat",
+    "x0": 4,
+    "x1": 22,
+    "y0": 46,
+    "y1": 58,
+    "z": 10.5,
+    "thick": 0.6,
+    "fascia": 1.0,
+    "m": "metal_roof_charcoal",
+    "soffit_m": "cedar_ext",
+    "posts": [
+     [
+      4,
+      57.5
+     ],
+     [
+      22,
+      57.5
+     ]
+    ],
+    "post_size": 0.67,
+    "post_z0": -0.3,
+    "beams": {
+     "axis": "x",
+     "spacing": 4,
+     "w_in": 4,
+     "d_in": 10
+    }
+   },
+   {
+    "name": "breezeway",
+    "type": "flat",
+    "x0": -6.5,
+    "x1": 0,
+    "y0": 15,
+    "y1": 64,
+    "z": 9.5,
+    "thick": 0.5,
+    "fascia": 0.5,
+    "m": "metal_roof_charcoal",
+    "soffit_m": "cedar_ext",
+    "posts": [
+     [
+      -6,
+      16
+     ],
+     [
+      -6,
+      24
+     ],
+     [
+      -6,
+      32
+     ],
+     [
+      -6,
+      40
+     ],
+     [
+      -6,
+      48
+     ],
+     [
+      -6,
+      56
+     ],
+     [
+      -6,
+      64
+     ]
+    ],
+    "post_size": 0.5,
+    "post_z0": -0.4,
+    "beams": {
+     "axis": "x",
+     "spacing": 8,
+     "w_in": 4,
+     "d_in": 10
+    }
+   },
+   {
+    "name": "garage gable",
+    "type": "gable",
+    "ridge_axis": "y",
+    "ridge_at": 6,
+    "x0": -9,
+    "x1": 21,
+    "y0": 61,
+    "y1": 97,
+    "z_wall": 12.5,
+    "pitch": 0.25,
+    "thick": 0.5,
+    "fascia": 0.8,
+    "m": "metal_roof_charcoal",
+    "soffit_m": "cedar_ext"
+   },
+   {
+    "name": "catio lean-to",
+    "type": "shed",
+    "x0": 42,
+    "x1": 48,
+    "y0": 37,
+    "y1": 41,
+    "z_high": 8.0,
+    "z_low": 7.4,
+    "slope_to": "east",
+    "thick": 0.3,
+    "fascia": 0.3,
+    "m": "metal_roof_charcoal",
+    "soffit_m": "cedar_ext"
+   }
+  ],
+  "chase": {
+   "b": [
+    -1.5,
+    36,
+    0.5,
+    40,
+    -0.5,
+    26
+   ],
+   "m": "cedar_ext",
+   "cap_m": "steel_black"
   }
- ],
+ },
+ "site": {
+  "grade_z": -0.5,
+  "lot": [
+   -9,
+   -30,
+   51,
+   140
+  ],
+  "ground": {
+   "m": "lawn",
+   "b": [
+    -70,
+    -60,
+    110,
+    150
+   ]
+  },
+  "slabs": [
+   {
+    "note": "sidewalk",
+    "b": [
+     -70,
+     -30,
+     110,
+     -25
+    ],
+    "z": -0.6,
+    "t": 0.4,
+    "m": "concrete_sealed"
+   },
+   {
+    "note": "street",
+    "b": [
+     -70,
+     -60,
+     110,
+     -30
+    ],
+    "z": -0.7,
+    "t": 0.4,
+    "m": "asphalt"
+   },
+   {
+    "note": "front walk",
+    "b": [
+     8,
+     -25,
+     13,
+     -7
+    ],
+    "z": -0.5,
+    "t": 0.3,
+    "m": "bluestone"
+   },
+   {
+    "note": "porch step 1",
+    "b": [
+     4,
+     -7,
+     22,
+     -6.5
+    ],
+    "z": -0.3,
+    "t": 0.5,
+    "m": "bluestone"
+   },
+   {
+    "note": "porch step 2",
+    "b": [
+     4,
+     -6.5,
+     22,
+     -6
+    ],
+    "z": -0.2,
+    "t": 0.5,
+    "m": "bluestone"
+   },
+   {
+    "note": "porch floor",
+    "b": [
+     4,
+     -6,
+     22,
+     0
+    ],
+    "z": -0.2,
+    "t": 0.5,
+    "m": "bluestone"
+   },
+   {
+    "note": "gravel band south",
+    "b": [
+     -1.5,
+     -1.5,
+     43.5,
+     0
+    ],
+    "z": -0.5,
+    "t": 0.15,
+    "m": "gravel_gray"
+   },
+   {
+    "note": "gravel band north",
+    "b": [
+     -1.5,
+     46,
+     43.5,
+     47.5
+    ],
+    "z": -0.5,
+    "t": 0.15,
+    "m": "gravel_gray"
+   },
+   {
+    "note": "gravel band west",
+    "b": [
+     -1.5,
+     0,
+     0,
+     46
+    ],
+    "z": -0.5,
+    "t": 0.15,
+    "m": "gravel_gray"
+   },
+   {
+    "note": "gravel band east",
+    "b": [
+     42,
+     0,
+     43.5,
+     46
+    ],
+    "z": -0.5,
+    "t": 0.15,
+    "m": "gravel_gray"
+   },
+   {
+    "note": "breezeway walk",
+    "b": [
+     -6,
+     15,
+     0,
+     64
+    ],
+    "z": -0.4,
+    "t": 0.3,
+    "m": "bluestone"
+   },
+   {
+    "note": "terrace",
+    "b": [
+     0,
+     46,
+     42,
+     62
+    ],
+    "z": -0.3,
+    "t": 0.4,
+    "m": "bluestone"
+   },
+   {
+    "note": "catio floor",
+    "b": [
+     42,
+     33,
+     48,
+     41
+    ],
+    "z": -0.3,
+    "t": 0.3,
+    "m": "bluestone"
+   },
+   {
+    "note": "driveway apron",
+    "b": [
+     -6,
+     94,
+     18,
+     100
+    ],
+    "z": -0.5,
+    "t": 0.3,
+    "m": "concrete_sealed"
+   },
+   {
+    "note": "alley",
+    "b": [
+     -70,
+     100,
+     110,
+     116
+    ],
+    "z": -0.6,
+    "t": 0.4,
+    "m": "asphalt"
+   },
+   {
+    "note": "lawn rectangle (edged)",
+    "b": [
+     18,
+     64,
+     42,
+     94
+    ],
+    "z": -0.5,
+    "t": 0.1,
+    "m": "lawn"
+   }
+  ],
+  "beds": [
+   {
+    "note": "front bed west",
+    "b": [
+     0,
+     -5.5,
+     8,
+     -1.5
+    ]
+   },
+   {
+    "note": "front bed east",
+    "b": [
+     22,
+     -5.5,
+     42,
+     -1.5
+    ]
+   },
+   {
+    "note": "terrace north bed",
+    "b": [
+     0,
+     62,
+     18,
+     66
+    ]
+   },
+   {
+    "note": "east lot line bed",
+    "b": [
+     48,
+     0,
+     51,
+     100
+    ]
+   }
+  ],
+  "hedges": [
+   {
+    "note": "east lot line hedge",
+    "b": [
+     48.5,
+     0,
+     50.5,
+     100
+    ],
+    "h": 6
+   },
+   {
+    "note": "rear privacy hedge",
+    "b": [
+     18,
+     100,
+     51,
+     101
+    ],
+    "h": 7
+   }
+  ],
+  "trees": [
+   {
+    "note": "red oak",
+    "pos": [
+     -3,
+     -22
+    ],
+    "trunk_d": 2.5,
+    "canopy_r": 22,
+    "canopy_z": 14,
+    "autumn": true
+   },
+   {
+    "note": "red oak",
+    "pos": [
+     36,
+     -24
+    ],
+    "trunk_d": 2.0,
+    "canopy_r": 18,
+    "canopy_z": 12,
+    "autumn": true
+   },
+   {
+    "note": "sugar maple",
+    "pos": [
+     48,
+     20
+    ],
+    "trunk_d": 1.5,
+    "canopy_r": 14,
+    "canopy_z": 9,
+    "autumn": true
+   },
+   {
+    "note": "honey locust",
+    "pos": [
+     30,
+     110
+    ],
+    "trunk_d": 1.2,
+    "canopy_r": 16,
+    "canopy_z": 10
+   },
+   {
+    "note": "japanese maple",
+    "pos": [
+     9,
+     64
+    ],
+    "trunk_d": 0.6,
+    "canopy_r": 6,
+    "canopy_z": 4,
+    "autumn": true
+   }
+  ],
+  "neighbors": [
+   {
+    "note": "west neighbor",
+    "b": [
+     -55,
+     0,
+     -20,
+     40
+    ],
+    "eave_z": 20,
+    "ridge_z": 28,
+    "ridge_axis": "y",
+    "m": "roman_brick"
+   },
+   {
+    "note": "east neighbor",
+    "b": [
+     60,
+     0,
+     95,
+     40
+    ],
+    "eave_z": 20,
+    "ridge_z": 28,
+    "ridge_axis": "y",
+    "m": "roman_brick"
+   }
+  ],
+  "structures": [
+   {
+    "note": "swim spa shell",
+    "kind": "box",
+    "b": [
+     30,
+     50,
+     37.5,
+     64,
+     -3.3,
+     1.2
+    ],
+    "m": "steel_black"
+   },
+   {
+    "note": "swim spa water",
+    "kind": "box",
+    "b": [
+     30.3,
+     50.3,
+     37.2,
+     63.7,
+     0.85,
+     0.9
+    ],
+    "m": "water_teal"
+   },
+   {
+    "note": "spa deck rim",
+    "kind": "ring",
+    "b": [
+     28.5,
+     48.5,
+     39,
+     65.5
+    ],
+    "inner": [
+     30,
+     50,
+     37.5,
+     64
+    ],
+    "z0": 1.0,
+    "z1": 1.2,
+    "m": "walnut"
+   },
+   {
+    "note": "spa brick wall north",
+    "kind": "box",
+    "b": [
+     28.5,
+     65.5,
+     39,
+     66.5,
+     -0.3,
+     1.2
+    ],
+    "m": "roman_brick"
+   },
+   {
+    "note": "spa brick wall east",
+    "kind": "box",
+    "b": [
+     39,
+     48.5,
+     40,
+     66.5,
+     -0.3,
+     1.2
+    ],
+    "m": "roman_brick"
+   },
+   {
+    "note": "spa steps",
+    "kind": "steps",
+    "b": [
+     31.5,
+     47.2,
+     36,
+     48.5
+    ],
+    "z0": -0.3,
+    "z1": 1.0,
+    "n": 2,
+    "m": "bluestone"
+   },
+   {
+    "note": "spa equipment box",
+    "kind": "box",
+    "b": [
+     38.5,
+     58,
+     41.5,
+     62,
+     -0.3,
+     3
+    ],
+    "m": "cedar_ext"
+   },
+   {
+    "note": "grill counter",
+    "kind": "box",
+    "b": [
+     22,
+     46.5,
+     30,
+     49.5,
+     -0.3,
+     2.7
+    ],
+    "m": "roman_brick"
+   },
+   {
+    "note": "trash corral",
+    "kind": "box",
+    "b": [
+     18,
+     94,
+     24,
+     100,
+     -0.5,
+     4.5
+    ],
+    "m": "cedar_ext",
+    "hollow": true
+   },
+   {
+    "note": "catio frame",
+    "kind": "frame",
+    "b": [
+     42,
+     33,
+     48,
+     41,
+     -0.5,
+     8
+    ],
+    "post": 0.33,
+    "m": "cedar_ext",
+    "screen_m": "screen_black"
+   },
+   {
+    "note": "breezeway slat screen",
+    "kind": "slats",
+    "b": [
+     -6.2,
+     30,
+     -6.0,
+     64,
+     0,
+     7
+    ],
+    "m": "cedar_ext",
+    "slat_w": 0.29,
+    "gap": 0.17
+   },
+   {
+    "note": "utility pole",
+    "kind": "cylinder",
+    "pos": [
+     52,
+     108
+    ],
+    "r": 0.5,
+    "z0": -0.5,
+    "z1": 30,
+    "m": "walnut"
+   }
+  ]
+ },
  "lighting": {
   "fill_scale": {
    "main": 0.35,
-   "basement": 1.3
+   "second": 0.35,
+   "basement": 1.2,
+   "garage": 1.0
   },
   "practical_scale": 1.3,
   "sun_strength": 2.0,
@@ -1215,162 +2991,909 @@
   "sun_angle_deg": 1.0,
   "fill_kelvin": 3000
  },
+ "camera": {
+  "focal_mm": 24,
+  "sensor_mm": 36,
+  "exposure": 0.0,
+  "fstop": 4.0,
+  "handheld_ft": 0.06
+ },
+ "sun": {
+  "direction": [
+   0.35,
+   -0.55,
+   -0.75
+  ],
+  "strength": 2.0
+ },
+ "shots": [
+  {
+   "name": "street",
+   "seconds": 12,
+   "exposure": -0.3,
+   "path": [
+    {
+     "t": 0,
+     "pos": [
+      10.5,
+      -34,
+      5.5
+     ],
+     "look": [
+      14,
+      0,
+      6
+     ]
+    },
+    {
+     "t": 4,
+     "pos": [
+      10.5,
+      -22,
+      5.5
+     ],
+     "look": [
+      12,
+      0,
+      5
+     ]
+    },
+    {
+     "t": 8,
+     "pos": [
+      10.5,
+      -12,
+      5.5
+     ],
+     "look": [
+      11,
+      0,
+      4.5
+     ]
+    },
+    {
+     "t": 12,
+     "pos": [
+      11,
+      -6.5,
+      5.5
+     ],
+     "look": [
+      11,
+      0,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "main_floor",
+   "seconds": 26,
+   "path": [
+    {
+     "t": 0,
+     "pos": [
+      11,
+      3,
+      5.5
+     ],
+     "look": [
+      11,
+      12,
+      5
+     ]
+    },
+    {
+     "t": 3,
+     "pos": [
+      11,
+      9,
+      5.5
+     ],
+     "look": [
+      22,
+      9.5,
+      5
+     ]
+    },
+    {
+     "t": 6,
+     "pos": [
+      23,
+      9.5,
+      5.5
+     ],
+     "look": [
+      25,
+      1,
+      4
+     ]
+    },
+    {
+     "t": 9,
+     "pos": [
+      25,
+      8,
+      5.5
+     ],
+     "look": [
+      25,
+      30,
+      5
+     ]
+    },
+    {
+     "t": 13,
+     "pos": [
+      25,
+      17,
+      5.5
+     ],
+     "look": [
+      12,
+      22,
+      4.5
+     ]
+    },
+    {
+     "t": 17,
+     "pos": [
+      17,
+      20,
+      5.5
+     ],
+     "look": [
+      6,
+      28,
+      4.5
+     ]
+    },
+    {
+     "t": 21,
+     "pos": [
+      12,
+      31,
+      5.5
+     ],
+     "look": [
+      2,
+      38,
+      4.5
+     ]
+    },
+    {
+     "t": 24,
+     "pos": [
+      9,
+      37,
+      5.5
+     ],
+     "look": [
+      14,
+      46,
+      5
+     ]
+    },
+    {
+     "t": 26,
+     "pos": [
+      9,
+      39,
+      5.5
+     ],
+     "look": [
+      25,
+      38,
+      4.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "basement",
+   "seconds": 20,
+   "exposure": 0.8,
+   "path": [
+    {
+     "t": 0,
+     "pos": [
+      29.5,
+      10,
+      4.5
+     ],
+     "look": [
+      29.5,
+      4,
+      -4
+     ]
+    },
+    {
+     "t": 3,
+     "pos": [
+      32.5,
+      9,
+      -1
+     ],
+     "look": [
+      32.5,
+      2,
+      -8
+     ]
+    },
+    {
+     "t": 6,
+     "pos": [
+      29.5,
+      3,
+      -4.5
+     ],
+     "look": [
+      24,
+      8,
+      -5
+     ]
+    },
+    {
+     "t": 9,
+     "pos": [
+      25,
+      10,
+      -4.5
+     ],
+     "look": [
+      8,
+      8,
+      -5.5
+     ]
+    },
+    {
+     "t": 12,
+     "pos": [
+      25,
+      24,
+      -4.5
+     ],
+     "look": [
+      12,
+      24,
+      -5.5
+     ]
+    },
+    {
+     "t": 15,
+     "pos": [
+      23,
+      34,
+      -4.5
+     ],
+     "look": [
+      10,
+      38,
+      -7
+     ]
+    },
+    {
+     "t": 18,
+     "pos": [
+      14,
+      42,
+      -4.5
+     ],
+     "look": [
+      10,
+      34,
+      -8
+     ]
+    },
+    {
+     "t": 20,
+     "pos": [
+      17,
+      40,
+      -4.5
+     ],
+     "look": [
+      25,
+      41,
+      -6.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "upstairs",
+   "seconds": 18,
+   "path": [
+    {
+     "t": 0,
+     "pos": [
+      32.5,
+      11,
+      14.5
+     ],
+     "look": [
+      32,
+      16,
+      15
+     ]
+    },
+    {
+     "t": 3,
+     "pos": [
+      25,
+      16,
+      15.5
+     ],
+     "look": [
+      22,
+      16,
+      15
+     ]
+    },
+    {
+     "t": 6,
+     "pos": [
+      20,
+      14,
+      15.5
+     ],
+     "look": [
+      25,
+      9,
+      15
+     ]
+    },
+    {
+     "t": 9,
+     "pos": [
+      16,
+      12,
+      15.5
+     ],
+     "look": [
+      12,
+      10,
+      14.5
+     ]
+    },
+    {
+     "t": 11,
+     "pos": [
+      15,
+      17,
+      15.5
+     ],
+     "look": [
+      12.5,
+      19,
+      14.5
+     ]
+    },
+    {
+     "t": 12.2,
+     "pos": [
+      16.5,
+      21.5,
+      15.5
+     ],
+     "look": [
+      20,
+      25,
+      15
+     ]
+    },
+    {
+     "t": 13.1,
+     "pos": [
+      21.5,
+      24,
+      15.5
+     ],
+     "look": [
+      25,
+      29,
+      15
+     ]
+    },
+    {
+     "t": 14,
+     "pos": [
+      25,
+      30,
+      15.5
+     ],
+     "look": [
+      18,
+      40,
+      15
+     ]
+    },
+    {
+     "t": 18,
+     "pos": [
+      19,
+      36,
+      15.5
+     ],
+     "look": [
+      17,
+      44,
+      14.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "terrace_dusk",
+   "seconds": 12,
+   "dusk": true,
+   "exposure": 0.5,
+   "path": [
+    {
+     "t": 0,
+     "pos": [
+      36,
+      78,
+      5.5
+     ],
+     "look": [
+      12,
+      46,
+      6
+     ]
+    },
+    {
+     "t": 5,
+     "pos": [
+      26,
+      66,
+      5.5
+     ],
+     "look": [
+      10,
+      46,
+      5
+     ]
+    },
+    {
+     "t": 9,
+     "pos": [
+      16,
+      58,
+      5.5
+     ],
+     "look": [
+      8,
+      40,
+      4.5
+     ]
+    },
+    {
+     "t": 12,
+     "pos": [
+      11,
+      48,
+      5.5
+     ],
+     "look": [
+      2,
+      38,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bedroom",
+   "seconds": 8,
+   "morning": true,
+   "path": [
+    {
+     "t": 0,
+     "pos": [
+      33,
+      44,
+      5.5
+     ],
+     "look": [
+      35,
+      31,
+      3.5
+     ]
+    },
+    {
+     "t": 4,
+     "pos": [
+      30,
+      41,
+      5.5
+     ],
+     "look": [
+      39,
+      32,
+      2.5
+     ]
+    },
+    {
+     "t": 8,
+     "pos": [
+      31,
+      37,
+      5.5
+     ],
+     "look": [
+      41,
+      41,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "garage",
+   "seconds": 8,
+   "path": [
+    {
+     "t": 0,
+     "pos": [
+      6,
+      96,
+      5.5
+     ],
+     "look": [
+      0,
+      76,
+      5
+     ]
+    },
+    {
+     "t": 1.6,
+     "pos": [
+      2.5,
+      94.3,
+      5.5
+     ],
+     "look": [
+      0,
+      76,
+      5.5
+     ]
+    },
+    {
+     "t": 4,
+     "pos": [
+      2,
+      86,
+      5.5
+     ],
+     "look": [
+      0,
+      74,
+      6.5
+     ]
+    },
+    {
+     "t": 8,
+     "pos": [
+      -2,
+      78,
+      5.5
+     ],
+     "look": [
+      6,
+      66,
+      3.5
+     ]
+    }
+   ]
+  }
+ ],
+ "stills": [
+  {
+   "name": "01_street_end",
+   "shot": "street",
+   "t": 12
+  },
+  {
+   "name": "02_main_kitchen",
+   "shot": "main_floor",
+   "t": 13
+  },
+  {
+   "name": "03_main_living",
+   "shot": "main_floor",
+   "t": 21
+  },
+  {
+   "name": "04_main_end",
+   "shot": "main_floor",
+   "t": 26
+  },
+  {
+   "name": "05_basement_gym",
+   "shot": "basement",
+   "t": 9
+  },
+  {
+   "name": "06_basement_pit",
+   "shot": "basement",
+   "t": 18
+  },
+  {
+   "name": "07_basement_end",
+   "shot": "basement",
+   "t": 20
+  },
+  {
+   "name": "08_upstairs_rack",
+   "shot": "upstairs",
+   "t": 11
+  },
+  {
+   "name": "09_upstairs_end",
+   "shot": "upstairs",
+   "t": 18
+  },
+  {
+   "name": "10_terrace_end",
+   "shot": "terrace_dusk",
+   "t": 12
+  },
+  {
+   "name": "11_bedroom_end",
+   "shot": "bedroom",
+   "t": 8
+  },
+  {
+   "name": "12_garage_end",
+   "shot": "garage",
+   "t": 8
+  }
+ ],
  "views": [
   {
-   "name": "v01_gym_south",
+   "name": "v01_vestibule",
    "pos": [
     11,
-    26,
-    -4.5
+    1,
+    5.5
    ],
    "look": [
-    8,
-    6,
-    -6.5
-   ]
-  },
-  {
-   "name": "v02_bar",
-   "pos": [
-    26,
-    34,
-    -4.5
-   ],
-   "look": [
-    26.5,
-    22,
-    -6.5
-   ]
-  },
-  {
-   "name": "v03_recovery",
-   "pos": [
-    25.0,
-    1.5,
-    -4.5
-   ],
-   "look": [
-    26,
+    11,
     12,
-    -6.5
+    4.5
    ]
   },
   {
-   "name": "v04_lounge_from_stair",
+   "name": "v02_spine_south",
    "pos": [
-    21,
-    44,
-    -4.5
+    25,
+    30,
+    5.5
    ],
    "look": [
-    8,
-    36,
-    -7.5
+    25,
+    0,
+    4.5
    ]
   },
   {
-   "name": "v05_mudroom",
+   "name": "v03_stair_hall",
    "pos": [
-    9,
+    29.5,
+    12,
+    5.5
+   ],
+   "look": [
+    32,
+    1,
+    4
+   ]
+  },
+  {
+   "name": "v04_kitchen_nook",
+   "pos": [
+    20,
+    28,
+    5.5
+   ],
+   "look": [
     2,
-    5.5
-   ],
-   "look": [
-    3,
-    12,
-    4
+    28.5,
+    3.5
    ]
   },
   {
-   "name": "v06_away",
+   "name": "v05_living_wide",
    "pos": [
-    31.5,
-    12.5,
-    5.5
-   ],
-   "look": [
-    38,
-    4,
-    4
-   ]
-  },
-  {
-   "name": "v07_bedroom",
-   "pos": [
-    26,
+    20,
     32,
     5.5
    ],
    "look": [
-    38,
-    41,
-    4
-   ]
-  },
-  {
-   "name": "v08_bath",
-   "pos": [
-    33.5,
-    29,
-    5.5
-   ],
-   "look": [
-    38,
-    16,
-    4
-   ]
-  },
-  {
-   "name": "v09_closet",
-   "pos": [
-    25.5,
-    17.6,
-    5.5
-   ],
-   "look": [
-    30,
-    28,
-    4
-   ]
-  },
-  {
-   "name": "v10_living_wide",
-   "pos": [
-    15,
-    31.5,
-    5.5
-   ],
-   "look": [
-    4,
+    3,
     42,
     4
    ]
   },
   {
-   "name": "v11_exterior_rear",
+   "name": "v06_bath",
    "pos": [
-    14,
-    62,
-    7
+    29,
+    21,
+    5.5
    ],
    "look": [
-    9,
-    44,
-    5
+    40,
+    14,
+    4
    ]
   },
   {
-   "name": "v12_exterior_front",
+   "name": "v07_closet",
    "pos": [
+    32,
+    23,
+    5.5
+   ],
+   "look": [
+    41,
+    29,
+    3.5
+   ]
+  },
+  {
+   "name": "v08_bedroom",
+   "pos": [
+    29,
+    44,
+    5.5
+   ],
+   "look": [
     38,
-    -30,
+    31,
+    3.5
+   ]
+  },
+  {
+   "name": "v09_office",
+   "pos": [
+    9,
+    8,
+    15.5
+   ],
+   "look": [
+    2,
+    18,
+    14.5
+   ]
+  },
+  {
+   "name": "v10_lab",
+   "pos": [
+    21,
+    21,
+    15.5
+   ],
+   "look": [
+    12,
+    8,
+    14.5
+   ]
+  },
+  {
+   "name": "v11_loft",
+   "pos": [
+    23,
+    28,
+    15.5
+   ],
+   "look": [
+    16,
+    44,
+    14.5
+   ]
+  },
+  {
+   "name": "v12_bedroom_b",
+   "pos": [
+    29,
+    45,
+    15.5
+   ],
+   "look": [
+    40,
+    31,
+    14
+   ]
+  },
+  {
+   "name": "v13_gym",
+   "pos": [
+    20,
+    18,
+    -4.5
+   ],
+   "look": [
+    4,
+    4,
+    -6.5
+   ]
+  },
+  {
+   "name": "v14_recovery",
+   "pos": [
+    21,
+    21,
+    -4.5
+   ],
+   "look": [
+    4,
+    25,
+    -6.5
+   ]
+  },
+  {
+   "name": "v15_lounge",
+   "pos": [
+    20,
+    44,
+    -4.5
+   ],
+   "look": [
+    4,
+    32,
+    -7.5
+   ]
+  },
+  {
+   "name": "v16_exterior_front",
+   "pos": [
+    -12,
+    -40,
     6
    ],
    "look": [
     16,
+    6,
+    8
+   ]
+  },
+  {
+   "name": "v17_exterior_rear",
+   "pos": [
+    20,
+    90,
+    8
+   ],
+   "look": [
+    14,
+    46,
+    8
+   ]
+  },
+  {
+   "name": "v18_garage",
+   "pos": [
+    6,
+    104,
+    6
+   ],
+   "look": [
     4,
+    80,
     6
    ]
   }
+ ],
+ "questions": [
+  "2.5 W1 mudroom side door Y 15.5-18.5 overlaps the litter closet (X 0-3, Y 13-16) by 6 in on the west wall. Moved the door 9 in north to Y 16.25-19.25. OK, or should the litter closet shrink to Y 13-15.5?",
+  "2.5 E2 bath window Y 15-18 straddles the WC compartment wall at Y 16.5 (WC is X 39-42, Y 13-16.5). Moved the window to Y 16.5-19.5 so it lands over the shower. OK?",
+  "5.1 gym glass door at X 22, Y 10 with 'a glass sidelight from Y 8 to Y 12': the 3 ft door already spans Y 8.5-11.5, so a sidelight Y 8-12 leaves 6 in each side. I built the sidelight as a 4 ft fixed pane at Y 12-16 north of the door. Correct?",
+  "5.2 gym-to-recovery glass door at Y 20, X 21 (3 ft) would span X 19.5-22.5, past the gym's east wall at X 22. Moved it 6 in west to X 19-22, tight to the corner. OK?",
+  "6 / 3.8: the up-stair's first tread (Y 0.75, Z 0) sits directly above the down-stair's last tread (Y 0.75, Z -10) with the up-stair rising north and the down-stair descending south beneath it. That works geometrically (10 ft between runs everywhere), but the main-floor stair slot X 31-34, Y 0.75-13.25 is then open from the basement to the second floor, and the only way past the slot on the main floor is the 3 ft aisle X 28-31. Confirm that is intended.",
+  "1.1 says the lot runs to Y 140 with the alley at Y 140; 1.9 says to model the alley as asphalt from Y 100 to Y 116 right behind the 6 ft apron. I used 1.9 (alley Y 100-116), which puts the honey locust at (30, 110) in the alley and the rear hedge at Y 100 on the alley edge. Which is right: alley at Y 100 or at Y 140?",
+  "2.2 direct-vent chase [-1.5, 36, 0.5, 40] rises to Z 26 along the west gable wall; the main gable's west rake overhang runs X -4 to 0, so the chase passes up through the roof overhang at Y 36-40. I cut the roof around it. OK?",
+  "10 Shot 4 (upstairs) t 11 -> t 14 runs from the rack closet straight to the hall through two 3 ft doors on a curve; the camera clipped both jambs. Added waypoints in the corridor door (16.5, 21.5) and the hall door (21.5, 24). Shot 7 (garage) t 0 -> t 4 passed through the north wall beside the west door; added a waypoint in the door at (2.5, 94.3)."
  ]
 }

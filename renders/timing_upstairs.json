@@ -1,11 +1,11 @@
 {
-  "shot": "main_floor",
+  "shot": "upstairs",
   "res": "1280x720",
   "samples": 128,
   "frame_step": 1,
   "frames": 0,
   "mean_s": null,
-  "total_s": 2.6226043701171875e-06,
+  "total_s": 7.867813110351562e-06,
   "device": "CPU",
   "stage": "phase2"
 }

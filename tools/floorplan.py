@@ -1,119 +1,248 @@
 #!/usr/bin/env python3
-"""Draw a dimensioned floor plan of plan.json (both floors) as a PNG for review.
+"""Draw dimensioned floor plans of plan.json (every floor) plus a site plan, as one PNG for review.
 
-    python3 tools/floorplan.py [--out renders/floorplan.png] [--scale 14]
-Rooms with names and W x D in feet, openings as gaps (doors) or bars (windows), key features labeled.
+    python3 tools/floorplan.py [--out renders/floorplan.png] [--scale 12]
+Rooms (unions of parts) with names and overall W x D in feet, doors as gaps with a swing tick, windows as blue
+bars, cased openings as dashed gaps, voids hatched, stairs with treads, columns, beams (living), and the site
+with slabs, roofs (dashed outlines), hedges, trees and the garage.
 """
 import argparse
 import json
+import math
 import os
 
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ROOM_FILL = {"plaster": (236, 228, 214), "oxblood": (196, 122, 118), "olive": (196, 200, 160), "terrazzo": (222, 220, 212),
-             "walnut": (190, 160, 130), "concrete": (205, 205, 200), "wallpaper_geo": (196, 200, 160), "default": (230, 226, 218)}
-KEY_FEATURES = ["kitchen island", "kitchen back counter", "fireplace walnut wall", "hearth bench", "living sofa",
-                "living bookwall", "away lounge chair", "away bookwall", "bed", "gym platform", "gym rack",
-                "sauna box", "bar counter", "lounge tv panel", "lounge games table", "gym mirror wall"]
+FILL = {"plaster_warm": (238, 231, 219), "oxblood": (200, 130, 126), "olive_paint": (200, 204, 166), "terrazzo": (224, 222, 214),
+        "walnut": (196, 168, 138), "walnut_panel": (196, 168, 138), "concrete_sealed": (208, 208, 203), "wallpaper_geo_olive": (200, 204, 166),
+        "wallpaper_botanical_dark": (150, 150, 140), "tile_white": (232, 236, 236), "cedar_sauna": (222, 190, 150), "default": (232, 228, 220)}
+
+
+def parts_of(r):
+    return r["parts"] if "parts" in r else [r["b"]]
 
 
 def font(size):
     for p in ("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", "/System/Library/Fonts/Helvetica.ttc"):
         if os.path.exists(p):
-            return ImageFont.truetype(p, size)
+            return ImageFont.truetype(p, max(8, int(size)))
     return ImageFont.load_default()
 
 
-def draw_floor(plan, floor, scale, title):
+class Sheet:
+    def __init__(self, scale, X0, Y0, X1, Y1, title, pad=50):
+        self.s = scale
+        self.X0, self.Y0, self.X1, self.Y1 = X0, Y0, X1, Y1
+        self.pad = pad
+        self.W = int((X1 - X0) * scale + 2 * pad)
+        self.H = int((Y1 - Y0) * scale + 2 * pad + 36)
+        self.im = Image.new("RGB", (self.W, self.H), (250, 248, 244))
+        self.d = ImageDraw.Draw(self.im)
+        self.d.text((pad, 10), title, fill=(40, 34, 30), font=font(scale * 1.5))
+
+    def P(self, x, y):
+        return (self.pad + (x - self.X0) * self.s, self.pad + 36 + (self.Y1 - y) * self.s)
+
+    def rect(self, b, fill=None, outline=None, width=1):
+        self.d.rectangle([self.P(b[0], b[3]), self.P(b[2], b[1])], fill=fill, outline=outline, width=width)
+
+    def line(self, a, b, fill, width=1):
+        self.d.line([self.P(*a), self.P(*b)], fill=fill, width=width)
+
+    def text(self, x, y, s, size, fill=(30, 26, 22), center=True):
+        f = font(size)
+        tw = self.d.textlength(s, font=f)
+        px, py = self.P(x, y)
+        self.d.text((px - (tw / 2 if center else 0), py - size / 2), s, fill=fill, font=f)
+
+
+def draw_floor(plan, floor, scale):
     rooms = [r for r in plan["rooms"] if r["floor"] == floor]
-    X0 = min(r["b"][0] for r in rooms)
-    Y0 = min(r["b"][1] for r in rooms)
-    X1 = max(r["b"][2] for r in rooms)
-    Y1 = max(r["b"][3] for r in rooms)
-    pad = 60
-    W = int((X1 - X0) * scale + 2 * pad)
-    H = int((Y1 - Y0) * scale + 2 * pad + 40)
-    im = Image.new("RGB", (W, H), (250, 248, 244))
-    d = ImageDraw.Draw(im)
-    f_room = font(int(scale * 1.15))
-    f_dim = font(int(scale * 0.85))
-    f_small = font(int(scale * 0.75))
-    f_title = font(int(scale * 1.6))
-
-    def P(x, y):
-        # plan y (street at 0) drawn at the bottom
-        return (pad + (x - X0) * scale, pad + 40 + (Y1 - y) * scale)
-
-    d.text((pad, 14), title, fill=(40, 34, 30), font=f_title)
-    for r in rooms:
-        x0, y0, x1, y1 = r["b"]
-        fill = ROOM_FILL.get(r["wall"], ROOM_FILL["default"])
-        d.rectangle([P(x0, y1), P(x1, y0)], fill=fill, outline=(60, 50, 44), width=3)
-    # features
+    parts = [p for r in rooms for p in parts_of(r)]
+    X0 = min(p[0] for p in parts); Y0 = min(p[1] for p in parts)
+    X1 = max(p[2] for p in parts); Y1 = max(p[3] for p in parts)
     fz = plan["floors"][floor]["z"]
-    for f in plan.get("features", []):
-        b = f["box"]
-        if not (fz - 0.5 <= b[4] <= fz + 9.5):
+    sh = Sheet(scale, X0, Y0, X1, Y1, "%s  (Z %g to %g ft)" % (floor.capitalize(), fz, fz + plan["floors"][floor]["h"]))
+    # rooms
+    for r in rooms:
+        fill = FILL.get(r["wall"], FILL["default"])
+        if r.get("void"):
+            fill = (215, 215, 222)
+        for p in parts_of(r):
+            sh.rect(p, fill=fill)
+    # internal part boundaries are not walls: draw walls per edge segment between different rooms or exterior
+    for r in rooms:
+        for p in parts_of(r):
+            sh.rect(p, outline=(70, 58, 50), width=3)
+    # erase same-room part boundaries by redrawing shared edges in the fill color
+    for r in rooms:
+        ps = parts_of(r)
+        fill = FILL.get(r["wall"], FILL["default"]) if not r.get("void") else (215, 215, 222)
+        for i in range(len(ps)):
+            for j in range(len(ps)):
+                if i == j:
+                    continue
+                a, b = ps[i], ps[j]
+                if abs(a[2] - b[0]) < 1e-6:  # a's east touches b's west
+                    lo, hi = max(a[1], b[1]), min(a[3], b[3])
+                    if hi - lo > 0.01:
+                        sh.line((a[2], lo + 0.15), (a[2], hi - 0.15), fill, width=5)
+                if abs(a[3] - b[1]) < 1e-6:
+                    lo, hi = max(a[0], b[0]), min(a[2], b[2])
+                    if hi - lo > 0.01:
+                        sh.line((lo + 0.15, a[3]), (hi - 0.15, a[3]), fill, width=5)
+    # voids
+    for v in plan.get("voids", []):
+        if v["floor"] == floor and v["what"] == "floor":
+            b = v["b"]
+            sh.rect(b, outline=(120, 60, 60), width=2)
+            for k in range(int((b[2] - b[0]) * 2)):
+                x = b[0] + k / 2
+                sh.line((x, b[1]), (min(b[2], x + (b[3] - b[1])), min(b[3], b[1] + (b[3] - b[1]))), (160, 120, 120), 1)
+    # stairs
+    for st in plan.get("stairs", []):
+        zf, zt = st["z_from"], st["z_to"]
+        top_floor = fz + 0.01 >= max(zf, zt) - 0.01 and fz <= max(zf, zt) + 0.01
+        if not (min(zf, zt) - 0.01 <= fz <= max(zf, zt) + 0.01):
             continue
-        d.rectangle([P(b[0], b[3]), P(b[2], b[1])], fill=(170, 150, 128), outline=(110, 90, 70), width=1)
-        if f["note"] in KEY_FEATURES and (b[2] - b[0]) * scale > 40:
-            d.text((P(b[0], b[3])[0] + 3, P(b[0], b[3])[1] + 2), f["note"].replace("kitchen ", "").replace("living ", "").replace("lounge ", ""), fill=(70, 50, 35), font=f_small)
-    for p in plan.get("pits", []):
-        if plan["rooms"][[r["name"] for r in plan["rooms"]].index(p["room"])]["floor"] == floor:
-            d.rectangle([P(p["b"][0], p["b"][3]), P(p["b"][2], p["b"][1])], fill=(150, 190, 190), outline=(40, 90, 90), width=3)
-            d.text((P(p["b"][0], p["b"][3])[0] + 6, P(p["b"][0], p["b"][3])[1] + 4), "sunken pit %.0fx%.0f, %.1f ft down" % (p["b"][2] - p["b"][0], p["b"][3] - p["b"][1], p["depth"]), fill=(20, 60, 60), font=f_small)
-    st = plan.get("stair")
-    if st and floor in (st["floor_top"], st["floor_bottom"]):
-        yt = st["y_top"]
-        run = st.get("tread_in", 10.5) / 12.0 * (st["risers"] - 1)
-        d.rectangle([P(st["x0"], yt + run), P(st["x1"], yt)], fill=(230, 210, 170), outline=(120, 90, 40), width=2)
         n = st["risers"]
-        for i in range(1, n):
-            yy = yt + i * run / (n - 1)
-            d.line([P(st["x0"], yy), P(st["x1"], yy)], fill=(120, 90, 40), width=1)
-        d.text((P(st["x0"], yt + run)[0] + 4, P(st["x0"], yt + run)[1] + 4), "stair %s" % ("down" if floor == st["floor_top"] else "up"), fill=(80, 60, 20), font=f_small)
+        y0, y1 = sorted([st["y_from"], st["y_to"]])
+        sh.rect([st["x0"], y0, st["x1"], y1], fill=(235, 215, 175), outline=(120, 90, 40), width=2)
+        for i in range(n):
+            y = y0 + i * (y1 - y0) / (n - 1)
+            sh.line((st["x0"], y), (st["x1"], y), (120, 90, 40), 1)
+        arrow = "UP" if zt > fz + 0.01 else "DOWN"
+        sh.text((st["x0"] + st["x1"]) / 2, (y0 + y1) / 2, "%s %s" % (st["name"].replace("_", " "), arrow), scale * 0.75, (80, 60, 20))
+    # columns, beams
+    for c in plan.get("columns", []):
+        b = c["b"]
+        if abs(b[4] - fz) < 0.6:
+            sh.rect(b[:4], fill=(120, 90, 60))
+    for bm in plan.get("beams", []):
+        room = next((r for r in rooms if r["name"] == bm["room"]), None)
+        if room:
+            ps_ = parts_of(room)
+            rb = [min(p[0] for p in ps_), min(p[1] for p in ps_), max(p[2] for p in ps_), max(p[3] for p in ps_)]
+            for y in bm.get("positions", []):
+                sh.line((rb[0], y), (rb[2], y), (170, 140, 110), 2)
     # openings
     for o in plan["openings"]:
         if o["floor"] != floor:
             continue
-        w = o["w"]
-        is_win = o.get("z0", 0) > 0 or o.get("kind") in ("window", "glasswall")
-        col = (90, 150, 200) if is_win else (250, 248, 244)
-        lw = 4 if is_win else 8
-        if o["axis"] == "x":
-            d.line([P(o["c"] - w / 2, o["at"]), P(o["c"] + w / 2, o["at"])], fill=col, width=lw)
+        lo, hi = o["c"] - o["w"] / 2, o["c"] + o["w"] / 2
+        kind = o.get("kind", "door")
+        is_win = kind in ("window", "glasswall") or o.get("z0", 0) > 0
+        if kind == "open" and o.get("full"):
+            col, w = (250, 248, 244), 6
+        elif is_win:
+            col, w = (80, 140, 205), 4
+        elif kind == "cased":
+            col, w = (250, 248, 244), 6
         else:
-            d.line([P(o["at"], o["c"] - w / 2), P(o["at"], o["c"] + w / 2)], fill=col, width=lw)
+            col, w = (250, 248, 244), 6
+        if o["axis"] == "x":
+            sh.line((lo, o["at"]), (hi, o["at"]), col, w)
+            if kind in ("door", "glassdoor"):
+                sh.line((lo, o["at"]), (lo, o["at"] + (o["w"] if o.get("swing", "pos") != "neg" else -o["w"])), (90, 80, 70), 1)
+            if kind == "cased":
+                sh.line((lo, o["at"]), (hi, o["at"]), (150, 140, 130), 1)
+        else:
+            sh.line((o["at"], lo), (o["at"], hi), col, w)
+            if kind in ("door", "glassdoor"):
+                sh.line((o["at"], lo), (o["at"] + o["w"], lo), (90, 80, 70), 1)
+            if kind == "cased":
+                sh.line((o["at"], lo), (o["at"], hi), (150, 140, 130), 1)
     # labels
     for r in rooms:
-        x0, y0, x1, y1 = r["b"]
-        cx, cy = P((x0 + x1) / 2, (y0 + y1) / 2)
-        name = r["name"].replace("awayhall", "away hall")
-        tw = d.textlength(name, font=f_room)
-        d.text((cx - tw / 2, cy - scale * 1.1), name, fill=(30, 26, 22), font=f_room)
-        dim = "%g x %g ft" % (x1 - x0, y1 - y0)
-        tw = d.textlength(dim, font=f_dim)
-        d.text((cx - tw / 2, cy + scale * 0.15), dim, fill=(80, 70, 60), font=f_dim)
-    # outer dims and compass
-    d.text((pad, H - 30), "street side (Y=0) at the bottom, back yard at the top. Footprint %g x %g ft. Blue = glass, gaps = doors." % (X1 - X0, Y1 - Y0), fill=(80, 70, 60), font=f_small)
-    return im
+        ps = parts_of(r)
+        big = max(ps, key=lambda p: (p[2] - p[0]) * (p[3] - p[1]))
+        cx, cy = (big[0] + big[2]) / 2, (big[1] + big[3]) / 2
+        bb = [min(p[0] for p in ps), min(p[1] for p in ps), max(p[2] for p in ps), max(p[3] for p in ps)]
+        name = r.get("label", r["name"].replace("_", " "))
+        area = sum((p[2] - p[0]) * (p[3] - p[1]) for p in ps)
+        small = (bb[2] - bb[0]) * (bb[3] - bb[1]) < 40
+        if any(st["x0"] < cx < st["x1"] and min(st["y_from"], st["y_to"]) < cy < max(st["y_from"], st["y_to"]) for st in plan.get("stairs", [])):
+            cx = bb[0] + 1.5
+            small = True
+        sh.text(cx, cy + (0.45 if not small else 0.3), name, scale * (0.8 if small else 1.05))
+        if not small:
+            sh.text(cx, cy - 0.75, "%g x %g   %d sf" % (bb[2] - bb[0], bb[3] - bb[1], area), scale * 0.72, (90, 78, 66))
+    sh.d.text((sh.pad, sh.H - 24), "street (south) at the bottom. Blue = glass. Gaps = doors (tick shows the leaf). Hatched = open to below.", fill=(80, 70, 60), font=font(scale * 0.75))
+    return sh.im
+
+
+def draw_site(plan, scale):
+    site = plan.get("site", {})
+    lot = site.get("lot", [-9, -30, 51, 140])
+    X0, Y0, X1, Y1 = lot[0] - 8, lot[1] - 20, lot[2] + 8, lot[3] + 6
+    sh = Sheet(scale, X0, Y0, X1, Y1, "Site plan (lot %g x %g ft, house footprint 42 x 46)" % (lot[2] - lot[0], lot[3] - lot[1]))
+    sh.rect([X0, Y0, X1, Y1], fill=(214, 226, 200))
+    sh.rect(lot, outline=(90, 90, 90), width=2)
+    for sl in site.get("slabs", []):
+        m = sl["m"]
+        col = {"bluestone": (150, 158, 168), "asphalt": (90, 90, 92), "concrete_sealed": (190, 190, 186), "lawn": (176, 200, 140), "gravel_gray": (200, 198, 190)}.get(m, (200, 200, 200))
+        sh.rect(sl["b"], fill=col)
+    for bd in site.get("beds", []):
+        sh.rect(bd["b"], fill=(150, 170, 120), outline=(100, 120, 80))
+    for h in site.get("hedges", []):
+        sh.rect(h["b"], fill=(70, 110, 60))
+    for t in site.get("trees", []):
+        x, y = t["pos"]
+        r = t["canopy_r"]
+        sh.d.ellipse([sh.P(x - r, y + r), sh.P(x + r, y - r)], outline=(60, 100, 50), width=2)
+        sh.d.ellipse([sh.P(x - t["trunk_d"], y + t["trunk_d"]), sh.P(x + t["trunk_d"], y - t["trunk_d"])], fill=(80, 60, 40))
+        sh.text(x, y - r - 2, t["note"], scale * 0.9, (50, 80, 40))
+    for nb in site.get("neighbors", []):
+        sh.rect(nb["b"], fill=(205, 180, 165), outline=(120, 90, 80), width=2)
+        b = nb["b"]
+        sh.text((b[0] + b[2]) / 2, (b[1] + b[3]) / 2, nb["note"], scale * 0.9, (90, 60, 50))
+    # house footprints
+    for floor, col in (("main", (238, 231, 219)), ("garage", (225, 220, 210))):
+        parts = [p for r in plan["rooms"] if r["floor"] == floor for p in parts_of(r)]
+        if not parts:
+            continue
+        b = [min(p[0] for p in parts), min(p[1] for p in parts), max(p[2] for p in parts), max(p[3] for p in parts)]
+        sh.rect(b, fill=col, outline=(60, 50, 44), width=3)
+        sh.text((b[0] + b[2]) / 2, (b[1] + b[3]) / 2, "house" if floor == "main" else "garage", scale * 1.3)
+    parts2 = [p for r in plan["rooms"] if r["floor"] == "second" for p in parts_of(r)]
+    if parts2:
+        b = [min(p[0] for p in parts2), min(p[1] for p in parts2), max(p[2] for p in parts2), max(p[3] for p in parts2)]
+        sh.rect([0, 6, 42, 46], outline=(120, 90, 60), width=2)
+        sh.text(21, 44, "upper volume (cedar) Y 6-46", scale * 0.9, (110, 80, 50))
+    for r in plan.get("exterior", {}).get("roofs", []):
+        sh.rect([r["x0"], r["y0"], r["x1"], r["y1"]], outline=(60, 60, 60), width=1)
+        sh.text((r["x0"] + r["x1"]) / 2, r["y1"] - 1.2, r["name"], scale * 0.8, (60, 60, 60))
+        for (px, py) in r.get("posts", []):
+            sh.rect([px - 0.4, py - 0.4, px + 0.4, py + 0.4], fill=(90, 70, 40))
+    for st in site.get("structures", []):
+        if "b" in st:
+            b = st["b"]
+            sh.rect(b[:4], outline=(70, 70, 90), width=1, fill=(230, 232, 240) if st["kind"] in ("box", "frame") else None)
+            sh.text((b[0] + b[2]) / 2, (b[1] + b[3]) / 2, st["note"], scale * 0.7, (60, 60, 80))
+    sh.d.text((sh.pad, sh.H - 24), "north up. Sidewalk and street at the bottom, alley at the top.", fill=(80, 70, 60), font=font(scale * 0.75))
+    return sh.im
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--plan", default=os.path.join(ROOT, "plan.json"))
     ap.add_argument("--out", default=os.path.join(ROOT, "renders", "floorplan.png"))
-    ap.add_argument("--scale", type=float, default=14.0, help="pixels per foot")
+    ap.add_argument("--scale", type=float, default=13.0)
+    ap.add_argument("--site-scale", type=float, default=4.2)
     args = ap.parse_args()
     plan = json.load(open(args.plan))
-    a = draw_floor(plan, "main", args.scale, "Main floor (as built from plan.json)")
-    b = draw_floor(plan, "basement", args.scale, "Basement (as built from plan.json)")
-    W = a.width + b.width + 30
-    H = max(a.height, b.height)
+    ims = [draw_floor(plan, f, args.scale) for f in ("second", "main", "basement") if any(r["floor"] == f for r in plan["rooms"])]
+    if plan.get("site"):
+        ims.append(draw_site(plan, args.site_scale))
+    gap = 24
+    W = sum(i.width for i in ims) + gap * (len(ims) - 1)
+    H = max(i.height for i in ims)
     out = Image.new("RGB", (W, H), (250, 248, 244))
-    out.paste(a, (0, 0))
-    out.paste(b, (a.width + 30, 0))
+    x = 0
+    for im in ims:
+        out.paste(im, (x, 0))
+        x += im.width + gap
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     out.save(args.out)
     print("wrote", args.out, out.size)
