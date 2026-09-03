@@ -423,6 +423,7 @@
   "rough": 0.5,
   "emit": 7.0
  },
+ "hood_lamp": {"rgb": [1.0, 0.85, 0.62], "rough": 0.5, "emit": 1.2, "note": "range hood LED lenses: seen from below at arm's length, lamp_glow blew out"},
  "fire": {
   "rgb": [
    1.0,
