@@ -191,9 +191,10 @@ The preview run's per-frame times and totals are in `renders/timing_<shot>.json`
 
 ## What I would change next
 
-1. The procedural cars are extruded profiles with a wide bevel; a modelled roadster would carry the garage shot.
-2. The sofa and lounge chairs are still box-built under the cloth pass; modelled seating with piping would be
-   the next step up in the living room, the closest thing to the camera at the end of the main shot.
+1. The cars are a lofted subdivision cage with real wheels, glass and trim; they pass at room scale in an
+   8 second shot. A modelled roadster would still beat them in a close-up, so the one on the lift stays covered.
+2. The sofa and lounge chairs are box-built under the cloth pass; modelled seating with piping would be the
+   next step up in the living room, the closest thing to the camera at the end of the main shot.
 3. No cats: Poly Haven has no CC0 cat model, so they are logged and omitted rather than boxed.
 4. The block's trees are Poly Haven's island trees; a proper oak and elm model would replace them one for one
    through the species table in `neighborhood.py`.
