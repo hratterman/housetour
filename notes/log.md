@@ -576,3 +576,20 @@ ceilings, 6 ft halls, 3 ft doors, gym 22 x 20, lounge 22 x 18, garage 24 x 30. F
 
 Left open for Henry (README "Dimensions and code"): no dining table for more than four inside, no kitchen window,
 the 3 x 3 elevator stack is a placeholder.
+
+Verification of the dimension pass (renders/audit_y, 14 views at 960x540): the flights read at their new width
+on all three levels; powder and WC show the clear floor in front of each bowl; the island from both aisles and
+from the main shot at t 15; the sofa with the coffee table gap. Two things the views caught: the stair pendant
+I had moved "clear of the centre wall" was hanging at head height on the second-floor landing walkway (it is in
+the two-storey well over the west flight now, canopy on the upper ceiling), and the range hood's full-width
+light lens blew out white under the camera at t 15 (two small lamps now). Audit after the plan changes: 72
+findings, the four new ones from the moved walls fixed (coats, laundry basket and runner, cutting board); all
+eight camera paths clear.
+
+Web export. The furnished export came out at 331 MB: the block's 48 parkway trees are instanced outside the
+neighbourhood collection so the "drop the block" step missed them, and decimation only looked at prototype
+meshes. The bake also took an hour because every tile bake made Cycles synchronise the whole house scene.
+export_web.py now bakes in a one-plane scene (149 tiles in under a minute), keeps the tiles in web/_tiles as a
+cache (--rebake to refresh), drops trees off the lot, and decimates each heavy mesh datablock once so instances
+stay shared. Result 65 MB (40 MB geometry, 21 MB textures, 6,045 meshes), no longer committed; tools/viewer_bundle.py
+packages web/ as a zip with double-click starters and as one self-contained HTML.
