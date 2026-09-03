@@ -720,7 +720,7 @@ class Gens3:
         objs.append(cylinder_ft(self.uid("sa_pull"), (x1 + 0.2, 25.2, z0 + 2.5), 0.05, 2.0, cedar, self.col, 10))
         objs.append(cylinder_ft(self.uid("sa_pull"), (x1 - 0.2, 25.2, z0 + 2.5), 0.05, 2.0, cedar, self.col, 10))
         # warm strips under the benches and one sconce
-        objs += self.gen_led_strip({"b": [x0 + 2.15, y0 + 2.7, x0 + 4.0, y0 + 2.75, z0 + 1.38, z0 + 1.42], "watts": 6, "kelvin": 2200})
-        objs += self.gen_led_strip({"b": [x0 + 0.2, y1 - 2.4, x1 - 0.7, y1 - 2.35, z0 + 2.78, z0 + 2.82], "watts": 8, "kelvin": 2200})
-        objs += self.gen_sconce({"wall": {"axis": "y", "at": x0 + 0.1 + t, "face": "+x"}, "u": y0 + 4.2, "z": z0 + 6.0, "watts": 14, "kelvin": 2200, "radius": 0.15, "height": 0.6})
+        objs += self.gen_led_strip({"b": [x0 + 2.15, y0 + 2.7, x0 + 4.0, y0 + 2.75, z0 + 1.38, z0 + 1.42], "watts": 14, "kelvin": 2200})
+        objs += self.gen_led_strip({"b": [x0 + 0.2, y1 - 2.4, x1 - 0.7, y1 - 2.35, z0 + 2.78, z0 + 2.82], "watts": 18, "kelvin": 2200})
+        objs += self.gen_sconce({"wall": {"axis": "y", "at": x0 + 0.1 + t, "face": "+x"}, "u": y0 + 4.2, "z": z0 + 6.0, "watts": 26, "kelvin": 2200, "radius": 0.15, "height": 0.6})
         return objs
