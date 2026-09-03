@@ -2943,7 +2943,7 @@
 ],
 "length": 3.0,
 "on": true,
-"watts": 35
+"watts": 20
 },
 {
 "asset": "proc:heater",
@@ -2955,7 +2955,7 @@
 ],
 "length": 3.0,
 "on": true,
-"watts": 35
+"watts": 20
 },
 {
 "asset": "proc:planter",
