@@ -9,8 +9,10 @@ walkthrough video. Everything is regenerated from JSON and Python; nothing is ha
 - `staging.json` (530 placements: 72 CC0 model instances, 415 procedural pieces, finishes and lights) is
   written by `tools/make_staging.py` from the room-by-room lists in `tools/staging_main.py` and
   `tools/staging_rest.py`. Do not hand-edit it either.
-- `renders/walkthrough_preview.mp4` is the committed check render. The final render is a one-command job on a
-  machine with a GPU; see "Rendering on the Mac Mini".
+- `renders/walkthrough_preview.mp4` is the committed check render, `renders/stills_preview/` the named stills
+  from the same run and `renders/review/` eight closer verification renders (sofa and fire, kitchen, bedroom,
+  garage, stair well, the block from the air). The final render is a one-command job on a machine with a GPU;
+  see "Rendering on the Mac Mini".
 
 ## What you need
 
