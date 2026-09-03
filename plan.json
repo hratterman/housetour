@@ -3990,14 +3990,14 @@
     "practical_mul": 1.5
    },
    "morning": {
-    "sun_strength": 5.0,
+    "sun_strength": 6.0,
     "sun_direction": [
      -0.82,
      0.25,
      -0.38
     ],
-    "sun_kelvin": 4200,
-    "sky_strength": 2.5,
+    "sun_kelvin": 3400,
+    "sky_strength": 3.5,
     "hdri_rot_deg": 180,
     "fill_mul": 0.8,
     "practical_mul": 0.9
@@ -4628,6 +4628,7 @@
    "name": "bedroom",
    "seconds": 8,
    "morning": true,
+   "exposure": 0.3,
    "path": [
     {
      "t": 0,

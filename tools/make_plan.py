@@ -450,7 +450,7 @@ lighting = {"fill_scale": {"main": 0.35, "second": 0.35, "basement": 1.2, "garag
             "modes": {
                 "dusk": {"sun_strength": 0.25, "sun_direction": [0.85, 0.25, -0.12], "sun_kelvin": 2600, "sky_strength": 0.35,
                          "sky_rgb": [0.55, 0.62, 0.95], "hdri_rot_deg": 60, "fill_mul": 1.6, "practical_mul": 1.5},
-                "morning": {"sun_strength": 5.0, "sun_direction": [-0.82, 0.25, -0.38], "sun_kelvin": 4200, "sky_strength": 2.5,
+                "morning": {"sun_strength": 6.0, "sun_direction": [-0.82, 0.25, -0.38], "sun_kelvin": 3400, "sky_strength": 3.5,
                             "hdri_rot_deg": 180, "fill_mul": 0.8, "practical_mul": 0.9},
             }}
 camera = {"focal_mm": 24, "sensor_mm": 36, "exposure": 0.0, "fstop": 4.0, "handheld_ft": 0.06}
@@ -486,7 +486,7 @@ shots = [
     {"name": "terrace_dusk", "seconds": 12, "dusk": True, "exposure": 0.5, "path": [
         {"t": 0, "pos": [36, 78, 5.5], "look": [12, 46, 6]}, {"t": 5, "pos": [26, 66, 5.5], "look": [10, 46, 5]},
         {"t": 9, "pos": [16, 58, 5.5], "look": [8, 40, 4.5]}, {"t": 12, "pos": [11, 48, 5.5], "look": [2, 38, 4]}]},
-    {"name": "bedroom", "seconds": 8, "morning": True, "path": [
+    {"name": "bedroom", "seconds": 8, "morning": True, "exposure": 0.3, "path": [
         {"t": 0, "pos": [38.5, 44.0, 5.5], "look": [30.5, 36.5, 3.5]}, {"t": 4, "pos": [36.0, 40.5, 5.5], "look": [29.3, 42.8, 2.6]},
         {"t": 8, "pos": [34.0, 38.0, 5.5], "look": [40.5, 43.0, 4.0]}]},
     {"name": "garage", "seconds": 8, "path": [
