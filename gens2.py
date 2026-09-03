@@ -557,11 +557,11 @@ class Gens2:
         pw = (W - 0.6) / 2
         for i, x in enumerate((0.2, W / 2 + 0.1)):
             cx = x + pw / 2 - W / 2
-            objs.append(sg.pillow(self.uid("sg_bed_pillow"), (cx + rng.uniform(-0.05, 0.05), L / 2 - 1.05, matt_top + 0.24), (pw, 1.6, 0.5),
-                                  self.mat(pm[i % len(pm)]), self.col, rot=(math.radians(rng.uniform(8, 14)), 0, math.radians(rng.uniform(-3, 3))),
+            objs.append(sg.pillow(self.uid("sg_bed_pillow"), (cx + rng.uniform(-0.05, 0.05), L / 2 - 1.0, matt_top + 0.3), (pw, 1.6, 0.5),
+                                  self.mat(pm[i % len(pm)]), self.col, rot=(math.radians(rng.uniform(17, 23)), 0, math.radians(rng.uniform(-3, 3))),
                                   origin_ft=p, rot_z_deg=rot, seed=seed + 10 + i))
             objs.append(sg.pillow(self.uid("sg_bed_pillow"), (cx, L / 2 - 1.55, matt_top + 0.5), (pw - 0.35, 1.25, 0.42),
-                                  self.mat(pm[(i + 2) % len(pm)]), self.col, rot=(math.radians(rng.uniform(28, 36)), 0, math.radians(rng.uniform(-4, 4))),
+                                  self.mat(pm[(i + 2) % len(pm)]), self.col, rot=(math.radians(rng.uniform(36, 44)), 0, math.radians(rng.uniform(-4, 4))),
                                   origin_ft=p, rot_z_deg=rot, seed=seed + 20 + i))
         if e.get("blanket_m"):
             # wool throw across the foot, hanging over the end of the duvet
@@ -623,7 +623,7 @@ class Gens2:
         seed = e.get("seed", 5)
         near = self._wall_sides(e.get("room"), (x0, y0, x1, y1))     # sides of the mattress against a wall: no overhang there
         drops = {s: 0.7 for s in ("-x", "+x", "-y", "+y") if s != head and s not in near}
-        a = math.radians(12)
+        a = math.radians(18)
         if head == "+y":
             hb = box_ft(self.uid("kb_headboard"), x0 - 0.2, y1 + 0.02, x1 + 0.2, y1 + 0.25, z0, z0 + 3.2, wood, self.col)
             rect, edge, axis, toward = (x0, y0, x1, y1 - 1.8), y1 - 1.8, "y", -1
