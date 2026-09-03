@@ -600,3 +600,46 @@ minutes under software GL (the 6,045 draw calls are the cost; merging procedural
 the next step), with no page errors; a Mac GPU loads it in well under a minute. macOS refuses the unsigned
 .command on a double-click; right-click, Open, or serve the folder by hand. The 27 MB house.glb is tracked again
 so a clone of the branch walks out of the box.
+
+## Realism pass (Henry: "so much of this stuff looks ultra low poly and extruded... audit everything and maximize detail")
+
+Survey. 114 more Poly Haven models fetched (224 wanted, 223 on disk) and every model rendered to a thumbnail sheet
+(tools/model_sheet.py, renders/model_sheet). What fits a 1950s-modern house: the covered car for the lift, the
+slatted walnut cabinet and the mid-century drawer unit, school desk chairs for the kids, cube shelves, the
+orange task lamp, chevron throw pillows, and a long list of props (lab gear, tools, cleaning bottles, food,
+garden things). What does not: every sofa (a French settee, a chesterfield, a carved traditional three-seater),
+the nightstands (one carved, one farmhouse), the chandeliers and the two CRT televisions; those pieces stay
+procedural and got better geometry instead.
+
+Soft goods (softgoods.py). The box-plus-noise cloth pass was the biggest tell. New grid-mesh primitives: a pillow
+with domed faces meeting at a seam, pinched corners and a few creases; a slab with a flat top, rounded rim, puff
+and a sat-on sag; a duvet as one surface with a rounded turn over the mattress edge, swaying drops and a plump
+folded roll at the head; a drape over an edge (throws over arms and bed feet); a towel over a bar with a short
+back and long front; a towel stack; a pinch-pleated curtain panel. Wired into gen_cushions (pillows now lean back
+against the backrest with the puffy face to the room), the platform bed, the kid beds (drops only on sides not
+against a wall), window seats, benches, daybed, ottoman, lounge chair, sofa cushions, the lounge pit and every
+towel bar and warmer. The bevel/cloth pass skips them (sg_ prefix). Curtains on the primary bedroom's two
+windows on brass rods; the reading corner's floor lamp moved off the curtain line.
+
+Architectural detail (archdetail.py, from plan.json alone). A rocker switch 48 in high on the latch side of every
+door in every room it serves, duplex outlets 15 in high about every 10 ft of usable wall (closets, the kitchen
+run and mechanical rooms excepted), a linear slot diffuser in the ceiling of every room over 60 sq ft, a return
+grille in each hall, smoke detectors in bedrooms and halls, a thermostat per floor.
+
+Materials. Painted walls carry the ambientCG eggshell roller texture (colour still from rgb); textiles moved to
+finer sets (terry towels, knit and wool throws, linen bedding); brass and blackened steel got brushed-metal
+normals; ceramics a glaze map; new leather sets, tinted glass for oil bottles and candle jars, plastics and chrome
+for the small props.
+
+Clutter (tools/staging_clutter.py, 110 pieces). Keys bowl and glasses on the entry console, post on the vestibule
+bench; oil bottles, knife block, paper towels, a spoon, fruit on the board, a tea set and bananas on the nook;
+wine and bread in the pantry; a remote, magazines, a camera, a mug and a candle in the living room; candlesticks
+and an elephant in the away room; soap pumps, folded towels, bath mats and shampoo in every bath; alarm clock,
+notebook, glasses, phone and water glass on the nightstands, a folded knit throw on the bench, a hamper; cleaning
+bottles, towel stack, broom and dustpan in the laundry; task lamp, notepads, pens, stapler, mug and phone on the
+office desk; laptop, circuit board, multimeter, chemistry set, microscope, bunsen burner, magnifier and a radio
+in the lab; chevron pillows, treasure chests, footballs, cube shelves, a chalkboard, a board game and a console
+in the kids' rooms; a dartboard, console and blanket basket in the lounge; crates and a suitcase in storage; and
+the garage bench dressed with tools, cans, crates, a stool, a fire extinguisher, hand truck, tire pump and
+jerrycan. Sofa turned to face the fire: it had been sitting with its back to the fireplace and its own coffee
+table since the first staging.

@@ -6,9 +6,9 @@ walkthrough video. Everything is regenerated from JSON and Python; nothing is ha
 
 - `plan.json` (rooms, openings, stairs, roof, site, neighbourhood, lighting, shots) is written by
   `tools/make_plan.py` from `housemasterspec.md`. Do not hand-edit it.
-- `staging.json` (524 placements: 70 CC0 model instances, 411 procedural pieces, finishes and lights) is
-  written by `tools/make_staging.py` from the room-by-room lists in `tools/staging_main.py` and
-  `tools/staging_rest.py`. Do not hand-edit it either.
+- `staging.json` (668 placements: 164 CC0 model instances, 442 procedural pieces, finishes and lights) is
+  written by `tools/make_staging.py` from the room-by-room lists in `tools/staging_main.py`,
+  `tools/staging_rest.py` and the lived-in layer in `tools/staging_clutter.py`. Do not hand-edit it either.
 - `renders/walkthrough_preview.mp4` is the committed check render, `renders/stills_preview/` the named stills
   from the same run and `renders/review/` eight closer verification renders (sofa and fire, kitchen, bedroom,
   garage, stair well, the block from the air). The final render is a one-command job on a machine with a GPU;
@@ -21,7 +21,7 @@ walkthrough video. Everything is regenerated from JSON and Python; nothing is ha
 - ffmpeg.
 - Python 3 with Pillow (`pip3 install pillow`) for the contact sheet and the generated screen textures.
   Blender's own Python runs the scene scripts.
-- About 1.1 GB of CC0 assets from Poly Haven and ambientCG, fetched once by `tools/fetch_assets.py` into
+- About 1.6 GB of CC0 assets from Poly Haven and ambientCG (223 models, 47 texture sets, one sky), fetched once by `tools/fetch_assets.py` into
   `assets/` (gitignored). Every file is recorded with its source URL and licence in `assets/manifest.json`.
 
 ## Quick start
@@ -120,7 +120,9 @@ details.py            casings, doors, windows, glass, mullions, portals, baseboa
 site_build.py         roof, tower, terrace, spa, catio, window wells, lawn, beds, hedges
 neighborhood.py       the block: street, parkway trees, 25 lots in six period styles, alley garages, lamps, fences
 staging.py            model import (glTF, joined, instanced) and the Stager: wall-face placement, the first 40 generators
-gens2.py, gens3.py    the other 110 procedural generators (kitchen, baths, beds, gym, bar, garage, cars, exterior)
+gens2.py, gens3.py    the other 115 procedural generators (kitchen, baths, beds, gym, bar, garage, cars, exterior, small props)
+softgoods.py          pillows, cushions, duvets, drapes, towels and curtains as shaped grid meshes
+archdetail.py         switches, outlets, slot diffusers, return grilles, smoke detectors, thermostats from the plan
 lighting.py           room fills, practicals, sun, clamped HDRI sky, modes, white balance
 materials_pbr.py      box-projected PBR at physical scale, procedural overlays, shadow-transparent glass
 render.sh             orchestration: shots, ffmpeg stitch with cross-dissolves, stills, contact sheet
@@ -131,6 +133,8 @@ tools/stills.py       renders the named stills and the free-pose room views, one
 tools/acceptance.py   spec section by section: present / partial / missing table into notes/acceptance.md
 tools/audit_views.py  one bird's-eye pose per room, for an orientation and clipping review with --views-file
 tools/model_facing.py measures a model's forward direction (Poly Haven chairs face -Y at rot 0)
+tools/model_sheet.py  thumbnail every downloaded model into contact sheets (judge a model before staging it)
+tools/viewer_bundle.py packages the web viewer as a zip with double-click starters and as one HTML file
 car.py                the cars: lofted subdivision cage, wheel arches, glass band, lights, wheels
 tools/fetch_assets.py downloads the CC0 assets in assets/wanted.json; tools/gen_textures.py draws the screen images
 tools/contact_sheet.py, tools/floorplan.py, tools/web_screenshots.py
@@ -175,9 +179,13 @@ notes/acceptance.md   the spec checklist
 - Materials are world-space box-projected at a physical size, so adjacent objects tile continuously and nothing
   is UV mapped. Terrazzo has a procedural brass strip grid, the bedding its stripes, the office monitors a
   generated code editor. All wallpapers and all framed art are procedural, so no real artwork is used.
-- After the build, three passes: a bevel on every edge (a quarter inch on the shell, 0.4 in on details, 1.2 in
-  on soft goods, 5 in on car bodies); a cloth pass that gives pillows, duvets, throws and cushions a subdivision,
-  a noise displacement and a level of smoothing; and a hedge pass that displaces the hedge boxes into foliage.
+- Soft goods are real meshes (`softgoods.py`): pillows with a seam and pinched corners, seat slabs with a sag,
+  duvets turning over the mattress edge with a folded roll at the head, throws draped over arms, towels over
+  bars, pleated curtains. After staging, `archdetail.py` adds the switches, outlets, diffusers, grilles, smoke
+  detectors and thermostats a real house has, keyed to the finished wall faces and clear of every opening.
+- After the build, three passes: a bevel on every edge (a quarter inch on the shell, 0.4 in on details, 5 in on
+  car bodies); a cloth pass for the few remaining box textiles (garments, the beanbag); and a hedge pass that
+  displaces the hedge boxes into foliage.
 - Lighting: a dim ceiling fill per room, then a real light for every lamp, pendant, sconce, picture light,
   strip, screen and fire (about 240 lights), the sun lamp, and the HDRI sky with its baked sun disc clamped out
   so the sky strength only scales the diffuse sky. Window glass passes shadow rays, so sun and sky reach the
