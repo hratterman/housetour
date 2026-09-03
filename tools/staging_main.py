@@ -148,9 +148,7 @@ def main_floor():
     proc("kitchen2", "kitchen")
     proc("sputnik", "kitchen", pos=[13.75, 23.5, 7.5], arms=18, radius=1.6, ceil_z=9.5, watts=110, seed=11)
     proc("downlights", "kitchen", positions=[[10.5, 17], [10.5, 22], [19.5, 17], [19.5, 24], [15, 28.5]], z=9.5, watts=9)
-    model("boombox", (18.3, 14.9, 3.0), "kitchen", length_ft=1.3, rot_z=180)
-    model("book_encyclopedia_set_01", (16.2, 14.9, 3.0), "kitchen", length_ft=0.9, rot_z=0)
-    model("wooden_cutting_board", (20.5, 14.9, 3.05), "kitchen", length_ft=1.3, rot_z=80)
+    model("wooden_cutting_board", (13.0, 20.2, 3.05), "kitchen", length_ft=1.3, rot_z=80)   # on the island beside the sink
     model("brass_pot_01", (20.9, 23.7, 3.0), "kitchen", height_ft=0.7)
     # ------------------------------------------------------------------ 3.15 living room (X 0-20; west face at X 1)
     note("living")
