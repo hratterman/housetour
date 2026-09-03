@@ -371,3 +371,44 @@ the vestibule and 2 ft elsewhere.
 Tooling. build_scene --views-file renders many poses from one build; tools/stills.py groups the review stills
 by shot so each lighting mode builds once. Phase timings are logged. The staged build is about 6 minutes on
 this 4-thread box, most of it in the 10,000 procedural objects; the Mac Mini will be faster.
+
+## Overnight review pass (stage_a / stage_b / stage_c / stage_d renders)
+
+Method: build once, render 19 to 23 free poses per batch at 960x540 / 48 samples (about 3 minutes a view on
+4 threads), read every frame, fix, rebuild. Review images in renders/stage_*/stills.
+
+Daylight. The single biggest finding: Cycles blocks shadow rays at refractive surfaces, so the sun and sky
+sampled through the window glass never reached a single interior. Rooms were lit by the 2700K fills and
+practicals only, hence the uniform orange cast in every stage_a and stage_b frame. Transmissive materials
+now pass shadow rays as tinted transparency (Light Path > Is Shadow Ray into a Transparent BSDF, the archviz
+standard); a 6 x 6 test room went from 52 to 68 mean pixel value and the sun patch appeared. Verified on the
+stage_d batch.
+
+Light fixtures. The linear fire's area light had its axes swapped (rotated 90 degrees about Y, 'size' is the
+height), so it was a tall narrow panel painting a stripe up the limestone; it now lies along the firebox at
+30 W just behind the glass. Picture lights halved to 4.5 W at a 50 degree cone (they were blowing the art
+white). Lamp lens glow 14 to 7, lamp shade self-emission 1.4 to 0.9. Recovery downlights 8 to 5 W (the
+terrazzo shower blew out), primary closet downlights 7 to 11 W (too dark to read).
+
+Soft goods. Pillows, duvets, throws and cushions were beveled boxes. build_scene's bevel pass now gives the
+cloth-tagged ones a simple subdivision, a global-coordinate Clouds displacement (so no two wrinkle alike) and
+one level of Catmull-Clark; the bed duvet drops over the exposed mattress edges. gen_cushions passed a raised
+z to a bottom-origin box, so every scattered pillow hovered 2 in above its seat and the tilted ones hung in
+the air (visible in the pit); flat pillows sit on the surface, leaning ones tilt about their low edge against
+a named back side. Kid beds get striped bedding (spec 4.8 / 4.9) instead of a flat velvet slab.
+
+Screens. The office and lab monitors were a flat blue glow. tools/gen_textures.py draws a code-editor image
+(gutter, tab bar, colored token runs, status bar) with Pillow; fetch_assets runs it after the downloads and
+materials_pbr wires the diffuse into the emission (emit_tex).
+
+Compositions that were wrong, not the rooms: the closet view stood inside the bins wardrobe, the lab view
+inside the new east storage cabinet, the mudroom view inside the utility sink, the recovery view inside the
+shower, the garage shot walked into the lift under the roadster (shot re-keyed down the east aisle between
+the sedan and the lift). Cake domes were solid glass spheres (a dark lens); they are hollow shells now.
+
+Frames that read right in stage_b with no change: spine (red walls, runner, console, art, front door glass),
+entry, office (west sun, desk, six monitors, bookshelves), loft (bookwall, window seat, pendant, view over
+the lower roof), bar (terrazzo top, brass edge, slatted front, lit shelves, stools), gym (rack, plates,
+rings, mirror wall), lounge pit (banquette, steps, table, three globes), bath and vanity (floating walnut,
+backlit mirror, sconces), kitchen (island, bridge faucet, sputnik, pantry), living (bookcases, fire wall,
+sofa, arc lamp).
