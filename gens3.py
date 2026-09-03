@@ -231,7 +231,10 @@ class Gens3:
         objs = self.gen_square_table({"pos": p, "length": 4.0, "depth": 4.0, "height": 2.45})
         objs += self.gen_puzzle({"b": [p[0] - 1.2, p[1] - 0.9, p[0] + 1.2, p[1] + 0.9], "z": p[2] + 2.46, "seed": 44})
         # dining chairs face -Y at rot 0; each turns toward the table centre
-        for (dx, dy, rot) in ((0, -2.6, 180), (0, 2.6, 0), (-2.6, 0, 90), (2.6, 0, -90)):
+        sides = e.get("chairs", "nsew")
+        for (side, dx, dy, rot) in (("s", 0, -2.6, 180), ("n", 0, 2.6, 0), ("w", -2.6, 0, 90), ("e", 2.6, 0, -90)):
+            if side not in sides:
+                continue
             objs += self.gen_dining_chair({"pos": [p[0] + dx, p[1] + dy, p[2]], "rot_z": rot, "m": "leather_brown"})
         return objs
 
@@ -447,7 +450,8 @@ class Gens3:
                 box_ft(self.uid("gb_frame"), x0 + 0.2, y0 + 0.2, x1 - 0.2, y1 - 0.2, z0 + 0.3, z1 - 0.2, self.mat("steel_black"), self.col)]
         for (lx, ly) in ((x0 + 0.3, y0 + 0.3), (x1 - 0.3, y0 + 0.3), (x0 + 0.3, y1 - 0.3), (x1 - 0.3, y1 - 0.3)):
             objs.append(box_ft(self.uid("gb_leg"), lx - 0.12, ly - 0.12, lx + 0.12, ly + 0.12, z0, z1 - 0.2, self.mat("steel_black"), self.col))
-        objs.append(box_ft(self.uid("gb_shelf"), x0 + 0.3, y0 + 0.3, x1 - 0.3, y1 - 0.3, z0 + 0.6, z0 + 0.66, self.mat("steel_black"), self.col))
+        if e.get("shelf", True):
+            objs.append(box_ft(self.uid("gb_shelf"), x0 + 0.3, y0 + 0.3, x1 - 0.3, y1 - 0.3, z0 + 0.6, z0 + 0.66, self.mat("steel_black"), self.col))
         # pegboard above with tools
         wall = e.get("wall")
         if wall:

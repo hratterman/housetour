@@ -629,7 +629,7 @@ class Gens2:
         objs.append(box_ft(self.uid("k_backsplash"), wx - 0.03, 19.0, wx, 25.0, z + 3.0, z + 5.0, self.mat("tile_backsplash"), self.col))
         objs.append(box_ft(self.uid("k_backsplash"), wx - 0.03, 19.25, wx, 22.75, z + 5.0, z + 8.0, self.mat("tile_backsplash"), self.col))
         # freezer and fridge columns, 30 in wide, walnut panels with long brass pulls
-        for (ya, yb) in ((25.0, 27.5), (27.5, 30.0)):
+        for (ya, yb) in ((25.0, 27.4), (27.4, 29.7)):   # stop short of the Y 30 column line
             objs.append(box_ft(self.uid("k_column"), wx - 2.1, ya, wx, yb, z, z + 8.5, wood, self.col))
             objs.append(box_ft(self.uid("k_pull"), wx - 2.2, ya + 0.35, wx - 2.12, ya + 0.42, z + 2.5, z + 6.5, brass, self.col))
             objs.append(box_ft(self.uid("reveal"), wx - 2.11, ya + 0.02, wx - 2.1, yb - 0.02, z + 0.02, z + 8.48, self.mat("black"), self.col))

@@ -141,13 +141,24 @@
 {
 "asset": "rubber_boots",
 "pos": [
-9.2,
+9.05,
 4.9,
 0
 ],
 "room": "vestibule",
 "height_ft": 1.1,
 "rot_z": 20
+},
+{
+"asset": "rubber_boots",
+"pos": [
+9.5,
+4.95,
+0
+],
+"room": "vestibule",
+"height_ft": 1.1,
+"rot_z": 30
 },
 {
 "note": "== powder =="
@@ -394,8 +405,8 @@
 {
 "asset": "pachira_aquatica_01",
 "pos": [
-19.0,
-10.6,
+19.6,
+10.2,
 0
 ],
 "room": "entry_hall",
@@ -834,7 +845,7 @@
 "b": [
 37.5,
 9.5,
-39.5,
+38.9,
 12.75,
 0,
 8.0
@@ -991,6 +1002,17 @@
 "rot_z": 100
 },
 {
+"asset": "rubber_boots",
+"pos": [
+2.05,
+18.85,
+0
+],
+"room": "mudroom",
+"height_ft": 1.1,
+"rot_z": 92
+},
+{
 "note": "== litter closet =="
 },
 {
@@ -1087,9 +1109,9 @@
 "asset": "proc:cabinet",
 "room": "pantry",
 "b": [
-1.0,
-21.5,
 3.0,
+21.5,
+3.03,
 23.5,
 0.3,
 2.9
@@ -1367,7 +1389,7 @@
 "asset": "proc:mushroom_lamp",
 "room": "living",
 "pos": [
-3.1,
+3.3,
 33.0,
 1.4
 ],
@@ -1538,7 +1560,7 @@
 "asset": "proc:records",
 "room": "living",
 "pos": [
-19.35,
+19.15,
 31.1,
 2.4
 ],
@@ -1669,23 +1691,23 @@
 {
 "asset": "potted_plant_02",
 "pos": [
-17.8,
-42.6,
+14.6,
+43.2,
 0
 ],
 "room": "living",
-"height_ft": 6.0,
+"height_ft": 5.5,
 "rot_z": 20
 },
 {
-"asset": "potted_plant_02",
+"asset": "calathea_orbifolia_01",
 "pos": [
-4.4,
-43.6,
+3.2,
+44.2,
 0
 ],
 "room": "living",
-"height_ft": 4.2,
+"length_ft": 1.6,
 "rot_z": 50
 },
 {
@@ -1876,8 +1898,8 @@
 "asset": "proc:mushroom_lamp",
 "room": "away",
 "pos": [
-22.9,
-43.5,
+21.3,
+44.0,
 0
 ],
 "height": 5.0,
@@ -2116,7 +2138,7 @@
 "asset": "proc:toilet",
 "room": "wc",
 "pos": [
-40.95,
+40.6,
 15.5,
 0
 ],
@@ -2400,21 +2422,6 @@
 "thick": 0.04
 },
 {
-"asset": "proc:cabinet",
-"room": "primary_closet",
-"b": [
-39.5,
-28.0,
-41.0,
-29.75,
-0,
-2.5
-],
-"doors": 1,
-"face": "-x",
-"m": "walnut_h"
-},
-{
 "asset": "proc:three_globe_pendant",
 "room": "primary_closet",
 "pos": [
@@ -2446,17 +2453,6 @@
 ],
 "z": 9.5,
 "watts": 11
-},
-{
-"asset": "vintage_suitcase",
-"pos": [
-33.5,
-23.0,
-7.0
-],
-"room": "primary_closet",
-"length_ft": 2.2,
-"rot_z": 0
 },
 {
 "note": "== primary bedroom =="
@@ -2565,8 +2561,8 @@
 {
 "asset": "green_chair_01",
 "pos": [
-38.9,
-43.0,
+38.4,
+42.6,
 0
 ],
 "room": "primary_bedroom",
@@ -2596,8 +2592,8 @@
 {
 "asset": "side_table_01",
 "pos": [
-36.9,
-44.2,
+36.2,
+44.3,
 0
 ],
 "room": "primary_bedroom",
@@ -2606,8 +2602,8 @@
 {
 "asset": "jug_01",
 "pos": [
-36.9,
-44.2,
+36.2,
+44.3,
 1.9
 ],
 "room": "primary_bedroom",
@@ -2617,8 +2613,8 @@
 "asset": "proc:floor_lamp",
 "room": "primary_bedroom",
 "pos": [
-40.2,
-44.3,
+40.3,
+44.6,
 0
 ],
 "height": 5.2,
@@ -3483,8 +3479,8 @@
 "asset": "proc:floor_lamp",
 "room": "her_office",
 "pos": [
-9.5,
-8.0,
+9.9,
+7.8,
 10.0
 ],
 "height": 5.4,
@@ -3494,8 +3490,8 @@
 {
 "asset": "side_table_01",
 "pos": [
-8.8,
-11.6,
+9.2,
+12.0,
 10.0
 ],
 "room": "her_office",
@@ -3571,8 +3567,8 @@
 {
 "asset": "potted_plant_04",
 "pos": [
-9.0,
-23.6,
+8.9,
+22.4,
 10.0
 ],
 "room": "her_office",
@@ -4681,7 +4677,7 @@
 "asset": "proc:nightstand2",
 "room": "bedroom_b",
 "pos": [
-36.0,
+36.65,
 29.6,
 10.0
 ],
@@ -4706,7 +4702,7 @@
 "b": [
 32.0,
 28.3,
-36.0,
+35.8,
 30.3,
 12.3,
 12.4
@@ -5694,7 +5690,7 @@
 "asset": "proc:plate_tree",
 "room": "gym",
 "pos": [
-7.0,
+8.8,
 2.0,
 -10.0
 ]
@@ -6168,10 +6164,11 @@
 "asset": "proc:game_table",
 "room": "lounge",
 "pos": [
-18.5,
+19.0,
 32.6,
 -10.0
-]
+],
+"chairs": "ns"
 },
 {
 "asset": "proc:pendant_cone",
@@ -6580,7 +6577,7 @@
 "asset": "plastic_crate_01",
 "pos": [
 37.0,
-44.3,
+44.0,
 -10.0
 ],
 "room": "storage",
@@ -6776,7 +6773,8 @@
 3.1,
 7.1
 ],
-"tools": 36
+"tools": 36,
+"shelf": false
 },
 {
 "asset": "metal_tool_chest",
@@ -6815,7 +6813,7 @@
 "asset": "wooden_ladder",
 "pos": [
 -3.9,
-92.4,
+90.3,
 -0.4
 ],
 "room": "garage",
@@ -6826,8 +6824,8 @@
 "asset": "proc:shelving_unit",
 "room": "garage",
 "pos": [
--4.0,
-88.5,
+16.05,
+89.0,
 -0.4
 ],
 "length": 6.0,
@@ -6871,8 +6869,8 @@
 {
 "asset": "plastic_broom",
 "pos": [
-16.2,
-92.3,
+-4.5,
+92.6,
 -0.4
 ],
 "room": "garage",
@@ -6883,8 +6881,8 @@
 "asset": "proc:shovel",
 "room": "garage",
 "pos": [
-16.2,
-92.5,
+-4.2,
+92.4,
 -0.4
 ]
 },
@@ -6892,16 +6890,16 @@
 "asset": "proc:ice_melt",
 "room": "garage",
 "pos": [
-15.0,
-91.8,
+-3.5,
+91.7,
 -0.4
 ]
 },
 {
 "asset": "cardboard_box_01",
 "pos": [
--4.1,
-88.5,
+16.05,
+89.0,
 4.8
 ],
 "room": "garage",
@@ -6910,13 +6908,13 @@
 {
 "asset": "garden_hose_wall_mounted_01",
 "pos": [
-16.55,
-88.0,
+-4.85,
+92.0,
 3.1
 ],
 "room": "garage",
 "length_ft": 1.8,
-"rot_z": -90
+"rot_z": 90
 },
 {
 "asset": "proc:shop_light",

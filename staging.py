@@ -28,7 +28,7 @@ from gens3 import Gens3  # noqa: E402
 
 
 # models that are genuinely a group of separate pieces (a pair of boots, a set of books), not variants
-KEEP_ALL_PARTS = {"rubber_boots", "book_encyclopedia_set_01", "brass_candleholders", "outdoor_table_chair_set_01",
+KEEP_ALL_PARTS = {"book_encyclopedia_set_01", "brass_candleholders", "outdoor_table_chair_set_01",
                   "wine_bottles_01", "decorative_book_set_01", "kitchen_utensils", "wooden_ladder", "metal_tool_chest"}
 
 
@@ -1345,7 +1345,9 @@ class Stager(Gens2, Gens3):
         objs = []
         for sx in (-1, 1):
             for sy in (-1, 1):
-                objs.append(box_centered(self.uid("sh_post"), (p[0] + sx * L / 2, p[1] + sy * D / 2, p[2]), (0.12, 0.12, H), 0, steel, self.col))
+                lx, ly = sx * L / 2, sy * D / 2
+                ca, sa = math.cos(math.radians(rot)), math.sin(math.radians(rot))
+                objs.append(box_centered(self.uid("sh_post"), (p[0] + lx * ca - ly * sa, p[1] + lx * sa + ly * ca, p[2]), (0.12, 0.12, H), rot, steel, self.col))
         rng = random.Random(e.get("seed", 2))
         for k in range(4):
             zz = p[2] + 0.3 + k * (H - 0.6) / 3
@@ -1355,7 +1357,8 @@ class Stager(Gens2, Gens3):
                 w = rng.uniform(0.9, 1.6)
                 if u + w > L / 2 - 0.1:
                     break
-                objs.append(box_centered(self.uid("crate"), (p[0] + u + w / 2, p[1], zz + 0.08), (w - 0.1, D - 0.4, rng.uniform(0.8, 1.3)), rot,
+                off = u + w / 2
+                objs.append(box_centered(self.uid("crate"), (p[0] + off * math.cos(math.radians(rot)), p[1] + off * math.sin(math.radians(rot)), zz + 0.08), (w - 0.1, D - 0.4, rng.uniform(0.8, 1.3)), rot,
                                          self.mat(rng.choice(["paper", "paper", "olive", "black"])), self.col))
                 u += w + rng.uniform(0.05, 0.4)
         return objs
