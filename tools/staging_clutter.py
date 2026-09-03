@@ -3,7 +3,7 @@
 Everything here is CC0 Poly Haven where a model exists (dims and forward directions measured with
 tools/model_sheet.py and tools/model_facing.py) and a small procedural prop otherwise (gens3.gen_small_props).
 Positions are feet, base-centred, on the surface heights the furniture generators use (island top 3.0, counters
-3.0, desks 12.4 upstairs, nightstands 2.2, coffee table 1.32, credenza 2.4, bench 1.5, cabinet 2.5).
+3.0, desks 12.4 upstairs, nightstands 2.2, coffee table 1.32, media cabinet 1.39, bench 1.5, cabinet 2.5).
 
 Model facing at rot 0 (yaw of the forward direction, degrees): chairs -90 (-Y); desk lamp -91; covered car -89;
 treasure chest -90; chalkboard -90; hand truck 78; broom 176; tire pump -172; extinguisher -174; microscope 87;
@@ -47,8 +47,8 @@ def main_floor():
     # ------------------------------------------------------------------ living
     note("living clutter")
     proc("small_props", "living", kind="remote", pos=[7.7, 38.3, 1.32], rot_z=15)
-    proc("small_props", "living", kind="magazines", pos=[18.95, 33.2, 2.4], rot_z=90, count=3, seed=7)  # on the credenza
-    model("camera_01", (18.9, 34.6, 2.4), "living", rot_z=60, height_ft=0.25)
+    proc("small_props", "living", kind="magazines", pos=[18.95, 33.2, 1.39], rot_z=90, count=3, seed=7)  # on the media cabinet (top 1.39)
+    model("camera_01", (18.9, 34.6, 1.39), "living", rot_z=60, height_ft=0.25)
     proc("small_props", "living", kind="mug", pos=[5.9, 38.9, 1.32], rot_z=120, m="teal")
     proc("small_props", "living", kind="candle", pos=[6.3, 40.3, 1.32])
     # ------------------------------------------------------------------ away room
