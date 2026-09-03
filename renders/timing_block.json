@@ -1,0 +1,11 @@
+{
+  "shot": "block",
+  "res": "640x360",
+  "samples": 32,
+  "frame_step": 12,
+  "frames": 20,
+  "mean_s": 53.6908171415329,
+  "total_s": 1075.3179194927216,
+  "device": "CPU",
+  "stage": "phase2"
+}
