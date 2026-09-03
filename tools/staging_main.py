@@ -163,7 +163,7 @@ def main_floor():
     proc("mushroom_lamp", "living", pos=[3.3, 33.0, 1.4], height=1.6, m="brass", watts=18)
     proc("rug", "living", b=[4.5, 33.5, 16.5, 45.0], m="rug_cream", thick=0.05)
     add(asset="proc:rug", room="living", b=[6.0, 35.0, 11.0, 42.0], m="rug_oxblood", thick=0.09, rot_z=8)
-    proc("sofa", "living", pos=[10.5, 40.0, 0], rot_z=90, length=8.0, depth=3.0, m="velvet_orange")
+    proc("sofa", "living", pos=[10.5, 40.0, 0], rot_z=-90, length=8.0, depth=3.0, m="velvet_orange")   # faces the fire and the coffee table (back rail toward +X)
     proc("cushions", "living", b=[9.5, 37.0, 11.2, 43.0], z=1.77, back="+x", count=3, seed=12, mats=["velvet_teal", "velvet_teal", "wool_mustard"])
     proc("throw", "living", b=[9.3, 36.35, 11.6, 37.35], z=2.0, m="wool_oatmeal", hang="-y", drop=1.3)   # throw over the south arm
     model("modern_arm_chair_01", (5.9, 34.5, 0), "living", length_ft=2.9, rot_z=200, recolor=[0.75, 0.58, 0.16])
