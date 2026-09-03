@@ -1145,7 +1145,8 @@
   "rough": 0.55,
   "transmission": 1.0,
   "ior": 1.45,
-  "thin": true
+  "thin": true,
+  "shadow_transparent": false
  },
  "velvet_orange": {
   "rgb": [

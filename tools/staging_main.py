@@ -218,7 +218,7 @@ def main_floor():
          niche=[38.0, 39.3, 3.5, 4.8], bench=[39.4, 18.2, 41.0, 19.6, 0, 1.5])
     proc("tile_wainscot", "primary_bath", boxes=[[35.0, 21.72, 41.0, 21.75, 0, 9.5], [40.97, 18.0, 41.0, 21.75, 0, 9.5]], m="terrazzo")
     proc("toilet", "wc", pos=[40.55, 15.5, 0], facing="-x")
-    proc("downlight", "wc", pos=[40.2, 15.5, 9.5], watts=6)
+    proc("downlight", "wc", pos=[40.2, 15.5, 9.5], watts=4)
     proc("towel_bar", "wc", wall=W("x", 13.0, "+y"), u=40.2, z=3.2, length=0.8, towels=["towel_white"])
     proc("towel_warmer", "primary_bath", wall=W("x", 13.0, "+y"), u=33.0, z=3.5)
     model("wooden_stool_01", (31.5, 20.5, 0), "primary_bath", height_ft=1.5, rot_z=20)
