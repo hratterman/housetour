@@ -205,6 +205,13 @@ def main():
             status[(kind, name)] = r
             print("%-9s %-28s %s" % (kind, name, r), flush=True)
     bad = [k for k, v in status.items() if v.startswith("FAILED") or v == "missing"]
+    # generated (not downloaded) textures: the code on the office and lab screens
+    try:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import gen_textures
+        gen_textures.main()
+    except Exception as ex:  # Pillow missing: the screens fall back to a flat glow
+        print("gen_textures skipped:", ex)
     print("\n%d assets, %d problems" % (len(status), len(bad)))
     if bad:
         print("missing assets fall back to flat materials / procedural stand-ins; re-run to retry downloads")
