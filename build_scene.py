@@ -618,7 +618,8 @@ def bevel_pass(plan):
         for ob in hedges:
             s1 = ob.modifiers.new("hedge_subd", "SUBSURF")
             s1.subdivision_type = "SIMPLE"
-            s1.levels = s1.render_levels = 4
+            longest = max(abs(v) for v in ob.dimensions)
+            s1.levels = s1.render_levels = int(max(3, min(6, math.ceil(math.log2(max(longest, 0.5) / 0.4)))))   # ~0.4 m facets
             dp = ob.modifiers.new("hedge_leaf", "DISPLACE")
             dp.texture = htex
             dp.texture_coords = "GLOBAL"
