@@ -152,6 +152,7 @@ def second_floor():
     model("potted_plant_04", (27.25, 43.0, z + 3.0), "hall", height_ft=1.0)
     model("wooden_display_shelves_01", (20.9, 30.0, z), "loft", height_ft=4.6, rot_z=180)             # cube shelves on the loft's east wall
     model("treasure_chest", (18.0, 40.6, z), "loft", length_ft=2.4, rot_z=0)
+    model("rockingchair_01", (16.4, 41.4, z), "loft", height_ft=3.2, rot_z=180)                         # faces the window seat (+Y)
 
 
 def basement():
