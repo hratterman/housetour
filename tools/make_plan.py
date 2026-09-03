@@ -492,7 +492,7 @@ shots = [
     {"name": "garage", "seconds": 8, "path": [
         # in through the east door, up the aisle between the sedan and the lift, ending on the roadster and the bench
         {"t": 0, "pos": [12, 97, 5.5], "look": [4, 76, 5]}, {"t": 1.6, "pos": [11.5, 94.3, 5.5], "look": [3, 76, 5.5]},
-        {"t": 4, "pos": [8.5, 88, 5.5], "look": [0, 72, 6.0]},
+        {"t": 4, "pos": [11, 88, 5.5], "look": [0, 72, 6.0]},
         {"t": 8, "pos": [7, 82, 5.5], "look": [-3, 67, 4.0]}]},
 ]
 stills = [
