@@ -182,7 +182,7 @@ def main_floor():
     frames("living", W("y", 20.0, "-x"), [41.2, 44.9], 8, zc=5.3, seed=62)
     proc("picture_light", "living", wall=W("y", 20.0, "-x"), u=33.0, z=8.3, watts=4.5)
     proc("picture_light", "living", wall=W("y", 20.0, "-x"), u=43.3, z=8.3, watts=4.5)
-    proc("arc_lamp", "living", pos=[13.8, 43.6, 0], reach=4.9, height=7.3, rot_z=-135, watts=55)
+    proc("arc_lamp", "living", pos=[15.4, 44.3, 0], reach=4.9, height=7.3, rot_z=-160, watts=55)   # shade over the sofa's north end, 4 ft off the camera at the end of the main shot
     model("potted_plant_02", (14.8, 42.2, 0), "living", height_ft=5.0, rot_z=20)
     model("calathea_orbifolia_01", (3.1, 43.5, 1.4), "living", length_ft=1.6, rot_z=50)   # low plant on the hearth bench end
     proc("basket", "living", pos=[16.8, 32.0, 0], radius=0.75, height=1.4, throw_m="wool_mustard")

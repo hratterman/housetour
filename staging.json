@@ -1641,13 +1641,13 @@
 "asset": "proc:arc_lamp",
 "room": "living",
 "pos": [
-13.8,
-43.6,
+15.4,
+44.3,
 0
 ],
 "reach": 4.9,
 "height": 7.3,
-"rot_z": -135,
+"rot_z": -160,
 "watts": 55
 },
 {
