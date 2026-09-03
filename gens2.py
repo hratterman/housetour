@@ -458,7 +458,7 @@ class Gens2:
         # duvet: thrown back on one side (state 'thrown') or flat
         # the duvet drapes over the exposed edges: thin drop panels hang from the top slab down the sides
         drop = 0.85
-        if e.get("duvet", "thrown") == "thrown":
+        if e.get("duvet", "flat") == "thrown":
             part("bed_duvet", W * 0.42, -0.3, W + 0.35, L - 2.3, matt_top, matt_top + 0.42, duv, rz=rng.uniform(-3, 3))
             part("bed_duvet_drop", W + 0.2, -0.3, W + 0.36, L - 2.3, matt_top - drop, matt_top + 0.1, duv)
             part("bed_duvet_drop", W * 0.42, -0.31, W + 0.36, -0.15, matt_top - drop, matt_top + 0.1, duv)
@@ -466,7 +466,10 @@ class Gens2:
             part("bed_duvet", -0.3, -0.3, W * 0.5, L * 0.35, matt_top, matt_top + 0.25, duv, rz=rng.uniform(-2, 2))
             part("bed_duvet_drop", -0.31, -0.3, -0.15, L * 0.35, matt_top - drop * 0.6, matt_top + 0.05, duv)
         else:
-            part("bed_duvet", -0.3, -0.3, W + 0.3, L - 2.2, matt_top, matt_top + 0.4, duv)
+            # made bed: one duvet slab to just below the pillows, its top edge folded back as a soft roll,
+            # dropping over both sides and the foot
+            part("bed_duvet", -0.3, -0.3, W + 0.3, L - 2.2, matt_top, matt_top + 0.35, duv, rz=rng.uniform(-1, 1))
+            part("bed_duvet_fold", -0.3, L - 3.0, W + 0.3, L - 2.15, matt_top + 0.3, matt_top + 0.75, duv)
             part("bed_duvet_drop", W + 0.15, -0.3, W + 0.31, L - 2.2, matt_top - drop, matt_top + 0.1, duv)
             part("bed_duvet_drop", -0.31, -0.3, -0.15, L - 2.2, matt_top - drop, matt_top + 0.1, duv)
             part("bed_duvet_drop", -0.3, -0.31, W + 0.3, -0.15, matt_top - drop, matt_top + 0.1, duv)
@@ -477,7 +480,12 @@ class Gens2:
             part("bed_pillow", x, L - 2.05, x + pw, L - 0.25, matt_top, matt_top + 0.55, self.mat(pm[i % len(pm)]), rz=rng.uniform(-3, 3))
             part("bed_pillow", x + 0.15, L - 1.35, x + pw - 0.15, L - 0.15, matt_top + 0.5, matt_top + 1.05, self.mat(pm[(i + 2) % len(pm)]), rx=-25)
         if e.get("blanket_m"):
-            part("bed_throw", W * 0.35, -0.9, W + 0.55, 1.5, matt_top + 0.4, matt_top + 0.68, self.mat(e["blanket_m"]), rz=rng.uniform(-6, 6))
+            # folded wool throw across the foot: two thin layers, the lower one hanging over the end
+            bm = self.mat(e["blanket_m"])
+            top = matt_top + 0.36
+            part("bed_throw", W * 0.3, -0.2, W + 0.4, 1.6, top, top + 0.16, bm, rz=rng.uniform(-4, 4))
+            part("bed_throw", W * 0.36, 0.05, W + 0.3, 1.45, top + 0.16, top + 0.3, bm, rz=rng.uniform(-4, 4))
+            part("bed_throw_drop", W * 0.3, -0.36, W + 0.4, -0.2, top - 0.9, top + 0.16, bm)
         if hb_w:
             part("bed_headboard", W / 2 - hb_w / 2, L + 0.02, W / 2 + hb_w / 2, L + 0.3, 0, hb_h, wood)
             part("bed_headpad", W / 2 - hb_w / 2 + 0.3, L - 0.1, W / 2 + hb_w / 2 - 0.3, L + 0.02, plat_h + 0.6, hb_h - 0.3, self.mat(e.get("headpad_m", "leather_brown")))
