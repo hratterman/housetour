@@ -1536,9 +1536,9 @@ class Gens2:
             n = int(w / 0.28)
             for i in range(n):
                 fy = u - w / 2 + 0.3 + i * (w - 0.6) / (n - 1)
-                h = rng.uniform(0.55, 1.0)
-                fl = sphere_ft(self.uid("flame"), (fcx + rng.uniform(-0.15, 0.15), fy, z0 + 0.15 + h * 0.45), 0.13, self.mat("fire"), self.col, 10, 8)
-                fl.scale = (rng.uniform(0.7, 1.1), rng.uniform(0.8, 1.2), h / 0.26)
+                h = rng.uniform(0.3, 1.0)
+                fl = sphere_ft(self.uid("flame"), (fcx + rng.uniform(-0.15, 0.15), fy + rng.uniform(-0.06, 0.06), z0 + 0.15 + h * 0.45), 0.13, self.mat("fire"), self.col, 10, 8)
+                fl.scale = (rng.uniform(0.45, 1.0), rng.uniform(0.6, 1.1), h / 0.26)
                 fl.rotation_euler = (math.radians(rng.uniform(-10, 10)), math.radians(rng.uniform(-8, 8)), 0)
                 objs.append(fl)
                 if i % 2 == 0:
