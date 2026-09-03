@@ -662,7 +662,9 @@ def key_shot(scene, cam, tgt, shot, fps, base_exposure=None, override=None):
         scene.view_settings.exposure = base_exposure
     cam.animation_data_clear()
     tgt.animation_data_clear()
-    scene.view_settings.animation_data_clear() if scene.view_settings.animation_data else None
+    if scene.animation_data and scene.animation_data.action:
+        for fc in [fc for fc in scene.animation_data.action.fcurves if fc.data_path == "view_settings.exposure"]:
+            scene.animation_data.action.fcurves.remove(fc)
     n = int(round(shot["seconds"] * fps))
     # a waypoint may carry "exp": the view exposure is then keyed along the path (a camera riding its
     # auto-exposure from the sunlit sidewalk into the shaded porch), overriding the shot's constant
