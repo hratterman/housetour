@@ -40,6 +40,7 @@ def parse_args():
                    help="phase1 (boxes only), phase2 (textures, details, staging), or auto")
     p.add_argument("--no-blend", action="store_true", help="do not save renders/scene.blend")
     p.add_argument("--check-paths", action="store_true", help="key every shot, run the collision check, render nothing")
+    p.add_argument("--audit", action="store_true", help="build, then report staging entries that overlap each other, sink into walls or sit outside their room (notes/audit_clips.md)")
     p.add_argument("--views-file", default=None, help="JSON list of {name,pos,look}: build once, render each to <out>/stills")
     p.add_argument("--staging", default=None, help="alternate staging json (default staging.json)")
     p.add_argument("--no-bevel", action="store_true", help="skip the edge bevel pass (faster builds)")
@@ -651,6 +652,88 @@ def bevel_pass(plan):
     log("bevel pass: %d objects, %d softened as cloth" % (n, len(cloth)))
 
 
+def audit_staging(plan, out_path):
+    """Per staging entry: world AABB (feet). Report entry-entry overlaps, wall penetrations, out-of-room."""
+    from geom import world_bounds
+    bpy.context.view_layer.update()      # matrices and bound boxes of freshly created objects are stale until this
+    ents = {}
+    for ob in bpy.data.objects:
+        if ob.type != "MESH" or ob.hide_render or "entry" not in ob.keys():
+            continue
+        mn, mx = world_bounds(ob)
+        k = int(ob["entry"])
+        e = ents.setdefault(k, {"asset": str(ob["entry_asset"]), "room": str(ob["entry_room"]), "mn": [1e9] * 3, "mx": [-1e9] * 3, "n": 0})
+        for i in range(3):
+            e["mn"][i] = min(e["mn"][i], mn[i] / FT)
+            e["mx"][i] = max(e["mx"][i], mx[i] / FT)
+        e["n"] += 1
+    skip_words = ("wall_finish", "rug", "runner", "downlight", "led_strip", "picture_rail", "wall_frame", "frames", "tile_wainscot",
+                  "paneled_wall", "picture_light", "sconce", "soffit", "pendant", "sputnik", "globe", "cushions", "throw", "roller_shade",
+                  "wallpaper", "hooks", "towel_bar", "corkboard", "mail_slot", "house_numbers", "ext_sconce", "shop_light", "reel")
+    def skip(e):
+        return any(w in e["asset"] for w in skip_words)
+    def vol(a, b):
+        d = [min(a["mx"][i], b["mx"][i]) - max(a["mn"][i], b["mn"][i]) for i in range(3)]
+        return (d[0] * d[1] * d[2]) if all(v > 0 for v in d) else 0.0, d
+    rows = []
+    keys = sorted(ents)
+    for i, ka in enumerate(keys):
+        a = ents[ka]
+        if skip(a):
+            continue
+        for kb in keys[i + 1:]:
+            bb = ents[kb]
+            if skip(bb) or a["room"] != bb["room"] and a["room"] and bb["room"]:
+                continue
+            v, d = vol(a, bb)
+            if v < 0.08:
+                continue
+            # resting on top (a on b or b on a): thin z overlap is contact, not a clip
+            if d[2] < 0.12 and (abs(a["mn"][2] - bb["mx"][2]) < 0.12 or abs(bb["mn"][2] - a["mx"][2]) < 0.12):
+                continue
+            rows.append(("overlap", round(v, 2), a["room"], "%s (%d) x %s (%d)" % (a["asset"], ka, bb["asset"], kb),
+                         "x %.1f-%.1f y %.1f-%.1f z %.1f-%.1f" % (max(a["mn"][0], bb["mn"][0]), min(a["mx"][0], bb["mx"][0]), max(a["mn"][1], bb["mn"][1]), min(a["mx"][1], bb["mx"][1]), max(a["mn"][2], bb["mn"][2]), min(a["mx"][2], bb["mx"][2]))))
+    # walls: penetration deeper than 0.15 ft with a real footprint
+    walls = []
+    for ob in bpy.data.objects:
+        if ob.type == "MESH" and ob.name.startswith("wall_"):
+            mn, mx = world_bounds(ob)
+            walls.append((ob.name, [mn[i] / FT for i in range(3)], [mx[i] / FT for i in range(3)]))
+    for k, e in ents.items():
+        if skip(e):
+            continue
+        worst = None
+        for (wn, wmn, wmx) in walls:
+            d = [min(e["mx"][i], wmx[i]) - max(e["mn"][i], wmn[i]) for i in range(3)]
+            if not all(v > 0 for v in d):
+                continue
+            thin = 0 if (wmx[0] - wmn[0]) < (wmx[1] - wmn[1]) else 1
+            depth = d[thin]
+            area = d[1 - thin] * d[2]
+            if depth > 0.15 and area > 0.5 and (worst is None or depth > worst[0]):
+                worst = (depth, wn, area)
+        if worst:
+            rows.append(("in wall", round(worst[0], 2), e["room"], "%s (%d) into %s" % (e["asset"], k, worst[1]), "area %.1f sq ft" % worst[2]))
+    # out of room: entry centre outside every part of its room (grown 0.6 ft), rooms by name
+    rooms = {r["name"]: r for r in plan["rooms"]}
+    for k, e in ents.items():
+        r = rooms.get(e["room"])
+        if r is None:
+            continue
+        cx, cy = (e["mn"][0] + e["mx"][0]) / 2, (e["mn"][1] + e["mx"][1]) / 2
+        inside = any(pt[0] - 0.6 <= cx <= pt[2] + 0.6 and pt[1] - 0.6 <= cy <= pt[3] + 0.6 for pt in r["parts"])
+        if not inside:
+            rows.append(("outside room", 0, e["room"], "%s (%d)" % (e["asset"], k), "centre %.1f, %.1f" % (cx, cy)))
+    rows.sort(key=lambda r: (r[0], -r[1]))
+    with open(out_path, "w") as f:
+        f.write("# Staging clip audit\n\n%d entries with geometry, %d findings.\n\n| kind | size (cu ft / ft) | room | what | where |\n| --- | --- | --- | --- | --- |\n" % (len(ents), len(rows)))
+        for r in rows:
+            f.write("| %s | %s | %s | %s | %s |\n" % r)
+    log("audit: %d entries, %d findings -> %s" % (len(ents), len(rows), out_path))
+    for r in rows[:40]:
+        log("  ", *r)
+
+
 def setup_camera(plan):
     cam_spec = plan.get("camera", {})
     cd = bpy.data.cameras.new("cam")
@@ -1024,6 +1107,9 @@ def main():
             t0 = time.time()
             bpy.ops.render.render(write_still=True)
             log("view", v["name"], "%.1fs" % (time.time() - t0))
+        return
+    if args.audit:
+        audit_staging(plan, os.path.join(HERE, "notes", "audit_clips.md"))
         return
     if args.check_paths:
         for shot in plan["shots"]:

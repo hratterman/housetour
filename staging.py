@@ -273,7 +273,15 @@ class Stager(Gens2, Gens3):
                     ob.data.materials.append(self.mat(sm["m"]))
                 continue
             try:
+                before = {o.name for o in bpy.data.objects}
                 self.place(e)
+                # tag what this entry created, for the clipping audit (build_scene --audit)
+                idx = self.entries.index(e)
+                for o in bpy.data.objects:
+                    if o.name not in before:
+                        o["entry"] = idx
+                        o["entry_asset"] = e["asset"]
+                        o["entry_room"] = e.get("room", "")
             except Exception as ex:  # noqa
                 import traceback
                 traceback.print_exc()

@@ -353,8 +353,14 @@ class Gens3:
 
     # ================================================================== garage (spec 7)
     def gen_car(self, e):
-        """Procedural car with correct proportions: body loft from a side profile, cabin, wheels, glass, lights.
-        pos = centre of the footprint at floor level, length along local +Y (nose toward +Y when rot_z 0)."""
+        """Procedural car: see car.py (lofted subdivision cage, wheel arches, glass band, lights)."""
+        import importlib
+        import car
+        importlib.reload(car)
+        return car.build_car(self, e)
+
+    def gen_car_old(self, e):
+        """Previous extruded-profile car, kept for reference."""
         p = e["pos"]
         L, W, H = e.get("length", 15.5), e.get("width", 6.2), e.get("height", 5.4)
         kind = e.get("kind", "suv")

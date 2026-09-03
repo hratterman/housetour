@@ -492,8 +492,8 @@ shots = [
     {"name": "garage", "seconds": 8, "white_balance_k": 4500, "path": [
         # in through the east door, up the aisle between the sedan and the lift, ending on the roadster and the bench
         {"t": 0, "pos": [12, 97, 5.5], "look": [4, 76, 5]}, {"t": 1.6, "pos": [11.5, 94.3, 5.5], "look": [3, 76, 5.5]},
-        {"t": 4, "pos": [12.5, 90, 5.5], "look": [0, 72, 6.0]},
-        {"t": 8, "pos": [15.5, 84, 5.5], "look": [-2, 68, 4.0]}]},
+        {"t": 4, "pos": [10.0, 91.5, 5.5], "look": [0, 74, 6.0]},
+        {"t": 8, "pos": [7.0, 89.0, 5.5], "look": [-1, 72, 4.0]}]},
 ]
 stills = [
     {"name": "00_block_end", "shot": "block", "t": 10}, {"name": "01_street_end", "shot": "street", "t": 12}, {"name": "02_main_kitchen", "shot": "main_floor", "t": 13},

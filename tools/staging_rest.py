@@ -287,17 +287,17 @@ def garage():
     z = ZG
     # garage walls are 1 ft inside the lines: faces X -5 / 17, Y 65 / 93
     note("garage")
-    proc("lift", "garage", posts=[[-4.5, 68], [4.5, 68], [-4.5, 84], [4.5, 84]], runways=[[-3.8, -2.1], [2.1, 3.8]], y=[66, 86], z=z, runway_z=5.5)
-    proc("car", "garage", pos=[0.0, 76.8, z + 5.5], kind="roadster", length=14.5, width=5.4, height=4.0, rot_z=0, m="car_green", covered=True)   # stored under a fitted cover
-    proc("car", "garage", pos=[0.0, 73.75, z], kind="suv", length=15.5, width=6.3, height=5.6, rot_z=0, m="car_white")
-    proc("car", "garage", pos=[12.0, 73.75, z], kind="sedan", length=15.5, width=6.1, height=4.7, rot_z=0, m="car_gray")
+    proc("lift", "garage", posts=[[-4.5, 70], [4.5, 70], [-4.5, 86], [4.5, 86]], runways=[[-3.8, -2.1], [2.1, 3.8]], y=[68.5, 88], z=z, runway_z=5.5)   # clear of the bench (Y 65-67.5)
+    proc("car", "garage", pos=[0.0, 78.5, z + 5.5], kind="roadster", length=14.5, width=5.4, height=4.0, rot_z=0, m="car_green", covered=True)   # stored under a fitted cover
+    proc("car", "garage", pos=[0.0, 77.0, z], kind="suv", length=15.5, width=6.3, height=5.6, rot_z=0, m="car_white")
+    proc("car", "garage", pos=[12.0, 77.0, z], kind="sedan", length=15.5, width=6.1, height=4.7, rot_z=0, m="car_gray")
     proc("charger", "garage", wall=W("y", 18.0, "-x"), u=70.0, z=z + 4.0)
-    proc("charger", "garage", wall=W("y", -6.0, "+x"), u=70.0, z=z + 4.0)
+    proc("charger", "garage", wall=W("y", -6.0, "+x"), u=75.0, z=z + 4.0)
     proc("garage_bench", "garage", b=[-3.0, 65.0, 17.0, 67.5, z, z + 3.0], wall=W("x", 64.0, "+y"), peg_z=[z + 3.5, z + 7.5], tools=36)
     model("metal_tool_chest", (10.0, 66.3, z), "garage", height_ft=3.0, rot_z=0)
     model("bench_vice_01", (4.0, 65.6, z + 3.0), "garage", length_ft=1.2, rot_z=0)
     model("metal_toolbox", (14.0, 66.0, z + 3.0), "garage", length_ft=1.6, rot_z=10)
-    model("wooden_ladder", (-4.6, 90.0, z), "garage", height_ft=8.0, rot_z=90)
+    model("wooden_ladder", (-4.7, 92.6, z), "garage", height_ft=8.0, rot_z=90)
     proc("shelving_unit", "garage", pos=[-4.1, 88.5, z], length=6.0, depth=1.8, height=7.0, rot_z=90, seed=4)
     proc("compressor_closet", "garage", b=[-5.0, 65.0, -3.0, 67.5, z, z + 6.0])
     proc("reel", "garage", pos=[0.0, 76.0, z + 11.5], m="steel_black")
