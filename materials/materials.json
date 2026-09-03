@@ -2233,8 +2233,8 @@
   "sheen": 0.4,
   "overlay": {
    "type": "stripes",
-   "size_ft": 0.5,
-   "width": 0.45,
+   "size_ft": 0.3,
+   "width": 0.4,
    "rgb": [
     0.1,
     0.35,
@@ -2256,8 +2256,8 @@
   "sheen": 0.4,
   "overlay": {
    "type": "stripes",
-   "size_ft": 0.5,
-   "width": 0.45,
+   "size_ft": 0.3,
+   "width": 0.4,
    "rgb": [
     0.72,
     0.55,
