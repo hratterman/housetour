@@ -126,7 +126,7 @@ def main_floor():
     proc("cat_station", "mudroom", pos=[4.2, 13.9, 0])
     proc("runner", "mudroom", b=[2.2, 14.5, 4.7, 18.8], m="runner")
     proc("sconce", "mudroom", wall=W("y", 0.0, "+x"), u=17.75, z=8.3, watts=10)
-    proc("downlights", "mudroom", positions=[[3, 17], [6, 17]], z=9.5, watts=9)
+    proc("downlights", "mudroom", positions=[[3, 17], [6, 17]], z=9.5, watts=14)
     model("rubber_boots", (2.0, 18.4, 0), "mudroom", height_ft=1.1, rot_z=100)
     # ------------------------------------------------------------------ 3.12 litter closet
     note("litter closet")
