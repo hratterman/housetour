@@ -660,6 +660,8 @@ def audit_staging(plan, out_path):
     for ob in bpy.data.objects:
         if ob.type != "MESH" or ob.hide_render or "entry" not in ob.keys():
             continue
+        if ob.name.startswith("proto_") or (ob.users_collection and ob.users_collection[0].name == "asset_lib"):
+            continue          # the model prototypes live in the hidden library, wherever the import left them
         mn, mx = world_bounds(ob)
         k = int(ob["entry"])
         e = ents.setdefault(k, {"asset": str(ob["entry_asset"]), "room": str(ob["entry_room"]), "mn": [1e9] * 3, "mx": [-1e9] * 3, "n": 0})
