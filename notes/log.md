@@ -519,3 +519,20 @@ shovel, salt and hose to the north-west corner; the bench's low shelf is off whe
 Kitchen columns stop at Y 29.7, short of the column line. Bedroom B nightstand and desk separated, gym plate
 tree off the dumbbell rack, laundry tall cabinet off the washer, the closet safe cabinet and the suitcase on
 top of the wardrobe removed, primary nightstands and bench clear of the platform overhang.
+
+Bird's-eye review, 59 rooms (renders/audit/stills/au_*). Found by eye, not by the numbers: the living sofa's
+throw pillows were placed on the back cushion's zone instead of against its front face, so they sat on top
+of the back (Henry: "the pillows on the couch are floating?"); the pillow generator now takes evenly spaced
+slots along the back with jitter, leaning ones against the back, flat ones a little forward, so pillows never
+pile onto each other (the daybed had a heap). The lab stool stood alone on the rug; it is at the workbench.
+The kid bath step stool stood mid-floor; it is beside the vanity. The stair-hall pendant hung through the top
+of the centre wall; it hangs over the arrival zone. The bar lamp sat in the bar sink (the spec puts both at
+the counter's south end); the lamp is on the back bar. Toilets were rounded boxes; they are elongated bowls
+with a seat ring. The stuffed animal was two ellipsoids; it is a small bear. The beanbag was a balloon; it
+slouches under a coarse noise. Kid rugs are striped per the spec. Throws read as planks: the cloth pass now
+sizes its wave amplitude from the second-smallest dimension and subdivides large pieces finer. Rooms whose
+corner pose landed inside a cabinet (kitchen, closets, rack closet, work corridor, laundry) get a custom pose
+in a follow-up set. Two false alarms recorded so I do not chase them again: bikes look flat from a steep
+bird's-eye because a vertical wheel foreshortens to an ellipse (checked numerically: wheels stand 2.2 ft
+tall), and the audit's per-entry union box makes any room-filling entry (kitchen run, garage bench with its
+pegboard and air line, lift with its runways) "overlap" everything near it.
