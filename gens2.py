@@ -1508,8 +1508,10 @@ class Gens2:
                     objs.append(core)
             # rotated 90 deg about Y the area light's local X becomes world Z, so 'size' is the height and
             # 'size_y' the length along the firebox (the first cut had them swapped: a tall stripe up the stone)
-            self.light(type="area", pos=(at + dx * 0.06, u, z0 + (z1 - z0) * 0.45), size=(z1 - z0) * 0.7, size_y=w * 0.9, shape="RECTANGLE",
-                       watts=e.get("watts", 30), kelvin=1900, rot=(0, math.radians(90 * dx), 0), name="fire")
+            # an area light emits along its local -Z; rotating -90*dx about Y turns that toward +dx, out of the
+            # firebox into the room (with +90*dx it shone back into the box and lit the glass white)
+            self.light(type="area", pos=(at + dx * 0.08, u, z0 + (z1 - z0) * 0.45), size=(z1 - z0) * 0.7, size_y=w * 0.9, shape="RECTANGLE",
+                       watts=e.get("watts", 25), kelvin=1900, rot=(0, math.radians(-90 * dx), 0), name="fire")
         return objs
 
     def gen_paneled_wall(self, e):

@@ -1044,7 +1044,7 @@ class Stager(Gens2, Gens3):
             objs.append(box_ft(self.uid("tap_spout"), cx - 0.03, at + 0.3, cx + 0.03, at + 0.8, z + 3.55, z + 3.62, self.mat("brass"), self.col))
             objs.append(box_ft(self.uid("mirror"), cx - 1.2, at + 0.06, cx + 1.2, at + 0.1, z + 3.6, z + 6.6, self.mat("mirror"), self.col))
             objs.append(box_ft(self.uid("mirror_glow"), cx - 1.25, at + 0.02, cx + 1.25, at + 0.06, z + 3.55, z + 6.65, self.mat("glow_soft"), self.col))
-            self.light(type="area", pos=(cx, at + 0.2, z + 5.1), size=2.4, size_y=3.0, shape="RECTANGLE", watts=15, rot=(math.radians(-90), 0, 0), name="mirror")
+            self.light(type="area", pos=(cx, at + 0.2, z + 5.1), size=2.4, size_y=3.0, shape="RECTANGLE", watts=15, rot=(math.radians(90), 0, 0), name="mirror")   # -Z rotated +90 about X points +Y, into the room
         return objs
 
     def gen_shower(self, e):
