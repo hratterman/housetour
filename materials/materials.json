@@ -430,12 +430,13 @@
    0.06
   ],
   "rough": 0.5,
-  "emit": 3.0,
+  "emit": 14.0,
   "emit_rgb": [
    1.0,
    0.36,
    0.06
-  ]
+  ],
+  "wb": false
  },
  "screen": {
   "rgb": [
@@ -759,12 +760,13 @@
    0.2
   ],
   "rough": 0.5,
-  "emit": 5.0,
+  "emit": 24.0,
   "emit_rgb": [
    1.0,
    0.72,
    0.25
-  ]
+  ],
+  "wb": false
  },
  "embers": {
   "rgb": [
@@ -773,12 +775,13 @@
    0.02
   ],
   "rough": 0.9,
-  "emit": 2.0,
+  "emit": 5.0,
   "emit_rgb": [
    1.0,
    0.3,
    0.05
-  ]
+  ],
+  "wb": false
  },
  "glow_soft": {
   "rgb": [
