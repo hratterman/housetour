@@ -220,7 +220,9 @@ def basement():
     proc("bench", "recovery", pos=[10.0, 26.9, z], length=3.0, depth=1.5, height=1.5, rot_z=0, cushion=False, m="walnut_h")
     proc("hooks", "recovery", wall=W("x", 28.0, "-y"), span=[8.5, 11.5], z=z + 4.0, count=3, jacket=True)
     proc("towel_warmer", "recovery", wall=W("x", 28.0, "-y"), u=10.0, z=z + 3.5)
-    proc("tile_wainscot", "recovery", boxes=[[12.0, 20.25, 12.03, 27.75, z, z + 9.5], [11.97, 20.25, 12.0, 27.75, z, z + 9.5], [12.0, 27.72, 20.0, 27.75, z, z + 9.5]], m="terrazzo")
+    # the shower's west wall stops at Y 22 so the dry path along the south edge reaches the landing and the sauna
+    # (the spec's full-length wall left the landing with no way in)
+    proc("tile_wainscot", "recovery", boxes=[[12.0, 22.0, 12.03, 27.75, z, z + 9.5], [11.97, 22.0, 12.0, 27.75, z, z + 9.5], [12.0, 27.72, 20.0, 27.75, z, z + 9.5]], m="terrazzo")
     proc("shower2", "recovery", b=[12.03, 20.25, 20.0, 27.75], glass=[["+x", 22.0, 27.75]], head_wall="+y", heads=[14.0, 18.0], z=z,
          niche=[13.0, 14.5, 4.0, 5.2], bench=[12.5, 20.5, 15.0, 22.0, 0, 1.5])
     proc("fridge_small", "recovery", b=[20.3, 26.0, 21.75, 27.5, z, z + 2.5], face="-x")
