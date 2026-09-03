@@ -1052,7 +1052,9 @@ class Gens2:
                 w = rng.uniform(0.12, 0.22)
                 hgt = rng.uniform(2.4, 3.3)
                 c = self.mat(rng.choice(cols))
-                objs.append(slab(u, u + w, -0.85, 0.85, z0 + rod_z - hgt, z0 + rod_z - 0.15, c))
+                garment = slab(u, u + w, -0.85, 0.85, z0 + rod_z - hgt, z0 + rod_z - 0.15, c)
+                garment.name = self.uid("wr_garment")      # cloth-tagged: wrinkles and soft edges
+                objs.append(garment)
                 objs.append(slab(u + w / 2 - 0.01, u + w / 2 + 0.01, -0.02, 0.02, z0 + rod_z - 0.15, z0 + rod_z + 0.05, self.mat("brass")))
                 u += w + rng.uniform(0.05, 0.14)
             # LED strip under the top
@@ -1068,8 +1070,10 @@ class Gens2:
                         if kind == "shelves":
                             w = rng.uniform(0.9, 1.3)
                             hh = rng.uniform(0.25, 0.55)
-                            objs.append(slab(u, u + min(w, length - t - u - 0.05), -depth / 2 + t + 0.1, depth / 2 - 0.25, zz + 0.06, zz + 0.06 + hh,
-                                             self.mat(rng.choice(["linen_white", "olive_paint", "wool_oatmeal", "teal_paint", "oxblood", "mustard_paint"]))))
+                            folded = slab(u, u + min(w, length - t - u - 0.05), -depth / 2 + t + 0.1, depth / 2 - 0.25, zz + 0.06, zz + 0.06 + hh,
+                                             self.mat(rng.choice(["linen_white", "olive_paint", "wool_oatmeal", "teal_paint", "oxblood", "mustard_paint"])))
+                            folded.name = self.uid("wr_fold")
+                            objs.append(folded)
                             u += w + 0.15
                         else:
                             w = 0.38

@@ -548,12 +548,12 @@ def bevel_pass(plan):
     n = 0
     soft_tags = ("sofa_cushion", "sofa_back", "pillow", "bed_mattress", "bed_duvet", "bed_pillow", "bed_throw",
                  "bench_cush", "pit_seat", "pit_back", "fold", "towel", "jacket", "bag", "throw", "plush", "beanbag",
-                 "ch_seat", "ch_back", "dc_pad", "tc_seat", "tc_pad", "ott_cushion", "wr_item", "shoe", "basket_sq")
+                 "ch_seat", "ch_back", "dc_pad", "tc_seat", "tc_pad", "ott_cushion", "wr_item", "wr_garment", "wr_fold", "shoe", "basket_sq")
     # boxes that should read as fabric: after the bevel they get a simple subdivision, a noise displacement
     # (wrinkles, global coordinates so no two pieces match) and one level of Catmull-Clark smoothing
     cloth_tags = ("pillow", "bed_duvet", "bed_throw", "throw", "sofa_cushion", "sofa_back", "bench_cush", "pit_seat",
                   "pit_back", "fold", "towel", "plush", "beanbag", "ch_seat", "ch_back", "dc_pad", "tc_seat", "tc_pad",
-                  "ott_cushion", "jacket", "duvet")
+                  "ott_cushion", "jacket", "duvet", "wr_garment", "wr_fold")
     cloth = []
     skip_tags = ("glass", "canvas", "flame", "embers", "rug", "runner", "puzzle", "piece", "panel", "cove",
                  "reveal", "sput_rod", "stem", "leaf", "arc_seg", "tree_", "ground", "hedge")
