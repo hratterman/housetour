@@ -82,7 +82,7 @@ def main_floor():
     proc("wall_frame", "entry_hall", wall=W("x", 13.0, "-y"), u=14.5, zc=5.5, w=3.0, h=2.0, seed=31, frame_m="brass")
     proc("rug", "entry_hall", b=[12.0, 6.6, 18.0, 11.6], m="rug_oxblood", thick=0.05)
     proc("globe_pendant", "entry_hall", pos=[15.0, 9.5, 8.2], radius=0.66, drop=1.2, watts=45)
-    model("pachira_aquatica_01", (20.2, 10.9, 0), "entry_hall", height_ft=4.8, rot_z=30)   # clear of the main-floor camera path along Y 9.4
+    model("pachira_aquatica_01", (19.6, 10.9, 0), "entry_hall", height_ft=4.8, rot_z=30)   # clear of the main-floor camera path along Y 9.4
     proc("downlight", "entry_hall", pos=[11.0, 9.5, 9.5], watts=8)
     proc("downlight", "entry_hall", pos=[19.0, 9.5, 9.5], watts=8)
     # ------------------------------------------------------------------ 3.7 gallery spine

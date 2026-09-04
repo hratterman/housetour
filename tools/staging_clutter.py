@@ -73,7 +73,7 @@ def main_floor():
     proc("small_props", "primary_bedroom", kind="phone", pos=[29.0, 44.1, 2.2], rot_z=95)
     model("round_spectacles", (28.9, 43.5, 2.2), "primary_bedroom", rot_z=110, height_ft=0.12)
     proc("throw", "primary_bedroom", b=[36.3, 36.9, 37.5, 38.3], z=1.5, m="knit_charcoal", hang=None)   # folded on the bench
-    model("wicker_basket_02", (39.8, 36.8, 0.0), "primary_bedroom", height_ft=1.9)                    # hamper
+    model("wicker_basket_02", (39.5, 36.8, 0.0), "primary_bedroom", height_ft=1.9)                    # hamper
     # ------------------------------------------------------------------ laundry (counter top 2.9)
     note("laundry clutter")
     model("all_purpose_cleaner", (36.4, 1.6, 2.9), "laundry", height_ft=1.0, rot_z=20)
@@ -81,7 +81,7 @@ def main_floor():
     model("bleach_bottle", (37.6, 1.7, 2.9), "laundry", height_ft=0.95, rot_z=40)
     proc("towel_stack", "laundry", pos=[38.4, 2.0, 2.9], w=1.1, d=0.7, count=4, seed=6, mats=["towel_white", "linen_grey", "towel_white", "wool_oatmeal"])
     model("wooden_broom", (38.05, 9.8, 0.0), "laundry", height_ft=4.6, rot_z=20)   # leaning in the corner where the elevator closet meets the neck
-    model("dustpan", (37.4, 9.45, 0.0), "laundry", height_ft=0.3, rot_z=80)
+    model("dustpan", (37.4, 9.65, 0.0), "laundry", height_ft=0.3, rot_z=80)
     # ------------------------------------------------------------------ mudroom
     note("mudroom clutter")
     model("wicker_basket_02", (6.7, 18.3, 0.0), "mudroom", height_ft=1.1)
@@ -176,7 +176,7 @@ def garage():
     model("metal_jerrycan", (14.6, 91.4, z), "garage", height_ft=1.45, rot_z=20)
     model("plastic_crate_02", (16.0, 70.2, z), "garage", length_ft=1.65, rot_z=0)
     model("plastic_crate_03", (16.0, 70.3, z + 0.83), "garage", length_ft=1.6, rot_z=6)
-    model("metal_trash_can", (15.9, 88.4, z), "garage", height_ft=3.1)
+    model("metal_trash_can", (15.5, 88.4, z), "garage", height_ft=3.1)
     model("metal_stool_02", (8.0, 69.3, z), "garage", height_ft=1.5, rot_z=30)
     model("oil_tin", (12.0, 66.0, z + 3.0), "garage", height_ft=0.65, rot_z=15)
     model("lubricant_spray", (13.0, 66.4, z + 3.0), "garage", height_ft=0.55)

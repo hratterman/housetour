@@ -828,7 +828,7 @@ class Gens2:
         objs.append(box_ft(self.uid("k_table_leg"), ix0 + 0.35, 26.9, ix1 - 0.35, 27.1, z + 0.25, z + 0.35, wood, self.col))
         # four shell chairs: three on the west side (36 in passage behind them), one at the north end; none in the cooking aisle
         for cy in (23.25, 25.0, 26.75):
-            objs += self.gen_dining_chair({"pos": [12.0, cy, z], "rot_z": 90, "m": "wool_mustard"})    # west side, faces +X into the table
+            objs += self.gen_dining_chair({"pos": [12.35, cy, z], "rot_z": 90, "m": "wool_mustard"})    # west side, faces +X into the table
         objs += self.gen_dining_chair({"pos": [14.5, 28.5, z], "rot_z": 0, "m": "wool_mustard"})        # north end, faces -Y
         # counter objects: bowl of oranges, cutting board, linen towel over the sink edge
         bowl = sphere_ft(self.uid("k_bowl"), (14.5, 24.5, z + 2.66), 0.55, self.mat("walnut"), self.col)

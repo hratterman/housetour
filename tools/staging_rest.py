@@ -246,7 +246,7 @@ def basement():
     proc("pendant_row", "lounge", positions=[[7, 37, z + 5.5], [10, 37, z + 5.5], [13, 37, z + 5.5]], radius=0.5, drop=3.5, watts=28)
     proc("wall_screen", "lounge", b=[6.0, 44.85, 14.0, 44.94, z + 1.75, z + 6.25])
     proc("media_cabinet", "lounge", b=[5.0, 44.2, 15.0, 44.94, z, z + 1.8], face="-y")
-    proc("game_table", "lounge", pos=[19.0, 32.6, z], chairs="ns")   # 5.75 ft between the pit and the wall: two chairs
+    proc("game_table", "lounge", pos=[19.0, 33.1, z], chairs="ns")   # 5.75 ft between the pit and the wall: two chairs
     proc("pendant_cone", "lounge", pos=[18.5, 31.0, z + 5.5], drop=3.5, watts=26)
     proc("cabinet_row", "lounge", b=[1.0, 28.5, 2.0, 32.0, z, z + 7.0], doors=2, face="+x", m="walnut_h", games=True)
     proc("rug", "lounge", b=[2.5, 29.0, 15.5, 32.0], m="rug_oxblood", thick=0.05)
@@ -310,7 +310,7 @@ def garage():
     proc("compressor_closet", "garage", b=[-5.0, 65.0, -3.0, 67.5, z, z + 6.0])
     proc("reel", "garage", pos=[13.5, 69.5, z + 11.5], m="steel_black")   # over the aisle in front of the bench
     proc("reel", "garage", pos=[15.5, 69.5, z + 11.5], m="rubber_red")
-    model("plastic_broom", (-3.9, 92.1, z), "garage", height_ft=4.5, rot_z=200)
+    model("plastic_broom", (-3.9, 91.6, z), "garage", height_ft=4.5, rot_z=200)
     proc("shovel", "garage", pos=[-2.6, 92.4, z])
     proc("ice_melt", "garage", pos=[-1.6, 92.3, z])
     model("cardboard_box_01", (16.2, 66.4, z + 3.0), "garage", length_ft=1.5)
