@@ -66,11 +66,11 @@ def main_floor():
     proc("wall_finish", "powder", wall=W("y", 19.0, "-x"), span=[1.0, 5.75], z=[0.3, 9.4], m="wallpaper_botanical_dark")
     proc("wall_vanity", "powder", b=[14.28, 3.6, 15.28, 5.6, 2.6, 3.2], face="+x")   # beside the toilet, north of its 21 in clear zone
     proc("round_mirror", "powder", wall=W("y", 14.0, "+x"), u=4.6, z=5.5, radius=0.8)
-    proc("sconce", "powder", wall=W("y", 14.0, "+x"), u=3.45, z=6.0, watts=6, radius=0.12, height=0.5)
-    proc("sconce", "powder", wall=W("y", 14.0, "+x"), u=5.6, z=6.0, watts=6, radius=0.12, height=0.5)
+    proc("sconce", "powder", wall=W("y", 14.0, "+x"), u=3.45, z=6.0, watts=11, radius=0.12, height=0.5)
+    proc("sconce", "powder", wall=W("y", 14.0, "+x"), u=5.6, z=6.0, watts=11, radius=0.12, height=0.5)
     proc("toilet", "powder", pos=[18.3, 2.3, 0], facing="-x")   # on the east wall at the south end; 2 ft clear in front
     proc("towel_bar", "powder", wall=W("x", 6.0, "-y"), u=15.0, z=4.2, length=1.2, towels=["towel_white"])
-    proc("downlight", "powder", pos=[16.6, 3.6, 9.5], watts=6)
+    proc("downlight", "powder", pos=[16.6, 3.6, 9.5], watts=16)   # the dark botanical paper eats light
     # ------------------------------------------------------------------ 3.4 coat closet / 3.5 panel closet (closed)
     note("coat closet")
     proc("coats", "coat_closet", b=[19.3, 1.0, 21.7, 3.0, 0, 9.0], face="+y", rod_z=6.0, seed=3)

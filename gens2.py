@@ -811,7 +811,7 @@ class Gens2:
             a = i * 0.9
             objs.append(sphere_ft(self.uid("k_orange"), (14.5 + math.cos(a) * 0.22 * (i % 3), 24.5 + math.sin(a) * 0.22 * (i % 3), z + 2.68 + 0.13 + (0.2 if i == 6 else 0)), 0.14, self.mat("orange"), self.col, 12, 8))
         objs.append(box_ft(self.uid("k_board"), 13.3, 18.0, 14.2, 19.4, z + 3.0, z + 3.07, self.mat("oak"), self.col))
-        objs.append(box_ft(self.uid("k_towel"), 15.1, 20.6, 16.1, 21.4, z + 2.6, z + 3.03, self.mat("linen_white"), self.col))
+        objs.append(sg.slab(self.uid("sg_k_towel"), (15.45, 21.0, z + 3.05), (0.9, 0.7, 0.1), self.mat("linen_white"), self.col, rot=(0, 0, math.radians(8)), puff=0.35, edge=4.0, n=8))   # folded tea towel by the sink
         # --- nook: marble counter along Y 27.3-29.8, X 0.5-8, walnut base, open shelves at 5.5 and 7
         objs.append(box_ft(self.uid("n_base"), 1.0, 27.3, 8.0, 29.7, z + 0.35, z + 2.9, wood, self.col))
         objs.append(box_ft(self.uid("n_toe"), 1.0, 27.3, 8.0, 29.45, z, z + 0.35, black, self.col))
