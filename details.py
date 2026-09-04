@@ -222,8 +222,10 @@ class Details:
             # transom bar on tall glass walls at door height
             if kind == "glasswall" and op["h"] > 8.0:
                 fbox("wt_%s" % tag, a0, a1, z0 + 7.5, z0 + 7.5 + MULLION_W)
-            # glass panes, one per panel; a lift-and-slide "door_panel" is slid open over its neighbour
+            # glass panes, one per panel; a lift-and-slide "door_panel" is slid open over its neighbour.
+            # Bath and closet windows the plan marks obscure get frosted glass.
             door_panel = op.get("door_panel")
+            pane_m = self.mats.get("glass_frosted") if op.get("obscure") else glass
             for i in range(npan):
                 u0 = a0 + i * pw + (FRAME_W if i == 0 else MULLION_W / 2)
                 u1 = a0 + (i + 1) * pw - (FRAME_W if i == npan - 1 else MULLION_W / 2)
@@ -234,12 +236,12 @@ class Details:
                     v1 = a0 + (j + 1) * pw - (FRAME_W if j == npan - 1 else MULLION_W / 2)
                     off = FRAME_D * 0.9
                     fbox("glass_%s_%d" % (tag, i), v0, v1, z0 + FRAME_W, z1 - FRAME_W,
-                         mid + off - GLASS_T / 2, mid + off + GLASS_T / 2, glass, self.col_glass)
+                         mid + off - GLASS_T / 2, mid + off + GLASS_T / 2, pane_m, self.col_glass)
                     fbox("wm_%s_slid_a" % tag, v0 - MULLION_W, v0, z0, z1, mid + off - FRAME_D / 2, mid + off + FRAME_D / 2)
                     fbox("wm_%s_slid_b" % tag, v1, v1 + MULLION_W, z0, z1, mid + off - FRAME_D / 2, mid + off + FRAME_D / 2)
                     continue
                 fbox("glass_%s_%d" % (tag, i), u0, u1, z0 + FRAME_W, z1 - FRAME_W,
-                     mid - GLASS_T / 2, mid + GLASS_T / 2, glass, self.col_glass)
+                     mid - GLASS_T / 2, mid + GLASS_T / 2, pane_m, self.col_glass)
             # interior sill for windows above the floor
             if op.get("z0", 0) > 0:
                 neg, pos = self.rooms_either_side(op)
