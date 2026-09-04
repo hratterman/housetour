@@ -81,17 +81,18 @@ class PBRLibrary:
         out = nodes.new("ShaderNodeOutputMaterial")
         tc = nodes.new("ShaderNodeTexCoord")
         sep = nodes.new("ShaderNodeSeparateXYZ")
-        links.new(tc.outputs["Object"], sep.inputs[0])
-        # object z runs -1..1 on the unit sphere: map to 0..1
+        # Generated coordinates run 0..1 across the object's bounding box whatever its size or scale, so z is the
+        # height up the flame directly
+        links.new(tc.outputs["Generated"], sep.inputs[0])
         zmap = nodes.new("ShaderNodeMapRange")
-        zmap.inputs["From Min"].default_value = -1.0
+        zmap.inputs["From Min"].default_value = 0.0
         zmap.inputs["From Max"].default_value = 1.0
         links.new(sep.outputs["Z"], zmap.inputs["Value"])
         noise = nodes.new("ShaderNodeTexNoise")
-        noise.inputs["Scale"].default_value = 3.5
+        noise.inputs["Scale"].default_value = 3.0
         noise.inputs["Detail"].default_value = 5.0
         noise.inputs["Roughness"].default_value = 0.6
-        links.new(tc.outputs["Object"], noise.inputs["Vector"])
+        links.new(tc.outputs["Generated"], noise.inputs["Vector"])
         # alpha = (1 - z) * (noise * 1.6 - 0.2), clamped
         nz = nodes.new("ShaderNodeMath"); nz.operation = "MULTIPLY_ADD"
         nz.inputs[1].default_value = 1.6; nz.inputs[2].default_value = -0.25
