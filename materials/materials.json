@@ -1285,8 +1285,8 @@
   "rough": 0.25,
   "overlay": {
    "type": "tile_backsplash",
-   "size_ft": 0.5,
-   "grout": 0.04,
+   "size_ft": 0.25,
+   "grout": 0.06,
    "plane": "xz",
    "rgb_a": [
     0.94,
@@ -1297,7 +1297,9 @@
     0.9,
     0.9,
     0.88
-   ]
+   ],
+   "aspect": 2.0,
+   "offset": 0.0
   }
  },
  "wallpaper_botanical_dark": {
@@ -2640,5 +2642,32 @@
    0.72,
    0.42
   ]
+ },
+ "towel_stripe": {
+  "rgb": [
+   0.92,
+   0.9,
+   0.86
+  ],
+  "rough": 1.0,
+  "tex": "fabric_towel",
+  "paint": true,
+  "size_ft": 0.6,
+  "bump": 0.9,
+  "sheen": 0.2,
+  "overlay": {
+   "type": "stripes",
+   "size_ft": 0.28,
+   "width": 0.3,
+   "rgb": [
+    0.1,
+    0.35,
+    0.38
+   ],
+   "axes": [
+    0
+   ],
+   "metallic": false
+  }
  }
 }

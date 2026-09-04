@@ -447,11 +447,11 @@ class PBRLibrary:
             links.new(sep.outputs[0 if plane[0] == "x" else 1], comb.inputs[0])
             links.new(sep.outputs[2 if plane[1] == "z" else 1], comb.inputs[1])
             br = nodes.new("ShaderNodeTexBrick")
-            br.offset = 0.0
+            br.offset = ov.get("offset", 0.0)            # 0 = stacked bond, 0.5 = running bond
             br.inputs["Scale"].default_value = 1.0
             br.inputs["Mortar Size"].default_value = ov.get("grout", 0.03)
             br.inputs["Bias"].default_value = 0.0
-            br.inputs["Brick Width"].default_value = 1.0
+            br.inputs["Brick Width"].default_value = ov.get("aspect", 1.0)   # tile width in units of its height (size_ft)
             br.inputs["Row Height"].default_value = 1.0
             ca = ov.get("rgb_a", [0.72, 0.30, 0.10])
             cb = ov.get("rgb_b", [0.92, 0.86, 0.72])
