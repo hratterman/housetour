@@ -643,3 +643,33 @@ in the kids' rooms; a dartboard, console and blanket basket in the lounge; crate
 the garage bench dressed with tools, cans, crates, a stool, a fire extinguisher, hand truck, tire pump and
 jerrycan. Sofa turned to face the fire: it had been sitting with its back to the fireplace and its own coffee
 table since the first staging.
+
+## Verification loop, second half: 47 room views reviewed against "would a photo of this pass as real"
+
+The 47-view sweep at 960 x 540 / 48 samples (rooms and key frames) surfaced these, all fixed in code and staging:
+
+- Laundry was broken as a room. The stacked washer/dryer stood in the entry corridor and cut it off from the
+  counter and sink; the view camera stared at the elevator closet wall from 3 ft. The machines now stand on the
+  west wall of the main room facing the aisle, the supply cabinet is a foot deep on the corridor's north wall,
+  the basket, broom and dustpan sit in the pocket clear of the door swing, the runner goes down the neck, and
+  the washer/dryer generator builds a proper front on any face (door ring, glass porthole over a dark drum,
+  handle, control strip, kick plate, drain pan).
+- Pantry: the toaster and bread box were grey cabinet boxes; a chrome toaster prop and the microwave model.
+- Primary bath: the vanity sinks were black rectangles. The counter is boolean-cut for an oval and a thin ceramic
+  bowl lines it with a chrome drain. The towel warmer's rungs were bars stuck in the wall; side rails, standoffs
+  and roses. An outlet sat at knee height inside the shower: architectural detail now keeps receptacles a foot
+  clear of every shower, tub, plunge and sauna footprint. Exhaust grilles in every bath, WC, powder and laundry.
+- WC: paper roll floated (brass spindle and rose), bidet seat with a control pod per spec, a small brass shelf
+  with a spare roll and a candle in place of a candle on the floor.
+- Closet view stood behind the open door leaf; re-posed from the bath door.
+- Office: the six monitors were thin cabinet boxes; a monitor builder (bezel, screen, back, VESA plate, wall arm
+  or desk stand) now serves the office wall and every desk. A 5 ft aloe stood in for the bird of paradise.
+- Plants: a plants module builds a rubber plant, a monstera and a bird of paradise from curved leaf grids on
+  petioles in tapered pots; placed where the spec puts them (living, bedroom corner, office). Terrace planters
+  hold fern models instead of ellipsoid leaves.
+- Fire: the flame ellipsoids were opaque orange blobs; a flame shader grades emission from white-yellow at the
+  base to deep orange at the tip, eaten by noise and fading transparent, and the ember bed glows.
+- Lab: real pliers and wrench on the cleat wall, toolbox, screwdrivers, tape, spray can and clipboard on the
+  bench, half as many random tool slabs.
+- Throws: the drape's flat part gets a two-frequency ripple and a curled free edge; bed throws fold double.
+- Swim spa cover was a tan box; two padded vinyl halves on a stainless lifter.
