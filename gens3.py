@@ -443,6 +443,15 @@ class Gens3:
                 kb = box_centered(self.uid("knife"), (cx, cy, z + 0.66), (0.1, 0.04, 0.34), rot, self.mat("plastic_black"), self.col)
                 kb.rotation_euler = (math.radians(-12), 0, r)
                 objs.append(kb)
+        elif kind == "toaster":
+            body = box_centered(self.uid("toaster"), (x, y, z), (0.95, 0.6, 0.62), rot, self.mat("chrome"), self.col)
+            objs.append(body)
+            for k in (-1, 1):
+                cx, cy = at(0, k * 0.11)
+                objs.append(box_centered(self.uid("toaster_slot"), (cx, cy, z + 0.6), (0.7, 0.07, 0.03), rot, self.mat("plastic_black"), self.col))
+            cx, cy = at(0.5, 0.0)
+            objs.append(box_centered(self.uid("toaster_lever"), (cx, cy, z + 0.35), (0.06, 0.16, 0.06), rot, self.mat("plastic_black"), self.col))
+            objs.append(box_centered(self.uid("toaster_base"), (x, y, z), (0.9, 0.55, 0.05), rot, self.mat("plastic_black"), self.col))
         elif kind == "candle":
             objs.append(cylinder_ft(self.uid("candle_jar"), (x, y, z), 0.15, 0.3, self.mat("glass_amber"), gl, 20))
             objs.append(cylinder_ft(self.uid("candle_wax"), (x, y, z + 0.02), 0.13, 0.22, self.mat("linen_white"), self.col, 16))

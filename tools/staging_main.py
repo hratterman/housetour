@@ -141,8 +141,8 @@ def main_floor():
     add(asset="proc:cabinet", room="pantry", b=[3.0, 21.5, 3.03, 23.5, 0.3, 2.9], doors=1, face="+x", m="stainless")   # freezer drawer face on the base run
     model("vintage_electric_kettle", (1.9, 25.5, 3.2), "pantry", height_ft=0.85, rot_z=40)
     proc("downlights", "pantry", positions=[[3.5, 24], [6.5, 24]], z=9.5, watts=8)
-    add(asset="proc:cabinet", room="pantry", b=[1.2, 23.8, 2.2, 24.6, 3.2, 3.9], doors=1, face="+x", m="stainless")   # toaster
-    add(asset="proc:cabinet", room="pantry", b=[1.2, 21.8, 2.7, 22.9, 3.2, 4.2], doors=1, face="+x", m="walnut_h")   # bread box
+    proc("small_props", "pantry", kind="toaster", pos=[1.75, 24.2, 3.1], rot_z=90)
+    model("vintage_microwave", (1.95, 22.35, 3.1), "pantry", length_ft=1.5, rot_z=90)   # on the pantry counter, door to the room
     # ------------------------------------------------------------------ 3.14 kitchen
     note("kitchen")
     proc("kitchen2", "kitchen")

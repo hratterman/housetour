@@ -1147,34 +1147,26 @@
 "watts": 8
 },
 {
-"asset": "proc:cabinet",
+"asset": "proc:small_props",
 "room": "pantry",
-"b": [
-1.2,
-23.8,
-2.2,
-24.6,
-3.2,
-3.9
+"kind": "toaster",
+"pos": [
+1.75,
+24.2,
+3.1
 ],
-"doors": 1,
-"face": "+x",
-"m": "stainless"
+"rot_z": 90
 },
 {
-"asset": "proc:cabinet",
-"room": "pantry",
-"b": [
-1.2,
-21.8,
-2.7,
-22.9,
-3.2,
-4.2
+"asset": "vintage_microwave",
+"pos": [
+1.95,
+22.35,
+3.1
 ],
-"doors": 1,
-"face": "+x",
-"m": "walnut_h"
+"room": "pantry",
+"length_ft": 1.5,
+"rot_z": 90
 },
 {
 "note": "== kitchen =="
