@@ -200,17 +200,24 @@ notes/acceptance.md   the spec checklist
 
 ## Measured times
 
-All on the build VM: 4 CPU threads, Blender 4.2.11, Cycles, denoised, adaptive sampling. The Mac Mini's GPU
-will be many times faster on the render numbers; the build is single-threaded Python and will be perhaps
-twice as fast.
+All on the build VM: 4 CPU threads, Blender 4.2.11, Cycles, denoised, adaptive sampling, the 1024 px texture cap
+that build_scene applies below 1280 px wide. The Mac Mini's GPU will be many times faster on the render numbers;
+the build is single-threaded Python and will be perhaps twice as fast.
 
 | what | value |
 | --- | --- |
-| staged build (house, block, 524 placements, 10,900 objects) | 6.3 min |
-| review still, 960x540, 48 samples | 150 to 230 s (interiors slower than exteriors) |
-| memory while rendering | 7 to 8 GB |
+| staged build (house, block, 671 placements, about 14,000 objects) | 13 min (staging alone 10 min) |
+| review still, 960x540, 48 samples | 140 to 225 s |
+| preview frame, 640x360, 32 samples, every 12th frame | 48 to 60 s (mean 53 s over 236 frames) |
+| preview run, all eight shots plus 19 stills and the stitch | 4 h 10 min render, 8 h wall with builds |
+| memory while rendering | 10 to 13.5 GB (the 15 GB VM swaps above that; do not run two Blenders) |
 
-The preview run's per-frame times and totals are in `renders/timing_<shot>.json` and in `notes/log.md`.
+For Jamie: the final walkthrough is 111 s at 24 fps, 2,664 frames. At 1280x720 and 128 samples a frame costs
+about 10x the preview frame on this CPU, so plan on a GPU. On an M-series Mini with MetalRT expect a frame in
+the 30 to 60 s range and the whole run in 24 to 40 h; at 1920x1080 use the 2k texture cap (`--res 1920x1080`
+picks it) and 32 GB of memory. Render one shot first (`./render.sh` with `SHOTS=block`) and check its
+`renders/timing_block.json` before committing the night. Per-frame times and totals for every run are in
+`renders/timing_<shot>.json` and in `notes/log.md`.
 
 ## Dimensions and code
 
