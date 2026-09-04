@@ -208,7 +208,17 @@ def scaled_copy(path, size, out_dir, quality=85, src_image=None):
         img = bpy.data.images.load(path)
     if img.size[0] > size or img.size[1] > size:
         img.scale(size, size)
-    has_alpha = (img.channels == 4 and img.file_format == "PNG")
+    # PNG only when the alpha channel is actually used (leaf and fern cut-outs); most model textures carry an
+    # opaque alpha channel and went out as PNG, which was 20 MB of the 45 MB glb
+    has_alpha = False
+    if img.channels == 4 and img.file_format == "PNG":
+        try:
+            import numpy as np
+            buf = np.empty(len(img.pixels), dtype=np.float32)
+            img.pixels.foreach_get(buf)
+            has_alpha = bool(buf[3::4].min() < 0.98)
+        except Exception:
+            has_alpha = True
     base = os.path.splitext(os.path.basename(path or src_image.name))[0]
     tag = os.path.basename(os.path.dirname(path)) if path else "packed"
     out = os.path.join(out_dir, "%s_%s_%d.%s" % (tag, base, size, "png" if has_alpha else "jpg"))
