@@ -63,18 +63,21 @@ class Gens3:
         return objs
 
     def gen_plate_tree(self, e):
+        """Plate tree: a post on a base with four pairs of pegs reaching out from the post; plates stack from the
+        post outward and never past the peg end."""
         p = e["pos"]
         blk = self.mat("steel_black")
         objs = [box_centered(self.uid("pt_base"), (p[0], p[1], p[2] + 0.06), (2.0, 1.4, 0.12), 0, blk, self.col),
                 cylinder_ft(self.uid("pt_post"), (p[0], p[1], p[2] + 0.12), 0.09, 3.6, blk, self.col, 12)]
         rng = random.Random(1)
         for k, zz in enumerate((0.9, 1.7, 2.5, 3.2)):
+            r = [0.75, 0.62, 0.5, 0.4][k]
             for sx in (-1, 1):
-                objs.append(cylinder_ft(self.uid("pt_peg"), (p[0], p[1], p[2] + zz), 0.05, 0.9 * sx, blk, self.col, 8, axis="X") if False else
-                            cylinder_ft(self.uid("pt_peg"), (p[0] + (0 if sx > 0 else -0.9), p[1], p[2] + zz), 0.05, 0.9, blk, self.col, 8, axis="X"))
+                objs.append(cylinder_ft(self.uid("pt_peg"), (p[0] + sx * 0.5, p[1], p[2] + zz), 0.05, 1.0, blk, self.col, 10, axis="X"))
+                objs.append(cylinder_ft(self.uid("pt_peg_cap"), (p[0] + sx * 1.0, p[1], p[2] + zz), 0.08, 0.04, blk, self.col, 10, axis="X"))
                 for i in range(rng.randint(1, 3)):
-                    r = [0.75, 0.62, 0.5, 0.4][k]
-                    objs.append(cylinder_ft(self.uid("plate"), (p[0] + sx * (0.25 + i * 0.14), p[1], p[2] + zz), r, 0.1, self.mat(rng.choice(["iron_plate", "iron_plate", "rubber_red"])), self.col, 24, axis="X"))
+                    objs.append(cylinder_ft(self.uid("plate"), (p[0] + sx * (0.2 + i * 0.13), p[1], p[2] + zz), r, 0.11,
+                                            self.mat(rng.choice(["iron_plate", "iron_plate", "rubber_red"])), self.col, 32, axis="X"))
         return objs
 
     def gen_kettlebells(self, e):

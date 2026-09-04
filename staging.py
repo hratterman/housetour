@@ -1461,8 +1461,19 @@ class Stager(Gens2, Gens3):
                 if u + w > L / 2 - 0.1:
                     break
                 off = u + w / 2
-                objs.append(box_centered(self.uid("crate"), (p[0] + off * math.cos(math.radians(rot)), p[1] + off * math.sin(math.radians(rot)), zz + 0.08), (w - 0.1, D - 0.4, rng.uniform(0.8, 1.3)), rot,
-                                         self.mat(rng.choice(["paper", "paper", "olive", "black"])), self.col))
+                bh = rng.uniform(0.7, 1.2)
+                kind = rng.choice(["card", "card", "card", "bin", "bin", "archive"])
+                ca_, sa_ = math.cos(math.radians(rot)), math.sin(math.radians(rot))
+                bc = (p[0] + off * ca_, p[1] + off * sa_, zz + 0.08)
+                if kind == "card":
+                    objs.append(box_centered(self.uid("crate"), bc, (w - 0.1, D - 0.4, bh), rot, self.mat("cardboard"), self.col))
+                    objs.append(box_centered(self.uid("crate_tape"), (bc[0], bc[1], bc[2] + bh - 0.004), (0.2, D - 0.38, 0.01), rot, self.mat("paper"), self.col))
+                elif kind == "bin":
+                    objs.append(box_centered(self.uid("crate"), bc, (w - 0.1, D - 0.4, bh), rot, self.mat(rng.choice(["plastic_grey", "plastic_black"])), self.col))
+                    objs.append(box_centered(self.uid("crate_lid"), (bc[0], bc[1], bc[2] + bh - 0.06), (w - 0.02, D - 0.32, 0.08), rot, self.mat(rng.choice(["plastic_teal", "plastic_black", "plastic_grey"])), self.col))
+                else:
+                    objs.append(box_centered(self.uid("crate"), bc, (w - 0.1, D - 0.4, bh), rot, self.mat("paper"), self.col))
+                    objs.append(box_centered(self.uid("crate_label"), (bc[0] + sa_ * (D - 0.4) / 2, bc[1] - ca_ * (D - 0.4) / 2 - 0.006, bc[2] + bh * 0.55), (0.5, 0.01, 0.3), rot, self.mat("linen_white"), self.col))
                 u += w + rng.uniform(0.05, 0.4)
         return objs
 

@@ -2669,5 +2669,21 @@
    ],
    "metallic": false
   }
+ },
+ "cardboard": {
+  "rgb": [
+   0.55,
+   0.4,
+   0.26
+  ],
+  "rough": 0.9
+ },
+ "plastic_grey": {
+  "rgb": [
+   0.45,
+   0.46,
+   0.47
+  ],
+  "rough": 0.45
  }
 }
