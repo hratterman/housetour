@@ -871,21 +871,54 @@ class Gens2:
 
     # ================================================================== appliances and utility
     def gen_washer_dryer(self, e):
-        """Front-load washer and dryer stacked on a walnut plinth: b = machine box, plinth below."""
+        """Front-load washer and dryer stacked on a walnut plinth with a drain pan: b = machine box, plinth below.
+        face is the side the porthole doors are on (-x, +x, -y, +y)."""
         b = e["b"]
         x0, y0, x1, y1, z0, z1 = b
         ss = self.mat("stainless")
-        objs = [box_ft(self.uid("wd_plinth"), x0 - 0.1, y0 - 0.1, x1 + 0.1, y1 + 0.1, e.get("floor_z", z0 - 1.2), z0, self.mat("walnut_h"), self.col)]
-        mid = (z0 + z1) / 2
+        blk = self.mat("steel_black")
         face = e.get("face", "-x")
-        for (za, zb) in ((z0, mid - 0.03), (mid + 0.03, z1)):
+        along_x = face in ("-x", "+x")
+        s = -1 if face[0] == "-" else 1
+        f = (x0 if s < 0 else x1) if along_x else (y0 if s < 0 else y1)
+        u0, u1 = (y0, y1) if along_x else (x0, x1)
+        uc = (u0 + u1) / 2
+        ax = "X" if along_x else "Y"
+
+        def fbox(name, d0, d1, ua, ub, za, zb, mat):
+            lo, hi = sorted((f + s * d0, f + s * d1))
+            if along_x:
+                return box_ft(name, lo, ua, hi, ub, za, zb, mat, self.col)
+            return box_ft(name, ua, lo, ub, hi, za, zb, mat, self.col)
+
+        def fcyl(name, d, u, z, r, length, mat, segs=32, col=None):
+            c = (f + s * d, u, z) if along_x else (u, f + s * d, z)
+            return cylinder_ft(name, c, r, length, mat, col or self.col, segs, axis=ax)
+
+        objs = [box_ft(self.uid("wd_plinth"), x0 - 0.1, y0 - 0.1, x1 + 0.1, y1 + 0.1, e.get("floor_z", z0 - 1.2), z0, self.mat("walnut_h"), self.col),
+                box_ft(self.uid("wd_pan"), x0 - 0.06, y0 - 0.06, x1 + 0.06, y1 + 0.06, z0, z0 + 0.1, ss, self.col)]
+        mid = (z0 + z1) / 2
+        depth = (x1 - x0) if along_x else (y1 - y0)
+        for k, (za, zb) in enumerate(((z0 + 0.1, mid - 0.04), (mid + 0.04, z1))):
+            # body, set back 0.03 from the front frame so the door face reads as a separate panel
             objs.append(box_ft(self.uid("wd_body"), x0, y0, x1, y1, za, zb, ss, self.col))
-            cz = (za + zb) / 2 - 0.15
-            cy = (y0 + y1) / 2
-            if face == "-x":
-                objs.append(cylinder_ft(self.uid("wd_door"), (x0 - 0.06, cy, cz), 1.0, 0.06, self.mat("steel_black"), self.col, 32, axis="X"))
-                objs.append(cylinder_ft(self.uid("wd_glass"), (x0 - 0.1, cy, cz), 0.75, 0.04, self.mat("glass"), get_collection("glass"), 28, axis="X"))
-                objs.append(box_ft(self.uid("wd_panel"), x0 - 0.02, y0 + 0.2, x0, y1 - 0.2, zb - 0.45, zb - 0.1, self.mat("screen_dark"), self.col))
+            objs.append(fbox(self.uid("wd_front"), -0.01, 0.03, u0 + 0.03, u1 - 0.03, za + 0.15, zb - 0.02, ss))
+            objs.append(fbox(self.uid("wd_kick"), -0.02, 0.005, u0 + 0.05, u1 - 0.05, za, za + 0.15, blk))
+            # porthole: dark drum disc, glass, outer ring proud of the front, hinge-side seam
+            cz = (za + zb) / 2 - 0.2
+            objs.append(fcyl(self.uid("wd_drum"), 0.035, uc, cz, 0.76, 0.01, blk, 36))
+            objs.append(fcyl(self.uid("wd_glass"), 0.09, uc, cz, 0.74, 0.02, self.mat("glass"), 36, get_collection("glass")))
+            objs.append(fcyl(self.uid("wd_door"), 0.07, uc, cz, 0.98, 0.08, blk, 48))
+            objs.append(fcyl(self.uid("wd_rim"), 0.115, uc, cz, 0.82, 0.02, ss, 48))
+            # handle: a short bar on the free side of the door
+            hs = 1 if k == 0 else -1
+            objs.append(fbox(self.uid("wd_handle"), 0.11, 0.16, uc + hs * 0.86 - 0.04, uc + hs * 0.86 + 0.04, cz - 0.3, cz + 0.3, blk))
+            # control strip along the top: dark panel, one knob, a small display
+            objs.append(fbox(self.uid("wd_panel"), 0.03, 0.05, u0 + 0.12, u1 - 0.12, zb - 0.42, zb - 0.1, self.mat("screen_dark")))
+            objs.append(fcyl(self.uid("wd_knob"), 0.11, u1 - 0.55 if k == 0 else u0 + 0.55, zb - 0.26, 0.11, 0.12, ss, 24))
+            objs.append(fbox(self.uid("wd_display"), 0.05, 0.06, uc - 0.35, uc + 0.35, zb - 0.34, zb - 0.18, self.mat("hood_lamp")))
+            for j in range(3):
+                objs.append(fcyl(self.uid("wd_btn"), 0.06, uc + 0.5 + 0.13 * j if k == 0 else uc - 0.5 - 0.13 * j, zb - 0.26, 0.035, 0.02, blk, 12))
         return objs
 
     def gen_fridge_small(self, e):

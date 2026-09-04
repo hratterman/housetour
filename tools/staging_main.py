@@ -109,16 +109,16 @@ def main_floor():
     proc("downlight", "stair_hall", pos=[31.5, 11.2, 9.5], watts=8)
     # ------------------------------------------------------------------ 3.9 laundry
     note("laundry")
-    proc("washer_dryer", "laundry", b=[39.0, 8.5, 41.0, 11.5, 1.2, 6.8], floor_z=0, face="-x")
+    proc("washer_dryer", "laundry", b=[35.25, 3.1, 37.75, 5.6, 1.2, 6.8], floor_z=0, face="+x")   # west wall of the main room, doors to the aisle
     add(asset="proc:cabinet", room="laundry", b=[35.5, 1.0, 41.0, 3.0, 0.3, 2.9], doors=5, face="+y", m="walnut_h")
     add(asset="proc:rug", room="laundry", b=[35.5, 1.0, 41.0, 3.05], z=2.9, thick=0.12, m="walnut_h")   # folding counter top
     proc("utility_sink", "laundry", b=[39.0, 1.0, 41.0, 3.0, 0, 3.05], faucet_wall="+x")
     proc("coats", "laundry", b=[36.0, 1.0, 40.5, 3.0, 6.0, 9.4], face="+y", rod_z=0.5, drawer_h=0.0, seed=6)
-    add(asset="proc:cabinet", room="laundry", b=[37.8, 9.5, 38.9, 12.75, 0, 8.0], doors=2, face="-x", m="walnut_h")
+    add(asset="proc:cabinet", room="laundry", b=[38.5, 11.75, 39.95, 12.75, 0, 8.0], doors=2, face="-y", m="walnut_h")   # shallow supply cabinet on the corridor's north wall, 2.5 ft of passage kept
     add(asset="proc:cabinet", room="laundry", b=[39.5, 11.6, 41.0, 12.75, 0, 4.0], doors=1, face="-y", m="walnut_h")   # chute hopper, under the chute in the NE corner
-    proc("basket", "laundry", pos=[36.5, 4.6, 0], radius=0.7, height=1.6, throw_m="linen_white")
-    proc("rug", "laundry", b=[38.5, 3.5, 40.5, 8.5], m="rug_cream", thick=0.05)
-    proc("downlights", "laundry", positions=[[37, 5], [39, 10]], z=9.5, watts=9)
+    proc("basket", "laundry", pos=[37.5, 12.0, 0], radius=0.7, height=1.6, throw_m="linen_white")   # corridor pocket, clear of the door arc
+    proc("rug", "laundry", b=[38.6, 3.6, 40.6, 8.9], m="rug_cream", thick=0.05)   # runner down the neck
+    proc("downlights", "laundry", positions=[[39.2, 4.0], [39.6, 8.2], [37.0, 11.0]], z=9.5, watts=9)
     # ------------------------------------------------------------------ 3.11 mudroom
     note("mudroom")
     proc("lockers2", "mudroom", b=[1.0, 19.25, 7.75, 20.75, 0, 9.5], dividers=[2.7, 4.4, 6.1])

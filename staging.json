@@ -772,15 +772,15 @@
 "asset": "proc:washer_dryer",
 "room": "laundry",
 "b": [
-39.0,
-8.5,
-41.0,
-11.5,
+35.25,
+3.1,
+37.75,
+5.6,
 1.2,
 6.8
 ],
 "floor_z": 0,
-"face": "-x"
+"face": "+x"
 },
 {
 "asset": "proc:cabinet",
@@ -843,15 +843,15 @@
 "asset": "proc:cabinet",
 "room": "laundry",
 "b": [
-37.8,
-9.5,
-38.9,
+38.5,
+11.75,
+39.95,
 12.75,
 0,
 8.0
 ],
 "doors": 2,
-"face": "-x",
+"face": "-y",
 "m": "walnut_h"
 },
 {
@@ -873,8 +873,8 @@
 "asset": "proc:basket",
 "room": "laundry",
 "pos": [
-36.5,
-4.6,
+37.5,
+12.0,
 0
 ],
 "radius": 0.7,
@@ -885,10 +885,10 @@
 "asset": "proc:rug",
 "room": "laundry",
 "b": [
-38.5,
-3.5,
-40.5,
-8.5
+38.6,
+3.6,
+40.6,
+8.9
 ],
 "m": "rug_cream",
 "thick": 0.05
@@ -898,12 +898,16 @@
 "room": "laundry",
 "positions": [
 [
-37,
-5
+39.2,
+4.0
 ],
 [
-39,
-10
+39.6,
+8.2
+],
+[
+37.0,
+11.0
 ]
 ],
 "z": 9.5,
@@ -7562,24 +7566,24 @@
 {
 "asset": "wooden_broom",
 "pos": [
-35.9,
-12.15,
+38.05,
+9.8,
 0.0
 ],
 "room": "laundry",
 "height_ft": 4.6,
-"rot_z": 200
+"rot_z": 20
 },
 {
 "asset": "dustpan",
 "pos": [
-36.6,
-12.05,
+37.4,
+9.45,
 0.0
 ],
 "room": "laundry",
 "height_ft": 0.3,
-"rot_z": -100
+"rot_z": 80
 },
 {
 "note": "== mudroom clutter =="

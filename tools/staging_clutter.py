@@ -81,8 +81,8 @@ def main_floor():
     model("multi_cleaner_bottle", (37.0, 1.5, 2.9), "laundry", height_ft=0.75, rot_z=-10)
     model("bleach_bottle", (37.6, 1.7, 2.9), "laundry", height_ft=0.95, rot_z=40)
     proc("towel_stack", "laundry", pos=[38.4, 2.0, 2.9], w=1.1, d=0.7, count=4, seed=6, mats=["towel_white", "linen_grey", "towel_white", "wool_oatmeal"])
-    model("wooden_broom", (35.9, 12.15, 0.0), "laundry", height_ft=4.6, rot_z=200)
-    model("dustpan", (36.6, 12.05, 0.0), "laundry", height_ft=0.3, rot_z=-100)
+    model("wooden_broom", (38.05, 9.8, 0.0), "laundry", height_ft=4.6, rot_z=20)   # leaning in the corner where the elevator closet meets the neck
+    model("dustpan", (37.4, 9.45, 0.0), "laundry", height_ft=0.3, rot_z=80)
     # ------------------------------------------------------------------ mudroom
     note("mudroom clutter")
     model("wicker_basket_02", (6.7, 18.3, 0.0), "mudroom", height_ft=1.1)
