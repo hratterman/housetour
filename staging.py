@@ -1160,8 +1160,22 @@ class Stager(Gens2, Gens3):
             else:
                 d = at - 0.3 if face == "-y" else at + 0.3
                 objs.append(cylinder_ft(self.uid("tw_bar"), (u, d, zz), 0.04, 2.0, self.mat("brass"), self.col, 10, axis="X"))
-        # a bath towel over the top bar, the short end toward the wall
+        # side rails and four wall standoffs so the rungs read as a ladder radiator, not sticks in the wall
         zt = z + 5 * 0.45
+        for du in (-1.0, 1.0):
+            if wall["axis"] == "y":
+                d = at - 0.3 if face == "-x" else at + 0.3
+                objs.append(cylinder_ft(self.uid("tw_rail"), (d, u + du, (z + zt) / 2), 0.05, zt - z + 0.5, self.mat("brass"), self.col, 12))
+                for zz in (z + 0.2, zt - 0.2):
+                    objs.append(cylinder_ft(self.uid("tw_stand"), ((at + d) / 2, u + du, zz), 0.035, abs(d - at), self.mat("brass"), self.col, 10, axis="X"))
+                    objs.append(cylinder_ft(self.uid("tw_rose"), (at + (0.02 if face == "+x" else -0.02), u + du, zz), 0.1, 0.04, self.mat("brass"), self.col, 16, axis="X"))
+            else:
+                d = at - 0.3 if face == "-y" else at + 0.3
+                objs.append(cylinder_ft(self.uid("tw_rail"), (u + du, d, (z + zt) / 2), 0.05, zt - z + 0.5, self.mat("brass"), self.col, 12))
+                for zz in (z + 0.2, zt - 0.2):
+                    objs.append(cylinder_ft(self.uid("tw_stand"), (u + du, (at + d) / 2, zz), 0.035, abs(d - at), self.mat("brass"), self.col, 10, axis="Y"))
+                    objs.append(cylinder_ft(self.uid("tw_rose"), (u + du, at + (0.02 if face == "+y" else -0.02), zz), 0.1, 0.04, self.mat("brass"), self.col, 16, axis="Y"))
+        # a bath towel over the top bar, the short end toward the wall
         if wall["axis"] == "y":
             d = at - 0.3 if face == "-x" else at + 0.3
             objs.append(sg.towel_hung(self.uid("sg_towel"), (d, u, zt), "y", 0.04, 1.4, 1.9, 0.5, ((1, 0) if face == "-x" else (-1, 0)), self.mat("towel_white"), self.col, seed=int(u)))

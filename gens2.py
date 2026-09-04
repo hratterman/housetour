@@ -12,10 +12,35 @@ import math
 import random
 
 import bpy
+import bmesh
 from mathutils import Vector, Matrix
 
-from geom import (FT, IN, m, log, box_ft, box_local, box_centered, beam_between, cylinder_ft, sphere_ft,
-                  prism_yz, prism_xz, get_collection)
+from geom import (FT, IN, m, log, box_ft, box_local, box_centered, beam_between, cylinder_ft, sphere_ft, prism_yz, prism_xz, get_collection, boolean_cut, link)
+
+
+def _bowl_ft(name, centre_ft, radii_ft, mat, col):
+    """Lower half of an ellipsoid as a thin ceramic shell: an undermount basin. radii (rx, ry, rz) in feet."""
+    bm = bmesh.new()
+    bmesh.ops.create_uvsphere(bm, u_segments=36, v_segments=18, radius=1.0)
+    top_verts = [v for v in bm.verts if v.co.z > 1e-4]
+    bmesh.ops.delete(bm, geom=top_verts, context="VERTS")
+    for v in bm.verts:
+        v.co = (v.co.x * m(radii_ft[0]), v.co.y * m(radii_ft[1]), v.co.z * m(radii_ft[2]))
+    mesh = bpy.data.meshes.new(name)
+    bm.to_mesh(mesh)
+    bm.free()
+    for poly in mesh.polygons:
+        poly.use_smooth = True
+    ob = bpy.data.objects.new(name, mesh)
+    ob.location = tuple(m(v) for v in centre_ft)
+    link(ob, col)
+    if mat is not None:
+        ob.data.materials.append(mat)
+    sol = ob.modifiers.new("shell", "SOLIDIFY")
+    sol.thickness = 0.008
+    sol.offset = 1.0
+    sol.use_rim = True
+    return ob
 
 
 def _face_dir(wall):
@@ -985,7 +1010,15 @@ class Gens2:
         if e.get("paper", True):
             # paper holder beside the bowl on the side wall or on a post
             side = e.get("roll_side", 1.3)     # on the side wall, an arm's reach from the bowl
-            objs.append(cylinder_ft(self.uid("wc_roll"), (cx + dx * 0.9 + (0 if dx else side), cy + dy * 0.9 + (side if dx else 0), p[2] + 2.3), 0.2, 0.35, self.mat("paper"), self.col, 16, axis="Y" if dx else "X"))
+            rc = (cx + dx * 0.9 + (0 if dx else side), cy + dy * 0.9 + (side if dx else 0), p[2] + 2.3)
+            objs.append(cylinder_ft(self.uid("wc_roll"), rc, 0.2, 0.35, self.mat("paper"), self.col, 20, axis="Y" if dx else "X"))
+            # holder: brass spindle from a wall rose (the side wall sits 0.2 beyond the roll centre)
+            sgn = 1 if side > 0 else -1
+            ax = "Y" if dx else "X"
+            spin = (rc[0], rc[1] + sgn * 0.05, rc[2]) if dx else (rc[0] + sgn * 0.05, rc[1], rc[2])
+            rose = (rc[0], rc[1] + sgn * 0.19, rc[2]) if dx else (rc[0] + sgn * 0.19, rc[1], rc[2])
+            objs.append(cylinder_ft(self.uid("wc_spindle"), spin, 0.03, 0.5, self.mat("brass"), self.col, 10, axis=ax))
+            objs.append(cylinder_ft(self.uid("wc_rose"), rose, 0.1, 0.03, self.mat("brass"), self.col, 16, axis=ax))
         return objs
 
     def gen_round_mirror(self, e):
@@ -1048,10 +1081,19 @@ class Gens2:
         for i in range(1, nd):
             u = u0 + i * (u1 - u0) / nd
             objs.append(B("reveal", u - 0.01, u + 0.01, depth - 0.005, depth + 0.01, top - 1.2, top - 0.15, self.mat("black")))
+        top_ob = objs[1]
         for su in e.get("sinks", [u0 + (u1 - u0) * 0.27, u0 + (u1 - u0) * 0.73]):
-            objs.append(B("v_sink_hole", su - 0.75, su + 0.75, 0.35, depth - 0.35, top - 0.55, top + 0.002, self.mat("steel_black")))
-            basin = B("v_basin", su - 0.72, su + 0.72, 0.38, depth - 0.38, top - 0.5, top - 0.02, cer)
-            objs.append(basin)
+            # undermount oval bowl: the counter is cut with a slightly smaller ellipsoid so its edge overhangs the rim
+            dc = depth / 2 + 0.05
+            centre = (at + dx * dc, su, top - 0.02) if wall["axis"] == "y" else (su, at + dy * dc, top - 0.02)
+            r_along, r_out = (0.86, 0.62)
+            rr = (r_out, r_along, 0.5) if wall["axis"] == "y" else (r_along, r_out, 0.5)
+            cutter = sphere_ft(self.uid("v_cut"), centre, 1.0, None, self.col, 32, 16)
+            cutter.scale = (rr[0] * 0.97, rr[1] * 0.97, rr[2] * 0.97)
+            boolean_cut(top_ob, cutter)
+            bpy.data.objects.remove(cutter, do_unlink=True)
+            objs.append(_bowl_ft(self.uid("v_bowl"), centre, rr, cer, self.col))
+            objs.append(cylinder_ft(self.uid("v_drain"), (centre[0], centre[1], centre[2] - rr[2] + 0.03), 0.1, 0.02, self.mat("chrome"), self.col, 20))
             # wall-mounted faucet at Z top+0.7
             if wall["axis"] == "y":
                 objs.append(cylinder_ft(self.uid("v_faucet"), (at + dx * 0.02, su, top + 0.7), 0.045, 0.75, brass, self.col, 8, axis="X"))

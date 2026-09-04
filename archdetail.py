@@ -82,6 +82,15 @@ def _clear(u, ops, margin, z0=0.0, z1=1.6):
     return True
 
 
+def _in_avoid(floor, axis, at, u, avoid, margin=1.0):
+    """True when the point (axis, at, u) on this floor lies within margin of a wet-area box (floor, x0, y0, x1, y1)."""
+    x, y = (at, u) if axis == "y" else (u, at)
+    for (fl, x0, y0, x1, y1) in avoid:
+        if fl == floor and x0 - margin <= x <= x1 + margin and y0 - margin <= y <= y1 + margin:
+            return True
+    return False
+
+
 def _plate(uid, axis, at, fd, u, z, w, h, mat_plate, mat_inset, col, inset_w, inset_h, name):
     """A cover plate on a wall face: plate w x h, 0.03 ft proud, with an inset detail."""
     d0, d1 = (at, at + fd * 0.03)
@@ -98,7 +107,7 @@ def _plate(uid, axis, at, fd, u, z, w, h, mat_plate, mat_inset, col, inset_w, in
     return objs
 
 
-def build(plan, mat, col, uid):
+def build(plan, mat, col, uid, avoid=()):
     """mat(name) -> material; uid(base) -> unique object name."""
     plate = mat("ceramic_white")
     dark = mat("steel_black")
@@ -163,6 +172,8 @@ def build(plan, mat, col, uid):
                         u = u0 + 1.5 if k == 0 else u1 - 1.5
                         if not _clear(u, ops, 0.6, 0.0, 1.6):
                             continue
+                    if _in_avoid(floor, axis, at, u, avoid):
+                        continue
                     objs += _plate(uid, axis, at, fd, u, fz + 1.25, 0.23, 0.38, plate, mat("plaster_warm"), col, 0.09, 0.26, "outlet")
                     counts["outlet"] += 1
         if name not in NO_DIFFUSER and area >= 60:

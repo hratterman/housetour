@@ -1060,16 +1060,23 @@ def main():
         t1 = time.time()
         details.build(plan, house, mats)
         log("details %.1fs" % (time.time() - t1)); t1 = time.time()
-        staging.build(plan, house, mats, args.staging)
+        _stager = staging.build(plan, house, mats, args.staging)
         log("staging %.1fs" % (time.time() - t1)); t1 = time.time()
         import archdetail
+        # wet areas (showers, tubs, plunge) keep receptacles out: IRC E4002.11 and common sense
+        _room_floor = {r["name"]: r["floor"] for r in plan["rooms"]}
+        _wet = []
+        for _e in getattr(_stager, "entries", []):
+            _a = str(_e.get("asset", ""))
+            if any(k in _a for k in ("shower", "tub", "plunge", "sauna")) and _e.get("b") and _e.get("room") in _room_floor:
+                _wet.append((_room_floor[_e["room"]],) + tuple(_e["b"][:4]))
         from geom import get_collection as _gc
         _n = [0]
 
         def _ad_uid(base):
             _n[0] += 1
             return "ad_%s_%04d" % (base, _n[0])
-        _objs, _counts = archdetail.build(plan, mats.get, _gc("details"), _ad_uid)
+        _objs, _counts = archdetail.build(plan, mats.get, _gc("details"), _ad_uid, avoid=_wet)
         log("architectural detail:", ", ".join("%s %d" % kv for kv in _counts.items()), "(%.1fs)" % (time.time() - t1)); t1 = time.time()
         import lighting
         lighting.build(plan, house, mats)
