@@ -732,7 +732,8 @@ def audit_staging(plan, out_path):
     # out of room: entry centre outside every part of its room (grown 0.6 ft), rooms by name
     rooms = {r["name"]: r for r in plan["rooms"]}
     exterior = ("porch", "soffit", "house_numbers", "grill", "heater", "planter", "rain_chain", "spa", "outdoor", "ceiling_fan",
-                "ext_sconce", "mail_slot", "shop_light", "hydrant", "bike_rack", "potted_plant_01")
+                "ext_sconce", "mail_slot", "shop_light", "hydrant", "bike_rack", "potted_plant_01",
+                "exterior_aircon_unit", "garden_gnome", "propane_tank", "stone_fire_pit", "watering_can_metal_01", "wooden_picnic_table")
     for k, e in ents.items():
         r = rooms.get(e["room"])
         if r is None or any(w in e["asset"] for w in exterior):

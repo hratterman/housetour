@@ -484,6 +484,9 @@ class Gens2:
             spans.append((u0 - pw + 0.15, u0 + 0.15))
         if panels in ("both", "right"):
             spans.append((u1 - 0.15, u1 + pw - 0.15))
+        if e.get("clamp"):                    # keep the panels off the side walls
+            lo, hi = e["clamp"]
+            spans = [(max(a, lo), min(b, hi)) for (a, b) in spans if min(b, hi) - max(a, lo) > 0.5]
         for k, (a, b) in enumerate(spans):
             objs.append(sg.curtain(self.uid("sg_curtain"), a, b, at, fd, rod_z - 0.08, fz + 0.04, mat, self.col, out=out,
                                    amp=e.get("pleat", 0.13), period=e.get("period", 0.5), seed=e.get("seed", 3) + k, axis=along))
@@ -586,7 +589,7 @@ class Gens2:
             objs.append(box_centered(self.uid("slipper_vamp"), (p[0] + dx, p[1] + 0.25, p[2] + 0.17), (0.34, 0.4, 0.1), rot + (8 if i else -5), mat, self.col))
         return objs
 
-    def _wall_sides(self, room, rect, tol=0.45):
+    def _wall_sides(self, room, rect, tol=0.85):
         """Sides ('-x', '+x', '-y', '+y') of a footprint rect that sit against a wall of the named room."""
         sides = set()
         x0, y0, x1, y1 = rect
