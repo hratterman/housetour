@@ -122,6 +122,7 @@ neighborhood.py       the block: street, parkway trees, 25 lots in six period st
 staging.py            model import (glTF, joined, instanced) and the Stager: wall-face placement, the first 40 generators
 gens2.py, gens3.py    the other 115 procedural generators (kitchen, baths, beds, gym, bar, garage, cars, exterior, small props)
 softgoods.py          pillows, cushions, duvets, drapes, towels and curtains as shaped grid meshes
+plants.py             rubber plant, monstera and bird of paradise from curved leaf grids, in tapered pots
 archdetail.py         switches, outlets, slot diffusers, return grilles, smoke detectors, thermostats from the plan
 lighting.py           room fills, practicals, sun, clamped HDRI sky, modes, white balance
 materials_pbr.py      box-projected PBR at physical scale, procedural overlays, shadow-transparent glass
@@ -181,8 +182,13 @@ notes/acceptance.md   the spec checklist
   generated code editor. All wallpapers and all framed art are procedural, so no real artwork is used.
 - Soft goods are real meshes (`softgoods.py`): pillows with a seam and pinched corners, seat slabs with a sag,
   duvets turning over the mattress edge with a folded roll at the head, throws draped over arms, towels over
-  bars, pleated curtains. After staging, `archdetail.py` adds the switches, outlets, diffusers, grilles, smoke
-  detectors and thermostats a real house has, keyed to the finished wall faces and clear of every opening.
+  bars, pleated curtains. Throws ripple and curl at the free edge and fold double at the foot of a bed. Big
+  plants come from `plants.py` (leaves as curved grids on petioles). Monitors, table lamps (open tapered
+  shades with a bulb inside), the washer/dryer, the tub and the vanity sinks (the counter is boolean-cut for a
+  ceramic bowl) are built as the real objects are, and the fire's flame shells carry a graded emission shader
+  that fades to transparent. After staging, `archdetail.py` adds the switches, outlets, diffusers, grilles,
+  exhaust fans, smoke detectors and thermostats a real house has, keyed to the finished wall faces, clear of
+  every opening and a foot clear of any shower, tub, plunge or sauna.
 - After the build, three passes: a bevel on every edge (a quarter inch on the shell, 0.4 in on details, 5 in on
   car bodies); a cloth pass for the few remaining box textiles (garments, the beanbag); and a hedge pass that
   displaces the hedge boxes into foliage.
