@@ -43,6 +43,9 @@ def world_empty():
     return ob
 
 
+PREFER_2K = False      # set by build_scene for renders under 1280 wide: the 15 GB build box cannot hold the 4k sets
+
+
 class PBRLibrary:
     def __init__(self, root, specs):
         self.root = root
@@ -169,6 +172,8 @@ class PBRLibrary:
 
     def _image_node(self, nt, folder, mapname, colorspace, mapping):
         path = os.path.join(self.tex_root, folder, mapname + ".jpg")
+        if PREFER_2K and os.path.exists(os.path.join(self.tex_root, folder + "_2k", mapname + ".jpg")):
+            path = os.path.join(self.tex_root, folder + "_2k", mapname + ".jpg")     # previews: the 2k twin of a 4k hero set
         if not os.path.exists(path):
             return None
         n = nt.nodes.new("ShaderNodeTexImage")
