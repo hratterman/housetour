@@ -37,6 +37,7 @@ def parse():
     p.add_argument("--max-tris", type=int, default=30000, help="decimate imported models above this")
     p.add_argument("--model-tex", type=int, default=384, help="downscale imported model textures to this")
     p.add_argument("--no-draco", action="store_true", help="write uncompressed geometry")
+    p.add_argument("--model-maps", action="store_true", help="keep normal/roughness/metal maps on imported models (default: colour only)")
     p.add_argument("--no-trees", action="store_true", help="skip exterior trees entirely")
     p.add_argument("--rebake", action="store_true", help="bake every material tile again instead of reusing <out>/_tiles")
     p.add_argument("--with-block", action="store_true", help="keep the neighbourhood (25 lots, 50 trees); default exports the house and its lot only")
@@ -409,9 +410,25 @@ def main():
         for ob in obs:
             ob.data = new_me
         n_dec += 1
+    n_maps = 0
     for m in bpy.data.materials:
         if m is None or not m.use_nodes or m.name.startswith("web_"):
             continue
+        if not args.model_maps:
+            # keep the colour map only: normal, roughness, metal and displacement maps of 175 imported models
+            # were two thirds of the glb's images and read as nothing at walkthrough scale
+            imgs = [n for n in m.node_tree.nodes if n.type == "TEX_IMAGE" and n.image is not None]
+            if len(imgs) > 1:
+                def is_colour(n):
+                    nm = n.image.name.lower()
+                    if any(k in nm for k in ("diff", "col", "albedo", "basecolor", "base_color")):
+                        return True
+                    return any(l.to_socket.name == "Base Color" for l in n.outputs[0].links)
+                keep = [n for n in imgs if is_colour(n)] or imgs[:1]
+                for n in imgs:
+                    if n not in keep:
+                        m.node_tree.nodes.remove(n)
+                        n_maps += 1
         if True:
             for n in m.node_tree.nodes:
                 if n.type == "TEX_IMAGE" and n.image is not None and n.image.size[0] > args.model_tex:
@@ -424,7 +441,7 @@ def main():
                     new.colorspace_settings.name = n.image.colorspace_settings.name
                     _LOADED[n.image.name] = new
                     n.image = new
-    log("decimated %d heavy model meshes" % n_dec)
+    log("decimated %d heavy model meshes, dropped %d non-colour model maps" % (n_dec, n_maps))
 
     # 4. lights and plan for the viewer
     house = bs._HOUSE if hasattr(bs, "_HOUSE") else None
