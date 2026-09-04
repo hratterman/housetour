@@ -692,3 +692,13 @@ of render and about 8 h wall time with the per-shot builds (13 min each with 671
 `renders/contact_sheet_preview.png`; the walkthrough in `renders/walkthrough_preview.mp4`. From the sheet: the
 living fire's flame shells still blew out to white under the living shot's exposure, so both flame emissions
 came down; the upstairs shot's rack still had been aimed at the wall beside the closet door and now looks in.
+
+## Viewer would not load (fixed)
+
+Henry's new bundle sat on the loading screen for 20 minutes. Headless probes with stage timings showed the glb
+fetched and parsed in about 15 s, then the first frame never returned. Cause: the viewer added all 253
+practical lights to the scene (intensity 0 until the nearest 14 switched on), and three.js compiles every
+material's shader with a loop over every point light in the scene, so 410 materials x 253 lights of shader
+compilation stood between the parse and the first frame; the old 294-material glb just squeaked through. Now
+14 point lights exist and each frame they take the position, colour and intensity of the nearest practicals.
+First frame in software rendering: 13 s instead of never.

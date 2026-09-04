@@ -137,21 +137,32 @@ await new Promise((resolve, reject) => {
 status.textContent = '';
 
 // practical lights: the nearest few are switched on each frame ------------------------------
-const pointLights = [];
+// Only MAX_ACTIVE real PointLights ever live in the scene; each frame they take the position, colour and
+// intensity of the nearest practicals. (Adding all 253 lights to the scene, even at zero intensity, put 253
+// point lights into every material's shader: minutes of shader compilation before the first frame.)
+const practicals = [];
 for (const L of lightData.lights) {
   if (L.kind !== 'practical' && L.kind !== 'fill') continue;
   const w = L.kind === 'fill' ? L.watts * 0.9 : L.watts;
-  const light = new THREE.PointLight(new THREE.Color(L.color[0], L.color[1], L.color[2]), 0, 9, 2);
-  light.position.set(L.pos[0], L.pos[2], -L.pos[1]);
-  light.userData.intensity = Math.min(w * 0.35, 40);
-  scene.add(light);
-  pointLights.push(light);
+  practicals.push({ pos: new THREE.Vector3(L.pos[0], L.pos[2], -L.pos[1]), color: new THREE.Color(L.color[0], L.color[1], L.color[2]),
+                    intensity: Math.min(w * 0.35, 40) });
 }
 let lampsOn = true;
 const MAX_ACTIVE = 14;
+const pointLights = [];
+for (let i = 0; i < MAX_ACTIVE; i++) {
+  const light = new THREE.PointLight(0xffffff, 0, 9, 2);
+  scene.add(light);
+  pointLights.push(light);
+}
 function updateLights(pos) {
-  pointLights.sort((a, b) => a.position.distanceToSquared(pos) - b.position.distanceToSquared(pos));
-  pointLights.forEach((l, i) => { l.intensity = (lampsOn && i < MAX_ACTIVE) ? l.userData.intensity : 0; });
+  practicals.sort((a, b) => a.pos.distanceToSquared(pos) - b.pos.distanceToSquared(pos));
+  for (let i = 0; i < MAX_ACTIVE; i++) {
+    const l = pointLights[i], src = practicals[i];
+    if (!src) { l.intensity = 0; continue; }
+    l.position.copy(src.pos); l.color.copy(src.color);
+    l.intensity = lampsOn ? src.intensity : 0;
+  }
 }
 
 // player -----------------------------------------------------------------------------------
