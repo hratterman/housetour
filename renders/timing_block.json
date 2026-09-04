@@ -4,8 +4,8 @@
   "samples": 32,
   "frame_step": 12,
   "frames": 20,
-  "mean_s": 53.6908171415329,
-  "total_s": 1075.3179194927216,
+  "mean_s": 51.04249608516693,
+  "total_s": 1022.4863691329956,
   "device": "CPU",
   "stage": "phase2"
 }

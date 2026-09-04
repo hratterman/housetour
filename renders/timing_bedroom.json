@@ -1,0 +1,11 @@
+{
+  "shot": "bedroom",
+  "res": "640x360",
+  "samples": 32,
+  "frame_step": 12,
+  "frames": 16,
+  "mean_s": 60.20456452667713,
+  "total_s": 964.5204267501831,
+  "device": "CPU",
+  "stage": "phase2"
+}

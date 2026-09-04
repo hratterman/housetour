@@ -1,0 +1,11 @@
+{
+  "shot": "garage",
+  "res": "640x360",
+  "samples": 32,
+  "frame_step": 12,
+  "frames": 16,
+  "mean_s": 47.548256531357765,
+  "total_s": 761.9903817176819,
+  "device": "CPU",
+  "stage": "phase2"
+}

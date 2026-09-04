@@ -1,11 +1,11 @@
 {
-  "shot": "street",
+  "shot": "terrace_dusk",
   "res": "640x360",
   "samples": 32,
   "frame_step": 12,
   "frames": 24,
-  "mean_s": 52.99668012062708,
-  "total_s": 1273.8828117847443,
+  "mean_s": 55.04322017232577,
+  "total_s": 1322.9751963615417,
   "device": "CPU",
   "stage": "phase2"
 }

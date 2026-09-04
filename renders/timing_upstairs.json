@@ -1,0 +1,11 @@
+{
+  "shot": "upstairs",
+  "res": "640x360",
+  "samples": 32,
+  "frame_step": 12,
+  "frames": 36,
+  "mean_s": 53.03425458404753,
+  "total_s": 1912.1529340744019,
+  "device": "CPU",
+  "stage": "phase2"
+}
