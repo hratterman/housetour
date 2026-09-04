@@ -673,3 +673,13 @@ The 47-view sweep at 960 x 540 / 48 samples (rooms and key frames) surfaced thes
   bench, half as many random tool slabs.
 - Throws: the drape's flat part gets a two-frequency ripple and a curled free edge; bed throws fold double.
 - Swim spa cover was a tan box; two padded vinyl halves on a stainless lifter.
+- Second half of the sweep: table lamps rebuilt (open tapered shade, harp, finial, a bulb inside; bedside lamps
+  sized like real ones); kid bath tile is 3 x 6 stacked bond on all four sink-room walls with a striped towel;
+  the tub is boolean-cut for a rounded basin with drain, overflow and a riser-and-spout filler; frosted glass on
+  every window the plan marks obscure; brass pulls on every cabinet door; a printer on the office credenza; gym
+  plate tree pegs that actually hold their plates; storage shelves stocked with taped cardboard boxes, lidded
+  bins and archive boxes; garage pegboard thinned; loft, recovery, yard and kid bath views re-posed (two of them
+  had been standing inside a wall). Audit after the changes: the new plants kept their leaves off walls and
+  furniture (leaves skip directions toward a wall), the laundry sink cabinet came out of the counter run, and
+  the hamper, dustpan, trash can, broom, pachira, games table and island chairs were nudged out of walls. All
+  eight camera paths clear. Outlets went from 121 to 110 with the wet-area rule; seven exhaust grilles.
