@@ -74,18 +74,18 @@ def main_floor():
     proc("small_props", "primary_bedroom", kind="phone", pos=[29.0, 44.1, 2.2], rot_z=95)
     model("round_spectacles", (28.9, 43.5, 2.2), "primary_bedroom", rot_z=110, height_ft=0.12)
     proc("throw", "primary_bedroom", b=[36.3, 36.9, 37.5, 38.3], z=1.5, m="knit_charcoal", hang=None)   # folded on the bench
-    model("wicker_basket_02", (40.3, 35.9, 0.0), "primary_bedroom", height_ft=1.9)                    # hamper
+    model("wicker_basket_02", (39.8, 36.8, 0.0), "primary_bedroom", height_ft=1.9)                    # hamper
     # ------------------------------------------------------------------ laundry (counter top 2.9)
     note("laundry clutter")
     model("all_purpose_cleaner", (36.4, 1.6, 2.9), "laundry", height_ft=1.0, rot_z=20)
     model("multi_cleaner_bottle", (37.0, 1.5, 2.9), "laundry", height_ft=0.75, rot_z=-10)
     model("bleach_bottle", (37.6, 1.7, 2.9), "laundry", height_ft=0.95, rot_z=40)
     proc("towel_stack", "laundry", pos=[38.4, 2.0, 2.9], w=1.1, d=0.7, count=4, seed=6, mats=["towel_white", "linen_grey", "towel_white", "wool_oatmeal"])
-    model("wooden_broom", (35.55, 12.3, 0.0), "laundry", height_ft=4.6, rot_z=200)
-    model("dustpan", (36.3, 12.4, 0.0), "laundry", height_ft=0.3, rot_z=-100)
+    model("wooden_broom", (35.9, 12.15, 0.0), "laundry", height_ft=4.6, rot_z=200)
+    model("dustpan", (36.6, 12.05, 0.0), "laundry", height_ft=0.3, rot_z=-100)
     # ------------------------------------------------------------------ mudroom
     note("mudroom clutter")
-    model("wicker_basket_02", (7.0, 18.4, 0.0), "mudroom", height_ft=1.1)
+    model("wicker_basket_02", (6.7, 18.3, 0.0), "mudroom", height_ft=1.1)
     model("watering_can_metal_01", (7.1, 16.2, 0.0), "mudroom", height_ft=0.65, rot_z=-90)
     # ------------------------------------------------------------------ spine and stair hall
     note("spine clutter")
@@ -97,8 +97,8 @@ def exterior():
     model("propane_tank", (25.5, 48.1, 0.0), "living", height_ft=1.5)                                   # under the grill
     model("garden_gnome", (21.9, 55.0, -0.3), "living", height_ft=1.6, rot_z=100)
     model("watering_can_metal_01", (3.4, 54.6, -0.3), "living", height_ft=0.65, rot_z=40)
-    model("wooden_picnic_table", (13.0, 63.0, -0.3), "living", length_ft=7.3, rot_z=90)
-    model("stone_fire_pit", (7.0, 68.0, -0.3), "living", length_ft=4.7)
+    model("wooden_picnic_table", (13.0, 60.5, -0.3), "living", length_ft=7.3, rot_z=90)   # on the lawn between terrace and garage
+    model("stone_fire_pit", (4.0, 60.5, -0.3), "living", length_ft=4.7)
     model("exterior_aircon_unit", (-2.6, 40.0, -0.3), "living", height_ft=3.0, rot_z=90)              # condensers on the west side
 
 
@@ -120,7 +120,7 @@ def second_floor():
     model("retro_multimeter", (23.3, 8.7, z + 2.4), "lab", rot_z=200, height_ft=0.6)
     model("chemistry_set", (22.9, 9.9, z + 2.4), "lab", rot_z=90, height_ft=1.1)
     model("bunsen_burner", (12.6, 11.6, z + 3.0), "lab", height_ft=0.55)
-    model("magnifying_glass_01", (12.3, 12.6, z + 3.0), "lab", rot_z=40, length_ft=0.7)
+    model("magnifying_glass_01", (12.3, 12.6, z + 3.0), "lab", rot_z=40, height_ft=0.8)
     model("industrial_microscope", (12.5, 9.2, z + 3.0), "lab", rot_z=-90, height_ft=1.2)           # eyepiece toward the stool
     model("vintage_radio_transceiver", (17.4, 18.0, z + 2.35), "lab", rot_z=190, length_ft=1.2)     # on the round table
     proc("small_props", "lab", kind="mug", pos=[26.6, 9.9, z + 2.4], rot_z=30, m="teal")
@@ -129,7 +129,7 @@ def second_floor():
     model("throw_pillows_01", (8.6, 38.3, z + 1.62), "bedroom_a", rot_z=150, length_ft=1.6)
     model("treasure_chest", (12.6, 37.6, z), "bedroom_a", length_ft=2.6, rot_z=-90)                 # toy chest against the east wall
     model("football", (9.6, 31.9, z), "bedroom_a", height_ft=0.7)
-    model("wooden_display_shelves_01", (13.1, 32.5, z), "bedroom_a", height_ft=4.6, rot_z=0)        # cube shelves, east wall
+    model("wooden_display_shelves_01", (13.1, 33.2, z), "bedroom_a", height_ft=4.6, rot_z=0)        # cube shelves, east wall
     model("postcard_set_01", (3.5, 26.32, z + 4.9), "bedroom_a", length_ft=0.5, rot_z=0)            # on the corkboard
     proc("small_props", "bedroom_a", kind="water_glass", pos=[2.1, 38.9, z + 2.2])
     # ------------------------------------------------------------------ bedroom B (bed head -y at Y 29; desk along the south wall)
@@ -137,7 +137,7 @@ def second_floor():
     model("standing_chalkboard_01", (29.6, 38.6, z), "bedroom_b", height_ft=4.6, rot_z=180)          # A-frame, faces the room (+X)
     model("football", (31.0, 39.8, z), "bedroom_b", height_ft=0.7, rot_z=40)
     model("sungka_board", (35.0, 44.5, z + 2.5), "bedroom_b", length_ft=1.8, rot_z=0)
-    model("gaming_console", (38.6, 44.55, z + 2.5), "bedroom_b", length_ft=1.0, rot_z=30)
+    model("gaming_console", (38.6, 44.35, z + 2.5), "bedroom_b", length_ft=1.0, rot_z=30)
     model("gamepad", (37.4, 44.4, z + 2.5), "bedroom_b", rot_z=-30, length_ft=0.7)
     model("throw_pillows_01", (39.2, 32.8, z + 1.62), "bedroom_b", rot_z=230, length_ft=1.5)
     proc("small_props", "bedroom_b", kind="water_glass", pos=[36.5, 30.0, z + 2.2])
@@ -150,8 +150,8 @@ def second_floor():
     # ------------------------------------------------------------------ halls and loft
     note("hall clutter")
     model("potted_plant_04", (27.25, 43.0, z + 3.0), "hall", height_ft=1.0)
-    model("wooden_display_shelves_01", (20.9, 30.0, z), "loft", height_ft=4.6, rot_z=180)             # cube shelves on the loft's east wall
-    model("treasure_chest", (18.0, 40.6, z), "loft", length_ft=2.4, rot_z=0)
+    model("wooden_display_shelves_01", (20.9, 31.3, z), "loft", height_ft=4.6, rot_z=180)             # cube shelves on the loft's east wall
+    model("treasure_chest", (20.2, 38.5, z), "loft", length_ft=2.4, rot_z=0)
     model("rockingchair_01", (16.4, 41.4, z), "loft", height_ft=3.2, rot_z=180)                         # faces the window seat (+Y)
 
 
@@ -163,29 +163,29 @@ def basement():
     model("wicker_basket_02", (17.4, 43.2, z), "lounge", height_ft=1.5)
     model("dartboard", (1.08, 40.2, z + 4.3), "lounge", height_ft=1.45, rot_z=-90)                   # on the west wall, faces +X
     proc("towel_stack", "recovery", pos=[9.2, 26.9, z + 1.5], w=1.0, d=0.6, count=3, seed=8)
-    model("wooden_crate_02", (33.0, 42.6, z), "storage", length_ft=3.6, rot_z=0)
+    model("wooden_crate_02", (35.0, 42.3, z), "storage", length_ft=3.6, rot_z=0)
     model("plastic_crate_03", (37.0, 44.0, z + 0.9), "storage", length_ft=1.6, rot_z=10)
-    model("vintage_suitcase", (36.0, 44.2, z), "storage", length_ft=2.2, rot_z=80)
+    model("vintage_suitcase", (37.6, 41.5, z), "storage", length_ft=2.2, rot_z=0)
 
 
 def garage():
     z = ZG
     note("garage clutter")
-    model("korean_fire_extinguisher_01", (-2.0, 68.6, z), "garage", height_ft=2.1, rot_z=-90)
-    model("hand_truck", (15.9, 90.6, z), "garage", height_ft=4.5, rot_z=100)                          # against the north wall
+    model("korean_fire_extinguisher_01", (-4.4, 68.2, z), "garage", height_ft=2.1, rot_z=-90)
+    model("hand_truck", (15.4, 91.4, z), "garage", height_ft=4.5, rot_z=90)                           # against the north wall
     model("tire_pump", (13.9, 92.0, z), "garage", height_ft=1.9, rot_z=90)
     model("metal_jerrycan", (14.6, 91.4, z), "garage", height_ft=1.45, rot_z=20)
     model("plastic_crate_02", (16.0, 70.2, z), "garage", length_ft=1.65, rot_z=0)
     model("plastic_crate_03", (16.0, 70.3, z + 0.83), "garage", length_ft=1.6, rot_z=6)
-    model("metal_trash_can", (15.7, 72.9, z), "garage", height_ft=3.1)
+    model("metal_trash_can", (15.9, 88.4, z), "garage", height_ft=3.1)
     model("metal_stool_02", (8.0, 69.3, z), "garage", height_ft=1.5, rot_z=30)
     model("oil_tin", (12.0, 66.0, z + 3.0), "garage", height_ft=0.65, rot_z=15)
     model("lubricant_spray", (13.0, 66.4, z + 3.0), "garage", height_ft=0.55)
     model("spray_paint_bottles", (8.0, 66.5, z + 3.0), "garage", height_ft=0.75, rot_z=40)
     model("measuring_tape_01", (6.5, 66.2, z + 3.0), "garage", length_ft=0.55, rot_z=70)
-    model("pliers", (7.4, 66.6, z + 3.0), "garage", length_ft=0.6, rot_z=-30)
+    model("pliers", (7.4, 66.6, z + 3.0), "garage", height_ft=0.55, rot_z=-30)
     model("screwdrivers_02", (5.8, 66.4, z + 3.0), "garage", length_ft=0.85, rot_z=15)
-    model("adjustable_wrench", (4.6, 66.3, z + 3.0), "garage", length_ft=0.8, rot_z=100)
+    model("adjustable_wrench", (4.6, 66.3, z + 3.0), "garage", height_ft=0.75, rot_z=100)
     model("garden_gloves_01", (2.0, 66.4, z + 3.0), "garage", length_ft=0.95, rot_z=-20)
     model("seeding_tray_01", (0.5, 66.4, z + 3.0), "garage", length_ft=0.7)
     model("wooden_bucket_01", (-3.6, 90.6, z), "garage", height_ft=1.15)

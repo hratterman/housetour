@@ -7501,8 +7501,8 @@
 {
 "asset": "wicker_basket_02",
 "pos": [
-40.3,
-35.9,
+39.8,
+36.8,
 0.0
 ],
 "room": "primary_bedroom",
@@ -7566,8 +7566,8 @@
 {
 "asset": "wooden_broom",
 "pos": [
-35.55,
-12.3,
+35.9,
+12.15,
 0.0
 ],
 "room": "laundry",
@@ -7577,8 +7577,8 @@
 {
 "asset": "dustpan",
 "pos": [
-36.3,
-12.4,
+36.6,
+12.05,
 0.0
 ],
 "room": "laundry",
@@ -7591,8 +7591,8 @@
 {
 "asset": "wicker_basket_02",
 "pos": [
-7.0,
-18.4,
+6.7,
+18.3,
 0.0
 ],
 "room": "mudroom",
@@ -7662,7 +7662,7 @@
 "asset": "wooden_picnic_table",
 "pos": [
 13.0,
-63.0,
+60.5,
 -0.3
 ],
 "room": "living",
@@ -7672,8 +7672,8 @@
 {
 "asset": "stone_fire_pit",
 "pos": [
-7.0,
-68.0,
+4.0,
+60.5,
 -0.3
 ],
 "room": "living",
@@ -7836,7 +7836,7 @@
 ],
 "room": "lab",
 "rot_z": 40,
-"length_ft": 0.7
+"height_ft": 0.8
 },
 {
 "asset": "industrial_microscope",
@@ -7911,7 +7911,7 @@
 "asset": "wooden_display_shelves_01",
 "pos": [
 13.1,
-32.5,
+33.2,
 10.0
 ],
 "room": "bedroom_a",
@@ -7979,7 +7979,7 @@
 "asset": "gaming_console",
 "pos": [
 38.6,
-44.55,
+44.35,
 12.5
 ],
 "room": "bedroom_b",
@@ -8082,7 +8082,7 @@
 "asset": "wooden_display_shelves_01",
 "pos": [
 20.9,
-30.0,
+31.3,
 10.0
 ],
 "room": "loft",
@@ -8092,8 +8092,8 @@
 {
 "asset": "treasure_chest",
 "pos": [
-18.0,
-40.6,
+20.2,
+38.5,
 10.0
 ],
 "room": "loft",
@@ -8172,8 +8172,8 @@
 {
 "asset": "wooden_crate_02",
 "pos": [
-33.0,
-42.6,
+35.0,
+42.3,
 -10.0
 ],
 "room": "storage",
@@ -8194,13 +8194,13 @@
 {
 "asset": "vintage_suitcase",
 "pos": [
-36.0,
-44.2,
+37.6,
+41.5,
 -10.0
 ],
 "room": "storage",
 "length_ft": 2.2,
-"rot_z": 80
+"rot_z": 0
 },
 {
 "note": "== garage clutter =="
@@ -8208,8 +8208,8 @@
 {
 "asset": "korean_fire_extinguisher_01",
 "pos": [
--2.0,
-68.6,
+-4.4,
+68.2,
 -0.4
 ],
 "room": "garage",
@@ -8219,13 +8219,13 @@
 {
 "asset": "hand_truck",
 "pos": [
-15.9,
-90.6,
+15.4,
+91.4,
 -0.4
 ],
 "room": "garage",
 "height_ft": 4.5,
-"rot_z": 100
+"rot_z": 90
 },
 {
 "asset": "tire_pump",
@@ -8274,8 +8274,8 @@
 {
 "asset": "metal_trash_can",
 "pos": [
-15.7,
-72.9,
+15.9,
+88.4,
 -0.4
 ],
 "room": "garage",
@@ -8343,7 +8343,7 @@
 2.6
 ],
 "room": "garage",
-"length_ft": 0.6,
+"height_ft": 0.55,
 "rot_z": -30
 },
 {
@@ -8365,7 +8365,7 @@
 2.6
 ],
 "room": "garage",
-"length_ft": 0.8,
+"height_ft": 0.75,
 "rot_z": 100
 },
 {
