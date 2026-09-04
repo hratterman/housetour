@@ -357,6 +357,18 @@ def main():
             if m is not None and m.name in web_mats:
                 ob.data.materials[i] = web_mats[m.name]
     log("uv-mapped %d procedural meshes" % n_uv)
+    # soft goods and plants carry subdivision for the render; one level is plenty at web scale (two levels
+    # quadruple the triangle count again and took the glb from 27 MB to 45 MB)
+    n_ss = 0
+    for ob in bpy.data.objects:
+        if ob.type != "MESH":
+            continue
+        for mod in ob.modifiers:
+            if mod.type == "SUBSURF" and (mod.levels > 1 or mod.render_levels > 1):
+                mod.levels = min(mod.levels, 1)
+                mod.render_levels = min(mod.render_levels, 1)
+                n_ss += 1
+    log("capped subdivision on %d meshes" % n_ss)
 
     # 3. imported models: decimate every heavy mesh that will be exported (multi-part models and the site
     # trees included; the first version only looked at prototype meshes and let 270 MB of tool-chest curves
