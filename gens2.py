@@ -598,6 +598,9 @@ class Gens2:
             ye = -L / 2 - 0.26
             objs.append(sg.drape(self.uid("sg_bed_throw"), (xa, ye, matt_top + T + 0.05), (xb, ye, matt_top + T + 0.05), (0, -1), 1.5, 1.0, 0.07,
                                  bm, self.col, edge_r=0.14, origin_ft=p, rot_z_deg=rot, seed=seed + 5))
+            # folded back on itself: a shorter second layer on top, its rolled edge a hand's width in from the first
+            objs.append(sg.drape(self.uid("sg_bed_throw2"), (xa + 0.12, ye + 0.08, matt_top + T + 0.12), (xb - 0.15, ye + 0.08, matt_top + T + 0.12), (0, -1), 0.95, 0.45, 0.07,
+                                 bm, self.col, edge_r=0.16, origin_ft=p, rot_z_deg=rot, seed=seed + 9, waves=0.05))
         if hb_w:
             part("bed_headboard", W / 2 - hb_w / 2, L + 0.02, W / 2 + hb_w / 2, L + 0.3, 0, hb_h, wood)
             part("bed_headpad", W / 2 - hb_w / 2 + 0.3, L - 0.1, W / 2 + hb_w / 2 - 0.3, L + 0.02, plat_h + 0.6, hb_h - 0.3, self.mat(e.get("headpad_m", "leather_brown")))

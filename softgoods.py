@@ -269,7 +269,10 @@ def drape(name, p0_ft, p1_ft, outward, top_len, hang_len, thick, mat, col, edge_
         for j in range(nv + 1):
             s = total * j / nv - top_len
             if s <= 0:
-                off, z = s, 0.005 * math.sin(6 * u + ph[0])
+                # flat part: soft two-frequency ripple, and the free edge curls up a little over its last 0.35 ft
+                fl = min(1.0, (s + top_len) / 0.35)
+                off = s
+                z = 0.018 * math.sin(6 * u + ph[0]) * math.sin(2.6 * (s / max(top_len, 1e-6)) + ph[2]) + 0.03 * (1 - fl) ** 2
             elif s <= arc:
                 th = s / edge_r
                 off, z = edge_r * math.sin(th), -edge_r * (1 - math.cos(th))
