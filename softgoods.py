@@ -41,7 +41,7 @@ def _object(name, verts, faces, mat, col, origin_ft=(0, 0, 0), rot_z_deg=0.0, su
     if subsurf:
         ss = ob.modifiers.new("sg_smooth", "SUBSURF")
         ss.levels = subsurf
-        ss.render_levels = subsurf + 1
+        ss.render_levels = subsurf          # one level is enough on these grids; two blew the 15 GB build box
     return ob
 
 

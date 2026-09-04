@@ -897,6 +897,12 @@ def setup_render(scene, args, plan, stage):
     cy.use_adaptive_sampling = True
     cy.adaptive_threshold = 0.02 if args.samples < 64 else 0.01
     cy.use_denoising = bool(getattr(bpy.app.build_options, "openimagedenoise", True))
+    # texture memory: 2k is plenty below 1280 wide (the build box has 15 GB; the staged scene peaks near 10 GB), 4k above
+    try:
+        w_px = int(str(args.res).lower().split("x")[0])
+        cy.texture_limit_render = "2048" if w_px <= 1280 else "4096"
+    except Exception:
+        pass
     if cy.use_denoising:
         try:
             cy.denoiser = "OPENIMAGEDENOISE"
