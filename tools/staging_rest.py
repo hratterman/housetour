@@ -17,9 +17,7 @@ def second_floor():
     # six 24 in monitors, 3 x 2, on a black rail centred on the pier between W3 and W4 (Y 16.5), arms off the rail
     for i, yy in enumerate((14.4, 16.5, 18.6)):
         for k, zz in enumerate((z + 3.35, z + 4.7)):
-            add(asset="proc:cabinet", room="her_office", b=[1.3, yy - 0.98, 1.36, yy + 0.98, zz, zz + 1.15], doors=1, face="+x", m="screen_code")
-            add(asset="proc:cabinet", room="her_office", b=[1.25, yy - 1.02, 1.32, yy + 1.02, zz - 0.04, zz + 1.19], doors=1, face="+x", m="steel_black")
-            add(asset="proc:cabinet", room="her_office", b=[1.0, yy - 0.08, 1.3, yy + 0.08, zz + 0.5, zz + 0.62], doors=1, face="+x", m="steel_black")   # arm
+            proc("monitor", "her_office", pos=[1.55, yy, zz], facing="+x", w=2.0, mount="wall", mount_d=0.43, m="screen_code" if (i + k) % 2 else "screen_dash")
     add(asset="proc:cabinet", room="her_office", b=[1.0, 13.2, 1.12, 19.8, z + 4.6, z + 4.72], doors=1, face="+x", m="steel_black")   # rail
     model("classic_laptop", (2.5, 16.0, z + 2.5), "her_office", length_ft=1.2, rot_z=90)
     proc("task_chair", "her_office", pos=[5.0, 16.5, z], rot_z=90, m="leather_brown")

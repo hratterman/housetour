@@ -136,6 +136,44 @@ class Gens3:
             objs.append(cylinder_ft(self.uid("towel"), (p[0] - 0.25, p[1] - 0.9 + i * 0.6, p[2] + 0.04 + 0.22), 0.22, 0.5, self.mat("towel_white"), self.col, 12, axis="X"))
         return objs
 
+    def _monitor(self, front, facing, w, mount="stand", mount_d=0.3, mount_z=None, m="screen_code"):
+        """A flat monitor. front = (x, y, z) centre of the bottom edge of the screen face; facing = the direction the
+        screen faces ('+x', '-x', '+y', '-y'); w = screen width in feet (a 27 in panel is 2.0). mount 'stand' puts a
+        pole and a flat base at mount_z on the desk behind the screen; 'wall' runs an arm back mount_d to a wall plate."""
+        fx, fy = {"-x": (-1, 0), "+x": (1, 0), "-y": (0, -1), "+y": (0, 1)}[facing]
+        ux, uy = -fy, fx
+        cx, cy, zb = front
+        h = w * 0.5625
+        blk = self.mat("steel_black")
+        objs = []
+
+        def B(name, u0, u1, d0, d1, z0, z1, mat):
+            xs = sorted(cx + ux * a + fx * b for a in (u0, u1) for b in (d0, d1))
+            ys = sorted(cy + uy * a + fy * b for a in (u0, u1) for b in (d0, d1))
+            return box_ft(self.uid(name), xs[0], ys[0], xs[-1], ys[-1], z0, z1, mat, self.col)
+        objs.append(B("mon_bezel", -w / 2 - 0.04, w / 2 + 0.04, -0.07, 0.0, zb - 0.04, zb + h + 0.04, blk))
+        objs.append(B("mon_img", -w / 2, w / 2, 0.0, 0.004, zb, zb + h, self.mat(m)))
+        objs.append(B("mon_back", -w / 2 + 0.25, w / 2 - 0.25, -0.2, -0.07, zb + 0.15, zb + h - 0.15, self.mat("black")))
+        objs.append(B("mon_vesa", -0.3, 0.3, -0.24, -0.2, zb + h * 0.5 - 0.3, zb + h * 0.5 + 0.3, blk))
+        zc = zb + h * 0.5
+        ax = "X" if fx else "Y"
+        if mount == "wall":
+            # arm: one straight reach back to a wall plate with an elbow sphere halfway
+            mid = -(0.24 + mount_d) / 2
+            objs.append(cylinder_ft(self.uid("mon_arm"), (cx + fx * mid, cy + fy * mid, zc), 0.05, mount_d - 0.24 + 0.1, blk, self.col, 12, axis=ax))
+            objs.append(sphere_ft(self.uid("mon_elbow"), (cx + fx * mid, cy + fy * mid, zc), 0.08, blk, self.col, 16, 8))
+            objs.append(B("mon_plate", -0.25, 0.25, -mount_d, -mount_d + 0.06, zc - 0.25, zc + 0.25, blk))
+        else:
+            mz = zb - 0.55 if mount_z is None else mount_z
+            objs.append(cylinder_ft(self.uid("mon_pole"), (cx - fx * 0.3, cy - fy * 0.3, (mz + zc) / 2), 0.06, zc - mz, blk, self.col, 12))
+            objs.append(cylinder_ft(self.uid("mon_arm"), (cx - fx * 0.27, cy - fy * 0.27, zc), 0.045, 0.1, blk, self.col, 10, axis=ax))
+            objs.append(B("mon_base", -0.45, 0.45, -0.55, -0.05, mz, mz + 0.03, blk))
+        return objs
+
+    def gen_monitor(self, e):
+        return self._monitor(tuple(e["pos"]), e.get("facing", "-x"), e.get("w", 2.0), e.get("mount", "stand"),
+                             e.get("mount_d", 0.3), e.get("mount_z"), e.get("m", "screen_code"))
+
     def gen_wall_shelf(self, e):
         """Small metal shelf on a wall: wall spec, u centre, z, length, depth, m (brass by default), two brackets.
         Optional items: 'candle', 'plant', 'roll' (a spare paper roll), placed left to right."""

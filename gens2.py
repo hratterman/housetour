@@ -1526,17 +1526,12 @@ class Gens2:
         mw = e.get("monitor_w", 2.3)
         for i in range(mons):
             off = (i - (mons - 1) / 2) * (mw + 0.15)
+            back = {"+y": "-y", "-y": "+y", "+x": "-x", "-x": "+x"}[facing]
             if facing in ("+y", "-y"):
-                mx, my = cx + off, fe
-                arm = cylinder_ft(self.uid("mon_arm"), (mx, my + (0.25 if facing == "+y" else -0.25), top), 0.06, 1.2, self.mat("steel_black"), self.col, 10)
-                scr = box_ft(self.uid("mon"), mx - mw / 2, my - 0.03, mx + mw / 2, my + 0.03, top + 0.55, top + 0.55 + mw * 0.56, self.mat("screen_dark"), self.col)
-                img = box_ft(self.uid("mon_img"), mx - mw / 2 + 0.05, (my - 0.035) if facing == "+y" else (my + 0.03), mx + mw / 2 - 0.05, (my - 0.03) if facing == "+y" else (my + 0.035), top + 0.6, top + 0.5 + mw * 0.56, self.mat("screen_code"), self.col)
+                front = (cx + off, fe - dyf * 0.45, top + 0.5)
             else:
-                mx, my = fe, cy + off
-                arm = cylinder_ft(self.uid("mon_arm"), (mx + (0.25 if facing == "+x" else -0.25), my, top), 0.06, 1.2, self.mat("steel_black"), self.col, 10)
-                scr = box_ft(self.uid("mon"), mx - 0.03, my - mw / 2, mx + 0.03, my + mw / 2, top + 0.55, top + 0.55 + mw * 0.56, self.mat("screen_dark"), self.col)
-                img = box_ft(self.uid("mon_img"), (mx - 0.035) if facing == "+x" else (mx + 0.03), my - mw / 2 + 0.05, (mx - 0.03) if facing == "+x" else (mx + 0.035), my + mw / 2 - 0.05, top + 0.6, top + 0.5 + mw * 0.56, self.mat("screen_code"), self.col)
-            objs += [arm, scr, img]
+                front = (fe - dxf * 0.45, cy + off, top + 0.5)
+            objs += self._monitor(front, back, mw, "stand", mount_z=top, m=e.get("monitor_m", "screen_code"))
         if e.get("keyboard", True):
             kx, ky = cx - dxf * 0.55, cy - dyf * 0.55
             objs.append(box_centered(self.uid("keyboard"), (kx, ky, top + 0.04), (1.35, 0.45, 0.08) if facing in ("+y", "-y") else (0.45, 1.35, 0.08), 0, self.mat("black"), self.col))
@@ -1547,7 +1542,7 @@ class Gens2:
             lid = box_centered(self.uid("laptop_lid"), (lx, ly + 0.42, top + 0.45), (1.15, 0.03, 0.78), 0, self.mat("stainless"), self.col)
             lid.rotation_euler = (math.radians(-15), 0, 0)
             objs.append(lid)
-            objs.append(box_centered(self.uid("laptop_scr"), (lx, ly + 0.40, top + 0.45), (1.05, 0.02, 0.68), 0, self.mat("screen_code"), self.col).__class__ and box_centered(self.uid("laptop_scr"), (lx, ly + 0.405, top + 0.45), (1.05, 0.015, 0.68), 0, self.mat("screen_code"), self.col))
+            objs.append(box_centered(self.uid("laptop_scr"), (lx, ly + 0.405, top + 0.45), (1.05, 0.015, 0.68), 0, self.mat("screen_code"), self.col))
             objs[-1].rotation_euler = (math.radians(-15), 0, 0)
         if e.get("lamp"):
             lx, ly = e["lamp"]
