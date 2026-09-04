@@ -58,6 +58,12 @@ def main():
     box_ft("win", 5.6, 9.7, 6.4, 9.78, 3.0, 7.5, lib.get("glass"), col)
     sg.curtain("sg_curtain", 6.6, 8.0, 9.75, -1, 8.0, 0.25, lib.get("linen_white"), col, seed=2)
     cylinder_ft("rod", (7.0, 9.4, 8.1), 0.05, 3.2, lib.get("brass"), col, 10, axis="X")
+    # garments: a coat on a wall hook and three on a rod
+    cylinder_ft("hook", (1.2, 9.6, 5.6), 0.03, 0.3, lib.get("brass"), col, 8, axis="Y")
+    sg.garment("sg_jacket", (1.2, 9.45, 5.55), (0, -1), 1.7, 2.6, 0.5, lib.get("wool_grey"), col, seed=3, hanger=False)
+    cylinder_ft("rod2", (3.0, 9.0, 6.0), 0.04, 2.4, lib.get("brass"), col, 10, axis="X")
+    for k, (x, mname, hh) in enumerate(((2.4, "linen_white", 2.5), (3.0, "oxblood", 2.9), (3.6, "knit_charcoal", 2.3))):
+        sg.garment("sg_garment", (x, 9.0, 5.95), (1, 0), 1.6, hh, 0.3, lib.get(mname), col, seed=k, hanger=True, hanger_mat=lib.get("brass"))
     # light and camera
     sun = bpy.data.objects.new("sun", bpy.data.lights.new("sun", "SUN"))
     sun.data.energy = 3.0
@@ -72,8 +78,8 @@ def main():
     scene.collection.objects.link(cam)
     scene.camera = cam
     cam.data.lens = 28
-    cam.location = (m(6.0), m(-4.5), m(6.0))
-    cam.rotation_euler = (math.radians(70), 0, math.radians(-4))
+    cam.location = (m(4.0), m(1.5), m(5.5))
+    cam.rotation_euler = (math.radians(82), 0, math.radians(-8))
     scene.render.engine = "CYCLES"
     scene.cycles.device = "CPU"
     scene.cycles.samples = 48

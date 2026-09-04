@@ -1025,12 +1025,15 @@ class Stager(Gens2, Gens3):
         # a jacket on one hook
         if e.get("jacket", True):
             u = u0 + 1.5 * (u1 - u0) / n
+            # a real coat shape hanging from the hook, back to the wall
             if wall["axis"] == "y":
-                j0, j1 = (at - 0.55, at - 0.1) if face == "-x" else (at + 0.1, at + 0.55)
-                objs.append(box_ft(self.uid("jacket"), j0, u - 0.8, j1, u + 0.8, z - 2.6, z - 0.05, self.mat("olive"), self.col))
+                fd = (-1, 0) if face == "-x" else (1, 0)
+                top = (at + fd[0] * 0.28, u, z - 0.02)
             else:
-                j0, j1 = (at - 0.55, at - 0.1) if face == "-y" else (at + 0.1, at + 0.55)
-                objs.append(box_ft(self.uid("jacket"), u - 0.8, j0, u + 0.8, j1, z - 2.6, z - 0.05, self.mat("olive"), self.col))
+                fd = (0, -1) if face == "-y" else (0, 1)
+                top = (u, at + fd[1] * 0.28, z - 0.02)
+            objs += sg.garment(self.uid("sg_jacket"), top, fd, 1.7, 2.6, 0.5, self.mat(e.get("jacket_m", "wool_grey")), self.col,
+                               seed=int(u * 7), hanger=False)
         return objs
 
     def gen_bench(self, e):

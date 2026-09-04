@@ -363,3 +363,66 @@ def curtain(name, u0, u1, at, face_dir, z_top, z_bot, mat, col, out=0.35, amp=0.
                 verts.append((at + face_dir * n, u, z))
     faces = _grid(nu, nv)
     return _object(name, [tuple(m(c) for c in p) for p in verts], faces, mat, col, subsurf=1, solidify=thick)
+
+
+# ----------------------------------------------------------------------------- garments
+
+def garment(name, top_ft, facing, w, h, t, mat, col, seed=0, hanger=True, origin_ft=(0, 0, 0), rot_z_deg=0.0,
+            hanger_mat=None, n_u=12, n_v=16):
+    """A coat or shirt hanging from a point: top_ft is the shoulder top (the hook or rod), facing the horizontal
+    unit direction the front faces; width w across (shoulders), height h down to the hem, thickness t at the
+    shoulders tapering to the hem. Rounded shoulders, a neck notch, soft vertical folds. Front and back sheets
+    meet at the sides. hanger adds a brass hook above the neck."""
+    fx, fy = facing
+    ln = math.hypot(fx, fy) or 1.0
+    fx, fy = fx / ln, fy / ln
+    sx, sy = -fy, fx                          # across the body
+    rng = random.Random(seed)
+    ph = [rng.uniform(0, 6.28) for _ in range(3)]
+    tx, ty, tz = top_ft
+    verts = []
+    idx = {}
+    for side in (1, -1):                       # 1 front, -1 back
+        for i in range(n_u + 1):
+            u = i / n_u
+            a = 2 * u - 1
+            for j in range(n_v + 1):
+                v = j / n_v                    # 0 top, 1 hem
+                width = w * (0.72 + 0.28 * v) if v > 0.12 else w * (0.72 * math.sqrt(max(0.0, 1 - ((0.12 - v) / 0.12) ** 2)) + 0.05)
+                if v <= 0.06 and abs(a) < 0.25:
+                    width *= 1.0
+                dome = math.sqrt(max(0.0, 1 - a * a)) if v > 0.12 else math.sqrt(max(0.0, 1 - a * a)) * (0.4 + 0.6 * v / 0.12)
+                thick = t * (1.0 - 0.55 * v) * dome
+                fold = 0.035 * math.sin(2 * math.pi * (u * 3.0) + ph[0]) * v + 0.02 * math.sin(2 * math.pi * (u * 5.0) + ph[1]) * v * v
+                neck = 0.0
+                if v < 0.1 and abs(a) < 0.3:
+                    neck = 0.08 * (1 - v / 0.1) * (1 - (a / 0.3) ** 2)
+                off = side * (thick / 2 + fold)
+                px = tx + sx * (a * width / 2) + fx * off
+                py = ty + sy * (a * width / 2) + fy * off
+                pz = tz - h * v - neck
+                idx[(side, i, j)] = len(verts)
+                verts.append((px, py, pz))
+    faces = []
+    for side in (1, -1):
+        for i in range(n_u):
+            for j in range(n_v):
+                q = (idx[(side, i, j)], idx[(side, i + 1, j)], idx[(side, i + 1, j + 1)], idx[(side, i, j + 1)])
+                faces.append(q if side == 1 else tuple(reversed(q)))
+    # close the sides and the hem between the two sheets
+    for j in range(n_v):
+        faces.append((idx[(1, 0, j)], idx[(1, 0, j + 1)], idx[(-1, 0, j + 1)], idx[(-1, 0, j)]))
+        faces.append((idx[(1, n_u, j + 1)], idx[(1, n_u, j)], idx[(-1, n_u, j)], idx[(-1, n_u, j + 1)]))
+    for i in range(n_u):
+        faces.append((idx[(1, i + 1, n_v)], idx[(1, i, n_v)], idx[(-1, i, n_v)], idx[(-1, i + 1, n_v)]))
+        faces.append((idx[(1, i, 0)], idx[(1, i + 1, 0)], idx[(-1, i + 1, 0)], idx[(-1, i, 0)]))
+    ob = _object(name, [tuple(m(c) for c in p) for p in verts], faces, mat, col, origin_ft, rot_z_deg, subsurf=1)
+    out = [ob]
+    if hanger:
+        from geom import cylinder_ft
+        out.append(cylinder_ft(name + "_hanger", (tx, ty, tz - 0.05), 0.025, 0.42, hanger_mat or mat, col, 8))
+        out[-1].name = name + "_hook"
+        bar = cylinder_ft(name + "_bar", (tx - sx * w * 0.36, ty - sy * w * 0.36, tz - 0.06), 0.02, w * 0.72, hanger_mat or mat, col, 8,
+                          axis=("X" if abs(sx) > abs(sy) else "Y"))
+        out.append(bar)
+    return out

@@ -1192,10 +1192,13 @@ class Gens2:
                 w = rng.uniform(0.12, 0.22)
                 hgt = rng.uniform(2.4, 3.3)
                 c = self.mat(rng.choice(cols))
-                garment = slab(u, u + w, -0.85, 0.85, z0 + rod_z - hgt, z0 + rod_z - 0.15, c)
-                garment.name = self.uid("wr_garment")      # cloth-tagged: wrinkles and soft edges
-                objs.append(garment)
-                objs.append(slab(u + w / 2 - 0.01, u + w / 2 + 0.01, -0.02, 0.02, z0 + rod_z - 0.15, z0 + rod_z + 0.05, self.mat("brass")))
+                # a shaped garment on a hanger: width across the unit, thickness along the rod
+                if along_x:
+                    top, fd = (x0 + u + w / 2, dmid, z0 + rod_z - 0.05), (1, 0)
+                else:
+                    top, fd = (dmid, y0 + u + w / 2, z0 + rod_z - 0.05), (0, 1)
+                objs += sg.garment(self.uid("sg_garment"), top, fd, 1.6, hgt - 0.2, w * 1.5, c, self.col, seed=int(u * 13) + 1,
+                                   hanger=True, hanger_mat=self.mat("brass"))
                 u += w + rng.uniform(0.05, 0.14)
             # LED strip under the top
             objs += self.gen_led_strip({"b": [x0 + t, dmid - 0.05, x1 - t, dmid + 0.05, z1 - t - 0.03, z1 - t] if along_x else [dmid - 0.05, y0 + t, dmid + 0.05, y1 - t, z1 - t - 0.03, z1 - t], "watts": 4})
