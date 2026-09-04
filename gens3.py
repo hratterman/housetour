@@ -820,10 +820,26 @@ class Gens3:
         return objs
 
     def gen_spa_cover(self, e):
+        """Swim spa cover folded open on its lifter at the north end: two padded vinyl halves standing back to back
+        (each half the spa's length tall), a seam between them, a stainless lifter bar from each rim corner."""
         b = e["b"]
         x0, y0, x1, y1, z = b
-        # folded open cover standing at the north end
-        return [box_ft(self.uid("spa_cover"), x0, y1 - 0.5, x1, y1 + 0.1, z, z + 3.6, self.mat("canvas_tan"), self.col)]
+        vinyl = self.mat("leather_black")
+        ss = self.mat("stainless")
+        half = (y1 - y0) / 2
+        objs = []
+        for k, (ya, yb) in enumerate(((y1 - 0.5, y1 - 0.14), (y1 - 0.08, y1 + 0.28))):
+            objs.append(box_ft(self.uid("spa_cover"), x0 + 0.1, ya, x1 - 0.1, yb, z + 0.05, z + half, vinyl, self.col))
+            # quilted look: two shallow channel grooves across each half
+            for zz in (z + half * 0.34, z + half * 0.67):
+                objs.append(box_ft(self.uid("spa_cover_seam"), x0 + 0.15, ya - 0.005 if k == 0 else yb - 0.005, x1 - 0.15, ya + 0.005 if k == 0 else yb + 0.005, zz - 0.02, zz + 0.02, self.mat("black"), self.col))
+        objs.append(box_ft(self.uid("spa_cover_hinge"), x0 + 0.1, y1 - 0.14, x1 - 0.1, y1 - 0.08, z + 0.05, z + half, self.mat("black"), self.col))
+        # lifter: a bar on each side from the rim to the cover's mid height, a crossbar behind the cover
+        for xx in (x0 - 0.15, x1 + 0.15):
+            objs.append(beam_between(self.uid("spa_lift"), (xx, y1 - half * 0.55, z), (xx, y1 - 0.11, z + half * 0.5), 0.08, 0.08, ss, self.col))
+            objs.append(cylinder_ft(self.uid("spa_lift_pivot"), (xx, y1 - 0.11, z + half * 0.5), 0.1, 0.12, ss, self.col, 16, axis="X"))
+        objs.append(cylinder_ft(self.uid("spa_lift_bar"), ((x0 + x1) / 2, y1 + 0.34, z + half * 0.5), 0.05, x1 - x0 + 0.3, ss, self.col, 12, axis="X"))
+        return objs
 
     def gen_planter(self, e):
         p = e["pos"]
