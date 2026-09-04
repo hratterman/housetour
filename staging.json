@@ -4402,6 +4402,24 @@
 "asset": "proc:wall_finish",
 "room": "kid_bath_sink",
 "wall": {
+"axis": "y",
+"at": 35.0,
+"face": "-x"
+},
+"span": [
+19.3,
+27.7
+],
+"z": [
+10.0,
+14.0
+],
+"m": "tile_white"
+},
+{
+"asset": "proc:wall_finish",
+"room": "kid_bath_sink",
+"wall": {
 "axis": "x",
 "at": 28.0,
 "face": "-y"

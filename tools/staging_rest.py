@@ -106,6 +106,7 @@ def second_floor():
     proc("wall_finish", "kid_bath_sink", wall=W("y", 28.0, "+x"), span=[19.3, 27.7], z=[z, z + 4.0], m="tile_white")
     proc("wall_finish", "kid_bath_sink", wall=W("x", 28.0, "-y"), span=[28.3, 34.7], z=[z, z + 4.0], m="tile_white")
     proc("wall_finish", "kid_bath_sink", wall=W("x", 19.0, "+y"), span=[28.3, 34.7], z=[z, z + 4.0], m="tile_white")
+    proc("wall_finish", "kid_bath_sink", wall=W("y", 35.0, "-x"), span=[19.3, 27.7], z=[z, z + 4.0], m="tile_white")   # east wall tiled too
     proc("wall_finish", "kid_bath_sink", wall=W("x", 28.0, "-y"), span=[28.3, 34.7], z=[z + 4.0, z + 8.9], m="mustard_paint")
     proc("vanity2", "kid_bath_sink", wall=W("x", 28.0, "-y"), span=[29.0, 34.7], top_z=z + 2.5, depth=1.5, sinks=[30.4, 33.3],
          sconces=[29.5, 34.2], sconce_z=z + 6.0, mirror_z=[z + 3.3, z + 6.6], glow_watts=12, top_m="marble_white")
