@@ -757,8 +757,8 @@ class Gens3:
         objs = [box_ft(self.uid("pb_slab"), x0, y0, x1, y1, z1 - 0.15, z1, wood, self.col),
                 box_ft(self.uid("pb_leg"), x0 + 0.2, y0 + 0.1, x0 + 0.35, y1 - 0.1, z0, z1 - 0.15, wood, self.col),
                 box_ft(self.uid("pb_leg"), x1 - 0.35, y0 + 0.1, x1 - 0.2, y1 - 0.1, z0, z1 - 0.15, wood, self.col),
-                box_ft(self.uid("bench_cush"), x0 + 0.4, y0 + 0.1, x0 + 2.4, y1 - 0.1, z1, z1 + 0.25, self.mat("wool_mustard"), self.col),
-                box_ft(self.uid("bench_cush"), x1 - 3.0, y0 + 0.1, x1 - 1.0, y1 - 0.1, z1, z1 + 0.25, self.mat("olive_paint"), self.col)]
+                sg.slab(self.uid("sg_bench_cush"), (x0 + 1.4, (y0 + y1) / 2, z1 + 0.125), (2.0, y1 - y0 - 0.2, 0.25), self.mat("wool_mustard"), self.col, puff=0.25, n=8),
+                sg.slab(self.uid("sg_bench_cush"), (x1 - 2.0, (y0 + y1) / 2, z1 + 0.125), (2.0, y1 - y0 - 0.2, 0.25), self.mat("olive_paint"), self.col, puff=0.25, n=8, seed=2)]
         return objs
 
     def gen_stroller(self, e):

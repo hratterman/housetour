@@ -426,3 +426,45 @@ def garment(name, top_ft, facing, w, h, t, mat, col, seed=0, hanger=True, origin
                           axis=("X" if abs(sx) > abs(sy) else "Y"))
         out.append(bar)
     return out
+
+
+# ----------------------------------------------------------------------------- shells (moulded seats)
+
+def shell_seat(name, origin_ft, rot_z_deg, w, seat_d, back_h, seat_z, mat, col, bend_r=0.28, thick=0.05,
+               recline_deg=12, dish=0.06, n_u=10):
+    """A moulded shell chair seat and back as one bent surface: the seat from the front edge back, a rounded
+    bend, and a back reclined by recline_deg, with a slight dish across the width. Built in the chair's local
+    frame (front toward -Y, centre at the origin), so the caller passes the chair's position and yaw."""
+    rec = math.radians(recline_deg)
+    arc = bend_r * math.pi / 2 * (1 - recline_deg / 90.0)
+    total = seat_d + arc + back_h
+    n_v = max(14, int(total / 0.1))
+    verts = []
+    for i in range(n_u + 1):
+        u = i / n_u
+        a = 2 * u - 1
+        for j in range(n_v + 1):
+            s_ = total * j / n_v
+            if s_ <= seat_d:
+                y = -seat_d / 2 + s_
+                z = seat_z + 0.02 * (s_ / seat_d)
+                nx = 0.0
+                nz = 1.0
+            elif s_ <= seat_d + arc:
+                th = (s_ - seat_d) / bend_r
+                y = seat_d / 2 + bend_r * math.sin(th) - bend_r * 0 - (bend_r - bend_r * math.cos(0))
+                y = seat_d / 2 - bend_r + bend_r * math.sin(th)
+                z = seat_z + bend_r - bend_r * math.cos(th)
+                nx, nz = -math.sin(th), math.cos(th)
+            else:
+                hb = s_ - seat_d - arc
+                ang = math.pi / 2 - rec
+                y = seat_d / 2 - bend_r + bend_r * math.sin(ang) + hb * math.cos(ang)
+                z = seat_z + bend_r - bend_r * math.cos(ang) + hb * math.sin(ang)
+                nx, nz = -math.cos(ang), math.sin(ang) * 0 + math.sin(ang)
+            # dish: the surface curves up at the sides (lower in the middle)
+            d = dish * (a * a - 0.3)
+            x = a * w / 2 * (1.0 - 0.06 * (s_ / total) ** 2)
+            verts.append((x, y + d * nx * 0.0, z + d))
+    faces = _grid(n_u, n_v)
+    return _object(name, [tuple(m(c) for c in p) for p in verts], faces, mat, col, origin_ft, rot_z_deg, subsurf=1, solidify=thick)

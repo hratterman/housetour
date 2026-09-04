@@ -1179,9 +1179,12 @@ class Stager(Gens2, Gens3):
                 bx1 = bx0 + (x1 - x0 - 1.2) / 4 - 0.15
                 bd0, bd1 = (d1 - 0.02, d1 + 0.01) if face == "+y" else (d0 - 0.01, d0 + 0.02)
                 for zz in (1.0, 2.6, 4.2, 5.8, 7.2):
-                    fold = box_ft(self.uid("fold"), bx0 + 0.15, bd0 - (0.9 if face == "-y" else 0), bx1 - 0.15, bd1 + (0.9 if face == "+y" else 0), z + zz, z + zz + rng.uniform(0.3, 0.6),
-                                  self.mat(rng.choice(["linen", "olive", "oxblood", "teal", "rug_cream", "mustard"])), self.col)
-                    objs.append(fold)
+                    fa, fb = (bd0 - 0.9, bd1) if face == "-y" else (bd0, bd1 + 0.9)
+                    hh = rng.uniform(0.3, 0.6)
+                    layers = max(2, int(hh / 0.14))
+                    cols_f = [self.mat(rng.choice(["linen", "olive", "oxblood", "teal", "rug_cream", "mustard"])) for _ in range(layers)]
+                    objs += sg.towel_stack(self.uid("sg_fold"), ((bx0 + bx1) / 2, (fa + fb) / 2, z + zz), bx1 - bx0 - 0.3, fb - fa, layers, cols_f[0], self.col,
+                                           layer=hh / layers, seed=int(bx0 * 3 + zz), mats=cols_f)
         return objs
 
     def gen_roller_shade(self, e):

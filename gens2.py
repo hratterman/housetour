@@ -361,9 +361,9 @@ class Gens2:
             ob.location = (m(p[0]), m(p[1]), m(p[2]))
             ob.rotation_euler = (0, 0, math.radians(rot))
             objs.append(ob)
-        part("dc_seat", 0.05, 0.1, W - 0.05, D - 0.25, 1.45, 1.55, wood)
-        part("dc_pad", 0.12, 0.2, W - 0.12, D - 0.3, 1.55, 1.68, fab)
-        part("dc_back", 0.12, D - 0.32, W - 0.12, D - 0.2, 1.7, 2.75, wood, rx=6)
+        # one moulded walnut shell (seat, bend, reclined back) and a soft seat pad; the shell's back is at +Y local
+        objs.append(sg.shell_seat(self.uid("sg_dc_shell"), p, rot, W - 0.1, D - 0.45, 1.05, 1.45, wood, self.col, recline_deg=10))
+        objs.append(sg.slab(self.uid("sg_dc_pad"), (0, -0.15, 1.55), (W - 0.3, D - 0.75, 0.14), fab, self.col, origin_ft=p, rot_z_deg=rot, puff=0.3, sag=0.05, n=8))
         for lx in (0.2, W - 0.2):
             for ly in (0.25, D - 0.35):
                 objs.append(beam_between(self.uid("dc_leg"), (p[0] + (lx - W / 2) * math.cos(math.radians(rot)) - (ly - D / 2) * math.sin(math.radians(rot)),
@@ -385,8 +385,8 @@ class Gens2:
             end = (p[0] + math.cos(a) * 1.05, p[1] + math.sin(a) * 1.05, p[2] + 0.12)
             objs.append(beam_between(self.uid("tc_spoke"), (p[0], p[1], p[2] + 0.22), end, 0.1, 0.08, chrome, self.col))
             objs.append(sphere_ft(self.uid("tc_caster"), (end[0], end[1], p[2] + 0.12), 0.12, self.mat("black"), self.col, 10, 6))
-        seat = box_centered(self.uid("tc_seat"), (p[0], p[1], p[2] + 1.6), (1.6, 1.6, 0.25), e.get("rot_z", 0), self.mat(e.get("m", "leather_brown")), self.col)
-        objs.append(seat)
+        objs.append(sg.slab(self.uid("sg_tc_seat"), (0, 0, 1.72), (1.6, 1.6, 0.25), self.mat(e.get("m", "leather_brown")), self.col,
+                            origin_ft=p, rot_z_deg=e.get("rot_z", 0), puff=0.25, sag=0.08, n=8))
         # back, offset toward -y local (sitter faces +y local by default; rot_z turns it)
         bx, by = p[0] - math.sin(rot) * 0.7 * -1, p[1] + math.cos(rot) * -0.7
         back = box_centered(self.uid("tc_back"), (bx, by, p[2] + 2.55), (1.5, 0.15, 1.5), e.get("rot_z", 0), self.mat("walnut_h"), self.col)
@@ -1213,10 +1213,17 @@ class Gens2:
                         if kind == "shelves":
                             w = rng.uniform(0.9, 1.3)
                             hh = rng.uniform(0.25, 0.55)
-                            folded = slab(u, u + min(w, length - t - u - 0.05), -depth / 2 + t + 0.1, depth / 2 - 0.25, zz + 0.06, zz + 0.06 + hh,
-                                             self.mat(rng.choice(["linen_white", "olive_paint", "wool_oatmeal", "teal_paint", "oxblood", "mustard_paint"])))
-                            folded.name = self.uid("wr_fold")
-                            objs.append(folded)
+                            # a stack of folded garments: rounded slabs, each its own colour
+                            ua, ub = u, u + min(w, length - t - u - 0.05)
+                            da, db = -depth / 2 + t + 0.1, depth / 2 - 0.25
+                            if along_x:
+                                cx, cy, sw, sd = x0 + (ua + ub) / 2, dmid + (da + db) / 2, ub - ua, db - da
+                            else:
+                                cx, cy, sw, sd = dmid + (da + db) / 2, y0 + (ua + ub) / 2, db - da, ub - ua
+                            layers = max(2, int(hh / 0.14))
+                            cols_f = [self.mat(rng.choice(["linen_white", "olive_paint", "wool_oatmeal", "teal_paint", "oxblood", "mustard_paint", "knit_charcoal", "linen_grey"])) for _ in range(layers)]
+                            objs += sg.towel_stack(self.uid("sg_wr_fold"), (cx, cy, zz + 0.06), sw, sd, layers, cols_f[0], self.col, layer=hh / layers,
+                                                   seed=int(u * 17) + k, mats=cols_f)
                             u += w + 0.15
                         else:
                             w = 0.38
@@ -1778,7 +1785,8 @@ class Gens2:
     def gen_basket(self, e):
         p = e["pos"]
         objs = [cylinder_ft(self.uid("basket"), p, e.get("radius", 0.75), e.get("height", 1.4), self.mat("wicker"), self.col, 24)]
-        objs.append(box_centered(self.uid("throw"), (p[0], p[1], p[2] + e.get("height", 1.4) + 0.15), (1.2, 1.0, 0.3), 20, self.mat(e.get("throw_m", "wool_mustard")), self.col))
+        objs.append(sg.slab(self.uid("sg_basket_throw"), (p[0], p[1], p[2] + e.get("height", 1.4) + 0.14), (1.2, 1.0, 0.3), self.mat(e.get("throw_m", "wool_mustard")), self.col,
+                            rot=(0, 0, math.radians(20)), puff=0.4, edge=4.0, n=8))
         return objs
 
     def gen_scratching_post(self, e):
