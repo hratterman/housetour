@@ -996,9 +996,21 @@ class Gens2:
         bowl.scale = (along, 1.0, 1.0) if dx else (1.0, along, 1.0)
         under = cylinder_ft(self.uid("wc_bowl_u"), (bc[0] - dx * 0.1, bc[1] - dy * 0.1, p[2] + 0.55), W / 2 - 0.12, 0.3, cer, self.col, 32)
         under.scale = (along * 0.85, 0.85, 1.0) if dx else (0.85, along * 0.85, 1.0)
-        seat = cylinder_ft(self.uid("wc_seat"), (bc[0], bc[1], p[2] + 1.45), W / 2 - 0.02, 0.08, self.mat("ceramic_white"), self.col, 40)
+        bidet = e.get("bidet", False)
+        seat_t = 0.14 if bidet else 0.08
+        seat = cylinder_ft(self.uid("wc_seat"), (bc[0], bc[1], p[2] + 1.45 + (seat_t - 0.08) / 2), W / 2 - 0.02, seat_t, self.mat("ceramic_white"), self.col, 40)
         seat.scale = (along, 1.0, 1.0) if dx else (1.0, along, 1.0)
         objs += [bowl, under, seat]
+        if bidet:
+            # side control pod on the user's right, buttons on top
+            rx, ry = (0, -dx) if dx else (dy, 0)     # right-hand direction for someone facing (dx, dy)
+            pc = (cx + dx * 0.15 + rx * (W / 2 + 0.05), cy + dy * 0.15 + ry * (W / 2 + 0.05), p[2] + 1.55)
+            sz = (0.75, 0.32, 0.2) if dx else (0.32, 0.75, 0.2)
+            objs.append(box_ft(self.uid("wc_pod"), pc[0] - sz[0] / 2, pc[1] - sz[1] / 2, pc[0] + sz[0] / 2, pc[1] + sz[1] / 2, pc[2] - 0.1, pc[2] + 0.1, cer, self.col))
+            for k in range(3):
+                off = -0.2 + 0.2 * k
+                bp = (pc[0] + (dx * off if dx else 0), pc[1] + (dy * off if dy else 0), pc[2] + 0.1)
+                objs.append(cylinder_ft(self.uid("wc_btn"), bp, 0.045, 0.02, self.mat(["steel_black", "olive_paint", "teal_paint"][k]), self.col, 12))
         if dx:
             objs.append(box_ft(self.uid("wc_skirt"), min(cx - dx * 0.45, cx + dx * 0.3), cy - W / 2 + 0.05, max(cx - dx * 0.45, cx + dx * 0.3), cy + W / 2 - 0.05, p[2] + 0.6, p[2] + 1.45, cer, self.col))
             wall_x = cx - dx * 0.45

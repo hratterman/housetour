@@ -189,6 +189,17 @@ def build(plan, mat, col, uid, avoid=()):
                 objs.append(box_ft(uid("diffuser"), x1 - PART_T - 1.2, cy - 1.5, x1 - PART_T - 0.95, cy + 1.5, zc - 0.02, zc, plate, col))
                 objs.append(box_ft(uid("diffuser_slot"), x1 - PART_T - 1.13, cy - 1.45, x1 - PART_T - 1.02, cy + 1.45, zc - 0.021, zc - 0.005, dark, col))
             counts["diffuser"] += 1
+        if any(k in name for k in ("bath", "wc", "powder", "laundry", "shower")) and area >= 12:
+            # ceiling exhaust grille, 10 in square with slots, near the room centre but off any downlight line
+            p = max(r["parts"], key=lambda q: (q[2] - q[0]) * (q[3] - q[1]))
+            x0, y0, x1, y1 = p[:4]
+            cx, cy = (x0 + x1) / 2 + 0.8, (y0 + y1) / 2 - 0.6
+            zc = fz + ch
+            objs.append(box_ft(uid("exhaust"), cx - 0.42, cy - 0.42, cx + 0.42, cy + 0.42, zc - 0.02, zc, plate, col))
+            for i in range(6):
+                yy = cy - 0.3 + i * 0.12
+                objs.append(box_ft(uid("exhaust_slot"), cx - 0.32, yy - 0.02, cx + 0.32, yy + 0.02, zc - 0.03, zc - 0.02, dark, col))
+            counts["exhaust"] = counts.get("exhaust", 0) + 1
         if name in HALLS and area >= 40:
             p = max(r["parts"], key=lambda q: (q[2] - q[0]) * (q[3] - q[1]))
             x0, y0, x1, y1 = p[:4]

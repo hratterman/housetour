@@ -65,7 +65,6 @@ def main_floor():
     proc("towel_stack", "primary_bath", pos=[29.3, 21.0, 2.95], w=0.9, d=0.55, count=3, layer=0.09, seed=2)
     proc("rug", "primary_bath", b=[33.4, 19.3, 34.9, 20.7], m="towel_white", thick=0.06)              # bath mat at the shower
     proc("small_props", "primary_bath", kind="shampoo_set", pos=[40.4, 18.55, 0.0], rot_z=90)
-    proc("small_props", "wc", kind="candle", pos=[40.6, 13.45, 0.0])
     # ------------------------------------------------------------------ primary bedroom (nightstand top 2.2, bench 1.5)
     note("bedroom clutter")
     model("alarm_clock_01", (29.1, 33.0, 2.2), "primary_bedroom", rot_z=90, height_ft=0.4)

@@ -2097,7 +2097,25 @@
 17.3,
 0
 ],
-"facing": "-y"
+"facing": "-y",
+"bidet": true
+},
+{
+"asset": "proc:wall_shelf",
+"room": "wc",
+"wall": {
+"axis": "y",
+"at": 41.0,
+"face": "-x"
+},
+"u": 16.2,
+"z": 3.6,
+"length": 1.2,
+"depth": 0.45,
+"items": [
+"roll",
+"candle"
+]
 },
 {
 "asset": "proc:downlight",
@@ -7417,16 +7435,6 @@
 0.0
 ],
 "rot_z": 90
-},
-{
-"asset": "proc:small_props",
-"room": "wc",
-"kind": "candle",
-"pos": [
-40.6,
-13.45,
-0.0
-]
 },
 {
 "note": "== bedroom clutter =="

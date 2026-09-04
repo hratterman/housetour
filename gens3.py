@@ -136,6 +136,40 @@ class Gens3:
             objs.append(cylinder_ft(self.uid("towel"), (p[0] - 0.25, p[1] - 0.9 + i * 0.6, p[2] + 0.04 + 0.22), 0.22, 0.5, self.mat("towel_white"), self.col, 12, axis="X"))
         return objs
 
+    def gen_wall_shelf(self, e):
+        """Small metal shelf on a wall: wall spec, u centre, z, length, depth, m (brass by default), two brackets.
+        Optional items: 'candle', 'plant', 'roll' (a spare paper roll), placed left to right."""
+        wall = e["wall"]
+        u, z = e["u"], e.get("z", 4.0)
+        length, depth = e.get("length", 1.2), e.get("depth", 0.45)
+        dx, dy = _face_dir(wall)
+        at = wall["at"]
+        met = self.mat(e.get("m", "brass"))
+        objs = []
+        if wall["axis"] == "y":
+            xs = sorted((at, at + dx * depth))
+            objs.append(box_ft(self.uid("ws_shelf"), xs[0], u - length / 2, xs[1], u + length / 2, z, z + 0.04, met, self.col))
+            for bu in (u - length / 2 + 0.15, u + length / 2 - 0.15):
+                objs.append(box_ft(self.uid("ws_bracket"), xs[0], bu - 0.02, xs[1] - 0.05, bu + 0.02, z - 0.25, z, met, self.col))
+            top = lambda k, n: (at + dx * depth / 2, u - length / 2 + length * (k + 0.5) / n, z + 0.04)
+        else:
+            ys = sorted((at, at + dy * depth))
+            objs.append(box_ft(self.uid("ws_shelf"), u - length / 2, ys[0], u + length / 2, ys[1], z, z + 0.04, met, self.col))
+            for bu in (u - length / 2 + 0.15, u + length / 2 - 0.15):
+                objs.append(box_ft(self.uid("ws_bracket"), bu - 0.02, ys[0], bu + 0.02, ys[1] - 0.05, z - 0.25, z, met, self.col))
+            top = lambda k, n: (u - length / 2 + length * (k + 0.5) / n, at + dy * depth / 2, z + 0.04)
+        items = e.get("items", [])
+        for k, it in enumerate(items):
+            c = top(k, len(items))
+            if it == "roll":
+                objs.append(cylinder_ft(self.uid("ws_roll"), (c[0], c[1], c[2] + 0.2), 0.2, 0.36, self.mat("paper"), self.col, 20))
+            elif it == "candle":
+                objs += self.gen_small_props({"kind": "candle", "pos": list(c)})
+            elif it == "plant":
+                objs.append(cylinder_ft(self.uid("ws_pot"), (c[0], c[1], c[2]), 0.15, 0.3, self.mat("ceramic_white"), self.col, 20))
+                objs.append(sphere_ft(self.uid("ws_leaf"), (c[0], c[1], c[2] + 0.42), 0.2, self.mat("olive_paint"), self.col, 16, 8))
+        return objs
+
     def gen_wall_clock(self, e):
         wall = e["wall"]
         u, z = e["u"], e.get("z", 7.0)

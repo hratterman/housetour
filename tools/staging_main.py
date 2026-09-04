@@ -217,7 +217,8 @@ def main_floor():
     proc("shower2", "primary_bath", b=[35.0, 18.25, 41.0, 21.75], glass=[["-x", 18.25, 21.0]], head_wall="+y", heads=[36.8, 39.6],
          niche=[38.0, 39.3, 3.5, 4.8], bench=[39.4, 18.2, 41.0, 19.6, 0, 1.5])
     proc("tile_wainscot", "primary_bath", boxes=[[35.0, 21.72, 41.0, 21.75, 0, 9.5], [40.97, 18.0, 41.0, 21.75, 0, 9.5]], m="terrazzo")
-    proc("toilet", "wc", pos=[39.5, 17.3, 0], facing="-y")   # on the north wall, facing down the 4.5 ft length; 18 in each side
+    proc("toilet", "wc", pos=[39.5, 17.3, 0], facing="-y", bidet=True)
+    proc("wall_shelf", "wc", wall={"axis": "y", "at": 41.0, "face": "-x"}, u=16.2, z=3.6, length=1.2, depth=0.45, items=["roll", "candle"])   # small brass shelf on the east wall, a spare roll and a candle   # on the north wall, facing down the 4.5 ft length; 18 in each side
     proc("downlight", "wc", pos=[39.5, 15.3, 9.5], watts=4)
     proc("towel_bar", "wc", wall=W("x", 13.0, "+y"), u=40.2, z=3.2, length=0.8, towels=["towel_white"])
     proc("towel_warmer", "primary_bath", wall=W("x", 13.0, "+y"), u=33.0, z=3.5)
