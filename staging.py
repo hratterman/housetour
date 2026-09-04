@@ -16,10 +16,11 @@ import os
 import random
 
 import bpy
+import bmesh
 from mathutils import Vector, Matrix
 
 from geom import (FT, IN, m, log, box_ft, box_local, box_centered, beam_between, cylinder_ft, sphere_ft,
-                  plane_ft, get_collection, join_objects, world_bounds, cut_with_box, prism_xz)
+                  plane_ft, get_collection, join_objects, world_bounds, cut_with_box, prism_xz, link)
 
 BOOK_MATS = ["book_a", "book_b", "book_c", "book_d", "book_e", "book_f", "book_g", "book_h", "book_i", "book_j"]
 
@@ -32,6 +33,26 @@ from gens3 import Gens3  # noqa: E402
 MODEL_TEX = 0          # set by build_scene for previews (512); 0 keeps the models' textures as shipped
 KEEP_ALL_PARTS = {"book_encyclopedia_set_01", "brass_candleholders", "outdoor_table_chair_set_01",
                   "wine_bottles_01", "decorative_book_set_01", "kitchen_utensils", "wooden_ladder", "metal_tool_chest"}
+
+
+def _shade_ft(name, centre_ft, r_bottom, r_top, height, mat, col):
+    """Open lamp shade: a tapered tube with no caps, thin solidify so it has an inside and an outside."""
+    bm = bmesh.new()
+    bmesh.ops.create_cone(bm, cap_ends=False, segments=32, radius1=m(r_bottom), radius2=m(r_top), depth=m(height))
+    mesh = bpy.data.meshes.new(name)
+    bm.to_mesh(mesh)
+    bm.free()
+    for poly in mesh.polygons:
+        poly.use_smooth = True
+    ob = bpy.data.objects.new(name, mesh)
+    ob.location = (m(centre_ft[0]), m(centre_ft[1]), m(centre_ft[2] + height / 2))
+    link(ob, col)
+    if mat is not None:
+        ob.data.materials.append(mat)
+    sol = ob.modifiers.new("shell", "SOLIDIFY")
+    sol.thickness = 0.004
+    sol.offset = 0.0
+    return ob
 
 
 class Stager(Gens2, Gens3):
@@ -580,16 +601,24 @@ class Stager(Gens2, Gens3):
         return objs
 
     def gen_table_lamp(self, e):
+        """Table lamp: a base, a brass stem with a harp, an open tapered shade (hollow, so light spills up and down)
+        and a bulb inside. height is the whole lamp; base_r and shade_r the base and the shade's bottom radius."""
         p = e["pos"]
         h = e.get("height", 1.9)
         base_m = self.mat(e.get("base_m", "ceramic_white"))
         shade = self.mat("lamp_shade")
-        objs = [cylinder_ft(self.uid("lamp_base"), p, e.get("base_r", 0.28), h * 0.5, base_m, self.col, 20),
-                cylinder_ft(self.uid("lamp_stem"), (p[0], p[1], p[2] + h * 0.5), 0.03, h * 0.15, self.mat("brass"), self.col, 8)]
-        sh = cylinder_ft(self.uid("lamp_shade"), (p[0], p[1], p[2] + h * 0.6), e.get("shade_r", 0.55), h * 0.4, shade, self.col, 24)
-        sh.scale = (1, 1, 1)
-        objs.append(sh)
-        self.light(type="point", pos=(p[0], p[1], p[2] + h * 0.72), watts=e.get("watts", 30), radius=0.25, name="table_lamp")
+        brass = self.mat("brass")
+        br = e.get("base_r", 0.28)
+        sr = e.get("shade_r", 0.55)
+        objs = [cylinder_ft(self.uid("lamp_base"), p, br, h * 0.42, base_m, self.col, 24),
+                cylinder_ft(self.uid("lamp_neck"), (p[0], p[1], p[2] + h * 0.42), br * 0.35, h * 0.06, brass, self.col, 16),
+                cylinder_ft(self.uid("lamp_stem"), (p[0], p[1], p[2] + h * 0.48), 0.03, h * 0.3, brass, self.col, 8)]
+        objs.append(_shade_ft(self.uid("lamp_shade"), (p[0], p[1], p[2] + h * 0.58), sr, sr * 0.72, h * 0.4, shade, self.col))
+        objs.append(cylinder_ft(self.uid("lamp_finial"), (p[0], p[1], p[2] + h * 0.98), 0.03, 0.06, brass, self.col, 10))
+        objs.append(cylinder_ft(self.uid("lamp_harp"), (p[0], p[1], p[2] + h * 0.975), sr * 0.3, 0.015, brass, self.col, 16))
+        if e.get("watts", 30) > 0:
+            objs.append(sphere_ft(self.uid("lamp_bulb"), (p[0], p[1], p[2] + h * 0.74), 0.09, self.mat("bulb_warm"), self.col, 16, 8))
+            self.light(type="point", pos=(p[0], p[1], p[2] + h * 0.74), watts=e.get("watts", 30), radius=0.08, name="table_lamp")
         return objs
 
     def gen_arc_lamp(self, e):

@@ -719,7 +719,7 @@ class Gens2:
         r = math.radians(rot)
         if e.get("lamp", True):
             lx = -0.45
-            objs += self.gen_table_lamp({"pos": (p[0] + lx * math.cos(r), p[1] + lx * math.sin(r), top), "height": 1.15, "base_r": 0.16, "shade_r": 0.33,
+            objs += self.gen_table_lamp({"pos": (p[0] + lx * math.cos(r), p[1] + lx * math.sin(r), top), "height": 1.7, "base_r": 0.2, "shade_r": 0.5,
                                          "base_m": "brass", "watts": e.get("lamp_watts", 22) if e.get("on", True) else 0})
         for it in e.get("items", []):
             if it == "books":
