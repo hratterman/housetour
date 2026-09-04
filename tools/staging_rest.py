@@ -117,6 +117,7 @@ def second_floor():
     proc("wall_finish", "kid_bath_tub", wall=W("y", 42.0, "-x"), span=[25.5, 27.7], z=[z, z + 7.0], m="tile_white")
     proc("tub", "kid_bath_tub", b=[35.5, 25.5, 41.0, 27.75, z, z + 1.6])
     proc("toilet", "kid_bath_tub", pos=[38.5, 19.7, z], facing="+y")
+    proc("wall_shelf", "kid_bath_tub", wall={"axis": "y", "at": 41.0, "face": "-x"}, u=20.6, z=z + 3.6, length=1.2, depth=0.45, items=["roll", "plant"])   # small brass shelf beside the toilet
     model("rubber_duck_toy", (40.5, 25.7, z + 1.6), "kid_bath_tub", length_ft=0.35, rot_z=40)
     add(asset="proc:cabinet", room="kid_bath_tub", b=[36.0, 27.4, 36.3, 27.7, z + 1.6, z + 2.3], doors=1, face="-y", m="teal")   # shampoo bottle
     proc("downlights", "kid_bath_tub", positions=[[38.5, 26.5], [38.5, 21]], z=z + 9.0, watts=8)

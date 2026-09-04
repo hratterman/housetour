@@ -4565,6 +4565,23 @@
 "facing": "+y"
 },
 {
+"asset": "proc:wall_shelf",
+"room": "kid_bath_tub",
+"wall": {
+"axis": "y",
+"at": 41.0,
+"face": "-x"
+},
+"u": 20.6,
+"z": 13.6,
+"length": 1.2,
+"depth": 0.45,
+"items": [
+"roll",
+"plant"
+]
+},
+{
 "asset": "rubber_duck_toy",
 "pos": [
 40.5,

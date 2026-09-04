@@ -1193,19 +1193,36 @@ class Gens2:
         return objs
 
     def gen_tub(self, e):
-        """Alcove tub: white shell with a rounded inner basin, brass filler and handheld, tile surround by caller."""
+        """Alcove tub: a ceramic shell whose deck is boolean-cut with an elongated ellipsoid so the basin is a real
+        rounded bowl (the cut face is the basin), chrome drain and overflow, a wall filler with a riser and spout,
+        a handheld on a slide bar. Tile surround by the caller."""
         b = e["b"]
         x0, y0, x1, y1, z0, z1 = b
         cer = self.mat("ceramic_white")
-        objs = [box_ft(self.uid("tub_shell"), x0, y0, x1, y1, z0, z1, cer, self.col),
-                box_ft(self.uid("tub_basin"), x0 + 0.35, y0 + 0.35, x1 - 0.35, y1 - 0.35, z0 + 0.35, z1 + 0.01, self.mat("linen_white"), self.col)]
         brass = self.mat("brass")
+        shell = box_ft(self.uid("tub_shell"), x0, y0, x1, y1, z0, z1, cer, self.col)
+        L, D = x1 - x0, y1 - y0
+        cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+        rx, ry, rz = L / 2 - 0.3, D / 2 - 0.28, (z1 - z0) - 0.28
+        cutter = sphere_ft(self.uid("tub_cut"), (cx, cy, z1 + 0.02), 1.0, None, self.col, 40, 20)
+        cutter.scale = (rx, ry, rz)
+        boolean_cut(shell, cutter)
+        bpy.data.objects.remove(cutter, do_unlink=True)
+        for poly in shell.data.polygons:
+            poly.use_smooth = True
+        objs = [shell]
+        objs.append(cylinder_ft(self.uid("tub_drain"), (x1 - 0.9, cy, z1 - rz + 0.05), 0.12, 0.02, self.mat("chrome"), self.col, 20))
+        objs.append(cylinder_ft(self.uid("tub_overflow"), (x1 - 0.32, cy, z1 - 0.7), 0.12, 0.02, self.mat("chrome"), self.col, 20, axis="X"))
         fx = x1 - 0.8
-        objs.append(cylinder_ft(self.uid("tub_filler"), (fx, y1 - 0.02, z1 + 0.6), 0.05, 0.7, brass, self.col, 10, axis="Y")) if False else None
-        objs.append(cylinder_ft(self.uid("tub_filler"), (fx, y1 - 0.7, z1 + 0.6), 0.05, 0.7, brass, self.col, 10, axis="Y"))
-        objs.append(cylinder_ft(self.uid("tub_valve"), (fx, y1 - 0.06, z1 + 1.3), 0.12, 0.08, brass, self.col, 16, axis="Y"))
-        objs.append(cylinder_ft(self.uid("tub_slide"), (fx + 0.6, y1 - 0.1, z1 + 2.0), 0.03, 2.5, brass, self.col, 8))
-        objs.append(cylinder_ft(self.uid("tub_hand"), (fx + 0.6, y1 - 0.25, z1 + 3.6), 0.07, 0.8, brass, self.col, 10))
+        # filler: riser off the back wall, spout out over the rim, handle wheel and a diverter
+        objs.append(cylinder_ft(self.uid("tub_riser"), (fx, y1 - 0.08, z1 + 0.7), 0.05, 1.3, brass, self.col, 12))
+        objs.append(cylinder_ft(self.uid("tub_filler"), (fx, y1 - 0.45, z1 + 1.3), 0.05, 0.75, brass, self.col, 12, axis="Y"))
+        objs.append(cylinder_ft(self.uid("tub_spout_end"), (fx, y1 - 0.82, z1 + 1.2), 0.06, 0.2, brass, self.col, 12))
+        objs.append(cylinder_ft(self.uid("tub_valve"), (fx, y1 - 0.06, z1 + 0.5), 0.14, 0.1, brass, self.col, 20, axis="Y"))
+        objs.append(cylinder_ft(self.uid("tub_valve_h"), (fx, y1 - 0.16, z1 + 0.5), 0.03, 0.22, brass, self.col, 8, axis="Y"))
+        objs.append(cylinder_ft(self.uid("tub_slide"), (fx + 0.6, y1 - 0.1, z1 + 2.2), 0.03, 2.6, brass, self.col, 10))
+        objs.append(cylinder_ft(self.uid("tub_hand"), (fx + 0.6, y1 - 0.25, z1 + 3.4), 0.07, 0.8, brass, self.col, 12))
+        objs.append(cylinder_ft(self.uid("tub_hand_head"), (fx + 0.6, y1 - 0.25, z1 + 3.85), 0.14, 0.1, brass, self.col, 16))
         return objs
 
     def gen_towel_bar(self, e):
