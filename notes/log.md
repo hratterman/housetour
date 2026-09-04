@@ -683,3 +683,12 @@ The 47-view sweep at 960 x 540 / 48 samples (rooms and key frames) surfaced thes
   furniture (leaves skip directions toward a wall), the laundry sink cabinet came out of the counter run, and
   the hamper, dustpan, trash can, broom, pachira, games table and island chairs were nudged out of walls. All
   eight camera paths clear. Outlets went from 121 to 110 with the wet-area rule; seven exhaust grilles.
+
+## Preview run 4 (after the sweep)
+
+Eight shots at 640x360, 32 samples, every 12th frame: 236 frames, mean 53 s a frame (48 to 60 by shot), 4 h 10 min
+of render and about 8 h wall time with the per-shot builds (13 min each with 671 placements). Nineteen stills at
+960x540 in 67 to 131 s. Memory peaked near 13.5 GB with the 1024 px texture cap. The contact sheet is in
+`renders/contact_sheet_preview.png`; the walkthrough in `renders/walkthrough_preview.mp4`. From the sheet: the
+living fire's flame shells still blew out to white under the living shot's exposure, so both flame emissions
+came down; the upstairs shot's rack still had been aimed at the wall beside the closet door and now looks in.
