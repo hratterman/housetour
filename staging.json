@@ -1655,6 +1655,30 @@
 "rot_z": 20
 },
 {
+"asset": "proc:plant",
+"room": "living",
+"pos": [
+18.9,
+44.6,
+0
+],
+"kind": "monstera",
+"height": 6.0,
+"seed": 4
+},
+{
+"asset": "proc:plant",
+"room": "living",
+"pos": [
+4.7,
+44.3,
+0
+],
+"kind": "ficus",
+"height": 5.0,
+"seed": 5
+},
+{
 "asset": "calathea_orbifolia_01",
 "pos": [
 3.1,
@@ -2632,6 +2656,18 @@
 "rot_z": 70
 },
 {
+"asset": "proc:plant",
+"room": "primary_bedroom",
+"pos": [
+40.2,
+44.2,
+0
+],
+"kind": "ficus",
+"height": 6.0,
+"seed": 8
+},
+{
 "asset": "proc:slippers",
 "room": "primary_bedroom",
 "pos": [
@@ -3016,6 +3052,28 @@
 "seed": 6
 },
 {
+"asset": "fern_02",
+"pos": [
+5.0,
+56.5,
+1.32
+],
+"room": "living",
+"length_ft": 2.3,
+"rot_z": 20
+},
+{
+"asset": "fern_02",
+"pos": [
+21.0,
+56.5,
+1.32
+],
+"room": "living",
+"length_ft": 2.3,
+"rot_z": 200
+},
+{
 "asset": "proc:spa_cover",
 "room": "living",
 "b": [
@@ -3394,15 +3452,17 @@
 "height_ft": 0.6
 },
 {
-"asset": "potted_plant_04",
+"asset": "proc:plant",
+"room": "her_office",
 "pos": [
-8.4,
-21.4,
+9.9,
+19.6,
 10.0
 ],
-"room": "her_office",
-"height_ft": 5.0,
-"rot_z": 40
+"kind": "bop",
+"height": 5.5,
+"rot_z": 180,
+"seed": 7
 },
 {
 "asset": "proc:wall_frame",

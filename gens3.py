@@ -828,7 +828,7 @@ class Gens3:
     def gen_planter(self, e):
         p = e["pos"]
         objs = [box_centered(self.uid("planter"), (p[0], p[1], p[2] + 0.9), (e.get("w", 2.0), e.get("d", 2.0), 1.8), 0, self.mat("steel_black"), self.col)]
-        objs += self.gen_plant({"pos": [p[0], p[1], p[2] + 1.6], "height": e.get("height", 3.5), "seed": e.get("seed", 3)})
+        objs.append(box_centered(self.uid("planter_soil"), (p[0], p[1], p[2] + 1.6), (e.get("w", 2.0) - 0.15, e.get("d", 2.0) - 0.15, 0.04), 0, self.mat("soil"), self.col))
         return objs
 
     def gen_porch_bench(self, e):

@@ -809,6 +809,15 @@ class Stager(Gens2, Gens3):
     def gen_plant(self, e):
         p = e["pos"]
         h = e.get("height", 4.0)
+        kind = e.get("kind", "ficus")
+        if kind in ("ficus", "monstera", "bop"):
+            import plants
+            pm = {"pot": self.mat(e.get("pot_m", "terracotta")), "soil": self.mat("soil"), "stem": self.mat("stem_green"),
+                  "leaf": self.mat("leaf_dark"), "leaf_m": self.mat("leaf_green"), "leaf_b": self.mat("leaf_bop")}
+            fn = {"ficus": plants.ficus, "monstera": plants.monstera, "bop": plants.bird_of_paradise}[kind]
+            if kind == "bop":
+                return fn(self.uid, tuple(p), h, pm, self.col, seed=e.get("seed", 3), fan_yaw=e.get("rot_z", 0.0))
+            return fn(self.uid, tuple(p), h, pm, self.col, seed=e.get("seed", 1))
         objs = [cylinder_ft(self.uid("pot"), p, h * 0.12, h * 0.25, self.mat(e.get("pot_m", "terrazzo")), self.col, 20)]
         rng = random.Random(e.get("seed", 5))
         leaf = self.mat("olive")

@@ -29,7 +29,7 @@ def second_floor():
     add(asset="proc:cabinet", room="her_office", b=[1.0, 24.6, 10.5, 25.75, z, z + 2.4], doors=4, face="-y", m="walnut_h")
     add(asset="proc:cabinet", room="her_office", b=[2.0, 24.8, 3.6, 25.7, z + 2.4, z + 3.0], doors=1, face="-y", m="stainless")   # printer
     model("mantel_clock_01", (6.0, 25.2, z + 3.06), "her_office", height_ft=0.6)
-    model("potted_plant_04", (8.4, 21.4, z), "her_office", height_ft=5.0, rot_z=40)
+    proc("plant", "her_office", pos=[9.9, 19.6, z], kind="bop", height=5.5, rot_z=180, seed=7)   # spec: a tall bird of paradise against the teal wall
     proc("wall_frame", "her_office", wall=W("y", 11.0, "-x"), u=16.5, zc=z + 5.5, w=4.0, h=3.0, seed=121, frame_m="brass")
     proc("wall_frame", "her_office", wall=W("y", 11.0, "-x"), u=12.0, zc=z + 5.0, w=1.5, h=1.8, seed=122)
     proc("wall_frame", "her_office", wall=W("y", 11.0, "-x"), u=21.0, zc=z + 5.0, w=1.5, h=1.8, seed=123)

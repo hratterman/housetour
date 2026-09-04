@@ -185,6 +185,8 @@ def main_floor():
     proc("picture_light", "living", wall=W("y", 20.0, "-x"), u=43.3, z=8.3, watts=4.5)
     proc("arc_lamp", "living", pos=[15.4, 44.3, 0], reach=4.9, height=7.3, rot_z=-160, watts=55)   # shade over the sofa's north end, 4 ft off the camera at the end of the main shot
     model("potted_plant_02", (13.6, 42.4, 0), "living", height_ft=5.0, rot_z=20)
+    proc("plant", "living", pos=[18.9, 44.6, 0], kind="monstera", height=6.0, seed=4)   # spec: a large monstera in the NE corner
+    proc("plant", "living", pos=[4.7, 44.3, 0], kind="ficus", height=5.0, seed=5)      # spec: a rubber plant by the shelves
     model("calathea_orbifolia_01", (3.1, 43.5, 1.4), "living", length_ft=1.6, rot_z=50)   # low plant on the hearth bench end
     proc("basket", "living", pos=[16.8, 32.0, 0], radius=0.75, height=1.4, throw_m="wool_mustard")
     proc("downlights", "living", positions=[[5, 32.5], [15, 32.5], [5, 36.5], [15, 36.5], [5, 40.5], [15, 40.5], [5, 44], [15, 44]], z=9.5, watts=5)
@@ -263,7 +265,8 @@ def main_floor():
     proc("floor_lamp", "primary_bedroom", pos=[40.0, 40.4, 0], height=5.2, on=False, kind="drum")   # east of the reading chair, clear of the curtains
     proc("rug", "primary_bedroom", b=[33.5, 33.5, 40.0, 42.5], m="rug_oxblood", thick=0.05)
     proc("bench", "primary_bedroom", pos=[37.3, 38.0, 0], length=5.0, depth=1.5, height=1.5, rot_z=90, cushion_m="wool_oatmeal")   # 6 in off the foot of the bed
-    model("potted_plant_02", (39.4, 33.2, 0), "primary_bedroom", height_ft=3.0, rot_z=70)   # SE corner, out of the bedroom shot path
+    model("potted_plant_02", (39.4, 33.2, 0), "primary_bedroom", height_ft=3.0, rot_z=70)
+    proc("plant", "primary_bedroom", pos=[40.2, 44.2, 0], kind="ficus", height=6.0, seed=8)   # spec: a tall plant in the corner   # SE corner, out of the bedroom shot path
     proc("slippers", "primary_bedroom", pos=[31.5, 34.2, 0], rot_z=110)
     proc("slippers", "primary_bedroom", pos=[37.5, 41.5, 0], rot_z=-70)
     proc("wall_frame", "primary_bedroom", wall=W("x", 46.0, "-y"), u=30.2, zc=5.5, w=2.5, h=3.5, seed=111, frame_m="brass")
@@ -296,6 +299,8 @@ def exterior():
     proc("heater", "living", pos=[18.0, 49.5, 10.1], length=3.0, on=True, watts=20)
     proc("planter", "living", pos=[5.0, 56.5, -0.3], w=2.2, d=2.2, height=3.5, seed=5)
     proc("planter", "living", pos=[21.0, 56.5, -0.3], w=2.2, d=2.2, height=3.2, seed=6)
+    model("fern_02", (5.0, 56.5, 1.32), "living", length_ft=2.3, rot_z=20)     # ferns in the steel planters
+    model("fern_02", (21.0, 56.5, 1.32), "living", length_ft=2.3, rot_z=200)
     proc("spa_cover", "living", b=[30.0, 50.0, 37.5, 64.0, 1.2])
     proc("rain_chain", "living", pos=[2.0, 50.0, 18.4], drop=18.6)
     proc("rain_chain", "living", pos=[44.0, 50.0, 18.4], drop=18.6)

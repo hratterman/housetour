@@ -71,11 +71,73 @@ class PBRLibrary:
         return mat
 
     # ------------------------------------------------------------------ builders
+    def _flame(self, mat, spec):
+        """Flame shader for the fire ellipsoids: emission graded from white-yellow at the base to deep orange at the tip,
+        eaten away by noise and fading to transparent toward the top, so the shells read as flame tongues."""
+        nt = mat.node_tree
+        nodes, links = nt.nodes, nt.links
+        for n in list(nodes):
+            nodes.remove(n)
+        out = nodes.new("ShaderNodeOutputMaterial")
+        tc = nodes.new("ShaderNodeTexCoord")
+        sep = nodes.new("ShaderNodeSeparateXYZ")
+        links.new(tc.outputs["Object"], sep.inputs[0])
+        # object z runs -1..1 on the unit sphere: map to 0..1
+        zmap = nodes.new("ShaderNodeMapRange")
+        zmap.inputs["From Min"].default_value = -1.0
+        zmap.inputs["From Max"].default_value = 1.0
+        links.new(sep.outputs["Z"], zmap.inputs["Value"])
+        noise = nodes.new("ShaderNodeTexNoise")
+        noise.inputs["Scale"].default_value = 3.5
+        noise.inputs["Detail"].default_value = 5.0
+        noise.inputs["Roughness"].default_value = 0.6
+        links.new(tc.outputs["Object"], noise.inputs["Vector"])
+        # alpha = (1 - z) * (noise * 1.6 - 0.2), clamped
+        nz = nodes.new("ShaderNodeMath"); nz.operation = "MULTIPLY_ADD"
+        nz.inputs[1].default_value = 1.6; nz.inputs[2].default_value = -0.25
+        links.new(noise.outputs["Fac"], nz.inputs[0])
+        inv = nodes.new("ShaderNodeMath"); inv.operation = "SUBTRACT"
+        inv.inputs[0].default_value = 1.0
+        links.new(zmap.outputs["Result"], inv.inputs[1])
+        pw = nodes.new("ShaderNodeMath"); pw.operation = "POWER"; pw.inputs[1].default_value = 0.6
+        links.new(inv.outputs[0], pw.inputs[0])
+        al = nodes.new("ShaderNodeMath"); al.operation = "MULTIPLY"; al.use_clamp = True
+        links.new(pw.outputs[0], al.inputs[0]); links.new(nz.outputs[0], al.inputs[1])
+        ramp = nodes.new("ShaderNodeValToRGB")
+        ramp.color_ramp.elements[0].position = 0.0
+        ramp.color_ramp.elements[0].color = (1.0, 0.85, 0.45, 1.0)
+        ramp.color_ramp.elements[1].position = 1.0
+        ramp.color_ramp.elements[1].color = (1.0, 0.18, 0.02, 1.0)
+        mid = ramp.color_ramp.elements.new(0.45)
+        mid.color = (1.0, 0.45, 0.06, 1.0)
+        links.new(zmap.outputs["Result"], ramp.inputs["Fac"])
+        em = nodes.new("ShaderNodeEmission")
+        em.inputs["Strength"].default_value = spec.get("emit", 5.0)
+        links.new(ramp.outputs["Color"], em.inputs["Color"])
+        tr = nodes.new("ShaderNodeBsdfTransparent")
+        mix = nodes.new("ShaderNodeMixShader")
+        links.new(al.outputs[0], mix.inputs["Fac"])
+        links.new(tr.outputs[0], mix.inputs[1])
+        links.new(em.outputs[0], mix.inputs[2])
+        links.new(mix.outputs[0], out.inputs["Surface"])
+        mat.blend_method = "HASHED"
+        try:
+            mat.shadow_method = "NONE"
+        except Exception:
+            pass
+        try:
+            mat.cycles.use_transparent_shadow = True
+        except Exception:
+            pass
+
     def build(self, name, spec):
         mat = bpy.data.materials.new(name)
         mat.use_nodes = True
         nt = mat.node_tree
         nodes, links = nt.nodes, nt.links
+        if spec.get("kind") == "flame":
+            self._flame(mat, spec)
+            return mat
         bsdf = nodes.get("Principled BSDF")
         rgb = spec.get("rgb", [0.8, 0.8, 0.8])
         bsdf.inputs["Base Color"].default_value = (rgb[0], rgb[1], rgb[2], 1.0)

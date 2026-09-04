@@ -453,7 +453,8 @@
    0.36,
    0.06
   ],
-  "wb": false
+  "wb": false,
+  "kind": "flame"
  },
  "screen": {
   "rgb": [
@@ -782,13 +783,14 @@
    0.2
   ],
   "rough": 0.5,
-  "emit": 8.0,
+  "emit": 9.0,
   "emit_rgb": [
    1.0,
    0.72,
    0.25
   ],
-  "wb": false
+  "wb": false,
+  "kind": "flame"
  },
  "embers": {
   "rgb": [
@@ -1793,11 +1795,13 @@
  },
  "leaf_dark": {
   "rgb": [
-   0.1,
-   0.2,
-   0.09
+   0.07,
+   0.17,
+   0.07
   ],
-  "rough": 1.0
+  "rough": 0.32,
+  "coat": 0.35,
+  "coat_rough": 0.15
  },
  "leaf_oak": {
   "rgb": [
@@ -2579,5 +2583,48 @@
    0.03
   ],
   "rough": 0.4
+ },
+ "terracotta": {
+  "rgb": [
+   0.62,
+   0.33,
+   0.2
+  ],
+  "rough": 0.85
+ },
+ "soil": {
+  "rgb": [
+   0.12,
+   0.08,
+   0.05
+  ],
+  "rough": 0.95
+ },
+ "leaf_green": {
+  "rgb": [
+   0.12,
+   0.34,
+   0.1
+  ],
+  "rough": 0.45,
+  "coat": 0.15,
+  "coat_rough": 0.3
+ },
+ "leaf_bop": {
+  "rgb": [
+   0.2,
+   0.36,
+   0.17
+  ],
+  "rough": 0.5,
+  "sheen": 0.3
+ },
+ "stem_green": {
+  "rgb": [
+   0.18,
+   0.22,
+   0.1
+  ],
+  "rough": 0.7
  }
 }
