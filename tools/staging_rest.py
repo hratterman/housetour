@@ -302,7 +302,7 @@ def garage():
     proc("car", "garage", pos=[12.0, 77.0, z], kind="sedan", length=15.5, width=6.1, height=4.7, rot_z=0, m="car_gray")
     proc("charger", "garage", wall=W("y", 18.0, "-x"), u=70.0, z=z + 4.0)
     proc("charger", "garage", wall=W("y", -6.0, "+x"), u=75.0, z=z + 4.0)
-    proc("garage_bench", "garage", b=[-3.0, 65.0, 17.0, 67.5, z, z + 3.0], wall=W("x", 64.0, "+y"), peg_z=[z + 3.5, z + 7.5], tools=36, shelf=False)   # the rolling chest lives under it
+    proc("garage_bench", "garage", b=[-3.0, 65.0, 17.0, 67.5, z, z + 3.0], wall=W("x", 64.0, "+y"), peg_z=[z + 3.5, z + 7.5], tools=14, shelf=False)   # the rolling chest lives under it
     model("metal_tool_chest", (10.0, 66.3, z), "garage", height_ft=3.0, rot_z=0)
     model("metal_toolbox", (14.0, 66.0, z + 3.0), "garage", length_ft=1.6, rot_z=10)
     model("wooden_ladder", (-3.9, 88.3, z), "garage", height_ft=5.5, rot_z=90)   # it is a step ladder
