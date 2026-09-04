@@ -127,7 +127,7 @@ def second_floor():
     note("bedroom B")
     proc("wall_finish", "bedroom_b", wall=W("x", 46.0, "-y"), span=[28.3, 41.0], z=[z + 0.3, z + 8.9], m="wallpaper_kid_teal")
     proc("kid_bed", "bedroom_b", b=[37.7, 29.0, 40.9, 36.0, z, z + 1.6], head="-y", duvet_m="bedding_stripe_teal", seed=5)
-    proc("nightstand2", "bedroom_b", pos=[36.45, 29.6, z], rot_z=0, on=True, items=[])
+    proc("nightstand2", "bedroom_b", pos=[36.6, 29.6, z], rot_z=0, on=True, items=[])
     model("alarm_clock_01", (36.4, 29.3, z + 2.2), "bedroom_b", height_ft=0.35, rot_z=200)
     proc("desk", "bedroom_b", b=[32.0, 28.3, 35.3, 30.3, z + 2.3, z + 2.4], floor_z=z, gables=True, drawers=True, facing="-y", monitors=0, keyboard=False,
          laptop=[33.5, 29.5], lamp=[34.5, 29.6], mug=[32.5, 29.9], mug_m="teal")

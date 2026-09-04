@@ -66,7 +66,7 @@ def pot(name, pos_ft, r_top, h, mat, soil_mat, col):
     return objs
 
 
-def ficus(uid, pos_ft, height, mats, col, seed=1):
+def ficus(uid, pos_ft, height, mats, col, seed=1, avoid=()):
     """Rubber plant: a single leaning trunk with two short branches, 18 to 30 dark glossy oval leaves getting bigger
     toward the top, pot about a fifth of the height."""
     rng = random.Random(seed)
@@ -83,7 +83,9 @@ def ficus(uid, pos_ft, height, mats, col, seed=1):
         t = 0.28 + 0.72 * (k / max(1, n - 1))          # position up the trunk
         tz = z + ph * 0.8 + (height - ph * 0.85) * t
         tx = x + (trunk_top[0] - x) * t
-        yaw = k * 137.5 + rng.uniform(-10, 10)
+        yaw = (k * 137.5 + rng.uniform(-10, 10)) % 360.0
+        if _blocked(yaw, avoid, 40.0):
+            continue
         L = height * rng.uniform(0.13, 0.19) * (0.7 + 0.5 * math.sin(math.pi * min(1.0, t * 1.1)))
         tilt = rng.uniform(-25, 15) + 30 * (1 - t)
         base = (tx + 0.06 * math.cos(math.radians(yaw)), y + 0.06 * math.sin(math.radians(yaw)), tz)
@@ -92,8 +94,18 @@ def ficus(uid, pos_ft, height, mats, col, seed=1):
     return objs
 
 
-def monstera(uid, pos_ft, height, mats, col, seed=2):
-    """Monstera: a clump of long petioles from the soil fanning out, each with a big slit heart leaf; a moss pole."""
+def _blocked(yaw, avoid, half=55.0):
+    """True when yaw (degrees) lies within half degrees of any direction in avoid (a wall or a neighbour)."""
+    for a in avoid or ():
+        d = (yaw - a + 180.0) % 360.0 - 180.0
+        if abs(d) < half:
+            return True
+    return False
+
+
+def monstera(uid, pos_ft, height, mats, col, seed=2, avoid=()):
+    """Monstera: a clump of long petioles from the soil fanning out, each with a big slit heart leaf; a moss pole.
+    avoid lists yaw directions (degrees) no leaf may point toward, for a plant standing against walls."""
     rng = random.Random(seed)
     x, y, z = pos_ft
     ph = height * 0.2
@@ -101,13 +113,19 @@ def monstera(uid, pos_ft, height, mats, col, seed=2):
     objs = pot(uid("sg_pot"), pos_ft, pr, ph, mats["pot"], mats["soil"], col)
     objs.append(cylinder_ft(uid("sg_pole"), (x, y, z + ph + height * 0.32), 0.06, height * 0.65, mats["stem"], col, 12))
     n = int(7 + height)
-    for k in range(n):
-        yaw = k * 137.5 + rng.uniform(-12, 12)
-        reach = height * rng.uniform(0.28, 0.5)
+    k = -1
+    made = 0
+    while made < n and k < n * 4:
+        k += 1
+        yaw = (k * 137.5 + rng.uniform(-12, 12)) % 360.0
+        if _blocked(yaw, avoid):
+            continue
+        made += 1
+        reach = height * rng.uniform(0.16, 0.3)
         h_top = z + ph + height * rng.uniform(0.3, 0.78)
         tip = (x + reach * math.cos(math.radians(yaw)), y + reach * math.sin(math.radians(yaw)), h_top)
         objs.append(beam_between(uid("sg_petiole"), (x + 0.1 * math.cos(math.radians(yaw)), y + 0.1 * math.sin(math.radians(yaw)), z + ph * 0.85), tip, 0.03, 0.03, mats["stem"], col))
-        L = height * rng.uniform(0.28, 0.4)
+        L = height * rng.uniform(0.2, 0.3)
         tilt = rng.uniform(-35, -5)
         objs.append(_leaf(uid("sg_leaf"), tip, yaw + rng.uniform(-15, 15), tilt, L, L * 0.85, mats["leaf_m"], col, "monstera", sag=0.2, fold=0.12, droop=0.3, nu=16, nv=10, seed=k))
     return objs

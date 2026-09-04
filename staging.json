@@ -788,12 +788,12 @@
 "b": [
 35.5,
 1.0,
-41.0,
+39.0,
 3.0,
 0.3,
 2.9
 ],
-"doors": 5,
+"doors": 3,
 "face": "+y",
 "m": "walnut_h"
 },
@@ -1658,25 +1658,32 @@
 "asset": "proc:plant",
 "room": "living",
 "pos": [
-18.9,
-44.6,
+18.3,
+44.2,
 0
 ],
 "kind": "monstera",
-"height": 6.0,
-"seed": 4
+"height": 5.5,
+"seed": 4,
+"avoid": [
+0,
+90
+]
 },
 {
 "asset": "proc:plant",
 "room": "living",
 "pos": [
-4.7,
-44.3,
+6.7,
+44.4,
 0
 ],
 "kind": "ficus",
 "height": 5.0,
-"seed": 5
+"seed": 5,
+"avoid": [
+90
+]
 },
 {
 "asset": "calathea_orbifolia_01",
@@ -2659,13 +2666,16 @@
 "asset": "proc:plant",
 "room": "primary_bedroom",
 "pos": [
-40.2,
-44.2,
+31.2,
+43.95,
 0
 ],
 "kind": "ficus",
-"height": 6.0,
-"seed": 8
+"height": 5.0,
+"seed": 8,
+"avoid": [
+90
+]
 },
 {
 "asset": "proc:slippers",
@@ -4689,7 +4699,7 @@
 "asset": "proc:nightstand2",
 "room": "bedroom_b",
 "pos": [
-36.45,
+36.6,
 29.6,
 10.0
 ],

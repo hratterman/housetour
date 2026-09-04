@@ -846,7 +846,7 @@ class Stager(Gens2, Gens3):
             fn = {"ficus": plants.ficus, "monstera": plants.monstera, "bop": plants.bird_of_paradise}[kind]
             if kind == "bop":
                 return fn(self.uid, tuple(p), h, pm, self.col, seed=e.get("seed", 3), fan_yaw=e.get("rot_z", 0.0))
-            return fn(self.uid, tuple(p), h, pm, self.col, seed=e.get("seed", 1))
+            return fn(self.uid, tuple(p), h, pm, self.col, seed=e.get("seed", 1), avoid=e.get("avoid", ()))
         objs = [cylinder_ft(self.uid("pot"), p, h * 0.12, h * 0.25, self.mat(e.get("pot_m", "terrazzo")), self.col, 20)]
         rng = random.Random(e.get("seed", 5))
         leaf = self.mat("olive")
