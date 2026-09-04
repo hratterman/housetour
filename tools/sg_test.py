@@ -64,6 +64,13 @@ def main():
     cylinder_ft("rod2", (3.0, 9.0, 6.0), 0.04, 2.4, lib.get("brass"), col, 10, axis="X")
     for k, (x, mname, hh) in enumerate(((2.4, "linen_white", 2.5), (3.0, "oxblood", 2.9), (3.6, "knit_charcoal", 2.3))):
         sg.garment("sg_garment", (x, 9.0, 5.95), (1, 0), 1.6, hh, 0.3, lib.get(mname), col, seed=k, hanger=True, hanger_mat=lib.get("brass"))
+    # a shell chair (seat + bend + back as one surface) with its pad, two angles
+    for k, (x, rot) in enumerate(((5.2, 0), (7.4, 35))):
+        sg.shell_seat("sg_dc_shell", (x, 3.0, 0), rot, 1.5, 1.25, 1.05, 1.45, wood, col, recline_deg=10)
+        sg.slab("sg_dc_pad", (0, -0.15, 1.55), (1.3, 0.95, 0.14), lib.get("wool_mustard"), col, origin_ft=(x, 3.0, 0), rot_z_deg=rot, puff=0.3, sag=0.05, n=8)
+        for lx in (-0.6, 0.6):
+            for ly in (-0.55, 0.45):
+                cylinder_ft("leg", (x + lx * math.cos(math.radians(rot)) - ly * math.sin(math.radians(rot)), 3.0 + lx * math.sin(math.radians(rot)) + ly * math.cos(math.radians(rot)), 0), 0.04, 1.45, wood, col, 8)
     # light and camera
     sun = bpy.data.objects.new("sun", bpy.data.lights.new("sun", "SUN"))
     sun.data.energy = 3.0
@@ -78,11 +85,11 @@ def main():
     scene.collection.objects.link(cam)
     scene.camera = cam
     cam.data.lens = 28
-    cam.location = (m(4.0), m(1.5), m(5.5))
-    cam.rotation_euler = (math.radians(82), 0, math.radians(-8))
+    cam.location = (m(6.3), m(-2.5), m(4.5))
+    cam.rotation_euler = (math.radians(72), 0, math.radians(0))
     scene.render.engine = "CYCLES"
     scene.cycles.device = "CPU"
-    scene.cycles.samples = 48
+    scene.cycles.samples = 32
     scene.cycles.use_denoising = True
     scene.render.resolution_x = 1280
     scene.render.resolution_y = 720
