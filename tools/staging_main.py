@@ -118,7 +118,7 @@ def main_floor():
     add(asset="proc:cabinet", room="laundry", b=[39.5, 11.6, 41.0, 12.75, 0, 4.0], doors=1, face="-y", m="walnut_h")   # chute hopper, under the chute in the NE corner
     proc("basket", "laundry", pos=[37.5, 12.0, 0], radius=0.7, height=1.6, throw_m="linen_white")   # corridor pocket, clear of the door arc
     proc("rug", "laundry", b=[38.6, 3.6, 40.6, 8.9], m="rug_cream", thick=0.05)   # runner down the neck
-    proc("downlights", "laundry", positions=[[39.2, 4.0], [39.6, 8.2], [37.0, 11.0]], z=9.5, watts=9)
+    proc("downlights", "laundry", positions=[[39.2, 4.0], [39.6, 8.2], [37.0, 11.0]], z=9.5, watts=14)
     # ------------------------------------------------------------------ 3.11 mudroom
     note("mudroom")
     proc("lockers2", "mudroom", b=[1.0, 19.25, 7.75, 20.75, 0, 9.5], dividers=[2.7, 4.4, 6.1])
@@ -246,7 +246,7 @@ def main_floor():
     proc("wall_finish", "primary_closet", wall=W("y", 32.0, "+x"), span=[27.0, 29.5], z=[0.3, 8.5], m="mirror", thick=0.04)
     # (safe behind the wardrobe doors; no separate cabinet)   # safe cabinet door
     proc("three_globe_pendant", "primary_closet", pos=[36.5, 26.0, 9.5])
-    proc("downlights", "primary_closet", positions=[[33.5, 23], [39.5, 23], [33.5, 29], [39.5, 29]], z=9.5, watts=11)
+    proc("downlights", "primary_closet", positions=[[33.5, 23], [39.5, 23], [33.5, 29], [39.5, 29]], z=9.5, watts=16)
     # ------------------------------------------------------------------ 3.20 primary bedroom
     note("primary bedroom")
     # headboard on the west wall: the spec's south wall carries the two suite doors, so the bed turns to face the
