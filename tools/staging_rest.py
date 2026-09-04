@@ -55,7 +55,7 @@ def second_floor():
     model("potted_plant_01", (24.6, 12.6, z + 5.05), "lab", height_ft=0.9)
     model("book_encyclopedia_set_01", (25.9, 12.6, z + 5.05), "lab", length_ft=0.8)
     proc("wall_frame", "lab", wall=W("x", 13.0, "-y"), u=25.0, zc=z + 5.8, w=0.67, h=0.83, seed=140, frame_m="black")   # the dad print
-    proc("workbench", "lab", b=[11.25, 7.0, 13.75, 15.7, z, z + 3.0], wall=W("y", 11.0, "+x"), cleat_z=[z + 3.5, z + 7.5], cleat_span=[7.0, 15.6], tools=26,
+    proc("workbench", "lab", b=[11.25, 7.0, 13.75, 15.7, z, z + 3.0], wall=W("y", 11.0, "+x"), cleat_z=[z + 3.5, z + 7.5], cleat_span=[7.0, 15.6], tools=12,
          items=[{"kind": "lamp", "pos": [12.3, 8.0], "rot_z": 0}, {"kind": "lamp", "pos": [12.3, 14.0], "rot_z": 0}, {"kind": "mat", "pos": [12.5, 10.5], "w": 2.0, "d": 3.0},
                 {"kind": "printer", "pos": [12.5, 14.6], "face": "+x"}, {"kind": "soldering", "pos": [12.9, 12.8]}, {"kind": "psu", "pos": [12.4, 9.0]},
                 {"kind": "microscope", "pos": [12.6, 12.0]}, {"kind": "organizer", "pos": [12.0, 7.5], "z": 0.5}, {"kind": "spools", "pos": [11.8, 13.2]},
@@ -65,6 +65,14 @@ def second_floor():
     add(asset="proc:cabinet", room="lab", b=[20.75, 18.6, 21.75, 21.5, z, z + 8.0], doors=2, face="-x", m="walnut_h")   # north of the landing door (Y 14.5-17.5)
     proc("rug", "lab", b=[14.5, 9.5, 19.5, 14.5], m="rug_teal", thick=0.05)
     model("metal_stool_01", (14.5, 11.5, z), "lab", height_ft=2.0, rot_z=30)   # at the workbench
+    # real tools on the cleat wall (thin axis turned into the wall) and on the bench top
+    model("pliers", (11.14, 9.6, z + 5.3), "lab", height_ft=0.6, rot_z=90)
+    model("adjustable_wrench", (11.15, 10.5, z + 5.0), "lab", height_ft=0.85, rot_z=90)
+    model("metal_toolbox", (12.7, 7.7, z + 3.0), "lab", length_ft=1.3, rot_z=90)
+    model("screwdrivers_02", (13.1, 10.1, z + 3.0), "lab", length_ft=0.9, rot_z=70)
+    model("measuring_tape_01", (12.2, 13.9, z + 3.0), "lab", length_ft=0.55, rot_z=20)
+    model("lubricant_spray", (13.3, 13.5, z + 3.0), "lab", height_ft=0.55)
+    model("clipboard", (12.6, 11.4, z + 3.05), "lab", length_ft=1.1, rot_z=8)
     model("round_wooden_table_01", (17.5, 18.0, z), "lab", length_ft=2.4)
     model("decorative_book_set_01", (17.5, 18.0, z + 2.35), "lab", length_ft=0.9, rot_z=20, fallback="book_encyclopedia_set_01")
     proc("led_strip", "lab", b=[11.35, 7.0, 11.45, 16.0, z + 7.6, z + 7.63], watts=10, rot=[0, 90, 0])
