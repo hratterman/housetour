@@ -1029,6 +1029,16 @@ def main():
     # a shot may override it: exteriors balance for daylight (5600K), interiors for the room lights (3800K)
     plan["_wb_k"] = (sel or {}).get("white_balance_k", _L.get("modes", {}).get(mode, {}).get("white_balance_k", _L.get("white_balance_k", 0)))
     _geom.set_white_balance(plan["_wb_k"])
+    try:
+        _w_px = int(str(args.res).lower().split("x")[0])
+    except Exception:
+        _w_px = 1920
+    if _w_px <= 1280:
+        import materials_pbr as _mp
+        import staging as _stg
+        _mp.PREFER_2K = True
+        _stg.MODEL_TEX = 512
+        log("preview memory mode: 2k texture sets, 512 px model textures")
     mats = Materials(plan, stage)
     house = House(plan, mats)
     house.root = HERE

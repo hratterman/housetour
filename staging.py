@@ -29,6 +29,7 @@ from gens3 import Gens3  # noqa: E402
 
 
 # models that are genuinely a group of separate pieces (a pair of boots, a set of books), not variants
+MODEL_TEX = 0          # set by build_scene for previews (512); 0 keeps the models' textures as shipped
 KEEP_ALL_PARTS = {"book_encyclopedia_set_01", "brass_candleholders", "outdoor_table_chair_set_01",
                   "wine_bottles_01", "decorative_book_set_01", "kitchen_utensils", "wooden_ladder", "metal_tool_chest"}
 
@@ -87,6 +88,7 @@ class Stager(Gens2, Gens3):
             self.protos[name] = None
             return None
         before = {o.name for o in bpy.data.objects}
+        imgs_before = {i.name for i in bpy.data.images}
         try:
             bpy.ops.import_scene.gltf(filepath=gltf)
         except Exception as e:  # noqa
@@ -94,6 +96,14 @@ class Stager(Gens2, Gens3):
             self.protos[name] = None
             return None
         new = [o for o in bpy.data.objects if o.name not in before]
+        if MODEL_TEX:
+            # previews: a prop's 1k texture set is 16 MB of image buffers per map; 512 is plenty at 960 wide
+            for img in bpy.data.images:
+                if img.name not in imgs_before and img.size[0] > MODEL_TEX:
+                    try:
+                        img.scale(MODEL_TEX, max(1, int(img.size[1] * MODEL_TEX / img.size[0])))
+                    except Exception:
+                        pass
         meshes = [o for o in new if o.type == "MESH"]
         other_names = [o.name for o in new if o.type != "MESH"]
         # apply transforms so joined geometry is in world space
