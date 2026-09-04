@@ -3427,19 +3427,15 @@
 "m": "walnut_h"
 },
 {
-"asset": "proc:cabinet",
+"asset": "proc:small_props",
 "room": "her_office",
-"b": [
-2.0,
-24.8,
-3.6,
-25.7,
-12.4,
-13.0
+"kind": "printer",
+"pos": [
+2.8,
+25.15,
+12.4
 ],
-"doors": 1,
-"face": "-y",
-"m": "stainless"
+"rot_z": 180
 },
 {
 "asset": "mantel_clock_01",

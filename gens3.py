@@ -524,6 +524,20 @@ class Gens3:
             cx, cy = at(0.5, 0.0)
             objs.append(box_centered(self.uid("toaster_lever"), (cx, cy, z + 0.35), (0.06, 0.16, 0.06), rot, self.mat("plastic_black"), self.col))
             objs.append(box_centered(self.uid("toaster_base"), (x, y, z), (0.9, 0.55, 0.05), rot, self.mat("plastic_black"), self.col))
+        elif kind == "printer":
+            # compact inkjet: body with a seam, paper tray sticking out the back, output lip in front, a control strip
+            body = box_centered(self.uid("printer"), (x, y, z + 0.3), (1.5, 1.15, 0.6), rot, self.mat("plastic_black"), self.col)
+            objs.append(body)
+            objs.append(box_centered(self.uid("printer_seam"), (x, y, z + 0.44), (1.52, 1.17, 0.012), rot, self.mat("black"), self.col))
+            cx, cy = at(0, -0.72)
+            objs.append(box_centered(self.uid("printer_tray"), (cx, cy, z + 0.5), (0.9, 0.35, 0.03), rot, self.mat("plastic_black"), self.col))
+            objs.append(box_centered(self.uid("printer_paper"), (cx, cy, z + 0.52), (0.72, 0.3, 0.02), rot, self.mat("paper"), self.col))
+            cx, cy = at(0, 0.66)
+            objs.append(box_centered(self.uid("printer_lip"), (cx, cy, z + 0.14), (1.0, 0.2, 0.03), rot, self.mat("plastic_black"), self.col))
+            cx, cy = at(0.45, 0.5)
+            objs.append(box_centered(self.uid("printer_panel"), (cx, cy, z + 0.605), (0.4, 0.14, 0.01), rot, self.mat("screen_dark"), self.col))
+            cx, cy = at(0.66, 0.5)
+            objs.append(cylinder_ft(self.uid("printer_btn"), (cx, cy, z + 0.6), 0.03, 0.02, self.mat("hood_lamp"), self.col, 12))
         elif kind == "candle":
             objs.append(cylinder_ft(self.uid("candle_jar"), (x, y, z), 0.15, 0.3, self.mat("glass_amber"), gl, 20))
             objs.append(cylinder_ft(self.uid("candle_wax"), (x, y, z + 0.02), 0.13, 0.22, self.mat("linen_white"), self.col, 16))

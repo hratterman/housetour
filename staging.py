@@ -973,6 +973,26 @@ class Stager(Gens2, Gens3):
             for i in range(1, nd):
                 u = y0 + i * (y1 - y0) / nd
                 objs.append(box_ft(self.uid("reveal"), fx0, u - 0.01, fx1, u + 0.01, z0 + 0.05, z1 - 0.05, dark, self.col))
+        # a slim brass pull per door: near the top edge of base cabinets, at hand height on tall ones
+        if e.get("pulls", True) and (z1 - z0) >= 1.0 and nd >= 1:
+            brass = self.mat("brass")
+            pz = z1 - 0.35 if (z1 - z0) < 4.0 else min(z0 + 3.3, z1 - 0.5)
+            along = (x1 - x0) if face in ("-y", "+y") else (y1 - y0)
+            dw = along / nd
+            if dw < 0.5:
+                return objs
+            for i in range(nd):
+                ua = (x0 if face in ("-y", "+y") else y0) + i * dw
+                # the pull sits toward the door's opening edge: alternate for door pairs, centred for single doors
+                uc = ua + dw / 2 if nd == 1 else (ua + dw - 0.25 if i % 2 == 0 else ua + 0.25)
+                if face == "-y":
+                    objs.append(box_ft(self.uid("pull"), uc - 0.02, y0 - 0.06, uc + 0.02, y0, pz - 0.2, pz + 0.2, brass, self.col))
+                elif face == "+y":
+                    objs.append(box_ft(self.uid("pull"), uc - 0.02, y1, uc + 0.02, y1 + 0.06, pz - 0.2, pz + 0.2, brass, self.col))
+                elif face == "-x":
+                    objs.append(box_ft(self.uid("pull"), x0 - 0.06, uc - 0.02, x0, uc + 0.02, pz - 0.2, pz + 0.2, brass, self.col))
+                else:
+                    objs.append(box_ft(self.uid("pull"), x1, uc - 0.02, x1 + 0.06, uc + 0.02, pz - 0.2, pz + 0.2, brass, self.col))
         return objs
 
     def gen_kitchen(self, e):
